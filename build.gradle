@@ -1,0 +1,44 @@
+
+plugins {
+    id 'java'
+    id 'eclipse'
+    id 'application'
+}
+sourceCompatibility = 1.8
+
+tasks.withType(JavaCompile){
+	options.encoding = 'UTF-8'
+}
+
+repositories {
+    jcenter()
+}
+
+dependencies {
+    // https://mvnrepository.com/artifact/com.zaxxer/HikariCP
+	compile group: 'com.zaxxer', name: 'HikariCP', version: '3.4.2'
+	// https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-api
+	compile group: 'org.apache.logging.log4j', name: 'log4j-api', version: '2.13.0'
+	// https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-core
+	compile group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.13.0'
+	// https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-slf4j-impl
+	testCompile group: 'org.apache.logging.log4j', name: 'log4j-slf4j-impl', version: '2.13.0'
+	// https://mvnrepository.com/artifact/mysql/mysql-connector-java
+	compile group: 'mysql', name: 'mysql-connector-java', version: '5.1.48'
+	// https://mvnrepository.com/artifact/com.jtattoo/JTattoo
+	compile group: 'com.jtattoo', name: 'JTattoo', version: '1.6.13'
+	// https://mvnrepository.com/artifact/com.toedter/jcalendar
+	compile group: 'com.toedter', name: 'jcalendar', version: '1.4'
+	
+    testImplementation 'junit:junit:4.12'
+}
+
+jar{
+	version = 1.0
+	mainClassName = 'yi_java3st_1team.ui.LoginFrame'
+	baseName = 'Erp'
+	manifest{
+		attributes 'Title': baseName, 'Version':version, 'Main-Class':mainClassName
+	}
+	dependsOn configurations.runtime
+}
