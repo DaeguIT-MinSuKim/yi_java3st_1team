@@ -1,4 +1,4 @@
-package yi_java3st_1team.main;
+package yi_java3st_1team.main.ui;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -12,6 +12,12 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
+
+import yi_java3st_1team.main.LoginBtn01;
+import yi_java3st_1team.main.LoginImg01Panel;
+import yi_java3st_1team.main.LoginPanel;
+import yi_java3st_1team.main.LogoImgPanel;
+
 import java.awt.FlowLayout;
 
 @SuppressWarnings("serial")
@@ -69,6 +75,12 @@ public class LoginMain01Panel extends JPanel {
 		pBtns.setBackground(SystemColor.inactiveCaption);
 		pSbot.add(pBtns, BorderLayout.CENTER);
 		pBtns.setLayout(new GridLayout(0, 1, 0, 10));
+		
+		LoginBtn01 panel = new LoginBtn01();
+		pBtns.add(panel);
+		
+		JPanel panel_1 = new JPanel();
+		pBtns.add(panel_1);
 	}
 
 }

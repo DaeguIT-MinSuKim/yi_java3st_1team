@@ -1,4 +1,4 @@
-package yi_java3st_1team.main;
+package yi_java3st_1team.main.ui;
 
 import java.awt.Rectangle;
 import java.awt.SystemColor;
@@ -7,6 +7,8 @@ import javax.swing.JPanel;
 
 import yi_java3st_1team.clientmanagement.ui.content.CMContent;
 import yi_java3st_1team.main.LeftMainMenu;
+import yi_java3st_1team.main.LoginPanel;
+
 import java.awt.GridLayout;
 import java.awt.BorderLayout;
 import javax.swing.border.EmptyBorder;
