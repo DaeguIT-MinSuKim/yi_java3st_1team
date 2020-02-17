@@ -27,8 +27,8 @@ public class MainFrame extends JFrame {
 	private JPanel pFooter;
 	private JLabel lblLogo;
 	private JLabel lblCopy;
-	private CMMainPanel pCtop;
 	private JButton btnNewButton;
+	private JPanel pContents;
 
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -84,11 +84,10 @@ public class MainFrame extends JFrame {
 		contentPane.add(pSection, BorderLayout.CENTER);
 		pSection.setLayout(new GridLayout(0, 1, 10, 10));
 		
-		pCtop = new CMMainPanel();
-		pCtop.setBackground(SystemColor.inactiveCaption);
-		pSection.add(pCtop);
-		pCtop.setBorder(BorderFactory.createEmptyBorder(0, 20, 0, 20));
-		pCtop.setLayout(null);
+		pContents = new JPanel();
+		pContents.setBackground(SystemColor.inactiveCaption);
+		pSection.add(pContents);
+		
 		
 		pFooter = new JPanel();
 		pFooter.setBackground(SystemColor.inactiveCaption);
