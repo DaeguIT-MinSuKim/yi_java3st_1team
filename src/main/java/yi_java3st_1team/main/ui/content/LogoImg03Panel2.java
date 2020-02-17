@@ -26,7 +26,7 @@ public class LogoImg03Panel2 extends JPanel {
 		add(lblImg1);
 		
 		JLabel lblImg2 = new JLabel("");
-		lblImg2.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\loginMain\\mainLogo3.png"));
+		lblImg2.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\loginMain\\cuLog.png"));
 		lblImg2.setBounds(669, 37, 335, 298);
 		add(lblImg2);
 		
