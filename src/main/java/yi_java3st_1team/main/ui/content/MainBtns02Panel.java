@@ -29,42 +29,42 @@ public class MainBtns02Panel extends JPanel {
 		add(pBtns01);
 		pBtns01.setLayout(new BorderLayout(10, 0));
 		
-		JButton btnNewButton = new JButton("");
-		btnNewButton.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\loginMain\\mainBtn1.png"));
-		btnNewButton.setPreferredSize(new Dimension(240, 23));
-		pBtns01.add(btnNewButton, BorderLayout.WEST);
+		JButton btn01 = new JButton("");
+		btn01.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\loginMain\\mainBtn1.png"));
+		btn01.setPreferredSize(new Dimension(240, 23));
+		pBtns01.add(btn01, BorderLayout.WEST);
 		
-		JButton btnNewButton_1 = new JButton("");
-		btnNewButton_1.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\loginMain\\mainBtn2.png"));
-		pBtns01.add(btnNewButton_1, BorderLayout.CENTER);
+		JButton btn02 = new JButton("");
+		btn02.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\loginMain\\mainBtn2.png"));
+		pBtns01.add(btn02, BorderLayout.CENTER);
 		
-		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setOpaque(true);
-		lblNewLabel.setBackground(new Color(240, 255, 255));
-		lblNewLabel.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\loginMain\\subMainImg1.png"));
-		lblNewLabel.setPreferredSize(new Dimension(640, 15));
-		pBtns01.add(lblNewLabel, BorderLayout.EAST);
+		JLabel lblImg01 = new JLabel("");
+		lblImg01.setOpaque(true);
+		lblImg01.setBackground(new Color(240, 255, 255));
+		lblImg01.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\loginMain\\subMainImg1.png"));
+		lblImg01.setPreferredSize(new Dimension(640, 15));
+		pBtns01.add(lblImg01, BorderLayout.EAST);
 		
 		JPanel pBtns02 = new JPanel();
 		pBtns02.setBackground(SystemColor.inactiveCaption);
 		add(pBtns02);
 		pBtns02.setLayout(new BorderLayout(10, 10));
 		
-		JLabel label = new JLabel("");
-		label.setOpaque(true);
-		label.setBackground(new Color(240, 255, 255));
-		label.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\loginMain\\subMainImg2.png"));
-		label.setPreferredSize(new Dimension(640, 15));
-		pBtns02.add(label, BorderLayout.WEST);
+		JLabel lblImg02 = new JLabel("");
+		lblImg02.setOpaque(true);
+		lblImg02.setBackground(new Color(240, 255, 255));
+		lblImg02.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\loginMain\\subMainImg2.png"));
+		lblImg02.setPreferredSize(new Dimension(640, 15));
+		pBtns02.add(lblImg02, BorderLayout.WEST);
 		
-		JButton button = new JButton("");
-		button.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\loginMain\\mainBtn3.png"));
-		pBtns02.add(button, BorderLayout.CENTER);
+		JButton btn03 = new JButton("");
+		btn03.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\loginMain\\mainBtn3.png"));
+		pBtns02.add(btn03, BorderLayout.CENTER);
 		
-		JButton button_1 = new JButton("");
-		button_1.setEnabled(false);
-		button_1.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\loginMain\\mainBtn4.png"));
-		button_1.setPreferredSize(new Dimension(240, 23));
-		pBtns02.add(button_1, BorderLayout.EAST);
+		JButton btn04 = new JButton("");
+		btn04.setEnabled(false);
+		btn04.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\loginMain\\mainBtn4.png"));
+		btn04.setPreferredSize(new Dimension(240, 23));
+		pBtns02.add(btn04, BorderLayout.EAST);
 	}
 }
