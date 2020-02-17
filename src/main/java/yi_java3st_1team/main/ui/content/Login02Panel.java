@@ -31,21 +31,22 @@ public class Login02Panel extends JPanel {
 		JLabel label = new JLabel("[관리자 로그인]");
 		label.setHorizontalAlignment(SwingConstants.CENTER);
 		label.setFont(new Font("휴먼둥근헤드라인", Font.PLAIN, 18));
-		label.setBounds(149, 59, 174, 45);
+		label.setBounds(152, 71, 174, 45);
 		add(label);
 		
 		JLabel label_1 = new JLabel("<html>반갑습니다!<br><span style='color:blue'>권수진 인턴</span>님이<br>로그인 하셨습니다.</html>");
 		label_1.setFont(new Font("굴림", Font.BOLD, 17));
-		label_1.setBounds(149, 101, 174, 91);
+		label_1.setBounds(152, 113, 164, 91);
 		add(label_1);
 		
 		JLabel label_2 = new JLabel("<html>- 사원번호 : <span style='color:red'>ET123</span><br>- <span style='color:green'>상품관리부</span></html>");
 		label_2.setFont(new Font("굴림", Font.BOLD, 17));
-		label_2.setBounds(149, 233, 174, 45);
+		label_2.setBounds(152, 245, 164, 45);
 		add(label_2);
 		
 		JLabel label_3 = new JLabel("이미지삽입");
-		label_3.setBounds(20, 59, 120, 120);
+		label_3.setHorizontalAlignment(SwingConstants.CENTER);
+		label_3.setBounds(20, 71, 120, 120);
 		add(label_3);
 	}
 }
