@@ -29,7 +29,11 @@
 				"type": "dev"
 			}
 		},
+<<<<<<< HEAD
 		"mysql5-1705552579e-e8f08a2ca712c7e": {
+=======
+		"mysql5-170524f5dc8-743b8b381b35a28c": {
+>>>>>>> branch 'master' of https://github.com/DaeguIT-MinSuKim/yi_java3st_1team.git
 			"provider": "mysql",
 			"driver": "mysql5",
 			"name": "MySQL - yi_java3st_1team",
