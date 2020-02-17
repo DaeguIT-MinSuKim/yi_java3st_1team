@@ -5,8 +5,8 @@ import java.awt.SystemColor;
 
 import javax.swing.JPanel;
 
+import yi_java3st_1team.main.LeftMainMenu;
 import yi_java3st_1team.productmanagement.ui.content.PMContent;
-import yi_java3st_1team.productmanagement.ui.content.PMMainMenu;
 
 @SuppressWarnings("serial")
 public class PMMainPanel extends JPanel {
@@ -20,10 +20,10 @@ public class PMMainPanel extends JPanel {
 		setBounds(new Rectangle(0, 0, 1544, 700));
 		setLayout(null);
 		
-		PMMainMenu pMainMenu = new PMMainMenu();
-		pMainMenu.setBackground(SystemColor.inactiveCaptionBorder);
-		pMainMenu.setBounds(20, 0, 214, 700);
-		add(pMainMenu);
+		LeftMainMenu MainMenu = new LeftMainMenu();
+		MainMenu.setBackground(SystemColor.inactiveCaptionBorder);
+		MainMenu.setBounds(20, 0, 214, 700);
+		add(MainMenu);
 		
 		PMContent pContent = new PMContent();
 		pContent.setBackground(SystemColor.inactiveCaption);
