@@ -15,8 +15,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
-import java.awt.FlowLayout;
-import yi_java3st_1team.clientmanagement.ui.CMMainPanel;
+
+import yi_java3st_1team.productmanagement.ui.PMMainPanel;
 
 @SuppressWarnings("serial")
 public class MainFrame extends JFrame {
@@ -27,7 +27,7 @@ public class MainFrame extends JFrame {
 	private JPanel pFooter;
 	private JLabel lblLogo;
 	private JLabel lblCopy;
-	private CMMainPanel pCtop;
+	private PMMainPanel pCtop;
 	private JButton btnNewButton;
 
 	public static void main(String[] args) {
@@ -74,7 +74,7 @@ public class MainFrame extends JFrame {
 		pHeader.add(lblLogo);
 		
 		btnNewButton = new JButton("");
-		btnNewButton.setIcon(new ImageIcon("D:\\workspace\\wokrspace_java\\sw_sales_management\\images\\logout.png"));
+		btnNewButton.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\logout.png"));
 		btnNewButton.setFocusable(false);
 		btnNewButton.setBackground(SystemColor.inactiveCaption);
 		btnNewButton.setBounds(1419, 22, 90, 72);
@@ -84,7 +84,7 @@ public class MainFrame extends JFrame {
 		contentPane.add(pSection, BorderLayout.CENTER);
 		pSection.setLayout(new GridLayout(0, 1, 10, 10));
 		
-		pCtop = new CMMainPanel();
+		pCtop = new PMMainPanel();
 		pCtop.setBackground(SystemColor.inactiveCaption);
 		pSection.add(pCtop);
 		pCtop.setBorder(BorderFactory.createEmptyBorder(0, 20, 0, 20));

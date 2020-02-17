@@ -1,4 +1,4 @@
-package yi_java3st_1team.clientmanagement.ui.content;
+package yi_java3st_1team.productmanagement.ui.content;
 
 import java.awt.Font;
 import java.awt.Rectangle;
@@ -11,7 +11,7 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
 @SuppressWarnings("serial")
-public class CMMainMenu extends JPanel {
+public class PMMainMenu extends JPanel {
 	private JLabel lblNewLabel;
 	private JButton btnNewButton;
 	private JButton button;
@@ -22,7 +22,7 @@ public class CMMainMenu extends JPanel {
 	private JLabel label_1;
 	private JLabel label_2;
 
-	public CMMainMenu() {
+	public PMMainMenu() {
 
 		initialize();
 	}

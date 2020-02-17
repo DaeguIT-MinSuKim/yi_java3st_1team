@@ -1,16 +1,17 @@
-package yi_java3st_1team.clientmanagement.ui;
+package yi_java3st_1team.productmanagement.ui;
 
 import java.awt.Rectangle;
 import java.awt.SystemColor;
 
 import javax.swing.JPanel;
-import yi_java3st_1team.clientmanagement.ui.content.CMMainMenu;
-import yi_java3st_1team.clientmanagement.ui.content.CMContent;
+
+import yi_java3st_1team.productmanagement.ui.content.PMContent;
+import yi_java3st_1team.productmanagement.ui.content.PMMainMenu;
 
 @SuppressWarnings("serial")
-public class CMMainPanel extends JPanel {
+public class PMMainPanel extends JPanel {
 
-	public CMMainPanel() {
+	public PMMainPanel() {
 
 		initialize();
 	}
@@ -19,12 +20,12 @@ public class CMMainPanel extends JPanel {
 		setBounds(new Rectangle(0, 0, 1544, 700));
 		setLayout(null);
 		
-		CMMainMenu pMainMenu = new CMMainMenu();
+		PMMainMenu pMainMenu = new PMMainMenu();
 		pMainMenu.setBackground(SystemColor.inactiveCaptionBorder);
 		pMainMenu.setBounds(20, 0, 214, 700);
 		add(pMainMenu);
 		
-		CMContent pContent = new CMContent();
+		PMContent pContent = new PMContent();
 		pContent.setBackground(SystemColor.inactiveCaption);
 		pContent.setBounds(246, 0, 1268, 700);
 		add(pContent);
