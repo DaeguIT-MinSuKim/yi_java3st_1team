@@ -18,7 +18,7 @@ public class CMContentTest extends JPanel {
 	private JTabbedPane tpClientManagement;
 	private JPanel pSupplyCompany;
 	private JPanel pClient;
-	private SCRegisterPanel pSCRegisterPanel;
+	private SCRegisterPanelTest pSCRegisterPanel;
 	private SCListPanel pSCListPanel;
 	private CRegisterPanel pCRegisterPanel;
 	private CListPanel pCListPanel;
@@ -42,7 +42,7 @@ public class CMContentTest extends JPanel {
 		tpClientManagement.addTab("공급회사", null, pSupplyCompany, null);
 		pSupplyCompany.setLayout(new GridLayout(0, 2, 0, 0));
 		
-		pSCRegisterPanel = new SCRegisterPanel();
+		pSCRegisterPanel = new SCRegisterPanelTest();
 		pSCRegisterPanel.setBackground(SystemColor.inactiveCaptionBorder);
 		pSupplyCompany.add(pSCRegisterPanel);
 		pSCRegisterPanel.setLayout(null);

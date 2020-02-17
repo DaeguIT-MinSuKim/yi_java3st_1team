@@ -25,7 +25,7 @@ public class CMMainPanelTest extends JPanel {
 		MainMenu.setBounds(20, 0, 214, 700);
 		add(MainMenu);
 		
-		CMContent pContent = new CMContent();
+		CMContentTest pContent = new CMContentTest();
 		pContent.setBackground(SystemColor.inactiveCaption);
 		pContent.setBounds(246, 0, 1268, 700);
 		add(pContent);

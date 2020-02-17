@@ -48,10 +48,11 @@ public class SCRegisterPanelTest extends JPanel {
 		panel.setBackground(SystemColor.inactiveCaptionBorder);
 		panel.setLayout(null);
 		
-		lblSC = new JLabel("공급회사 등록");
+		lblSC = new JLabel("공급회사  등록");
+		lblSC.setFocusable(false);
 		lblSC.setFont(new Font("휴먼둥근헤드라인", Font.PLAIN, 40));
 		lblSC.setHorizontalAlignment(SwingConstants.CENTER);
-		lblSC.setBounds(101, 52, 407, 54);
+		lblSC.setBounds(0, 52, 635, 54);
 		panel.add(lblSC);
 		
 		lblSCNo = new JLabel("회 사 번 호");
@@ -120,30 +121,39 @@ public class SCRegisterPanelTest extends JPanel {
 		tfSCFax.setBounds(230, 490, 200, 30);
 		panel.add(tfSCFax);
 		
-		btnAdd = new JButton("등 록");
+		btnAdd = new JButton("");
+		btnAdd.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\test\\등록.png"));
 		btnAdd.setBounds(20, 580, 130, 30);
 		panel.add(btnAdd);
 		
-		btnUpdate = new JButton("수 정");
+		btnUpdate = new JButton("");
+		btnUpdate.setFocusable(false);
+		btnUpdate.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\test\\수정.png"));
 		btnUpdate.setBounds(170, 580, 130, 30);
 		panel.add(btnUpdate);
 		
-		btnDel = new JButton("삭 제");
+		btnDel = new JButton("");
+		btnDel.setFocusable(false);
+		btnDel.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\test\\삭제.png"));
 		btnDel.setBounds(320, 580, 130, 30);
 		panel.add(btnDel);
 		
 		btnGoMain = new JButton("");
-		btnGoMain.setIcon(new ImageIcon("C:\\Users\\lenovo\\Downloads\\그림5.png"));
+		btnGoMain.setFocusable(false);
+		btnGoMain.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\test\\메인화면.png"));
 		btnGoMain.setBounds(470, 580, 130, 30);
 		panel.add(btnGoMain);
 		
 		btnDplCheck = new JButton("");
-		btnDplCheck.setIcon(new ImageIcon("C:\\Users\\lenovo\\Downloads\\그림2.png"));
-		btnDplCheck.setBounds(454, 210, 130, 30);
+		btnDplCheck.setFocusable(false);
+		btnDplCheck.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\test\\중복확인.png"));
+		btnDplCheck.setBounds(465, 210, 130, 30);
 		panel.add(btnDplCheck);
 		
-		btnPostNum = new JButton("우 편 번 호");
-		btnPostNum.setBounds(454, 350, 130, 30);
+		btnPostNum = new JButton("");
+		btnPostNum.setFocusable(false);
+		btnPostNum.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\test\\우편번호.png"));
+		btnPostNum.setBounds(465, 350, 130, 30);
 		panel.add(btnPostNum);
 		
 	}
