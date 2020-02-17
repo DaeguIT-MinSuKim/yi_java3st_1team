@@ -7,7 +7,7 @@ import javax.swing.JPanel;
 
 import yi_java3st_1team.clientmanagement.ui.content.CMContent;
 import yi_java3st_1team.main.LeftMainMenu;
-import yi_java3st_1team.main.LoginPanel;
+import yi_java3st_1team.main.ui.content.Login01Panel;
 
 import java.awt.GridLayout;
 import java.awt.BorderLayout;
@@ -32,7 +32,7 @@ public class LoginMain02Panel extends JPanel {
 		add(pStop);
 		pStop.setLayout(new BorderLayout(10, 10));
 		
-		LoginPanel pLogin = new LoginPanel();
+		Login01Panel pLogin = new Login01Panel();
 		pLogin.setPreferredSize(new Dimension(350, 10));
 		pStop.add(pLogin, BorderLayout.WEST);
 		

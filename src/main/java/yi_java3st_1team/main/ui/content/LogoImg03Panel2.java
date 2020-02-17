@@ -1,4 +1,4 @@
-package yi_java3st_1team.main;
+package yi_java3st_1team.main.ui.content;
 
 import javax.swing.JPanel;
 import java.awt.Dimension;
@@ -6,12 +6,12 @@ import java.awt.SystemColor;
 import javax.swing.JLabel;
 import javax.swing.ImageIcon;
 
-public class btPanel extends JPanel {
+public class LogoImg03Panel2 extends JPanel {
 
 	/**
 	 * Create the panel.
 	 */
-	public btPanel() {
+	public LogoImg03Panel2() {
 
 		initialize();
 	}

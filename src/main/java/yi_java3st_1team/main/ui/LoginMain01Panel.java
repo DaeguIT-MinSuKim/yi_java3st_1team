@@ -13,10 +13,10 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
-import yi_java3st_1team.main.LoginBtn01;
-import yi_java3st_1team.main.LoginImg01Panel;
-import yi_java3st_1team.main.LoginPanel;
-import yi_java3st_1team.main.LogoImgPanel;
+import yi_java3st_1team.main.ui.content.Login01Panel;
+import yi_java3st_1team.main.ui.content.LoginBtn01;
+import yi_java3st_1team.main.ui.content.LogoImg01Panel;
+import yi_java3st_1team.main.ui.content.LogoImg02Panel;
 
 import java.awt.FlowLayout;
 
@@ -38,11 +38,11 @@ public class LoginMain01Panel extends JPanel {
 		add(pStop);
 		pStop.setLayout(new BorderLayout(10, 10));
 		
-		LoginPanel pLogin = new LoginPanel();
+		Login01Panel pLogin = new Login01Panel();
 		pLogin.setPreferredSize(new Dimension(350, 10));
 		pStop.add(pLogin, BorderLayout.WEST);
 		
-		LoginImg01Panel pImg01 = new LoginImg01Panel();
+		LogoImg02Panel pImg01 = new LogoImg02Panel();
 		pImg01.setBackground(SystemColor.inactiveCaptionBorder);
 		pStop.add(pImg01, BorderLayout.CENTER);
 		
@@ -58,7 +58,7 @@ public class LoginMain01Panel extends JPanel {
 		pSbot.add(pImg02, BorderLayout.WEST);
 		pImg02.setLayout(new BorderLayout(0, 10));
 		
-		LogoImgPanel pLogo = new LogoImgPanel();
+		LogoImg01Panel pLogo = new LogoImg01Panel();
 		pLogo.setBackground(Color.WHITE);
 		pLogo.setPreferredSize(new Dimension(350, 250));
 		pImg02.add(pLogo, BorderLayout.NORTH);
@@ -74,13 +74,7 @@ public class LoginMain01Panel extends JPanel {
 		JPanel pBtns = new JPanel();
 		pBtns.setBackground(SystemColor.inactiveCaption);
 		pSbot.add(pBtns, BorderLayout.CENTER);
-		pBtns.setLayout(new GridLayout(0, 1, 0, 10));
-		
-		LoginBtn01 panel = new LoginBtn01();
-		pBtns.add(panel);
-		
-		JPanel panel_1 = new JPanel();
-		pBtns.add(panel_1);
+		pBtns.setLayout(null);
 	}
 
 }
