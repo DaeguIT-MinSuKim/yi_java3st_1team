@@ -19,6 +19,7 @@ import yi_java3st_1team.main.ui.content.LogoImg01Panel;
 import yi_java3st_1team.main.ui.content.LogoImg02Panel;
 
 import java.awt.FlowLayout;
+import yi_java3st_1team.main.ui.content.MainBtns01Panel;
 
 @SuppressWarnings("serial")
 public class LoginMain01Panel extends JPanel {
@@ -71,10 +72,9 @@ public class LoginMain01Panel extends JPanel {
 		lblCall.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\loginMain\\callcenter.png"));
 		pImg02.add(lblCall, BorderLayout.CENTER);
 		
-		JPanel pBtns = new JPanel();
+		MainBtns01Panel pBtns = new MainBtns01Panel();
 		pBtns.setBackground(SystemColor.inactiveCaption);
 		pSbot.add(pBtns, BorderLayout.CENTER);
-		pBtns.setLayout(null);
 	}
 
 }

@@ -6,12 +6,12 @@ import java.awt.SystemColor;
 import javax.swing.JLabel;
 import javax.swing.ImageIcon;
 
-public class LogoImg03Panel2 extends JPanel {
+public class LogoImg03Panel extends JPanel {
 
 	/**
 	 * Create the panel.
 	 */
-	public LogoImg03Panel2() {
+	public LogoImg03Panel() {
 
 		initialize();
 	}
