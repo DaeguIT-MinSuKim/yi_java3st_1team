@@ -1,0 +1,126 @@
+package yi_java3st_1team.productmanagement.ui.panel;
+
+import java.awt.BorderLayout;
+import java.awt.Font;
+import java.awt.Rectangle;
+import java.awt.SystemColor;
+
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.SwingConstants;
+
+@SuppressWarnings("serial")
+public class CDRegisterPanel extends JPanel {
+	
+	private JLabel lblCD;
+	private JLabel lblCDNo;
+	private JLabel lblCName;
+	private JLabel lblCDQty;
+	private JLabel lblCDPName;
+	private JLabel lblCDDate;
+	private JTextField tfPCDNo;
+	private JTextField tfSCName;
+	private JTextField tfSCDQty;
+	private JTextField tfSCDPName;
+	private JTextField tfSCDDate;
+	private JButton btnAdd;
+	private JButton btnUpdate;
+	private JButton btnDel;
+	private JButton btnGoMain;
+
+	public CDRegisterPanel() {
+		initialize();
+	}
+
+	private void initialize() {
+		setBounds(new Rectangle(0, 0, 635, 700));
+		setLayout(new BorderLayout(0, 0));
+		
+		JPanel panel = new JPanel();
+		add(panel, BorderLayout.CENTER);
+		panel.setBounds(new Rectangle(0, 0, 635, 700));
+		panel.setBackground(SystemColor.inactiveCaptionBorder);
+		panel.setLayout(null);
+		
+		lblCD = new JLabel("출고 이력 관리");
+		lblCD.setFont(new Font("굴림", Font.BOLD, 40));
+		lblCD.setHorizontalAlignment(SwingConstants.CENTER);
+		lblCD.setBounds(101, 52, 407, 54);
+		panel.add(lblCD);
+		
+		lblCDNo = new JLabel("출 고 번 호");
+		lblCDNo.setFont(new Font("굴림", Font.BOLD, 18));
+		lblCDNo.setHorizontalAlignment(SwingConstants.CENTER);
+		lblCDNo.setBounds(66, 140, 120, 30);
+		panel.add(lblCDNo);
+		
+		lblCName = new JLabel("고객상호명");
+		lblCName.setHorizontalAlignment(SwingConstants.CENTER);
+		lblCName.setFont(new Font("굴림", Font.BOLD, 18));
+		lblCName.setBounds(66, 228, 120, 30);
+		panel.add(lblCName);
+		
+		lblCDQty = new JLabel("출 고 수 량");
+		lblCDQty.setHorizontalAlignment(SwingConstants.CENTER);
+		lblCDQty.setFont(new Font("굴림", Font.BOLD, 18));
+		lblCDQty.setBounds(66, 404, 120, 30);
+		panel.add(lblCDQty);
+		
+		lblCDPName = new JLabel("품  목  명");
+		lblCDPName.setHorizontalAlignment(SwingConstants.CENTER);
+		lblCDPName.setFont(new Font("굴림", Font.BOLD, 18));
+		lblCDPName.setBounds(66, 316, 120, 30);
+		panel.add(lblCDPName);
+		
+		lblCDDate = new JLabel("출 고 일 자");
+		lblCDDate.setHorizontalAlignment(SwingConstants.CENTER);
+		lblCDDate.setFont(new Font("굴림", Font.BOLD, 18));
+		lblCDDate.setBounds(66, 492, 120, 30);
+		panel.add(lblCDDate);
+		
+		tfPCDNo = new JTextField();
+		tfPCDNo.setBounds(230, 140, 200, 30);
+		panel.add(tfPCDNo);
+		tfPCDNo.setColumns(10);
+		
+		tfSCName = new JTextField();
+		tfSCName.setColumns(10);
+		tfSCName.setBounds(230, 228, 200, 30);
+		panel.add(tfSCName);
+		
+		tfSCDQty = new JTextField();
+		tfSCDQty.setColumns(10);
+		tfSCDQty.setBounds(230, 404, 200, 30);
+		panel.add(tfSCDQty);
+		
+		tfSCDPName = new JTextField();
+		tfSCDPName.setColumns(10);
+		tfSCDPName.setBounds(230, 316, 200, 30);
+		panel.add(tfSCDPName);
+		
+		tfSCDDate = new JTextField();
+		tfSCDDate.setColumns(10);
+		tfSCDDate.setBounds(230, 492, 200, 30);
+		panel.add(tfSCDDate);
+		
+		btnAdd = new JButton("등 록");
+		btnAdd.setBounds(20, 580, 130, 30);
+		panel.add(btnAdd);
+		
+		btnUpdate = new JButton("수 정");
+		btnUpdate.setBounds(170, 580, 130, 30);
+		panel.add(btnUpdate);
+		
+		btnDel = new JButton("삭 제");
+		btnDel.setBounds(320, 580, 130, 30);
+		panel.add(btnDel);
+		
+		btnGoMain = new JButton("메 인 화 면");
+		btnGoMain.setBounds(470, 580, 130, 30);
+		panel.add(btnGoMain);
+		
+	}
+
+}

@@ -1,4 +1,4 @@
-package yi_java3st_1team.productmanagement.ui.panel;
+package yi_java3st_1team.productmanagement.ui.list;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;

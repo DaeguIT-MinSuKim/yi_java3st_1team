@@ -8,8 +8,12 @@ import java.awt.SystemColor;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 
+import yi_java3st_1team.productmanagement.ui.list.SWListPanel;
 import yi_java3st_1team.productmanagement.ui.panel.SWRegisterPanel;
-import yi_java3st_1team.productmanagement.ui.panel.SWListPanel;
+import yi_java3st_1team.productmanagement.ui.panel.SCSORegisterPanel;
+import yi_java3st_1team.productmanagement.ui.list.SCSOListPanel;
+import yi_java3st_1team.productmanagement.ui.panel.CDRegisterPanel;
+import yi_java3st_1team.productmanagement.ui.list.CDListPanel;
 
 @SuppressWarnings("serial")
 public class PMContent extends JPanel {
@@ -19,8 +23,10 @@ public class PMContent extends JPanel {
 	private JPanel pClientDelivery;
 	private SWRegisterPanel pSWRegisterPanel;
 	private SWListPanel pSWListPanel;
-	private JPanel panel;
-	private JPanel panel_1;
+	private SCSORegisterPanel pSCSORegisterPanel;
+	private SCSOListPanel pSCSOListPanel;
+	private CDRegisterPanel pCDRegisterPanel;
+	private CDListPanel pCDListPanel;
 
 	public PMContent() {
 
@@ -32,7 +38,7 @@ public class PMContent extends JPanel {
 		setLayout(new BorderLayout(0, 0));
 		
 		tpClientManagetment = new JTabbedPane(JTabbedPane.TOP);
-		tpClientManagetment.setBackground(SystemColor.inactiveCaption);
+		tpClientManagetment.setBackground(SystemColor.inactiveCaptionBorder);
 		add(tpClientManagetment, BorderLayout.CENTER);
 		
 		pSWRegister = new JPanel();
@@ -57,16 +63,30 @@ public class PMContent extends JPanel {
 		tpClientManagetment.addTab("매입 / 발주", null, pSCSO, null);
 		pSCSO.setLayout(new GridLayout(0, 2, 0, 0));
 		
-		panel = new JPanel();
-		pSCSO.add(panel);
-		panel.setLayout(new BorderLayout(0, 0));
+		pSCSORegisterPanel = new SCSORegisterPanel();
+		pSCSORegisterPanel.setBackground(SystemColor.inactiveCaptionBorder);
+		pSCSO.add(pSCSORegisterPanel);
+		pSCSORegisterPanel.setLayout(null);
 		
-		panel_1 = new JPanel();
-		pSCSO.add(panel_1);
+		pSCSOListPanel = new SCSOListPanel();
+		pSCSOListPanel.setBackground(SystemColor.inactiveCaptionBorder);
+		pSCSO.add(pSCSOListPanel);
+		pSCSOListPanel.setLayout(null);
 		
 		pClientDelivery = new JPanel();
 		pClientDelivery.setBounds(0, 0, 100, 50);
 		pClientDelivery.setBackground(SystemColor.inactiveCaptionBorder);
 		tpClientManagetment.addTab("출  고", null, pClientDelivery, null);
+		pClientDelivery.setLayout(new GridLayout(0, 2, 0, 0));
+		
+		pCDRegisterPanel = new CDRegisterPanel();
+		pCDRegisterPanel.setBackground(SystemColor.inactiveCaptionBorder);
+		pClientDelivery.add(pCDRegisterPanel);
+		pCDRegisterPanel.setLayout(null);
+		
+		pCDListPanel = new CDListPanel();
+		pCDListPanel.setBackground(SystemColor.inactiveCaptionBorder);
+		pClientDelivery.add(pCDListPanel);
+		pCDListPanel.setLayout(null);
 	}
 }
