@@ -17,7 +17,6 @@ import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
 import yi_java3st_1team.clientmanagement.ui.CMMainPanel;
-import yi_java3st_1team.productmanagement.ui.PMMainPanel;
 
 @SuppressWarnings("serial")
 public class MainFrame extends JFrame {

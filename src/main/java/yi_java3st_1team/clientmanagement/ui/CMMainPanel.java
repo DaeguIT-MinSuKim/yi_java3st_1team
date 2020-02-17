@@ -7,7 +7,6 @@ import javax.swing.JPanel;
 
 import yi_java3st_1team.clientmanagement.ui.content.CMContent;
 import yi_java3st_1team.clientmanagement.ui.content.CMMainMenu;
-import yi_java3st_1team.productmanagement.ui.content.PMContent;
 
 @SuppressWarnings("serial")
 public class CMMainPanel extends JPanel {

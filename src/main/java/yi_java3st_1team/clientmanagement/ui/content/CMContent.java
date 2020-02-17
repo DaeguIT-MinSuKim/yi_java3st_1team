@@ -12,9 +12,6 @@ import yi_java3st_1team.clientmanagement.ui.list.CListPanel;
 import yi_java3st_1team.clientmanagement.ui.list.SCListPanel;
 import yi_java3st_1team.clientmanagement.ui.panel.CRegisterPanel;
 import yi_java3st_1team.clientmanagement.ui.panel.SCRegisterPanel;
-import yi_java3st_1team.productmanagement.ui.list.SCSOListPanel;
-import yi_java3st_1team.productmanagement.ui.list.SWListPanel;
-import yi_java3st_1team.productmanagement.ui.panel.SWRegisterPanel;
 
 @SuppressWarnings("serial")
 public class CMContent extends JPanel {
