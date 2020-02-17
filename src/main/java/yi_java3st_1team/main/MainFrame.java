@@ -16,6 +16,7 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
+import yi_java3st_1team.clientmanagement.ui.CMMainPanel;
 import yi_java3st_1team.productmanagement.ui.PMMainPanel;
 
 @SuppressWarnings("serial")
@@ -27,7 +28,7 @@ public class MainFrame extends JFrame {
 	private JPanel pFooter;
 	private JLabel lblLogo;
 	private JLabel lblCopy;
-	private PMMainPanel pCtop;
+	private CMMainPanel pCtop;
 	private JButton btnNewButton;
 
 	public static void main(String[] args) {
@@ -84,7 +85,7 @@ public class MainFrame extends JFrame {
 		contentPane.add(pSection, BorderLayout.CENTER);
 		pSection.setLayout(new GridLayout(0, 1, 10, 10));
 		
-		pCtop = new PMMainPanel();
+		pCtop = new CMMainPanel();
 		pCtop.setBackground(SystemColor.inactiveCaption);
 		pSection.add(pCtop);
 		pCtop.setBorder(BorderFactory.createEmptyBorder(0, 20, 0, 20));

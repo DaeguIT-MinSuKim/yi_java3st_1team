@@ -1,4 +1,4 @@
-package yi_java3st_1team.productmanagement.ui.content;
+package yi_java3st_1team.clientmanagement.ui.content;
 
 import java.awt.Font;
 import java.awt.Rectangle;
@@ -9,9 +9,11 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 @SuppressWarnings("serial")
-public class PMMainMenu extends JPanel {
+public class CMMainMenu extends JPanel implements ActionListener {
 	private JLabel lblMenu;
 	private JButton btnCM;
 	private JButton btnPM;
@@ -22,7 +24,7 @@ public class PMMainMenu extends JPanel {
 	private JLabel lblOM;
 	private JLabel lblViews;
 
-	public PMMainMenu() {
+	public CMMainMenu() {
 
 		initialize();
 	}
@@ -38,6 +40,7 @@ public class PMMainMenu extends JPanel {
 		add(lblMenu);
 		
 		btnCM = new JButton("");
+		btnCM.addActionListener(this);
 		btnCM.setFocusable(false);
 		btnCM.setBackground(SystemColor.inactiveCaptionBorder);
 		btnCM.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\menu1.png"));
@@ -45,6 +48,7 @@ public class PMMainMenu extends JPanel {
 		add(btnCM);
 		
 		btnPM = new JButton("");
+		btnPM.addActionListener(this);
 		btnPM.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\menu2.png"));
 		btnPM.setFocusable(false);
 		btnPM.setBackground(SystemColor.inactiveCaptionBorder);
@@ -52,6 +56,7 @@ public class PMMainMenu extends JPanel {
 		add(btnPM);
 		
 		btnOM = new JButton("");
+		btnOM.addActionListener(this);
 		btnOM.setFocusable(false);
 		btnOM.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\menu3.png"));
 		btnOM.setBackground(SystemColor.inactiveCaptionBorder);
@@ -88,5 +93,23 @@ public class PMMainMenu extends JPanel {
 		lblViews.setHorizontalAlignment(SwingConstants.CENTER);
 		lblViews.setBounds(40, 640, 130, 20);
 		add(lblViews);
+	}
+	public void actionPerformed(ActionEvent e) {
+		if (e.getSource() == btnOM) {
+			btnOMActionPerformed(e);
+		}
+		if (e.getSource() == btnPM) {
+			btnPMActionPerformed(e);
+		}
+		if (e.getSource() == btnCM) {
+			btnCMActionPerformed(e);
+		}
+	}
+	protected void btnCMActionPerformed(ActionEvent e) {
+		
+	}
+	protected void btnPMActionPerformed(ActionEvent e) {
+	}
+	protected void btnOMActionPerformed(ActionEvent e) {
 	}
 }

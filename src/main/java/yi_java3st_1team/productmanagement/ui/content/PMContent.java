@@ -17,7 +17,7 @@ import yi_java3st_1team.productmanagement.ui.list.CDListPanel;
 
 @SuppressWarnings("serial")
 public class PMContent extends JPanel {
-	private JTabbedPane tpClientManagetment;
+	private JTabbedPane tpClientManagement;
 	private JPanel pSWRegister;
 	private JPanel pSCSO;
 	private JPanel pClientDelivery;
@@ -37,14 +37,14 @@ public class PMContent extends JPanel {
 		setBounds(new Rectangle(0, 0, 1270, 700));
 		setLayout(new BorderLayout(0, 0));
 		
-		tpClientManagetment = new JTabbedPane(JTabbedPane.TOP);
-		tpClientManagetment.setBackground(SystemColor.inactiveCaptionBorder);
-		add(tpClientManagetment, BorderLayout.CENTER);
+		tpClientManagement = new JTabbedPane(JTabbedPane.TOP);
+		tpClientManagement.setBackground(SystemColor.inactiveCaptionBorder);
+		add(tpClientManagement, BorderLayout.CENTER);
 		
 		pSWRegister = new JPanel();
 		pSWRegister.setBounds(0, 0, 100, 50);
 		pSWRegister.setBackground(SystemColor.inactiveCaptionBorder);
-		tpClientManagetment.addTab("제품 등록", null, pSWRegister, null);
+		tpClientManagement.addTab("제품 등록", null, pSWRegister, null);
 		pSWRegister.setLayout(new GridLayout(0, 2, 0, 0));
 		
 		pSWRegisterPanel = new SWRegisterPanel();
@@ -60,7 +60,7 @@ public class PMContent extends JPanel {
 		pSCSO = new JPanel();
 		pSCSO.setBounds(0, 0, 100, 50);
 		pSCSO.setBackground(SystemColor.inactiveCaptionBorder);
-		tpClientManagetment.addTab("매입 / 발주", null, pSCSO, null);
+		tpClientManagement.addTab("매입 / 발주", null, pSCSO, null);
 		pSCSO.setLayout(new GridLayout(0, 2, 0, 0));
 		
 		pSCSORegisterPanel = new SCSORegisterPanel();
@@ -76,7 +76,7 @@ public class PMContent extends JPanel {
 		pClientDelivery = new JPanel();
 		pClientDelivery.setBounds(0, 0, 100, 50);
 		pClientDelivery.setBackground(SystemColor.inactiveCaptionBorder);
-		tpClientManagetment.addTab("출  고", null, pClientDelivery, null);
+		tpClientManagement.addTab("출  고", null, pClientDelivery, null);
 		pClientDelivery.setLayout(new GridLayout(0, 2, 0, 0));
 		
 		pCDRegisterPanel = new CDRegisterPanel();

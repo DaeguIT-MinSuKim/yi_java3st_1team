@@ -52,13 +52,13 @@ public class SCSORegisterPanel extends JPanel {
 		lblSCSO.setBounds(101, 52, 407, 54);
 		panel.add(lblSCSO);
 		
-		lblSCSONo = new JLabel("번       호");
+		lblSCSONo = new JLabel("번        호");
 		lblSCSONo.setFont(new Font("굴림", Font.BOLD, 18));
 		lblSCSONo.setHorizontalAlignment(SwingConstants.CENTER);
 		lblSCSONo.setBounds(66, 140, 120, 30);
 		panel.add(lblSCSONo);
 		
-		lblSCSOPName = new JLabel("품  목  명");
+		lblSCSOPName = new JLabel("품   목   명");
 		lblSCSOPName.setHorizontalAlignment(SwingConstants.CENTER);
 		lblSCSOPName.setFont(new Font("굴림", Font.BOLD, 18));
 		lblSCSOPName.setBounds(66, 210, 120, 30);
