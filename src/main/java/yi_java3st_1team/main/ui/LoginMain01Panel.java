@@ -14,11 +14,8 @@ import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
 import yi_java3st_1team.main.ui.content.Login01Panel;
-import yi_java3st_1team.main.ui.content.LoginBtn01;
 import yi_java3st_1team.main.ui.content.LogoImg01Panel;
 import yi_java3st_1team.main.ui.content.LogoImg02Panel;
-
-import java.awt.FlowLayout;
 import yi_java3st_1team.main.ui.content.MainBtns01Panel;
 
 @SuppressWarnings("serial")
