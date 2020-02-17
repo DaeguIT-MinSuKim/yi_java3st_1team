@@ -12,6 +12,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
+import java.awt.FlowLayout;
 
 @SuppressWarnings("serial")
 public class LoginMain01Panel extends JPanel {
