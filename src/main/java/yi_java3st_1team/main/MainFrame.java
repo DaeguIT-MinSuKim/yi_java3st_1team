@@ -69,7 +69,7 @@ public class MainFrame extends JFrame {
 		lblLogo.setBounds(0, 0, 300, 120);
 		lblLogo.setHorizontalAlignment(SwingConstants.CENTER);
 		lblLogo.setBorder(BorderFactory.createEmptyBorder(0,100,0,0));
-		lblLogo.setIcon(new ImageIcon("D:\\workspace\\wokrspace_java\\sw_sales_management\\images\\Logo.png"));
+		lblLogo.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\Logo.png"));
 		lblLogo.setPreferredSize(new Dimension(300, 120));
 		pHeader.add(lblLogo);
 		
@@ -98,7 +98,7 @@ public class MainFrame extends JFrame {
 		
 		lblCopy = new JLabel("");
 		lblCopy.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblCopy.setIcon(new ImageIcon("D:\\workspace\\wokrspace_java\\sw_sales_management\\images\\botLogo.png"));
+		lblCopy.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\botLogo.png"));
 		lblCopy.setPreferredSize(new Dimension(400, 30));
 		lblCopy.setBorder(BorderFactory.createEmptyBorder(0,0,0,20));
 		pFooter.add(lblCopy, BorderLayout.EAST);
