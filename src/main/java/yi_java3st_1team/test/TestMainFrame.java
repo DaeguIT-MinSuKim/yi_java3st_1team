@@ -1,4 +1,4 @@
-package yi_java3st_1team.main;
+package yi_java3st_1team.test;
 
 import java.awt.BorderLayout;
 import java.awt.Color;

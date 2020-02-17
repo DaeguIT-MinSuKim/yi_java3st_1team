@@ -1,4 +1,4 @@
-package yi_java3st_1team.clientmanagement.ui.panel;
+package yi_java3st_1team.test;
 
 import java.awt.BorderLayout;
 import java.awt.Font;
@@ -13,7 +13,7 @@ import javax.swing.SwingConstants;
 import javax.swing.ImageIcon;
 
 @SuppressWarnings("serial")
-public class SCRegisterPanel2 extends JPanel {
+public class SCRegisterPanelTest extends JPanel {
 
 	private JLabel lblSC;
 	private JLabel lblSCNo;
@@ -34,7 +34,7 @@ public class SCRegisterPanel2 extends JPanel {
 	private JButton btnGoMain;
 	private JButton btnDplCheck;
 	private JButton btnPostNum;
-	public SCRegisterPanel2() {
+	public SCRegisterPanelTest() {
 
 		initialize();
 	}
