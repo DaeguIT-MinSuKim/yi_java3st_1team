@@ -8,20 +8,18 @@ import java.awt.SystemColor;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 
-import yi_java3st_1team.clientmanagement.ui.list.CListPanel;
-import yi_java3st_1team.clientmanagement.ui.list.SCListPanel;
-import yi_java3st_1team.clientmanagement.ui.panel.CRegisterPanel;
-import yi_java3st_1team.clientmanagement.ui.panel.SCRegisterPanel;
+import yi_java3st_1team.ordermanagement.ui.list.OListPanel;
+import yi_java3st_1team.ordermanagement.ui.panel.OCheckPanel;
+import yi_java3st_1team.ordermanagement.ui.panel.ORegisterPanel;
 
 @SuppressWarnings("serial")
 public class OMContent extends JPanel {
 	private JTabbedPane tpClientManagement;
-	private JPanel pSupplyCompany;
-	private JPanel pClient;
-	private SCRegisterPanel pSCRegisterPanel;
-	private SCListPanel pSCListPanel;
-	private CRegisterPanel pCRegisterPanel;
-	private CListPanel pCListPanel;
+	private JPanel pORegister;
+	private JPanel pListPanel;
+	private ORegisterPanel pORegisterPanel;
+	private OListPanel pOListPanel;
+	private OCheckPanel pOCheckPanel;
 
 	public OMContent() {
 
@@ -36,36 +34,32 @@ public class OMContent extends JPanel {
 		tpClientManagement.setBackground(SystemColor.inactiveCaptionBorder);
 		add(tpClientManagement, BorderLayout.CENTER);
 		
-		pSupplyCompany = new JPanel();
-		pSupplyCompany.setBounds(0, 0, 100, 50);
-		pSupplyCompany.setBackground(SystemColor.inactiveCaptionBorder);
-		tpClientManagement.addTab("주문등록", null, pSupplyCompany, null);
-		pSupplyCompany.setLayout(new GridLayout(0, 2, 0, 0));
+		pORegister = new JPanel();
+		pORegister.setBounds(0, 0, 100, 50);
+		pORegister.setBackground(SystemColor.inactiveCaptionBorder);
+		tpClientManagement.addTab("주문등록", null, pORegister, null);
+		pORegister.setLayout(new GridLayout(0, 2, 0, 0));
 		
-		pSCRegisterPanel = new SCRegisterPanel();
-		pSCRegisterPanel.setBackground(SystemColor.inactiveCaptionBorder);
-		pSupplyCompany.add(pSCRegisterPanel);
-		pSCRegisterPanel.setLayout(null);
+		pORegisterPanel = new ORegisterPanel();
+		pORegisterPanel.setBackground(SystemColor.inactiveCaptionBorder);
+		pORegister.add(pORegisterPanel);
+		pORegisterPanel.setLayout(null);
 		
-		pSCListPanel = new SCListPanel();
-		pSCListPanel.setBackground(SystemColor.inactiveCaptionBorder);
-		pSupplyCompany.add(pSCListPanel);
-		pSCListPanel.setLayout(null);
+		pOListPanel = new OListPanel();
+		pOListPanel.setBackground(SystemColor.inactiveCaptionBorder);
+		pORegister.add(pOListPanel);
+		pOListPanel.setLayout(null);
 		
-		pClient = new JPanel();
-		pClient.setBounds(0, 0, 100, 50);
-		pClient.setBackground(SystemColor.inactiveCaptionBorder);
-		tpClientManagement.addTab("확인 & 처리", null, pClient, null);
-		pClient.setLayout(new GridLayout(0, 2, 0, 0));
+		pListPanel = new JPanel();
+		pListPanel.setBounds(0, 0, 100, 50);
+		pListPanel.setBackground(SystemColor.inactiveCaptionBorder);
+		tpClientManagement.addTab("확인 & 처리", null, pListPanel, null);
+		pListPanel.setLayout(new GridLayout(0, 1, 0, 0));
 		
-		pCRegisterPanel = new CRegisterPanel();
-		pCRegisterPanel.setBackground(SystemColor.inactiveCaptionBorder);
-		pClient.add(pCRegisterPanel);
-		pCRegisterPanel.setLayout(null);
-		
-		pCListPanel = new CListPanel();
-		pCListPanel.setBackground(SystemColor.inactiveCaptionBorder);
-		pClient.add(pCListPanel);
-		pCListPanel.setLayout(null);
+		pOCheckPanel = new OCheckPanel();
+		pOCheckPanel.setBounds(new Rectangle(0, 0, 1270, 700));
+		pOCheckPanel.setBackground(SystemColor.inactiveCaptionBorder);
+		pListPanel.add(pOCheckPanel);
+		pOCheckPanel.setLayout(null);
 	}
 }
