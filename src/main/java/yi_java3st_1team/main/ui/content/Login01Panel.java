@@ -16,7 +16,7 @@ import javax.swing.JPasswordField;
 @SuppressWarnings("serial")
 public class Login01Panel extends JPanel implements ActionListener {
 	private JTextField tfId;
-	private JPasswordField passwordField;
+	private JPasswordField pfPasswd;
 
 	/**
 	 * Create the panel.
@@ -58,11 +58,11 @@ public class Login01Panel extends JPanel implements ActionListener {
 		lblPass.setBounds(75, 167, 97, 31);
 		add(lblPass);
 		
-		passwordField = new JPasswordField();
-		passwordField.setEchoChar('*');
-		passwordField.setFont(new Font("굴림", Font.PLAIN, 17));
-		passwordField.setBounds(180, 160, 151, 48);
-		add(passwordField);
+		pfPasswd = new JPasswordField();
+		pfPasswd.setEchoChar('*');
+		pfPasswd.setFont(new Font("굴림", Font.PLAIN, 17));
+		pfPasswd.setBounds(180, 160, 151, 48);
+		add(pfPasswd);
 	}
 	public void actionPerformed(ActionEvent e) {
 	}
