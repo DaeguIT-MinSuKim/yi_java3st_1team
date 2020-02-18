@@ -14,16 +14,17 @@ import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
+import yi_java3st_1team.viewsmanagement.ui.content.IQPanel;
+import yi_java3st_1team.viewsmanagement.ui.list.IQTblPanel;
 
 @SuppressWarnings("serial")
-public class IQPanel extends JPanel {
+public class IQUIPanel extends JPanel {
 	private JPanel pTitle;
-	private JTextField tfC_name;
 
 	/**
 	 * Create the panel.
 	 */
-	public IQPanel() {
+	public IQUIPanel() {
 
 		initialize();
 	}
@@ -49,48 +50,21 @@ public class IQPanel extends JPanel {
 		pTop.setLayout(new BorderLayout(0, 0));
 		
 		JPanel pSearch = new JPanel();
+		pSearch.setPreferredSize(new Dimension(1300, 40));
 		pSearch.setBackground(SystemColor.inactiveCaption);
 		pTop.add(pSearch, BorderLayout.NORTH);
-		pSearch.setLayout(new FlowLayout(FlowLayout.LEFT, 5, 5));
+		pSearch.setLayout(new GridLayout(0, 1, 0, 0));
 		
-		JLabel lblC_name = new JLabel("품   목   명");
-		lblC_name.setHorizontalAlignment(SwingConstants.CENTER);
-		lblC_name.setPreferredSize(new Dimension(90, 20));
-		lblC_name.setFont(new Font("Dialog", Font.BOLD, 16));
-		pSearch.add(lblC_name);
-		
-		tfC_name = new JTextField();
-		pSearch.add(tfC_name);
-		tfC_name.setColumns(15);
-		
-		JButton btnSearch = new JButton("\uC870\uD68C");
-		pSearch.add(btnSearch);
-		
-		JRadioButton rdbtnNewRadioButton = new JRadioButton("전체");
-		rdbtnNewRadioButton.setBackground(SystemColor.inactiveCaption);
-		rdbtnNewRadioButton.setHorizontalAlignment(SwingConstants.CENTER);
-		rdbtnNewRadioButton.setPreferredSize(new Dimension(70, 23));
-		pSearch.add(rdbtnNewRadioButton);
-		
-		JRadioButton rdbtnNewRadioButton_1 = new JRadioButton("재고과다");
-		rdbtnNewRadioButton_1.setBackground(SystemColor.inactiveCaption);
-		rdbtnNewRadioButton_1.setPreferredSize(new Dimension(80, 23));
-		pSearch.add(rdbtnNewRadioButton_1);
-		
-		JRadioButton rdbtnNewRadioButton_2 = new JRadioButton("적정재고");
-		rdbtnNewRadioButton_2.setBackground(SystemColor.inactiveCaption);
-		rdbtnNewRadioButton_2.setPreferredSize(new Dimension(80, 23));
-		pSearch.add(rdbtnNewRadioButton_2);
-		
-		JRadioButton rdbtnNewRadioButton_3 = new JRadioButton("재고부족");
-		rdbtnNewRadioButton_3.setBackground(SystemColor.inactiveCaption);
-		rdbtnNewRadioButton_3.setPreferredSize(new Dimension(80, 23));
-		pSearch.add(rdbtnNewRadioButton_3);
+		IQPanel pIQ = new IQPanel();
+		pSearch.add(pIQ);
 		
 		JPanel pList = new JPanel();
 		pList.setBackground(SystemColor.inactiveCaptionBorder);
 		pTop.add(pList, BorderLayout.CENTER);
 		pList.setLayout(new GridLayout(1, 0, 0, 0));
+		
+		IQTblPanel pIQList = new IQTblPanel();
+		pList.add(pIQList);
 	}
 
 }

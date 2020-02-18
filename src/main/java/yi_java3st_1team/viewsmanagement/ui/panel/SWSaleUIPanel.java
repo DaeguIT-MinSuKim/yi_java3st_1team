@@ -14,18 +14,18 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
+import yi_java3st_1team.viewsmanagement.ui.content.SWSalePanel;
+import yi_java3st_1team.viewsmanagement.ui.content.SWSaleAmountPanel;
+import yi_java3st_1team.viewsmanagement.ui.list.SWSaleTblPanel;
 
 @SuppressWarnings("serial")
-public class SWSalePanel extends JPanel {
+public class SWSaleUIPanel extends JPanel {
 	private JPanel pTitle;
-	private JTextField tfC_name;
-	private JTextField tfSP;
-	private JTextField tfUCM;
 
 	/**
 	 * Create the panel.
 	 */
-	public SWSalePanel() {
+	public SWSaleUIPanel() {
 
 		initialize();
 	}
@@ -51,57 +51,30 @@ public class SWSalePanel extends JPanel {
 		pTop.setLayout(new BorderLayout(0, 0));
 		
 		JPanel pSearch = new JPanel();
+		pSearch.setPreferredSize(new Dimension(1300, 40));
 		pSearch.setBackground(SystemColor.inactiveCaption);
 		pTop.add(pSearch, BorderLayout.NORTH);
-		pSearch.setLayout(new FlowLayout(FlowLayout.LEFT, 5, 5));
+		pSearch.setLayout(new GridLayout(0, 1, 0, 0));
 		
-		JLabel lblC_name = new JLabel("품   목   명");
-		lblC_name.setHorizontalAlignment(SwingConstants.CENTER);
-		lblC_name.setPreferredSize(new Dimension(90, 20));
-		lblC_name.setFont(new Font("Dialog", Font.BOLD, 16));
-		pSearch.add(lblC_name);
-		
-		tfC_name = new JTextField();
-		pSearch.add(tfC_name);
-		tfC_name.setColumns(15);
-		
-		JButton btnSearch = new JButton("\uC870\uD68C");
-		pSearch.add(btnSearch);
-		
-		JCheckBox cbTotal = new JCheckBox(" \uC804\uCCB4");
-		cbTotal.setBackground(SystemColor.inactiveCaption);
-		pSearch.add(cbTotal);
+		SWSalePanel pSWSale = new SWSalePanel();
+		pSearch.add(pSWSale);
 		
 		JPanel pList = new JPanel();
 		pList.setBackground(SystemColor.inactiveCaptionBorder);
 		pTop.add(pList, BorderLayout.CENTER);
 		pList.setLayout(new GridLayout(1, 0, 0, 0));
 		
-		JPanel pResult = new JPanel();
-		pResult.setBackground(SystemColor.inactiveCaption);
-		FlowLayout fl_pResult = (FlowLayout) pResult.getLayout();
-		fl_pResult.setAlignment(FlowLayout.RIGHT);
-		pTop.add(pResult, BorderLayout.SOUTH);
+		SWSaleTblPanel pSWSaleList = new SWSaleTblPanel();
+		pList.add(pSWSaleList);
 		
-		JLabel lblSP = new JLabel("총 판매금액");
-		lblSP.setPreferredSize(new Dimension(120, 20));
-		lblSP.setHorizontalAlignment(SwingConstants.CENTER);
-		lblSP.setFont(new Font("Dialog", Font.BOLD, 16));
-		pResult.add(lblSP);
+		JPanel pAmount = new JPanel();
+		pAmount.setPreferredSize(new Dimension(1300, 40));
+		pAmount.setBackground(SystemColor.inactiveCaption);
+		pTop.add(pAmount, BorderLayout.SOUTH);
+		pAmount.setLayout(new GridLayout(0, 1, 0, 0));
 		
-		tfSP = new JTextField();
-		pResult.add(tfSP);
-		tfSP.setColumns(15);
-		
-		JLabel lblUCM = new JLabel(" 총 판매이윤");
-		lblUCM.setPreferredSize(new Dimension(120, 20));
-		lblUCM.setHorizontalAlignment(SwingConstants.CENTER);
-		lblUCM.setFont(new Font("Dialog", Font.BOLD, 16));
-		pResult.add(lblUCM);
-		
-		tfUCM = new JTextField();
-		pResult.add(tfUCM);
-		tfUCM.setColumns(15);
+		SWSaleAmountPanel pSaleAmount = new SWSaleAmountPanel();
+		pAmount.add(pSaleAmount);
 	}
 
 }
