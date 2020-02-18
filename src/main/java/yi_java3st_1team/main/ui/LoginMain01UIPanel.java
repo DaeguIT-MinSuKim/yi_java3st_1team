@@ -1,30 +1,27 @@
 package yi_java3st_1team.main.ui;
 
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.GridLayout;
 import java.awt.Rectangle;
 import java.awt.SystemColor;
 
-import javax.swing.JPanel;
-
-import yi_java3st_1team.clientmanagement.ui.content.CMContent;
-import yi_java3st_1team.main.LeftMainMenu;
-import yi_java3st_1team.main.ui.content.Login01Panel;
-
-import java.awt.GridLayout;
-import java.awt.BorderLayout;
-import javax.swing.border.EmptyBorder;
-import java.awt.Dimension;
-import yi_java3st_1team.main.ui.content.LogoImg03Panel;
-import java.awt.Color;
-import yi_java3st_1team.main.ui.content.LogoImg01Panel;
-import javax.swing.JLabel;
 import javax.swing.ImageIcon;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.SwingConstants;
-import yi_java3st_1team.main.ui.content.MainBtns03Panel;
+import javax.swing.border.EmptyBorder;
+
+import yi_java3st_1team.main.ui.content.Login01Panel;
+import yi_java3st_1team.main.ui.content.LogoImg01Panel;
+import yi_java3st_1team.main.ui.content.LogoImg02Panel;
+import yi_java3st_1team.main.ui.content.MainBtns01Panel;
 
 @SuppressWarnings("serial")
-public class LoginMain02Panel extends JPanel {
+public class LoginMain01UIPanel extends JPanel {
 
-	public LoginMain02Panel() {
+	public LoginMain01UIPanel() {
 
 		initialize();
 	}
@@ -43,7 +40,8 @@ public class LoginMain02Panel extends JPanel {
 		pLogin.setPreferredSize(new Dimension(350, 10));
 		pStop.add(pLogin, BorderLayout.WEST);
 		
-		LogoImg03Panel pImg01 = new LogoImg03Panel();
+		LogoImg02Panel pImg01 = new LogoImg02Panel();
+		pImg01.setBackground(SystemColor.inactiveCaptionBorder);
 		pStop.add(pImg01, BorderLayout.CENTER);
 		
 		JPanel pSbot = new JPanel();
@@ -58,21 +56,22 @@ public class LoginMain02Panel extends JPanel {
 		pSbot.add(pImg02, BorderLayout.WEST);
 		pImg02.setLayout(new BorderLayout(0, 10));
 		
-		LogoImg01Panel panel = new LogoImg01Panel();
-		panel.setBackground(Color.WHITE);
-		panel.setPreferredSize(new Dimension(350, 250));
-		pImg02.add(panel, BorderLayout.NORTH);
+		LogoImg01Panel pLogo = new LogoImg01Panel();
+		pLogo.setBackground(Color.WHITE);
+		pLogo.setPreferredSize(new Dimension(350, 250));
+		pImg02.add(pLogo, BorderLayout.NORTH);
 		
-		JLabel label = new JLabel("");
-		label.setHorizontalAlignment(SwingConstants.CENTER);
-		label.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\loginMain\\callcenter.png"));
-		label.setOpaque(true);
-		label.setBackground(SystemColor.inactiveCaptionBorder);
-		pImg02.add(label, BorderLayout.CENTER);
+		JLabel lblCall = new JLabel("");
+		lblCall.setBackground(SystemColor.inactiveCaptionBorder);
+		lblCall.setOpaque(true);
+		lblCall.setForeground(SystemColor.inactiveCaptionBorder);
+		lblCall.setHorizontalAlignment(SwingConstants.CENTER);
+		lblCall.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\loginMain\\callcenter.png"));
+		pImg02.add(lblCall, BorderLayout.CENTER);
 		
-		MainBtns03Panel pBtns = new MainBtns03Panel();
+		MainBtns01Panel pBtns = new MainBtns01Panel();
+		pBtns.setBackground(SystemColor.inactiveCaption);
 		pSbot.add(pBtns, BorderLayout.CENTER);
-		pBtns.setLayout(new GridLayout(0, 1, 0, 10));
 	}
 
 }
