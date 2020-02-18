@@ -42,7 +42,7 @@ public class SCListPanel extends JPanel {
 		pSCListPanel.add(lblImg);
 		
 		lblSCList = new JLabel("공급회사 LIST");
-		lblSCList.setFont(new Font("굴림", Font.BOLD, 20));
+		lblSCList.setFont(new Font("휴먼둥근헤드라인", Font.PLAIN, 20));
 		lblSCList.setHorizontalAlignment(SwingConstants.CENTER);
 		lblSCList.setBounds(72, 60, 170, 40);
 		pSCListPanel.add(lblSCList);

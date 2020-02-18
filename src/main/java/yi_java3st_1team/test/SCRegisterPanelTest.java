@@ -131,37 +131,37 @@ public class SCRegisterPanelTest extends JPanel {
 		
 		btnAdd = new JButton("");
 		btnAdd.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\test\\등록.png"));
-		btnAdd.setBounds(20, 580, 130, 30);
+		btnAdd.setBounds(58, 580, 100, 30);
 		panel.add(btnAdd);
 		
 		btnUpdate = new JButton("");
 		btnUpdate.setFocusable(false);
 		btnUpdate.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\test\\수정.png"));
-		btnUpdate.setBounds(170, 580, 130, 30);
+		btnUpdate.setBounds(170, 580, 100, 30);
 		panel.add(btnUpdate);
 		
 		btnDel = new JButton("");
 		btnDel.setFocusable(false);
 		btnDel.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\test\\삭제.png"));
-		btnDel.setBounds(320, 580, 130, 30);
+		btnDel.setBounds(282, 580, 100, 30);
 		panel.add(btnDel);
 		
 		btnGoMain = new JButton("");
 		btnGoMain.setFocusable(false);
 		btnGoMain.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\test\\메인화면.png"));
-		btnGoMain.setBounds(470, 580, 130, 30);
+		btnGoMain.setBounds(394, 580, 100, 30);
 		panel.add(btnGoMain);
 		
 		btnDplCheck = new JButton("");
 		btnDplCheck.setFocusable(false);
 		btnDplCheck.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\test\\중복확인.png"));
-		btnDplCheck.setBounds(465, 210, 130, 30);
+		btnDplCheck.setBounds(465, 210, 100, 30);
 		panel.add(btnDplCheck);
 		
 		btnPostNum = new JButton("");
 		btnPostNum.setFocusable(false);
 		btnPostNum.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\test\\우편번호.png"));
-		btnPostNum.setBounds(465, 350, 130, 30);
+		btnPostNum.setBounds(465, 350, 100, 30);
 		panel.add(btnPostNum);
 		
 	}
