@@ -57,7 +57,7 @@ public class SCListPanel extends JPanel {
 		pSCListPanel.add(tfSerch);
 		
 		btnSerch = new JButton("");
-		btnSerch.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\btns\\검색.png"));
+		btnSerch.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\test\\검색.png"));
 		btnSerch.setBounds(542, 65, 70, 30);
 		pSCListPanel.add(btnSerch);
 		

@@ -24,6 +24,7 @@ public class LeftMainMenu extends JPanel implements ActionListener {
 	private JLabel lblPM;
 	private JLabel lblOM;
 	private JLabel lblViews;
+	private JLabel lblWhite;
 
 	public LeftMainMenu() {
 
@@ -99,6 +100,12 @@ public class LeftMainMenu extends JPanel implements ActionListener {
 		lblViews.setHorizontalAlignment(SwingConstants.CENTER);
 		lblViews.setBounds(40, 640, 130, 20);
 		add(lblViews);
+		
+		lblWhite = new JLabel("");
+		lblWhite.setOpaque(true);
+		lblWhite.setBackground(Color.WHITE);
+		lblWhite.setBounds(26, 25, 159, 651);
+		add(lblWhite);
 	}
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == btnOM) {

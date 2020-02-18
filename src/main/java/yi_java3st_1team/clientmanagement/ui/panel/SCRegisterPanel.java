@@ -123,32 +123,32 @@ public class SCRegisterPanel extends JPanel {
 		panel.add(tfSCFax);
 		
 		btnAdd = new JButton("");
-		btnAdd.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\btns\\등록.png"));
+		btnAdd.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\test\\등록.png"));
 		btnAdd.setBounds(66, 580, 100, 30);
 		panel.add(btnAdd);
 		
 		btnUpdate = new JButton("");
-		btnUpdate.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\btns\\수정.png"));
+		btnUpdate.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\test\\수정.png"));
 		btnUpdate.setBounds(198, 580, 100, 30);
 		panel.add(btnUpdate);
 		
 		btnDel = new JButton("");
-		btnDel.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\btns\\삭제.png"));
+		btnDel.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\test\\삭제.png"));
 		btnDel.setBounds(330, 580, 100, 30);
 		panel.add(btnDel);
 		
 		btnGoMain = new JButton("");
-		btnGoMain.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\btns\\메인화면.png"));
+		btnGoMain.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\test\\메인화면.png"));
 		btnGoMain.setBounds(465, 580, 100, 30);
 		panel.add(btnGoMain);
 		
 		btnDplCheck = new JButton("");
-		btnDplCheck.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\btns\\중복확인.png"));
+		btnDplCheck.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\test\\중복확인.png"));
 		btnDplCheck.setBounds(465, 210, 100, 30);
 		panel.add(btnDplCheck);
 		
 		btnPostNum = new JButton("");
-		btnPostNum.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\btns\\우편번호.png"));
+		btnPostNum.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\test\\우편번호.png"));
 		btnPostNum.setBounds(465, 350, 100, 30);
 		panel.add(btnPostNum);
 		
