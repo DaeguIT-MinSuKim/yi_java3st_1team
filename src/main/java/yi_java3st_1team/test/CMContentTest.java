@@ -21,7 +21,7 @@ public class CMContentTest extends JPanel {
 	private JPanel pSupplyCompany;
 	private JPanel pClient;
 	private SCRegisterPanelTest pSCRegisterPanel;
-	private SCListPanel pSCListPanel;
+	private SCListPanelTest pSCListPanelTest;
 	private CRegisterPanel pCRegisterPanel;
 	private CListPanel pCListPanel;
 
@@ -51,10 +51,10 @@ public class CMContentTest extends JPanel {
 		pSupplyCompany.add(pSCRegisterPanel);
 		pSCRegisterPanel.setLayout(null);
 		
-		pSCListPanel = new SCListPanel();
-		pSCListPanel.setBackground(SystemColor.inactiveCaptionBorder);
-		pSupplyCompany.add(pSCListPanel);
-		pSCListPanel.setLayout(null);
+		pSCListPanelTest = new SCListPanelTest();
+		pSCListPanelTest.setBackground(SystemColor.inactiveCaptionBorder);
+		pSupplyCompany.add(pSCListPanelTest);
+		pSCListPanelTest.setLayout(null);
 		
 		pClient = new JPanel();
 		pClient.setBounds(0, 0, 100, 50);
