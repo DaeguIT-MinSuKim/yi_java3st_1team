@@ -11,11 +11,12 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JPasswordField;
 
 @SuppressWarnings("serial")
 public class Login01Panel extends JPanel implements ActionListener {
 	private JTextField tfId;
-	private JTextField tfPass;
+	private JPasswordField passwordField;
 
 	/**
 	 * Create the panel.
@@ -57,11 +58,11 @@ public class Login01Panel extends JPanel implements ActionListener {
 		lblPass.setBounds(75, 167, 97, 31);
 		add(lblPass);
 		
-		tfPass = new JTextField();
-		tfPass.setFont(new Font("굴림", Font.PLAIN, 17));
-		tfPass.setColumns(10);
-		tfPass.setBounds(180, 160, 151, 48);
-		add(tfPass);
+		passwordField = new JPasswordField();
+		passwordField.setEchoChar('*');
+		passwordField.setFont(new Font("굴림", Font.PLAIN, 17));
+		passwordField.setBounds(180, 160, 151, 48);
+		add(passwordField);
 	}
 	public void actionPerformed(ActionEvent e) {
 	}
