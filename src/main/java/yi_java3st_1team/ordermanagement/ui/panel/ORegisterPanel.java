@@ -54,79 +54,79 @@ public class ORegisterPanel extends JPanel {
 		lblONo = new JLabel("주 문 번 호");
 		lblONo.setFont(new Font("굴림", Font.BOLD, 18));
 		lblONo.setHorizontalAlignment(SwingConstants.CENTER);
-		lblONo.setBounds(125, 140, 120, 30);
+		lblONo.setBounds(66, 140, 120, 30);
 		panel.add(lblONo);
 		
 		lblODate = new JLabel("주 문 일 자");
 		lblODate.setHorizontalAlignment(SwingConstants.CENTER);
 		lblODate.setFont(new Font("굴림", Font.BOLD, 18));
-		lblODate.setBounds(125, 190, 120, 30);
+		lblODate.setBounds(66, 190, 120, 30);
 		panel.add(lblODate);
 		
 		lblOCName = new JLabel("고객상호명");
 		lblOCName.setHorizontalAlignment(SwingConstants.CENTER);
 		lblOCName.setFont(new Font("굴림", Font.BOLD, 18));
-		lblOCName.setBounds(125, 240, 120, 30);
+		lblOCName.setBounds(66, 240, 120, 30);
 		panel.add(lblOCName);
 		
 		lblOPName = new JLabel("품   목   명");
 		lblOPName.setHorizontalAlignment(SwingConstants.CENTER);
 		lblOPName.setFont(new Font("굴림", Font.BOLD, 18));
-		lblOPName.setBounds(125, 290, 120, 30);
+		lblOPName.setBounds(66, 290, 120, 30);
 		panel.add(lblOPName);
 		
 		lblOQty = new JLabel("주 문 수 량");
 		lblOQty.setHorizontalAlignment(SwingConstants.CENTER);
 		lblOQty.setFont(new Font("굴림", Font.BOLD, 18));
-		lblOQty.setBounds(125, 340, 120, 30);
+		lblOQty.setBounds(66, 340, 120, 30);
 		panel.add(lblOQty);
 		
 		lblOWant = new JLabel("고 객 요 구 사 항");
 		lblOWant.setHorizontalAlignment(SwingConstants.CENTER);
 		lblOWant.setFont(new Font("굴림", Font.BOLD, 18));
-		lblOWant.setBounds(125, 390, 160, 30);
+		lblOWant.setBounds(66, 390, 160, 30);
 		panel.add(lblOWant);
 		
 		tfONo = new JTextField();
-		tfONo.setBounds(289, 140, 200, 30);
+		tfONo.setBounds(230, 140, 200, 30);
 		panel.add(tfONo);
 		tfONo.setColumns(10);
 		
 		tfODate = new JTextField();
 		tfODate.setColumns(10);
-		tfODate.setBounds(289, 190, 200, 30);
+		tfODate.setBounds(230, 190, 200, 30);
 		panel.add(tfODate);
 		
 		tfOCName = new JTextField();
 		tfOCName.setColumns(10);
-		tfOCName.setBounds(289, 240, 200, 30);
+		tfOCName.setBounds(230, 240, 200, 30);
 		panel.add(tfOCName);
 		
 		tfOPName = new JTextField();
 		tfOPName.setColumns(10);
-		tfOPName.setBounds(289, 290, 200, 30);
+		tfOPName.setBounds(230, 290, 200, 30);
 		panel.add(tfOPName);
 		
 		tfOQty = new JTextField();
 		tfOQty.setColumns(10);
-		tfOQty.setBounds(289, 340, 200, 30);
+		tfOQty.setBounds(230, 340, 200, 30);
 		panel.add(tfOQty);
 		
 		btnAdd = new JButton("등 록");
-		btnAdd.setBounds(80, 580, 130, 30);
+		btnAdd.setBounds(60, 580, 130, 30);
 		panel.add(btnAdd);
 		
 		btnUpdate = new JButton("초 기 화");
-		btnUpdate.setBounds(260, 580, 130, 30);
+		btnUpdate.setBounds(240, 580, 130, 30);
 		panel.add(btnUpdate);
 		
 		btnGoMain = new JButton("메 인 화 면");
-		btnGoMain.setBounds(440, 580, 130, 30);
+		btnGoMain.setBounds(420, 580, 130, 30);
 		panel.add(btnGoMain);
 		
 		JTextArea taOWant = new JTextArea();
 		taOWant.setBorder(new LineBorder(SystemColor.activeCaptionBorder));
-		taOWant.setBounds(125, 440, 364, 100);
+		taOWant.setBounds(66, 440, 364, 100);
 		panel.add(taOWant);
 		
 	}

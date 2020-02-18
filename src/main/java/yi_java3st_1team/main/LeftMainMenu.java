@@ -43,13 +43,13 @@ public class LeftMainMenu extends JPanel implements ActionListener {
 		btnCM.addActionListener(this);
 		btnCM.setFocusable(false);
 		btnCM.setBackground(SystemColor.inactiveCaptionBorder);
-		btnCM.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\menu1.png"));
+		btnCM.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\leftMainMenu\\menu1.png"));
 		btnCM.setBounds(40, 90, 130, 100);
 		add(btnCM);
 		
 		btnPM = new JButton("");
 		btnPM.addActionListener(this);
-		btnPM.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\menu2.png"));
+		btnPM.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\leftMainMenu\\menu2.png"));
 		btnPM.setFocusable(false);
 		btnPM.setBackground(SystemColor.inactiveCaptionBorder);
 		btnPM.setBounds(40, 240, 130, 100);
@@ -58,14 +58,14 @@ public class LeftMainMenu extends JPanel implements ActionListener {
 		btnOM = new JButton("");
 		btnOM.addActionListener(this);
 		btnOM.setFocusable(false);
-		btnOM.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\menu3.png"));
+		btnOM.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\leftMainMenu\\menu3.png"));
 		btnOM.setBackground(SystemColor.inactiveCaptionBorder);
 		btnOM.setBounds(40, 390, 130, 100);
 		add(btnOM);
 		
 		btnViews = new JButton("");
 		btnViews.setFocusable(false);
-		btnViews.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\menu4.png"));
+		btnViews.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\leftMainMenu\\menu4.png"));
 		btnViews.setBackground(SystemColor.inactiveCaptionBorder);
 		btnViews.setBounds(40, 530, 130, 100);
 		add(btnViews);

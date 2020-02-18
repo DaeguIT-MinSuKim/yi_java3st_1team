@@ -32,7 +32,7 @@ public class SCSOListPanel extends JPanel {
 		pSWListPanel.setLayout(null);
 		
 		lblImg = new JLabel("");
-		lblImg.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\list.png"));
+		lblImg.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\etc\\list.png"));
 		lblImg.setBounds(22, 60, 40, 40);
 		pSWListPanel.add(lblImg);
 		

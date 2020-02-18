@@ -1,4 +1,4 @@
-package yi_java3st_1team.main;
+package yi_java3st_1team.main.ui.content;
 
 import javax.swing.JPanel;
 import java.awt.Dimension;
@@ -8,12 +8,12 @@ import javax.swing.ImageIcon;
 import javax.swing.SwingConstants;
 import java.awt.Color;
 
-public class LogoImgPanel extends JPanel {
+public class LogoImg01Panel extends JPanel {
 
 	/**
 	 * Create the panel.
 	 */
-	public LogoImgPanel() {
+	public LogoImg01Panel() {
 
 		initialize();
 	}
