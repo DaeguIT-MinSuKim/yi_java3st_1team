@@ -130,9 +130,9 @@ public class LoginMain01UIPanel extends JPanel implements ActionListener {
 	protected void actionPerformedBtnRegi(ActionEvent e) {
 		regiFrame = new JFrame();
 		regiFrame.setTitle("회원가입");
-		regiFrame.setSize(400, 500);
+		regiFrame.setSize(500, 650);
 		regiFrame.setResizable(false);
-		regiFrame.setBounds(100, 100, 600, 700);
+		regiFrame.setLocationRelativeTo(null); // 화면중앙에 프레임 띄우기
 		EmpRegiPanel empr = new EmpRegiPanel();
 		regiFrame.getContentPane().add(empr);
 		regiFrame.setVisible(true);
@@ -142,7 +142,9 @@ public class LoginMain01UIPanel extends JPanel implements ActionListener {
 	protected void actionPerformedBtnSearch(ActionEvent e) {
 		searchFrame = new JFrame();
 		searchFrame.setTitle("아이디 & 비밀번호 찾기");
-		searchFrame.setBounds(100, 100, 600, 700);
+		searchFrame.setSize(500, 650);
+		searchFrame.setResizable(false);
+		searchFrame.setLocationRelativeTo(null);
 		SearchPanel sp = new SearchPanel();
 		searchFrame.getContentPane().add(sp);
 		searchFrame.setVisible(true);
