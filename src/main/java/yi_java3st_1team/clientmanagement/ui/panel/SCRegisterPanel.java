@@ -11,6 +11,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.ImageIcon;
+import java.awt.Color;
 
 @SuppressWarnings("serial")
 public class SCRegisterPanel extends JPanel {
@@ -34,6 +35,7 @@ public class SCRegisterPanel extends JPanel {
 	private JButton btnGoMain;
 	private JButton btnDplCheck;
 	private JButton btnPostNum;
+	private JLabel lblWhite;
 	public SCRegisterPanel() {
 
 		initialize();
@@ -149,6 +151,12 @@ public class SCRegisterPanel extends JPanel {
 		btnPostNum.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\btns\\우편번호.png"));
 		btnPostNum.setBounds(465, 350, 100, 30);
 		panel.add(btnPostNum);
+		
+		lblWhite = new JLabel("");
+		lblWhite.setOpaque(true);
+		lblWhite.setBackground(Color.WHITE);
+		lblWhite.setBounds(54, 116, 525, 430);
+		panel.add(lblWhite);
 		
 	}
 }

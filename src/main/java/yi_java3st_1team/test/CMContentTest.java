@@ -36,7 +36,7 @@ public class CMContentTest extends JPanel {
 		
 		tpClientManagement = new JTabbedPane(JTabbedPane.TOP);
 		tpClientManagement.setForeground(Color.BLACK);
-		tpClientManagement.setFont(new Font("맑은 고딕", Font.BOLD, 15));
+		tpClientManagement.setFont(new Font("맑은 고딕", Font.BOLD, 18));
 		tpClientManagement.setBackground(SystemColor.inactiveCaptionBorder);
 		add(tpClientManagement, BorderLayout.CENTER);
 		

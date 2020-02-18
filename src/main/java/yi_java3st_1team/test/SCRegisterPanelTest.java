@@ -164,5 +164,11 @@ public class SCRegisterPanelTest extends JPanel {
 		btnPostNum.setBounds(465, 350, 100, 30);
 		panel.add(btnPostNum);
 		
+		JLabel lblNewLabel = new JLabel("");
+		lblNewLabel.setOpaque(true);
+		lblNewLabel.setBackground(Color.WHITE);
+		lblNewLabel.setBounds(54, 116, 525, 430);
+		panel.add(lblNewLabel);
+		
 	}
 }
