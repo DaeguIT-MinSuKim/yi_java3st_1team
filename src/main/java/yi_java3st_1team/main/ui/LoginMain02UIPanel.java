@@ -131,7 +131,9 @@ public class LoginMain02UIPanel extends JPanel implements ActionListener {
 	protected void actionPerformedBtnSearch(ActionEvent e) {
 		searchFrame = new JFrame();
 		searchFrame.setTitle("아이디 & 비밀번호 찾기");
-		searchFrame.setBounds(100, 100, 600, 700);
+		searchFrame.setSize(500, 500);
+		searchFrame.setResizable(false);
+		searchFrame.setLocationRelativeTo(null); // 화면중앙에 프레임 띄우기
 		SearchPanel sp = new SearchPanel();
 		searchFrame.getContentPane().add(sp);
 		searchFrame.setVisible(true);

@@ -102,6 +102,9 @@ public class ClientRegiPanel extends JPanel {
 		label_5.setFont(new Font("휴먼둥근헤드라인", Font.PLAIN, 13));
 		panel_2.add(label_5);
 		
+		JLabel lblNewLabel_6 = new JLabel("");
+		panel_2.add(lblNewLabel_6);
+		
 		JLabel lblNewLabel_1 = new JLabel("비 밀 번 호  확 인  ");
 		lblNewLabel_1.setFont(new Font("휴먼둥근헤드라인", Font.PLAIN, 13));
 		lblNewLabel_1.setHorizontalAlignment(SwingConstants.RIGHT);
@@ -154,14 +157,20 @@ public class ClientRegiPanel extends JPanel {
 		passwordField = new JPasswordField();
 		panel_3.add(passwordField);
 		
-		passwordField_1 = new JPasswordField();
-		panel_3.add(passwordField_1);
-		
 		JLabel label_7 = new JLabel("<html>6자리 이상 이어야 하며 영문과 숫자를 반드시 포함해야 합니다<br></html>");
 		label_7.setHorizontalAlignment(SwingConstants.CENTER);
 		label_7.setForeground(Color.BLUE);
 		label_7.setFont(new Font("굴림", Font.PLAIN, 12));
 		panel_3.add(label_7);
+		
+		passwordField_1 = new JPasswordField();
+		panel_3.add(passwordField_1);
+		
+		JLabel lblNewLabel_5 = new JLabel("비밀번호 일치");
+		lblNewLabel_5.setFont(new Font("굴림", Font.BOLD, 14));
+		lblNewLabel_5.setForeground(Color.RED);
+		lblNewLabel_5.setHorizontalAlignment(SwingConstants.CENTER);
+		panel_3.add(lblNewLabel_5);
 		
 		textField_7 = new JTextField();
 		panel_3.add(textField_7);
@@ -180,13 +189,13 @@ public class ClientRegiPanel extends JPanel {
 		btnNewButton_2 = new JButton("<html>우편<br>번호</html>");
 		btnNewButton_2.setForeground(Color.BLACK);
 		btnNewButton_2.setFont(new Font("굴림", Font.BOLD, 12));
-		btnNewButton_2.setBounds(12, 123, 60, 39);
+		btnNewButton_2.setBounds(12, 112, 60, 39);
 		panel_4.add(btnNewButton_2);
 		
 		JButton button = new JButton("<html>중복<br>확인</html>");
 		button.setForeground(Color.BLACK);
 		button.setFont(new Font("굴림", Font.BOLD, 12));
-		button.setBounds(12, 203, 60, 39);
+		button.setBounds(12, 187, 60, 39);
 		panel_4.add(button);
 		
 		JPanel panel_1 = new JPanel();

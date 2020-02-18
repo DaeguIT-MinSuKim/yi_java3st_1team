@@ -142,7 +142,7 @@ public class LoginMain01UIPanel extends JPanel implements ActionListener {
 	protected void actionPerformedBtnSearch(ActionEvent e) {
 		searchFrame = new JFrame();
 		searchFrame.setTitle("아이디 & 비밀번호 찾기");
-		searchFrame.setSize(500, 650);
+		searchFrame.setSize(500, 500);
 		searchFrame.setResizable(false);
 		searchFrame.setLocationRelativeTo(null);
 		SearchPanel sp = new SearchPanel();
