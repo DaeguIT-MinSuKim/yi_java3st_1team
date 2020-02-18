@@ -121,7 +121,9 @@ public class LoginMain02UIPanel extends JPanel implements ActionListener {
 	protected void actionPerformedBtnRegi(ActionEvent e) {
 		cliFrame = new JFrame();
 		cliFrame.setTitle("회원가입");
-		cliFrame.setBounds(100, 100, 600, 700);
+		cliFrame.setSize(500, 650);
+		cliFrame.setResizable(false);
+		cliFrame.setLocationRelativeTo(null); // 화면중앙에 프레임 띄우기
 		ClientRegiPanel empr = new ClientRegiPanel();
 		cliFrame.getContentPane().add(empr);
 		cliFrame.setVisible(true);

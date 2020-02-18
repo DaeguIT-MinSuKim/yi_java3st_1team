@@ -152,14 +152,14 @@ public class EmpRegiPanel extends JPanel {
 		panel.add(panel_4, BorderLayout.EAST);
 		panel_4.setLayout(null);
 		
-		JButton btnNewButton_2 = new JButton("중복");
+		JButton btnNewButton_2 = new JButton("<html>중복<br>확인</html>");
 		btnNewButton_2.setFont(new Font("굴림", Font.BOLD, 12));
-		btnNewButton_2.setBounds(12, 3, 68, 39);
+		btnNewButton_2.setBounds(12, 3, 60, 39);
 		panel_4.add(btnNewButton_2);
 		
-		JButton button = new JButton("중복");
+		JButton button = new JButton("<html>중복<br>확인</html>");
 		button.setFont(new Font("굴림", Font.BOLD, 12));
-		button.setBounds(12, 204, 68, 39);
+		button.setBounds(12, 204, 60, 39);
 		panel_4.add(button);
 		
 		JPanel panel_1 = new JPanel();
@@ -168,9 +168,11 @@ public class EmpRegiPanel extends JPanel {
 		add(panel_1, BorderLayout.SOUTH);
 		
 		JButton btnNewButton = new JButton("등록");
+		btnNewButton.setFont(new Font("굴림", Font.BOLD, 12));
 		panel_1.add(btnNewButton);
 		
 		JButton btnNewButton_1 = new JButton("취소");
+		btnNewButton_1.setFont(new Font("굴림", Font.BOLD, 12));
 		panel_1.add(btnNewButton_1);
 	}
 
