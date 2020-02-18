@@ -5,8 +5,8 @@ import java.awt.SystemColor;
 
 import javax.swing.JPanel;
 
-import yi_java3st_1team.clientmanagement.ui.content.CMContent;
 import yi_java3st_1team.main.LeftMainMenu;
+import yi_java3st_1team.ordermanagement.ui.content.OMContent;
 
 @SuppressWarnings("serial")
 public class OMMainPanel extends JPanel {
@@ -25,7 +25,7 @@ public class OMMainPanel extends JPanel {
 		MainMenu.setBounds(20, 0, 214, 700);
 		add(MainMenu);
 		
-		CMContent pContent = new CMContent();
+		OMContent pContent = new OMContent();
 		pContent.setBackground(SystemColor.inactiveCaption);
 		pContent.setBounds(246, 0, 1268, 700);
 		add(pContent);
