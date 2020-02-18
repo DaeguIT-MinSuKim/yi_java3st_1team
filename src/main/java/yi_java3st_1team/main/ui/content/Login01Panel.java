@@ -9,9 +9,11 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 @SuppressWarnings("serial")
-public class Login01Panel extends JPanel {
+public class Login01Panel extends JPanel implements ActionListener {
 	private JTextField tfId;
 	private JTextField tfPass;
 
@@ -60,23 +62,7 @@ public class Login01Panel extends JPanel {
 		tfPass.setColumns(10);
 		tfPass.setBounds(180, 160, 151, 48);
 		add(tfPass);
-		
-		JButton btnLogin = new JButton("LOGIN");
-		btnLogin.setFont(new Font("Arial", Font.BOLD, 17));
-		btnLogin.setFocusable(false);
-		btnLogin.setBounds(20, 245, 120, 45);
-		add(btnLogin);
-		
-		JButton btnResiter = new JButton("REGISTER");
-		btnResiter.setFont(new Font("Arial", Font.BOLD, 17));
-		btnResiter.setFocusable(false);
-		btnResiter.setBounds(147, 245, 120, 45);
-		add(btnResiter);
-		
-		JButton btnSearch = new JButton("");
-		btnSearch.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\loginMain\\searchBtn.png"));
-		btnSearch.setFocusable(false);
-		btnSearch.setBounds(273, 245, 55, 45);
-		add(btnSearch);
+	}
+	public void actionPerformed(ActionEvent e) {
 	}
 }

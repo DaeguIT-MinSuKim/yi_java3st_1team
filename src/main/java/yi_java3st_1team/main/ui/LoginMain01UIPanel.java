@@ -17,6 +17,8 @@ import yi_java3st_1team.main.ui.content.Login01Panel;
 import yi_java3st_1team.main.ui.content.LogoImg01Panel;
 import yi_java3st_1team.main.ui.content.LogoImg02Panel;
 import yi_java3st_1team.main.ui.content.MainBtns01Panel;
+import javax.swing.JButton;
+import java.awt.Font;
 
 @SuppressWarnings("serial")
 public class LoginMain01UIPanel extends JPanel {
@@ -39,6 +41,26 @@ public class LoginMain01UIPanel extends JPanel {
 		Login01Panel pLogin = new Login01Panel();
 		pLogin.setPreferredSize(new Dimension(350, 10));
 		pStop.add(pLogin, BorderLayout.WEST);
+		
+		JButton btnLogin = new JButton("LOGIN");
+		btnLogin.setForeground(Color.BLACK);
+		btnLogin.setFont(new Font("Arial", Font.BOLD, 17));
+		btnLogin.setFocusable(false);
+		btnLogin.setBounds(20, 245, 120, 45);
+		pLogin.add(btnLogin);
+		
+		JButton btnRegi = new JButton("REGISTER");
+		btnRegi.setForeground(Color.BLACK);
+		btnRegi.setFont(new Font("Arial", Font.BOLD, 17));
+		btnRegi.setFocusable(false);
+		btnRegi.setBounds(147, 245, 120, 45);
+		pLogin.add(btnRegi);
+		
+		JButton btnSearch = new JButton("");
+		btnSearch.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\loginMain\\searchBtn.png"));
+		btnSearch.setFocusable(false);
+		btnSearch.setBounds(273, 245, 55, 45);
+		pLogin.add(btnSearch);
 		
 		LogoImg02Panel pImg01 = new LogoImg02Panel();
 		pImg01.setBackground(SystemColor.inactiveCaptionBorder);
@@ -73,5 +95,4 @@ public class LoginMain01UIPanel extends JPanel {
 		pBtns.setBackground(SystemColor.inactiveCaption);
 		pSbot.add(pBtns, BorderLayout.CENTER);
 	}
-
 }
