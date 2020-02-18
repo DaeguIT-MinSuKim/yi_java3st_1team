@@ -20,7 +20,7 @@ public class CMMainPanelTest extends JPanel {
 		setBounds(new Rectangle(0, 0, 1544, 700));
 		setLayout(null);
 		
-		LeftMainMenu MainMenu = new LeftMainMenu();
+		LeftMainMenuTest MainMenu = new LeftMainMenuTest();
 		MainMenu.setBackground(SystemColor.inactiveCaptionBorder);
 		MainMenu.setBounds(20, 0, 214, 700);
 		add(MainMenu);

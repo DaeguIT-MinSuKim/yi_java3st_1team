@@ -11,6 +11,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.ImageIcon;
+import java.awt.Color;
 
 @SuppressWarnings("serial")
 public class SCRegisterPanelTest extends JPanel {
@@ -49,6 +50,7 @@ public class SCRegisterPanelTest extends JPanel {
 		panel.setLayout(null);
 		
 		lblSC = new JLabel("공급회사  등록");
+		lblSC.setForeground(Color.BLACK);
 		lblSC.setFocusable(false);
 		lblSC.setFont(new Font("휴먼둥근헤드라인", Font.PLAIN, 40));
 		lblSC.setHorizontalAlignment(SwingConstants.CENTER);
@@ -56,38 +58,44 @@ public class SCRegisterPanelTest extends JPanel {
 		panel.add(lblSC);
 		
 		lblSCNo = new JLabel("회 사 번 호");
-		lblSCNo.setFont(new Font("맑은 고딕", Font.BOLD, 17));
+		lblSCNo.setForeground(Color.BLACK);
+		lblSCNo.setFont(new Font("휴먼둥근헤드라인", Font.PLAIN, 16));
 		lblSCNo.setHorizontalAlignment(SwingConstants.CENTER);
 		lblSCNo.setBounds(66, 140, 120, 30);
 		panel.add(lblSCNo);
 		
 		lblSCName = new JLabel("회  사  명");
+		lblSCName.setForeground(Color.BLACK);
 		lblSCName.setHorizontalAlignment(SwingConstants.CENTER);
-		lblSCName.setFont(new Font("맑은 고딕", Font.BOLD, 17));
+		lblSCName.setFont(new Font("휴먼둥근헤드라인", Font.PLAIN, 16));
 		lblSCName.setBounds(66, 210, 120, 30);
 		panel.add(lblSCName);
 		
 		lblSCBln = new JLabel("사업자등록번호");
+		lblSCBln.setForeground(Color.BLACK);
 		lblSCBln.setHorizontalAlignment(SwingConstants.CENTER);
-		lblSCBln.setFont(new Font("맑은 고딕", Font.BOLD, 17));
+		lblSCBln.setFont(new Font("휴먼둥근헤드라인", Font.PLAIN, 16));
 		lblSCBln.setBounds(66, 280, 120, 30);
 		panel.add(lblSCBln);
 		
 		lblSCAddress = new JLabel("주       소");
+		lblSCAddress.setForeground(Color.BLACK);
 		lblSCAddress.setHorizontalAlignment(SwingConstants.CENTER);
-		lblSCAddress.setFont(new Font("맑은 고딕", Font.BOLD, 17));
+		lblSCAddress.setFont(new Font("휴먼둥근헤드라인", Font.PLAIN, 16));
 		lblSCAddress.setBounds(66, 350, 120, 30);
 		panel.add(lblSCAddress);
 		
 		lblSCTel = new JLabel("전 화 번 호");
+		lblSCTel.setForeground(Color.BLACK);
 		lblSCTel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblSCTel.setFont(new Font("맑은 고딕", Font.BOLD, 17));
+		lblSCTel.setFont(new Font("휴먼둥근헤드라인", Font.PLAIN, 16));
 		lblSCTel.setBounds(66, 420, 120, 30);
 		panel.add(lblSCTel);
 		
 		lblSCFax = new JLabel("FAX 번 호");
+		lblSCFax.setForeground(Color.BLACK);
 		lblSCFax.setHorizontalAlignment(SwingConstants.CENTER);
-		lblSCFax.setFont(new Font("맑은 고딕", Font.BOLD, 17));
+		lblSCFax.setFont(new Font("휴먼둥근헤드라인", Font.PLAIN, 16));
 		lblSCFax.setBounds(66, 490, 120, 30);
 		panel.add(lblSCFax);
 		

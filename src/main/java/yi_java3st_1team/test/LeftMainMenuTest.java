@@ -11,6 +11,7 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
+import java.awt.Color;
 
 @SuppressWarnings("serial")
 public class LeftMainMenuTest extends JPanel implements ActionListener {
@@ -34,7 +35,8 @@ public class LeftMainMenuTest extends JPanel implements ActionListener {
 		setLayout(null);
 		
 		lblMenu = new JLabel("M E N U");
-		lblMenu.setFont(new Font("굴림", Font.BOLD, 30));
+		lblMenu.setForeground(Color.BLACK);
+		lblMenu.setFont(new Font("Arial", Font.BOLD, 33));
 		lblMenu.setHorizontalAlignment(SwingConstants.CENTER);
 		lblMenu.setBounds(30, 40, 150, 40);
 		add(lblMenu);
@@ -71,25 +73,29 @@ public class LeftMainMenuTest extends JPanel implements ActionListener {
 		add(btnViews);
 		
 		lblCM = new JLabel("거래처 관리");
-		lblCM.setFont(new Font("굴림", Font.BOLD, 16));
+		lblCM.setForeground(Color.BLACK);
+		lblCM.setFont(new Font("휴먼둥근헤드라인", Font.PLAIN, 15));
 		lblCM.setHorizontalAlignment(SwingConstants.CENTER);
 		lblCM.setBounds(55, 200, 100, 20);
 		add(lblCM);
 		
 		lblPM = new JLabel("제품 관리");
-		lblPM.setFont(new Font("굴림", Font.BOLD, 16));
+		lblPM.setForeground(Color.BLACK);
+		lblPM.setFont(new Font("휴먼둥근헤드라인", Font.PLAIN, 15));
 		lblPM.setHorizontalAlignment(SwingConstants.CENTER);
 		lblPM.setBounds(55, 350, 100, 20);
 		add(lblPM);
 		
 		lblOM = new JLabel("주문 관리");
-		lblOM.setFont(new Font("굴림", Font.BOLD, 16));
+		lblOM.setForeground(Color.BLACK);
+		lblOM.setFont(new Font("휴먼둥근헤드라인", Font.PLAIN, 15));
 		lblOM.setHorizontalAlignment(SwingConstants.CENTER);
 		lblOM.setBounds(55, 500, 100, 20);
 		add(lblOM);
 		
 		lblViews = new JLabel("현황조회/보고");
-		lblViews.setFont(new Font("굴림", Font.BOLD, 16));
+		lblViews.setForeground(Color.BLACK);
+		lblViews.setFont(new Font("휴먼둥근헤드라인", Font.PLAIN, 15));
 		lblViews.setHorizontalAlignment(SwingConstants.CENTER);
 		lblViews.setBounds(40, 640, 130, 20);
 		add(lblViews);
