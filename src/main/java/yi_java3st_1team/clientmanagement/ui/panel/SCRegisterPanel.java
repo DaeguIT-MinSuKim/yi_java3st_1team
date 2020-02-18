@@ -10,6 +10,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
+import javax.swing.ImageIcon;
 
 @SuppressWarnings("serial")
 public class SCRegisterPanel extends JPanel {
@@ -119,28 +120,34 @@ public class SCRegisterPanel extends JPanel {
 		tfSCFax.setBounds(230, 490, 200, 30);
 		panel.add(tfSCFax);
 		
-		btnAdd = new JButton("등 록");
-		btnAdd.setBounds(20, 580, 130, 30);
+		btnAdd = new JButton("");
+		btnAdd.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\btns\\등록.png"));
+		btnAdd.setBounds(66, 580, 100, 30);
 		panel.add(btnAdd);
 		
-		btnUpdate = new JButton("수 정");
-		btnUpdate.setBounds(170, 580, 130, 30);
+		btnUpdate = new JButton("");
+		btnUpdate.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\btns\\수정.png"));
+		btnUpdate.setBounds(198, 580, 100, 30);
 		panel.add(btnUpdate);
 		
-		btnDel = new JButton("삭 제");
-		btnDel.setBounds(320, 580, 130, 30);
+		btnDel = new JButton("");
+		btnDel.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\btns\\삭제.png"));
+		btnDel.setBounds(330, 580, 100, 30);
 		panel.add(btnDel);
 		
-		btnGoMain = new JButton("메 인 화 면");
-		btnGoMain.setBounds(470, 580, 130, 30);
+		btnGoMain = new JButton("");
+		btnGoMain.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\btns\\메인화면.png"));
+		btnGoMain.setBounds(465, 580, 100, 30);
 		panel.add(btnGoMain);
 		
-		btnDplCheck = new JButton("중 복 확 인");
-		btnDplCheck.setBounds(454, 210, 130, 30);
+		btnDplCheck = new JButton("");
+		btnDplCheck.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\btns\\중복확인.png"));
+		btnDplCheck.setBounds(465, 210, 100, 30);
 		panel.add(btnDplCheck);
 		
-		btnPostNum = new JButton("우 편 번 호");
-		btnPostNum.setBounds(454, 350, 130, 30);
+		btnPostNum = new JButton("");
+		btnPostNum.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\btns\\우편번호.png"));
+		btnPostNum.setBounds(465, 350, 100, 30);
 		panel.add(btnPostNum);
 		
 	}
