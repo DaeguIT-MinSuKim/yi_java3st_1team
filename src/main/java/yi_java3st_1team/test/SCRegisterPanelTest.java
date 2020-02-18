@@ -131,25 +131,25 @@ public class SCRegisterPanelTest extends JPanel {
 		
 		btnAdd = new JButton("");
 		btnAdd.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\test\\등록.png"));
-		btnAdd.setBounds(58, 580, 100, 30);
+		btnAdd.setBounds(66, 580, 100, 30);
 		panel.add(btnAdd);
 		
 		btnUpdate = new JButton("");
 		btnUpdate.setFocusable(false);
 		btnUpdate.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\test\\수정.png"));
-		btnUpdate.setBounds(170, 580, 100, 30);
+		btnUpdate.setBounds(198, 580, 100, 30);
 		panel.add(btnUpdate);
 		
 		btnDel = new JButton("");
 		btnDel.setFocusable(false);
 		btnDel.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\test\\삭제.png"));
-		btnDel.setBounds(282, 580, 100, 30);
+		btnDel.setBounds(330, 580, 100, 30);
 		panel.add(btnDel);
 		
 		btnGoMain = new JButton("");
 		btnGoMain.setFocusable(false);
 		btnGoMain.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\test\\메인화면.png"));
-		btnGoMain.setBounds(394, 580, 100, 30);
+		btnGoMain.setBounds(465, 580, 100, 30);
 		panel.add(btnGoMain);
 		
 		btnDplCheck = new JButton("");
