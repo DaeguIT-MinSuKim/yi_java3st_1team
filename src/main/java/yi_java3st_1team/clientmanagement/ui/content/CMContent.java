@@ -35,7 +35,7 @@ public class CMContent extends JPanel {
 		setLayout(new BorderLayout(0, 0));
 		
 		tpClientManagement = new JTabbedPane(JTabbedPane.TOP);
-		tpClientManagement.setFont(new Font("맑은 고딕", Font.BOLD, 15));
+		tpClientManagement.setFont(new Font("맑은 고딕", Font.BOLD, 18));
 		tpClientManagement.setForeground(Color.BLACK);
 		tpClientManagement.setBackground(SystemColor.inactiveCaptionBorder);
 		add(tpClientManagement, BorderLayout.CENTER);
