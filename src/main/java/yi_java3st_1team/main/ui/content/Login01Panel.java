@@ -59,7 +59,6 @@ public class Login01Panel extends JPanel implements ActionListener {
 		add(lblPass);
 		
 		pfPasswd = new JPasswordField();
-		pfPasswd.setEchoChar('*');
 		pfPasswd.setFont(new Font("굴림", Font.PLAIN, 17));
 		pfPasswd.setBounds(180, 160, 151, 48);
 		add(pfPasswd);
