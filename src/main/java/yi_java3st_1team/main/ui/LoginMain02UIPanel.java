@@ -1,31 +1,38 @@
 package yi_java3st_1team.main.ui;
 
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.GridLayout;
 import java.awt.Rectangle;
 import java.awt.SystemColor;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-import javax.swing.JPanel;
-
-import yi_java3st_1team.clientmanagement.ui.content.CMContent;
-import yi_java3st_1team.main.LeftMainMenu;
-import yi_java3st_1team.main.ui.content.Login01Panel;
-
-import java.awt.GridLayout;
-import java.awt.BorderLayout;
-import javax.swing.border.EmptyBorder;
-import java.awt.Dimension;
-import yi_java3st_1team.main.ui.content.LogoImg03Panel;
-import java.awt.Color;
-import yi_java3st_1team.main.ui.content.LogoImg01Panel;
-import javax.swing.JLabel;
 import javax.swing.ImageIcon;
-import javax.swing.SwingConstants;
-import yi_java3st_1team.main.ui.content.MainBtns03Panel;
 import javax.swing.JButton;
-import java.awt.Font;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.SwingConstants;
+import javax.swing.border.EmptyBorder;
+
+import yi_java3st_1team.main.ui.content.ClientRegiPanel;
+import yi_java3st_1team.main.ui.content.Login01Panel;
+import yi_java3st_1team.main.ui.content.LogoImg01Panel;
+import yi_java3st_1team.main.ui.content.LogoImg03Panel;
+import yi_java3st_1team.main.ui.content.MainBtns03Panel;
+import yi_java3st_1team.main.ui.content.SearchPanel;
 
 @SuppressWarnings("serial")
-public class LoginMain02UIPanel extends JPanel {
-
+public class LoginMain02UIPanel extends JPanel implements ActionListener {
+	private JButton btnLogin;
+	private JButton btnRegi;
+	private JButton btnSearch;
+	private JFrame cliFrame;
+	private JFrame searchFrame;
+	
 	public LoginMain02UIPanel() {
 
 		initialize();
@@ -45,19 +52,22 @@ public class LoginMain02UIPanel extends JPanel {
 		pLogin.setPreferredSize(new Dimension(350, 10));
 		pStop.add(pLogin, BorderLayout.WEST);
 		
-		JButton btnLogin = new JButton("LOGIN");
+		btnLogin = new JButton("LOGIN");
+		btnLogin.addActionListener(this);
 		btnLogin.setFont(new Font("Arial", Font.BOLD, 17));
 		btnLogin.setFocusable(false);
 		btnLogin.setBounds(20,245,120,45);
 		pLogin.add(btnLogin);
 		
-		JButton btnRegi = new JButton("REGISTER");
+		btnRegi = new JButton("REGISTER");
+		btnRegi.addActionListener(this);
 		btnRegi.setFont(new Font("Arial", Font.BOLD, 17));
 		btnRegi.setFocusable(false);
 		btnRegi.setBounds(147,245,120,45);
 		pLogin.add(btnRegi);
 		
-		JButton btnSearch = new JButton("");
+		btnSearch = new JButton("");
+		btnSearch.addActionListener(this);
 		btnSearch.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\loginMain\\searchBtn.png"));
 		btnSearch.setFocusable(false);
 		btnSearch.setBounds(273,245, 55, 45);
@@ -95,4 +105,33 @@ public class LoginMain02UIPanel extends JPanel {
 		pBtns.setLayout(new GridLayout(0, 1, 0, 10));
 	}
 
+	public void actionPerformed(ActionEvent e) {
+		if (e.getSource() == btnSearch) {
+			actionPerformedBtnSearch(e);
+		}
+		if (e.getSource() == btnRegi) {
+			actionPerformedBtnRegi(e);
+		}
+		if (e.getSource() == btnLogin) {
+			actionPerformedBtnLogin(e);
+		}
+	}
+	protected void actionPerformedBtnLogin(ActionEvent e) {
+	}
+	protected void actionPerformedBtnRegi(ActionEvent e) {
+		cliFrame = new JFrame();
+		cliFrame.setTitle("회원가입");
+		cliFrame.setBounds(100, 100, 600, 700);
+		ClientRegiPanel empr = new ClientRegiPanel();
+		cliFrame.getContentPane().add(empr);
+		cliFrame.setVisible(true);
+	}
+	protected void actionPerformedBtnSearch(ActionEvent e) {
+		searchFrame = new JFrame();
+		searchFrame.setTitle("아이디 & 비밀번호 찾기");
+		searchFrame.setBounds(100, 100, 600, 700);
+		SearchPanel sp = new SearchPanel();
+		searchFrame.getContentPane().add(sp);
+		searchFrame.setVisible(true);
+	}
 }
