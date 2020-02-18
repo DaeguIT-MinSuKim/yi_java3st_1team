@@ -12,6 +12,7 @@ import java.awt.BorderLayout;
 import java.awt.Font;
 import java.awt.Rectangle;
 import java.awt.SystemColor;
+import java.awt.Color;
 
 @SuppressWarnings("serial")
 public class SCListPanel extends JPanel {
@@ -42,6 +43,7 @@ public class SCListPanel extends JPanel {
 		pSCListPanel.add(lblImg);
 		
 		lblSCList = new JLabel("공급회사 LIST");
+		lblSCList.setForeground(Color.BLACK);
 		lblSCList.setFont(new Font("휴먼둥근헤드라인", Font.PLAIN, 20));
 		lblSCList.setHorizontalAlignment(SwingConstants.CENTER);
 		lblSCList.setBounds(72, 60, 170, 40);

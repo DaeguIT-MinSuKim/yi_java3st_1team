@@ -42,7 +42,7 @@ public class CListPanel extends JPanel {
 		pCListPanel.add(lblImg);
 		
 		lblCList = new JLabel("고 객 사 LIST");
-		lblCList.setFont(new Font("굴림", Font.BOLD, 20));
+		lblCList.setFont(new Font("휴먼둥근헤드라인", Font.PLAIN, 20));
 		lblCList.setHorizontalAlignment(SwingConstants.CENTER);
 		lblCList.setBounds(72, 60, 170, 40);
 		pCListPanel.add(lblCList);
@@ -56,7 +56,8 @@ public class CListPanel extends JPanel {
 		tfSerch.setBounds(392, 65, 130, 30);
 		pCListPanel.add(tfSerch);
 		
-		btnSerch = new JButton("검 색");
+		btnSerch = new JButton("");
+		btnSerch.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\test\\검색.png"));
 		btnSerch.setBounds(542, 65, 70, 30);
 		pCListPanel.add(btnSerch);
 		
