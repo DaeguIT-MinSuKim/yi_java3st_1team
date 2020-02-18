@@ -130,6 +130,8 @@ public class LoginMain01UIPanel extends JPanel implements ActionListener {
 	protected void actionPerformedBtnRegi(ActionEvent e) {
 		regiFrame = new JFrame();
 		regiFrame.setTitle("회원가입");
+		regiFrame.setSize(400, 500);
+		regiFrame.setResizable(false);
 		regiFrame.setBounds(100, 100, 600, 700);
 		EmpRegiPanel empr = new EmpRegiPanel();
 		regiFrame.getContentPane().add(empr);
