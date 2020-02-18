@@ -20,6 +20,8 @@ import javax.swing.JLabel;
 import javax.swing.ImageIcon;
 import javax.swing.SwingConstants;
 import yi_java3st_1team.main.ui.content.MainBtns03Panel;
+import javax.swing.JButton;
+import java.awt.Font;
 
 @SuppressWarnings("serial")
 public class LoginMain02UIPanel extends JPanel {
@@ -42,6 +44,24 @@ public class LoginMain02UIPanel extends JPanel {
 		Login01Panel pLogin = new Login01Panel();
 		pLogin.setPreferredSize(new Dimension(350, 10));
 		pStop.add(pLogin, BorderLayout.WEST);
+		
+		JButton btnLogin = new JButton("LOGIN");
+		btnLogin.setFont(new Font("Arial", Font.BOLD, 17));
+		btnLogin.setFocusable(false);
+		btnLogin.setBounds(20,245,120,45);
+		pLogin.add(btnLogin);
+		
+		JButton btnRegi = new JButton("REGISTER");
+		btnRegi.setFont(new Font("Arial", Font.BOLD, 17));
+		btnRegi.setFocusable(false);
+		btnRegi.setBounds(147,245,120,45);
+		pLogin.add(btnRegi);
+		
+		JButton btnSearch = new JButton("");
+		btnSearch.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\loginMain\\searchBtn.png"));
+		btnSearch.setFocusable(false);
+		btnSearch.setBounds(273,245, 55, 45);
+		pLogin.add(btnSearch);
 		
 		LogoImg03Panel pImg01 = new LogoImg03Panel();
 		pStop.add(pImg01, BorderLayout.CENTER);
