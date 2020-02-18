@@ -110,7 +110,8 @@ CREATE TABLE yi_java3st_1team.PRODUCT (
 	p_price INTEGER     NOT NULL COMMENT '판매가격', -- 판매가격
 	p_sno   INTEGER     NULL     COMMENT '공급회사번호', -- 공급회사번호
 	p_qty   INTEGER     NOT NULL COMMENT '최초재고수량', -- 최초재고수량
-	p_date  DATE        NOT NULL COMMENT '최초등록일자' -- 최초등록일자
+	p_date  DATE        NOT NULL COMMENT '최초등록일자', -- 최초등록일자
+	p_pic   LONGBLOB    NULL     COMMENT '품목이미지' -- 품목이미지
 )
 COMMENT '소프트웨어';
 
