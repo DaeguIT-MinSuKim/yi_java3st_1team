@@ -55,36 +55,43 @@ public class IQPanel extends JPanel {
 		
 		JLabel lblC_name = new JLabel("품   목   명");
 		lblC_name.setHorizontalAlignment(SwingConstants.CENTER);
-		lblC_name.setPreferredSize(new Dimension(90, 20));
-		lblC_name.setFont(new Font("Dialog", Font.BOLD, 16));
+		lblC_name.setPreferredSize(new Dimension(130, 30));
+		lblC_name.setFont(new Font("Dialog", Font.BOLD, 18));
 		pSearch.add(lblC_name);
 		
 		tfC_name = new JTextField();
+		tfC_name.setPreferredSize(new Dimension(130, 30));
 		pSearch.add(tfC_name);
 		tfC_name.setColumns(15);
 		
 		JButton btnSearch = new JButton("\uC870\uD68C");
+		btnSearch.setFont(new Font("굴림", Font.PLAIN, 12));
+		btnSearch.setPreferredSize(new Dimension(60, 30));
 		pSearch.add(btnSearch);
 		
 		JRadioButton rdbtnNewRadioButton = new JRadioButton("전체");
+		rdbtnNewRadioButton.setFont(new Font("굴림", Font.PLAIN, 16));
 		rdbtnNewRadioButton.setBackground(SystemColor.inactiveCaption);
 		rdbtnNewRadioButton.setHorizontalAlignment(SwingConstants.CENTER);
-		rdbtnNewRadioButton.setPreferredSize(new Dimension(70, 23));
+		rdbtnNewRadioButton.setPreferredSize(new Dimension(90, 30));
 		pSearch.add(rdbtnNewRadioButton);
 		
 		JRadioButton rdbtnNewRadioButton_1 = new JRadioButton("재고과다");
+		rdbtnNewRadioButton_1.setFont(new Font("굴림", Font.PLAIN, 16));
 		rdbtnNewRadioButton_1.setBackground(SystemColor.inactiveCaption);
-		rdbtnNewRadioButton_1.setPreferredSize(new Dimension(80, 23));
+		rdbtnNewRadioButton_1.setPreferredSize(new Dimension(110, 30));
 		pSearch.add(rdbtnNewRadioButton_1);
 		
 		JRadioButton rdbtnNewRadioButton_2 = new JRadioButton("적정재고");
+		rdbtnNewRadioButton_2.setFont(new Font("굴림", Font.PLAIN, 16));
 		rdbtnNewRadioButton_2.setBackground(SystemColor.inactiveCaption);
-		rdbtnNewRadioButton_2.setPreferredSize(new Dimension(80, 23));
+		rdbtnNewRadioButton_2.setPreferredSize(new Dimension(110, 30));
 		pSearch.add(rdbtnNewRadioButton_2);
 		
 		JRadioButton rdbtnNewRadioButton_3 = new JRadioButton("재고부족");
+		rdbtnNewRadioButton_3.setFont(new Font("굴림", Font.PLAIN, 16));
 		rdbtnNewRadioButton_3.setBackground(SystemColor.inactiveCaption);
-		rdbtnNewRadioButton_3.setPreferredSize(new Dimension(80, 23));
+		rdbtnNewRadioButton_3.setPreferredSize(new Dimension(110, 30));
 		pSearch.add(rdbtnNewRadioButton_3);
 		
 		JPanel pList = new JPanel();

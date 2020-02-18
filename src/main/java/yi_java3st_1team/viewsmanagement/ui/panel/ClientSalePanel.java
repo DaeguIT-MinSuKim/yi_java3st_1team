@@ -57,18 +57,23 @@ public class ClientSalePanel extends JPanel {
 		
 		JLabel lblName = new JLabel("\uACE0 \uAC1D \uC0C1 \uD638 \uBA85 ");
 		lblName.setHorizontalAlignment(SwingConstants.CENTER);
-		lblName.setPreferredSize(new Dimension(120, 20));
-		lblName.setFont(new Font("Dialog", Font.BOLD, 16));
+		lblName.setPreferredSize(new Dimension(150, 30));
+		lblName.setFont(new Font("Dialog", Font.BOLD, 18));
 		pSearch.add(lblName);
 		
 		tfName = new JTextField();
+		tfName.setPreferredSize(new Dimension(130, 30));
 		pSearch.add(tfName);
 		tfName.setColumns(15);
 		
 		JButton btnSearch = new JButton("\uC870\uD68C");
+		btnSearch.setPreferredSize(new Dimension(60, 30));
 		pSearch.add(btnSearch);
 		
 		JCheckBox cbTotal = new JCheckBox(" \uC804\uCCB4");
+		cbTotal.setHorizontalAlignment(SwingConstants.CENTER);
+		cbTotal.setFont(new Font("굴림", Font.PLAIN, 16));
+		cbTotal.setPreferredSize(new Dimension(80, 30));
 		cbTotal.setBackground(SystemColor.inactiveCaption);
 		pSearch.add(cbTotal);
 		
@@ -85,21 +90,23 @@ public class ClientSalePanel extends JPanel {
 		
 		JLabel lblLTotal = new JLabel("\uCD1D \uB9E4\uCD9C\uAE08");
 		lblLTotal.setHorizontalAlignment(SwingConstants.CENTER);
-		lblLTotal.setPreferredSize(new Dimension(100, 20));
-		lblLTotal.setFont(new Font("Dialog", Font.BOLD, 16));
+		lblLTotal.setPreferredSize(new Dimension(130, 30));
+		lblLTotal.setFont(new Font("Dialog", Font.BOLD, 18));
 		pResult.add(lblLTotal);
 		
 		tfLTotal = new JTextField();
+		tfLTotal.setPreferredSize(new Dimension(200, 30));
 		pResult.add(tfLTotal);
 		tfLTotal.setColumns(15);
 		
 		JLabel lblRTotal = new JLabel(" \uCD1D \uBBF8\uC218\uAE08 ");
 		lblRTotal.setHorizontalAlignment(SwingConstants.CENTER);
-		lblRTotal.setPreferredSize(new Dimension(100, 20));
-		lblRTotal.setFont(new Font("Dialog", Font.BOLD, 16));
+		lblRTotal.setPreferredSize(new Dimension(130, 30));
+		lblRTotal.setFont(new Font("Dialog", Font.BOLD, 18));
 		pResult.add(lblRTotal);
 		
 		tfRTotal = new JTextField();
+		tfRTotal.setPreferredSize(new Dimension(200, 30));
 		pResult.add(tfRTotal);
 		tfRTotal.setColumns(15);
 	}

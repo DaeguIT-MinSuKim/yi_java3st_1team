@@ -57,18 +57,23 @@ public class SWSalePanel extends JPanel {
 		
 		JLabel lblC_name = new JLabel("품   목   명");
 		lblC_name.setHorizontalAlignment(SwingConstants.CENTER);
-		lblC_name.setPreferredSize(new Dimension(90, 20));
-		lblC_name.setFont(new Font("Dialog", Font.BOLD, 16));
+		lblC_name.setPreferredSize(new Dimension(130, 30));
+		lblC_name.setFont(new Font("Dialog", Font.BOLD, 18));
 		pSearch.add(lblC_name);
 		
 		tfC_name = new JTextField();
+		tfC_name.setPreferredSize(new Dimension(150, 30));
 		pSearch.add(tfC_name);
 		tfC_name.setColumns(15);
 		
 		JButton btnSearch = new JButton("\uC870\uD68C");
+		btnSearch.setPreferredSize(new Dimension(60, 30));
 		pSearch.add(btnSearch);
 		
 		JCheckBox cbTotal = new JCheckBox(" \uC804\uCCB4");
+		cbTotal.setHorizontalAlignment(SwingConstants.CENTER);
+		cbTotal.setFont(new Font("굴림", Font.PLAIN, 16));
+		cbTotal.setPreferredSize(new Dimension(80, 30));
 		cbTotal.setBackground(SystemColor.inactiveCaption);
 		pSearch.add(cbTotal);
 		
@@ -84,22 +89,24 @@ public class SWSalePanel extends JPanel {
 		pTop.add(pResult, BorderLayout.SOUTH);
 		
 		JLabel lblSP = new JLabel("총 판매금액");
-		lblSP.setPreferredSize(new Dimension(120, 20));
+		lblSP.setPreferredSize(new Dimension(130, 30));
 		lblSP.setHorizontalAlignment(SwingConstants.CENTER);
-		lblSP.setFont(new Font("Dialog", Font.BOLD, 16));
+		lblSP.setFont(new Font("Dialog", Font.BOLD, 18));
 		pResult.add(lblSP);
 		
 		tfSP = new JTextField();
+		tfSP.setPreferredSize(new Dimension(200, 30));
 		pResult.add(tfSP);
 		tfSP.setColumns(15);
 		
 		JLabel lblUCM = new JLabel(" 총 판매이윤");
-		lblUCM.setPreferredSize(new Dimension(120, 20));
+		lblUCM.setPreferredSize(new Dimension(130, 30));
 		lblUCM.setHorizontalAlignment(SwingConstants.CENTER);
-		lblUCM.setFont(new Font("Dialog", Font.BOLD, 16));
+		lblUCM.setFont(new Font("Dialog", Font.BOLD, 18));
 		pResult.add(lblUCM);
 		
 		tfUCM = new JTextField();
+		tfUCM.setPreferredSize(new Dimension(200, 30));
 		pResult.add(tfUCM);
 		tfUCM.setColumns(15);
 	}

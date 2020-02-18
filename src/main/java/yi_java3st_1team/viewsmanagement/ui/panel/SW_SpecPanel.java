@@ -57,8 +57,9 @@ public class SW_SpecPanel extends JPanel {
 		pLeftTop.setLayout(new FlowLayout(FlowLayout.LEFT, 5, 5));
 		
 		JRadioButton rdbtnSW = new JRadioButton(" S/W 전체 판매현황");
+		rdbtnSW.setPreferredSize(new Dimension(230, 30));
 		rdbtnSW.setBackground(SystemColor.inactiveCaption);
-		rdbtnSW.setFont(new Font("굴림", Font.BOLD, 16));
+		rdbtnSW.setFont(new Font("굴림", Font.BOLD, 18));
 		rdbtnSW.setHorizontalAlignment(SwingConstants.CENTER);
 		pLeftTop.add(rdbtnSW);
 		
@@ -81,11 +82,12 @@ public class SW_SpecPanel extends JPanel {
 		
 		JLabel lblLTotal = new JLabel("총 판매금액");
 		lblLTotal.setHorizontalAlignment(SwingConstants.CENTER);
-		lblLTotal.setPreferredSize(new Dimension(120, 20));
-		lblLTotal.setFont(new Font("굴림", Font.BOLD, 16));
+		lblLTotal.setPreferredSize(new Dimension(130, 30));
+		lblLTotal.setFont(new Font("굴림", Font.BOLD, 18));
 		pLeftResult.add(lblLTotal);
 		
 		tfLTotal = new JTextField();
+		tfLTotal.setPreferredSize(new Dimension(200, 30));
 		pLeftResult.add(tfLTotal);
 		tfLTotal.setColumns(15);
 		
@@ -101,9 +103,10 @@ public class SW_SpecPanel extends JPanel {
 		pRight.add(pSpec, BorderLayout.NORTH);
 		
 		JRadioButton rdbtnTS = new JRadioButton(" 거래명세서");
+		rdbtnTS.setPreferredSize(new Dimension(150, 30));
 		rdbtnTS.setBackground(SystemColor.inactiveCaption);
 		rdbtnTS.setHorizontalAlignment(SwingConstants.CENTER);
-		rdbtnTS.setFont(new Font("굴림", Font.BOLD, 16));
+		rdbtnTS.setFont(new Font("굴림", Font.BOLD, 18));
 		pSpec.add(rdbtnTS);
 		
 		JPanel pRightList = new JPanel();
@@ -125,11 +128,12 @@ public class SW_SpecPanel extends JPanel {
 		
 		JLabel lblRTotal = new JLabel("총 납품금액");
 		lblRTotal.setHorizontalAlignment(SwingConstants.CENTER);
-		lblRTotal.setPreferredSize(new Dimension(120, 20));
-		lblRTotal.setFont(new Font("굴림", Font.BOLD, 16));
+		lblRTotal.setPreferredSize(new Dimension(130, 30));
+		lblRTotal.setFont(new Font("굴림", Font.BOLD, 18));
 		pRightResult.add(lblRTotal);
 		
 		tfRTotal = new JTextField();
+		tfRTotal.setPreferredSize(new Dimension(200, 30));
 		tfRTotal.setColumns(15);
 		pRightResult.add(tfRTotal);
 	}
