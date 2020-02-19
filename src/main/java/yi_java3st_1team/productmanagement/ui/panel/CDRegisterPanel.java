@@ -83,6 +83,7 @@ public class CDRegisterPanel extends JPanel {
 		panel.add(lblCDPName);
 		
 		lblCDDate = new JLabel("출 고 일 자");
+		lblCDDate.setForeground(Color.BLACK);
 		lblCDDate.setHorizontalAlignment(SwingConstants.CENTER);
 		lblCDDate.setFont(new Font("휴먼둥근헤드라인", Font.PLAIN, 16));
 		lblCDDate.setBounds(66, 492, 120, 30);

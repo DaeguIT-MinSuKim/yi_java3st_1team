@@ -76,18 +76,21 @@ public class ClientORegisterPanel extends JPanel {
 		panel.add(lblOCName);
 		
 		lblOPName = new JLabel("품   목   명");
+		lblOPName.setForeground(Color.BLACK);
 		lblOPName.setHorizontalAlignment(SwingConstants.CENTER);
 		lblOPName.setFont(new Font("휴먼둥근헤드라인", Font.PLAIN, 16));
 		lblOPName.setBounds(66, 290, 120, 30);
 		panel.add(lblOPName);
 		
 		lblOQty = new JLabel("주 문 수 량");
+		lblOQty.setForeground(Color.BLACK);
 		lblOQty.setHorizontalAlignment(SwingConstants.CENTER);
 		lblOQty.setFont(new Font("휴먼둥근헤드라인", Font.PLAIN, 16));
 		lblOQty.setBounds(66, 340, 120, 30);
 		panel.add(lblOQty);
 		
 		lblOWant = new JLabel("요 구 사 항");
+		lblOWant.setForeground(Color.BLACK);
 		lblOWant.setHorizontalAlignment(SwingConstants.CENTER);
 		lblOWant.setFont(new Font("휴먼둥근헤드라인", Font.PLAIN, 16));
 		lblOWant.setBounds(66, 390, 120, 30);

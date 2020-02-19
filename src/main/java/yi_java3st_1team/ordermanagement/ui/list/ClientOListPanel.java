@@ -136,6 +136,8 @@ public class ClientOListPanel extends JPanel {
 		pSCListPanel.add(label);
 		
 		textField = new JTextField();
+		textField.setForeground(Color.BLACK);
+		textField.setFont(new Font("굴림", Font.BOLD, 13));
 		textField.setEditable(false);
 		textField.setBounds(453, 618, 130, 25);
 		pSCListPanel.add(textField);

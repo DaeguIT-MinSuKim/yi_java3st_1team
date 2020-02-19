@@ -56,12 +56,14 @@ public class ORegisterPanel extends JPanel {
 		panel.add(lblO);
 		
 		lblONo = new JLabel("주 문 번 호");
+		lblONo.setForeground(Color.BLACK);
 		lblONo.setFont(new Font("휴먼둥근헤드라인", Font.PLAIN, 16));
 		lblONo.setHorizontalAlignment(SwingConstants.CENTER);
 		lblONo.setBounds(66, 140, 120, 30);
 		panel.add(lblONo);
 		
 		lblODate = new JLabel("주 문 일 자");
+		lblODate.setForeground(Color.BLACK);
 		lblODate.setHorizontalAlignment(SwingConstants.CENTER);
 		lblODate.setFont(new Font("휴먼둥근헤드라인", Font.PLAIN, 16));
 		lblODate.setBounds(66, 190, 120, 30);
@@ -121,11 +123,11 @@ public class ORegisterPanel extends JPanel {
 		panel.add(tfOQty);
 		
 		btnAdd = new JButton("");
-		btnAdd.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\test\\등록.png"));
+		btnAdd.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\btns\\등록.png"));
 		btnAdd.setBounds(66, 580, 100, 30);
 		panel.add(btnAdd);
 		
-		btnUpdate = new JButton("");
+		btnUpdate = new JButton("초기화");
 		btnUpdate.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\test\\삭제.png"));
 		btnUpdate.setBounds(270, 580, 100, 30);
 		panel.add(btnUpdate);
