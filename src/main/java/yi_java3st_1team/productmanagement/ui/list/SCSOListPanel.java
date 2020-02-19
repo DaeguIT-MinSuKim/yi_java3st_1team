@@ -10,6 +10,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.SwingConstants;
+import java.awt.Color;
 
 @SuppressWarnings("serial")
 public class SCSOListPanel extends JPanel {
@@ -37,7 +38,8 @@ public class SCSOListPanel extends JPanel {
 		pSWListPanel.add(lblImg);
 		
 		lblSWList = new JLabel("매입&발주 LIST");
-		lblSWList.setFont(new Font("굴림", Font.BOLD, 20));
+		lblSWList.setForeground(Color.BLACK);
+		lblSWList.setFont(new Font("휴먼둥근헤드라인", Font.PLAIN, 20));
 		lblSWList.setHorizontalAlignment(SwingConstants.CENTER);
 		lblSWList.setBounds(72, 60, 170, 40);
 		pSWListPanel.add(lblSWList);
@@ -47,14 +49,16 @@ public class SCSOListPanel extends JPanel {
 		pSWListPanel.add(pList);
 		
 		JRadioButton rdbtnSC = new JRadioButton("  매입 이력");
+		rdbtnSC.setForeground(Color.BLACK);
 		rdbtnSC.setBackground(SystemColor.inactiveCaptionBorder);
-		rdbtnSC.setFont(new Font("굴림", Font.BOLD, 15));
+		rdbtnSC.setFont(new Font("휴먼둥근헤드라인", Font.PLAIN, 15));
 		rdbtnSC.setBounds(320, 70, 110, 20);
 		pSWListPanel.add(rdbtnSC);
 		
 		JRadioButton rdbtnSO = new JRadioButton("  발주 이력");
+		rdbtnSO.setForeground(Color.BLACK);
 		rdbtnSO.setBackground(SystemColor.inactiveCaptionBorder);
-		rdbtnSO.setFont(new Font("굴림", Font.BOLD, 15));
+		rdbtnSO.setFont(new Font("휴먼둥근헤드라인", Font.PLAIN, 15));
 		rdbtnSO.setBounds(460, 70, 110, 20);
 		pSWListPanel.add(rdbtnSO);
 	}

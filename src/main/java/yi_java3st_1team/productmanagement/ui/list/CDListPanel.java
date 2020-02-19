@@ -9,6 +9,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
+import java.awt.Color;
 
 @SuppressWarnings("serial")
 public class CDListPanel extends JPanel {
@@ -36,7 +37,8 @@ public class CDListPanel extends JPanel {
 		pCDListPanel.add(lblImg);
 		
 		lblCDList = new JLabel("출고 LIST");
-		lblCDList.setFont(new Font("굴림", Font.BOLD, 20));
+		lblCDList.setForeground(Color.BLACK);
+		lblCDList.setFont(new Font("휴먼둥근헤드라인", Font.PLAIN, 20));
 		lblCDList.setHorizontalAlignment(SwingConstants.CENTER);
 		lblCDList.setBounds(72, 60, 120, 40);
 		pCDListPanel.add(lblCDList);

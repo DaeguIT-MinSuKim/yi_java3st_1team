@@ -12,6 +12,7 @@ import java.awt.BorderLayout;
 import java.awt.Font;
 import java.awt.Rectangle;
 import java.awt.SystemColor;
+import java.awt.Color;
 
 @SuppressWarnings("serial")
 public class SWListPanel extends JPanel {
@@ -42,7 +43,8 @@ public class SWListPanel extends JPanel {
 		pSWListPanel.add(lblImg);
 		
 		lblSWList = new JLabel("소프트웨어 LIST");
-		lblSWList.setFont(new Font("굴림", Font.BOLD, 20));
+		lblSWList.setForeground(Color.BLACK);
+		lblSWList.setFont(new Font("휴먼둥근헤드라인", Font.PLAIN, 20));
 		lblSWList.setHorizontalAlignment(SwingConstants.CENTER);
 		lblSWList.setBounds(72, 60, 170, 40);
 		pSWListPanel.add(lblSWList);
@@ -56,7 +58,8 @@ public class SWListPanel extends JPanel {
 		tfSerch.setBounds(392, 65, 130, 30);
 		pSWListPanel.add(tfSerch);
 		
-		btnSerch = new JButton("검 색");
+		btnSerch = new JButton("");
+		btnSerch.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\btns\\검색.png"));
 		btnSerch.setBounds(542, 65, 70, 30);
 		pSWListPanel.add(btnSerch);
 		
