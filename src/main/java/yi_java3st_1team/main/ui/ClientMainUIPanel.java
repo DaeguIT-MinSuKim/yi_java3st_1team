@@ -26,14 +26,14 @@ import yi_java3st_1team.main.ui.content.MainBtns03Panel;
 import yi_java3st_1team.main.ui.content.SearchPanel;
 
 @SuppressWarnings("serial")
-public class LoginMain02UIPanel extends JPanel implements ActionListener {
+public class ClientMainUIPanel extends JPanel implements ActionListener {
 	private JButton btnLogin;
 	private JButton btnRegi;
 	private JButton btnSearch;
 	private JFrame cliFrame;
 	private JFrame searchFrame;
 	
-	public LoginMain02UIPanel() {
+	public ClientMainUIPanel() {
 
 		initialize();
 	}

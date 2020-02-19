@@ -17,7 +17,7 @@ import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
 import yi_java3st_1team.clientmanagement.ui.CMMainPanel;
-import yi_java3st_1team.main.ui.LoginMain02UIPanel;
+import yi_java3st_1team.main.ui.ClientMainUIPanel;
 
 @SuppressWarnings("serial")
 public class ClientMainFrame extends JFrame {
@@ -28,7 +28,7 @@ public class ClientMainFrame extends JFrame {
 	private JPanel pFooter;
 	private JLabel lblLogo;
 	private JLabel lblCopy;
-	private LoginMain02UIPanel pContents;
+	private ClientMainUIPanel pContents;
 
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -77,7 +77,7 @@ public class ClientMainFrame extends JFrame {
 		contentPane.add(pSection, BorderLayout.CENTER);
 		pSection.setLayout(new GridLayout(0, 1, 10, 10));
 		
-		pContents = new LoginMain02UIPanel();
+		pContents = new ClientMainUIPanel();
 		pContents.setBackground(SystemColor.inactiveCaption);
 		pSection.add(pContents);
 		

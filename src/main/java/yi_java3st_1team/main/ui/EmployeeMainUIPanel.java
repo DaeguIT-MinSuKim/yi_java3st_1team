@@ -28,14 +28,14 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 @SuppressWarnings("serial")
-public class LoginMain01UIPanel extends JPanel implements ActionListener {
+public class EmployeeMainUIPanel extends JPanel implements ActionListener {
 	private JButton btnLogin;
 	private JButton btnRegi;
 	private JButton btnSearch;
 	private JFrame regiFrame;
 	private JFrame searchFrame;
 
-	public LoginMain01UIPanel() {
+	public EmployeeMainUIPanel() {
 
 		initialize();
 	}
