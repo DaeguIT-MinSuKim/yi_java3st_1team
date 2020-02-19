@@ -14,23 +14,26 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 @SuppressWarnings("serial")
-public class ClientRegiPanel<T>  extends AbsRegiPanel<T> {
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
-	private JPasswordField passwordField;
-	private JPasswordField passwordField_1;
-	private JTextField textField_3;
-	private JTextField textField_4;
-	private JTextField textField_5;
-	private JButton btnNewButton_2;
-	private JTextField textField_6;
-	private JTextField textField_7;
-	private JButton btnNewButton;
-	private JButton btnNewButton_1;
-	private JButton button;
+public class ClientRegiPanel<T>  extends AbsRegiPanel<T> implements ActionListener {
+	private JTextField tfNo;
+	private JTextField tfName;
+	private JTextField tfId;
+	private JPasswordField passFd1;
+	private JPasswordField passFd2;
+	private JTextField tfSalesman;
+	private JTextField tfCeo;
+	private JTextField tfAdd;
+	private JButton zipCod;
+	private JTextField tfTell;
+	private JTextField tfMail;
+	private JButton btnAdd;
+	private JButton btnCancle;
+	private JButton doubleCheck;
+	private JLabel lblPassword;
 
 	/**
 	 * Create the panel.
@@ -43,182 +46,227 @@ public class ClientRegiPanel<T>  extends AbsRegiPanel<T> {
 		setSize(new Dimension(500, 650));
 		setLayout(new BorderLayout(0, 0));
 		
-		JLabel lblNewLabel = new JLabel("사용자 등록");
-		lblNewLabel.setOpaque(true);
-		lblNewLabel.setBackground(SystemColor.inactiveCaptionBorder);
-		lblNewLabel.setForeground(Color.BLACK);
-		lblNewLabel.setPreferredSize(new Dimension(60, 90));
-		lblNewLabel.setFont(new Font("휴먼둥근헤드라인", Font.PLAIN, 30));
-		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		add(lblNewLabel, BorderLayout.NORTH);
+		JLabel lblHeader = new JLabel("사용자 등록");
+		lblHeader.setOpaque(true);
+		lblHeader.setBackground(SystemColor.inactiveCaptionBorder);
+		lblHeader.setForeground(Color.BLACK);
+		lblHeader.setPreferredSize(new Dimension(60, 90));
+		lblHeader.setFont(new Font("휴먼둥근헤드라인", Font.PLAIN, 30));
+		lblHeader.setHorizontalAlignment(SwingConstants.CENTER);
+		add(lblHeader, BorderLayout.NORTH);
 		
-		JPanel panel = new JPanel();
-		panel.setBackground(SystemColor.inactiveCaptionBorder);
-		panel.setBorder(new EmptyBorder(20, 40, 20, 40));
-		add(panel, BorderLayout.CENTER);
-		panel.setLayout(new BorderLayout(0, 0));
+		JPanel pSection = new JPanel();
+		pSection.setBackground(SystemColor.inactiveCaptionBorder);
+		pSection.setBorder(new EmptyBorder(20, 40, 20, 40));
+		add(pSection, BorderLayout.CENTER);
+		pSection.setLayout(new BorderLayout(0, 0));
 		
-		JPanel panel_2 = new JPanel();
-		panel_2.setBackground(SystemColor.inactiveCaptionBorder);
-		panel_2.setPreferredSize(new Dimension(150, 10));
-		panel.add(panel_2, BorderLayout.WEST);
-		panel_2.setLayout(new GridLayout(0, 1, 10, 10));
+		JPanel pName = new JPanel();
+		pName.setBackground(SystemColor.inactiveCaptionBorder);
+		pName.setPreferredSize(new Dimension(150, 10));
+		pSection.add(pName, BorderLayout.WEST);
+		pName.setLayout(new GridLayout(0, 1, 10, 10));
 		
 		JLabel label = new JLabel("고 객 번 호  ");
 		label.setHorizontalAlignment(SwingConstants.RIGHT);
 		label.setForeground(Color.BLACK);
 		label.setFont(new Font("휴먼둥근헤드라인", Font.PLAIN, 13));
-		panel_2.add(label);
+		pName.add(label);
 		
 		JLabel label_1 = new JLabel("상 호 명  ");
 		label_1.setHorizontalAlignment(SwingConstants.RIGHT);
 		label_1.setForeground(Color.BLACK);
 		label_1.setFont(new Font("휴먼둥근헤드라인", Font.PLAIN, 13));
-		panel_2.add(label_1);
+		pName.add(label_1);
 		
 		JLabel label_2 = new JLabel("대 표 명  ");
 		label_2.setHorizontalAlignment(SwingConstants.RIGHT);
 		label_2.setForeground(Color.BLACK);
 		label_2.setFont(new Font("휴먼둥근헤드라인", Font.PLAIN, 13));
-		panel_2.add(label_2);
+		pName.add(label_2);
 		
 		JLabel label_3 = new JLabel("주 소  ");
 		label_3.setHorizontalAlignment(SwingConstants.RIGHT);
 		label_3.setForeground(Color.BLACK);
 		label_3.setFont(new Font("휴먼둥근헤드라인", Font.PLAIN, 13));
-		panel_2.add(label_3);
+		pName.add(label_3);
 		
 		JLabel lblNewLabel_2 = new JLabel("전 화 번 호  ");
 		lblNewLabel_2.setFont(new Font("휴먼둥근헤드라인", Font.PLAIN, 13));
 		lblNewLabel_2.setHorizontalAlignment(SwingConstants.RIGHT);
-		panel_2.add(lblNewLabel_2);
+		pName.add(lblNewLabel_2);
 		
 		JLabel label_4 = new JLabel("아 이 디  ");
 		label_4.setHorizontalAlignment(SwingConstants.RIGHT);
 		label_4.setForeground(Color.BLACK);
 		label_4.setFont(new Font("휴먼둥근헤드라인", Font.PLAIN, 13));
-		panel_2.add(label_4);
+		pName.add(label_4);
 		
 		JLabel label_5 = new JLabel("비 밀 번 호  ");
 		label_5.setHorizontalAlignment(SwingConstants.RIGHT);
 		label_5.setForeground(Color.BLACK);
 		label_5.setFont(new Font("휴먼둥근헤드라인", Font.PLAIN, 13));
-		panel_2.add(label_5);
+		pName.add(label_5);
 		
 		JLabel lblNewLabel_6 = new JLabel("");
-		panel_2.add(lblNewLabel_6);
+		pName.add(lblNewLabel_6);
 		
 		JLabel lblNewLabel_1 = new JLabel("비 밀 번 호  확 인  ");
 		lblNewLabel_1.setFont(new Font("휴먼둥근헤드라인", Font.PLAIN, 13));
 		lblNewLabel_1.setHorizontalAlignment(SwingConstants.RIGHT);
-		panel_2.add(lblNewLabel_1);
+		pName.add(lblNewLabel_1);
 		
 		JLabel lblNewLabel_3 = new JLabel("");
-		panel_2.add(lblNewLabel_3);
+		pName.add(lblNewLabel_3);
 		
 		JLabel label_6 = new JLabel("이 메 일  주 소  ");
 		label_6.setHorizontalAlignment(SwingConstants.RIGHT);
 		label_6.setFont(new Font("휴먼둥근헤드라인", Font.PLAIN, 13));
-		panel_2.add(label_6);
+		pName.add(label_6);
 		
 		JLabel lblNewLabel_4 = new JLabel("담 당 직 원  ");
 		lblNewLabel_4.setFont(new Font("휴먼둥근헤드라인", Font.PLAIN, 13));
 		lblNewLabel_4.setForeground(Color.BLACK);
 		lblNewLabel_4.setHorizontalAlignment(SwingConstants.RIGHT);
-		panel_2.add(lblNewLabel_4);
+		pName.add(lblNewLabel_4);
 		
-		JPanel panel_3 = new JPanel();
-		panel_3.setBackground(SystemColor.inactiveCaptionBorder);
-		panel_3.setPreferredSize(new Dimension(200, 10));
-		panel.add(panel_3, BorderLayout.CENTER);
-		panel_3.setLayout(new GridLayout(0, 1, 10, 10));
+		JPanel pInput = new JPanel();
+		pInput.setBackground(SystemColor.inactiveCaptionBorder);
+		pInput.setPreferredSize(new Dimension(200, 10));
+		pSection.add(pInput, BorderLayout.CENTER);
+		pInput.setLayout(new GridLayout(0, 1, 10, 10));
 		
-		textField = new JTextField();
-		textField.setColumns(10);
-		panel_3.add(textField);
+		tfNo = new JTextField();
+		tfNo.setColumns(10);
+		pInput.add(tfNo);
 		
-		textField_1 = new JTextField();
-		textField_1.setColumns(10);
-		panel_3.add(textField_1);
+		tfName = new JTextField();
+		tfName.setColumns(10);
+		pInput.add(tfName);
 		
-		textField_4 = new JTextField();
-		panel_3.add(textField_4);
-		textField_4.setColumns(10);
+		tfCeo = new JTextField();
+		pInput.add(tfCeo);
+		tfCeo.setColumns(10);
 		
-		textField_5 = new JTextField();
-		panel_3.add(textField_5);
-		textField_5.setColumns(10);
+		tfAdd = new JTextField();
+		pInput.add(tfAdd);
+		tfAdd.setColumns(10);
 		
-		textField_6 = new JTextField();
-		panel_3.add(textField_6);
-		textField_6.setColumns(10);
+		tfTell = new JTextField();
+		pInput.add(tfTell);
+		tfTell.setColumns(10);
 		
-		textField_2 = new JTextField();
-		textField_2.setColumns(10);
-		panel_3.add(textField_2);
+		tfId = new JTextField();
+		tfId.setColumns(10);
+		pInput.add(tfId);
 		
-		passwordField = new JPasswordField();
-		panel_3.add(passwordField);
+		passFd1 = new JPasswordField();
+		pInput.add(passFd1);
 		
-		JLabel label_7 = new JLabel("<html>6자리 이상 이어야 하며 영문과 숫자를 반드시 포함해야 합니다<br></html>");
-		label_7.setHorizontalAlignment(SwingConstants.CENTER);
-		label_7.setForeground(Color.BLUE);
-		label_7.setFont(new Font("굴림", Font.PLAIN, 11));
-		panel_3.add(label_7);
+		JLabel lblPassText = new JLabel("<html>6자리 이상 이어야 하며 영문과 숫자를 반드시 포함해야 합니다<br></html>");
+		lblPassText.setHorizontalAlignment(SwingConstants.CENTER);
+		lblPassText.setForeground(Color.BLUE);
+		lblPassText.setFont(new Font("굴림", Font.PLAIN, 11));
+		pInput.add(lblPassText);
 		
-		passwordField_1 = new JPasswordField();
-		panel_3.add(passwordField_1);
+		passFd2 = new JPasswordField();
+		pInput.add(passFd2);
 		
-		JLabel lblNewLabel_5 = new JLabel("비밀번호 일치");
-		lblNewLabel_5.setFont(new Font("굴림", Font.BOLD, 14));
-		lblNewLabel_5.setForeground(Color.RED);
-		lblNewLabel_5.setHorizontalAlignment(SwingConstants.CENTER);
-		panel_3.add(lblNewLabel_5);
+		lblPassword = new JLabel("비밀번호 일치");
+		lblPassword.setFont(new Font("굴림", Font.BOLD, 14));
+		lblPassword.setForeground(Color.RED);
+		lblPassword.setHorizontalAlignment(SwingConstants.CENTER);
+		pInput.add(lblPassword);
 		
-		textField_7 = new JTextField();
-		panel_3.add(textField_7);
-		textField_7.setColumns(10);
+		tfMail = new JTextField();
+		pInput.add(tfMail);
+		tfMail.setColumns(10);
 		
-		textField_3 = new JTextField();
-		panel_3.add(textField_3);
-		textField_3.setColumns(10);
+		tfSalesman = new JTextField();
+		pInput.add(tfSalesman);
+		tfSalesman.setColumns(10);
 		
-		JPanel panel_4 = new JPanel();
-		panel_4.setBackground(SystemColor.inactiveCaptionBorder);
-		panel_4.setPreferredSize(new Dimension(80, 10));
-		panel.add(panel_4, BorderLayout.EAST);
-		panel_4.setLayout(null);
+		JPanel pDoubleCheck = new JPanel();
+		pDoubleCheck.setBackground(SystemColor.inactiveCaptionBorder);
+		pDoubleCheck.setPreferredSize(new Dimension(80, 10));
+		pSection.add(pDoubleCheck, BorderLayout.EAST);
+		pDoubleCheck.setLayout(null);
 		
-		btnNewButton_2 = new JButton("<html>우편<br>번호</html>");
-		btnNewButton_2.setForeground(Color.BLACK);
-		btnNewButton_2.setFont(new Font("굴림", Font.BOLD, 12));
-		btnNewButton_2.setBounds(12, 112, 60, 39);
-		panel_4.add(btnNewButton_2);
+		zipCod = new JButton("<html>우편<br>번호</html>");
+		zipCod.addActionListener(this);
+		zipCod.setForeground(Color.BLACK);
+		zipCod.setFont(new Font("굴림", Font.BOLD, 12));
+		zipCod.setBounds(12, 112, 60, 39);
+		pDoubleCheck.add(zipCod);
 		
-		button = new JButton("<html>중복<br>확인</html>");
-		button.setForeground(Color.BLACK);
-		button.setFont(new Font("굴림", Font.BOLD, 12));
-		button.setBounds(12, 187, 60, 39);
-		panel_4.add(button);
+		doubleCheck = new JButton("<html>중복<br>확인</html>");
+		doubleCheck.addActionListener(this);
+		doubleCheck.setForeground(Color.BLACK);
+		doubleCheck.setFont(new Font("굴림", Font.BOLD, 12));
+		doubleCheck.setBounds(12, 187, 60, 39);
+		pDoubleCheck.add(doubleCheck);
 		
-		JPanel panel_1 = new JPanel();
-		panel_1.setBackground(SystemColor.inactiveCaptionBorder);
-		panel_1.setPreferredSize(new Dimension(10, 45));
-		add(panel_1, BorderLayout.SOUTH);
+		JPanel pBtns = new JPanel();
+		pBtns.setBackground(SystemColor.inactiveCaptionBorder);
+		pBtns.setPreferredSize(new Dimension(10, 45));
+		add(pBtns, BorderLayout.SOUTH);
 		
-		btnNewButton = new JButton("등록");
-		btnNewButton.setForeground(Color.BLACK);
-		btnNewButton.setFont(new Font("굴림", Font.BOLD, 12));
-		panel_1.add(btnNewButton);
+		btnAdd = new JButton("등록");
+		btnAdd.addActionListener(this);
+		btnAdd.setForeground(Color.BLACK);
+		btnAdd.setFont(new Font("굴림", Font.BOLD, 12));
+		pBtns.add(btnAdd);
 		
-		btnNewButton_1 = new JButton("취소");
-		btnNewButton_1.setForeground(Color.BLACK);
-		btnNewButton_1.setFont(new Font("굴림", Font.BOLD, 12));
-		panel_1.add(btnNewButton_1);
+		btnCancle = new JButton("취소");
+		btnCancle.addActionListener(this);
+		btnCancle.setForeground(Color.BLACK);
+		btnCancle.setFont(new Font("굴림", Font.BOLD, 12));
+		pBtns.add(btnCancle);
 	}
 	@Override
 	public void clearTf() {
-		// TODO Auto-generated method stub
+		tfNo.setText("");
+		tfName.setText("");
+		tfCeo.setText("");
+		tfAdd.setText("");
+		tfTell.setText("");
+		tfId.setText("");
+		passFd1.setText("");
+		passFd2.setText("");
+		lblPassword.setText("");
+		tfMail.setText("");
+		tfSalesman.setText("");
 		
+	}
+	public void actionPerformed(ActionEvent e) {
+		if (e.getSource() == doubleCheck) {
+			actionPerformedDoubleCheck(e);
+		}
+		if (e.getSource() == zipCod) {
+			actionPerformedZipCod(e);
+		}
+		if (e.getSource() == btnCancle) {
+			actionPerformedBtnCancle(e);
+		}
+		if (e.getSource() == btnAdd) {
+			actionPerformedBtnAdd(e);
+		}
+	}
+	
+	//등록
+	protected void actionPerformedBtnAdd(ActionEvent e) {
+	}
+	
+	//취소(초기화)
+	protected void actionPerformedBtnCancle(ActionEvent e) {
+		clearTf();
+	}
+	
+	//우편번호
+	protected void actionPerformedZipCod(ActionEvent e) {
+	}
+	
+	//중복확인
+	protected void actionPerformedDoubleCheck(ActionEvent e) {
 	}
 }

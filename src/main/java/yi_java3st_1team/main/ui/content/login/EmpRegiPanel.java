@@ -15,15 +15,24 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 @SuppressWarnings("serial")
-public class EmpRegiPanel<T> extends AbsRegiPanel<T> {
+public class EmpRegiPanel<T> extends AbsRegiPanel<T> implements ActionListener {
 	private JTextField tfNo;
 	private JTextField tfName;
 	private JTextField tfId;
 	private JPasswordField passFd1;
 	private JPasswordField passFd2;
 	private JTextField tfMail;
+	private JComboBox deptCombo;
+	private JComboBox titleCombo;
+	private JLabel lblPassword;
+	private JButton btnAdd;
+	private JButton btnCancle;
+	private JButton doubleCheck1;
+	private JButton doubleCheck2;
 
 	/**
 	 * Create the panel.
@@ -123,10 +132,10 @@ public class EmpRegiPanel<T> extends AbsRegiPanel<T> {
 		tfName.setColumns(10);
 		pInput.add(tfName);
 		
-		JComboBox deptCombo = new JComboBox();
+		deptCombo = new JComboBox();
 		pInput.add(deptCombo);
 		
-		JComboBox titleCombo = new JComboBox();
+		titleCombo = new JComboBox();
 		pInput.add(titleCombo);
 		
 		tfId = new JTextField();
@@ -145,7 +154,7 @@ public class EmpRegiPanel<T> extends AbsRegiPanel<T> {
 		passFd2 = new JPasswordField();
 		pInput.add(passFd2);
 		
-		JLabel lblPassword = new JLabel("비밀번호 일치");
+		lblPassword = new JLabel("비밀번호 일치");
 		lblPassword.setForeground(Color.RED);
 		lblPassword.setFont(new Font("굴림", Font.BOLD, 14));
 		lblPassword.setHorizontalAlignment(SwingConstants.CENTER);
@@ -161,12 +170,14 @@ public class EmpRegiPanel<T> extends AbsRegiPanel<T> {
 		pSection.add(pDoubleCheck, BorderLayout.EAST);
 		pDoubleCheck.setLayout(null);
 		
-		JButton doubleCheck1 = new JButton("<html>중복<br>확인</html>");
+		doubleCheck1 = new JButton("<html>중복<br>확인</html>");
+		doubleCheck1.addActionListener(this);
 		doubleCheck1.setFont(new Font("굴림", Font.BOLD, 12));
 		doubleCheck1.setBounds(12, 3, 60, 39);
 		pDoubleCheck.add(doubleCheck1);
 		
-		JButton doubleCheck2 = new JButton("<html>중복<br>확인</html>");
+		doubleCheck2 = new JButton("<html>중복<br>확인</html>");
+		doubleCheck2.addActionListener(this);
 		doubleCheck2.setFont(new Font("굴림", Font.BOLD, 12));
 		doubleCheck2.setBounds(12, 182, 60, 39);
 		pDoubleCheck.add(doubleCheck2);
@@ -176,17 +187,61 @@ public class EmpRegiPanel<T> extends AbsRegiPanel<T> {
 		pBtns.setPreferredSize(new Dimension(10, 45));
 		add(pBtns, BorderLayout.SOUTH);
 		
-		JButton btnAdd = new JButton("등록");
+		btnAdd = new JButton("등록");
+		btnAdd.addActionListener(this);
 		btnAdd.setFont(new Font("굴림", Font.BOLD, 12));
 		pBtns.add(btnAdd);
 		
-		JButton btnCancle = new JButton("취소");
+		btnCancle = new JButton("취소");
+		btnCancle.addActionListener(this);
 		btnCancle.setFont(new Font("굴림", Font.BOLD, 12));
 		pBtns.add(btnCancle);
 	}
 	@Override
 	public void clearTf() {
+		tfNo.setText("");
+		tfName.setText("");
+		deptCombo.setSelectedIndex(-1);
+		titleCombo.setSelectedIndex(-1);
+		tfId.setText("");
+		passFd1.setText("");
+		passFd2.setText("");
+		lblPassword.setText("");
+		tfMail.setText("");
+		
+		
 		
 	}
 
+	public void actionPerformed(ActionEvent e) {
+		if (e.getSource() == doubleCheck2) {
+			actionPerformedDoubleCheck2(e);
+		}
+		if (e.getSource() == doubleCheck1) {
+			actionPerformedDoubleCheck1(e);
+		}
+		if (e.getSource() == btnCancle) {
+			actionPerformedBtnCancle(e);
+		}
+		if (e.getSource() == btnAdd) {
+			actionPerformedBtnAdd(e);
+		}
+	}
+	
+	//등록버튼
+	protected void actionPerformedBtnAdd(ActionEvent e) {
+	}
+	
+	//취소버튼(초기화)
+	protected void actionPerformedBtnCancle(ActionEvent e) {
+		clearTf();
+	}
+	
+	//중복확인 : 사원번호
+	protected void actionPerformedDoubleCheck1(ActionEvent e) {
+	}
+	
+	//중복확인 : 아이디
+	protected void actionPerformedDoubleCheck2(ActionEvent e) {
+	}
 }
