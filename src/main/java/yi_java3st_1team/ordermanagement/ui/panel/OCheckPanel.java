@@ -10,13 +10,12 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.SwingConstants;
+import java.awt.Dimension;
 
 @SuppressWarnings("serial")
 public class OCheckPanel extends JPanel {
 
 	private JLabel lblO;
-	private JButton btnCheck;
-	private JButton btnGoMain;
 	private JPanel pList;
 	public OCheckPanel() {
 
@@ -35,27 +34,17 @@ public class OCheckPanel extends JPanel {
 		lblO = new JLabel("주문 확인 & 처리");
 		lblO.setFont(new Font("굴림", Font.BOLD, 38));
 		lblO.setHorizontalAlignment(SwingConstants.CENTER);
-		lblO.setBounds(101, 50, 407, 60);
+		lblO.setBounds(425, 25, 407, 60);
 		panel.add(lblO);
 		
-		btnCheck = new JButton("확 인");
-		btnCheck.setBounds(900, 60, 130, 30);
-		panel.add(btnCheck);
-		
-		btnGoMain = new JButton("메 인 화 면");
-		btnGoMain.setBounds(1080, 60, 130, 30);
-		panel.add(btnGoMain);
+		JPanel panel_1 = new JPanel();
+		panel_1.setBounds(81, 86, 1100, 119);
+		panel.add(panel_1);
 		
 		pList = new JPanel();
-		pList.setBounds(111, 130, 1100, 510);
+		pList.setBounds(81, 215, 1100, 427);
 		panel.add(pList);
 		pList.setLayout(new BorderLayout(0, 0));
-		
-		JScrollPane scrollPane = new JScrollPane();
-		pList.add(scrollPane, BorderLayout.CENTER);
-		
-		JPanel pCheckList = new JPanel();
-		scrollPane.setViewportView(pCheckList);
 		
 	}
 }

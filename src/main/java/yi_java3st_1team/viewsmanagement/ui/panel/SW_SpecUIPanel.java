@@ -13,9 +13,11 @@ import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
+import yi_java3st_1team.viewsmanagement.ui.list.SWTotalTblPanel;
+import yi_java3st_1team.viewsmanagement.ui.list.SpecTblPanel;
 
 @SuppressWarnings("serial")
-public class SW_SpecPanel extends JPanel {
+public class SW_SpecUIPanel extends JPanel {
 	private JPanel pTitle;
 	private JTextField tfLTotal;
 	private JTextField tfRTotal;
@@ -23,7 +25,7 @@ public class SW_SpecPanel extends JPanel {
 	/**
 	 * Create the panel.
 	 */
-	public SW_SpecPanel() {
+	public SW_SpecUIPanel() {
 
 		initialize();
 	}
@@ -69,7 +71,7 @@ public class SW_SpecPanel extends JPanel {
 		pSW.add(pLeftList, BorderLayout.CENTER);
 		pLeftList.setLayout(new GridLayout(0, 1, 0, 0));
 		
-		JPanel pSWList = new JPanel();
+		SWTotalTblPanel pSWList = new SWTotalTblPanel();
 		pSWList.setBackground(SystemColor.inactiveCaptionBorder);
 		pLeftList.add(pSWList);
 		
@@ -87,6 +89,7 @@ public class SW_SpecPanel extends JPanel {
 		pLeftResult.add(lblLTotal);
 		
 		tfLTotal = new JTextField();
+		tfLTotal.setFont(new Font("굴림", Font.PLAIN, 16));
 		tfLTotal.setPreferredSize(new Dimension(200, 30));
 		pLeftResult.add(tfLTotal);
 		tfLTotal.setColumns(15);
@@ -115,7 +118,7 @@ public class SW_SpecPanel extends JPanel {
 		pRight.add(pRightList, BorderLayout.CENTER);
 		pRightList.setLayout(new GridLayout(0, 1, 0, 0));
 		
-		JPanel pSpecList = new JPanel();
+		SpecTblPanel pSpecList = new SpecTblPanel();
 		pSpecList.setBackground(SystemColor.inactiveCaptionBorder);
 		pRightList.add(pSpecList);
 		
@@ -133,6 +136,7 @@ public class SW_SpecPanel extends JPanel {
 		pRightResult.add(lblRTotal);
 		
 		tfRTotal = new JTextField();
+		tfRTotal.setFont(new Font("굴림", Font.PLAIN, 16));
 		tfRTotal.setPreferredSize(new Dimension(200, 30));
 		tfRTotal.setColumns(15);
 		pRightResult.add(tfRTotal);
