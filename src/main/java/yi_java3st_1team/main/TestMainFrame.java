@@ -1,4 +1,4 @@
-package yi_java3st_1team.test;
+package yi_java3st_1team.main;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -9,15 +9,12 @@ import java.awt.SystemColor;
 
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
-import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
-
 import yi_java3st_1team.clientmanagement.ui.CMMainPanel;
-import yi_java3st_1team.main.ui.LoginMain01Panel;
 
 @SuppressWarnings("serial")
 public class TestMainFrame extends JFrame {
@@ -28,7 +25,7 @@ public class TestMainFrame extends JFrame {
 	private JPanel pFooter;
 	private JLabel lblLogo;
 	private JLabel lblCopy;
-	private CMMainPanelTest pContents;
+	private CMMainPanel pContents;
 
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -77,8 +74,7 @@ public class TestMainFrame extends JFrame {
 		contentPane.add(pSection, BorderLayout.CENTER);
 		pSection.setLayout(new GridLayout(0, 1, 10, 10));
 		
-		pContents = new CMMainPanelTest();
-		pContents.setBackground(SystemColor.inactiveCaption);
+		pContents = new CMMainPanel();
 		pSection.add(pContents);
 		
 		

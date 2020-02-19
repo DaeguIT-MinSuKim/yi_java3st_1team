@@ -10,6 +10,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
+import java.awt.Color;
+import javax.swing.ImageIcon;
 
 @SuppressWarnings("serial")
 public class CRegisterPanel extends JPanel {
@@ -47,44 +49,51 @@ public class CRegisterPanel extends JPanel {
 		panel.setLayout(null);
 		
 		lblSC = new JLabel("고 객 사 관 리");
-		lblSC.setFont(new Font("굴림", Font.BOLD, 40));
+		lblSC.setForeground(Color.BLACK);
+		lblSC.setFont(new Font("휴먼둥근헤드라인", Font.PLAIN, 40));
 		lblSC.setHorizontalAlignment(SwingConstants.CENTER);
-		lblSC.setBounds(101, 52, 407, 54);
+		lblSC.setBounds(0, 52, 635, 54);
 		panel.add(lblSC);
 		
 		lblCNo = new JLabel("고 객 번 호");
-		lblCNo.setFont(new Font("굴림", Font.BOLD, 18));
+		lblCNo.setForeground(Color.BLACK);
+		lblCNo.setFont(new Font("휴먼둥근헤드라인", Font.BOLD, 16));
 		lblCNo.setHorizontalAlignment(SwingConstants.CENTER);
 		lblCNo.setBounds(66, 140, 120, 30);
 		panel.add(lblCNo);
 		
 		lblCName = new JLabel("상   호   명");
+		lblCName.setForeground(Color.BLACK);
 		lblCName.setHorizontalAlignment(SwingConstants.CENTER);
-		lblCName.setFont(new Font("굴림", Font.BOLD, 18));
+		lblCName.setFont(new Font("휴먼둥근헤드라인", Font.PLAIN, 16));
 		lblCName.setBounds(66, 210, 120, 30);
 		panel.add(lblCName);
 		
 		lblCCEO = new JLabel("대   표   명");
+		lblCCEO.setForeground(Color.BLACK);
 		lblCCEO.setHorizontalAlignment(SwingConstants.CENTER);
-		lblCCEO.setFont(new Font("굴림", Font.BOLD, 18));
+		lblCCEO.setFont(new Font("휴먼둥근헤드라인", Font.PLAIN, 16));
 		lblCCEO.setBounds(66, 280, 120, 30);
 		panel.add(lblCCEO);
 		
 		lblCAddress = new JLabel("주        소");
+		lblCAddress.setForeground(Color.BLACK);
 		lblCAddress.setHorizontalAlignment(SwingConstants.CENTER);
-		lblCAddress.setFont(new Font("굴림", Font.BOLD, 18));
+		lblCAddress.setFont(new Font("휴먼둥근헤드라인", Font.PLAIN, 16));
 		lblCAddress.setBounds(66, 350, 120, 30);
 		panel.add(lblCAddress);
 		
 		lblCTel = new JLabel("전 화 번 호");
+		lblCTel.setForeground(Color.BLACK);
 		lblCTel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblCTel.setFont(new Font("굴림", Font.BOLD, 18));
+		lblCTel.setFont(new Font("휴먼둥근헤드라인", Font.PLAIN, 16));
 		lblCTel.setBounds(66, 420, 120, 30);
 		panel.add(lblCTel);
 		
 		lblStaff = new JLabel("담 당 직 원");
+		lblStaff.setForeground(Color.BLACK);
 		lblStaff.setHorizontalAlignment(SwingConstants.CENTER);
-		lblStaff.setFont(new Font("굴림", Font.BOLD, 18));
+		lblStaff.setFont(new Font("휴먼둥근헤드라인", Font.PLAIN, 16));
 		lblStaff.setBounds(66, 490, 120, 30);
 		panel.add(lblStaff);
 		
@@ -118,25 +127,36 @@ public class CRegisterPanel extends JPanel {
 		tfStaff.setBounds(230, 490, 200, 30);
 		panel.add(tfStaff);
 		
-		btnUpdate = new JButton("수 정");
-		btnUpdate.setBounds(60, 580, 130, 30);
+		btnUpdate = new JButton("");
+		btnUpdate.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\test\\수정.png"));
+		btnUpdate.setBounds(66, 580, 100, 30);
 		panel.add(btnUpdate);
 		
-		btnDel = new JButton("삭 제");
-		btnDel.setBounds(240, 580, 130, 30);
+		btnDel = new JButton("");
+		btnDel.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\test\\삭제.png"));
+		btnDel.setBounds(270, 580, 100, 30);
 		panel.add(btnDel);
 		
-		btnGoMain = new JButton("메 인 화 면");
-		btnGoMain.setBounds(420, 580, 130, 30);
+		btnGoMain = new JButton("");
+		btnGoMain.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\test\\메인화면.png"));
+		btnGoMain.setBounds(465, 580, 100, 30);
 		panel.add(btnGoMain);
 		
-		btnDplCheck = new JButton("중 복 확 인");
-		btnDplCheck.setBounds(454, 210, 130, 30);
+		btnDplCheck = new JButton("");
+		btnDplCheck.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\test\\중복확인.png"));
+		btnDplCheck.setBounds(465, 210, 100, 30);
 		panel.add(btnDplCheck);
 		
-		btnPostNum = new JButton("우 편 번 호");
-		btnPostNum.setBounds(454, 350, 130, 30);
+		btnPostNum = new JButton("");
+		btnPostNum.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\test\\우편번호.png"));
+		btnPostNum.setBounds(465, 350, 100, 30);
 		panel.add(btnPostNum);
+		
+		JLabel label = new JLabel("");
+		label.setOpaque(true);
+		label.setBackground(Color.WHITE);
+		label.setBounds(54, 116, 525, 430);
+		panel.add(label);
 		
 	}
 }

@@ -12,11 +12,9 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
-import java.awt.Color;
-import javax.swing.ImageIcon;
 
 @SuppressWarnings("serial")
-public class ORegisterPanel extends JPanel {
+public class ClientORegisterPanel extends JPanel {
 
 	private JLabel lblO;
 	private JLabel lblONo;
@@ -33,8 +31,7 @@ public class ORegisterPanel extends JPanel {
 	private JButton btnAdd;
 	private JButton btnUpdate;
 	private JButton btnGoMain;
-	private JLabel label;
-	public ORegisterPanel() {
+	public ClientORegisterPanel() {
 
 		initialize();
 	}
@@ -48,51 +45,46 @@ public class ORegisterPanel extends JPanel {
 		panel.setBackground(SystemColor.inactiveCaptionBorder);
 		panel.setLayout(null);
 		
-		lblO = new JLabel("소프트웨어 주문 등록");
-		lblO.setForeground(Color.BLACK);
-		lblO.setFont(new Font("휴먼둥근헤드라인", Font.PLAIN, 40));
+		lblO = new JLabel("주문 등록");
+		lblO.setFont(new Font("굴림", Font.BOLD, 38));
 		lblO.setHorizontalAlignment(SwingConstants.CENTER);
-		lblO.setBounds(0, 52, 635, 54);
+		lblO.setBounds(101, 52, 407, 54);
 		panel.add(lblO);
 		
 		lblONo = new JLabel("주 문 번 호");
-		lblONo.setFont(new Font("휴먼둥근헤드라인", Font.PLAIN, 16));
+		lblONo.setFont(new Font("굴림", Font.BOLD, 18));
 		lblONo.setHorizontalAlignment(SwingConstants.CENTER);
 		lblONo.setBounds(66, 140, 120, 30);
 		panel.add(lblONo);
 		
 		lblODate = new JLabel("주 문 일 자");
 		lblODate.setHorizontalAlignment(SwingConstants.CENTER);
-		lblODate.setFont(new Font("휴먼둥근헤드라인", Font.PLAIN, 16));
+		lblODate.setFont(new Font("굴림", Font.BOLD, 18));
 		lblODate.setBounds(66, 190, 120, 30);
 		panel.add(lblODate);
 		
 		lblOCName = new JLabel("고객상호명");
-		lblOCName.setForeground(Color.BLACK);
 		lblOCName.setHorizontalAlignment(SwingConstants.CENTER);
-		lblOCName.setFont(new Font("휴먼둥근헤드라인", Font.PLAIN, 16));
+		lblOCName.setFont(new Font("굴림", Font.BOLD, 18));
 		lblOCName.setBounds(66, 240, 120, 30);
 		panel.add(lblOCName);
 		
 		lblOPName = new JLabel("품   목   명");
-		lblOPName.setForeground(Color.BLACK);
 		lblOPName.setHorizontalAlignment(SwingConstants.CENTER);
-		lblOPName.setFont(new Font("휴먼둥근헤드라인", Font.PLAIN, 16));
+		lblOPName.setFont(new Font("굴림", Font.BOLD, 18));
 		lblOPName.setBounds(66, 290, 120, 30);
 		panel.add(lblOPName);
 		
 		lblOQty = new JLabel("주 문 수 량");
-		lblOQty.setForeground(Color.BLACK);
 		lblOQty.setHorizontalAlignment(SwingConstants.CENTER);
-		lblOQty.setFont(new Font("휴먼둥근헤드라인", Font.PLAIN, 16));
+		lblOQty.setFont(new Font("굴림", Font.BOLD, 18));
 		lblOQty.setBounds(66, 340, 120, 30);
 		panel.add(lblOQty);
 		
-		lblOWant = new JLabel("고 객 요 구 사 항");
-		lblOWant.setForeground(Color.BLACK);
+		lblOWant = new JLabel("요 구 사 항");
 		lblOWant.setHorizontalAlignment(SwingConstants.CENTER);
-		lblOWant.setFont(new Font("휴먼둥근헤드라인", Font.PLAIN, 16));
-		lblOWant.setBounds(66, 390, 160, 30);
+		lblOWant.setFont(new Font("굴림", Font.BOLD, 18));
+		lblOWant.setBounds(66, 390, 120, 30);
 		panel.add(lblOWant);
 		
 		tfONo = new JTextField();
@@ -120,18 +112,15 @@ public class ORegisterPanel extends JPanel {
 		tfOQty.setBounds(230, 340, 200, 30);
 		panel.add(tfOQty);
 		
-		btnAdd = new JButton("");
-		btnAdd.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\test\\등록.png"));
-		btnAdd.setBounds(66, 580, 100, 30);
+		btnAdd = new JButton("주문하기");
+		btnAdd.setBounds(60, 580, 130, 30);
 		panel.add(btnAdd);
 		
-		btnUpdate = new JButton("");
-		btnUpdate.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\test\\삭제.png"));
-		btnUpdate.setBounds(270, 580, 100, 30);
+		btnUpdate = new JButton("초 기 화");
+		btnUpdate.setBounds(240, 580, 130, 30);
 		panel.add(btnUpdate);
 		
-		btnGoMain = new JButton("");
-		btnGoMain.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\test\\메인화면.png"));
+		btnGoMain = new JButton("메 인 화 면");
 		btnGoMain.setBounds(420, 580, 130, 30);
 		panel.add(btnGoMain);
 		
@@ -140,11 +129,9 @@ public class ORegisterPanel extends JPanel {
 		taOWant.setBounds(66, 440, 364, 100);
 		panel.add(taOWant);
 		
-		label = new JLabel("");
-		label.setOpaque(true);
-		label.setBackground(Color.WHITE);
-		label.setBounds(54, 116, 525, 440);
-		panel.add(label);
+		JButton btnQtyCheck = new JButton("재고확인");
+		btnQtyCheck.setBounds(458, 290, 130, 30);
+		panel.add(btnQtyCheck);
 		
 	}
 }

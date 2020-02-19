@@ -12,6 +12,8 @@ import yi_java3st_1team.clientmanagement.ui.list.CListPanel;
 import yi_java3st_1team.clientmanagement.ui.list.SCListPanel;
 import yi_java3st_1team.clientmanagement.ui.panel.CRegisterPanel;
 import yi_java3st_1team.clientmanagement.ui.panel.SCRegisterPanel;
+import java.awt.Color;
+import java.awt.Font;
 
 @SuppressWarnings("serial")
 public class CMContent extends JPanel {
@@ -33,6 +35,8 @@ public class CMContent extends JPanel {
 		setLayout(new BorderLayout(0, 0));
 		
 		tpClientManagement = new JTabbedPane(JTabbedPane.TOP);
+		tpClientManagement.setFont(new Font("맑은 고딕", Font.BOLD, 18));
+		tpClientManagement.setForeground(Color.BLACK);
 		tpClientManagement.setBackground(SystemColor.inactiveCaptionBorder);
 		add(tpClientManagement, BorderLayout.CENTER);
 		

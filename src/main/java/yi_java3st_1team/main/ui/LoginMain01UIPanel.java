@@ -13,15 +13,29 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
+import yi_java3st_1team.main.ui.content.EmpRegiPanel;
 import yi_java3st_1team.main.ui.content.Login01Panel;
 import yi_java3st_1team.main.ui.content.LogoImg01Panel;
 import yi_java3st_1team.main.ui.content.LogoImg02Panel;
 import yi_java3st_1team.main.ui.content.MainBtns01Panel;
+import yi_java3st_1team.main.ui.content.SearchPanel;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+
+import java.awt.Font;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 @SuppressWarnings("serial")
-public class LoginMain01Panel extends JPanel {
+public class LoginMain01UIPanel extends JPanel implements ActionListener {
+	private JButton btnLogin;
+	private JButton btnRegi;
+	private JButton btnSearch;
+	private JFrame regiFrame;
+	private JFrame searchFrame;
 
-	public LoginMain01Panel() {
+	public LoginMain01UIPanel() {
 
 		initialize();
 	}
@@ -39,6 +53,29 @@ public class LoginMain01Panel extends JPanel {
 		Login01Panel pLogin = new Login01Panel();
 		pLogin.setPreferredSize(new Dimension(350, 10));
 		pStop.add(pLogin, BorderLayout.WEST);
+		
+		btnLogin = new JButton("LOGIN");
+		btnLogin.addActionListener(this);
+		btnLogin.setForeground(Color.BLACK);
+		btnLogin.setFont(new Font("Arial", Font.BOLD, 17));
+		btnLogin.setFocusable(false);
+		btnLogin.setBounds(20, 245, 120, 45);
+		pLogin.add(btnLogin);
+		
+		btnRegi = new JButton("REGISTER");
+		btnRegi.addActionListener(this);
+		btnRegi.setForeground(Color.BLACK);
+		btnRegi.setFont(new Font("Arial", Font.BOLD, 17));
+		btnRegi.setFocusable(false);
+		btnRegi.setBounds(147, 245, 120, 45);
+		pLogin.add(btnRegi);
+		
+		btnSearch = new JButton("");
+		btnSearch.addActionListener(this);
+		btnSearch.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\loginMain\\searchBtn.png"));
+		btnSearch.setFocusable(false);
+		btnSearch.setBounds(273, 245, 55, 45);
+		pLogin.add(btnSearch);
 		
 		LogoImg02Panel pImg01 = new LogoImg02Panel();
 		pImg01.setBackground(SystemColor.inactiveCaptionBorder);
@@ -73,5 +110,43 @@ public class LoginMain01Panel extends JPanel {
 		pBtns.setBackground(SystemColor.inactiveCaption);
 		pSbot.add(pBtns, BorderLayout.CENTER);
 	}
-
+	public void actionPerformed(ActionEvent e) {
+		if (e.getSource() == btnSearch) {
+			actionPerformedBtnSearch(e);
+		}
+		if (e.getSource() == btnRegi) {
+			actionPerformedBtnRegi(e);
+		}
+		if (e.getSource() == btnLogin) {
+			actionPerformedBtnLogin(e);
+		}
+	}
+	
+	//로그인
+	protected void actionPerformedBtnLogin(ActionEvent e) {
+	}
+	
+	//회원가입
+	protected void actionPerformedBtnRegi(ActionEvent e) {
+		regiFrame = new JFrame();
+		regiFrame.setTitle("회원가입");
+		regiFrame.setSize(500, 650);
+		regiFrame.setResizable(false);
+		regiFrame.setLocationRelativeTo(null); // 화면중앙에 프레임 띄우기
+		EmpRegiPanel empr = new EmpRegiPanel();
+		regiFrame.getContentPane().add(empr);
+		regiFrame.setVisible(true);
+	}
+	
+	//찾기
+	protected void actionPerformedBtnSearch(ActionEvent e) {
+		searchFrame = new JFrame();
+		searchFrame.setTitle("아이디 & 비밀번호 찾기");
+		searchFrame.setSize(500, 500);
+		searchFrame.setResizable(false);
+		searchFrame.setLocationRelativeTo(null);
+		SearchPanel sp = new SearchPanel();
+		searchFrame.getContentPane().add(sp);
+		searchFrame.setVisible(true);
+	}
 }
