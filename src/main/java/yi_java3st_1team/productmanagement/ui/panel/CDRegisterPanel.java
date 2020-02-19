@@ -10,6 +10,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
+import java.awt.Color;
+import javax.swing.ImageIcon;
 
 @SuppressWarnings("serial")
 public class CDRegisterPanel extends JPanel {
@@ -29,6 +31,7 @@ public class CDRegisterPanel extends JPanel {
 	private JButton btnUpdate;
 	private JButton btnDel;
 	private JButton btnGoMain;
+	private JLabel label;
 
 	public CDRegisterPanel() {
 		initialize();
@@ -45,38 +48,44 @@ public class CDRegisterPanel extends JPanel {
 		panel.setLayout(null);
 		
 		lblCD = new JLabel("출고 이력 관리");
-		lblCD.setFont(new Font("굴림", Font.BOLD, 40));
+		lblCD.setForeground(Color.BLACK);
+		lblCD.setFont(new Font("휴먼둥근헤드라인", Font.PLAIN, 40));
 		lblCD.setHorizontalAlignment(SwingConstants.CENTER);
-		lblCD.setBounds(101, 52, 407, 54);
+		lblCD.setBounds(0, 52, 635, 54);
 		panel.add(lblCD);
 		
 		lblCDNo = new JLabel("출 고 번 호");
-		lblCDNo.setFont(new Font("굴림", Font.BOLD, 18));
+		lblCDNo.setForeground(Color.BLACK);
+		lblCDNo.setFont(new Font("휴먼둥근헤드라인", Font.PLAIN, 16));
 		lblCDNo.setHorizontalAlignment(SwingConstants.CENTER);
 		lblCDNo.setBounds(66, 140, 120, 30);
 		panel.add(lblCDNo);
 		
 		lblCName = new JLabel("고객상호명");
+		lblCName.setForeground(Color.BLACK);
 		lblCName.setHorizontalAlignment(SwingConstants.CENTER);
-		lblCName.setFont(new Font("굴림", Font.BOLD, 18));
+		lblCName.setFont(new Font("휴먼둥근헤드라인", Font.PLAIN, 16));
 		lblCName.setBounds(66, 228, 120, 30);
 		panel.add(lblCName);
 		
 		lblCDQty = new JLabel("출 고 수 량");
+		lblCDQty.setForeground(Color.BLACK);
 		lblCDQty.setHorizontalAlignment(SwingConstants.CENTER);
-		lblCDQty.setFont(new Font("굴림", Font.BOLD, 18));
+		lblCDQty.setFont(new Font("휴먼둥근헤드라인", Font.PLAIN, 16));
 		lblCDQty.setBounds(66, 404, 120, 30);
 		panel.add(lblCDQty);
 		
 		lblCDPName = new JLabel("품  목  명");
+		lblCDPName.setForeground(Color.BLACK);
 		lblCDPName.setHorizontalAlignment(SwingConstants.CENTER);
-		lblCDPName.setFont(new Font("굴림", Font.BOLD, 18));
+		lblCDPName.setFont(new Font("휴먼둥근헤드라인", Font.PLAIN, 16));
 		lblCDPName.setBounds(66, 316, 120, 30);
 		panel.add(lblCDPName);
 		
 		lblCDDate = new JLabel("출 고 일 자");
+		lblCDDate.setForeground(Color.BLACK);
 		lblCDDate.setHorizontalAlignment(SwingConstants.CENTER);
-		lblCDDate.setFont(new Font("굴림", Font.BOLD, 18));
+		lblCDDate.setFont(new Font("휴먼둥근헤드라인", Font.PLAIN, 16));
 		lblCDDate.setBounds(66, 492, 120, 30);
 		panel.add(lblCDDate);
 		
@@ -105,21 +114,31 @@ public class CDRegisterPanel extends JPanel {
 		tfSCDDate.setBounds(230, 492, 200, 30);
 		panel.add(tfSCDDate);
 		
-		btnAdd = new JButton("등 록");
-		btnAdd.setBounds(20, 580, 130, 30);
+		btnAdd = new JButton("");
+		btnAdd.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\btns\\등록.png"));
+		btnAdd.setBounds(66, 580, 100, 30);
 		panel.add(btnAdd);
 		
-		btnUpdate = new JButton("수 정");
-		btnUpdate.setBounds(170, 580, 130, 30);
+		btnUpdate = new JButton("");
+		btnUpdate.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\btns\\수정.png"));
+		btnUpdate.setBounds(198, 580, 100, 30);
 		panel.add(btnUpdate);
 		
-		btnDel = new JButton("삭 제");
-		btnDel.setBounds(320, 580, 130, 30);
+		btnDel = new JButton("");
+		btnDel.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\btns\\삭제.png"));
+		btnDel.setBounds(330, 580, 100, 30);
 		panel.add(btnDel);
 		
-		btnGoMain = new JButton("메 인 화 면");
-		btnGoMain.setBounds(470, 580, 130, 30);
+		btnGoMain = new JButton("");
+		btnGoMain.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\btns\\메인화면.png"));
+		btnGoMain.setBounds(465, 580, 100, 30);
 		panel.add(btnGoMain);
+		
+		label = new JLabel("");
+		label.setOpaque(true);
+		label.setBackground(Color.WHITE);
+		label.setBounds(54, 116, 525, 430);
+		panel.add(label);
 		
 	}
 

@@ -51,42 +51,49 @@ public class SCRegisterPanel extends JPanel {
 		panel.setLayout(null);
 		
 		lblSC = new JLabel("공급회사 등록");
+		lblSC.setForeground(Color.BLACK);
 		lblSC.setFont(new Font("휴먼둥근헤드라인", Font.BOLD, 40));
 		lblSC.setHorizontalAlignment(SwingConstants.CENTER);
 		lblSC.setBounds(0, 52, 635, 54);
 		panel.add(lblSC);
 		
 		lblSCNo = new JLabel("회 사 번 호");
+		lblSCNo.setForeground(Color.BLACK);
 		lblSCNo.setFont(new Font("휴먼둥근헤드라인", Font.PLAIN, 16));
 		lblSCNo.setHorizontalAlignment(SwingConstants.CENTER);
 		lblSCNo.setBounds(66, 140, 120, 30);
 		panel.add(lblSCNo);
 		
 		lblSCName = new JLabel("회  사  명");
+		lblSCName.setForeground(Color.BLACK);
 		lblSCName.setHorizontalAlignment(SwingConstants.CENTER);
 		lblSCName.setFont(new Font("휴먼둥근헤드라인", Font.PLAIN, 16));
 		lblSCName.setBounds(66, 210, 120, 30);
 		panel.add(lblSCName);
 		
 		lblSCBln = new JLabel("사업자등록번호");
+		lblSCBln.setForeground(Color.BLACK);
 		lblSCBln.setHorizontalAlignment(SwingConstants.CENTER);
 		lblSCBln.setFont(new Font("휴먼둥근헤드라인", Font.PLAIN, 16));
 		lblSCBln.setBounds(66, 280, 120, 30);
 		panel.add(lblSCBln);
 		
 		lblSCAddress = new JLabel("주       소");
+		lblSCAddress.setForeground(Color.BLACK);
 		lblSCAddress.setHorizontalAlignment(SwingConstants.CENTER);
 		lblSCAddress.setFont(new Font("휴먼둥근헤드라인", Font.PLAIN, 16));
 		lblSCAddress.setBounds(66, 350, 120, 30);
 		panel.add(lblSCAddress);
 		
 		lblSCTel = new JLabel("전 화 번 호");
+		lblSCTel.setForeground(Color.BLACK);
 		lblSCTel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblSCTel.setFont(new Font("휴먼둥근헤드라인", Font.PLAIN, 16));
 		lblSCTel.setBounds(66, 420, 120, 30);
 		panel.add(lblSCTel);
 		
 		lblSCFax = new JLabel("FAX 번 호");
+		lblSCFax.setForeground(Color.BLACK);
 		lblSCFax.setHorizontalAlignment(SwingConstants.CENTER);
 		lblSCFax.setFont(new Font("휴먼둥근헤드라인", Font.PLAIN, 16));
 		lblSCFax.setBounds(66, 490, 120, 30);
@@ -123,32 +130,32 @@ public class SCRegisterPanel extends JPanel {
 		panel.add(tfSCFax);
 		
 		btnAdd = new JButton("");
-		btnAdd.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\test\\등록.png"));
+		btnAdd.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\btns\\등록.png"));
 		btnAdd.setBounds(66, 580, 100, 30);
 		panel.add(btnAdd);
 		
 		btnUpdate = new JButton("");
-		btnUpdate.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\test\\수정.png"));
+		btnUpdate.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\btns\\수정.png"));
 		btnUpdate.setBounds(198, 580, 100, 30);
 		panel.add(btnUpdate);
 		
 		btnDel = new JButton("");
-		btnDel.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\test\\삭제.png"));
+		btnDel.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\btns\\삭제.png"));
 		btnDel.setBounds(330, 580, 100, 30);
 		panel.add(btnDel);
 		
 		btnGoMain = new JButton("");
-		btnGoMain.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\test\\메인화면.png"));
+		btnGoMain.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\btns\\메인화면.png"));
 		btnGoMain.setBounds(465, 580, 100, 30);
 		panel.add(btnGoMain);
 		
 		btnDplCheck = new JButton("");
-		btnDplCheck.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\test\\중복확인.png"));
+		btnDplCheck.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\btns\\중복확인.png"));
 		btnDplCheck.setBounds(465, 210, 100, 30);
 		panel.add(btnDplCheck);
 		
 		btnPostNum = new JButton("");
-		btnPostNum.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\test\\우편번호.png"));
+		btnPostNum.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\btns\\우편번호.png"));
 		btnPostNum.setBounds(465, 350, 100, 30);
 		panel.add(btnPostNum);
 		

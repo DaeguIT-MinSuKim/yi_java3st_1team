@@ -65,6 +65,7 @@ public class SWSaleUIPanel extends JPanel {
 		pList.setLayout(new GridLayout(1, 0, 0, 0));
 		
 		SWSaleTblPanel pSWSaleList = new SWSaleTblPanel();
+		pSWSaleList.setBackground(SystemColor.inactiveCaptionBorder);
 		pList.add(pSWSaleList);
 		
 		JPanel pAmount = new JPanel();

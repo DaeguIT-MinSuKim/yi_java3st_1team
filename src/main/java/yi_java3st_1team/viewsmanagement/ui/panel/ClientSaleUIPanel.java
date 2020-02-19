@@ -65,6 +65,7 @@ public class ClientSaleUIPanel extends JPanel {
 		pList.setLayout(new GridLayout(1, 0, 0, 0));
 		
 		ClientSaleTblPanel pClientList = new ClientSaleTblPanel();
+		pClientList.setBackground(SystemColor.inactiveCaptionBorder);
 		pList.add(pClientList);
 		
 		JPanel pAmount = new JPanel();

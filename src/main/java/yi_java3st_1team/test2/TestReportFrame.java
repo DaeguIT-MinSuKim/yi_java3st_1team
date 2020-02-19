@@ -1,4 +1,4 @@
-package yi_java3st_1team.main;
+package yi_java3st_1team.test2;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -9,18 +9,14 @@ import java.awt.SystemColor;
 
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
-import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
-import yi_java3st_1team.clientmanagement.ui.CMMainPanel;
-import yi_java3st_1team.main.ui.ClientMainUIPanel;
-
 @SuppressWarnings("serial")
-public class ClientMainFrame extends JFrame {
+public class TestReportFrame extends JFrame {
 
 	private JPanel contentPane; //내용물,목차+판유리 - 컴포넌트(구성요소,부품)를 부착
 	private JPanel pHeader;
@@ -28,13 +24,13 @@ public class ClientMainFrame extends JFrame {
 	private JPanel pFooter;
 	private JLabel lblLogo;
 	private JLabel lblCopy;
-	private ClientMainUIPanel pContents;
+	private ReportMainPanelTest pContents;
 
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					ClientMainFrame frame = new ClientMainFrame();
+					TestReportFrame frame = new TestReportFrame();
 					frame.setVisible(true); //프레임이 출력되도록 지시
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -43,11 +39,11 @@ public class ClientMainFrame extends JFrame {
 		});
 	}
 
-	public ClientMainFrame() {
+	public TestReportFrame() {
 		initialize(); //초기내용 설정
 	}
 	private void initialize() {
-		setTitle("[고객용] S/W주문관리 프로그램"); //타이틀
+		setTitle("[관리자용] S/W판매관리 프로그램"); //타이틀
 		setSize(1550, 900); // 프레임크기(가로:1150 / 세로:760)
 		setResizable(false);
 		setLocationRelativeTo(null);
@@ -77,7 +73,7 @@ public class ClientMainFrame extends JFrame {
 		contentPane.add(pSection, BorderLayout.CENTER);
 		pSection.setLayout(new GridLayout(0, 1, 10, 10));
 		
-		pContents = new ClientMainUIPanel();
+		pContents = new ReportMainPanelTest();
 		pContents.setBackground(SystemColor.inactiveCaption);
 		pSection.add(pContents);
 		

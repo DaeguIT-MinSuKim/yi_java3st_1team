@@ -1,4 +1,4 @@
-package yi_java3st_1team.main.ui.content;
+package yi_java3st_1team.main.ui.content.login;
 
 import java.awt.Dimension;
 import java.awt.Font;
@@ -14,14 +14,14 @@ import java.awt.event.ActionEvent;
 import javax.swing.JPasswordField;
 
 @SuppressWarnings("serial")
-public class Login01Panel extends JPanel implements ActionListener {
+public class LoginPanel extends JPanel implements ActionListener {
 	private JTextField tfId;
 	private JPasswordField pfPasswd;
 
 	/**
 	 * Create the panel.
 	 */
-	public Login01Panel() {
+	public LoginPanel() {
 
 		initialize();
 	}

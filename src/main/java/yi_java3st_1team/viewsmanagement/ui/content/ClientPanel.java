@@ -25,7 +25,7 @@ public class ClientPanel extends JPanel {
 		setSize(new Dimension(750, 40));
 		
 		JSpinner spYear = new JSpinner();
-		spYear.setModel(new SpinnerNumberModel(new Integer(2020), null, null, new Integer(1)));
+		spYear.setModel(new SpinnerNumberModel(new Integer(2020), new Integer(2020), null, new Integer(1)));
 		spYear.setPreferredSize(new Dimension(120, 30));
 		spYear.setFont(new Font("굴림", Font.PLAIN, 18));
 		add(spYear);
@@ -37,7 +37,7 @@ public class ClientPanel extends JPanel {
 		add(lblYear);
 		
 		JSpinner spMonth = new JSpinner();
-		spMonth.setModel(new SpinnerNumberModel(new Integer(2), null, null, new Integer(1)));
+		spMonth.setModel(new SpinnerNumberModel(2, 1, 12, 1));
 		spMonth.setPreferredSize(new Dimension(120, 30));
 		spMonth.setFont(new Font("굴림", Font.PLAIN, 18));
 		add(spMonth);

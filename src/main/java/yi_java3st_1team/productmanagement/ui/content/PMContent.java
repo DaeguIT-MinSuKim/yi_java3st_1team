@@ -14,6 +14,8 @@ import yi_java3st_1team.productmanagement.ui.panel.SCSORegisterPanel;
 import yi_java3st_1team.productmanagement.ui.list.SCSOListPanel;
 import yi_java3st_1team.productmanagement.ui.panel.CDRegisterPanel;
 import yi_java3st_1team.productmanagement.ui.list.CDListPanel;
+import java.awt.Font;
+import java.awt.Color;
 
 @SuppressWarnings("serial")
 public class PMContent extends JPanel {
@@ -38,6 +40,8 @@ public class PMContent extends JPanel {
 		setLayout(new BorderLayout(0, 0));
 		
 		tpClientManagement = new JTabbedPane(JTabbedPane.TOP);
+		tpClientManagement.setForeground(Color.BLACK);
+		tpClientManagement.setFont(new Font("맑은 고딕", Font.BOLD, 18));
 		tpClientManagement.setBackground(SystemColor.inactiveCaptionBorder);
 		add(tpClientManagement, BorderLayout.CENTER);
 		

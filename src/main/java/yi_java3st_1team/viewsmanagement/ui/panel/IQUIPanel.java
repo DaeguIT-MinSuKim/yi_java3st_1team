@@ -64,6 +64,7 @@ public class IQUIPanel extends JPanel {
 		pList.setLayout(new GridLayout(1, 0, 0, 0));
 		
 		IQTblPanel pIQList = new IQTblPanel();
+		pIQList.setBackground(SystemColor.inactiveCaptionBorder);
 		pList.add(pIQList);
 	}
 

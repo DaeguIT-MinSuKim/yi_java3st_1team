@@ -18,22 +18,22 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
-import yi_java3st_1team.main.ui.content.ClientRegiPanel;
-import yi_java3st_1team.main.ui.content.Login01Panel;
 import yi_java3st_1team.main.ui.content.LogoImg01Panel;
 import yi_java3st_1team.main.ui.content.LogoImg03Panel;
 import yi_java3st_1team.main.ui.content.MainBtns03Panel;
-import yi_java3st_1team.main.ui.content.SearchPanel;
+import yi_java3st_1team.main.ui.content.login.ClientRegiPanel;
+import yi_java3st_1team.main.ui.content.login.LoginPanel;
+import yi_java3st_1team.main.ui.content.login.SearchPanel;
 
 @SuppressWarnings("serial")
-public class LoginMain02UIPanel extends JPanel implements ActionListener {
+public class ClientMainUIPanel extends JPanel implements ActionListener {
 	private JButton btnLogin;
 	private JButton btnRegi;
 	private JButton btnSearch;
 	private JFrame cliFrame;
 	private JFrame searchFrame;
 	
-	public LoginMain02UIPanel() {
+	public ClientMainUIPanel() {
 
 		initialize();
 	}
@@ -48,7 +48,7 @@ public class LoginMain02UIPanel extends JPanel implements ActionListener {
 		add(pStop);
 		pStop.setLayout(new BorderLayout(10, 10));
 		
-		Login01Panel pLogin = new Login01Panel();
+		LoginPanel pLogin = new LoginPanel();
 		pLogin.setPreferredSize(new Dimension(350, 10));
 		pStop.add(pLogin, BorderLayout.WEST);
 		
