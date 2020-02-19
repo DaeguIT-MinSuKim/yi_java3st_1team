@@ -16,7 +16,7 @@ import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
 @SuppressWarnings("serial")
-public class ClientRegiPanel extends JPanel {
+public class ClientRegiPanel<T>  extends AbsRegiPanel<T> {
 	private JTextField textField;
 	private JTextField textField_1;
 	private JTextField textField_2;
@@ -28,6 +28,9 @@ public class ClientRegiPanel extends JPanel {
 	private JButton btnNewButton_2;
 	private JTextField textField_6;
 	private JTextField textField_7;
+	private JButton btnNewButton;
+	private JButton btnNewButton_1;
+	private JButton button;
 
 	/**
 	 * Create the panel.
@@ -192,7 +195,7 @@ public class ClientRegiPanel extends JPanel {
 		btnNewButton_2.setBounds(12, 112, 60, 39);
 		panel_4.add(btnNewButton_2);
 		
-		JButton button = new JButton("<html>중복<br>확인</html>");
+		button = new JButton("<html>중복<br>확인</html>");
 		button.setForeground(Color.BLACK);
 		button.setFont(new Font("굴림", Font.BOLD, 12));
 		button.setBounds(12, 187, 60, 39);
@@ -203,14 +206,19 @@ public class ClientRegiPanel extends JPanel {
 		panel_1.setPreferredSize(new Dimension(10, 45));
 		add(panel_1, BorderLayout.SOUTH);
 		
-		JButton btnNewButton = new JButton("등록");
+		btnNewButton = new JButton("등록");
 		btnNewButton.setForeground(Color.BLACK);
 		btnNewButton.setFont(new Font("굴림", Font.BOLD, 12));
 		panel_1.add(btnNewButton);
 		
-		JButton btnNewButton_1 = new JButton("취소");
+		btnNewButton_1 = new JButton("취소");
 		btnNewButton_1.setForeground(Color.BLACK);
 		btnNewButton_1.setFont(new Font("굴림", Font.BOLD, 12));
 		panel_1.add(btnNewButton_1);
+	}
+	@Override
+	public void clearTf() {
+		// TODO Auto-generated method stub
+		
 	}
 }
