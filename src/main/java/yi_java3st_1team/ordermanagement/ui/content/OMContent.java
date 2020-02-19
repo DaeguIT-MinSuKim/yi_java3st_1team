@@ -11,6 +11,8 @@ import javax.swing.JTabbedPane;
 import yi_java3st_1team.ordermanagement.ui.list.OListPanel;
 import yi_java3st_1team.ordermanagement.ui.panel.OCheckPanel;
 import yi_java3st_1team.ordermanagement.ui.panel.ORegisterPanel;
+import java.awt.Font;
+import java.awt.Color;
 
 @SuppressWarnings("serial")
 public class OMContent extends JPanel {
@@ -31,6 +33,8 @@ public class OMContent extends JPanel {
 		setLayout(new BorderLayout(0, 0));
 		
 		tpClientManagement = new JTabbedPane(JTabbedPane.TOP);
+		tpClientManagement.setForeground(Color.BLACK);
+		tpClientManagement.setFont(new Font("맑은 고딕", Font.BOLD, 18));
 		tpClientManagement.setBackground(SystemColor.inactiveCaptionBorder);
 		add(tpClientManagement, BorderLayout.CENTER);
 		

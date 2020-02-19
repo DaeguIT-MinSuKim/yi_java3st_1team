@@ -132,7 +132,7 @@ public class ORegisterPanel extends JPanel {
 		
 		btnGoMain = new JButton("");
 		btnGoMain.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\test\\메인화면.png"));
-		btnGoMain.setBounds(420, 580, 130, 30);
+		btnGoMain.setBounds(465, 580, 100, 30);
 		panel.add(btnGoMain);
 		
 		JTextArea taOWant = new JTextArea();
@@ -143,7 +143,7 @@ public class ORegisterPanel extends JPanel {
 		label = new JLabel("");
 		label.setOpaque(true);
 		label.setBackground(Color.WHITE);
-		label.setBounds(54, 116, 525, 440);
+		label.setBounds(54, 116, 525, 445);
 		panel.add(label);
 		
 	}

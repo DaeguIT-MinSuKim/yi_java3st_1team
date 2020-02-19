@@ -13,6 +13,8 @@ import javax.swing.SwingConstants;
 import java.awt.Dimension;
 import javax.swing.JSpinner;
 import javax.swing.SpinnerNumberModel;
+import java.awt.Color;
+import javax.swing.ImageIcon;
 
 @SuppressWarnings("serial")
 public class OCheckPanel extends JPanel {
@@ -52,19 +54,22 @@ public class OCheckPanel extends JPanel {
 		panel.setLayout(null);
 		
 		lblO = new JLabel("주문 확인 & 처리");
-		lblO.setFont(new Font("굴림", Font.BOLD, 38));
+		lblO.setForeground(Color.BLACK);
+		lblO.setFont(new Font("휴먼둥근헤드라인", Font.BOLD, 40));
 		lblO.setHorizontalAlignment(SwingConstants.CENTER);
-		lblO.setBounds(425, 25, 407, 60);
+		lblO.setBounds(0, 25, 1270, 60);
 		panel.add(lblO);
 		
 		JPanel pDate = new JPanel();
+		pDate.setBackground(Color.WHITE);
 		pDate.setBounds(81, 99, 1100, 77);
 		panel.add(pDate);
 		
 		label = new JLabel("시   작");
+		label.setForeground(Color.BLACK);
 		label.setPreferredSize(new Dimension(110, 30));
 		label.setHorizontalAlignment(SwingConstants.LEFT);
-		label.setFont(new Font("굴림", Font.BOLD, 18));
+		label.setFont(new Font("휴먼둥근헤드라인", Font.PLAIN, 18));
 		pDate.add(label);
 		
 		spinner = new JSpinner();
@@ -112,9 +117,10 @@ public class OCheckPanel extends JPanel {
 		pDate.add(button_1);
 		
 		label_4 = new JLabel("종   료");
+		label_4.setForeground(Color.BLACK);
 		label_4.setPreferredSize(new Dimension(110, 30));
 		label_4.setHorizontalAlignment(SwingConstants.LEFT);
-		label_4.setFont(new Font("굴림", Font.BOLD, 18));
+		label_4.setFont(new Font("휴먼둥근헤드라인", Font.PLAIN, 18));
 		pDate.add(label_4);
 		
 		spinner_3 = new JSpinner();
@@ -156,7 +162,8 @@ public class OCheckPanel extends JPanel {
 		button_2.setFont(new Font("굴림", Font.PLAIN, 16));
 		pDate.add(button_2);
 		
-		button_3 = new JButton("메인화면");
+		button_3 = new JButton("");
+		button_3.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\test\\메인화면.png"));
 		button_3.setPreferredSize(new Dimension(100, 30));
 		button_3.setFont(new Font("굴림", Font.PLAIN, 16));
 		pDate.add(button_3);
