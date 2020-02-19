@@ -8,5 +8,4 @@ public abstract class AbsRegiPanel<T> extends JPanel {
 	public abstract T getItem();
 	
 	public abstract void clearTf();
-
 }
