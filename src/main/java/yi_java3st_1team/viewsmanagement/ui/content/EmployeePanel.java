@@ -8,6 +8,7 @@ import java.awt.Font;
 import javax.swing.SwingConstants;
 import javax.swing.JComboBox;
 import javax.swing.JCheckBox;
+import javax.swing.DefaultComboBoxModel;
 
 @SuppressWarnings("serial")
 public class EmployeePanel extends JPanel {
@@ -30,6 +31,7 @@ public class EmployeePanel extends JPanel {
 		add(lblDept);
 		
 		JComboBox cmbMonth = new JComboBox();
+		cmbMonth.setModel(new DefaultComboBoxModel(new String[] {"1월", "2월", "3월", "4월", "5월", "6월", "7월", "8월", "9월", "10월", "11월", "12월"}));
 		cmbMonth.setPreferredSize(new Dimension(200, 30));
 		cmbMonth.setFont(new Font("굴림", Font.PLAIN, 16));
 		add(cmbMonth);
