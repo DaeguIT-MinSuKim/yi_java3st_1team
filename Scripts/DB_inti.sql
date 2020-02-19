@@ -20,6 +20,9 @@ ALTER TABLE yi_java3st_1team.SUPPLIER_PURCHASE
 			sp_no -- 매입번호
 		);
 
+ALTER TABLE yi_java3st_1team.SUPPLIER_PURCHASE
+	MODIFY COLUMN sp_no INTEGER NOT NULL AUTO_INCREMENT COMMENT '매입번호';
+
 -- 발주
 CREATE TABLE yi_java3st_1team.SUPPLIER_ORDER (
 	so_no   INTEGER NOT NULL COMMENT '발주번호', -- 발주번호
@@ -36,6 +39,9 @@ ALTER TABLE yi_java3st_1team.SUPPLIER_ORDER
 			so_no -- 발주번호
 		);
 
+ALTER TABLE yi_java3st_1team.SUPPLIER_ORDER
+	MODIFY COLUMN so_no INTEGER NOT NULL AUTO_INCREMENT COMMENT '발주번호';
+
 -- 출고
 CREATE TABLE yi_java3st_1team.CLIENT_DELIVERY (
 	cd_no   INTEGER NOT NULL COMMENT '출고번호', -- 출고번호
@@ -51,6 +57,9 @@ ALTER TABLE yi_java3st_1team.CLIENT_DELIVERY
 			cd_no -- 출고번호
 		);
 
+ALTER TABLE yi_java3st_1team.CLIENT_DELIVERY
+	MODIFY COLUMN cd_no INTEGER NOT NULL AUTO_INCREMENT COMMENT '출고번호';
+
 -- 분류
 CREATE TABLE yi_java3st_1team.CATEGORY (
 	cate_no   INTEGER     NOT NULL COMMENT '분류번호', -- 분류번호
@@ -64,6 +73,9 @@ ALTER TABLE yi_java3st_1team.CATEGORY
 		PRIMARY KEY (
 			cate_no -- 분류번호
 		);
+
+ALTER TABLE yi_java3st_1team.CATEGORY
+	MODIFY COLUMN cate_no INTEGER NOT NULL AUTO_INCREMENT COMMENT '분류번호';
 
 -- 판매현황
 CREATE TABLE yi_java3st_1team.ORDER (
@@ -86,6 +98,9 @@ ALTER TABLE yi_java3st_1team.ORDER
 			o_no -- 주문번호
 		);
 
+ALTER TABLE yi_java3st_1team.ORDER
+	MODIFY COLUMN o_no INTEGER NOT NULL AUTO_INCREMENT COMMENT '주문번호';
+
 -- 재고수량
 CREATE TABLE yi_java3st_1team.INVENTORY_QUANTITY (
 	iq_no  INTEGER NOT NULL COMMENT '재고번호', -- 재고번호
@@ -100,6 +115,9 @@ ALTER TABLE yi_java3st_1team.INVENTORY_QUANTITY
 		PRIMARY KEY (
 			iq_no -- 재고번호
 		);
+
+ALTER TABLE yi_java3st_1team.INVENTORY_QUANTITY
+	MODIFY COLUMN iq_no INTEGER NOT NULL AUTO_INCREMENT COMMENT '재고번호';
 
 -- 소프트웨어
 CREATE TABLE yi_java3st_1team.PRODUCT (
@@ -122,6 +140,9 @@ ALTER TABLE yi_java3st_1team.PRODUCT
 			p_no -- 품목번호
 		);
 
+ALTER TABLE yi_java3st_1team.PRODUCT
+	MODIFY COLUMN p_no INTEGER NOT NULL AUTO_INCREMENT COMMENT '품목번호';
+
 -- 고객사
 CREATE TABLE yi_java3st_1team.CLIENT (
 	c_no       INTEGER      NOT NULL COMMENT '고객번호', -- 고객번호
@@ -132,6 +153,7 @@ CREATE TABLE yi_java3st_1team.CLIENT (
 	c_id       VARCHAR(30)  NOT NULL COMMENT 'ID', -- ID
 	c_pw       VARCHAR(30)  NOT NULL COMMENT 'PW', -- PW
 	c_mail     VARCHAR(40)  NOT NULL COMMENT '이메일', -- 이메일
+	c_date     DATE         NULL     COMMENT '등록일자', -- 등록일자
 	c_salseman INTEGER      NULL     COMMENT '영업담당직원' -- 영업담당직원
 )
 COMMENT '고객사';
@@ -142,6 +164,9 @@ ALTER TABLE yi_java3st_1team.CLIENT
 		PRIMARY KEY (
 			c_no -- 고객번호
 		);
+
+ALTER TABLE yi_java3st_1team.CLIENT
+	MODIFY COLUMN c_no INTEGER NOT NULL AUTO_INCREMENT COMMENT '고객번호';
 
 -- 공급회사
 CREATE TABLE yi_java3st_1team.SUPPLIER (
@@ -160,6 +185,9 @@ ALTER TABLE yi_java3st_1team.SUPPLIER
 		PRIMARY KEY (
 			s_no -- 회사번호
 		);
+
+ALTER TABLE yi_java3st_1team.SUPPLIER
+	MODIFY COLUMN s_no INTEGER NOT NULL AUTO_INCREMENT COMMENT '회사번호';
 
 -- 우편번호
 CREATE TABLE yi_java3st_1team.ZIP_CODE (
@@ -185,7 +213,7 @@ CREATE TABLE yi_java3st_1team.EMPLOYEE (
 	e_name    VARCHAR(50) NOT NULL COMMENT '사원명', -- 사원명
 	e_dept    INTEGER     NOT NULL COMMENT '부서번호', -- 부서번호
 	e_title   VARCHAR(10) NOT NULL COMMENT '직책', -- 직책
-	e_manager BOOLEAN     NOT NULL COMMENT '관리자구분', -- 관리자구분
+	e_manager TINYINT     NOT NULL COMMENT '관리자구분', -- 관리자구분
 	e_id      VARCHAR(30) NOT NULL COMMENT 'ID', -- ID
 	e_pw      VARCHAR(30) NOT NULL COMMENT 'PW', -- PW
 	e_mail    VARCHAR(40) NOT NULL COMMENT '이메일' -- 이메일
@@ -198,6 +226,9 @@ ALTER TABLE yi_java3st_1team.EMPLOYEE
 		PRIMARY KEY (
 			e_no -- 사원번호
 		);
+
+ALTER TABLE yi_java3st_1team.EMPLOYEE
+	MODIFY COLUMN e_no INTEGER NOT NULL AUTO_INCREMENT COMMENT '사원번호';
 
 -- 부서
 CREATE TABLE yi_java3st_1team.DEPARTMENT (
@@ -213,6 +244,9 @@ ALTER TABLE yi_java3st_1team.DEPARTMENT
 		PRIMARY KEY (
 			d_no -- 부서번호
 		);
+
+ALTER TABLE yi_java3st_1team.DEPARTMENT
+	MODIFY COLUMN d_no INTEGER NOT NULL AUTO_INCREMENT COMMENT '부서번호';
 
 -- 매입
 ALTER TABLE yi_java3st_1team.SUPPLIER_PURCHASE
