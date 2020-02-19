@@ -1,4 +1,4 @@
-package yi_java3st_1team.main.ui.login_content;
+package yi_java3st_1team.main.ui.content.login;
 
 import javax.swing.JPanel;
 import java.awt.Dimension;

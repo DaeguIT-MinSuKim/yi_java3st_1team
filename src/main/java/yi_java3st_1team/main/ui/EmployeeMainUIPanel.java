@@ -16,9 +16,9 @@ import javax.swing.border.EmptyBorder;
 import yi_java3st_1team.main.ui.content.LogoImg01Panel;
 import yi_java3st_1team.main.ui.content.LogoImg02Panel;
 import yi_java3st_1team.main.ui.content.MainBtns01Panel;
-import yi_java3st_1team.main.ui.login_content.EmpRegiPanel;
-import yi_java3st_1team.main.ui.login_content.LoginPanel;
-import yi_java3st_1team.main.ui.login_content.SearchPanel;
+import yi_java3st_1team.main.ui.content.login.EmpRegiPanel;
+import yi_java3st_1team.main.ui.content.login.LoginPanel;
+import yi_java3st_1team.main.ui.content.login.SearchPanel;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
