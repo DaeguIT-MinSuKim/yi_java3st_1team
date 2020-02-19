@@ -74,6 +74,7 @@ public class GraphUIPanel extends JPanel {
 		pLLChart.setLayout(new GridLayout(0, 1, 0, 0));
 		
 		JPanel pClientGraph = new JPanel();
+		pClientGraph.setBackground(SystemColor.inactiveCaptionBorder);
 		pLLChart.add(pClientGraph);
 		
 		JPanel pRight = new JPanel();
@@ -114,6 +115,7 @@ public class GraphUIPanel extends JPanel {
 		pRRChart.setLayout(new GridLayout(0, 1, 0, 0));
 		
 		EmployeeGraphPanel pEmpGraph = new EmployeeGraphPanel();
+		pEmpGraph.setBackground(SystemColor.inactiveCaptionBorder);
 		pRRChart.add(pEmpGraph);
 	}
 

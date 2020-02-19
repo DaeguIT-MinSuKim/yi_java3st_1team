@@ -58,6 +58,7 @@ public class OCheckPanel extends JPanel {
 		panel.add(lblO);
 		
 		JPanel pDate = new JPanel();
+		pDate.setBackground(SystemColor.inactiveCaptionBorder);
 		pDate.setBounds(81, 99, 1100, 77);
 		panel.add(pDate);
 		
@@ -162,6 +163,7 @@ public class OCheckPanel extends JPanel {
 		pDate.add(button_3);
 		
 		pList = new JPanel();
+		pList.setBackground(SystemColor.inactiveCaptionBorder);
 		pList.setBounds(81, 186, 1100, 460);
 		panel.add(pList);
 		pList.setLayout(new BorderLayout(0, 0));

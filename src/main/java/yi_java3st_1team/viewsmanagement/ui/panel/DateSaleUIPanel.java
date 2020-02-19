@@ -68,6 +68,7 @@ public class DateSaleUIPanel extends JPanel {
 		pList.setLayout(new GridLayout(1, 0, 0, 0));
 		
 		DateSaleTblPanel pDateSaleList = new DateSaleTblPanel();
+		pDateSaleList.setBackground(SystemColor.inactiveCaptionBorder);
 		pList.add(pDateSaleList);
 		
 		JPanel pAmount = new JPanel();
