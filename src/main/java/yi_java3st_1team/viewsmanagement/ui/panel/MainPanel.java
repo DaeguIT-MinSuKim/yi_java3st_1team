@@ -18,6 +18,11 @@ import javax.swing.border.EmptyBorder;
 @SuppressWarnings("serial")
 public class MainPanel extends JPanel implements ActionListener {
 	private JButton btn01;
+	private JButton btn02;
+	private JButton btn03;
+	private JButton btn04;
+	private JButton btn05;
+	private JButton btn06;
 
 	/**
 	 * Create the panel.
@@ -53,7 +58,8 @@ public class MainPanel extends JPanel implements ActionListener {
 		btn01.setFont(new Font("굴림", Font.PLAIN, 15));
 		pBtns.add(btn01);
 		
-		JButton btn02 = new JButton("");
+		btn02 = new JButton("");
+		btn02.addActionListener(this);
 		btn02.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\reportMainMenu\\그림19.png"));
 		btn02.setPreferredSize(new Dimension(250, 170));
 		btn02.setSize(new Dimension(270, 190));
@@ -61,7 +67,8 @@ public class MainPanel extends JPanel implements ActionListener {
 		btn02.setFont(new Font("굴림", Font.PLAIN, 15));
 		pBtns.add(btn02);
 		
-		JButton btn03 = new JButton("");
+		btn03 = new JButton("");
+		btn03.addActionListener(this);
 		btn03.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\reportMainMenu\\DateImg.png"));
 		btn03.setPreferredSize(new Dimension(250, 170));
 		btn03.setSize(new Dimension(270, 190));
@@ -69,7 +76,8 @@ public class MainPanel extends JPanel implements ActionListener {
 		btn03.setFont(new Font("굴림", Font.PLAIN, 15));
 		pBtns.add(btn03);
 		
-		JButton btn04 = new JButton("");
+		btn04 = new JButton("");
+		btn04.addActionListener(this);
 		btn04.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\reportMainMenu\\그림24.png"));
 		btn04.setPreferredSize(new Dimension(250, 170));
 		btn04.setSize(new Dimension(270, 190));
@@ -77,7 +85,8 @@ public class MainPanel extends JPanel implements ActionListener {
 		btn04.setFont(new Font("굴림", Font.PLAIN, 15));
 		pBtns.add(btn04);
 		
-		JButton btn05 = new JButton("");
+		btn05 = new JButton("");
+		btn05.addActionListener(this);
 		btn05.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\reportMainMenu\\그림29.png"));
 		btn05.setPreferredSize(new Dimension(250, 170));
 		btn05.setSize(new Dimension(270, 190));
@@ -85,7 +94,8 @@ public class MainPanel extends JPanel implements ActionListener {
 		btn05.setFont(new Font("굴림", Font.PLAIN, 15));
 		pBtns.add(btn05);
 		
-		JButton btn06 = new JButton("");
+		btn06 = new JButton("");
+		btn06.addActionListener(this);
 		btn06.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\reportMainMenu\\그림26.png"));
 		btn06.setSize(new Dimension(270, 190));
 		btn06.setPreferredSize(new Dimension(250, 170));
@@ -94,14 +104,64 @@ public class MainPanel extends JPanel implements ActionListener {
 		pBtns.add(btn06);
 	}
 	public void actionPerformed(ActionEvent e) {
+		if (e.getSource() == btn06) {
+			btn06ActionPerformed(e);
+		}
+		if (e.getSource() == btn05) {
+			btn05ActionPerformed(e);
+		}
+		if (e.getSource() == btn04) {
+			btn04ActionPerformed(e);
+		}
+		if (e.getSource() == btn03) {
+			btn03ActionPerformed(e);
+		}
+		if (e.getSource() == btn02) {
+			btn02ActionPerformed(e);
+		}
 		if (e.getSource() == btn01) {
 			btn01ActionPerformed(e);
 		}
 	}
 	protected void btn01ActionPerformed(ActionEvent e) {
 		JFrame frame = new JFrame();
-		frame.setBounds(100, 100, 450, 700);
+		frame.setBounds(100, 100, 1500, 900);
 		ClientSaleUIPanel cs = new ClientSaleUIPanel();
+		frame.getContentPane().add(cs);
+		frame.setVisible(true);
+	}
+	protected void btn02ActionPerformed(ActionEvent e) {
+		JFrame frame = new JFrame();
+		frame.setBounds(100, 100, 1500, 900);
+		SWSaleUIPanel cs = new SWSaleUIPanel();
+		frame.getContentPane().add(cs);
+		frame.setVisible(true);
+	}
+	protected void btn03ActionPerformed(ActionEvent e) {
+		JFrame frame = new JFrame();
+		frame.setBounds(100, 100, 1500, 900);
+		DateSaleUIPanel cs = new DateSaleUIPanel();
+		frame.getContentPane().add(cs);
+		frame.setVisible(true);
+	}
+	protected void btn04ActionPerformed(ActionEvent e) {
+		JFrame frame = new JFrame();
+		frame.setBounds(100, 100, 1500, 900);
+		GraphUIPanel cs = new GraphUIPanel();
+		frame.getContentPane().add(cs);
+		frame.setVisible(true);
+	}
+	protected void btn05ActionPerformed(ActionEvent e) {
+		JFrame frame = new JFrame();
+		frame.setBounds(100, 100, 1500, 900);
+		SW_SpecUIPanel cs = new SW_SpecUIPanel();
+		frame.getContentPane().add(cs);
+		frame.setVisible(true);
+	}
+	protected void btn06ActionPerformed(ActionEvent e) {
+		JFrame frame = new JFrame();
+		frame.setBounds(100, 100, 1500, 900);
+		IQUIPanel cs = new IQUIPanel();
 		frame.getContentPane().add(cs);
 		frame.setVisible(true);
 	}
