@@ -23,12 +23,6 @@ public class ClientMiniPieChart extends JFXPanel implements InitScene{
 	private void initialize() {
 		setPreferredSize(new Dimension(350, 250));
 		setLayout(new BorderLayout(0, 0));
-		
-		JLabel lblLogo = new JLabel("");
-		lblLogo.setOpaque(true);
-		lblLogo.setBackground(SystemColor.inactiveCaptionBorder);
-		lblLogo.setHorizontalAlignment(SwingConstants.CENTER);
-		add(lblLogo, BorderLayout.CENTER);
 	}
 	@Override
 	public Scene createScene() {
