@@ -160,7 +160,7 @@ public class ClientRegiPanel extends JPanel {
 		JLabel label_7 = new JLabel("<html>6자리 이상 이어야 하며 영문과 숫자를 반드시 포함해야 합니다<br></html>");
 		label_7.setHorizontalAlignment(SwingConstants.CENTER);
 		label_7.setForeground(Color.BLUE);
-		label_7.setFont(new Font("굴림", Font.PLAIN, 12));
+		label_7.setFont(new Font("굴림", Font.PLAIN, 11));
 		panel_3.add(label_7);
 		
 		passwordField_1 = new JPasswordField();
