@@ -125,12 +125,13 @@ public class ClientORegisterPanel extends JPanel {
 		btnAdd.setBounds(66, 580, 100, 30);
 		panel.add(btnAdd);
 		
-		btnUpdate = new JButton("초 기 화");
+		btnUpdate = new JButton("");
+		btnUpdate.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\btns\\초기화.png"));
 		btnUpdate.setBounds(270, 580, 100, 30);
 		panel.add(btnUpdate);
 		
 		btnGoMain = new JButton("");
-		btnGoMain.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\test\\메인화면.png"));
+		btnGoMain.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\btns\\메인화면.png"));
 		btnGoMain.setBounds(465, 580, 100, 30);
 		panel.add(btnGoMain);
 		
