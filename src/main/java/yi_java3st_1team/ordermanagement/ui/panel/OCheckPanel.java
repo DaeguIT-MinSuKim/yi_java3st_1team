@@ -1,20 +1,19 @@
 package yi_java3st_1team.ordermanagement.ui.panel;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Rectangle;
 import java.awt.SystemColor;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.SwingConstants;
-import java.awt.Dimension;
 import javax.swing.JSpinner;
 import javax.swing.SpinnerNumberModel;
-import java.awt.Color;
-import javax.swing.ImageIcon;
+import javax.swing.SwingConstants;
 
 @SuppressWarnings("serial")
 public class OCheckPanel extends JPanel {
