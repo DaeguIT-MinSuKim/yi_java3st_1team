@@ -1,14 +1,18 @@
 package yi_java3st_1team.main.ui.content.chart;
 
-import javax.swing.JPanel;
-import java.awt.Dimension;
 import java.awt.BorderLayout;
-import javax.swing.JLabel;
-import javax.swing.ImageIcon;
-import javax.swing.SwingConstants;
 import java.awt.Color;
+import java.awt.Dimension;
 
-public class EmpMiniBarChart extends JPanel {
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
+import javax.swing.SwingConstants;
+
+import javafx.embed.swing.JFXPanel;
+import javafx.scene.Scene;
+
+@SuppressWarnings("serial")
+public class EmpMiniBarChart extends JFXPanel implements InitScene {
 
 	/**
 	 * Create the panel.
@@ -27,6 +31,11 @@ public class EmpMiniBarChart extends JPanel {
 		lblLogo.setHorizontalAlignment(SwingConstants.CENTER);
 		lblLogo.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\loginMain\\teamLog.png"));
 		add(lblLogo, BorderLayout.CENTER);
+	}
+	@Override
+	public Scene createScene() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

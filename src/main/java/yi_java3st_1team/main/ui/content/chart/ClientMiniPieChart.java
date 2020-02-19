@@ -1,14 +1,17 @@
 package yi_java3st_1team.main.ui.content.chart;
 
-import javax.swing.JPanel;
-import java.awt.Dimension;
 import java.awt.BorderLayout;
-import javax.swing.JLabel;
-import javax.swing.ImageIcon;
-import javax.swing.SwingConstants;
-import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.SystemColor;
 
-public class ClientMiniPieChart extends JPanel {
+import javax.swing.JLabel;
+import javax.swing.SwingConstants;
+
+import javafx.embed.swing.JFXPanel;
+import javafx.scene.Scene;
+
+@SuppressWarnings("serial")
+public class ClientMiniPieChart extends JFXPanel implements InitScene{
 
 	/**
 	 * Create the panel.
@@ -23,9 +26,14 @@ public class ClientMiniPieChart extends JPanel {
 		
 		JLabel lblLogo = new JLabel("");
 		lblLogo.setOpaque(true);
-		lblLogo.setBackground(Color.WHITE);
+		lblLogo.setBackground(SystemColor.inactiveCaptionBorder);
 		lblLogo.setHorizontalAlignment(SwingConstants.CENTER);
 		add(lblLogo, BorderLayout.CENTER);
+	}
+	@Override
+	public Scene createScene() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

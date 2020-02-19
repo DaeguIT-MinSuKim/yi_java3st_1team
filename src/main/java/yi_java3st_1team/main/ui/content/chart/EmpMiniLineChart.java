@@ -1,12 +1,16 @@
 package yi_java3st_1team.main.ui.content.chart;
 
-import javax.swing.JPanel;
 import java.awt.Dimension;
 import java.awt.SystemColor;
-import javax.swing.JLabel;
-import javax.swing.ImageIcon;
 
-public class EmpMiniLineChart extends JPanel {
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
+
+import javafx.embed.swing.JFXPanel;
+import javafx.scene.Scene;
+
+@SuppressWarnings("serial")
+public class EmpMiniLineChart extends JFXPanel implements InitScene{
 
 	/**
 	 * Create the panel.
@@ -34,5 +38,10 @@ public class EmpMiniLineChart extends JPanel {
 		lblImg3.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\loginMain\\mainLogo2.png"));
 		lblImg3.setBounds(159, 216, 325, 119);
 		add(lblImg3);
+	}
+	@Override
+	public Scene createScene() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }
