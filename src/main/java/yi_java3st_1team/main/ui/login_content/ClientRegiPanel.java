@@ -1,4 +1,4 @@
-package yi_java3st_1team.main.ui.content;
+package yi_java3st_1team.main.ui.login_content;
 
 import java.awt.BorderLayout;
 import java.awt.Color;

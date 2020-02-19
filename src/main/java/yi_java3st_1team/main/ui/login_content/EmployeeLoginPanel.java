@@ -1,4 +1,4 @@
-package yi_java3st_1team.main.ui.content;
+package yi_java3st_1team.main.ui.login_content;
 
 import javax.swing.JPanel;
 import java.awt.Dimension;
@@ -9,12 +9,12 @@ import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.ImageIcon;
 
-public class Login02Panel extends JPanel {
+public class EmployeeLoginPanel extends JPanel {
 
 	/**
 	 * Create the panel.
 	 */
-	public Login02Panel() {
+	public EmployeeLoginPanel() {
 
 		initialize();
 	}
