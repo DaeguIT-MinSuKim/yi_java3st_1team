@@ -8,12 +8,12 @@ import javax.swing.ImageIcon;
 import javax.swing.SwingConstants;
 import java.awt.Color;
 
-public class EmpMiniChart01Pane1 extends JPanel {
+public class ClientMiniPieChart extends JPanel {
 
 	/**
 	 * Create the panel.
 	 */
-	public EmpMiniChart01Pane1() {
+	public ClientMiniPieChart() {
 
 		initialize();
 	}
@@ -25,7 +25,6 @@ public class EmpMiniChart01Pane1 extends JPanel {
 		lblLogo.setOpaque(true);
 		lblLogo.setBackground(Color.WHITE);
 		lblLogo.setHorizontalAlignment(SwingConstants.CENTER);
-		lblLogo.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\loginMain\\teamLog.png"));
 		add(lblLogo, BorderLayout.CENTER);
 	}
 

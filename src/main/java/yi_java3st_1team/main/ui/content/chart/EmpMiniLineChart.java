@@ -6,12 +6,12 @@ import java.awt.SystemColor;
 import javax.swing.JLabel;
 import javax.swing.ImageIcon;
 
-public class EmpMiniChart02Panel extends JPanel {
+public class EmpMiniLineChart extends JPanel {
 
 	/**
 	 * Create the panel.
 	 */
-	public EmpMiniChart02Panel() {
+	public EmpMiniLineChart() {
 
 		initialize();
 	}

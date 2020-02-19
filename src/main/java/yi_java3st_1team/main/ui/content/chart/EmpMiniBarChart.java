@@ -8,12 +8,12 @@ import javax.swing.ImageIcon;
 import javax.swing.SwingConstants;
 import java.awt.Color;
 
-public class ClientMiniChartPanel extends JPanel {
+public class EmpMiniBarChart extends JPanel {
 
 	/**
 	 * Create the panel.
 	 */
-	public ClientMiniChartPanel() {
+	public EmpMiniBarChart() {
 
 		initialize();
 	}
