@@ -40,7 +40,7 @@ public class DateSalePanel extends JPanel {
 		panel.add(lblStart);
 		
 		JSpinner spStartY = new JSpinner();
-		spStartY.setModel(new SpinnerNumberModel(new Integer(2020), null, null, new Integer(1)));
+		spStartY.setModel(new SpinnerNumberModel(new Integer(2020), new Integer(2020), null, new Integer(1)));
 		spStartY.setPreferredSize(new Dimension(180, 30));
 		spStartY.setFont(new Font("굴림", Font.BOLD, 18));
 		panel.add(spStartY);
@@ -90,7 +90,7 @@ public class DateSalePanel extends JPanel {
 		panel.add(lblExit);
 		
 		JSpinner spExitY = new JSpinner();
-		spExitY.setModel(new SpinnerNumberModel(new Integer(2020), null, null, new Integer(1)));
+		spExitY.setModel(new SpinnerNumberModel(new Integer(2020), new Integer(2020), null, new Integer(1)));
 		spExitY.setPreferredSize(new Dimension(180, 30));
 		spExitY.setFont(new Font("굴림", Font.BOLD, 18));
 		panel.add(spExitY);
