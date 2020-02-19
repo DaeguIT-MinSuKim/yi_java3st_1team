@@ -162,7 +162,7 @@ public class OCheckPanel extends JPanel {
 		pDate.add(button_2);
 		
 		button_3 = new JButton("");
-		button_3.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\test\\메인화면.png"));
+		button_3.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\btns\\메인화면.png"));
 		button_3.setPreferredSize(new Dimension(100, 30));
 		button_3.setFont(new Font("굴림", Font.PLAIN, 16));
 		pDate.add(button_3);
