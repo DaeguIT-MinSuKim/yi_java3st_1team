@@ -1,20 +1,23 @@
 package yi_java3st_1team.viewsmanagement.ui.panel;
 
-import javax.swing.JPanel;
 import java.awt.BorderLayout;
-import javax.swing.JLabel;
+import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.SystemColor;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
-import javax.swing.JButton;
-import java.awt.GridLayout;
-import java.awt.Color;
-import java.awt.SystemColor;
-import java.awt.Dimension;
-import javax.swing.ImageIcon;
 
 @SuppressWarnings("serial")
-public class MainPanel extends JPanel {
+public class MainPanel extends JPanel implements ActionListener {
+	private JButton btn01;
 
 	/**
 	 * Create the panel.
@@ -28,7 +31,7 @@ public class MainPanel extends JPanel {
 		
 		JPanel pTitle = new JPanel();
 		pTitle.setBackground(SystemColor.inactiveCaptionBorder);
-		pTitle.setBorder(new EmptyBorder(60, 0, 0, 0));
+		pTitle.setBorder(new EmptyBorder(80, 0, 0, 0));
 		add(pTitle, BorderLayout.NORTH);
 		
 		JLabel lblTitle = new JLabel("현황조회 / 보고");
@@ -42,7 +45,8 @@ public class MainPanel extends JPanel {
 		add(pBtns, BorderLayout.CENTER);
 		pBtns.setLayout(null);
 		
-		JButton btn01 = new JButton("");
+		btn01 = new JButton("");
+		btn01.addActionListener(this);
 		btn01.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\reportMainMenu\\그림11.png"));
 		btn01.setPreferredSize(new Dimension(250, 170));
 		btn01.setBounds(219, 59, 250, 170);
@@ -88,5 +92,17 @@ public class MainPanel extends JPanel {
 		btn06.setFont(new Font("굴림", Font.PLAIN, 15));
 		btn06.setBounds(768, 257, 250, 170);
 		pBtns.add(btn06);
+	}
+	public void actionPerformed(ActionEvent e) {
+		if (e.getSource() == btn01) {
+			btn01ActionPerformed(e);
+		}
+	}
+	protected void btn01ActionPerformed(ActionEvent e) {
+		JFrame frame = new JFrame();
+		frame.setBounds(100, 100, 450, 700);
+		ClientSaleUIPanel cs = new ClientSaleUIPanel();
+		frame.getContentPane().add(cs);
+		frame.setVisible(true);
 	}
 }
