@@ -197,6 +197,13 @@ public class EmpRegiPanel<T> extends AbsRegiPanel<T> implements ActionListener {
 		btnCancle.setFont(new Font("굴림", Font.BOLD, 12));
 		pBtns.add(btnCancle);
 	}
+	
+	@Override
+	public T getItem() {
+		return null;
+	}
+	
+	
 	@Override
 	public void clearTf() {
 		tfNo.setText("");
@@ -244,4 +251,5 @@ public class EmpRegiPanel<T> extends AbsRegiPanel<T> implements ActionListener {
 	//중복확인 : 아이디
 	protected void actionPerformedDoubleCheck2(ActionEvent e) {
 	}
+
 }

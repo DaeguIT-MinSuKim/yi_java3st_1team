@@ -223,6 +223,13 @@ public class ClientRegiPanel<T>  extends AbsRegiPanel<T> implements ActionListen
 		btnCancle.setFont(new Font("굴림", Font.BOLD, 12));
 		pBtns.add(btnCancle);
 	}
+	
+	@Override
+	public T getItem() {
+		return null;
+	}
+	
+	
 	@Override
 	public void clearTf() {
 		tfNo.setText("");
@@ -269,4 +276,5 @@ public class ClientRegiPanel<T>  extends AbsRegiPanel<T> implements ActionListen
 	//중복확인
 	protected void actionPerformedDoubleCheck(ActionEvent e) {
 	}
+
 }
