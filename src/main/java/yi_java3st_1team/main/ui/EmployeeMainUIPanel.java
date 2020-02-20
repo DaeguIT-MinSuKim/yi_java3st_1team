@@ -3,12 +3,18 @@ package yi_java3st_1team.main.ui;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.Rectangle;
 import java.awt.SystemColor;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
@@ -17,15 +23,9 @@ import yi_java3st_1team.main.ui.content.LogoImg01Panel;
 import yi_java3st_1team.main.ui.content.LogoImg02Panel;
 import yi_java3st_1team.main.ui.content.MainBtns01Panel;
 import yi_java3st_1team.main.ui.content.login.EmpRegiPanel;
+import yi_java3st_1team.main.ui.content.login.EmployeeLoginPanel;
 import yi_java3st_1team.main.ui.content.login.LoginPanel;
 import yi_java3st_1team.main.ui.content.login.SearchPanel;
-
-import javax.swing.JButton;
-import javax.swing.JFrame;
-
-import java.awt.Font;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
 
 @SuppressWarnings("serial")
 public class EmployeeMainUIPanel extends JPanel implements ActionListener {
@@ -34,6 +34,11 @@ public class EmployeeMainUIPanel extends JPanel implements ActionListener {
 	private JButton btnSearch;
 	private JFrame regiFrame;
 	private JFrame searchFrame;
+	private LoginPanel pLogin;
+	private EmployeeLoginPanel pEmpLogin;
+	private JPanel pStop;
+	
+	private JPanel loginok;
 
 	public EmployeeMainUIPanel() {
 
@@ -44,13 +49,13 @@ public class EmployeeMainUIPanel extends JPanel implements ActionListener {
 		setBounds(new Rectangle(0, 0, 1544, 700));
 		setLayout(new GridLayout(0, 1, 10, 10));
 		
-		JPanel pStop = new JPanel();
+		pStop = new JPanel();
 		pStop.setBackground(SystemColor.inactiveCaption);
 		pStop.setBorder(new EmptyBorder(0, 20, 0, 20));
 		add(pStop);
 		pStop.setLayout(new BorderLayout(10, 10));
 		
-		LoginPanel pLogin = new LoginPanel();
+		pLogin = new LoginPanel();
 		pLogin.setPreferredSize(new Dimension(350, 10));
 		pStop.add(pLogin, BorderLayout.WEST);
 		
@@ -127,6 +132,17 @@ public class EmployeeMainUIPanel extends JPanel implements ActionListener {
 	
 	//로그인
 	protected void actionPerformedBtnLogin(ActionEvent e) {
+		JOptionPane.showMessageDialog(null, "반갑습니다");
+		pLogin.setVisible(false);
+//		loginok = new JPanel();
+//		loginok.setPreferredSize(new Dimension(350, 10));
+//		loginok.add(loginok, BorderLayout.WEST);
+		pEmpLogin = new EmployeeLoginPanel();
+		pEmpLogin.setPreferredSize(new Dimension(350, 10));
+		pStop.add(pEmpLogin, BorderLayout.WEST);
+		pStop.revalidate();
+		pStop.repaint();
+		
 	}
 	
 	//회원가입

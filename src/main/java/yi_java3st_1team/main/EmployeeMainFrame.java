@@ -9,14 +9,12 @@ import java.awt.SystemColor;
 
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
-import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
-import yi_java3st_1team.clientmanagement.ui.CMMainPanel;
 import yi_java3st_1team.main.ui.EmployeeMainUIPanel;
 
 @SuppressWarnings("serial")
