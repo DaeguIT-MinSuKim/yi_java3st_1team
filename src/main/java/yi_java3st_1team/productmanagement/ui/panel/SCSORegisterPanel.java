@@ -128,23 +128,35 @@ public class SCSORegisterPanel extends JPanel {
 		tfSCSODate.setBounds(230, 490, 200, 30);
 		panel.add(tfSCSODate);
 		
-		btnAdd = new JButton("");
-		btnAdd.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\btns\\등록.png"));
+		btnAdd = new JButton("등 록");
+		btnAdd.setBackground(new Color(135, 206, 250));
+		btnAdd.setForeground(new Color(0, 102, 204));
+		btnAdd.setFocusable(false);
+		btnAdd.setFont(new Font("맑은 고딕", Font.BOLD, 16));
 		btnAdd.setBounds(66, 580, 100, 30);
 		panel.add(btnAdd);
 		
-		btnUpdate = new JButton("");
-		btnUpdate.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\btns\\수정.png"));
+		btnUpdate = new JButton("수 정");
+		btnUpdate.setBackground(new Color(135, 206, 250));
+		btnUpdate.setForeground(new Color(0, 102, 204));
+		btnUpdate.setFocusable(false);
+		btnUpdate.setFont(new Font("맑은 고딕", Font.BOLD, 16));
 		btnUpdate.setBounds(198, 580, 100, 30);
 		panel.add(btnUpdate);
 		
-		btnDel = new JButton("");
-		btnDel.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\btns\\삭제.png"));
+		btnDel = new JButton("삭 제");
+		btnDel.setBackground(new Color(135, 206, 250));
+		btnDel.setForeground(new Color(0, 102, 204));
+		btnDel.setFocusable(false);
+		btnDel.setFont(new Font("맑은 고딕", Font.BOLD, 16));
 		btnDel.setBounds(330, 580, 100, 30);
 		panel.add(btnDel);
 		
-		btnGoMain = new JButton("");
-		btnGoMain.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\btns\\메인화면.png"));
+		btnGoMain = new JButton("메인화면");
+		btnGoMain.setForeground(Color.WHITE);
+		btnGoMain.setBackground(new Color(25, 25, 112));
+		btnGoMain.setFocusable(false);
+		btnGoMain.setFont(new Font("맑은 고딕", Font.BOLD, 16));
 		btnGoMain.setBounds(465, 580, 100, 30);
 		panel.add(btnGoMain);
 		
