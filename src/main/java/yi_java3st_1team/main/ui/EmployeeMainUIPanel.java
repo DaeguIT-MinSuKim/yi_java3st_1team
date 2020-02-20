@@ -21,6 +21,8 @@ import javax.swing.border.EmptyBorder;
 
 import yi_java3st_1team.main.ui.content.LogoImg01Panel;
 import yi_java3st_1team.main.ui.content.LogoImg02Panel;
+import yi_java3st_1team.main.ui.content.chart.EmpMiniBarChart;
+import yi_java3st_1team.main.ui.content.chart.EmpMiniLineChart;
 import yi_java3st_1team.main.ui.content.login.EmpRegiPanel;
 import yi_java3st_1team.main.ui.content.login.EmployeeLoginPanel;
 import yi_java3st_1team.main.ui.content.login.LoginPanel;
@@ -37,7 +39,7 @@ public class EmployeeMainUIPanel extends JPanel implements ActionListener {
 	private EmployeeLoginPanel pEmpLogin;
 	private JPanel pStop;
 	
-	private JPanel loginok;
+
 	private JPanel pBtns;
 	private JPanel pBtns01;
 	private JPanel pBtns02;
@@ -47,6 +49,12 @@ public class EmployeeMainUIPanel extends JPanel implements ActionListener {
 	private JLabel lblImg02;
 	private JButton btn03;
 	private JButton btn04;
+	private LogoImg02Panel pImg01;
+	private LogoImg01Panel pLogo;
+	
+	private EmpMiniLineChart pLchart;
+	private EmpMiniBarChart pBchart;
+	private JPanel pImg02;
 
 	public EmployeeMainUIPanel() {
 
@@ -93,7 +101,7 @@ public class EmployeeMainUIPanel extends JPanel implements ActionListener {
 		btnSearch.setBounds(273, 245, 55, 45);
 		pLogin.add(btnSearch);
 		
-		LogoImg02Panel pImg01 = new LogoImg02Panel();
+		pImg01 = new LogoImg02Panel();
 		pImg01.setBackground(SystemColor.inactiveCaptionBorder);
 		pStop.add(pImg01, BorderLayout.CENTER);
 		
@@ -103,13 +111,13 @@ public class EmployeeMainUIPanel extends JPanel implements ActionListener {
 		add(pSbot);
 		pSbot.setLayout(new BorderLayout(10, 10));
 		
-		JPanel pImg02 = new JPanel();
+		pImg02 = new JPanel();
 		pImg02.setBackground(SystemColor.inactiveCaption);
 		pImg02.setPreferredSize(new Dimension(350, 10));
 		pSbot.add(pImg02, BorderLayout.WEST);
 		pImg02.setLayout(new BorderLayout(0, 10));
 		
-		LogoImg01Panel pLogo = new LogoImg01Panel();
+		pLogo = new LogoImg01Panel();
 		pLogo.setBackground(Color.WHITE);
 		pLogo.setPreferredSize(new Dimension(350, 250));
 		pImg02.add(pLogo, BorderLayout.NORTH);
@@ -187,16 +195,29 @@ public class EmployeeMainUIPanel extends JPanel implements ActionListener {
 	
 	//로그인
 	protected void actionPerformedBtnLogin(ActionEvent e) {
+		
+		//로그인 성공시 알림 & 로그인된 패널로 전환
 		JOptionPane.showMessageDialog(null, "반갑습니다");
 		pLogin.setVisible(false);
-//		loginok = new JPanel();
-//		loginok.setPreferredSize(new Dimension(350, 10));
-//		loginok.add(loginok, BorderLayout.WEST);
 		pEmpLogin = new EmployeeLoginPanel();
 		pEmpLogin.setPreferredSize(new Dimension(350, 10));
 		pStop.add(pEmpLogin, BorderLayout.WEST);
 		pStop.revalidate();
 		pStop.repaint();
+		
+		//책임관리자(대표이사~과장) 로그인시 차트 패널 불러오기
+		//1. 라인차트
+		pImg01.setVisible(false);
+		pLchart = new EmpMiniLineChart();
+		pLchart.setBackground(SystemColor.inactiveCaptionBorder);
+		pStop.add(pLchart, BorderLayout.CENTER);
+		//2. 바차트
+		pLogo.setVisible(false);
+		pBchart = new EmpMiniBarChart();
+		pBchart.setBackground(Color.WHITE);
+		pBchart.setPreferredSize(new Dimension(350, 250));
+		pImg02.add(pBchart, BorderLayout.NORTH);
+		//관리자(대리~인턴) 로그인시 현황조회&보고서 버튼 비활성화
 		btn04.setEnabled(false);
 		
 		
