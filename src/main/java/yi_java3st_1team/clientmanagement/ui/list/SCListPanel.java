@@ -22,7 +22,7 @@ public class SCListPanel extends JPanel {
 	private JComboBox cmbCate;
 	private JTextField tfSerch;
 	private JButton btnSerch;
-	private JPanel pList;
+	private SCListTblPanel pList;
 	public SCListPanel() {
 
 		initialize();
@@ -66,9 +66,10 @@ public class SCListPanel extends JPanel {
 		btnSerch.setBounds(542, 65, 70, 30);
 		pSCListPanel.add(btnSerch);
 		
-		pList = new JPanel();
-		pList.setBounds(22, 123, 590, 488);
+		pList = new SCListTblPanel();
+		pList.setBounds(22, 123, 590, 500);
 		pSCListPanel.add(pList);
+		pList.setLayout(new BorderLayout(0, 0));
 	}
 
 }
