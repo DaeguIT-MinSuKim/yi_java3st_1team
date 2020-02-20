@@ -19,6 +19,7 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
+import yi_java3st_1team.clientmanagement.ui.CMMainPanel;
 import yi_java3st_1team.main.ui.content.LogoImg01Panel;
 import yi_java3st_1team.main.ui.content.LogoImg02Panel;
 import yi_java3st_1team.main.ui.content.chart.EmpMiniBarChart;
@@ -55,6 +56,9 @@ public class EmployeeMainUIPanel extends JPanel implements ActionListener {
 	private EmpMiniLineChart pLchart;
 	private EmpMiniBarChart pBchart;
 	private JPanel pImg02;
+	
+	private CMMainPanel pCMpanel;
+	private JPanel pSbot;
 
 	public EmployeeMainUIPanel() {
 
@@ -71,7 +75,7 @@ public class EmployeeMainUIPanel extends JPanel implements ActionListener {
 		add(pStop);
 		pStop.setLayout(new BorderLayout(10, 10));
 		
-		pLogin = new LoginPanel();
+		pLogin =new LoginPanel();
 		pLogin.setPreferredSize(new Dimension(350, 10));
 		pStop.add(pLogin, BorderLayout.WEST);
 		
@@ -105,7 +109,7 @@ public class EmployeeMainUIPanel extends JPanel implements ActionListener {
 		pImg01.setBackground(SystemColor.inactiveCaptionBorder);
 		pStop.add(pImg01, BorderLayout.CENTER);
 		
-		JPanel pSbot = new JPanel();
+		pSbot = new JPanel();
 		pSbot.setBorder(new EmptyBorder(0, 20, 0, 20));
 		pSbot.setBackground(SystemColor.inactiveCaption);
 		add(pSbot);
@@ -141,6 +145,7 @@ public class EmployeeMainUIPanel extends JPanel implements ActionListener {
 		pBtns01.setLayout(new BorderLayout(10, 0));
 		
 		btn01 = new JButton("");
+		btn01.addActionListener(this);
 		btn01.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\loginMain\\mainBtn1.png"));
 		btn01.setPreferredSize(new Dimension(240, 23));
 		btn01.setFocusable(false);
@@ -182,6 +187,9 @@ public class EmployeeMainUIPanel extends JPanel implements ActionListener {
 		pBtns02.add(btn04, BorderLayout.EAST);
 	}
 	public void actionPerformed(ActionEvent e) {
+		if (e.getSource() == btn01) {
+			actionPerformedBtn01(e);
+		}
 		if (e.getSource() == btnSearch) {
 			actionPerformedBtnSearch(e);
 		}
@@ -197,8 +205,8 @@ public class EmployeeMainUIPanel extends JPanel implements ActionListener {
 	protected void actionPerformedBtnLogin(ActionEvent e) {
 		
 		//로그인 성공시 알림 & 로그인된 패널로 전환
-		JOptionPane.showMessageDialog(null, "반갑습니다");
-		pLogin.setVisible(false);
+		JOptionPane.showMessageDialog(null, "Smart한 세계에 오신걸 환영합니다");
+		pStop.remove(pLogin); //제거
 		pEmpLogin = new EmployeeLoginPanel();
 		pEmpLogin.setPreferredSize(new Dimension(350, 10));
 		pStop.add(pEmpLogin, BorderLayout.WEST);
@@ -207,12 +215,12 @@ public class EmployeeMainUIPanel extends JPanel implements ActionListener {
 		
 		//책임관리자(대표이사~과장) 로그인시 차트 패널 불러오기
 		//1. 라인차트
-		pImg01.setVisible(false);
+		pStop.remove(pImg01); //제거
 		pLchart = new EmpMiniLineChart();
 		pLchart.setBackground(SystemColor.inactiveCaptionBorder);
 		pStop.add(pLchart, BorderLayout.CENTER);
 		//2. 바차트
-		pLogo.setVisible(false);
+		pImg02.remove(pLogo); //제거
 		pBchart = new EmpMiniBarChart();
 		pBchart.setBackground(Color.WHITE);
 		pBchart.setPreferredSize(new Dimension(350, 250));
@@ -245,5 +253,12 @@ public class EmployeeMainUIPanel extends JPanel implements ActionListener {
 		SearchPanel sp = new SearchPanel();
 		searchFrame.getContentPane().add(sp);
 		searchFrame.setVisible(true);
+	}
+	
+	//거래처 관리 클릭
+	protected void actionPerformedBtn01(ActionEvent e) {
+		pStop.setVisible(false);
+		pSbot.setVisible(false);
+		pCMpanel = new CMMainPanel();
 	}
 }
