@@ -1,5 +1,9 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 {"resources":{"Scripts/DB_inti.sql":{"sql-editor-data-source-id":"mysql5-17056d100ee-547cf333e6657d6a"},"Scripts/sample_data.sql":{"sql-editor-data-source-id":"mysql5-17056d0430e-5cf57e8bf680be8"},"Scripts/test.sql":{"sql-editor-data-source-id":"mysql5-17056d100ee-547cf333e6657d6a"}}}
 =======
 {"resources":{"Scripts/DB_inti.sql":{"sql-editor-data-source-id":"mysql5-17056d100ee-547cf333e6657d6a"},"Scripts/test.sql":{"sql-editor-data-source-id":"mysql5-17056d0430e-5cf57e8bf680be8"}}}
 >>>>>>> branch 'master' of https://github.com/DaeguIT-MinSuKim/yi_java3st_1team
+=======
+{"resources":{"Scripts/DB_inti.sql":{"sql-editor-data-source-id":"mysql5-17056d100ee-547cf333e6657d6a"},"Scripts/sample_data.sql":{"sql-editor-data-source-id":"mysql5-17056d0430e-5cf57e8bf680be8"},"Scripts/test.sql":{"sql-editor-data-source-id":"mysql5-170617bf3fd-2aa9c7abff1f7552"},"Scripts/user_manage.sql":{"sql-editor-data-source-id":"mysql5-17056d100ee-547cf333e6657d6a"}}}
+>>>>>>> refs/heads/brch_Json
