@@ -116,13 +116,17 @@ public class ClientOCheckPanel extends JPanel {
 		pDate.add(lblSDay);
 		
 		btnStart = new JButton("시작");
+		btnStart.setBackground(new Color(135, 206, 250));
+		btnStart.setForeground(new Color(0, 102, 204));
 		btnStart.setPreferredSize(new Dimension(80, 30));
-		btnStart.setFont(new Font("굴림", Font.PLAIN, 16));
+		btnStart.setFont(new Font("맑은 고딕", Font.BOLD, 16));
 		pDate.add(btnStart);
 		
 		btnSearch = new JButton("검색");
+		btnSearch.setBackground(new Color(255, 204, 153));
+		btnSearch.setForeground(Color.WHITE);
 		btnSearch.setPreferredSize(new Dimension(100, 30));
-		btnSearch.setFont(new Font("굴림", Font.PLAIN, 16));
+		btnSearch.setFont(new Font("맑은 고딕", Font.BOLD, 16));
 		pDate.add(btnSearch);
 		
 		lblEnd = new JLabel("종   료");
@@ -170,14 +174,18 @@ public class ClientOCheckPanel extends JPanel {
 		pDate.add(lblEDay);
 		
 		btnEnd = new JButton("종료");
+		btnEnd.setBackground(new Color(135, 206, 250));
+		btnEnd.setForeground(new Color(0, 102, 204));
 		btnEnd.setPreferredSize(new Dimension(80, 30));
-		btnEnd.setFont(new Font("굴림", Font.PLAIN, 16));
+		btnEnd.setFont(new Font("맑은 고딕", Font.BOLD, 16));
 		pDate.add(btnEnd);
 		
-		btnMain = new JButton("");
+		btnMain = new JButton("메인화면");
+		btnMain.setBackground(new Color(25, 25, 112));
+		btnMain.setForeground(Color.WHITE);
 		btnMain.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\btns\\메인화면.png"));
 		btnMain.setPreferredSize(new Dimension(100, 30));
-		btnMain.setFont(new Font("굴림", Font.PLAIN, 16));
+		btnMain.setFont(new Font("맑은 고딕", Font.BOLD, 16));
 		pDate.add(btnMain);
 		
 		pList = new JPanel();

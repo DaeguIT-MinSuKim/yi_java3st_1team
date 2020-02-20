@@ -8,6 +8,7 @@ import java.awt.Font;
 import javax.swing.SwingConstants;
 import javax.swing.JTextField;
 import java.awt.FlowLayout;
+import java.awt.Color;
 
 @SuppressWarnings("serial")
 public class TotalAmountPanel extends JPanel {
@@ -28,9 +29,10 @@ public class TotalAmountPanel extends JPanel {
 		setSize(new Dimension(1300, 40));
 		
 		JLabel lblAmount01 = new JLabel("총 매출금");
+		lblAmount01.setForeground(Color.BLUE);
 		lblAmount01.setPreferredSize(new Dimension(130, 30));
 		lblAmount01.setHorizontalAlignment(SwingConstants.CENTER);
-		lblAmount01.setFont(new Font("Dialog", Font.BOLD, 18));
+		lblAmount01.setFont(new Font("휴먼둥근헤드라인", Font.PLAIN, 18));
 		add(lblAmount01);
 		
 		tfAmount01 = new JTextField();
@@ -40,9 +42,10 @@ public class TotalAmountPanel extends JPanel {
 		add(tfAmount01);
 		
 		JLabel lblAmount02 = new JLabel(" 총 미수금 ");
+		lblAmount02.setForeground(Color.RED);
 		lblAmount02.setPreferredSize(new Dimension(130, 30));
 		lblAmount02.setHorizontalAlignment(SwingConstants.CENTER);
-		lblAmount02.setFont(new Font("Dialog", Font.BOLD, 18));
+		lblAmount02.setFont(new Font("휴먼둥근헤드라인", Font.PLAIN, 18));
 		add(lblAmount02);
 		
 		tfAmount02 = new JTextField();

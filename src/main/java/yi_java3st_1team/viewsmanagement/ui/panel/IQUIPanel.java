@@ -42,7 +42,7 @@ public class IQUIPanel extends JPanel {
 		JLabel lblTitle = new JLabel("재고현황 조회");
 		lblTitle.setBounds(0, 30, 1500, 42);
 		lblTitle.setHorizontalAlignment(SwingConstants.CENTER);
-		lblTitle.setFont(new Font("����", Font.BOLD, 30));
+		lblTitle.setFont(new Font("휴먼둥근헤드라인", Font.PLAIN, 32));
 		pTitle.add(lblTitle);
 		
 		JPanel pTop = new JPanel();

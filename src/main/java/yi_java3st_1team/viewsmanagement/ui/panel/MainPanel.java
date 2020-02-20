@@ -14,6 +14,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
+import java.awt.Color;
 
 @SuppressWarnings("serial")
 public class MainPanel extends JPanel implements ActionListener {
@@ -42,19 +43,22 @@ public class MainPanel extends JPanel implements ActionListener {
 		pTitle.setLayout(null);
 		
 		JLabel lblTitle = new JLabel("현황조회 / 보고");
-		lblTitle.setBounds(532, 85, 273, 42);
+		lblTitle.setForeground(Color.BLACK);
+		lblTitle.setBounds(0, 85, 1196, 42);
 		lblTitle.setHorizontalAlignment(SwingConstants.CENTER);
-		lblTitle.setFont(new Font("굴림", Font.BOLD, 36));
+		lblTitle.setFont(new Font("휴먼둥근헤드라인", Font.PLAIN, 40));
 		pTitle.add(lblTitle);
 		
 		JPanel pBtns = new JPanel();
-		pBtns.setBounds(0, 132, 1338, 468);
+		pBtns.setBounds(0, 132, 1338, 585);
 		pBtns.setBackground(SystemColor.inactiveCaptionBorder);
 		pBtns.setBorder(new EmptyBorder(50, 100, 50, 100));
 		add(pBtns);
 		pBtns.setLayout(null);
 		
 		btn01 = new JButton("");
+		btn01.setBackground(Color.WHITE);
+		btn01.setFocusable(false);
 		btn01.addActionListener(this);
 		btn01.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\reportMenu\\btn01.png"));
 		btn01.setPreferredSize(new Dimension(250, 170));
@@ -63,6 +67,8 @@ public class MainPanel extends JPanel implements ActionListener {
 		pBtns.add(btn01);
 		
 		btn02 = new JButton("");
+		btn02.setBackground(new Color(255, 245, 238));
+		btn02.setFocusable(false);
 		btn02.addActionListener(this);
 		btn02.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\reportMenu\\btn02.png"));
 		btn02.setPreferredSize(new Dimension(250, 170));
@@ -72,6 +78,8 @@ public class MainPanel extends JPanel implements ActionListener {
 		pBtns.add(btn02);
 		
 		btn03 = new JButton("");
+		btn03.setBackground(new Color(245, 255, 250));
+		btn03.setFocusable(false);
 		btn03.addActionListener(this);
 		btn03.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\reportMenu\\btn03.png"));
 		btn03.setPreferredSize(new Dimension(250, 170));
@@ -81,6 +89,8 @@ public class MainPanel extends JPanel implements ActionListener {
 		pBtns.add(btn03);
 		
 		btn04 = new JButton("");
+		btn04.setBackground(new Color(245, 255, 250));
+		btn04.setFocusable(false);
 		btn04.addActionListener(this);
 		btn04.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\reportMenu\\btn04.png"));
 		btn04.setPreferredSize(new Dimension(250, 170));
@@ -90,6 +100,8 @@ public class MainPanel extends JPanel implements ActionListener {
 		pBtns.add(btn04);
 		
 		btn05 = new JButton("");
+		btn05.setBackground(new Color(255, 245, 238));
+		btn05.setFocusable(false);
 		btn05.addActionListener(this);
 		btn05.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\reportMenu\\btn05.png"));
 		btn05.setPreferredSize(new Dimension(250, 170));
@@ -99,6 +111,8 @@ public class MainPanel extends JPanel implements ActionListener {
 		pBtns.add(btn05);
 		
 		btn06 = new JButton("");
+		btn06.setBackground(Color.WHITE);
+		btn06.setFocusable(false);
 		btn06.addActionListener(this);
 		btn06.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\reportMenu\\btn06.png"));
 		btn06.setSize(new Dimension(270, 190));

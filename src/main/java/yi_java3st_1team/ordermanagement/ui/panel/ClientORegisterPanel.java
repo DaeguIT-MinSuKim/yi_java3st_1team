@@ -153,7 +153,7 @@ public class ClientORegisterPanel extends JPanel {
 		
 		JButton btnQtyCheck = new JButton("재고확인");
 		btnQtyCheck.setFocusable(false);
-		btnQtyCheck.setBackground(new Color(240, 230, 140));
+		btnQtyCheck.setBackground(new Color(255, 204, 102));
 		btnQtyCheck.setForeground(Color.WHITE);
 		btnQtyCheck.setFont(new Font("맑은 고딕", Font.BOLD, 16));
 		btnQtyCheck.setBounds(465, 290, 100, 30);

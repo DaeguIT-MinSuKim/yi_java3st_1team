@@ -12,6 +12,7 @@ import javax.swing.SpinnerNumberModel;
 import javax.swing.SpinnerDateModel;
 import java.util.Date;
 import java.util.Calendar;
+import java.awt.Color;
 
 @SuppressWarnings("serial")
 public class ClientPanel extends JPanel {
@@ -58,8 +59,10 @@ public class ClientPanel extends JPanel {
 		add(lblMonth);
 		
 		JButton btnStart = new JButton("시작날짜선택");
+		btnStart.setBackground(new Color(65, 105, 225));
+		btnStart.setForeground(Color.WHITE);
 		btnStart.setPreferredSize(new Dimension(150, 30));
-		btnStart.setFont(new Font("굴림", Font.BOLD, 16));
+		btnStart.setFont(new Font("맑은 고딕", Font.BOLD, 16));
 		add(btnStart);
 	}
 

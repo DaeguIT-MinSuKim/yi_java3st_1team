@@ -15,6 +15,7 @@ import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 import yi_java3st_1team.viewsmanagement.ui.list.SWTotalTblPanel;
 import yi_java3st_1team.viewsmanagement.ui.list.SpecTblPanel;
+import java.awt.Color;
 
 @SuppressWarnings("serial")
 public class SW_SpecUIPanel extends JPanel {
@@ -41,9 +42,10 @@ public class SW_SpecUIPanel extends JPanel {
 		pTitle.setLayout(null);
 		
 		JLabel lblTitle = new JLabel("전체 판매 현황 / 거래명세서");
+		lblTitle.setForeground(Color.BLACK);
 		lblTitle.setBounds(0, 30, 1500, 42);
 		lblTitle.setHorizontalAlignment(SwingConstants.CENTER);
-		lblTitle.setFont(new Font("����", Font.BOLD, 30));
+		lblTitle.setFont(new Font("휴먼둥근헤드라인", Font.PLAIN, 32));
 		pTitle.add(lblTitle);
 		
 		JPanel pLeft = new JPanel();
@@ -66,7 +68,7 @@ public class SW_SpecUIPanel extends JPanel {
 		JRadioButton rdbtnSW = new JRadioButton(" S/W 전체 판매현황");
 		rdbtnSW.setPreferredSize(new Dimension(230, 30));
 		rdbtnSW.setBackground(SystemColor.inactiveCaption);
-		rdbtnSW.setFont(new Font("굴림", Font.BOLD, 18));
+		rdbtnSW.setFont(new Font("휴먼둥근헤드라인", Font.PLAIN, 20));
 		rdbtnSW.setHorizontalAlignment(SwingConstants.CENTER);
 		pLeftTop.add(rdbtnSW);
 		
@@ -90,9 +92,10 @@ public class SW_SpecUIPanel extends JPanel {
 		pSW.add(pLeftResult);
 		
 		JLabel lblLTotal = new JLabel("총 판매금액");
+		lblLTotal.setForeground(Color.BLACK);
 		lblLTotal.setHorizontalAlignment(SwingConstants.CENTER);
 		lblLTotal.setPreferredSize(new Dimension(130, 30));
-		lblLTotal.setFont(new Font("굴림", Font.BOLD, 18));
+		lblLTotal.setFont(new Font("휴먼둥근헤드라인", Font.PLAIN, 18));
 		pLeftResult.add(lblLTotal);
 		
 		tfLTotal = new JTextField();
@@ -115,10 +118,11 @@ public class SW_SpecUIPanel extends JPanel {
 		pRight.add(pSpec);
 		
 		JRadioButton rdbtnTS = new JRadioButton(" 거래명세서");
+		rdbtnTS.setForeground(Color.BLACK);
 		rdbtnTS.setPreferredSize(new Dimension(150, 30));
 		rdbtnTS.setBackground(SystemColor.inactiveCaption);
 		rdbtnTS.setHorizontalAlignment(SwingConstants.CENTER);
-		rdbtnTS.setFont(new Font("굴림", Font.BOLD, 18));
+		rdbtnTS.setFont(new Font("휴먼둥근헤드라인", Font.PLAIN, 20));
 		pSpec.add(rdbtnTS);
 		
 		JPanel pRightList = new JPanel();
@@ -141,9 +145,10 @@ public class SW_SpecUIPanel extends JPanel {
 		pRight.add(pRightResult);
 		
 		JLabel lblRTotal = new JLabel("총 납품금액");
+		lblRTotal.setForeground(Color.BLACK);
 		lblRTotal.setHorizontalAlignment(SwingConstants.CENTER);
 		lblRTotal.setPreferredSize(new Dimension(130, 30));
-		lblRTotal.setFont(new Font("굴림", Font.BOLD, 18));
+		lblRTotal.setFont(new Font("휴먼둥근헤드라인", Font.PLAIN, 18));
 		pRightResult.add(lblRTotal);
 		
 		tfRTotal = new JTextField();

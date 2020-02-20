@@ -20,6 +20,7 @@ import yi_java3st_1team.viewsmanagement.ui.content.ClientPanel;
 import yi_java3st_1team.viewsmanagement.ui.content.EmployeePanel;
 import java.awt.BorderLayout;
 import yi_java3st_1team.viewsmanagement.ui.graph.EmployeeGraphPanel;
+import java.awt.Color;
 
 @SuppressWarnings("serial")
 public class GraphUIPanel extends JPanel {
@@ -50,9 +51,10 @@ public class GraphUIPanel extends JPanel {
 		pLTitle.setLayout(null);
 		
 		JLabel lblLTitle = new JLabel("고객사 주문현황 그래프");
-		lblLTitle.setBounds(203, 55, 344, 35);
+		lblLTitle.setForeground(Color.BLACK);
+		lblLTitle.setBounds(12, 55, 726, 35);
 		lblLTitle.setHorizontalAlignment(SwingConstants.CENTER);
-		lblLTitle.setFont(new Font("굴림", Font.BOLD, 30));
+		lblLTitle.setFont(new Font("휴먼둥근헤드라인", Font.PLAIN, 32));
 		pLTitle.add(lblLTitle);
 		
 		JPanel pLSearch = new JPanel();
@@ -100,8 +102,10 @@ public class GraphUIPanel extends JPanel {
 		pRTitle.setLayout(null);
 		
 		JLabel lblNewLabel = new JLabel("영업사원 실적현황 그래프");
-		lblNewLabel.setBounds(187, 55, 376, 35);
-		lblNewLabel.setFont(new Font("굴림", Font.BOLD, 30));
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel.setForeground(Color.BLACK);
+		lblNewLabel.setBounds(12, 55, 726, 35);
+		lblNewLabel.setFont(new Font("휴먼둥근헤드라인", Font.PLAIN, 30));
 		pRTitle.add(lblNewLabel);
 		
 		JPanel pRSearch = new JPanel();

@@ -15,6 +15,7 @@ import javax.swing.JSpinner;
 import javax.swing.SpinnerDateModel;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.SwingConstants;
+import java.awt.Color;
 
 @SuppressWarnings("serial")
 public class DateSalePanel extends JPanel {
@@ -38,9 +39,10 @@ public class DateSalePanel extends JPanel {
 		panel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		
 		JLabel lblStart = new JLabel("시   작");
+		lblStart.setForeground(Color.BLACK);
 		lblStart.setPreferredSize(new Dimension(120, 30));
 		lblStart.setHorizontalAlignment(SwingConstants.LEFT);
-		lblStart.setFont(new Font("굴림", Font.BOLD, 18));
+		lblStart.setFont(new Font("휴먼둥근헤드라인", Font.PLAIN, 18));
 		panel.add(lblStart);
 		
 		Calendar calendar = Calendar.getInstance();
@@ -85,19 +87,26 @@ public class DateSalePanel extends JPanel {
 		panel.add(lblStartD);
 		
 		JButton btnStart = new JButton("시작");
+		btnStart.setFocusable(false);
+		btnStart.setBackground(SystemColor.controlHighlight);
+		btnStart.setForeground(Color.BLACK);
 		btnStart.setPreferredSize(new Dimension(80, 30));
-		btnStart.setFont(new Font("굴림", Font.PLAIN, 16));
+		btnStart.setFont(new Font("맑은 고딕", Font.BOLD, 16));
 		panel.add(btnStart);
 		
 		JButton btnSearch = new JButton("검색");
+		btnSearch.setFocusable(false);
+		btnSearch.setForeground(Color.WHITE);
+		btnSearch.setBackground(new Color(70, 130, 180));
 		btnSearch.setPreferredSize(new Dimension(100, 30));
-		btnSearch.setFont(new Font("굴림", Font.PLAIN, 16));
+		btnSearch.setFont(new Font("맑은 고딕", Font.BOLD, 16));
 		panel.add(btnSearch);
 		
 		JLabel lblEnd = new JLabel("종   료");
+		lblEnd.setForeground(Color.BLACK);
 		lblEnd.setPreferredSize(new Dimension(120, 30));
 		lblEnd.setHorizontalAlignment(SwingConstants.LEFT);
-		lblEnd.setFont(new Font("굴림", Font.BOLD, 18));
+		lblEnd.setFont(new Font("휴먼둥근헤드라인", Font.PLAIN, 18));
 		panel.add(lblEnd);
 		
 		JSpinner spEnd = new JSpinner(dateModel);
@@ -138,13 +147,19 @@ public class DateSalePanel extends JPanel {
 		panel.add(lblEndD);
 		
 		JButton btnEnd = new JButton("종료");
+		btnEnd.setFocusable(false);
+		btnEnd.setBackground(SystemColor.controlHighlight);
+		btnEnd.setForeground(Color.BLACK);
 		btnEnd.setPreferredSize(new Dimension(80, 30));
-		btnEnd.setFont(new Font("굴림", Font.PLAIN, 16));
+		btnEnd.setFont(new Font("맑은 고딕", Font.BOLD, 16));
 		panel.add(btnEnd);
 		
 		JButton btnMain = new JButton("메인화면");
+		btnMain.setFocusable(false);
+		btnMain.setBackground(new Color(25, 25, 112));
+		btnMain.setForeground(Color.WHITE);
 		btnMain.setPreferredSize(new Dimension(100, 30));
-		btnMain.setFont(new Font("굴림", Font.PLAIN, 16));
+		btnMain.setFont(new Font("맑은 고딕", Font.BOLD, 16));
 		panel.add(btnMain);
 	}
 

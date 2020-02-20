@@ -9,6 +9,7 @@ import javax.swing.SwingConstants;
 import javax.swing.JComboBox;
 import javax.swing.JCheckBox;
 import javax.swing.DefaultComboBoxModel;
+import java.awt.Color;
 
 @SuppressWarnings("serial")
 public class EmployeePanel extends JPanel {
@@ -25,9 +26,10 @@ public class EmployeePanel extends JPanel {
 		setSize(new Dimension(750, 40));
 		
 		JLabel lblDept = new JLabel("영 업 부 서");
+		lblDept.setForeground(Color.BLACK);
 		lblDept.setPreferredSize(new Dimension(200, 30));
 		lblDept.setHorizontalAlignment(SwingConstants.CENTER);
-		lblDept.setFont(new Font("굴림", Font.BOLD, 18));
+		lblDept.setFont(new Font("휴먼둥근헤드라인", Font.PLAIN, 18));
 		add(lblDept);
 		
 		JComboBox cmbMonth = new JComboBox();
@@ -37,9 +39,10 @@ public class EmployeePanel extends JPanel {
 		add(cmbMonth);
 		
 		JCheckBox cbTotal = new JCheckBox("전체");
+		cbTotal.setForeground(Color.BLACK);
 		cbTotal.setPreferredSize(new Dimension(170, 30));
 		cbTotal.setHorizontalAlignment(SwingConstants.CENTER);
-		cbTotal.setFont(new Font("굴림", Font.PLAIN, 16));
+		cbTotal.setFont(new Font("휴먼둥근헤드라인", Font.PLAIN, 16));
 		cbTotal.setBackground(SystemColor.inactiveCaption);
 		add(cbTotal);
 	}

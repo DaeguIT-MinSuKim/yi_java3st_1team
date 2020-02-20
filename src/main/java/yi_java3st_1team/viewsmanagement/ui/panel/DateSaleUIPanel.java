@@ -19,6 +19,7 @@ import javax.swing.SpinnerNumberModel;
 import yi_java3st_1team.viewsmanagement.ui.content.DateSalePanel;
 import yi_java3st_1team.viewsmanagement.ui.content.TotalAmountPanel;
 import yi_java3st_1team.viewsmanagement.ui.list.DateSaleTblPanel;
+import java.awt.Color;
 
 @SuppressWarnings("serial")
 public class DateSaleUIPanel extends JPanel {
@@ -43,9 +44,10 @@ public class DateSaleUIPanel extends JPanel {
 		pTitle.setLayout(null);
 		
 		JLabel lblTitle = new JLabel("날짜별 판매현황 조회");
+		lblTitle.setForeground(Color.BLACK);
 		lblTitle.setBounds(0, 30, 1500, 42);
 		lblTitle.setHorizontalAlignment(SwingConstants.CENTER);
-		lblTitle.setFont(new Font("����", Font.BOLD, 30));
+		lblTitle.setFont(new Font("휴먼둥근헤드라인", Font.PLAIN, 32));
 		pTitle.add(lblTitle);
 		
 		JPanel pTop = new JPanel();

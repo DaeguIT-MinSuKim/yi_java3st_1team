@@ -17,6 +17,7 @@ import javax.swing.border.EmptyBorder;
 import yi_java3st_1team.viewsmanagement.ui.content.ClientSalePanel;
 import yi_java3st_1team.viewsmanagement.ui.content.TotalAmountPanel;
 import yi_java3st_1team.viewsmanagement.ui.list.ClientSaleTblPanel;
+import java.awt.Color;
 
 @SuppressWarnings("serial")
 public class ClientSaleUIPanel extends JPanel {
@@ -41,9 +42,10 @@ public class ClientSaleUIPanel extends JPanel {
 		pTitle.setLayout(null);
 		
 		JLabel lblTitle = new JLabel("\uACE0\uAC1D\uBCC4 \uD310\uB9E4\uD604\uD669 \uC870\uD68C");
+		lblTitle.setForeground(Color.BLACK);
 		lblTitle.setBounds(0, 30, 1500, 42);
 		lblTitle.setHorizontalAlignment(SwingConstants.CENTER);
-		lblTitle.setFont(new Font("����", Font.BOLD, 30));
+		lblTitle.setFont(new Font("휴먼둥근헤드라인", Font.PLAIN, 32));
 		pTitle.add(lblTitle);
 		
 		JPanel pTop = new JPanel();
