@@ -193,16 +193,20 @@ public class ClientRegiPanel<T>  extends AbsRegiPanel<T> implements ActionListen
 		pDoubleCheck.setLayout(null);
 		
 		zipCod = new JButton("<html>우편<br>번호</html>");
+		zipCod.setFocusable(false);
+		zipCod.setBackground(new Color(70, 130, 180));
 		zipCod.addActionListener(this);
-		zipCod.setForeground(Color.BLACK);
-		zipCod.setFont(new Font("굴림", Font.BOLD, 12));
+		zipCod.setForeground(Color.WHITE);
+		zipCod.setFont(new Font("맑은 고딕", Font.BOLD, 13));
 		zipCod.setBounds(12, 112, 60, 39);
 		pDoubleCheck.add(zipCod);
 		
 		doubleCheck = new JButton("<html>중복<br>확인</html>");
+		doubleCheck.setFocusable(false);
+		doubleCheck.setBackground(new Color(240, 128, 128));
 		doubleCheck.addActionListener(this);
-		doubleCheck.setForeground(Color.BLACK);
-		doubleCheck.setFont(new Font("굴림", Font.BOLD, 12));
+		doubleCheck.setForeground(Color.WHITE);
+		doubleCheck.setFont(new Font("맑은 고딕", Font.BOLD, 13));
 		doubleCheck.setBounds(12, 187, 60, 39);
 		pDoubleCheck.add(doubleCheck);
 		
@@ -212,15 +216,19 @@ public class ClientRegiPanel<T>  extends AbsRegiPanel<T> implements ActionListen
 		add(pBtns, BorderLayout.SOUTH);
 		
 		btnAdd = new JButton("등록");
+		btnAdd.setFocusable(false);
+		btnAdd.setBackground(SystemColor.controlHighlight);
 		btnAdd.addActionListener(this);
 		btnAdd.setForeground(Color.BLACK);
-		btnAdd.setFont(new Font("굴림", Font.BOLD, 12));
+		btnAdd.setFont(new Font("맑은 고딕", Font.BOLD, 14));
 		pBtns.add(btnAdd);
 		
 		btnCancle = new JButton("취소");
+		btnCancle.setFocusable(false);
+		btnCancle.setBackground(SystemColor.controlHighlight);
 		btnCancle.addActionListener(this);
 		btnCancle.setForeground(Color.BLACK);
-		btnCancle.setFont(new Font("굴림", Font.BOLD, 12));
+		btnCancle.setFont(new Font("맑은 고딕", Font.BOLD, 14));
 		pBtns.add(btnCancle);
 	}
 	
