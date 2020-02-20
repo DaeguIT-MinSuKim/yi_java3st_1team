@@ -172,14 +172,20 @@ public class EmpRegiPanel<T> extends AbsRegiPanel<T> implements ActionListener {
 		pDoubleCheck.setLayout(null);
 
 		doubleCheck1 = new JButton("<html>중복<br>확인</html>");
+		doubleCheck1.setFocusable(false);
+		doubleCheck1.setForeground(Color.WHITE);
+		doubleCheck1.setBackground(new Color(240, 128, 128));
 		doubleCheck1.addActionListener(this);
-		doubleCheck1.setFont(new Font("굴림", Font.BOLD, 12));
+		doubleCheck1.setFont(new Font("맑은 고딕", Font.BOLD, 13));
 		doubleCheck1.setBounds(12, 3, 60, 39);
 		pDoubleCheck.add(doubleCheck1);
 
 		doubleCheck2 = new JButton("<html>중복<br>확인</html>");
+		doubleCheck2.setFocusable(false);
+		doubleCheck2.setForeground(Color.WHITE);
+		doubleCheck2.setBackground(new Color(240, 128, 128));
 		doubleCheck2.addActionListener(this);
-		doubleCheck2.setFont(new Font("굴림", Font.BOLD, 12));
+		doubleCheck2.setFont(new Font("맑은 고딕", Font.BOLD, 13));
 		doubleCheck2.setBounds(12, 182, 60, 39);
 		pDoubleCheck.add(doubleCheck2);
 
@@ -189,13 +195,19 @@ public class EmpRegiPanel<T> extends AbsRegiPanel<T> implements ActionListener {
 		add(pBtns, BorderLayout.SOUTH);
 
 		btnAdd = new JButton("등록");
+		btnAdd.setBackground(SystemColor.controlHighlight);
+		btnAdd.setFocusable(false);
+		btnAdd.setForeground(Color.BLACK);
 		btnAdd.addActionListener(this);
-		btnAdd.setFont(new Font("굴림", Font.BOLD, 12));
+		btnAdd.setFont(new Font("맑은 고딕", Font.BOLD, 14));
 		pBtns.add(btnAdd);
 
 		btnCancle = new JButton("취소");
+		btnCancle.setForeground(Color.BLACK);
+		btnCancle.setBackground(SystemColor.controlHighlight);
+		btnCancle.setFocusable(false);
 		btnCancle.addActionListener(this);
-		btnCancle.setFont(new Font("굴림", Font.BOLD, 12));
+		btnCancle.setFont(new Font("맑은 고딕", Font.BOLD, 14));
 		pBtns.add(btnCancle);
 	}
 
@@ -246,8 +258,7 @@ public class EmpRegiPanel<T> extends AbsRegiPanel<T> implements ActionListener {
 
 	// 취소버튼(초기화)
 	protected void actionPerformedBtnCancle(ActionEvent e) {
-		 lblPassword.getText();
-		//clearTf();
+		clearTf();
 	}
 
 	// 중복확인 : 사원번호

@@ -53,6 +53,7 @@ public class ClientMainUIPanel extends JPanel implements ActionListener {
 		pStop.add(pLogin, BorderLayout.WEST);
 		
 		btnLogin = new JButton("LOGIN");
+		btnLogin.setBackground(SystemColor.controlHighlight);
 		btnLogin.addActionListener(this);
 		btnLogin.setFont(new Font("Arial", Font.BOLD, 17));
 		btnLogin.setFocusable(false);
@@ -60,6 +61,7 @@ public class ClientMainUIPanel extends JPanel implements ActionListener {
 		pLogin.add(btnLogin);
 		
 		btnRegi = new JButton("REGISTER");
+		btnRegi.setBackground(SystemColor.controlHighlight);
 		btnRegi.addActionListener(this);
 		btnRegi.setFont(new Font("Arial", Font.BOLD, 17));
 		btnRegi.setFocusable(false);
@@ -67,6 +69,7 @@ public class ClientMainUIPanel extends JPanel implements ActionListener {
 		pLogin.add(btnRegi);
 		
 		btnSearch = new JButton("");
+		btnSearch.setBackground(SystemColor.controlHighlight);
 		btnSearch.addActionListener(this);
 		btnSearch.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\loginMain\\searchBtn.png"));
 		btnSearch.setFocusable(false);
@@ -120,7 +123,7 @@ public class ClientMainUIPanel extends JPanel implements ActionListener {
 	}
 	protected void actionPerformedBtnRegi(ActionEvent e) {
 		cliFrame = new JFrame();
-		cliFrame.setTitle("회원가입");
+		cliFrame.setTitle("[고객용] 회원가입");
 		cliFrame.setSize(500, 650);
 		cliFrame.setResizable(false);
 		cliFrame.setLocationRelativeTo(null); // 화면중앙에 프레임 띄우기

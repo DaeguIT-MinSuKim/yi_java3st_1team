@@ -48,7 +48,10 @@ public class SearchPanel extends JPanel {
 		panel_1.add(panel_2, BorderLayout.SOUTH);
 		
 		JButton btnNewButton = new JButton("조회");
-		btnNewButton.setFont(new Font("굴림", Font.BOLD, 12));
+		btnNewButton.setFocusable(false);
+		btnNewButton.setBackground(SystemColor.controlHighlight);
+		btnNewButton.setForeground(Color.BLACK);
+		btnNewButton.setFont(new Font("맑은 고딕", Font.BOLD, 14));
 		panel_2.add(btnNewButton);
 		
 		JPanel panel_4 = new JPanel();
@@ -93,7 +96,10 @@ public class SearchPanel extends JPanel {
 		panel.add(panel_3, BorderLayout.SOUTH);
 		
 		JButton btnNewButton_1 = new JButton("임시 비밀번호 전송");
-		btnNewButton_1.setFont(new Font("굴림", Font.BOLD, 12));
+		btnNewButton_1.setFocusable(false);
+		btnNewButton_1.setBackground(SystemColor.controlHighlight);
+		btnNewButton_1.setForeground(Color.BLACK);
+		btnNewButton_1.setFont(new Font("맑은 고딕", Font.BOLD, 14));
 		panel_3.add(btnNewButton_1);
 		
 		JPanel panel_5 = new JPanel();
