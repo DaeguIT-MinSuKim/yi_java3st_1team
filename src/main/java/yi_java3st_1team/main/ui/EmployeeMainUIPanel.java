@@ -1,6 +1,7 @@
 package yi_java3st_1team.main.ui;
 
 import java.awt.BorderLayout;
+import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -241,15 +242,8 @@ public class EmployeeMainUIPanel extends JPanel implements ActionListener {
 	
 	//거래처 관리 클릭
 	protected void actionPerformedBtn01(ActionEvent e) {
-		
-		regiFrame = new JFrame();
-		regiFrame.setSize(1000, 700);
-		pCMpanel = new CMMainPanel();
-		regiFrame.setLocationRelativeTo(null);
-		regiFrame.getContentPane().add(pCMpanel);
-		regiFrame.setVisible(true);
-		
-		
+		//pCMpanel = new CMMainPanel();
+		//getRootPane().add(pCMpanel);
 		
 
 
