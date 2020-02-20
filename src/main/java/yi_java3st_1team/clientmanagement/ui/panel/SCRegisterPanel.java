@@ -133,14 +133,14 @@ public class SCRegisterPanel extends JPanel {
 		btnAdd.setFocusable(false);
 		btnAdd.setForeground(new Color(0, 102, 204));
 		btnAdd.setFont(new Font("맑은 고딕", Font.BOLD, 16));
-		btnAdd.setBackground(new Color(102, 204, 255));
+		btnAdd.setBackground(new Color(135, 206, 250));
 		btnAdd.setBounds(66, 580, 100, 30);
 		panel.add(btnAdd);
 		
 		btnUpdate = new JButton("수 정");
 		btnUpdate.setFocusable(false);
 		btnUpdate.setForeground(new Color(0, 102, 204));
-		btnUpdate.setBackground(new Color(102, 204, 255));
+		btnUpdate.setBackground(new Color(135, 206, 250));
 		btnUpdate.setFont(new Font("맑은 고딕", Font.BOLD, 16));
 		btnUpdate.setBounds(198, 580, 100, 30);
 		panel.add(btnUpdate);
@@ -148,7 +148,7 @@ public class SCRegisterPanel extends JPanel {
 		btnDel = new JButton("삭 제");
 		btnDel.setFocusable(false);
 		btnDel.setForeground(new Color(0, 102, 204));
-		btnDel.setBackground(new Color(102, 204, 255));
+		btnDel.setBackground(new Color(135, 206, 250));
 		btnDel.setFont(new Font("맑은 고딕", Font.BOLD, 16));
 		btnDel.setBounds(330, 580, 100, 30);
 		panel.add(btnDel);

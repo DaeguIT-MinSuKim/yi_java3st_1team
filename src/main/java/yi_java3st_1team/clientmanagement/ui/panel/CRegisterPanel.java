@@ -128,20 +128,23 @@ public class CRegisterPanel extends JPanel {
 		panel.add(tfStaff);
 		
 		btnUpdate = new JButton("수 정");
-		btnUpdate.setBackground(new Color(0, 204, 255));
+		btnUpdate.setFocusable(false);
+		btnUpdate.setBackground(new Color(135, 206, 250));
 		btnUpdate.setForeground(new Color(0, 102, 204));
 		btnUpdate.setFont(new Font("맑은 고딕", Font.BOLD, 16));
 		btnUpdate.setBounds(66, 580, 100, 30);
 		panel.add(btnUpdate);
 		
 		btnDel = new JButton("삭 제");
-		btnDel.setBackground(new Color(0, 204, 255));
+		btnDel.setFocusable(false);
+		btnDel.setBackground(new Color(135, 206, 250));
 		btnDel.setForeground(new Color(0, 102, 204));
 		btnDel.setFont(new Font("맑은 고딕", Font.BOLD, 16));
 		btnDel.setBounds(270, 580, 100, 30);
 		panel.add(btnDel);
 		
 		btnGoMain = new JButton("메인화면");
+		btnGoMain.setFocusable(false);
 		btnGoMain.setBackground(new Color(25, 25, 112));
 		btnGoMain.setForeground(Color.WHITE);
 		btnGoMain.setFont(new Font("맑은 고딕", Font.BOLD, 16));
@@ -149,6 +152,7 @@ public class CRegisterPanel extends JPanel {
 		panel.add(btnGoMain);
 		
 		btnDplCheck = new JButton("중복확인");
+		btnDplCheck.setFocusable(false);
 		btnDplCheck.setForeground(Color.WHITE);
 		btnDplCheck.setBackground(new Color(240, 128, 128));
 		btnDplCheck.setFont(new Font("맑은 고딕", Font.BOLD, 16));
@@ -156,6 +160,7 @@ public class CRegisterPanel extends JPanel {
 		panel.add(btnDplCheck);
 		
 		btnPostNum = new JButton("우편번호");
+		btnPostNum.setFocusable(false);
 		btnPostNum.setBackground(new Color(70, 130, 180));
 		btnPostNum.setForeground(Color.WHITE);
 		btnPostNum.setFont(new Font("맑은 고딕", Font.BOLD, 16));
