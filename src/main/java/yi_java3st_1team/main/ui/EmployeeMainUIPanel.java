@@ -132,7 +132,7 @@ public class EmployeeMainUIPanel extends JPanel implements ActionListener {
 	//회원가입
 	protected void actionPerformedBtnRegi(ActionEvent e) {
 		regiFrame = new JFrame();
-		regiFrame.setTitle("회원가입");
+		regiFrame.setTitle("[관리자용] 회원가입");
 		regiFrame.setSize(500, 650);
 		regiFrame.setResizable(false);
 		regiFrame.setLocationRelativeTo(null); // 화면중앙에 프레임 띄우기
