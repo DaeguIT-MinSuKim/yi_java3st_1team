@@ -12,6 +12,7 @@ import java.awt.Color;
 
 public class MainBtns01Panel extends JPanel {
 
+	private JButton btn04;
 	/**
 	 * Create the panel.
 	 */
@@ -64,7 +65,7 @@ public class MainBtns01Panel extends JPanel {
 		btn03.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\loginMain\\mainBtn3.png"));
 		pBtns02.add(btn03, BorderLayout.CENTER);
 		
-		JButton btn04 = new JButton("");
+		btn04 = new JButton("");
 		btn04.setFocusable(false);
 		btn04.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\loginMain\\mainBtn4.png"));
 		btn04.setPreferredSize(new Dimension(240, 23));
