@@ -58,8 +58,11 @@ public class SWListPanel extends JPanel {
 		tfSerch.setBounds(392, 65, 130, 30);
 		pSWListPanel.add(tfSerch);
 		
-		btnSerch = new JButton("");
-		btnSerch.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\btns\\검색.png"));
+		btnSerch = new JButton("검색");
+		btnSerch.setFocusable(false);
+		btnSerch.setBackground(new Color(135, 206, 250));
+		btnSerch.setForeground(Color.WHITE);
+		btnSerch.setFont(new Font("맑은 고딕", Font.BOLD, 16));
 		btnSerch.setBounds(542, 65, 70, 30);
 		pSWListPanel.add(btnSerch);
 		

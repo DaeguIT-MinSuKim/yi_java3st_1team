@@ -1,22 +1,6 @@
 {
 	"folders": {},
 	"connections": {
-		"mysql5-17056d0430e-5cf57e8bf680be8": {
-			"provider": "mysql",
-			"driver": "mysql5",
-			"name": "MySQL - yi_java3st_1team",
-			"save-password": true,
-			"read-only": false,
-			"configuration": {
-				"host": "192.168.10.145",
-				"port": "3306",
-				"database": "yi_java3st_1team",
-				"url": "jdbc:mysql://192.168.10.145:3306/yi_java3st_1team",
-				"home": "C:\\Program Files\\MySQL\\MySQL Server 5.7",
-				"type": "dev",
-				"handlers": {}
-			}
-		},
 		"mysql5-17056d100ee-547cf333e6657d6a": {
 			"provider": "mysql",
 			"driver": "mysql5",
@@ -27,6 +11,21 @@
 				"host": "192.168.10.145",
 				"port": "3306",
 				"url": "jdbc:mysql://192.168.10.145:3306/",
+				"home": "C:\\Program Files\\MySQL\\MySQL Server 5.7",
+				"type": "dev"
+			}
+		},
+		"mysql5-1706180079f-420aa5af8da0733e": {
+			"provider": "mysql",
+			"driver": "mysql5",
+			"name": "MySQL - yi_java3st_1team",
+			"save-password": true,
+			"read-only": false,
+			"configuration": {
+				"host": "192.168.10.145",
+				"port": "3306",
+				"database": "yi_java3st_1team",
+				"url": "jdbc:mysql://192.168.10.145:3306/yi_java3st_1team",
 				"home": "C:\\Program Files\\MySQL\\MySQL Server 5.7",
 				"type": "dev",
 				"handlers": {}

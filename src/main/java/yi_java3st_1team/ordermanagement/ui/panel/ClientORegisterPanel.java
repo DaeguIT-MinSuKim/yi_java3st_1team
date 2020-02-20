@@ -42,6 +42,7 @@ public class ClientORegisterPanel extends JPanel {
 		setLayout(new BorderLayout(0, 0));
 		
 		JPanel panel = new JPanel();
+		panel.setFocusable(false);
 		add(panel, BorderLayout.CENTER);
 		panel.setBounds(new Rectangle(0, 0, 635, 700));
 		panel.setBackground(SystemColor.inactiveCaptionBorder);
@@ -122,16 +123,36 @@ public class ClientORegisterPanel extends JPanel {
 		panel.add(tfOQty);
 		
 		btnAdd = new JButton("주문하기");
+		btnAdd.setFocusable(false);
+		btnAdd.setBackground(new Color(70, 130, 180));
+		btnAdd.setForeground(Color.WHITE);
+		btnAdd.setFont(new Font("맑은 고딕", Font.BOLD, 16));
 		btnAdd.setBounds(66, 580, 100, 30);
 		panel.add(btnAdd);
 		
+<<<<<<< HEAD
 		btnUpdate = new JButton("");
 		btnUpdate.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\btns\\초기화.png"));
+=======
+		btnUpdate = new JButton("초기화");
+		btnUpdate.setFocusable(false);
+		btnUpdate.setForeground(Color.WHITE);
+		btnUpdate.setBackground(new Color(240, 128, 128));
+		btnUpdate.setFont(new Font("맑은 고딕", Font.BOLD, 16));
+>>>>>>> refs/heads/brch_james
 		btnUpdate.setBounds(270, 580, 100, 30);
 		panel.add(btnUpdate);
 		
+<<<<<<< HEAD
 		btnGoMain = new JButton("");
 		btnGoMain.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\btns\\메인화면.png"));
+=======
+		btnGoMain = new JButton("메인화면");
+		btnGoMain.setBackground(new Color(25, 25, 112));
+		btnGoMain.setForeground(Color.WHITE);
+		btnGoMain.setFont(new Font("맑은 고딕", Font.BOLD, 16));
+		btnGoMain.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\test\\메인화면.png"));
+>>>>>>> refs/heads/brch_james
 		btnGoMain.setBounds(465, 580, 100, 30);
 		panel.add(btnGoMain);
 		
@@ -141,6 +162,10 @@ public class ClientORegisterPanel extends JPanel {
 		panel.add(taOWant);
 		
 		JButton btnQtyCheck = new JButton("재고확인");
+		btnQtyCheck.setFocusable(false);
+		btnQtyCheck.setBackground(new Color(240, 230, 140));
+		btnQtyCheck.setForeground(Color.WHITE);
+		btnQtyCheck.setFont(new Font("맑은 고딕", Font.BOLD, 16));
 		btnQtyCheck.setBounds(465, 290, 100, 30);
 		panel.add(btnQtyCheck);
 		

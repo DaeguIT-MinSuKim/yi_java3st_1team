@@ -129,33 +129,51 @@ public class SCRegisterPanel extends JPanel {
 		tfSCFax.setBounds(230, 490, 200, 30);
 		panel.add(tfSCFax);
 		
-		btnAdd = new JButton("");
-		btnAdd.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\btns\\등록.png"));
+		btnAdd = new JButton("등 록");
+		btnAdd.setFocusable(false);
+		btnAdd.setForeground(new Color(0, 102, 204));
+		btnAdd.setFont(new Font("맑은 고딕", Font.BOLD, 16));
+		btnAdd.setBackground(new Color(135, 206, 250));
 		btnAdd.setBounds(66, 580, 100, 30);
 		panel.add(btnAdd);
 		
-		btnUpdate = new JButton("");
-		btnUpdate.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\btns\\수정.png"));
+		btnUpdate = new JButton("수 정");
+		btnUpdate.setFocusable(false);
+		btnUpdate.setForeground(new Color(0, 102, 204));
+		btnUpdate.setBackground(new Color(135, 206, 250));
+		btnUpdate.setFont(new Font("맑은 고딕", Font.BOLD, 16));
 		btnUpdate.setBounds(198, 580, 100, 30);
 		panel.add(btnUpdate);
 		
-		btnDel = new JButton("");
-		btnDel.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\btns\\삭제.png"));
+		btnDel = new JButton("삭 제");
+		btnDel.setFocusable(false);
+		btnDel.setForeground(new Color(0, 102, 204));
+		btnDel.setBackground(new Color(135, 206, 250));
+		btnDel.setFont(new Font("맑은 고딕", Font.BOLD, 16));
 		btnDel.setBounds(330, 580, 100, 30);
 		panel.add(btnDel);
 		
-		btnGoMain = new JButton("");
-		btnGoMain.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\btns\\메인화면.png"));
+		btnGoMain = new JButton("메인화면");
+		btnGoMain.setFocusable(false);
+		btnGoMain.setBackground(new Color(25, 25, 112));
+		btnGoMain.setForeground(Color.WHITE);
+		btnGoMain.setFont(new Font("맑은 고딕", Font.BOLD, 16));
 		btnGoMain.setBounds(465, 580, 100, 30);
 		panel.add(btnGoMain);
 		
-		btnDplCheck = new JButton("");
-		btnDplCheck.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\btns\\중복확인.png"));
+		btnDplCheck = new JButton("중복확인");
+		btnDplCheck.setFocusable(false);
+		btnDplCheck.setBackground(new Color(240, 128, 128));
+		btnDplCheck.setForeground(Color.WHITE);
+		btnDplCheck.setFont(new Font("맑은 고딕", Font.BOLD, 16));
 		btnDplCheck.setBounds(465, 210, 100, 30);
 		panel.add(btnDplCheck);
 		
-		btnPostNum = new JButton("");
-		btnPostNum.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\btns\\우편번호.png"));
+		btnPostNum = new JButton("우편번호");
+		btnPostNum.setFocusable(false);
+		btnPostNum.setBackground(new Color(70, 130, 180));
+		btnPostNum.setForeground(Color.WHITE);
+		btnPostNum.setFont(new Font("맑은 고딕", Font.BOLD, 16));
 		btnPostNum.setBounds(465, 350, 100, 30);
 		panel.add(btnPostNum);
 		
