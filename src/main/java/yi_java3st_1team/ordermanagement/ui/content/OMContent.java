@@ -9,10 +9,11 @@ import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 
 import yi_java3st_1team.ordermanagement.ui.list.OListPanel;
-import yi_java3st_1team.ordermanagement.ui.panel.OCheckPanel;
+import yi_java3st_1team.ordermanagement.ui.panel.ClientOCheckPanel;
 import yi_java3st_1team.ordermanagement.ui.panel.ORegisterPanel;
 import java.awt.Font;
 import java.awt.Color;
+import yi_java3st_1team.ordermanagement.ui.panel.OCheckPanel;
 
 @SuppressWarnings("serial")
 public class OMContent extends JPanel {
@@ -61,9 +62,6 @@ public class OMContent extends JPanel {
 		pListPanel.setLayout(new GridLayout(0, 1, 0, 0));
 		
 		pOCheckPanel = new OCheckPanel();
-		pOCheckPanel.setBounds(new Rectangle(0, 0, 1270, 700));
-		pOCheckPanel.setBackground(SystemColor.inactiveCaptionBorder);
 		pListPanel.add(pOCheckPanel);
-		pOCheckPanel.setLayout(null);
 	}
 }

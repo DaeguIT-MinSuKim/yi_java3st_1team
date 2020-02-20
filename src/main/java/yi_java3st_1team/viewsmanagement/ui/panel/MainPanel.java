@@ -32,22 +32,26 @@ public class MainPanel extends JPanel implements ActionListener {
 		initialize();
 	}
 	private void initialize() {
-		setLayout(new BorderLayout(0, 0));
+		setLayout(null);
 		
 		JPanel pTitle = new JPanel();
+		pTitle.setBounds(0, 0, 1338, 132);
 		pTitle.setBackground(SystemColor.inactiveCaptionBorder);
 		pTitle.setBorder(new EmptyBorder(80, 0, 0, 0));
-		add(pTitle, BorderLayout.NORTH);
+		add(pTitle);
+		pTitle.setLayout(null);
 		
 		JLabel lblTitle = new JLabel("현황조회 / 보고");
+		lblTitle.setBounds(532, 85, 273, 42);
 		lblTitle.setHorizontalAlignment(SwingConstants.CENTER);
 		lblTitle.setFont(new Font("굴림", Font.BOLD, 36));
 		pTitle.add(lblTitle);
 		
 		JPanel pBtns = new JPanel();
+		pBtns.setBounds(0, 132, 1338, 468);
 		pBtns.setBackground(SystemColor.inactiveCaptionBorder);
 		pBtns.setBorder(new EmptyBorder(50, 100, 50, 100));
-		add(pBtns, BorderLayout.CENTER);
+		add(pBtns);
 		pBtns.setLayout(null);
 		
 		btn01 = new JButton("");

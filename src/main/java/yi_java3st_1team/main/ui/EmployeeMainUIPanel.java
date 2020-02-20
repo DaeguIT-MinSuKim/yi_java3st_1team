@@ -19,9 +19,11 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
+import yi_java3st_1team.clientmanagement.ui.CMMainPanel;
 import yi_java3st_1team.main.ui.content.LogoImg01Panel;
 import yi_java3st_1team.main.ui.content.LogoImg02Panel;
-import yi_java3st_1team.main.ui.content.MainBtns01Panel;
+import yi_java3st_1team.main.ui.content.chart.EmpMiniBarChart;
+import yi_java3st_1team.main.ui.content.chart.EmpMiniLineChart;
 import yi_java3st_1team.main.ui.content.login.EmpRegiPanel;
 import yi_java3st_1team.main.ui.content.login.EmployeeLoginPanel;
 import yi_java3st_1team.main.ui.content.login.LoginPanel;
@@ -38,16 +40,25 @@ public class EmployeeMainUIPanel extends JPanel implements ActionListener {
 	private EmployeeLoginPanel pEmpLogin;
 	private JPanel pStop;
 	
-	private JPanel loginok;
+
 	private JPanel pBtns;
 	private JPanel pBtns01;
 	private JPanel pBtns02;
-	private JButton button;
-	private JButton button_1;
-	private JLabel label;
-	private JLabel label_1;
-	private JButton button_2;
-	private JButton button_3;
+	private JButton btn01;
+	private JButton btn02;
+	private JLabel lblImg01;
+	private JLabel lblImg02;
+	private JButton btn03;
+	private JButton btn04;
+	private LogoImg02Panel pImg01;
+	private LogoImg01Panel pLogo;
+	
+	private EmpMiniLineChart pLchart;
+	private EmpMiniBarChart pBchart;
+	private JPanel pImg02;
+	
+	private CMMainPanel pCMpanel;
+	private JPanel pSbot;
 
 	public EmployeeMainUIPanel() {
 
@@ -64,7 +75,7 @@ public class EmployeeMainUIPanel extends JPanel implements ActionListener {
 		add(pStop);
 		pStop.setLayout(new BorderLayout(10, 10));
 		
-		pLogin = new LoginPanel();
+		pLogin =new LoginPanel();
 		pLogin.setPreferredSize(new Dimension(350, 10));
 		pStop.add(pLogin, BorderLayout.WEST);
 		
@@ -94,23 +105,23 @@ public class EmployeeMainUIPanel extends JPanel implements ActionListener {
 		btnSearch.setBounds(273, 245, 55, 45);
 		pLogin.add(btnSearch);
 		
-		LogoImg02Panel pImg01 = new LogoImg02Panel();
+		pImg01 = new LogoImg02Panel();
 		pImg01.setBackground(SystemColor.inactiveCaptionBorder);
 		pStop.add(pImg01, BorderLayout.CENTER);
 		
-		JPanel pSbot = new JPanel();
+		pSbot = new JPanel();
 		pSbot.setBorder(new EmptyBorder(0, 20, 0, 20));
 		pSbot.setBackground(SystemColor.inactiveCaption);
 		add(pSbot);
 		pSbot.setLayout(new BorderLayout(10, 10));
 		
-		JPanel pImg02 = new JPanel();
+		pImg02 = new JPanel();
 		pImg02.setBackground(SystemColor.inactiveCaption);
 		pImg02.setPreferredSize(new Dimension(350, 10));
 		pSbot.add(pImg02, BorderLayout.WEST);
 		pImg02.setLayout(new BorderLayout(0, 10));
 		
-		LogoImg01Panel pLogo = new LogoImg01Panel();
+		pLogo = new LogoImg01Panel();
 		pLogo.setBackground(Color.WHITE);
 		pLogo.setPreferredSize(new Dimension(350, 250));
 		pImg02.add(pLogo, BorderLayout.NORTH);
@@ -126,48 +137,59 @@ public class EmployeeMainUIPanel extends JPanel implements ActionListener {
 		pBtns = new JPanel();
 		pBtns.setBackground(SystemColor.inactiveCaption);
 		pSbot.add(pBtns, BorderLayout.CENTER);
+		pBtns.setLayout(new GridLayout(0, 1, 0, 10));
 		
 		pBtns01 = new JPanel();
 		pBtns01.setBackground(SystemColor.inactiveCaption);
 		pBtns.add(pBtns01);
 		pBtns01.setLayout(new BorderLayout(10, 0));
 		
-		button = new JButton("");
-		button.setPreferredSize(new Dimension(240, 23));
-		button.setFocusable(false);
-		pBtns01.add(button, BorderLayout.NORTH);
+		btn01 = new JButton("");
+		btn01.addActionListener(this);
+		btn01.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\loginMain\\mainBtn1.png"));
+		btn01.setPreferredSize(new Dimension(240, 23));
+		btn01.setFocusable(false);
+		pBtns01.add(btn01, BorderLayout.WEST);
 		
-		button_1 = new JButton("");
-		button_1.setFocusable(false);
-		pBtns01.add(button_1, BorderLayout.SOUTH);
+		btn02 = new JButton("");
+		btn02.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\loginMain\\mainBtn2.png"));
+		btn02.setFocusable(false);
+		pBtns01.add(btn02, BorderLayout.CENTER);
 		
-		label = new JLabel("");
-		label.setPreferredSize(new Dimension(640, 15));
-		label.setOpaque(true);
-		label.setBackground(new Color(240, 255, 255));
-		pBtns01.add(label, BorderLayout.WEST);
+		lblImg01 = new JLabel("");
+		lblImg01.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\loginMain\\subMainImg1.png"));
+		lblImg01.setPreferredSize(new Dimension(640, 15));
+		lblImg01.setOpaque(true);
+		lblImg01.setBackground(new Color(240, 255, 255));
+		pBtns01.add(lblImg01, BorderLayout.EAST);
 		
 		pBtns02 = new JPanel();
 		pBtns02.setBackground(SystemColor.inactiveCaption);
 		pBtns.add(pBtns02);
 		pBtns02.setLayout(new BorderLayout(10, 10));
 		
-		label_1 = new JLabel("");
-		label_1.setPreferredSize(new Dimension(640, 15));
-		label_1.setOpaque(true);
-		label_1.setBackground(new Color(240, 255, 255));
-		pBtns02.add(label_1, BorderLayout.NORTH);
+		lblImg02 = new JLabel("");
+		lblImg02.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\loginMain\\subMainImg2.png"));
+		lblImg02.setPreferredSize(new Dimension(640, 15));
+		lblImg02.setOpaque(true);
+		lblImg02.setBackground(new Color(240, 255, 255));
+		pBtns02.add(lblImg02, BorderLayout.WEST);
 		
-		button_2 = new JButton("");
-		button_2.setFocusable(false);
-		pBtns02.add(button_2, BorderLayout.SOUTH);
+		btn03 = new JButton("");
+		btn03.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\loginMain\\mainBtn3.png"));
+		btn03.setFocusable(false);
+		pBtns02.add(btn03, BorderLayout.CENTER);
 		
-		button_3 = new JButton("");
-		button_3.setPreferredSize(new Dimension(240, 23));
-		button_3.setFocusable(false);
-		pBtns02.add(button_3, BorderLayout.WEST);
+		btn04 = new JButton("");
+		btn04.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\loginMain\\mainBtn4.png"));
+		btn04.setPreferredSize(new Dimension(240, 23));
+		btn04.setFocusable(false);
+		pBtns02.add(btn04, BorderLayout.EAST);
 	}
 	public void actionPerformed(ActionEvent e) {
+		if (e.getSource() == btn01) {
+			actionPerformedBtn01(e);
+		}
 		if (e.getSource() == btnSearch) {
 			actionPerformedBtnSearch(e);
 		}
@@ -181,16 +203,31 @@ public class EmployeeMainUIPanel extends JPanel implements ActionListener {
 	
 	//로그인
 	protected void actionPerformedBtnLogin(ActionEvent e) {
-		JOptionPane.showMessageDialog(null, "반갑습니다");
-		pLogin.setVisible(false);
-//		loginok = new JPanel();
-//		loginok.setPreferredSize(new Dimension(350, 10));
-//		loginok.add(loginok, BorderLayout.WEST);
+		
+		//로그인 성공시 알림 & 로그인된 패널로 전환
+		JOptionPane.showMessageDialog(null, "Smart한 세계에 오신걸 환영합니다");
+		pStop.remove(pLogin); //제거
 		pEmpLogin = new EmployeeLoginPanel();
 		pEmpLogin.setPreferredSize(new Dimension(350, 10));
 		pStop.add(pEmpLogin, BorderLayout.WEST);
 		pStop.revalidate();
 		pStop.repaint();
+		
+		//책임관리자(대표이사~과장) 로그인시 차트 패널 불러오기
+		//1. 라인차트
+		pStop.remove(pImg01); //제거
+		pLchart = new EmpMiniLineChart();
+		pLchart.setBackground(SystemColor.inactiveCaptionBorder);
+		pStop.add(pLchart, BorderLayout.CENTER);
+		//2. 바차트
+		pImg02.remove(pLogo); //제거
+		pBchart = new EmpMiniBarChart();
+		pBchart.setBackground(Color.WHITE);
+		pBchart.setPreferredSize(new Dimension(350, 250));
+		pImg02.add(pBchart, BorderLayout.NORTH);
+		//관리자(대리~인턴) 로그인시 현황조회&보고서 버튼 비활성화
+		btn04.setEnabled(false);
+		
 		
 	}
 	
@@ -216,5 +253,12 @@ public class EmployeeMainUIPanel extends JPanel implements ActionListener {
 		SearchPanel sp = new SearchPanel();
 		searchFrame.getContentPane().add(sp);
 		searchFrame.setVisible(true);
+	}
+	
+	//거래처 관리 클릭
+	protected void actionPerformedBtn01(ActionEvent e) {
+		pStop.setVisible(false);
+		pSbot.setVisible(false);
+		pCMpanel = new CMMainPanel();
 	}
 }

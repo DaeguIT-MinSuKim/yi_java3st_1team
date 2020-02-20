@@ -6,6 +6,7 @@ import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.SwingConstants;
 import javax.swing.JTextField;
+import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JRadioButton;
 import java.awt.SystemColor;
@@ -46,6 +47,7 @@ public class IQPanel extends JPanel {
 		add(btnSearch);
 		
 		JRadioButton rdbtnTotal = new JRadioButton("전체");
+		rdbtnTotal.setSelected(true);
 		rdbtnTotal.setPreferredSize(new Dimension(90, 30));
 		rdbtnTotal.setHorizontalAlignment(SwingConstants.CENTER);
 		rdbtnTotal.setFont(new Font("굴림", Font.PLAIN, 16));
@@ -69,6 +71,12 @@ public class IQPanel extends JPanel {
 		rdbtn03.setFont(new Font("굴림", Font.PLAIN, 16));
 		rdbtn03.setBackground(SystemColor.inactiveCaption);
 		add(rdbtn03);
+		
+		ButtonGroup group = new ButtonGroup();
+		group.add(rdbtnTotal);
+		group.add(rdbtn01);
+		group.add(rdbtn02);
+		group.add(rdbtn03);
 	}
 
 }

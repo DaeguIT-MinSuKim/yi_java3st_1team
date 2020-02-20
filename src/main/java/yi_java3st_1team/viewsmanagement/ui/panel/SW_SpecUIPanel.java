@@ -31,31 +31,36 @@ public class SW_SpecUIPanel extends JPanel {
 	}
 	private void initialize() {
 		setPreferredSize(new Dimension(1500, 900));
-		setLayout(new GridLayout(0, 1, 0, 0));
+		setLayout(null);
 		
 		pTitle = new JPanel();
+		pTitle.setBounds(0, 0, 1500, 900);
 		pTitle.setBackground(SystemColor.inactiveCaption);
 		pTitle.setBorder(new EmptyBorder(30, 0, 0, 0));
 		add(pTitle);
-		pTitle.setLayout(new BorderLayout(0, 0));
+		pTitle.setLayout(null);
 		
 		JLabel lblTitle = new JLabel("전체 판매 현황 / 거래명세서");
+		lblTitle.setBounds(0, 30, 1500, 42);
 		lblTitle.setHorizontalAlignment(SwingConstants.CENTER);
 		lblTitle.setFont(new Font("����", Font.BOLD, 30));
-		pTitle.add(lblTitle, BorderLayout.NORTH);
+		pTitle.add(lblTitle);
 		
 		JPanel pLeft = new JPanel();
-		pTitle.add(pLeft, BorderLayout.CENTER);
-		pLeft.setLayout(new GridLayout(0, 2, 0, 0));
+		pLeft.setBounds(0, 72, 1500, 828);
+		pTitle.add(pLeft);
+		pLeft.setLayout(null);
 		
 		JPanel pSW = new JPanel();
+		pSW.setBounds(0, 0, 750, 828);
 		pLeft.add(pSW);
-		pSW.setLayout(new BorderLayout(0, 0));
+		pSW.setLayout(null);
 		
 		JPanel pLeftTop = new JPanel();
+		pLeftTop.setBounds(0, 0, 750, 75);
 		pLeftTop.setBackground(SystemColor.inactiveCaption);
 		pLeftTop.setBorder(new EmptyBorder(30, 50, 5, 5));
-		pSW.add(pLeftTop, BorderLayout.NORTH);
+		pSW.add(pLeftTop);
 		pLeftTop.setLayout(new FlowLayout(FlowLayout.LEFT, 5, 5));
 		
 		JRadioButton rdbtnSW = new JRadioButton(" S/W 전체 판매현황");
@@ -66,9 +71,10 @@ public class SW_SpecUIPanel extends JPanel {
 		pLeftTop.add(rdbtnSW);
 		
 		JPanel pLeftList = new JPanel();
+		pLeftList.setBounds(0, 75, 750, 658);
 		pLeftList.setBackground(SystemColor.inactiveCaption);
 		pLeftList.setBorder(new EmptyBorder(5, 55, 5, 35));
-		pSW.add(pLeftList, BorderLayout.CENTER);
+		pSW.add(pLeftList);
 		pLeftList.setLayout(new GridLayout(0, 1, 0, 0));
 		
 		SWTotalTblPanel pSWList = new SWTotalTblPanel();
@@ -76,11 +82,12 @@ public class SW_SpecUIPanel extends JPanel {
 		pLeftList.add(pSWList);
 		
 		JPanel pLeftResult = new JPanel();
+		pLeftResult.setBounds(0, 733, 750, 95);
 		pLeftResult.setBackground(SystemColor.inactiveCaption);
 		pLeftResult.setBorder(new EmptyBorder(5, 5, 50, 30));
 		FlowLayout fl_pLeftResult = (FlowLayout) pLeftResult.getLayout();
 		fl_pLeftResult.setAlignment(FlowLayout.RIGHT);
-		pSW.add(pLeftResult, BorderLayout.SOUTH);
+		pSW.add(pLeftResult);
 		
 		JLabel lblLTotal = new JLabel("총 판매금액");
 		lblLTotal.setHorizontalAlignment(SwingConstants.CENTER);
@@ -95,15 +102,17 @@ public class SW_SpecUIPanel extends JPanel {
 		tfLTotal.setColumns(15);
 		
 		JPanel pRight = new JPanel();
+		pRight.setBounds(750, 0, 750, 828);
 		pLeft.add(pRight);
-		pRight.setLayout(new BorderLayout(0, 0));
+		pRight.setLayout(null);
 		
 		JPanel pSpec = new JPanel();
+		pSpec.setBounds(0, 0, 750, 75);
 		pSpec.setBackground(SystemColor.inactiveCaption);
 		pSpec.setBorder(new EmptyBorder(30, 35, 5, 5));
 		FlowLayout fl_pSpec = (FlowLayout) pSpec.getLayout();
 		fl_pSpec.setAlignment(FlowLayout.LEFT);
-		pRight.add(pSpec, BorderLayout.NORTH);
+		pRight.add(pSpec);
 		
 		JRadioButton rdbtnTS = new JRadioButton(" 거래명세서");
 		rdbtnTS.setPreferredSize(new Dimension(150, 30));
@@ -113,9 +122,10 @@ public class SW_SpecUIPanel extends JPanel {
 		pSpec.add(rdbtnTS);
 		
 		JPanel pRightList = new JPanel();
+		pRightList.setBounds(0, 75, 750, 658);
 		pRightList.setBackground(SystemColor.inactiveCaption);
 		pRightList.setBorder(new EmptyBorder(5, 35, 5, 55));
-		pRight.add(pRightList, BorderLayout.CENTER);
+		pRight.add(pRightList);
 		pRightList.setLayout(new GridLayout(0, 1, 0, 0));
 		
 		SpecTblPanel pSpecList = new SpecTblPanel();
@@ -123,11 +133,12 @@ public class SW_SpecUIPanel extends JPanel {
 		pRightList.add(pSpecList);
 		
 		JPanel pRightResult = new JPanel();
+		pRightResult.setBounds(0, 733, 750, 95);
 		pRightResult.setBackground(SystemColor.inactiveCaption);
 		FlowLayout fl_pRightResult = (FlowLayout) pRightResult.getLayout();
 		fl_pRightResult.setAlignment(FlowLayout.RIGHT);
 		pRightResult.setBorder(new EmptyBorder(5, 5, 50, 50));
-		pRight.add(pRightResult, BorderLayout.SOUTH);
+		pRight.add(pRightResult);
 		
 		JLabel lblRTotal = new JLabel("총 납품금액");
 		lblRTotal.setHorizontalAlignment(SwingConstants.CENTER);

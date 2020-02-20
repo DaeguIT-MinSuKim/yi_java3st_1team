@@ -31,49 +31,58 @@ public class ClientSaleUIPanel extends JPanel {
 	}
 	private void initialize() {
 		setPreferredSize(new Dimension(1500, 900));
-		setLayout(new GridLayout(0, 1, 0, 0));
+		setLayout(null);
 		
 		pTitle = new JPanel();
+		pTitle.setBounds(0, 0, 1500, 900);
 		pTitle.setBackground(SystemColor.inactiveCaption);
 		pTitle.setBorder(new EmptyBorder(30, 0, 0, 0));
 		add(pTitle);
-		pTitle.setLayout(new BorderLayout(0, 0));
+		pTitle.setLayout(null);
 		
 		JLabel lblTitle = new JLabel("\uACE0\uAC1D\uBCC4 \uD310\uB9E4\uD604\uD669 \uC870\uD68C");
+		lblTitle.setBounds(0, 30, 1500, 42);
 		lblTitle.setHorizontalAlignment(SwingConstants.CENTER);
 		lblTitle.setFont(new Font("����", Font.BOLD, 30));
-		pTitle.add(lblTitle, BorderLayout.NORTH);
+		pTitle.add(lblTitle);
 		
 		JPanel pTop = new JPanel();
+		pTop.setBounds(0, 72, 1500, 828);
 		pTop.setBackground(SystemColor.inactiveCaption);
 		pTop.setBorder(new EmptyBorder(40, 100, 50, 100));
-		pTitle.add(pTop, BorderLayout.CENTER);
-		pTop.setLayout(new BorderLayout(0, 0));
+		pTitle.add(pTop);
+		pTop.setLayout(null);
 		
 		JPanel pSearch = new JPanel();
+		pSearch.setBounds(100, 40, 1300, 40);
 		pSearch.setPreferredSize(new Dimension(1300, 40));
 		pSearch.setBackground(SystemColor.inactiveCaption);
-		pTop.add(pSearch, BorderLayout.NORTH);
-		pSearch.setLayout(new GridLayout(0, 1, 0, 0));
+		pTop.add(pSearch);
+		pSearch.setLayout(null);
 		
 		ClientSalePanel pClientSale = new ClientSalePanel();
+		pClientSale.setBounds(0, 0, 1300, 40);
 		pSearch.add(pClientSale);
 		
 		JPanel pList = new JPanel();
+		pList.setBounds(100, 80, 1300, 658);
 		pList.setBackground(SystemColor.inactiveCaptionBorder);
-		pTop.add(pList, BorderLayout.CENTER);
-		pList.setLayout(new GridLayout(1, 0, 0, 0));
+		pTop.add(pList);
+		pList.setLayout(null);
 		
 		ClientSaleTblPanel pClientList = new ClientSaleTblPanel();
+		pClientList.setBounds(0, 0, 1300, 658);
 		pClientList.setBackground(SystemColor.inactiveCaptionBorder);
 		pList.add(pClientList);
 		
 		JPanel pAmount = new JPanel();
+		pAmount.setBounds(100, 738, 1300, 40);
 		pAmount.setBackground(SystemColor.inactiveCaption);
-		pTop.add(pAmount, BorderLayout.SOUTH);
-		pAmount.setLayout(new GridLayout(0, 1, 0, 0));
+		pTop.add(pAmount);
+		pAmount.setLayout(null);
 		
 		TotalAmountPanel pTotalAmount = new TotalAmountPanel();
+		pTotalAmount.setBounds(0, 0, 1300, 40);
 		pAmount.add(pTotalAmount);
 	}
 
