@@ -13,8 +13,7 @@
 				"database": "yi_java3st_1team",
 				"url": "jdbc:mysql://192.168.10.145:3306/yi_java3st_1team",
 				"home": "C:\\Program Files\\MySQL\\MySQL Server 5.7",
-				"type": "dev",
-				"handlers": {}
+				"type": "dev"
 			}
 		},
 		"mysql5-17056d100ee-547cf333e6657d6a": {
@@ -28,8 +27,21 @@
 				"port": "3306",
 				"url": "jdbc:mysql://192.168.10.145:3306/",
 				"home": "C:\\Program Files\\MySQL\\MySQL Server 5.7",
-				"type": "dev",
-				"handlers": {}
+				"type": "dev"
+			}
+		}
+	},
+	"virtual-models": {
+		"mysql5-17056d0430e-5cf57e8bf680be8": {
+			"yi_java3st_1team": {
+				":discount_rate": {
+					"constraints": {
+						"VIRTUAL_PK": {
+							"type": "vpk",
+							"useAllColumns": true
+						}
+					}
+				}
 			}
 		}
 	},
