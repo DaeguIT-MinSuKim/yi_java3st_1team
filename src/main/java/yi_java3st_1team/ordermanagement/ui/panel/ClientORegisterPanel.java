@@ -42,6 +42,7 @@ public class ClientORegisterPanel extends JPanel {
 		setLayout(new BorderLayout(0, 0));
 		
 		JPanel panel = new JPanel();
+		panel.setFocusable(false);
 		add(panel, BorderLayout.CENTER);
 		panel.setBounds(new Rectangle(0, 0, 635, 700));
 		panel.setBackground(SystemColor.inactiveCaptionBorder);
@@ -122,6 +123,7 @@ public class ClientORegisterPanel extends JPanel {
 		panel.add(tfOQty);
 		
 		btnAdd = new JButton("주문하기");
+		btnAdd.setFocusable(false);
 		btnAdd.setBackground(new Color(70, 130, 180));
 		btnAdd.setForeground(Color.WHITE);
 		btnAdd.setFont(new Font("맑은 고딕", Font.BOLD, 16));
@@ -129,6 +131,7 @@ public class ClientORegisterPanel extends JPanel {
 		panel.add(btnAdd);
 		
 		btnUpdate = new JButton("초기화");
+		btnUpdate.setFocusable(false);
 		btnUpdate.setForeground(Color.WHITE);
 		btnUpdate.setBackground(new Color(240, 128, 128));
 		btnUpdate.setFont(new Font("맑은 고딕", Font.BOLD, 16));
@@ -149,6 +152,7 @@ public class ClientORegisterPanel extends JPanel {
 		panel.add(taOWant);
 		
 		JButton btnQtyCheck = new JButton("재고확인");
+		btnQtyCheck.setFocusable(false);
 		btnQtyCheck.setBackground(new Color(240, 230, 140));
 		btnQtyCheck.setForeground(Color.WHITE);
 		btnQtyCheck.setFont(new Font("맑은 고딕", Font.BOLD, 16));

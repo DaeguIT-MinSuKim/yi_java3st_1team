@@ -123,6 +123,7 @@ public class ORegisterPanel extends JPanel {
 		panel.add(tfOQty);
 		
 		btnAdd = new JButton("등 록");
+		btnAdd.setFocusable(false);
 		btnAdd.setBackground(new Color(135, 206, 250));
 		btnAdd.setForeground(new Color(0, 102, 204));
 		btnAdd.setFont(new Font("맑은 고딕", Font.BOLD, 16));
@@ -130,6 +131,7 @@ public class ORegisterPanel extends JPanel {
 		panel.add(btnAdd);
 		
 		btnUpdate = new JButton("초기화");
+		btnUpdate.setFocusable(false);
 		btnUpdate.setForeground(Color.WHITE);
 		btnUpdate.setBackground(new Color(240, 128, 128));
 		btnUpdate.setFont(new Font("맑은 고딕", Font.BOLD, 16));
@@ -138,6 +140,7 @@ public class ORegisterPanel extends JPanel {
 		panel.add(btnUpdate);
 		
 		btnGoMain = new JButton("메인화면");
+		btnGoMain.setFocusable(false);
 		btnGoMain.setBackground(new Color(25, 25, 112));
 		btnGoMain.setForeground(Color.WHITE);
 		btnGoMain.setFont(new Font("맑은 고딕", Font.BOLD, 16));
