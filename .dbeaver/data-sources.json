@@ -15,10 +15,17 @@
 				"type": "dev"
 			}
 		},
+<<<<<<< HEAD
 		"mysql5-170617bf3fd-2aa9c7abff1f7552": {
 			"provider": "mysql",
 			"driver": "mysql5",
 			"name": "MySQL - user_yi_java3st_1team",
+=======
+		"mysql5-1706180079f-420aa5af8da0733e": {
+			"provider": "mysql",
+			"driver": "mysql5",
+			"name": "MySQL - yi_java3st_1team",
+>>>>>>> branch 'master' of https://github.com/DaeguIT-MinSuKim/yi_java3st_1team
 			"save-password": true,
 			"read-only": false,
 			"configuration": {

@@ -30,6 +30,7 @@ public class MainBtns03Panel extends JPanel {
 		pBtns01.setLayout(new BorderLayout(10, 0));
 		
 		JButton btn01 = new JButton("");
+		btn01.setFocusable(false);
 		btn01.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\loginMain\\그림8.png"));
 		btn01.setPreferredSize(new Dimension(560, 23));
 		pBtns01.add(btn01, BorderLayout.WEST);
@@ -54,6 +55,7 @@ public class MainBtns03Panel extends JPanel {
 		pBtns02.add(lblImg02, BorderLayout.WEST);
 		
 		JButton btn02 = new JButton("");
+		btn02.setFocusable(false);
 		btn02.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\loginMain\\그림9.png"));
 		btn02.setPreferredSize(new Dimension(560, 23));
 		pBtns02.add(btn02, BorderLayout.EAST);
