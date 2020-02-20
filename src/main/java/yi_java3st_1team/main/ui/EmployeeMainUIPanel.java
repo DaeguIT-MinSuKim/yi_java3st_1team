@@ -21,7 +21,6 @@ import javax.swing.border.EmptyBorder;
 
 import yi_java3st_1team.main.ui.content.LogoImg01Panel;
 import yi_java3st_1team.main.ui.content.LogoImg02Panel;
-import yi_java3st_1team.main.ui.content.MainBtns01Panel;
 import yi_java3st_1team.main.ui.content.login.EmpRegiPanel;
 import yi_java3st_1team.main.ui.content.login.EmployeeLoginPanel;
 import yi_java3st_1team.main.ui.content.login.LoginPanel;
@@ -42,12 +41,12 @@ public class EmployeeMainUIPanel extends JPanel implements ActionListener {
 	private JPanel pBtns;
 	private JPanel pBtns01;
 	private JPanel pBtns02;
-	private JButton button;
-	private JButton button_1;
-	private JLabel label;
-	private JLabel label_1;
-	private JButton button_2;
-	private JButton button_3;
+	private JButton btn01;
+	private JButton btn02;
+	private JLabel lblImg01;
+	private JLabel lblImg02;
+	private JButton btn03;
+	private JButton btn04;
 
 	public EmployeeMainUIPanel() {
 
@@ -126,46 +125,53 @@ public class EmployeeMainUIPanel extends JPanel implements ActionListener {
 		pBtns = new JPanel();
 		pBtns.setBackground(SystemColor.inactiveCaption);
 		pSbot.add(pBtns, BorderLayout.CENTER);
+		pBtns.setLayout(new GridLayout(0, 1, 0, 10));
 		
 		pBtns01 = new JPanel();
 		pBtns01.setBackground(SystemColor.inactiveCaption);
 		pBtns.add(pBtns01);
 		pBtns01.setLayout(new BorderLayout(10, 0));
 		
-		button = new JButton("");
-		button.setPreferredSize(new Dimension(240, 23));
-		button.setFocusable(false);
-		pBtns01.add(button, BorderLayout.NORTH);
+		btn01 = new JButton("");
+		btn01.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\loginMain\\mainBtn1.png"));
+		btn01.setPreferredSize(new Dimension(240, 23));
+		btn01.setFocusable(false);
+		pBtns01.add(btn01, BorderLayout.WEST);
 		
-		button_1 = new JButton("");
-		button_1.setFocusable(false);
-		pBtns01.add(button_1, BorderLayout.SOUTH);
+		btn02 = new JButton("");
+		btn02.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\loginMain\\mainBtn2.png"));
+		btn02.setFocusable(false);
+		pBtns01.add(btn02, BorderLayout.CENTER);
 		
-		label = new JLabel("");
-		label.setPreferredSize(new Dimension(640, 15));
-		label.setOpaque(true);
-		label.setBackground(new Color(240, 255, 255));
-		pBtns01.add(label, BorderLayout.WEST);
+		lblImg01 = new JLabel("");
+		lblImg01.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\loginMain\\subMainImg1.png"));
+		lblImg01.setPreferredSize(new Dimension(640, 15));
+		lblImg01.setOpaque(true);
+		lblImg01.setBackground(new Color(240, 255, 255));
+		pBtns01.add(lblImg01, BorderLayout.EAST);
 		
 		pBtns02 = new JPanel();
 		pBtns02.setBackground(SystemColor.inactiveCaption);
 		pBtns.add(pBtns02);
 		pBtns02.setLayout(new BorderLayout(10, 10));
 		
-		label_1 = new JLabel("");
-		label_1.setPreferredSize(new Dimension(640, 15));
-		label_1.setOpaque(true);
-		label_1.setBackground(new Color(240, 255, 255));
-		pBtns02.add(label_1, BorderLayout.NORTH);
+		lblImg02 = new JLabel("");
+		lblImg02.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\loginMain\\subMainImg2.png"));
+		lblImg02.setPreferredSize(new Dimension(640, 15));
+		lblImg02.setOpaque(true);
+		lblImg02.setBackground(new Color(240, 255, 255));
+		pBtns02.add(lblImg02, BorderLayout.WEST);
 		
-		button_2 = new JButton("");
-		button_2.setFocusable(false);
-		pBtns02.add(button_2, BorderLayout.SOUTH);
+		btn03 = new JButton("");
+		btn03.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\loginMain\\mainBtn3.png"));
+		btn03.setFocusable(false);
+		pBtns02.add(btn03, BorderLayout.CENTER);
 		
-		button_3 = new JButton("");
-		button_3.setPreferredSize(new Dimension(240, 23));
-		button_3.setFocusable(false);
-		pBtns02.add(button_3, BorderLayout.WEST);
+		btn04 = new JButton("");
+		btn04.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\loginMain\\mainBtn4.png"));
+		btn04.setPreferredSize(new Dimension(240, 23));
+		btn04.setFocusable(false);
+		pBtns02.add(btn04, BorderLayout.EAST);
 	}
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == btnSearch) {
@@ -191,6 +197,8 @@ public class EmployeeMainUIPanel extends JPanel implements ActionListener {
 		pStop.add(pEmpLogin, BorderLayout.WEST);
 		pStop.revalidate();
 		pStop.repaint();
+		btn04.setEnabled(false);
+		
 		
 	}
 	
