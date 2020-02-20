@@ -8,8 +8,11 @@ import java.awt.Font;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.ImageIcon;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
-public class EmployeeLoginPanel extends JPanel {
+public class EmployeeLoginPanel extends JPanel implements ActionListener {
+	private JButton btnLogout;
 
 	/**
 	 * Create the panel.
@@ -22,7 +25,8 @@ public class EmployeeLoginPanel extends JPanel {
 		setPreferredSize(new Dimension(350, 348));
 		setLayout(null);
 		
-		JButton btnLogout = new JButton("LOGOUT");
+		btnLogout = new JButton("LOGOUT");
+		btnLogout.addActionListener(this);
 		btnLogout.setFont(new Font("Arial", Font.BOLD, 17));
 		btnLogout.setFocusable(false);
 		btnLogout.setBounds(20, 245, 120, 45);
@@ -48,5 +52,15 @@ public class EmployeeLoginPanel extends JPanel {
 		label_3.setHorizontalAlignment(SwingConstants.CENTER);
 		label_3.setBounds(20, 71, 120, 120);
 		add(label_3);
+	}
+	public void actionPerformed(ActionEvent e) {
+		if (e.getSource() == btnLogout) {
+			actionPerformedBtnLogout(e);
+		}
+	}
+	
+	//로그아웃
+	protected void actionPerformedBtnLogout(ActionEvent e) {
+		
 	}
 }

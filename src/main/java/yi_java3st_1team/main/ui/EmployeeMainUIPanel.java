@@ -212,7 +212,7 @@ public class EmployeeMainUIPanel extends JPanel implements ActionListener {
 		
 		//로그인 성공시 알림 & 로그인된 패널로 전환
 		ImageIcon icon = new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\loginMain\\connect.png");
-		JOptionPane.showMessageDialog(null, "<html><h2 align='center'><span style='color:red'>Smart</span>한 세계에<br> 오신걸 환영합니다</h2></html>","환영합니다",JOptionPane.INFORMATION_MESSAGE,icon);
+		JOptionPane.showMessageDialog(null, "<html><h2 align='center'><span style='color:red'>Smart</span>한 세계에<br> 오신걸 환영합니다</h2></html>","Software Management System",JOptionPane.INFORMATION_MESSAGE,icon);
 		
 		pStop.remove(pLogin); //제거
 		pEmpLogin = new EmployeeLoginPanel();
@@ -242,9 +242,18 @@ public class EmployeeMainUIPanel extends JPanel implements ActionListener {
 	
 	//거래처 관리 클릭
 	protected void actionPerformedBtn01(ActionEvent e) {
-		//pCMpanel = new CMMainPanel();
-		//getRootPane().add(pCMpanel);
 		
+		
+		pStop.removeAll();
+		pSbot.removeAll();
+		revalidate();
+		repaint();
+		setLayout(new CardLayout());
+		pCMpanel = new CMMainPanel();
+		pCMpanel.setPreferredSize(new Dimension(1490, 100));
+		pStop.add(pCMpanel, BorderLayout.WEST);
+		pStop.revalidate();
+		pStop.repaint();
 
 
 //		pCMpanel.setBackground(SystemColor.inactiveCaption);
