@@ -1,6 +1,7 @@
 package yi_java3st_1team.clientmanagement.ui.panel;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Font;
 import java.awt.Rectangle;
 import java.awt.SystemColor;
@@ -10,8 +11,6 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
-import javax.swing.ImageIcon;
-import java.awt.Color;
 
 @SuppressWarnings("serial")
 public class SCRegisterPanel extends JPanel {
@@ -169,7 +168,7 @@ public class SCRegisterPanel extends JPanel {
 		btnDplCheck.setBounds(465, 210, 100, 30);
 		panel.add(btnDplCheck);
 		
-		btnPostNum = new JButton("우편번호");
+		btnPostNum = new JButton("주소검색");
 		btnPostNum.setFocusable(false);
 		btnPostNum.setBackground(new Color(70, 130, 180));
 		btnPostNum.setForeground(Color.WHITE);
