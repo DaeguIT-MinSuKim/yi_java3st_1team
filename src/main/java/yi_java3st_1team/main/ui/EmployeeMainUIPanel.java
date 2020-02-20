@@ -20,6 +20,7 @@ import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
 import yi_java3st_1team.clientmanagement.ui.CMMainPanel;
+import yi_java3st_1team.main.EmployeeMainFrame;
 import yi_java3st_1team.main.ui.content.LogoImg01Panel;
 import yi_java3st_1team.main.ui.content.LogoImg02Panel;
 import yi_java3st_1team.main.ui.content.chart.EmpMiniBarChart;
@@ -59,11 +60,14 @@ public class EmployeeMainUIPanel extends JPanel implements ActionListener {
 	
 	private CMMainPanel pCMpanel;
 	private JPanel pSbot;
+	
+	private EmployeeMainFrame empMain;
 
 	public EmployeeMainUIPanel() {
-
 		initialize();
+		
 	}
+	
 	private void initialize() {
 		setBackground(SystemColor.inactiveCaption);
 		setBounds(new Rectangle(0, 0, 1544, 700));
@@ -127,7 +131,7 @@ public class EmployeeMainUIPanel extends JPanel implements ActionListener {
 		pImg02.add(pLogo, BorderLayout.NORTH);
 		
 		JLabel lblCall = new JLabel("");
-		lblCall.setBackground(SystemColor.inactiveCaptionBorder);
+		lblCall.setBackground(new Color(255, 250, 240));
 		lblCall.setOpaque(true);
 		lblCall.setForeground(SystemColor.inactiveCaptionBorder);
 		lblCall.setHorizontalAlignment(SwingConstants.CENTER);
@@ -201,11 +205,14 @@ public class EmployeeMainUIPanel extends JPanel implements ActionListener {
 		}
 	}
 	
+	
 	//로그인
 	protected void actionPerformedBtnLogin(ActionEvent e) {
 		
 		//로그인 성공시 알림 & 로그인된 패널로 전환
-		JOptionPane.showMessageDialog(null, "Smart한 세계에 오신걸 환영합니다");
+		ImageIcon icon = new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\loginMain\\connect.png");
+		JOptionPane.showMessageDialog(null, "<html><h2 align='center'><span style='color:red'>Smart</span>한 세계에<br> 오신걸 환영합니다</h2></html>","환영합니다",JOptionPane.INFORMATION_MESSAGE,icon);
+		
 		pStop.remove(pLogin); //제거
 		pEmpLogin = new EmployeeLoginPanel();
 		pEmpLogin.setPreferredSize(new Dimension(350, 10));
@@ -216,18 +223,39 @@ public class EmployeeMainUIPanel extends JPanel implements ActionListener {
 		//책임관리자(대표이사~과장) 로그인시 차트 패널 불러오기
 		//1. 라인차트
 		pStop.remove(pImg01); //제거
-		pLchart = new EmpMiniLineChart();
-		pLchart.setBackground(SystemColor.inactiveCaptionBorder);
-		pStop.add(pLchart, BorderLayout.CENTER);
+		JPanel line = new JPanel();
+		line.setBackground(SystemColor.yellow);
+		pStop.add(line, BorderLayout.CENTER);
+		
 		//2. 바차트
 		pImg02.remove(pLogo); //제거
-		pBchart = new EmpMiniBarChart();
-		pBchart.setBackground(Color.WHITE);
-		pBchart.setPreferredSize(new Dimension(350, 250));
-		pImg02.add(pBchart, BorderLayout.NORTH);
+		JPanel bar = new JPanel();
+		bar.setBackground(Color.red);
+		bar.setPreferredSize(new Dimension(350, 250));
+		pImg02.add(bar, BorderLayout.NORTH);
 		//관리자(대리~인턴) 로그인시 현황조회&보고서 버튼 비활성화
 		btn04.setEnabled(false);
 		
+		
+	}
+	
+	//거래처 관리 클릭
+	protected void actionPerformedBtn01(ActionEvent e) {
+		
+		regiFrame = new JFrame();
+		regiFrame.setSize(1000, 700);
+		pCMpanel = new CMMainPanel();
+		regiFrame.setLocationRelativeTo(null);
+		regiFrame.getContentPane().add(pCMpanel);
+		regiFrame.setVisible(true);
+		
+		
+		
+
+
+//		pCMpanel.setBackground(SystemColor.inactiveCaption);
+//		pCMpanel.setBounds(new Rectangle(0, 0, 1544, 700));
+//		pCMpanel.setLayout(new GridLayout(0, 1, 10, 10));
 		
 	}
 	
@@ -255,10 +283,5 @@ public class EmployeeMainUIPanel extends JPanel implements ActionListener {
 		searchFrame.setVisible(true);
 	}
 	
-	//거래처 관리 클릭
-	protected void actionPerformedBtn01(ActionEvent e) {
-		pStop.setVisible(false);
-		pSbot.setVisible(false);
-		pCMpanel = new CMMainPanel();
-	}
+
 }
