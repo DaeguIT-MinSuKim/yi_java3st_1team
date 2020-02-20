@@ -59,6 +59,7 @@ public class SWListPanel extends JPanel {
 		pSWListPanel.add(tfSerch);
 		
 		btnSerch = new JButton("검색");
+		btnSerch.setFocusable(false);
 		btnSerch.setBackground(new Color(135, 206, 250));
 		btnSerch.setForeground(Color.WHITE);
 		btnSerch.setFont(new Font("맑은 고딕", Font.BOLD, 16));

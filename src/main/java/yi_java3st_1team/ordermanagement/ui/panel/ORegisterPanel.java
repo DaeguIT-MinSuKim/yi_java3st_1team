@@ -122,17 +122,25 @@ public class ORegisterPanel extends JPanel {
 		tfOQty.setBounds(230, 340, 200, 30);
 		panel.add(tfOQty);
 		
-		btnAdd = new JButton("");
-		btnAdd.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\btns\\등록.png"));
+		btnAdd = new JButton("등 록");
+		btnAdd.setBackground(new Color(135, 206, 250));
+		btnAdd.setForeground(new Color(0, 102, 204));
+		btnAdd.setFont(new Font("맑은 고딕", Font.BOLD, 16));
 		btnAdd.setBounds(66, 580, 100, 30);
 		panel.add(btnAdd);
 		
 		btnUpdate = new JButton("초기화");
+		btnUpdate.setForeground(Color.WHITE);
+		btnUpdate.setBackground(new Color(240, 128, 128));
+		btnUpdate.setFont(new Font("맑은 고딕", Font.BOLD, 16));
 		btnUpdate.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\test\\삭제.png"));
 		btnUpdate.setBounds(270, 580, 100, 30);
 		panel.add(btnUpdate);
 		
-		btnGoMain = new JButton("");
+		btnGoMain = new JButton("메인화면");
+		btnGoMain.setBackground(new Color(25, 25, 112));
+		btnGoMain.setForeground(Color.WHITE);
+		btnGoMain.setFont(new Font("맑은 고딕", Font.BOLD, 16));
 		btnGoMain.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\test\\메인화면.png"));
 		btnGoMain.setBounds(465, 580, 100, 30);
 		panel.add(btnGoMain);
