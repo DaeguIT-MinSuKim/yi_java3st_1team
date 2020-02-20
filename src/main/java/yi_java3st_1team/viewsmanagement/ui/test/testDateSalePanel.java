@@ -1,4 +1,4 @@
-package yi_java3st_1team.viewsmanagement.ui.content;
+package yi_java3st_1team.viewsmanagement.ui.test;
 
 import javax.swing.JPanel;
 import java.awt.Dimension;
@@ -14,14 +14,17 @@ import javax.swing.JSpinner;
 import javax.swing.JButton;
 import java.awt.GridLayout;
 import javax.swing.SpinnerNumberModel;
+import javax.swing.SpinnerDateModel;
+import java.util.Date;
+import java.util.Calendar;
 
 @SuppressWarnings("serial")
-public class DateSalePanel extends JPanel {
+public class testDateSalePanel extends JPanel {
 
 	/**
 	 * Create the panel.
 	 */
-	public DateSalePanel() {
+	public testDateSalePanel() {
 
 		initialize();
 	}
@@ -42,8 +45,13 @@ public class DateSalePanel extends JPanel {
 		lblStart.setFont(new Font("굴림", Font.BOLD, 18));
 		panel.add(lblStart);
 		
-		JSpinner spStartY = new JSpinner();
-		spStartY.setModel(new SpinnerNumberModel(new Integer(2020), new Integer(2020), null, new Integer(1)));
+		Calendar calendar = Calendar.getInstance();
+		Date value = calendar.getTime();
+		
+		SpinnerDateModel dateModel = new SpinnerDateModel(value, null, null, Calendar.YEAR);
+		JSpinner spStartY = new JSpinner(dateModel);
+		spStartY.setEditor(new JSpinner.DateEditor(spStartY, "yyyy"));
+		spStartY.setModel(new SpinnerDateModel(new Date(1582174800000L), new Date(-2208970800000L), null, Calendar.YEAR));
 		spStartY.setPreferredSize(new Dimension(180, 30));
 		spStartY.setFont(new Font("굴림", Font.BOLD, 18));
 		panel.add(spStartY);

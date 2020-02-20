@@ -20,24 +20,24 @@ public class ClientOCheckPanel extends JPanel {
 
 	private JLabel lblO;
 	private JPanel pList;
-	private JLabel label;
-	private JSpinner spinner;
-	private JLabel label_1;
-	private JSpinner spinner_1;
-	private JLabel label_2;
-	private JSpinner spinner_2;
-	private JLabel label_3;
-	private JButton button;
-	private JButton button_1;
-	private JLabel label_4;
-	private JSpinner spinner_3;
-	private JLabel label_5;
-	private JSpinner spinner_4;
-	private JLabel label_6;
-	private JSpinner spinner_5;
-	private JLabel label_7;
-	private JButton button_2;
-	private JButton button_3;
+	private JLabel lblStart;
+	private JSpinner spStart;
+	private JLabel lblSYear;
+	private JSpinner spSYear;
+	private JLabel lblSMonth;
+	private JSpinner spSMonth;
+	private JLabel lblSDay;
+	private JButton btnStart;
+	private JButton btnSearch;
+	private JLabel lblEnd;
+	private JSpinner spEYear;
+	private JLabel lblEYear;
+	private JSpinner spEMonth;
+	private JLabel lblEMonth;
+	private JSpinner spEDay;
+	private JLabel lblEDay;
+	private JButton btnEnd;
+	private JButton btnMain;
 	public ClientOCheckPanel() {
 
 		initialize();
@@ -64,108 +64,108 @@ public class ClientOCheckPanel extends JPanel {
 		pDate.setBounds(81, 99, 1100, 77);
 		panel.add(pDate);
 		
-		label = new JLabel("시   작");
-		label.setForeground(Color.BLACK);
-		label.setPreferredSize(new Dimension(110, 30));
-		label.setHorizontalAlignment(SwingConstants.LEFT);
-		label.setFont(new Font("휴먼둥근헤드라인", Font.PLAIN, 18));
-		pDate.add(label);
+		lblStart = new JLabel("시   작");
+		lblStart.setForeground(Color.BLACK);
+		lblStart.setPreferredSize(new Dimension(110, 30));
+		lblStart.setHorizontalAlignment(SwingConstants.LEFT);
+		lblStart.setFont(new Font("휴먼둥근헤드라인", Font.PLAIN, 18));
+		pDate.add(lblStart);
 		
-		spinner = new JSpinner();
-		spinner.setModel(new SpinnerNumberModel(new Integer(2020), null, null, new Integer(1)));
-		spinner.setPreferredSize(new Dimension(150, 30));
-		spinner.setFont(new Font("굴림", Font.BOLD, 18));
-		pDate.add(spinner);
+		spStart = new JSpinner();
+		spStart.setModel(new SpinnerNumberModel(new Integer(2020), null, null, new Integer(1)));
+		spStart.setPreferredSize(new Dimension(150, 30));
+		spStart.setFont(new Font("굴림", Font.BOLD, 18));
+		pDate.add(spStart);
 		
-		label_1 = new JLabel("년도");
-		label_1.setPreferredSize(new Dimension(80, 20));
-		label_1.setHorizontalAlignment(SwingConstants.LEFT);
-		label_1.setFont(new Font("굴림", Font.BOLD, 12));
-		pDate.add(label_1);
+		lblSYear = new JLabel("년도");
+		lblSYear.setPreferredSize(new Dimension(80, 20));
+		lblSYear.setHorizontalAlignment(SwingConstants.LEFT);
+		lblSYear.setFont(new Font("굴림", Font.BOLD, 12));
+		pDate.add(lblSYear);
 		
-		spinner_1 = new JSpinner();
-		spinner_1.setModel(new SpinnerNumberModel(new Integer(2), null, null, new Integer(1)));
-		spinner_1.setPreferredSize(new Dimension(150, 30));
-		spinner_1.setFont(new Font("굴림", Font.BOLD, 18));
-		pDate.add(spinner_1);
+		spSYear = new JSpinner();
+		spSYear.setModel(new SpinnerNumberModel(new Integer(2), null, null, new Integer(1)));
+		spSYear.setPreferredSize(new Dimension(150, 30));
+		spSYear.setFont(new Font("굴림", Font.BOLD, 18));
+		pDate.add(spSYear);
 		
-		label_2 = new JLabel("월");
-		label_2.setPreferredSize(new Dimension(70, 20));
-		label_2.setFont(new Font("굴림", Font.BOLD, 12));
-		pDate.add(label_2);
+		lblSMonth = new JLabel("월");
+		lblSMonth.setPreferredSize(new Dimension(70, 20));
+		lblSMonth.setFont(new Font("굴림", Font.BOLD, 12));
+		pDate.add(lblSMonth);
 		
-		spinner_2 = new JSpinner();
-		spinner_2.setModel(new SpinnerNumberModel(new Integer(18), null, null, new Integer(1)));
-		spinner_2.setPreferredSize(new Dimension(150, 30));
-		spinner_2.setFont(new Font("굴림", Font.BOLD, 18));
-		pDate.add(spinner_2);
+		spSMonth = new JSpinner();
+		spSMonth.setModel(new SpinnerNumberModel(new Integer(18), null, null, new Integer(1)));
+		spSMonth.setPreferredSize(new Dimension(150, 30));
+		spSMonth.setFont(new Font("굴림", Font.BOLD, 18));
+		pDate.add(spSMonth);
 		
-		label_3 = new JLabel("일");
-		label_3.setPreferredSize(new Dimension(70, 20));
-		label_3.setFont(new Font("굴림", Font.BOLD, 12));
-		pDate.add(label_3);
+		lblSDay = new JLabel("일");
+		lblSDay.setPreferredSize(new Dimension(70, 20));
+		lblSDay.setFont(new Font("굴림", Font.BOLD, 12));
+		pDate.add(lblSDay);
 		
-		button = new JButton("시작");
-		button.setPreferredSize(new Dimension(80, 30));
-		button.setFont(new Font("굴림", Font.PLAIN, 16));
-		pDate.add(button);
+		btnStart = new JButton("시작");
+		btnStart.setPreferredSize(new Dimension(80, 30));
+		btnStart.setFont(new Font("굴림", Font.PLAIN, 16));
+		pDate.add(btnStart);
 		
-		button_1 = new JButton("검색");
-		button_1.setPreferredSize(new Dimension(100, 30));
-		button_1.setFont(new Font("굴림", Font.PLAIN, 16));
-		pDate.add(button_1);
+		btnSearch = new JButton("검색");
+		btnSearch.setPreferredSize(new Dimension(100, 30));
+		btnSearch.setFont(new Font("굴림", Font.PLAIN, 16));
+		pDate.add(btnSearch);
 		
-		label_4 = new JLabel("종   료");
-		label_4.setForeground(Color.BLACK);
-		label_4.setPreferredSize(new Dimension(110, 30));
-		label_4.setHorizontalAlignment(SwingConstants.LEFT);
-		label_4.setFont(new Font("휴먼둥근헤드라인", Font.PLAIN, 18));
-		pDate.add(label_4);
+		lblEnd = new JLabel("종   료");
+		lblEnd.setForeground(Color.BLACK);
+		lblEnd.setPreferredSize(new Dimension(110, 30));
+		lblEnd.setHorizontalAlignment(SwingConstants.LEFT);
+		lblEnd.setFont(new Font("휴먼둥근헤드라인", Font.PLAIN, 18));
+		pDate.add(lblEnd);
 		
-		spinner_3 = new JSpinner();
-		spinner_3.setModel(new SpinnerNumberModel(new Integer(2020), null, null, new Integer(1)));
-		spinner_3.setPreferredSize(new Dimension(150, 30));
-		spinner_3.setFont(new Font("굴림", Font.BOLD, 18));
-		pDate.add(spinner_3);
+		spEYear = new JSpinner();
+		spEYear.setModel(new SpinnerNumberModel(new Integer(2020), null, null, new Integer(1)));
+		spEYear.setPreferredSize(new Dimension(150, 30));
+		spEYear.setFont(new Font("굴림", Font.BOLD, 18));
+		pDate.add(spEYear);
 		
-		label_5 = new JLabel("년도");
-		label_5.setPreferredSize(new Dimension(80, 20));
-		label_5.setHorizontalAlignment(SwingConstants.LEFT);
-		label_5.setFont(new Font("굴림", Font.BOLD, 12));
-		pDate.add(label_5);
+		lblEYear = new JLabel("년도");
+		lblEYear.setPreferredSize(new Dimension(80, 20));
+		lblEYear.setHorizontalAlignment(SwingConstants.LEFT);
+		lblEYear.setFont(new Font("굴림", Font.BOLD, 12));
+		pDate.add(lblEYear);
 		
-		spinner_4 = new JSpinner();
-		spinner_4.setModel(new SpinnerNumberModel(new Integer(2), null, null, new Integer(1)));
-		spinner_4.setPreferredSize(new Dimension(150, 30));
-		spinner_4.setFont(new Font("굴림", Font.BOLD, 18));
-		pDate.add(spinner_4);
+		spEMonth = new JSpinner();
+		spEMonth.setModel(new SpinnerNumberModel(new Integer(2), null, null, new Integer(1)));
+		spEMonth.setPreferredSize(new Dimension(150, 30));
+		spEMonth.setFont(new Font("굴림", Font.BOLD, 18));
+		pDate.add(spEMonth);
 		
-		label_6 = new JLabel("월");
-		label_6.setPreferredSize(new Dimension(70, 20));
-		label_6.setFont(new Font("굴림", Font.BOLD, 12));
-		pDate.add(label_6);
+		lblEMonth = new JLabel("월");
+		lblEMonth.setPreferredSize(new Dimension(70, 20));
+		lblEMonth.setFont(new Font("굴림", Font.BOLD, 12));
+		pDate.add(lblEMonth);
 		
-		spinner_5 = new JSpinner();
-		spinner_5.setModel(new SpinnerNumberModel(new Integer(18), null, null, new Integer(1)));
-		spinner_5.setPreferredSize(new Dimension(150, 30));
-		spinner_5.setFont(new Font("굴림", Font.BOLD, 18));
-		pDate.add(spinner_5);
+		spEDay = new JSpinner();
+		spEDay.setModel(new SpinnerNumberModel(new Integer(18), null, null, new Integer(1)));
+		spEDay.setPreferredSize(new Dimension(150, 30));
+		spEDay.setFont(new Font("굴림", Font.BOLD, 18));
+		pDate.add(spEDay);
 		
-		label_7 = new JLabel("일");
-		label_7.setPreferredSize(new Dimension(70, 20));
-		label_7.setFont(new Font("굴림", Font.BOLD, 12));
-		pDate.add(label_7);
+		lblEDay = new JLabel("일");
+		lblEDay.setPreferredSize(new Dimension(70, 20));
+		lblEDay.setFont(new Font("굴림", Font.BOLD, 12));
+		pDate.add(lblEDay);
 		
-		button_2 = new JButton("종료");
-		button_2.setPreferredSize(new Dimension(80, 30));
-		button_2.setFont(new Font("굴림", Font.PLAIN, 16));
-		pDate.add(button_2);
+		btnEnd = new JButton("종료");
+		btnEnd.setPreferredSize(new Dimension(80, 30));
+		btnEnd.setFont(new Font("굴림", Font.PLAIN, 16));
+		pDate.add(btnEnd);
 		
-		button_3 = new JButton("");
-		button_3.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\btns\\메인화면.png"));
-		button_3.setPreferredSize(new Dimension(100, 30));
-		button_3.setFont(new Font("굴림", Font.PLAIN, 16));
-		pDate.add(button_3);
+		btnMain = new JButton("");
+		btnMain.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\btns\\메인화면.png"));
+		btnMain.setPreferredSize(new Dimension(100, 30));
+		btnMain.setFont(new Font("굴림", Font.PLAIN, 16));
+		pDate.add(btnMain);
 		
 		pList = new JPanel();
 		pList.setBounds(81, 186, 1100, 460);

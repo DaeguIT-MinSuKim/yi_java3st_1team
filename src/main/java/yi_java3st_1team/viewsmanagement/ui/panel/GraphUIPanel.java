@@ -33,42 +33,50 @@ public class GraphUIPanel extends JPanel {
 	}
 	private void initialize() {
 		setPreferredSize(new Dimension(1500, 900));
-		setLayout(new GridLayout(0, 2, 0, 0));
+		setLayout(null);
 		
 		JPanel pLeft = new JPanel();
+		pLeft.setBounds(0, 0, 750, 900);
 		pLeft.setBackground(SystemColor.inactiveCaption);
 		add(pLeft);
-		pLeft.setLayout(new BoxLayout(pLeft, BoxLayout.Y_AXIS));
+		pLeft.setLayout(null);
 		
 		JPanel pLTitle = new JPanel();
+		pLTitle.setBounds(0, 0, 750, 112);
 		pLTitle.setBorder(new EmptyBorder(50, 0, 0, 0));
 		pLTitle.setBackground(SystemColor.inactiveCaption);
 		pLTitle.setPreferredSize(new Dimension(750, 50));
 		pLeft.add(pLTitle);
+		pLTitle.setLayout(null);
 		
 		JLabel lblLTitle = new JLabel("고객사 주문현황 그래프");
+		lblLTitle.setBounds(203, 55, 344, 35);
 		lblLTitle.setHorizontalAlignment(SwingConstants.CENTER);
 		lblLTitle.setFont(new Font("굴림", Font.BOLD, 30));
 		pLTitle.add(lblLTitle);
 		
 		JPanel pLSearch = new JPanel();
+		pLSearch.setBounds(0, 112, 750, 77);
 		pLSearch.setBorder(new EmptyBorder(30, 0, 0, 0));
 		pLSearch.setBackground(SystemColor.inactiveCaption);
 		pLSearch.setPreferredSize(new Dimension(750, 15));
 		pLeft.add(pLSearch);
-		pLSearch.setLayout(new GridLayout(0, 1, 0, 0));
+		pLSearch.setLayout(null);
 		
 		ClientPanel pClient = new ClientPanel();
+		pClient.setBounds(0, 30, 750, 47);
 		pLSearch.add(pClient);
 		
 		JPanel pLChart = new JPanel();
+		pLChart.setBounds(0, 189, 750, 710);
 		pLChart.setBorder(new EmptyBorder(5, 45, 55, 35));
 		pLChart.setBackground(SystemColor.inactiveCaption);
 		pLChart.setPreferredSize(new Dimension(750, 650));
 		pLeft.add(pLChart);
-		pLChart.setLayout(new GridLayout(0, 1, 0, 0));
+		pLChart.setLayout(null);
 		
 		JPanel pLLChart = new JPanel();
+		pLLChart.setBounds(45, 5, 670, 650);
 		pLLChart.setBackground(SystemColor.inactiveCaptionBorder);
 		pLChart.add(pLLChart);
 		pLLChart.setLayout(new GridLayout(0, 1, 0, 0));
@@ -78,38 +86,46 @@ public class GraphUIPanel extends JPanel {
 		pLLChart.add(pClientGraph);
 		
 		JPanel pRight = new JPanel();
+		pRight.setBounds(750, 0, 750, 900);
 		pRight.setBackground(SystemColor.inactiveCaption);
 		add(pRight);
-		pRight.setLayout(new BoxLayout(pRight, BoxLayout.Y_AXIS));
+		pRight.setLayout(null);
 		
 		JPanel pRTitle = new JPanel();
+		pRTitle.setBounds(0, 0, 750, 112);
 		pRTitle.setBorder(new EmptyBorder(50, 0, 0, 0));
 		pRTitle.setBackground(SystemColor.inactiveCaption);
 		pRTitle.setPreferredSize(new Dimension(750, 50));
 		pRight.add(pRTitle);
+		pRTitle.setLayout(null);
 		
 		JLabel lblNewLabel = new JLabel("영업사원 실적현황 그래프");
+		lblNewLabel.setBounds(187, 55, 376, 35);
 		lblNewLabel.setFont(new Font("굴림", Font.BOLD, 30));
 		pRTitle.add(lblNewLabel);
 		
 		JPanel pRSearch = new JPanel();
+		pRSearch.setBounds(0, 112, 750, 77);
 		pRSearch.setBorder(new EmptyBorder(30, 0, 0, 0));
 		pRSearch.setBackground(SystemColor.inactiveCaption);
 		pRSearch.setPreferredSize(new Dimension(750, 15));
 		pRight.add(pRSearch);
-		pRSearch.setLayout(new GridLayout(0, 1, 0, 0));
+		pRSearch.setLayout(null);
 		
 		EmployeePanel pEmp = new EmployeePanel();
+		pEmp.setBounds(0, 30, 750, 47);
 		pRSearch.add(pEmp);
 		
 		JPanel pRChart = new JPanel();
+		pRChart.setBounds(0, 189, 750, 710);
 		pRChart.setBorder(new EmptyBorder(5, 45, 55, 35));
 		pRChart.setBackground(SystemColor.inactiveCaption);
 		pRChart.setPreferredSize(new Dimension(750, 650));
 		pRight.add(pRChart);
-		pRChart.setLayout(new GridLayout(0, 1, 0, 0));
+		pRChart.setLayout(null);
 		
 		JPanel pRRChart = new JPanel();
+		pRRChart.setBounds(45, 5, 670, 650);
 		pRRChart.setBackground(SystemColor.inactiveCaptionBorder);
 		pRChart.add(pRRChart);
 		pRRChart.setLayout(new GridLayout(0, 1, 0, 0));
