@@ -55,6 +55,7 @@ public class EmployeeMainUIPanel extends JPanel implements ActionListener {
 		pStop.add(pLogin, BorderLayout.WEST);
 		
 		btnLogin = new JButton("LOGIN");
+		btnLogin.setBackground(SystemColor.controlHighlight);
 		btnLogin.addActionListener(this);
 		btnLogin.setForeground(Color.BLACK);
 		btnLogin.setFont(new Font("Arial", Font.BOLD, 17));
@@ -63,6 +64,7 @@ public class EmployeeMainUIPanel extends JPanel implements ActionListener {
 		pLogin.add(btnLogin);
 		
 		btnRegi = new JButton("REGISTER");
+		btnRegi.setBackground(SystemColor.controlHighlight);
 		btnRegi.addActionListener(this);
 		btnRegi.setForeground(Color.BLACK);
 		btnRegi.setFont(new Font("Arial", Font.BOLD, 17));
@@ -71,6 +73,7 @@ public class EmployeeMainUIPanel extends JPanel implements ActionListener {
 		pLogin.add(btnRegi);
 		
 		btnSearch = new JButton("");
+		btnSearch.setBackground(SystemColor.controlHighlight);
 		btnSearch.addActionListener(this);
 		btnSearch.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\loginMain\\searchBtn.png"));
 		btnSearch.setFocusable(false);
