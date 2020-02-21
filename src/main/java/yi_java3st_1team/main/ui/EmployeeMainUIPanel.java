@@ -30,6 +30,8 @@ import yi_java3st_1team.main.ui.content.login.EmpRegiPanel;
 import yi_java3st_1team.main.ui.content.login.EmployeeLoginPanel;
 import yi_java3st_1team.main.ui.content.login.LoginPanel;
 import yi_java3st_1team.main.ui.content.login.SearchPanel;
+import yi_java3st_1team.ordermanagement.ui.OMMainPanel;
+import yi_java3st_1team.productmanagement.ui.PMMainPanel;
 
 @SuppressWarnings("serial")
 public class EmployeeMainUIPanel extends JPanel implements ActionListener {
@@ -60,6 +62,8 @@ public class EmployeeMainUIPanel extends JPanel implements ActionListener {
 	private JPanel pImg02;
 	
 	private CMMainPanel pCMpanel;
+	private OMMainPanel pOMpanel;
+	private PMMainPanel pPMpanel;
 	private JPanel pSbot;
 	
 	private EmployeeMainFrame empMain;
@@ -157,6 +161,7 @@ public class EmployeeMainUIPanel extends JPanel implements ActionListener {
 		pBtns01.add(btn01, BorderLayout.WEST);
 		
 		btn02 = new JButton("");
+		btn02.addActionListener(this);
 		btn02.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\loginMain\\mainBtn2.png"));
 		btn02.setFocusable(false);
 		pBtns01.add(btn02, BorderLayout.CENTER);
@@ -181,17 +186,28 @@ public class EmployeeMainUIPanel extends JPanel implements ActionListener {
 		pBtns02.add(lblImg02, BorderLayout.WEST);
 		
 		btn03 = new JButton("");
+		btn03.addActionListener(this);
 		btn03.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\loginMain\\mainBtn3.png"));
 		btn03.setFocusable(false);
 		pBtns02.add(btn03, BorderLayout.CENTER);
 		
 		btn04 = new JButton("");
+		btn04.addActionListener(this);
 		btn04.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\loginMain\\mainBtn4.png"));
 		btn04.setPreferredSize(new Dimension(240, 23));
 		btn04.setFocusable(false);
 		pBtns02.add(btn04, BorderLayout.EAST);
 	}
 	public void actionPerformed(ActionEvent e) {
+		if (e.getSource() == btn04) {
+			actionPerformedBtn04(e);
+		}
+		if (e.getSource() == btn03) {
+			actionPerformedBtn03(e);
+		}
+		if (e.getSource() == btn02) {
+			actionPerformedBtn02(e);
+		}
 		if (e.getSource() == btn01) {
 			actionPerformedBtn01(e);
 		}
@@ -234,32 +250,67 @@ public class EmployeeMainUIPanel extends JPanel implements ActionListener {
 		bar.setBackground(Color.red);
 		bar.setPreferredSize(new Dimension(350, 250));
 		pImg02.add(bar, BorderLayout.NORTH);
+		
 		//관리자(대리~인턴) 로그인시 현황조회&보고서 버튼 비활성화
-		btn04.setEnabled(false);
+		//btn04.setEnabled(false);
 		
 		
 	}
 	
-	//거래처 관리 클릭
+	//거래처 관리 클릭 : CMMainPanel
 	protected void actionPerformedBtn01(ActionEvent e) {
-		
-		
 		pStop.removeAll();
 		pSbot.removeAll();
 		revalidate();
 		repaint();
-		setLayout(new CardLayout());
+		setLayout(new CardLayout(-19,0));
 		pCMpanel = new CMMainPanel();
-		pCMpanel.setPreferredSize(new Dimension(1490, 100));
+		pCMpanel.setPreferredSize(new Dimension(1544, 0));
+		pStop.add(pCMpanel, BorderLayout.WEST);
+		pStop.revalidate();
+		pStop.repaint();	
+	}
+	
+	//제품 관리 클릭
+	protected void actionPerformedBtn02(ActionEvent e) {
+		pStop.removeAll();
+		pSbot.removeAll();
+		revalidate();
+		repaint();
+		setLayout(new CardLayout(-19,0));
+		pPMpanel = new PMMainPanel();
+		pPMpanel.setPreferredSize(new Dimension(1544, 0));
+		pStop.add(pPMpanel, BorderLayout.WEST);
+		pStop.revalidate();
+		pStop.repaint();
+	}
+	
+	//주문 관리 클릭
+	protected void actionPerformedBtn03(ActionEvent e) {
+		pStop.removeAll();
+		pSbot.removeAll();
+		revalidate();
+		repaint();
+		setLayout(new CardLayout(-19,0));
+		pOMpanel = new OMMainPanel();
+		pOMpanel.setPreferredSize(new Dimension(1544, 0));
+		pStop.add(pOMpanel, BorderLayout.WEST);
+		pStop.revalidate();
+		pStop.repaint();
+	}
+	
+	//현황조회/보고
+	protected void actionPerformedBtn04(ActionEvent e) {
+		pStop.removeAll();
+		pSbot.removeAll();
+		revalidate();
+		repaint();
+		setLayout(new CardLayout(-19,0));
+		pCMpanel = new CMMainPanel();
+		pCMpanel.setPreferredSize(new Dimension(1544, 0));
 		pStop.add(pCMpanel, BorderLayout.WEST);
 		pStop.revalidate();
 		pStop.repaint();
-
-
-//		pCMpanel.setBackground(SystemColor.inactiveCaption);
-//		pCMpanel.setBounds(new Rectangle(0, 0, 1544, 700));
-//		pCMpanel.setLayout(new GridLayout(0, 1, 10, 10));
-		
 	}
 	
 	//회원가입
@@ -286,5 +337,6 @@ public class EmployeeMainUIPanel extends JPanel implements ActionListener {
 		searchFrame.setVisible(true);
 	}
 	
+
 
 }
