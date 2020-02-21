@@ -33,6 +33,7 @@ public abstract class AbstractTblPanel<T> extends JPanel {
 		add(scrollPane, BorderLayout.CENTER);
 
 		table = new JTable();
+		table.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 		scrollPane.setViewportView(table);
 	}
 

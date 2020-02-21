@@ -1,5 +1,11 @@
 package yi_java3st_1team.clientmanagement.ui.list;
 
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.Rectangle;
+import java.awt.SystemColor;
+
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -9,14 +15,6 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
 import yi_java3st_1team.clientmanagement.ui.service.SupplierUIService;
-
-import java.awt.BorderLayout;
-import java.awt.Font;
-import java.awt.Rectangle;
-import java.awt.SystemColor;
-import java.awt.Color;
-import javax.swing.JTable;
-import java.awt.Dimension;
 
 @SuppressWarnings("serial")
 public class SCListPanel extends JPanel {
