@@ -24,7 +24,7 @@ public class TestReportFrame extends JFrame {
 	private JPanel pFooter;
 	private JLabel lblLogo;
 	private JLabel lblCopy;
-	private ReportMainPanelTest pContents;
+	private ReportMainPanel pContents;
 
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -73,7 +73,7 @@ public class TestReportFrame extends JFrame {
 		contentPane.add(pSection, BorderLayout.CENTER);
 		pSection.setLayout(new GridLayout(0, 1, 10, 10));
 		
-		pContents = new ReportMainPanelTest();
+		pContents = new ReportMainPanel();
 		pContents.setBackground(SystemColor.inactiveCaption);
 		pSection.add(pContents);
 		

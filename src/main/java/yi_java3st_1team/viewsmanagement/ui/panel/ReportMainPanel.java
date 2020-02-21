@@ -1,4 +1,4 @@
-package yi_java3st_1team.test2;
+package yi_java3st_1team.viewsmanagement.ui.panel;
 
 import java.awt.Rectangle;
 import java.awt.SystemColor;
@@ -9,9 +9,9 @@ import yi_java3st_1team.main.LeftMainMenu;
 import yi_java3st_1team.viewsmanagement.ui.panel.MainPanel;
 
 @SuppressWarnings("serial")
-public class ReportMainPanelTest extends JPanel {
+public class ReportMainPanel extends JPanel {
 
-	public ReportMainPanelTest() {
+	public ReportMainPanel() {
 
 		initialize();
 	}
