@@ -127,7 +127,7 @@ public class ORegisterPanel extends JPanel {
 		btnAdd.setBackground(new Color(135, 206, 250));
 		btnAdd.setForeground(new Color(0, 102, 204));
 		btnAdd.setFont(new Font("맑은 고딕", Font.BOLD, 16));
-		btnAdd.setBounds(66, 580, 100, 30);
+		btnAdd.setBounds(66, 580, 110, 30);
 		panel.add(btnAdd);
 		
 		btnUpdate = new JButton("초기화");
@@ -136,7 +136,7 @@ public class ORegisterPanel extends JPanel {
 		btnUpdate.setBackground(new Color(240, 128, 128));
 		btnUpdate.setFont(new Font("맑은 고딕", Font.BOLD, 16));
 		btnUpdate.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\test\\삭제.png"));
-		btnUpdate.setBounds(270, 580, 100, 30);
+		btnUpdate.setBounds(265, 580, 110, 30);
 		panel.add(btnUpdate);
 		
 		btnGoMain = new JButton("메인화면");
@@ -145,7 +145,7 @@ public class ORegisterPanel extends JPanel {
 		btnGoMain.setForeground(Color.WHITE);
 		btnGoMain.setFont(new Font("맑은 고딕", Font.BOLD, 16));
 		btnGoMain.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\test\\메인화면.png"));
-		btnGoMain.setBounds(465, 580, 100, 30);
+		btnGoMain.setBounds(460, 580, 110, 30);
 		panel.add(btnGoMain);
 		
 		JTextArea taOWant = new JTextArea();

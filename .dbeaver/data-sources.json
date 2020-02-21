@@ -1,7 +1,15 @@
 {
 	"folders": {},
 	"connections": {
+<<<<<<< HEAD
 		"mysql5-1706853161e-72fbc4e71461c13f": {
+=======
+<<<<<<< HEAD
+		"mysql5-170654dc3be-5c602a02b73c4ee1": {
+=======
+		"mysql5-17066a094a9-5933378419255b4b": {
+>>>>>>> branch 'master' of https://github.com/DaeguIT-MinSuKim/yi_java3st_1team.git
+>>>>>>> branch 'master' of https://github.com/DaeguIT-MinSuKim/yi_java3st_1team.git
 			"provider": "mysql",
 			"driver": "mysql5",
 			"name": "MySQL - yi_java3st_1team",

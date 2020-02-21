@@ -1,5 +1,11 @@
 package yi_java3st_1team.clientmanagement.ui.list;
 
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.Rectangle;
+import java.awt.SystemColor;
+
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -8,11 +14,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
-import java.awt.BorderLayout;
-import java.awt.Font;
-import java.awt.Rectangle;
-import java.awt.SystemColor;
-import java.awt.Color;
+import yi_java3st_1team.clientmanagement.ui.service.SupplierUIService;
 
 @SuppressWarnings("serial")
 public class SCListPanel extends JPanel {
@@ -23,15 +25,18 @@ public class SCListPanel extends JPanel {
 	private JTextField tfSerch;
 	private JButton btnSerch;
 	private SCListTblPanel pList;
+	private SupplierUIService service;
+	private JPanel pSCListPanel;
+	
 	public SCListPanel() {
-
+		service = new SupplierUIService();
 		initialize();
 	}
 	private void initialize() {
 		setBounds(new Rectangle(0, 0, 635, 700));
 		setLayout(new BorderLayout(0, 0));
 		
-		JPanel pSCListPanel = new JPanel();
+		pSCListPanel = new JPanel();
 		pSCListPanel.setBounds(new Rectangle(0, 0, 635, 700));
 		add(pSCListPanel, BorderLayout.CENTER);
 		pSCListPanel.setBackground(SystemColor.inactiveCaptionBorder);
@@ -67,9 +72,27 @@ public class SCListPanel extends JPanel {
 		pSCListPanel.add(btnSerch);
 		
 		pList = new SCListTblPanel();
+		pList.loadDate(service.showSupplierList());
 		pList.setBounds(22, 123, 590, 500);
+//		pList.setPopupMenu(createPopupMenu());
 		pSCListPanel.add(pList);
-		pList.setLayout(new BorderLayout(0, 0));
 	}
+//	private JPopupMenu createPopupMenu() {
+//		JPopupMenu popMenu = new JPopupMenu();
+//		
+//		JMenuItem updateItem = new JMenuItem("수정");
+//		updateItem.addActionListener(myPopupMenuListener);
+//		popMenu.add(updateItem);
+//		
+//		JMenuItem deleteItem = new JMenuItem("삭제");
+//		deleteItem.addActionListener(myPopupMenuListener);
+//		popMenu.add(deleteItem);
+//		
+//		return popMenu;
+//	}
+	
+//	ActionListener myPopupMenuListener = new ActionListener() {
+//	};
+	
 
 }

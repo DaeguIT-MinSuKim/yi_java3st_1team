@@ -1,1 +1,5 @@
+<<<<<<< HEAD
 {"resources":{"Scripts/Script.sql":{"sql-editor-data-source-id":"mysql5-1706853161e-72fbc4e71461c13f"}}}
+=======
+{"resources":{"Scripts/Script-1.sql":{"sql-editor-data-source-id":"mysql5-170654dc3be-5c602a02b73c4ee1"},"Scripts/Script.sql":{"sql-editor-data-source-id":"mysql5-170654dc3be-5c602a02b73c4ee1"}}}
+>>>>>>> branch 'master' of https://github.com/DaeguIT-MinSuKim/yi_java3st_1team.git

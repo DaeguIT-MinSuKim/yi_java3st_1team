@@ -159,7 +159,7 @@ public class CRegisterPanel extends JPanel {
 		btnDplCheck.setBounds(465, 210, 100, 30);
 		panel.add(btnDplCheck);
 		
-		btnPostNum = new JButton("우편번호");
+		btnPostNum = new JButton("주소검색");
 		btnPostNum.setFocusable(false);
 		btnPostNum.setBackground(new Color(70, 130, 180));
 		btnPostNum.setForeground(Color.WHITE);

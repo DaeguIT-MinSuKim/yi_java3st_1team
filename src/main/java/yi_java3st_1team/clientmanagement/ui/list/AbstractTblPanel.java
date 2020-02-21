@@ -33,6 +33,7 @@ public abstract class AbstractTblPanel<T> extends JPanel {
 		add(scrollPane, BorderLayout.CENTER);
 
 		table = new JTable();
+		table.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 		scrollPane.setViewportView(table);
 	}
 
@@ -79,7 +80,7 @@ public abstract class AbstractTblPanel<T> extends JPanel {
 	protected void tableSetWidth(int... width) {
 		TableColumnModel cModel = table.getColumnModel();
 		for (int i = 0; i < width.length; i++) {
-			cModel.getColumn(i).setPreferredWidth(width[i]);
+			cModel.getColumn(i).setPreferredWidth(width[i]);	
 		}
 	}
 
