@@ -6,12 +6,15 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Rectangle;
 import java.awt.SystemColor;
+import java.util.Calendar;
+import java.util.Date;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JSpinner;
+import javax.swing.SpinnerDateModel;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.SwingConstants;
 
@@ -21,11 +24,11 @@ public class ClientOCheckPanel extends JPanel {
 	private JLabel lblO;
 	private JPanel pList;
 	private JLabel lblStart;
-	private JSpinner spStart;
-	private JLabel lblSYear;
 	private JSpinner spSYear;
-	private JLabel lblSMonth;
+	private JLabel lblSYear;
 	private JSpinner spSMonth;
+	private JLabel lblSMonth;
+	private JSpinner spSDay;
 	private JLabel lblSDay;
 	private JButton btnStart;
 	private JButton btnSearch;
@@ -71,11 +74,16 @@ public class ClientOCheckPanel extends JPanel {
 		lblStart.setFont(new Font("휴먼둥근헤드라인", Font.PLAIN, 18));
 		pDate.add(lblStart);
 		
-		spStart = new JSpinner();
-		spStart.setModel(new SpinnerNumberModel(new Integer(2020), null, null, new Integer(1)));
-		spStart.setPreferredSize(new Dimension(150, 30));
-		spStart.setFont(new Font("굴림", Font.BOLD, 18));
-		pDate.add(spStart);
+		Calendar calendar = Calendar.getInstance();
+		Date value = calendar.getTime();
+		
+		SpinnerDateModel dateModel = new SpinnerDateModel(value, null, null, Calendar.YEAR);		
+		spSYear = new JSpinner(dateModel);
+		spSYear.setEditor(new JSpinner.DateEditor(spSYear, "yyyy"));
+		spSYear.setModel(new SpinnerDateModel(new Date(1582174800000L), new Date(631170000000L), null, Calendar.YEAR));
+		spSYear.setPreferredSize(new Dimension(150, 30));
+		spSYear.setFont(new Font("굴림", Font.BOLD, 18));
+		pDate.add(spSYear);
 		
 		lblSYear = new JLabel("년도");
 		lblSYear.setPreferredSize(new Dimension(80, 20));
@@ -83,22 +91,24 @@ public class ClientOCheckPanel extends JPanel {
 		lblSYear.setFont(new Font("굴림", Font.BOLD, 12));
 		pDate.add(lblSYear);
 		
-		spSYear = new JSpinner();
-		spSYear.setModel(new SpinnerNumberModel(new Integer(2), null, null, new Integer(1)));
-		spSYear.setPreferredSize(new Dimension(150, 30));
-		spSYear.setFont(new Font("굴림", Font.BOLD, 18));
-		pDate.add(spSYear);
+		spSMonth = new JSpinner(dateModel);
+		spSMonth.setEditor(new JSpinner.DateEditor(spSMonth, "MM"));
+		spSMonth.setModel(new SpinnerDateModel(new Date(1582174800000L), new Date(631170000000L), null, Calendar.MONTH));
+		spSMonth.setPreferredSize(new Dimension(150, 30));
+		spSMonth.setFont(new Font("굴림", Font.BOLD, 18));
+		pDate.add(spSMonth);
 		
 		lblSMonth = new JLabel("월");
 		lblSMonth.setPreferredSize(new Dimension(70, 20));
 		lblSMonth.setFont(new Font("굴림", Font.BOLD, 12));
 		pDate.add(lblSMonth);
 		
-		spSMonth = new JSpinner();
-		spSMonth.setModel(new SpinnerNumberModel(new Integer(18), null, null, new Integer(1)));
-		spSMonth.setPreferredSize(new Dimension(150, 30));
-		spSMonth.setFont(new Font("굴림", Font.BOLD, 18));
-		pDate.add(spSMonth);
+		spSDay = new JSpinner(dateModel);
+		spSDay.setEditor(new JSpinner.DateEditor(spSDay, "dd"));
+		spSDay.setModel(new SpinnerDateModel(new Date(1582174800000L), new Date(631170000000L), null, Calendar.MONTH));
+		spSDay.setPreferredSize(new Dimension(150, 30));
+		spSDay.setFont(new Font("굴림", Font.BOLD, 18));
+		pDate.add(spSDay);
 		
 		lblSDay = new JLabel("일");
 		lblSDay.setPreferredSize(new Dimension(70, 20));
@@ -122,8 +132,9 @@ public class ClientOCheckPanel extends JPanel {
 		lblEnd.setFont(new Font("휴먼둥근헤드라인", Font.PLAIN, 18));
 		pDate.add(lblEnd);
 		
-		spEYear = new JSpinner();
-		spEYear.setModel(new SpinnerNumberModel(new Integer(2020), null, null, new Integer(1)));
+		spEYear = new JSpinner(dateModel);
+		spEYear.setEditor(new JSpinner.DateEditor(spEYear, "yyyy"));
+		spEYear.setModel(new SpinnerDateModel(new Date(1582174800000L), new Date(631170000000L), null, Calendar.YEAR));
 		spEYear.setPreferredSize(new Dimension(150, 30));
 		spEYear.setFont(new Font("굴림", Font.BOLD, 18));
 		pDate.add(spEYear);
@@ -134,8 +145,9 @@ public class ClientOCheckPanel extends JPanel {
 		lblEYear.setFont(new Font("굴림", Font.BOLD, 12));
 		pDate.add(lblEYear);
 		
-		spEMonth = new JSpinner();
-		spEMonth.setModel(new SpinnerNumberModel(new Integer(2), null, null, new Integer(1)));
+		spEMonth = new JSpinner(dateModel);
+		spEMonth.setEditor(new JSpinner.DateEditor(spEMonth, "MM"));
+		spEMonth.setModel(new SpinnerDateModel(new Date(1582174800000L), new Date(631170000000L), null, Calendar.MONTH));
 		spEMonth.setPreferredSize(new Dimension(150, 30));
 		spEMonth.setFont(new Font("굴림", Font.BOLD, 18));
 		pDate.add(spEMonth);
@@ -145,8 +157,9 @@ public class ClientOCheckPanel extends JPanel {
 		lblEMonth.setFont(new Font("굴림", Font.BOLD, 12));
 		pDate.add(lblEMonth);
 		
-		spEDay = new JSpinner();
-		spEDay.setModel(new SpinnerNumberModel(new Integer(18), null, null, new Integer(1)));
+		spEDay = new JSpinner(dateModel);
+		spEDay.setEditor(new JSpinner.DateEditor(spEDay, "dd"));
+		spEDay.setModel(new SpinnerDateModel(new Date(1582174800000L), new Date(631170000000L), null, Calendar.MONTH));
 		spEDay.setPreferredSize(new Dimension(150, 30));
 		spEDay.setFont(new Font("굴림", Font.BOLD, 18));
 		pDate.add(spEDay);

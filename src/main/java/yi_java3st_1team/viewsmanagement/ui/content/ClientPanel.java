@@ -9,6 +9,9 @@ import javax.swing.SwingConstants;
 import javax.swing.JButton;
 import java.awt.SystemColor;
 import javax.swing.SpinnerNumberModel;
+import javax.swing.SpinnerDateModel;
+import java.util.Date;
+import java.util.Calendar;
 
 @SuppressWarnings("serial")
 public class ClientPanel extends JPanel {
@@ -24,10 +27,15 @@ public class ClientPanel extends JPanel {
 		setBackground(SystemColor.inactiveCaption);
 		setSize(new Dimension(750, 40));
 		
-		JSpinner spYear = new JSpinner();
-		spYear.setModel(new SpinnerNumberModel(new Integer(2020), new Integer(2020), null, new Integer(1)));
+		Calendar calendar = Calendar.getInstance();
+		Date value = calendar.getTime();
+		
+		SpinnerDateModel dateModel = new SpinnerDateModel(value, null, null, Calendar.YEAR);		
+		JSpinner spYear = new JSpinner(dateModel);
+		spYear.setEditor(new JSpinner.DateEditor(spYear, "yyyy"));
+		spYear.setModel(new SpinnerDateModel(new Date(1582174800000L), new Date(631170000000L), null, Calendar.YEAR));
 		spYear.setPreferredSize(new Dimension(120, 30));
-		spYear.setFont(new Font("굴림", Font.PLAIN, 18));
+		spYear.setFont(new Font("굴림", Font.BOLD, 18));
 		add(spYear);
 		
 		JLabel lblYear = new JLabel("년도");
@@ -36,11 +44,13 @@ public class ClientPanel extends JPanel {
 		lblYear.setFont(new Font("굴림", Font.BOLD, 16));
 		add(lblYear);
 		
-		JSpinner spMonth = new JSpinner();
-		spMonth.setModel(new SpinnerNumberModel(2, 1, 12, 1));
+		JSpinner spMonth = new JSpinner(dateModel);
+		spMonth.setEditor(new JSpinner.DateEditor(spMonth, "MM"));
+		spMonth.setModel(new SpinnerDateModel(new Date(1582174800000L), new Date(-2208970800000L), null, Calendar.MONTH));
 		spMonth.setPreferredSize(new Dimension(120, 30));
-		spMonth.setFont(new Font("굴림", Font.PLAIN, 18));
+		spMonth.setFont(new Font("굴림", Font.BOLD, 18));
 		add(spMonth);
+		
 		
 		JLabel lblMonth = new JLabel("월");
 		lblMonth.setPreferredSize(new Dimension(70, 30));

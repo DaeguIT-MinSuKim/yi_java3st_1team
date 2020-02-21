@@ -1,19 +1,20 @@
 package yi_java3st_1team.viewsmanagement.ui.content;
 
-import javax.swing.JPanel;
 import java.awt.Dimension;
-import java.awt.SystemColor;
 import java.awt.FlowLayout;
-import javax.swing.JLabel;
 import java.awt.Font;
-import javax.swing.SwingConstants;
-
-import com.toedter.calendar.JDateChooser;
-
-import javax.swing.JSpinner;
-import javax.swing.JButton;
 import java.awt.GridLayout;
+import java.awt.SystemColor;
+import java.util.Calendar;
+import java.util.Date;
+
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JSpinner;
+import javax.swing.SpinnerDateModel;
 import javax.swing.SpinnerNumberModel;
+import javax.swing.SwingConstants;
 
 @SuppressWarnings("serial")
 public class DateSalePanel extends JPanel {
@@ -42,8 +43,13 @@ public class DateSalePanel extends JPanel {
 		lblStart.setFont(new Font("굴림", Font.BOLD, 18));
 		panel.add(lblStart);
 		
-		JSpinner spStartY = new JSpinner();
-		spStartY.setModel(new SpinnerNumberModel(new Integer(2020), new Integer(2020), null, new Integer(1)));
+		Calendar calendar = Calendar.getInstance();
+		Date value = calendar.getTime();
+		
+		SpinnerDateModel dateModel = new SpinnerDateModel(value, null, null, Calendar.YEAR);		
+		JSpinner spStartY = new JSpinner(dateModel);
+		spStartY.setEditor(new JSpinner.DateEditor(spStartY, "yyyy"));
+		spStartY.setModel(new SpinnerDateModel(new Date(1582174800000L), new Date(631170000000L), null, Calendar.YEAR));
 		spStartY.setPreferredSize(new Dimension(180, 30));
 		spStartY.setFont(new Font("굴림", Font.BOLD, 18));
 		panel.add(spStartY);
@@ -54,8 +60,9 @@ public class DateSalePanel extends JPanel {
 		lblStartY.setFont(new Font("굴림", Font.BOLD, 12));
 		panel.add(lblStartY);
 		
-		JSpinner spStartM = new JSpinner();
-		spStartM.setModel(new SpinnerNumberModel(2, 1, 12, 1));
+		JSpinner spStartM = new JSpinner(dateModel);
+		spStartM.setEditor(new JSpinner.DateEditor(spStartM, "MM"));
+		spStartM.setModel(new SpinnerDateModel(new Date(1582174800000L), new Date(-2208970800000L), null, Calendar.MONTH));
 		spStartM.setPreferredSize(new Dimension(180, 30));
 		spStartM.setFont(new Font("굴림", Font.BOLD, 18));
 		panel.add(spStartM);
@@ -65,8 +72,9 @@ public class DateSalePanel extends JPanel {
 		lblStartM.setFont(new Font("굴림", Font.BOLD, 12));
 		panel.add(lblStartM);
 		
-		JSpinner spStartD = new JSpinner();
-		spStartD.setModel(new SpinnerNumberModel(18, 1, 31, 1));
+		JSpinner spStartD = new JSpinner(dateModel);
+		spStartD.setEditor(new JSpinner.DateEditor(spStartD, "dd"));
+		spStartD.setModel(new SpinnerDateModel(new Date(1582174800000L), new Date(-2208970800000L), null, Calendar.MONTH));
 		spStartD.setPreferredSize(new Dimension(180, 30));
 		spStartD.setFont(new Font("굴림", Font.BOLD, 18));
 		panel.add(spStartD);
@@ -92,8 +100,9 @@ public class DateSalePanel extends JPanel {
 		lblEnd.setFont(new Font("굴림", Font.BOLD, 18));
 		panel.add(lblEnd);
 		
-		JSpinner spEnd = new JSpinner();
-		spEnd.setModel(new SpinnerNumberModel(new Integer(2020), new Integer(2020), null, new Integer(1)));
+		JSpinner spEnd = new JSpinner(dateModel);
+		spEnd.setEditor(new JSpinner.DateEditor(spEnd, "yyyy"));
+		spEnd.setModel(new SpinnerDateModel(new Date(1582174800000L), new Date(631170000000L), null, Calendar.YEAR));
 		spEnd.setPreferredSize(new Dimension(180, 30));
 		spEnd.setFont(new Font("굴림", Font.BOLD, 18));
 		panel.add(spEnd);
@@ -104,8 +113,9 @@ public class DateSalePanel extends JPanel {
 		lblEndY.setFont(new Font("굴림", Font.BOLD, 12));
 		panel.add(lblEndY);
 		
-		JSpinner spEndM = new JSpinner();
-		spEndM.setModel(new SpinnerNumberModel(2, 1, 12, 1));
+		JSpinner spEndM = new JSpinner(dateModel);
+		spEndM.setEditor(new JSpinner.DateEditor(spEndM, "MM"));
+		spEndM.setModel(new SpinnerDateModel(new Date(1582174800000L), new Date(-2208970800000L), null, Calendar.MONTH));
 		spEndM.setPreferredSize(new Dimension(180, 30));
 		spEndM.setFont(new Font("굴림", Font.BOLD, 18));
 		panel.add(spEndM);
@@ -115,8 +125,9 @@ public class DateSalePanel extends JPanel {
 		lblEndM.setFont(new Font("굴림", Font.BOLD, 12));
 		panel.add(lblEndM);
 		
-		JSpinner spEndD = new JSpinner();
-		spEndD.setModel(new SpinnerNumberModel(18, 1, 31, 1));
+		JSpinner spEndD = new JSpinner(dateModel);
+		spEndD.setEditor(new JSpinner.DateEditor(spEndD, "dd"));
+		spEndD.setModel(new SpinnerDateModel(new Date(1582174800000L), new Date(-2208970800000L), null, Calendar.DAY_OF_YEAR));
 		spEndD.setPreferredSize(new Dimension(180, 30));
 		spEndD.setFont(new Font("굴림", Font.BOLD, 18));
 		panel.add(spEndD);
