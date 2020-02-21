@@ -12,8 +12,11 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
+import yi_java3st_1team.clientmanagement.dto.Supplier;
+import yi_java3st_1team.exception.InvalidCheckException;
+
 @SuppressWarnings("serial")
-public class SCRegisterPanel extends JPanel {
+public class SCRegisterPanel extends AbsItemPanel<Supplier> {
 
 	private JLabel lblSC;
 	private JLabel lblSCNo;
@@ -182,5 +185,42 @@ public class SCRegisterPanel extends JPanel {
 		lblWhite.setBounds(54, 116, 525, 430);
 		panel.add(lblWhite);
 		
+	}
+	@Override
+	public Supplier getItem() {
+		int sNo = Integer.parseInt(tfSCNo.getText().substring(3));
+		String sName = tfSCName.getText().trim();
+		String sBln = tfSCBln.getText().trim();
+		String sAddress = tfSCAddress.getText().trim();
+		String sTel = tfSCTel.getText().trim();
+		String sFax = tfSCFax.getText().trim();
+		return new Supplier(sNo, sName, sBln, sAddress, sTel, sFax);
+	}
+	@Override
+	public void setItem(Supplier item) {
+		tfSCNo.setText(String.format("D%03d", item.getsNo()));
+		tfSCName.setText(item.getsName());
+		tfSCBln.setText(item.getsBln());
+		tfSCAddress.setText(item.getsAddress());
+		tfSCTel.setText(item.getsTel());
+		tfSCFax.setText(item.getsFax());
+		
+	}
+	@Override
+	public void clearTf() {
+		tfSCNo.setText("");
+		tfSCName.setText("");
+		tfSCBln.setText("");
+		tfSCAddress.setText("");
+		tfSCTel.setText("");
+		tfSCFax.setText("");
+		
+	}
+	@Override
+	public void validCheck() {
+		if(tfSCNo.getText().equals("") || tfSCName.getText().equals("") || tfSCBln.getText().equals("") || tfSCAddress.getText().equals("") ||
+				tfSCTel.getText().equals("") || tfSCFax.getText().equals("")) {
+			throw new InvalidCheckException();
+		}
 	}
 }

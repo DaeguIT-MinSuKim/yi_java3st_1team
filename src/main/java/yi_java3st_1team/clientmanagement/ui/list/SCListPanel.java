@@ -26,6 +26,8 @@ public class SCListPanel extends JPanel {
 	private JButton btnSerch;
 	private SCListTblPanel pList;
 	private SupplierUIService service;
+	private JPanel pSCListPanel;
+	
 	public SCListPanel() {
 		service = new SupplierUIService();
 		initialize();
@@ -34,7 +36,7 @@ public class SCListPanel extends JPanel {
 		setBounds(new Rectangle(0, 0, 635, 700));
 		setLayout(new BorderLayout(0, 0));
 		
-		JPanel pSCListPanel = new JPanel();
+		pSCListPanel = new JPanel();
 		pSCListPanel.setBounds(new Rectangle(0, 0, 635, 700));
 		add(pSCListPanel, BorderLayout.CENTER);
 		pSCListPanel.setBackground(SystemColor.inactiveCaptionBorder);
@@ -72,7 +74,25 @@ public class SCListPanel extends JPanel {
 		pList = new SCListTblPanel();
 		pList.loadDate(service.showSupplierList());
 		pList.setBounds(22, 123, 590, 500);
+//		pList.setPopupMenu(createPopupMenu());
 		pSCListPanel.add(pList);
 	}
+//	private JPopupMenu createPopupMenu() {
+//		JPopupMenu popMenu = new JPopupMenu();
+//		
+//		JMenuItem updateItem = new JMenuItem("수정");
+//		updateItem.addActionListener(myPopupMenuListener);
+//		popMenu.add(updateItem);
+//		
+//		JMenuItem deleteItem = new JMenuItem("삭제");
+//		deleteItem.addActionListener(myPopupMenuListener);
+//		popMenu.add(deleteItem);
+//		
+//		return popMenu;
+//	}
+	
+//	ActionListener myPopupMenuListener = new ActionListener() {
+//	};
+	
 
 }
