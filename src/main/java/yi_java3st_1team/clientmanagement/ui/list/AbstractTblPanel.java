@@ -79,7 +79,7 @@ public abstract class AbstractTblPanel<T> extends JPanel {
 	protected void tableSetWidth(int... width) {
 		TableColumnModel cModel = table.getColumnModel();
 		for (int i = 0; i < width.length; i++) {
-			cModel.getColumn(i).setPreferredWidth(width[i]);
+			cModel.getColumn(i).setPreferredWidth(width[i]);	
 		}
 	}
 

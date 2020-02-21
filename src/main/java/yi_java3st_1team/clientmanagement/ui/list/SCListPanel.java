@@ -8,11 +8,15 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
+import yi_java3st_1team.clientmanagement.ui.service.SupplierUIService;
+
 import java.awt.BorderLayout;
 import java.awt.Font;
 import java.awt.Rectangle;
 import java.awt.SystemColor;
 import java.awt.Color;
+import javax.swing.JTable;
+import java.awt.Dimension;
 
 @SuppressWarnings("serial")
 public class SCListPanel extends JPanel {
@@ -23,8 +27,9 @@ public class SCListPanel extends JPanel {
 	private JTextField tfSerch;
 	private JButton btnSerch;
 	private SCListTblPanel pList;
+	private SupplierUIService service;
 	public SCListPanel() {
-
+		service = new SupplierUIService();
 		initialize();
 	}
 	private void initialize() {
@@ -67,9 +72,9 @@ public class SCListPanel extends JPanel {
 		pSCListPanel.add(btnSerch);
 		
 		pList = new SCListTblPanel();
+		pList.loadDate(service.showSupplierList());
 		pList.setBounds(22, 123, 590, 500);
 		pSCListPanel.add(pList);
-		pList.setLayout(new BorderLayout(0, 0));
 	}
 
 }
