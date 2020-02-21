@@ -47,3 +47,25 @@ character set 'utf8'
 fields terminated by ',';
 
 select * from zip_code zc ;
+
+load data local infile 'D:/workspace/workspace_gradle/yi_java3st_1team/document/sample_data/order.txt'
+into table yi_java3st_1team.order
+character set 'utf8'
+fields terminated by ',';
+
+select * from `order` o ;
+
+load data local infile 'D:/workspace/workspace_gradle/yi_java3st_1team/document/sample_data/client_delivery.txt'
+into table yi_java3st_1team.client_delivery 
+character set 'utf8'
+fields terminated by ',';
+
+select * from client_delivery cd;
+
+load data local infile 'D:/workspace/workspace_gradle/yi_java3st_1team/document/sample_data/discount_rate.txt'
+into table yi_java3st_1team.discount_rate 
+character set 'utf8'
+fields terminated by ',';
+
+select * from discount_rate;
+desc discount_rate ;
