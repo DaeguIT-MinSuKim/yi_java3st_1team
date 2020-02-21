@@ -1,6 +1,6 @@
 package yi_java3st_1team.main.dao;
 
-import static org.junit.Assert.fail;
+import java.util.List;
 
 import org.junit.After;
 import org.junit.Assert;
@@ -40,26 +40,34 @@ public class DepartmentDaoTest {
 
 	@Test
 	public void test02SelectDepartmentByAll() {
-		//LogUtil.prnLog(Thread.currentThread().getStackTrace()[1].getMethodName()+"()");
-		fail("Not yet implemented");
+		LogUtil.prnLog(Thread.currentThread().getStackTrace()[1].getMethodName()+"()");
+		List<Department> list = dao.selectDepartmentByAll();
+		Assert.assertNotNull(list);
+		for(Department d : list) {
+			LogUtil.prnLog(d);
+		}
+		
 	}
 
 	@Test
 	public void test03InsertDepartment() {
-		//LogUtil.prnLog(Thread.currentThread().getStackTrace()[1].getMethodName()+"()");
-		fail("Not yet implemented");
+		LogUtil.prnLog(Thread.currentThread().getStackTrace()[1].getMethodName()+"()");
+		int res = dao.insertDepartment(new Department("구매부", 100));
+		Assert.assertEquals(1, res);
+		for(Department d : dao.selectDepartmentByAll()) LogUtil.prnLog(d);
+
 	}
 
 	@Test
 	public void test04UpdateDepartment() {
-		//LogUtil.prnLog(Thread.currentThread().getStackTrace()[1].getMethodName()+"()");
-		fail("Not yet implemented");
+		LogUtil.prnLog(Thread.currentThread().getStackTrace()[1].getMethodName()+"()");
+
 	}
 
 	@Test
 	public void test05DeleteDepartment() {
-		//LogUtil.prnLog(Thread.currentThread().getStackTrace()[1].getMethodName()+"()");
-		fail("Not yet implemented");
+		LogUtil.prnLog(Thread.currentThread().getStackTrace()[1].getMethodName()+"()");
+
 	}
 
 }

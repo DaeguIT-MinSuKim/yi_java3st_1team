@@ -1,4 +1,4 @@
-package yi_java3st_1team.main.dao;
+package yi_java3st_1team.clientmanagement.dao;
 
 import java.util.List;
 

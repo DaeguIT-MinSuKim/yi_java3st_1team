@@ -3,7 +3,7 @@ package yi_java3st_1team.main.dto;
 public class Employee {
 	private int empNo;
 	private String empName;
-	private int dNo;
+	private Department dNo;
 	private String empTitle;
 	private int empManager;
 	private String empId;
@@ -11,7 +11,6 @@ public class Employee {
 	private String empMail;
 
 	public Employee() {
-		// TODO Auto-generated constructor stub
 	}
 
 	public Employee(int empNo) {
@@ -23,7 +22,7 @@ public class Employee {
 		this.empName = empName;
 	}
 
-	public Employee(int empNo, String empName, int dNo, String empTitle, int empManager, String empId, String empPass,
+	public Employee(int empNo, String empName, Department dNo, String empTitle, int empManager, String empId, String empPass,
 			String empMail) {
 		this.empNo = empNo;
 		this.empName = empName;
@@ -51,11 +50,11 @@ public class Employee {
 		this.empName = empName;
 	}
 
-	public int getdNo() {
+	public Department getdNo() {
 		return dNo;
 	}
 
-	public void setdNo(int dNo) {
+	public void setdNo(Department dNo) {
 		this.dNo = dNo;
 	}
 
