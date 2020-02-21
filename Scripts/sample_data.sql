@@ -41,7 +41,7 @@ fields terminated by ',';
 
 select * from product p ;
 
-load data local infile 'D:/workspace/workspace_gradle/yi_java3st_1team/document/sample_data/zip_code/choongbuk.txt'
+load data local infile 'D:/workspace/workspace_gradle/yi_java3st_1team/document/sample_data/zip_code/ulsan.txt'
 into table yi_java3st_1team.zip_code
 character set 'utf8'
 fields terminated by ',';
@@ -68,4 +68,24 @@ character set 'utf8'
 fields terminated by ',';
 
 select * from discount_rate;
-desc discount_rate ;
+
+load data local infile 'D:/workspace/workspace_gradle/yi_java3st_1team/document/sample_data/supplier_order.txt'
+into table yi_java3st_1team.supplier_order 
+character set 'utf8'
+fields terminated by ',';
+
+select * from supplier_order so ;
+
+load data local infile 'D:/workspace/workspace_gradle/yi_java3st_1team/document/sample_data/supplier_purchase.txt'
+into table yi_java3st_1team.supplier_purchase
+character set 'utf8'
+fields terminated by ',';
+
+select * from supplier_purchase;
+
+load data local infile 'D:/workspace/workspace_gradle/yi_java3st_1team/document/sample_data/inventory_quantity.txt'
+into table yi_java3st_1team.inventory_quantity 
+character set 'utf8'
+fields terminated by ',';
+
+select * from inventory_quantity iq ;

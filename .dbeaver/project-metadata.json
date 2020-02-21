@@ -1,5 +1,1 @@
-<<<<<<< HEAD
-{"resources":{"Scripts/Script.sql":{"sql-editor-data-source-id":"mysql5-1706853161e-72fbc4e71461c13f"}}}
-=======
-{"resources":{"Scripts/Script-1.sql":{"sql-editor-data-source-id":"mysql5-170654dc3be-5c602a02b73c4ee1"},"Scripts/Script.sql":{"sql-editor-data-source-id":"mysql5-170654dc3be-5c602a02b73c4ee1"}}}
->>>>>>> branch 'master' of https://github.com/DaeguIT-MinSuKim/yi_java3st_1team.git
+{"resources":{"Scripts/DB_inti.sql":{"sql-editor-data-source-id":"mysql5-17067889ed0-7f3644af433aa623","default-catalog":"yi_java3st_1team"},"Scripts/James_test.sql":{"sql-editor-data-source-id":"mysql5-170678b36bb-1eed6f2394edd292","default-catalog":"yi_java3st_1team"},"Scripts/joinTest.sql":{"sql-editor-data-source-id":"mysql5-170678b36bb-1eed6f2394edd292","default-catalog":"yi_java3st_1team"},"Scripts/sample_data.sql":{"sql-editor-data-source-id":"mysql5-170678b36bb-1eed6f2394edd292","default-catalog":"yi_java3st_1team"},"Scripts/test.sql":{"sql-editor-data-source-id":"mysql5-170678b36bb-1eed6f2394edd292","default-catalog":"yi_java3st_1team"},"Scripts/user_manage.sql":{"sql-editor-data-source-id":"mysql5-17067889ed0-7f3644af433aa623"}}}

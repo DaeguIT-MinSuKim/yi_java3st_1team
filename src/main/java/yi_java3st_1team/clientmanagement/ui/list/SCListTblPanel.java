@@ -13,7 +13,7 @@ public class SCListTblPanel extends AbstractTblPanel<Supplier> {
 
 	@Override
 	protected void setTblWidthAlign() {
-		tableSetWidth(80, 110, 100, 300, 100, 100);
+		tableSetWidth(80, 120, 100, 300, 100, 100);
 		tableCellAlign(SwingConstants.CENTER, 0, 1, 2, 3, 4, 5);
 	}
 
