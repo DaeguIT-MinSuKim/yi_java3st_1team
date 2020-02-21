@@ -195,7 +195,7 @@ public class SWRegisterPanel extends JPanel {
 		
 		btnPSCheck = new JButton("조 회");
 		btnPSCheck.setFocusable(false);
-		btnPSCheck.setBackground(SystemColor.controlHighlight);
+		btnPSCheck.setBackground(SystemColor.activeCaptionBorder);
 		btnPSCheck.setForeground(Color.WHITE);
 		btnPSCheck.setFont(new Font("맑은 고딕", Font.BOLD, 16));
 		btnPSCheck.setBounds(465, 390, 100, 30);
