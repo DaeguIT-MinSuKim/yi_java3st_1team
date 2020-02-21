@@ -50,14 +50,14 @@ public class OCheckPanel extends JPanel {
 		btnNewButton.setBackground(new Color(135, 206, 250));
 		btnNewButton.setForeground(Color.WHITE);
 		btnNewButton.setFont(new Font("맑은 고딕", Font.BOLD, 16));
-		btnNewButton.setBounds(947, 65, 97, 33);
+		btnNewButton.setBounds(947, 65, 111, 33);
 		panel.add(btnNewButton);
 		
 		JButton btnNewButton_1 = new JButton("메인화면");
 		btnNewButton_1.setBackground(new Color(25, 25, 112));
 		btnNewButton_1.setForeground(Color.WHITE);
 		btnNewButton_1.setFont(new Font("맑은 고딕", Font.BOLD, 16));
-		btnNewButton_1.setBounds(1070, 65, 97, 33);
+		btnNewButton_1.setBounds(1070, 65, 111, 33);
 		panel.add(btnNewButton_1);
 		
 	}
