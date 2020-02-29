@@ -1,6 +1,8 @@
 package yi_java3st_1team.clientmanagement.ui.content;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.Rectangle;
 import java.awt.SystemColor;
@@ -12,18 +14,15 @@ import yi_java3st_1team.clientmanagement.ui.list.CListPanel;
 import yi_java3st_1team.clientmanagement.ui.list.SCListPanel;
 import yi_java3st_1team.clientmanagement.ui.panel.CRegisterPanel;
 import yi_java3st_1team.clientmanagement.ui.panel.SCRegisterPanel;
-import java.awt.Color;
-import java.awt.Font;
 
 @SuppressWarnings("serial")
 public class CMContent extends JPanel {
 	private JTabbedPane tpClientManagement;
 	private JPanel pSupplyCompany;
 	private JPanel pClient;
-	private SCRegisterPanel pSCRegisterPanel;
-	private SCListPanel pSCListPanel;
 	private CRegisterPanel pCRegisterPanel;
 	private CListPanel pCListPanel;
+	private SupplyCompanyUIPanel pSCUIPanel;
 
 	public CMContent() {
 
@@ -44,17 +43,10 @@ public class CMContent extends JPanel {
 		pSupplyCompany.setBounds(0, 0, 100, 50);
 		pSupplyCompany.setBackground(SystemColor.inactiveCaptionBorder);
 		tpClientManagement.addTab("공급회사", null, pSupplyCompany, null);
-		pSupplyCompany.setLayout(new GridLayout(0, 2, 0, 0));
+		pSupplyCompany.setLayout(new GridLayout(0, 1, 0, 0));
 		
-		pSCRegisterPanel = new SCRegisterPanel();
-		pSCRegisterPanel.setBackground(SystemColor.inactiveCaptionBorder);
-		pSupplyCompany.add(pSCRegisterPanel);
-		pSCRegisterPanel.setLayout(null);
-		
-		pSCListPanel = new SCListPanel();
-		pSCListPanel.setBackground(SystemColor.inactiveCaptionBorder);
-		pSupplyCompany.add(pSCListPanel);
-		pSCListPanel.setLayout(null);
+		pSCUIPanel = new SupplyCompanyUIPanel();
+		pSupplyCompany.add(pSCUIPanel);
 		
 		pClient = new JPanel();
 		pClient.setBounds(0, 0, 100, 50);

@@ -29,7 +29,6 @@ public class SCListPanel extends JPanel {
 	private JPanel pSCListPanel;
 	
 	public SCListPanel() {
-		service = new SupplierUIService();
 		initialize();
 	}
 	private void initialize() {
@@ -71,28 +70,9 @@ public class SCListPanel extends JPanel {
 		btnSerch.setBounds(542, 65, 70, 30);
 		pSCListPanel.add(btnSerch);
 		
-		pList = new SCListTblPanel();
-		pList.loadDate(service.showSupplierList());
-		pList.setBounds(22, 123, 590, 500);
-//		pList.setPopupMenu(createPopupMenu());
-		pSCListPanel.add(pList);
+		
 	}
-//	private JPopupMenu createPopupMenu() {
-//		JPopupMenu popMenu = new JPopupMenu();
-//		
-//		JMenuItem updateItem = new JMenuItem("수정");
-//		updateItem.addActionListener(myPopupMenuListener);
-//		popMenu.add(updateItem);
-//		
-//		JMenuItem deleteItem = new JMenuItem("삭제");
-//		deleteItem.addActionListener(myPopupMenuListener);
-//		popMenu.add(deleteItem);
-//		
-//		return popMenu;
-//	}
-	
-//	ActionListener myPopupMenuListener = new ActionListener() {
-//	};
+
 	
 
 }

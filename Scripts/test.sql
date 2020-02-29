@@ -36,3 +36,5 @@ select z_code, z_num1, z_num2 from zip_code where z_sido="대구광역시" and z
  
 select * from zip_code where z_doro="태전로" and z_num1 = 53 and z_num2= 0 ;
 >>>>>>> branch 'master' of https://github.com/DaeguIT-MinSuKim/yi_java3st_1team.git
+
+insert into supplier values(47,"재승시스템","220-81-45678","대구광역시","053-456-4567","053-456-7894");

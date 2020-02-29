@@ -67,7 +67,7 @@ public class CListPanel extends JPanel {
 		pCListPanel.add(btnSerch);
 		
 		pList = new JPanel();
-		pList.setBounds(22, 123, 590, 488);
+		pList.setBounds(22, 123, 590, 500);
 		pCListPanel.add(pList);
 	}
 
