@@ -7,12 +7,14 @@ import java.awt.GridLayout;
 import java.awt.SystemColor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPopupMenu;
 import javax.swing.JTextField;
@@ -22,9 +24,11 @@ import yi_java3st_1team.clientmanagement.dto.Supplier;
 import yi_java3st_1team.clientmanagement.ui.list.SCListTblPanel;
 import yi_java3st_1team.clientmanagement.ui.panel.SCRegisterPanel;
 import yi_java3st_1team.clientmanagement.ui.service.SupplierUIService;
+import yi_java3st_1team.exception.InvalidCheckException;
+import javax.swing.DefaultComboBoxModel;
 
 @SuppressWarnings("serial")
-public class SupplyCompanyUIPanel extends JPanel {
+public class SupplyCompanyUIPanel extends JPanel implements ActionListener {
 
 	private SupplierUIService service;
 	private JLabel lblSC;
@@ -59,6 +63,7 @@ public class SupplyCompanyUIPanel extends JPanel {
 
 		pSCRPanel = new SCRegisterPanel();
 		pSCRPanel.setBounds(55, 115, 400, 430);
+		pSCRPanel.setNum(service.lastSupplier());
 		pRegisterPanel.add(pSCRPanel);
 
 		lblSC = new JLabel("공급회사 등록");
@@ -69,6 +74,7 @@ public class SupplyCompanyUIPanel extends JPanel {
 		pRegisterPanel.add(lblSC);
 
 		btnAdd = new JButton("등 록");
+		btnAdd.addActionListener(this);
 		btnAdd.setFocusable(false);
 		btnAdd.setForeground(new Color(0, 102, 204));
 		btnAdd.setFont(new Font("맑은 고딕", Font.BOLD, 16));
@@ -77,6 +83,7 @@ public class SupplyCompanyUIPanel extends JPanel {
 		pRegisterPanel.add(btnAdd);
 
 		btnUpdate = new JButton("수 정");
+		btnUpdate.addActionListener(this);
 		btnUpdate.setFocusable(false);
 		btnUpdate.setForeground(new Color(0, 102, 204));
 		btnUpdate.setBackground(new Color(135, 206, 250));
@@ -84,7 +91,8 @@ public class SupplyCompanyUIPanel extends JPanel {
 		btnUpdate.setBounds(198, 580, 100, 30);
 		pRegisterPanel.add(btnUpdate);
 
-		btnDel = new JButton("삭 제");
+		btnDel = new JButton("취 소");
+		btnDel.addActionListener(this);
 		btnDel.setFocusable(false);
 		btnDel.setForeground(new Color(0, 102, 204));
 		btnDel.setBackground(new Color(135, 206, 250));
@@ -119,7 +127,7 @@ public class SupplyCompanyUIPanel extends JPanel {
 		lblNewLabel = new JLabel("");
 		lblNewLabel.setOpaque(true);
 		lblNewLabel.setBackground(Color.WHITE);
-		lblNewLabel.setBounds(448, 115, 134, 430);
+		lblNewLabel.setBounds(455, 115, 124, 430);
 		pRegisterPanel.add(lblNewLabel);
 
 		JPanel pListPanel = new JPanel();
@@ -140,6 +148,7 @@ public class SupplyCompanyUIPanel extends JPanel {
 		pListPanel.add(lblSCList);
 
 		cmbCate = new JComboBox();
+		cmbCate.setModel(new DefaultComboBoxModel(new String[] {"회사명", "사업자등록번호", "전화번호"}));
 		cmbCate.setBounds(252, 65, 120, 30);
 		pListPanel.add(cmbCate);
 
@@ -184,7 +193,6 @@ public class SupplyCompanyUIPanel extends JPanel {
 			if(e.getActionCommand().equals("수정")) {
 				Supplier upsupp = pSCTblPanel.getSelectedItem();
 				pSCRPanel.setItem(upsupp);
-				btnAdd.setText("수정");
 			}
 			if(e.getActionCommand().equals("삭제")) {
 				Supplier delsupp = pSCTblPanel.getSelectedItem();
@@ -193,5 +201,68 @@ public class SupplyCompanyUIPanel extends JPanel {
 			}
 		}
 	};
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		if (e.getSource() == btnAdd) {
+			btnAddActionPerformed(e);
+		}
+		if (e.getSource() == btnUpdate) {
+			btnUpdateActionPerformed(e);
+		}
+		if (e.getSource() == btnDel) {
+			btnDelActionPerformed(e);
+		}
+		
+	}
+
+	private void btnUpdateActionPerformed(ActionEvent e) {
+		if(pSCRPanel.getItem().getsName().equals("") 
+				|| pSCRPanel.getItem().getsAddress().equals("") 
+				|| pSCRPanel.getItem().getsBln().equals("")
+				|| pSCRPanel.getItem().getsTel().equals("")) {
+			JOptionPane.showMessageDialog(null, "수정할 회사를 오른쪽 리스트에서 선택해주세요.");
+			return;
+		}else {
+			Supplier upSupp = pSCRPanel.getItem();
+			service.modifySupplier(upSupp);
+			pSCTblPanel.updateRow(upSupp, pSCTblPanel.getSelectedRowIdx());
+			pSCRPanel.clearTf();
+			pSCRPanel.setNum(service.lastSupplier());
+		}
+	}
+
+	private void btnAddActionPerformed(ActionEvent e) {
+		try {
+			if(pSCRPanel.getItem().getsName().equals("") 
+					|| pSCRPanel.getItem().getsAddress().equals("") 
+					|| pSCRPanel.getItem().getsBln().equals("")
+					|| pSCRPanel.getItem().getsTel().equals("")) {
+				JOptionPane.showMessageDialog(null, "회사명, 사업자등록번호, 회사주소, 전화번호는 필수입력사항입니다.");
+				return;
+			}else {
+				Supplier newSupp = pSCRPanel.getItem();
+				service.addSupplier(newSupp);
+				pSCTblPanel.addItem(newSupp);
+				pSCRPanel.clearTf();
+				pSCRPanel.setNum(newSupp);
+			}
+		} catch (InvalidCheckException e1) {
+			JOptionPane.showMessageDialog(null, e1.getMessage());
+		} catch (Exception e1) {
+			SQLException e2 = (SQLException) e1;
+			if(e2.getErrorCode() == 1062) {
+				JOptionPane.showMessageDialog(null, "부서번호가 중복");
+				System.err.println(e2.getMessage());
+				return;
+			}
+			e1.printStackTrace();
+		}
+	}
+
+	private void btnDelActionPerformed(ActionEvent e) {
+		pSCRPanel.clearTf();
+		pSCRPanel.setNum(service.lastSupplier());
+	}
 
 }

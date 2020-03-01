@@ -21,11 +21,11 @@ public class SupplierUIService {
 		supplierDao.deleteSupplier(delSupplier);
 	}
 	
-	public void addDepartment(Supplier newSupplier) {
+	public void addSupplier(Supplier newSupplier) {
 		supplierDao.insertSupplier(newSupplier);
 	}
 	
-	public void modifyDepartment(Supplier upSupplier) {
+	public void modifySupplier(Supplier upSupplier) {
 		supplierDao.updateSupplier(upSupplier);
 	}
 }
