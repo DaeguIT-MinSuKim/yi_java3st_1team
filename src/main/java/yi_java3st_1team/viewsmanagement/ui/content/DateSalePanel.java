@@ -15,11 +15,15 @@ import javax.swing.JSpinner;
 import javax.swing.SpinnerDateModel;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.SwingConstants;
+
+import com.toedter.calendar.JDateChooser;
+
 import java.awt.Color;
 
 @SuppressWarnings("serial")
 public class DateSalePanel extends JPanel {
 
+	private JDateChooser tfHireDate;
 	/**
 	 * Create the panel.
 	 */
@@ -40,7 +44,7 @@ public class DateSalePanel extends JPanel {
 		
 		JLabel lblStart = new JLabel("시   작");
 		lblStart.setForeground(Color.BLACK);
-		lblStart.setPreferredSize(new Dimension(120, 30));
+		lblStart.setPreferredSize(new Dimension(140, 30));
 		lblStart.setHorizontalAlignment(SwingConstants.LEFT);
 		lblStart.setFont(new Font("휴먼둥근헤드라인", Font.PLAIN, 18));
 		panel.add(lblStart);
@@ -52,12 +56,12 @@ public class DateSalePanel extends JPanel {
 		JSpinner spStartY = new JSpinner(dateModel);
 		spStartY.setEditor(new JSpinner.DateEditor(spStartY, "yyyy"));
 		spStartY.setModel(new SpinnerDateModel(new Date(1582174800000L), new Date(631170000000L), null, Calendar.YEAR));
-		spStartY.setPreferredSize(new Dimension(180, 30));
+		spStartY.setPreferredSize(new Dimension(160, 30));
 		spStartY.setFont(new Font("굴림", Font.BOLD, 18));
 		panel.add(spStartY);
 		
 		JLabel lblStartY = new JLabel("년도");
-		lblStartY.setPreferredSize(new Dimension(100, 20));
+		lblStartY.setPreferredSize(new Dimension(90, 20));
 		lblStartY.setHorizontalAlignment(SwingConstants.LEFT);
 		lblStartY.setFont(new Font("굴림", Font.BOLD, 12));
 		panel.add(lblStartY);
@@ -65,34 +69,35 @@ public class DateSalePanel extends JPanel {
 		JSpinner spStartM = new JSpinner(dateModel);
 		spStartM.setEditor(new JSpinner.DateEditor(spStartM, "MM"));
 		spStartM.setModel(new SpinnerDateModel(new Date(1582174800000L), new Date(-2208970800000L), null, Calendar.MONTH));
-		spStartM.setPreferredSize(new Dimension(180, 30));
+		spStartM.setPreferredSize(new Dimension(160, 30));
 		spStartM.setFont(new Font("굴림", Font.BOLD, 18));
 		panel.add(spStartM);
 		
 		JLabel lblStartM = new JLabel("월");
-		lblStartM.setPreferredSize(new Dimension(100, 20));
+		lblStartM.setPreferredSize(new Dimension(90, 20));
 		lblStartM.setFont(new Font("굴림", Font.BOLD, 12));
 		panel.add(lblStartM);
 		
 		JSpinner spStartD = new JSpinner(dateModel);
 		spStartD.setEditor(new JSpinner.DateEditor(spStartD, "dd"));
 		spStartD.setModel(new SpinnerDateModel(new Date(1582174800000L), new Date(-2208970800000L), null, Calendar.MONTH));
-		spStartD.setPreferredSize(new Dimension(180, 30));
+		spStartD.setPreferredSize(new Dimension(160, 30));
 		spStartD.setFont(new Font("굴림", Font.BOLD, 18));
 		panel.add(spStartD);
 		
 		JLabel lblStartD = new JLabel("일");
-		lblStartD.setPreferredSize(new Dimension(100, 20));
+		lblStartD.setPreferredSize(new Dimension(90, 20));
 		lblStartD.setFont(new Font("굴림", Font.BOLD, 12));
 		panel.add(lblStartD);
 		
-		JButton btnStart = new JButton("시작");
-		btnStart.setFocusable(false);
-		btnStart.setBackground(SystemColor.controlHighlight);
-		btnStart.setForeground(Color.BLACK);
-		btnStart.setPreferredSize(new Dimension(80, 30));
-		btnStart.setFont(new Font("맑은 고딕", Font.BOLD, 16));
-		panel.add(btnStart);
+		tfHireDate = new JDateChooser(new Date(), "yyyy-MM-dd");
+		tfHireDate.getCalendarButton().setFont(new Font("맑은 고딕", Font.BOLD, 16));
+		tfHireDate.getCalendarButton().setPreferredSize(new Dimension(80, 30));
+		tfHireDate.getCalendarButton().setText("시작");
+		tfHireDate.getCalendarButton().setFocusable(false);
+		tfHireDate.getCalendarButton().setBackground(SystemColor.controlHighlight);
+		tfHireDate.getCalendarButton().setForeground(Color.BLACK);
+		panel.add(tfHireDate);
 		
 		JButton btnSearch = new JButton("검색");
 		btnSearch.setFocusable(false);
@@ -104,7 +109,7 @@ public class DateSalePanel extends JPanel {
 		
 		JLabel lblEnd = new JLabel("종   료");
 		lblEnd.setForeground(Color.BLACK);
-		lblEnd.setPreferredSize(new Dimension(120, 30));
+		lblEnd.setPreferredSize(new Dimension(140, 30));
 		lblEnd.setHorizontalAlignment(SwingConstants.LEFT);
 		lblEnd.setFont(new Font("휴먼둥근헤드라인", Font.PLAIN, 18));
 		panel.add(lblEnd);
@@ -112,12 +117,12 @@ public class DateSalePanel extends JPanel {
 		JSpinner spEnd = new JSpinner(dateModel);
 		spEnd.setEditor(new JSpinner.DateEditor(spEnd, "yyyy"));
 		spEnd.setModel(new SpinnerDateModel(new Date(1582174800000L), new Date(631170000000L), null, Calendar.YEAR));
-		spEnd.setPreferredSize(new Dimension(180, 30));
+		spEnd.setPreferredSize(new Dimension(160, 30));
 		spEnd.setFont(new Font("굴림", Font.BOLD, 18));
 		panel.add(spEnd);
 		
 		JLabel lblEndY = new JLabel("년도");
-		lblEndY.setPreferredSize(new Dimension(100, 20));
+		lblEndY.setPreferredSize(new Dimension(90, 20));
 		lblEndY.setHorizontalAlignment(SwingConstants.LEFT);
 		lblEndY.setFont(new Font("굴림", Font.BOLD, 12));
 		panel.add(lblEndY);
@@ -125,34 +130,35 @@ public class DateSalePanel extends JPanel {
 		JSpinner spEndM = new JSpinner(dateModel);
 		spEndM.setEditor(new JSpinner.DateEditor(spEndM, "MM"));
 		spEndM.setModel(new SpinnerDateModel(new Date(1582174800000L), new Date(-2208970800000L), null, Calendar.MONTH));
-		spEndM.setPreferredSize(new Dimension(180, 30));
+		spEndM.setPreferredSize(new Dimension(160, 30));
 		spEndM.setFont(new Font("굴림", Font.BOLD, 18));
 		panel.add(spEndM);
 		
 		JLabel lblEndM = new JLabel("월");
-		lblEndM.setPreferredSize(new Dimension(100, 20));
+		lblEndM.setPreferredSize(new Dimension(90, 20));
 		lblEndM.setFont(new Font("굴림", Font.BOLD, 12));
 		panel.add(lblEndM);
 		
 		JSpinner spEndD = new JSpinner(dateModel);
 		spEndD.setEditor(new JSpinner.DateEditor(spEndD, "dd"));
 		spEndD.setModel(new SpinnerDateModel(new Date(1582174800000L), new Date(-2208970800000L), null, Calendar.DAY_OF_YEAR));
-		spEndD.setPreferredSize(new Dimension(180, 30));
+		spEndD.setPreferredSize(new Dimension(160, 30));
 		spEndD.setFont(new Font("굴림", Font.BOLD, 18));
 		panel.add(spEndD);
 		
 		JLabel lblEndD = new JLabel("일");
-		lblEndD.setPreferredSize(new Dimension(100, 20));
+		lblEndD.setPreferredSize(new Dimension(90, 20));
 		lblEndD.setFont(new Font("굴림", Font.BOLD, 12));
 		panel.add(lblEndD);
 		
-		JButton btnEnd = new JButton("종료");
-		btnEnd.setFocusable(false);
-		btnEnd.setBackground(SystemColor.controlHighlight);
-		btnEnd.setForeground(Color.BLACK);
-		btnEnd.setPreferredSize(new Dimension(80, 30));
-		btnEnd.setFont(new Font("맑은 고딕", Font.BOLD, 16));
-		panel.add(btnEnd);
+		tfHireDate = new JDateChooser(new Date(), "yyyy-MM-dd");
+		tfHireDate.getCalendarButton().setFont(new Font("맑은 고딕", Font.BOLD, 16));
+		tfHireDate.getCalendarButton().setPreferredSize(new Dimension(80, 30));
+		tfHireDate.getCalendarButton().setText("종료");
+		tfHireDate.getCalendarButton().setFocusable(false);
+		tfHireDate.getCalendarButton().setBackground(SystemColor.controlHighlight);
+		tfHireDate.getCalendarButton().setForeground(Color.BLACK);
+		panel.add(tfHireDate);
 		
 		JButton btnMain = new JButton("메인화면");
 		btnMain.setFocusable(false);
