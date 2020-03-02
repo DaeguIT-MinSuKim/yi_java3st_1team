@@ -7,8 +7,11 @@ import java.awt.GridLayout;
 import java.awt.SystemColor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.sql.SQLException;
 
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -25,10 +28,9 @@ import yi_java3st_1team.clientmanagement.ui.list.SCListTblPanel;
 import yi_java3st_1team.clientmanagement.ui.panel.SCRegisterPanel;
 import yi_java3st_1team.clientmanagement.ui.service.SupplierUIService;
 import yi_java3st_1team.exception.InvalidCheckException;
-import javax.swing.DefaultComboBoxModel;
 
 @SuppressWarnings("serial")
-public class SupplyCompanyUIPanel extends JPanel implements ActionListener {
+public class SupplyCompanyUIPanel extends JPanel implements ActionListener, ItemListener {
 
 	private SupplierUIService service;
 	private JLabel lblSC;
@@ -149,7 +151,8 @@ public class SupplyCompanyUIPanel extends JPanel implements ActionListener {
 		pListPanel.add(lblSCList);
 
 		cmbCate = new JComboBox();
-		cmbCate.setModel(new DefaultComboBoxModel(new String[] {"회사명", "사업자등록번호", "전화번호"}));
+		cmbCate.addItemListener(this);
+		cmbCate.setModel(new DefaultComboBoxModel(new String[] {"선택", "전체", "회사명", "사업자등록번호", "전화번호"}));
 		cmbCate.setBounds(252, 65, 120, 30);
 		pListPanel.add(cmbCate);
 
@@ -159,6 +162,7 @@ public class SupplyCompanyUIPanel extends JPanel implements ActionListener {
 		pListPanel.add(tfSerch);
 
 		btnSerch = new JButton("검색");
+		btnSerch.addActionListener(this);
 		btnSerch.setFocusable(false);
 		btnSerch.setBackground(new Color(135, 206, 250));
 		btnSerch.setForeground(Color.WHITE);
@@ -202,9 +206,13 @@ public class SupplyCompanyUIPanel extends JPanel implements ActionListener {
 			}
 		}
 	};
+	private String selectItem;
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
+		if (e.getSource() == btnSerch) {
+			btnSerchActionPerformed(e);
+		}
 		if (e.getSource() == btnDplCheck) {
 			btnDplCheckActionPerformed(e);
 		}
@@ -270,14 +278,51 @@ public class SupplyCompanyUIPanel extends JPanel implements ActionListener {
 	}
 
 	protected void btnDplCheckActionPerformed(ActionEvent e) {
-		Supplier overlapSupp = pSCRPanel.getItem();
-		Supplier supplier = service.OverlapSupplier(overlapSupp);
-		if(supplier == null) {
-			JOptionPane.showMessageDialog(null, "등록 가능한 회사입니다.");
+		if(pSCRPanel.getItem().getsName().equals("")) {
+			JOptionPane.showMessageDialog(null, "회사명을 입력해주세요.");
 		}else {
-			JOptionPane.showMessageDialog(null, "이미 존재하는 회사입니다.");
+			Supplier overlapSupp = pSCRPanel.getItem();
+			Supplier supplier = service.overlapSupplier(overlapSupp);
+			if(supplier == null) {
+				JOptionPane.showMessageDialog(null, "등록 가능한 회사입니다.");
+			}else {
+				JOptionPane.showMessageDialog(null, "이미 존재하는 회사입니다.");
+			}
+		}		
+	}
+	
+	public void itemStateChanged(ItemEvent e) {
+		if (e.getSource() == cmbCate) {
+			cmbCateItemStateChanged(e);
 		}
-		
-		
+	}
+	public String cmbCateItemStateChanged(ItemEvent e) {
+		if(e.getStateChange() == ItemEvent.SELECTED) {
+			selectItem = (String) cmbCate.getSelectedItem();
+		}
+		return null;
+	}
+	public void btnSerchActionPerformed(ActionEvent e) {
+		if(selectItem.equals("전체")) {
+			pSCTblPanel.loadDate(service.showSupplierList());
+		}
+		if(selectItem.equals("회사명")) {
+			String sName = tfSerch.getText();
+			Supplier supplier = new Supplier(sName, null, null);
+			pSCTblPanel.loadDate(service.showSupplierListByName(supplier));
+			tfSerch.setText("");
+		}
+		if(selectItem.equals("사업자등록번호")) {
+			String sBln = tfSerch.getText();
+			Supplier supplier = new Supplier(null, sBln, null);
+			pSCTblPanel.loadDate(service.showSupplierListByBln(supplier));
+			tfSerch.setText("");
+		}
+		if(selectItem.equals("전화번호")) {
+			String sTel = tfSerch.getText();
+			Supplier supplier = new Supplier(null, null, sTel);
+			pSCTblPanel.loadDate(service.showSupplierListByTel(supplier));
+			tfSerch.setText("");
+		}
 	}
 }

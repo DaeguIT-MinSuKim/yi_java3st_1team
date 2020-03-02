@@ -13,7 +13,19 @@ public class SupplierUIService {
 		return supplierDao.selectSupplierByAll();
 	}
 	
-	public Supplier OverlapSupplier(Supplier overlapSupplier) {
+	public List<Supplier> showSupplierListByName(Supplier selectSupplier){
+		return supplierDao.selectSupplierListByName(selectSupplier);
+	}
+	
+	public List<Supplier> showSupplierListByBln(Supplier selectSupplier){
+		return supplierDao.selectSupplierListByBln(selectSupplier);
+	}
+	
+	public List<Supplier> showSupplierListByTel(Supplier selectSupplier){
+		return supplierDao.selectSupplierListByTel(selectSupplier);
+	}
+	
+	public Supplier overlapSupplier(Supplier overlapSupplier) {
 		return supplierDao.selectSupplierByName(overlapSupplier);
 	}
 	

@@ -9,9 +9,13 @@ public interface SupplierDao {
 	Supplier selectSupplierByName(Supplier supplier);
 	Supplier selectSuppplierLastData();
 	List<Supplier> selectSupplierByAll();
+	List<Supplier> selectSupplierListByName(Supplier selectSupplier);
+	List<Supplier> selectSupplierListByBln(Supplier selectSupplier);
+	List<Supplier> selectSupplierListByTel(Supplier selectSupplier);
 	
 	int insertSupplier(Supplier supplier);
 	int updateSupplier(Supplier supplier);
 	int deleteSupplier(Supplier supplier);
+	
 	
 }

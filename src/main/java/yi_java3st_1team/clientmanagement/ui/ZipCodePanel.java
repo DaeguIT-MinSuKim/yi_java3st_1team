@@ -10,6 +10,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
+import javax.swing.DefaultComboBoxModel;
 
 @SuppressWarnings("serial")
 public class ZipCodePanel extends JPanel {
@@ -73,6 +74,7 @@ public class ZipCodePanel extends JPanel {
 		add(btnNewButton_1);
 		
 		JComboBox comboBox = new JComboBox();
+		comboBox.setModel(new DefaultComboBoxModel(new String[] {"서울특별시", "부산광역시", "대구광역시", "인천광역시", "광주광역시", "대전광역시", "울산광역시", "경기도", "강원도", "충청북도", "충청남도", "전라북도", "전라남도", "경상북도", "경상남도", "제주특별자치도", "세종특별자치시"}));
 		comboBox.setBounds(40, 120, 120, 30);
 		add(comboBox);
 		

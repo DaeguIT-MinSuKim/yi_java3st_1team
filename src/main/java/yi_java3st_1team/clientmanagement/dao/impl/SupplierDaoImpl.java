@@ -90,6 +90,60 @@ public class SupplierDaoImpl implements SupplierDao {
 	}
 
 	@Override
+	public List<Supplier> selectSupplierListByName(Supplier selectSupplier) {
+		String sql = "select s_no, s_name, s_bln, s_address, s_tel, s_fax from supplier where s_name=?";
+		try(Connection con = MySqlDataSource.getConnection();
+				PreparedStatement pstmt = con.prepareStatement(sql);){
+			pstmt.setString(1, selectSupplier.getsName());
+			ResultSet rs = pstmt.executeQuery();
+			List<Supplier> list = new ArrayList<Supplier>();
+			while(rs.next()) {
+				list.add(getSupplier(rs));
+			}
+			return list;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	@Override
+	public List<Supplier> selectSupplierListByBln(Supplier selectSupplier) {
+		String sql = "select s_no, s_name, s_bln, s_address, s_tel, s_fax from supplier where s_bln=?";
+		try(Connection con = MySqlDataSource.getConnection();
+				PreparedStatement pstmt = con.prepareStatement(sql);){
+			pstmt.setString(1, selectSupplier.getsBln());
+			ResultSet rs = pstmt.executeQuery();
+			List<Supplier> list = new ArrayList<Supplier>();
+			while(rs.next()) {
+				list.add(getSupplier(rs));
+			}
+			return list;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	@Override
+	public List<Supplier> selectSupplierListByTel(Supplier selectSupplier) {
+		String sql = "select s_no, s_name, s_bln, s_address, s_tel, s_fax from supplier where s_tel=?";
+		try(Connection con = MySqlDataSource.getConnection();
+				PreparedStatement pstmt = con.prepareStatement(sql);){
+			pstmt.setString(1, selectSupplier.getsTel());
+			ResultSet rs = pstmt.executeQuery();
+			List<Supplier> list = new ArrayList<Supplier>();
+			while(rs.next()) {
+				list.add(getSupplier(rs));
+			}
+			return list;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	@Override
 	public List<Supplier> selectSupplierByAll() {
 		String sql = "select s_no, s_name, s_bln, s_address, s_tel, s_fax from supplier";
 		try(Connection con = MySqlDataSource.getConnection();
@@ -160,7 +214,5 @@ public class SupplierDaoImpl implements SupplierDao {
 		}
 		return res;
 	}
-
-	
 
 }
