@@ -117,7 +117,7 @@ public class SCRegisterPanel extends AbsItemPanel<Supplier> {
 		
 	}
 	public void setNum(Supplier item) {
-		tfSCNo.setText(String.format("D%03d", item.getsNo()+1));
+		tfSCNo.setText(String.format("S%04d", item.getsNo()+1));
 	}
 	
 	@Override
@@ -132,7 +132,7 @@ public class SCRegisterPanel extends AbsItemPanel<Supplier> {
 	}
 	@Override
 	public void setItem(Supplier item) {
-		tfSCNo.setText(String.format("D%03d", item.getsNo()));
+		tfSCNo.setText(String.format("S%04d", item.getsNo()));
 		tfSCName.setText(item.getsName());
 		tfSCBln.setText(item.getsBln());
 		tfSCAddress.setText(item.getsAddress());

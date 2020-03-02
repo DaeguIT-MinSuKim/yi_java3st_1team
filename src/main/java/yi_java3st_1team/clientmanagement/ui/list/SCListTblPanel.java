@@ -25,7 +25,7 @@ public class SCListTblPanel extends AbstractTblPanel<Supplier> {
 	@Override
 	protected Object[] toArray(Supplier item) {
 		return new Object[] {
-				String.format("D%03d", item.getsNo()),
+				String.format("S%04d", item.getsNo()),
 				item.getsName(),
 				item.getsBln(),
 				item.getsAddress(),
@@ -35,7 +35,7 @@ public class SCListTblPanel extends AbstractTblPanel<Supplier> {
 
 	@Override
 	public void updateRow(Supplier item, int updateIdx) {
-		model.setValueAt(String.format("D%03d", item.getsNo()), updateIdx, 0);
+		model.setValueAt(String.format("S%04d", item.getsNo()), updateIdx, 0);
 		model.setValueAt(item.getsName(), updateIdx, 1);
 		model.setValueAt(item.getsBln(), updateIdx, 2);
 		model.setValueAt(item.getsAddress(), updateIdx, 3);

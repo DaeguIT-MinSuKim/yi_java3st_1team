@@ -303,6 +303,9 @@ public class SupplyCompanyUIPanel extends JPanel implements ActionListener, Item
 		return null;
 	}
 	public void btnSerchActionPerformed(ActionEvent e) {
+		if(selectItem == null) {
+			return;
+		}
 		if(selectItem.equals("전체")) {
 			pSCTblPanel.loadDate(service.showSupplierList());
 		}
