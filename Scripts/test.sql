@@ -42,3 +42,4 @@ select * from supplier s ;
 
 
 select s_no, s_name, s_bln, s_address, s_tel, s_fax from supplier where s_name='안랩';
+select z_code, z_sido, z_sigungu, z_doro, z_num1, z_num2 from zip_code where z_sido="서울특별시" and z_doro="다산로10길" and z_num1=12;

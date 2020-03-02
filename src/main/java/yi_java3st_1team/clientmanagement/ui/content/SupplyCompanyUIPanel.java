@@ -15,6 +15,7 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
@@ -24,6 +25,8 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
 import yi_java3st_1team.clientmanagement.dto.Supplier;
+import yi_java3st_1team.clientmanagement.ui.ZipCodeFrame;
+import yi_java3st_1team.clientmanagement.ui.ZipCodePanel;
 import yi_java3st_1team.clientmanagement.ui.list.SCListTblPanel;
 import yi_java3st_1team.clientmanagement.ui.panel.SCRegisterPanel;
 import yi_java3st_1team.clientmanagement.ui.service.SupplierUIService;
@@ -48,6 +51,7 @@ public class SupplyCompanyUIPanel extends JPanel implements ActionListener, Item
 	private JButton btnSerch;
 	private SCListTblPanel pSCTblPanel;
 	private SCRegisterPanel pSCRPanel;
+	private JFrame zipcodeFrame;
 
 	public SupplyCompanyUIPanel() {
 		service = new SupplierUIService();
@@ -120,6 +124,7 @@ public class SupplyCompanyUIPanel extends JPanel implements ActionListener, Item
 		pRegisterPanel.add(btnDplCheck);
 
 		btnPostNum = new JButton("주소검색");
+		btnPostNum.addActionListener(this);
 		btnPostNum.setFocusable(false);
 		btnPostNum.setBackground(new Color(70, 130, 180));
 		btnPostNum.setForeground(Color.WHITE);
@@ -210,6 +215,9 @@ public class SupplyCompanyUIPanel extends JPanel implements ActionListener, Item
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
+		if (e.getSource() == btnPostNum) {
+			btnPostNumActionPerformed(e);
+		}
 		if (e.getSource() == btnSerch) {
 			btnSerchActionPerformed(e);
 		}
@@ -326,6 +334,21 @@ public class SupplyCompanyUIPanel extends JPanel implements ActionListener, Item
 			Supplier supplier = new Supplier(null, null, sTel);
 			pSCTblPanel.loadDate(service.showSupplierListByTel(supplier));
 			tfSerch.setText("");
+		}
+	}
+	public void btnPostNumActionPerformed(ActionEvent e) {
+		if(zipcodeFrame == null) {
+			zipcodeFrame = new JFrame();
+			zipcodeFrame.setBounds(100, 100, 810, 350);
+			zipcodeFrame.setTitle("주소 검색");
+			ZipCodePanel zc = new ZipCodePanel();
+			zipcodeFrame.getContentPane().add(zc);
+			zipcodeFrame.setVisible(true);
+		}else {
+			if(zipcodeFrame.isVisible()) {
+				return;
+			}
+			zipcodeFrame.setVisible(true);
 		}
 	}
 }

@@ -3,25 +3,37 @@ package yi_java3st_1team.clientmanagement.ui;
 import java.awt.Font;
 import java.awt.Rectangle;
 import java.awt.SystemColor;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
-import javax.swing.DefaultComboBoxModel;
+
+import yi_java3st_1team.clientmanagement.dto.ZipCode;
+import yi_java3st_1team.clientmanagement.ui.service.ZipCodeUIService;
 
 @SuppressWarnings("serial")
-public class ZipCodePanel extends JPanel {
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
-	private JTextField textField_3;
-	private JTextField textField_4;
+public class ZipCodePanel extends JPanel implements ItemListener, ActionListener {
+	private JTextField tfDoro;
+	private JTextField tfNo1;
+	private JTextField tfNo2;
+	private JTextField tfAll;
+	private JTextField tfDetail;
+	private JComboBox cmbSido;
+	private String selectItem;
+	private JButton btnSearch;
+	private ZipCodeUIService service;
+	
 
 	public ZipCodePanel() {
-
+		service = new ZipCodeUIService();
 		initialize();
 	}
 	private void initialize() {
@@ -29,72 +41,112 @@ public class ZipCodePanel extends JPanel {
 		setBackground(SystemColor.inactiveCaptionBorder);
 		setLayout(null);
 		
-		JLabel lblNewLabel = new JLabel("주 소 검 색");
-		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setFont(new Font("휴먼둥근헤드라인", Font.PLAIN, 26));
-		lblNewLabel.setBounds(0, 24, 800, 40);
-		add(lblNewLabel);
+		JLabel lblAddr = new JLabel("주 소 검 색");
+		lblAddr.setHorizontalAlignment(SwingConstants.CENTER);
+		lblAddr.setFont(new Font("휴먼둥근헤드라인", Font.PLAIN, 26));
+		lblAddr.setBounds(0, 24, 800, 40);
+		add(lblAddr);
 		
-		JLabel label = new JLabel("도 로 명");
-		label.setFont(new Font("휴먼둥근헤드라인", Font.PLAIN, 14));
-		label.setBounds(190, 84, 120, 25);
-		add(label);
+		JLabel lblDoro = new JLabel("도 로 명");
+		lblDoro.setFont(new Font("휴먼둥근헤드라인", Font.PLAIN, 14));
+		lblDoro.setBounds(190, 84, 120, 25);
+		add(lblDoro);
 		
-		JLabel label_1 = new JLabel("건물번호 본번");
-		label_1.setFont(new Font("휴먼둥근헤드라인", Font.PLAIN, 14));
-		label_1.setBounds(340, 84, 120, 25);
-		add(label_1);
+		JLabel lblNo1 = new JLabel("건물번호 본번");
+		lblNo1.setFont(new Font("휴먼둥근헤드라인", Font.PLAIN, 14));
+		lblNo1.setBounds(340, 84, 120, 25);
+		add(lblNo1);
 		
-		textField = new JTextField();
-		textField.setBounds(190, 120, 120, 30);
-		add(textField);
-		textField.setColumns(10);
+		tfDoro = new JTextField();
+		tfDoro.setBounds(190, 120, 120, 30);
+		add(tfDoro);
+		tfDoro.setColumns(10);
 		
-		textField_1 = new JTextField();
-		textField_1.setBounds(340, 120, 120, 30);
-		add(textField_1);
-		textField_1.setColumns(10);
+		tfNo1 = new JTextField();
+		tfNo1.setBounds(340, 120, 120, 30);
+		add(tfNo1);
+		tfNo1.setColumns(10);
 		
-		JLabel label_2 = new JLabel("건물번호 부번");
-		label_2.setFont(new Font("휴먼둥근헤드라인", Font.PLAIN, 14));
-		label_2.setBounds(490, 84, 120, 25);
-		add(label_2);
+		JLabel lblNo2 = new JLabel("건물번호 부번");
+		lblNo2.setFont(new Font("휴먼둥근헤드라인", Font.PLAIN, 14));
+		lblNo2.setBounds(490, 84, 120, 25);
+		add(lblNo2);
 		
-		textField_2 = new JTextField();
-		textField_2.setColumns(10);
-		textField_2.setBounds(490, 120, 120, 30);
-		add(textField_2);
+		tfNo2 = new JTextField();
+		tfNo2.setColumns(10);
+		tfNo2.setBounds(490, 120, 120, 30);
+		add(tfNo2);
 		
-		JButton btnNewButton = new JButton("검  색");
-		btnNewButton.setBounds(640, 120, 120, 30);
-		add(btnNewButton);
+		btnSearch = new JButton("검  색");
+		btnSearch.addActionListener(this);
+		btnSearch.setBounds(640, 120, 120, 30);
+		add(btnSearch);
 		
-		JButton btnNewButton_1 = new JButton("등   록");
-		btnNewButton_1.setBounds(325, 250, 150, 32);
-		add(btnNewButton_1);
+		JButton btnAdd = new JButton("등   록");
+		btnAdd.setBounds(325, 250, 150, 32);
+		add(btnAdd);
 		
-		JComboBox comboBox = new JComboBox();
-		comboBox.setModel(new DefaultComboBoxModel(new String[] {"서울특별시", "부산광역시", "대구광역시", "인천광역시", "광주광역시", "대전광역시", "울산광역시", "경기도", "강원도", "충청북도", "충청남도", "전라북도", "전라남도", "경상북도", "경상남도", "제주특별자치도", "세종특별자치시"}));
-		comboBox.setBounds(40, 120, 120, 30);
-		add(comboBox);
+		cmbSido = new JComboBox();
+		cmbSido.addItemListener(this);
+		cmbSido.setModel(new DefaultComboBoxModel(new String[] {"선택", "서울특별시", "부산광역시", "대구광역시", "인천광역시", "광주광역시", "대전광역시", "울산광역시", "경기도", "강원도", "충청북도", "충청남도", "전라북도", "전라남도", "경상북도", "경상남도", "제주특별자치도", "세종특별자치시"}));
+		cmbSido.setBounds(40, 120, 120, 30);
+		add(cmbSido);
 		
-		JLabel label_3 = new JLabel("시 도");
-		label_3.setFont(new Font("휴먼둥근헤드라인", Font.PLAIN, 14));
-		label_3.setBounds(40, 84, 120, 25);
-		add(label_3);
+		JLabel lblSido = new JLabel("시 도");
+		lblSido.setFont(new Font("휴먼둥근헤드라인", Font.PLAIN, 14));
+		lblSido.setBounds(40, 84, 120, 25);
+		add(lblSido);
 		
-		textField_3 = new JTextField();
-		textField_3.setBounds(40, 180, 370, 30);
-		add(textField_3);
-		textField_3.setColumns(10);
+		tfAll = new JTextField();
+		tfAll.setBounds(40, 180, 370, 30);
+		add(tfAll);
+		tfAll.setColumns(10);
 		
-		textField_4 = new JTextField();
-		textField_4.setBounds(425, 180, 185, 30);
-		add(textField_4);
-		textField_4.setColumns(10);
+		tfDetail = new JTextField();
+		tfDetail.setBounds(425, 180, 185, 30);
+		add(tfDetail);
+		tfDetail.setColumns(10);
 		
-		JLabel lblNewLabel_1 = new JLabel("(상세주소)");
-		lblNewLabel_1.setBounds(618, 180, 93, 30);
-		add(lblNewLabel_1);
+		JLabel lblDetail = new JLabel("(상세주소)");
+		lblDetail.setBounds(618, 180, 93, 30);
+		add(lblDetail);
+	}
+	public void itemStateChanged(ItemEvent e) {
+		if (e.getSource() == cmbSido) {
+			comboBoxItemStateChanged(e);
+		}
+	}
+	public String comboBoxItemStateChanged(ItemEvent e) {
+		if(e.getStateChange() == ItemEvent.SELECTED) {
+			selectItem = (String) cmbSido.getSelectedItem();
+		}
+		return null;
+	}
+	
+	
+	public void actionPerformed(ActionEvent e) {
+		if (e.getSource() == btnSearch) {
+			btnSearchActionPerformed(e);
+		}
+	}
+	public void btnSearchActionPerformed(ActionEvent e) {
+		if(selectItem == null) {
+			return;
+		}
+		String zSido = selectItem.toString();
+		String zDoro = tfDoro.getText();
+		int zNum1 = Integer.parseInt(tfNo1.getText().trim());
+		if(tfNo2.getText().equals("")) {
+			ZipCode zipNumOne = new ZipCode(zSido, zDoro, zNum1);
+			tfAll.setText(service.searchAddressNumOne(zipNumOne).toString()); 
+		}else {
+			int zNum2 = Integer.parseInt(tfNo2.getText().trim());
+			ZipCode zipNumAll = new ZipCode(zSido, zDoro, zNum1, zNum2);
+			tfAll.setText(service.searchAddressNumAll(zipNumAll).toStringAll());
+		}
+		cmbSido.setSelectedIndex(0);
+		tfDoro.setText("");
+		tfNo1.setText("");
+		tfNo2.setText("");
 	}
 }
