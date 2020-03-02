@@ -39,3 +39,6 @@ select * from zip_code where z_doro="태전로" and z_num1 = 53 and z_num2= 0 ;
 
 insert into supplier values(47,"재승시스템","220-81-45678","대구광역시","053-456-4567","053-456-7894");
 select * from supplier s ;
+
+
+select s_no, s_name, s_bln, s_address, s_tel, s_fax from supplier where s_name='안랩';

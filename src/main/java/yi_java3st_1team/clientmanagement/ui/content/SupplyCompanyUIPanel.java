@@ -109,6 +109,7 @@ public class SupplyCompanyUIPanel extends JPanel implements ActionListener {
 		pRegisterPanel.add(btnGoMain);
 
 		btnDplCheck = new JButton("중복확인");
+		btnDplCheck.addActionListener(this);
 		btnDplCheck.setFocusable(false);
 		btnDplCheck.setBackground(new Color(240, 128, 128));
 		btnDplCheck.setForeground(Color.WHITE);
@@ -204,6 +205,9 @@ public class SupplyCompanyUIPanel extends JPanel implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
+		if (e.getSource() == btnDplCheck) {
+			btnDplCheckActionPerformed(e);
+		}
 		if (e.getSource() == btnAdd) {
 			btnAddActionPerformed(e);
 		}
@@ -265,4 +269,15 @@ public class SupplyCompanyUIPanel extends JPanel implements ActionListener {
 		pSCRPanel.setNum(service.lastSupplier());
 	}
 
+	protected void btnDplCheckActionPerformed(ActionEvent e) {
+		Supplier overlapSupp = pSCRPanel.getItem();
+		Supplier supplier = service.OverlapSupplier(overlapSupp);
+		if(supplier == null) {
+			JOptionPane.showMessageDialog(null, "등록 가능한 회사입니다.");
+		}else {
+			JOptionPane.showMessageDialog(null, "이미 존재하는 회사입니다.");
+		}
+		
+		
+	}
 }

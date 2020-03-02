@@ -22,6 +22,24 @@ public class SupplierDaoImpl implements SupplierDao {
 	}
 	
 	@Override
+	public Supplier selectSupplierByName(Supplier supplier) {
+		String sql = "select s_no, s_name, s_bln, s_address, s_tel, s_fax from supplier where s_name=?";
+		try(Connection con = MySqlDataSource.getConnection();
+				PreparedStatement pstmt = con.prepareStatement(sql);){
+			pstmt.setString(1, supplier.getsName());
+			LogUtil.prnLog(pstmt);
+			try(ResultSet rs = pstmt.executeQuery()){
+				if(rs.next()) {
+					return getSupplier(rs);
+				}
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	@Override
 	public Supplier selectSupplierByNo(Supplier supplier) {
 		String sql = "select s_no, s_name, s_bln, s_address, s_tel, s_fax from supplier where s_no=?";
 		try(Connection con = MySqlDataSource.getConnection();
@@ -142,5 +160,7 @@ public class SupplierDaoImpl implements SupplierDao {
 		}
 		return res;
 	}
+
+	
 
 }

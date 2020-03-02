@@ -6,6 +6,7 @@ import yi_java3st_1team.clientmanagement.dto.Supplier;
 
 public interface SupplierDao {
 	Supplier selectSupplierByNo(Supplier supplier);
+	Supplier selectSupplierByName(Supplier supplier);
 	Supplier selectSuppplierLastData();
 	List<Supplier> selectSupplierByAll();
 	
