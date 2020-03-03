@@ -28,6 +28,7 @@ select * from product;
 desc supplier ;
 desc zip_code ;
 
+
 select s_no from supplier order by s_no desc limit 1;
 select s_no, s_name, s_bln, s_address, s_tel, s_fax from supplier;
 select s_no, s_name, s_bln, s_address, s_tel, s_fax from supplier where s_no=1;
@@ -43,3 +44,8 @@ select * from supplier s ;
 
 select s_no, s_name, s_bln, s_address, s_tel, s_fax from supplier where s_name='안랩';
 select z_code, z_sido, z_sigungu, z_doro, z_num1, z_num2 from zip_code where z_sido="서울특별시" and z_doro="다산로10길" and z_num1=12;
+
+select * from client c ;
+select c_no, c_name, c_ceo, c_address, c_tel, c_id, c_mail, c_date, c_salesman from client where c_no=1;
+select c_no from client order by c_no desc limit 1;
+delete from client where c_no = 56;
