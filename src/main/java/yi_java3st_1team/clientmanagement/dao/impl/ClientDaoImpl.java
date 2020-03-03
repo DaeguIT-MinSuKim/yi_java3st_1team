@@ -159,4 +159,104 @@ public class ClientDaoImpl implements ClientDao {
 		return new Client(cNo);
 	}
 
+	@Override
+	public List<Client> selectClientListByName(Client selectClient) {
+		String sql = "select c_no, c_name, c_ceo, c_address, c_tel, c_salesman from client where c_name=?";
+		try(Connection con = MySqlDataSource.getConnection();
+				PreparedStatement pstmt = con.prepareStatement(sql);){
+			pstmt.setString(1, selectClient.getcName());
+			ResultSet rs = pstmt.executeQuery();
+			List<Client> list = new ArrayList<Client>();
+			while(rs.next()) {
+				list.add(getClient(rs));
+			}
+			return list;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	@Override
+	public List<Client> selectClientListByCeo(Client selectClient) {
+		String sql = "select c_no, c_name, c_ceo, c_address, c_tel, c_salesman from client where c_ceo=?";
+		try(Connection con = MySqlDataSource.getConnection();
+				PreparedStatement pstmt = con.prepareStatement(sql);){
+			pstmt.setString(1, selectClient.getcCeo());
+			ResultSet rs = pstmt.executeQuery();
+			List<Client> list = new ArrayList<Client>();
+			while(rs.next()) {
+				list.add(getClient(rs));
+			}
+			return list;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	@Override
+	public List<Client> selectClientListByTel(Client selectClient) {
+		String sql = "select c_no, c_name, c_ceo, c_address, c_tel, c_salesman from client where c_tel=?";
+		try(Connection con = MySqlDataSource.getConnection();
+				PreparedStatement pstmt = con.prepareStatement(sql);){
+			pstmt.setString(1, selectClient.getcTel());
+			ResultSet rs = pstmt.executeQuery();
+			List<Client> list = new ArrayList<Client>();
+			while(rs.next()) {
+				list.add(getClient(rs));
+			}
+			return list;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	@Override
+	public List<Client> selectClientListBySalesman(Client selectClient) {
+		String sql = "select c_no, c_name, c_ceo, c_address, c_tel, c_salesman from client where c_salesman=?";
+		try(Connection con = MySqlDataSource.getConnection();
+				PreparedStatement pstmt = con.prepareStatement(sql);){
+			pstmt.setInt(1, selectClient.getcSalesman());
+			ResultSet rs = pstmt.executeQuery();
+			List<Client> list = new ArrayList<Client>();
+			while(rs.next()) {
+				list.add(getClient(rs));
+			}
+			return list;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	@Override
+	public Client selectClientByName(Client client) {
+		String sql = "select c_no, c_name, c_ceo, c_address, c_tel, c_salesman from client where c_name=?";
+		try(Connection con = MySqlDataSource.getConnection();
+				PreparedStatement pstmt = con.prepareStatement(sql);){
+			pstmt.setString(1, client.getcName());
+			LogUtil.prnLog(pstmt);
+			try(ResultSet rs = pstmt.executeQuery()){
+				if(rs.next()) {
+					return getClient1(rs);
+				}
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	private Client getClient1(ResultSet rs) throws SQLException {
+		int cNo = rs.getInt("c_no");
+		String cName = rs.getString("c_name");
+		String cCeo = rs.getString("c_ceo");
+		String cAddress = rs.getString("c_address");
+		String cTel = rs.getString("c_tel");
+		int cSalesman = rs.getInt("c_salesman");
+		return new Client(cNo, cName, cCeo, cAddress, cTel, cSalesman);
+	}
+
 }

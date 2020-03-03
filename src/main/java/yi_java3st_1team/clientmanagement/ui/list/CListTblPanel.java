@@ -13,7 +13,7 @@ public class CListTblPanel extends AbstractTblPanel<Client> {
 
 	@Override
 	protected void setTblWidthAlign() {
-		tableSetWidth(80, 140, 80, 300, 110, 80);
+		tableSetWidth(80, 140, 80, 280, 110, 80);
 		tableCellAlign(SwingConstants.CENTER, 0, 1, 2, 3, 4, 5);
 		
 	}
@@ -31,7 +31,7 @@ public class CListTblPanel extends AbstractTblPanel<Client> {
 				item.getcCeo(),
 				item.getcAddress(),
 				item.getcTel(),
-				item.getcSalesman()
+				String.format("EE%04d", item.getcSalesman())//번호가 아니라 직원테이블과 조인해서 이름이 나오게끔 변경 필요
 		};
 	}
 

@@ -11,8 +11,11 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
+import yi_java3st_1team.clientmanagement.dto.Client;
+import yi_java3st_1team.exception.InvalidCheckException;
+
 @SuppressWarnings("serial")
-public class CRegisterPanel extends JPanel {
+public class CRegisterPanel extends AbsItemPanel<Client> {
 	private JLabel lblCNo;
 	private JLabel lblCName;
 	private JLabel lblCCEO;
@@ -119,6 +122,50 @@ public class CRegisterPanel extends JPanel {
 		lblNewLabel.setBackground(Color.WHITE);
 		lblNewLabel.setBounds(0, 0, 400, 430);
 		panel.add(lblNewLabel);
+		
+	}
+	public void setNum(Client item) {
+		tfCNo.setText(String.format("C%04d", item.getcNo()+1));
+	}
+	
+	public String getName() {
+		return tfCName.getText().trim();
+	}
+	
+	@Override
+	public Client getItem() {
+		int cNo = Integer.parseInt(tfCNo.getText().substring(1));
+		String cName = tfCName.getText().trim();
+		String cCeo = tfCCEO.getText().trim();
+		String cAddress = tfCAddress.getText().trim();
+		String cTel = tfCTel.getText().trim();
+		int cSalesman = Integer.parseInt(tfStaff.getText().substring(2));
+		return new Client(cNo, cName, cCeo, cAddress, cTel, cSalesman);
+	}
+	@Override
+	public void setItem(Client item) {
+		tfCNo.setText(String.format("C%04d", item.getcNo()));
+		tfCName.setText(item.getcName());
+		tfCCEO.setText(item.getcCeo());
+		tfCAddress.setText(item.getcAddress());
+		tfCTel.setText(item.getcTel());
+		tfStaff.setText(String.format("EE%04d", item.getcSalesman()));
+	}
+	@Override
+	public void clearTf() {
+		tfCNo.setText("");
+		tfCName.setText("");
+		tfCCEO.setText("");
+		tfCAddress.setText("");
+		tfCTel.setText("");
+		tfStaff.setText("");
+		
+	}
+	@Override
+	public void validCheck() {
+		if(tfCNo.getText().equals("")||tfCName.getText().equals("")||tfCCEO.getText().equals("")||tfCAddress.getText().equals("")||tfCTel.getText().equals("")||tfStaff.getText().equals("")) {
+			throw new InvalidCheckException();
+		}
 		
 	}
 }

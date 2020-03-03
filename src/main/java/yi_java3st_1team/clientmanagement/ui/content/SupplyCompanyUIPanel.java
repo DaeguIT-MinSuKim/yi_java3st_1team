@@ -52,6 +52,7 @@ public class SupplyCompanyUIPanel extends JPanel implements ActionListener, Item
 	private SCListTblPanel pSCTblPanel;
 	private SCRegisterPanel pSCRPanel;
 	private JFrame zipcodeFrame;
+	private String selectItem;
 
 	public SupplyCompanyUIPanel() {
 		service = new SupplierUIService();
@@ -211,7 +212,6 @@ public class SupplyCompanyUIPanel extends JPanel implements ActionListener, Item
 			}
 		}
 	};
-	private String selectItem;
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
