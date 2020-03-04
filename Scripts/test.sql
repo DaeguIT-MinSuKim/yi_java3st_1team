@@ -52,3 +52,9 @@ delete from client where c_no = 56;
 
 select e_name from employee e left join client c on e.e_no=c.c_salesman where c.c_salesman=55 ;
 select e_no from employee e where e_name='양공입';
+
+desc product ;
+
+
+select p_no, c.cate_name, p_name, p_cost, p_price, s.s_name, p_qty, p_date, p_pic from product p left join category c on p.p_cate = c.cate_no left join supplier s on p.p_sno = s.s_no;
+delete from product where p_no=85;
