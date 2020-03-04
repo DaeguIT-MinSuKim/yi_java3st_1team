@@ -3,10 +3,13 @@ package yi_java3st_1team.clientmanagement.ui.list;
 import javax.swing.SwingConstants;
 
 import yi_java3st_1team.clientmanagement.dto.Client;
+import yi_java3st_1team.clientmanagement.ui.service.ClientUIService;
 
 @SuppressWarnings("serial")
 public class CListTblPanel extends AbstractTblPanel<Client> {
-
+	
+	ClientUIService service = new ClientUIService();
+	
 	public CListTblPanel() {
 
 	}
@@ -31,7 +34,7 @@ public class CListTblPanel extends AbstractTblPanel<Client> {
 				item.getcCeo(),
 				item.getcAddress(),
 				item.getcTel(),
-				String.format("EE%04d", item.getcSalesman())//번호가 아니라 직원테이블과 조인해서 이름이 나오게끔 변경 필요
+				String.format("%s", service.showEmployeeName(item))//번호가 아니라 직원테이블과 조인해서 이름이 나오게끔 변경 필요
 		};
 	}
 

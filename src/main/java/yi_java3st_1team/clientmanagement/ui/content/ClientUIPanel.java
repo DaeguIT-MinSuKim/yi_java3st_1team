@@ -27,9 +27,11 @@ import yi_java3st_1team.clientmanagement.ui.ZipCodePanel;
 import yi_java3st_1team.clientmanagement.ui.list.CListTblPanel;
 import yi_java3st_1team.clientmanagement.ui.panel.CRegisterPanel;
 import yi_java3st_1team.clientmanagement.ui.service.ClientUIService;
+import java.awt.event.ItemListener;
+import java.awt.event.ItemEvent;
 
 @SuppressWarnings("serial")
-public class ClientUIPanel extends JPanel implements ActionListener {
+public class ClientUIPanel extends JPanel implements ActionListener, ItemListener {
 	private CRegisterPanel pCRPanel;
 	private JLabel lblSC;
 	private JButton btnUpdate;
@@ -45,6 +47,8 @@ public class ClientUIPanel extends JPanel implements ActionListener {
 	private CListTblPanel pCTblPanel;
 	private ClientUIService service;
 	private JFrame zipcodeFrame;
+	private JComboBox cmbCate;
+	private String selectItem;
 
 	public ClientUIPanel() {
 		service = new ClientUIService();
@@ -145,7 +149,8 @@ public class ClientUIPanel extends JPanel implements ActionListener {
 		lblCList.setBounds(72, 60, 170, 40);
 		pListPanel.add(lblCList);
 		
-		JComboBox cmbCate = new JComboBox();
+		cmbCate = new JComboBox();
+		cmbCate.addItemListener(this);
 		cmbCate.setModel(new DefaultComboBoxModel(new String[] {"선택", "전체", "상호명", "대표명", "전화번호", "담당직원"}));
 		cmbCate.setBounds(252, 65, 120, 30);
 		pListPanel.add(cmbCate);
@@ -156,6 +161,7 @@ public class ClientUIPanel extends JPanel implements ActionListener {
 		pListPanel.add(tfSerch);
 		
 		btnSerch = new JButton("검색");
+		btnSerch.addActionListener(this);
 		btnSerch.setFocusable(false);
 		btnSerch.setFont(new Font("맑은 고딕", Font.BOLD, 16));
 		btnSerch.setForeground(Color.WHITE);
@@ -192,7 +198,11 @@ public class ClientUIPanel extends JPanel implements ActionListener {
 			}
 		}
 	};
+	
 	public void actionPerformed(ActionEvent e) {
+		if (e.getSource() == btnSerch) {
+			btnSerchActionPerformed(e);
+		}
 		if (e.getSource() == btnUpdate) {
 			btnUpdateActionPerformed(e);
 		}
@@ -246,8 +256,53 @@ public class ClientUIPanel extends JPanel implements ActionListener {
 			Client upClient = pCRPanel.getItem();
 			service.modifyClient(upClient);
 			pCTblPanel.updateRow(upClient, pCTblPanel.getSelectedRowIdx());
+			pCTblPanel.loadDate(service.showClientList());
 			pCRPanel.clearTf();
 			pCRPanel.setNum(service.lastClient());
+		}
+	}
+	public void itemStateChanged(ItemEvent e) {
+		if (e.getSource() == cmbCate) {
+			cmbCateItemStateChanged(e);
+		}
+	}
+	public String cmbCateItemStateChanged(ItemEvent e) {
+		if(e.getStateChange() == ItemEvent.SELECTED) {
+			selectItem = (String) cmbCate.getSelectedItem();
+		}
+		return null;
+	}
+	public void btnSerchActionPerformed(ActionEvent e) {
+		if(selectItem == null) {
+			return;
+		}
+		if(selectItem.equals("전체")) {
+			pCTblPanel.loadDate(service.showClientList());
+		}
+		if(selectItem.equals("상호명")) {
+			String cName = tfSerch.getText();
+			Client client = new Client(cName, null, null);
+			pCTblPanel.loadDate(service.showClientListByName(client));
+			tfSerch.setText("");
+		}
+		if(selectItem.equals("대표명")) {
+			String cCeo = tfSerch.getText();
+			Client client = new Client(null, cCeo, null);
+			pCTblPanel.loadDate(service.showClientListByCeo(client));
+			tfSerch.setText("");
+		}
+		if(selectItem.equals("전화번호")) {
+			String cTel = tfSerch.getText();
+			Client client = new Client(null, null, cTel);
+			pCTblPanel.loadDate(service.showClientListByTel(client));
+			tfSerch.setText("");
+		}
+		if(selectItem.equals("담당직원")) {
+			String salesmanName = tfSerch.getText().trim(); //직원 이름을 사원번호로 변경 후 생성자에 입력하도록 수정 필요
+			int cSalesman = service.showEmpoyeeNo(salesmanName);
+			Client client = new Client(null, null, null, cSalesman);
+			pCTblPanel.loadDate(service.showClientListBySalesman(client));
+			tfSerch.setText("");
 		}
 	}
 }

@@ -12,17 +12,20 @@ public class ClientUIService {
 	public List<Client> showClientList() {
 		return clientDao.selectClientByAll();
 	}
-	
-	public List<Client> showClientListByName(Client selectClient){
+
+	public List<Client> showClientListByName(Client selectClient) {
 		return clientDao.selectClientListByName(selectClient);
 	}
-	public List<Client> showClientListByCeo(Client selectClient){
+
+	public List<Client> showClientListByCeo(Client selectClient) {
 		return clientDao.selectClientListByCeo(selectClient);
 	}
-	public List<Client> showClientListByTel(Client selectClient){
+
+	public List<Client> showClientListByTel(Client selectClient) {
 		return clientDao.selectClientListByTel(selectClient);
 	}
-	public List<Client> showClientListBySalesman(Client selectClient){
+
+	public List<Client> showClientListBySalesman(Client selectClient) {
 		return clientDao.selectClientListBySalesman(selectClient);
 	}
 
@@ -41,8 +44,16 @@ public class ClientUIService {
 	public Client lastClient() {
 		return clientDao.selectClientLastData();
 	}
-	
+
 	public Client overlapClient(Client overlapClient) {
 		return clientDao.selectClientByName(overlapClient);
+	}
+	
+	public String showEmployeeName(Client empClient) {
+		return clientDao.selectClientsEmpName(empClient);
+	}
+	
+	public int showEmpoyeeNo(String empName) {
+		return clientDao.selectClientsEmpNo(empName);
 	}
 }

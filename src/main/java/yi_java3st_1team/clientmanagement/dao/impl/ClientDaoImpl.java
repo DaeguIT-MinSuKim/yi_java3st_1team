@@ -168,7 +168,7 @@ public class ClientDaoImpl implements ClientDao {
 			ResultSet rs = pstmt.executeQuery();
 			List<Client> list = new ArrayList<Client>();
 			while(rs.next()) {
-				list.add(getClient(rs));
+				list.add(getClient1(rs));
 			}
 			return list;
 		} catch (SQLException e) {
@@ -186,7 +186,7 @@ public class ClientDaoImpl implements ClientDao {
 			ResultSet rs = pstmt.executeQuery();
 			List<Client> list = new ArrayList<Client>();
 			while(rs.next()) {
-				list.add(getClient(rs));
+				list.add(getClient1(rs));
 			}
 			return list;
 		} catch (SQLException e) {
@@ -204,7 +204,7 @@ public class ClientDaoImpl implements ClientDao {
 			ResultSet rs = pstmt.executeQuery();
 			List<Client> list = new ArrayList<Client>();
 			while(rs.next()) {
-				list.add(getClient(rs));
+				list.add(getClient1(rs));
 			}
 			return list;
 		} catch (SQLException e) {
@@ -222,7 +222,7 @@ public class ClientDaoImpl implements ClientDao {
 			ResultSet rs = pstmt.executeQuery();
 			List<Client> list = new ArrayList<Client>();
 			while(rs.next()) {
-				list.add(getClient(rs));
+				list.add(getClient1(rs));
 			}
 			return list;
 		} catch (SQLException e) {
@@ -257,6 +257,52 @@ public class ClientDaoImpl implements ClientDao {
 		String cTel = rs.getString("c_tel");
 		int cSalesman = rs.getInt("c_salesman");
 		return new Client(cNo, cName, cCeo, cAddress, cTel, cSalesman);
+	}
+
+	@Override
+	public String selectClientsEmpName(Client client) {
+		String sql = "select e_name from employee e left join client c on e.e_no=c.c_salesman where c.c_salesman=?";
+		try(Connection con = MySqlDataSource.getConnection();
+				PreparedStatement pstmt = con.prepareStatement(sql);){
+			pstmt.setInt(1, client.getcSalesman());
+			LogUtil.prnLog(pstmt);
+			try(ResultSet rs = pstmt.executeQuery()){
+				if(rs.next()) {
+					return getEmpName(rs);
+				}
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	private String getEmpName(ResultSet rs) throws SQLException {
+		String empName = rs.getString("e_name");
+		return empName;
+	}
+
+	@Override
+	public int selectClientsEmpNo(String empName) {
+		String sql = "select e_no from employee where e_name=?";
+		try(Connection con = MySqlDataSource.getConnection();
+				PreparedStatement pstmt = con.prepareStatement(sql);){
+			pstmt.setString(1, empName);
+			LogUtil.prnLog(pstmt);
+			try(ResultSet rs = pstmt.executeQuery()){
+				if(rs.next()) {
+					return getEmpNo(rs);
+				}
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return 0;
+	}
+
+	private int getEmpNo(ResultSet rs) throws SQLException {
+		int empNo = rs.getInt("e_no");
+		return empNo;
 	}
 
 }

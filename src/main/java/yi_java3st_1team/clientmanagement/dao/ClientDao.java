@@ -8,6 +8,9 @@ public interface ClientDao {
 	Client selectClientByNo(Client client);
 	Client selectClientByName(Client client);
 	Client selectClientLastData();
+	String selectClientsEmpName(Client client);
+	int selectClientsEmpNo(String empName);
+	
 	List<Client> selectClientByAll();
 	List<Client> selectClientListByName(Client selectClient);
 	List<Client> selectClientListByCeo(Client selectClient);

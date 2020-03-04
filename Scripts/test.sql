@@ -49,3 +49,6 @@ select * from client c ;
 select c_no, c_name, c_ceo, c_address, c_tel, c_id, c_mail, c_date, c_salesman from client where c_no=1;
 select c_no from client order by c_no desc limit 1;
 delete from client where c_no = 56;
+
+select e_name from employee e left join client c on e.e_no=c.c_salesman where c.c_salesman=55 ;
+select e_no from employee e where e_name='양공입';

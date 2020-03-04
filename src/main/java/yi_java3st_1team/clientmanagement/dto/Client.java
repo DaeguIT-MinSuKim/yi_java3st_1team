@@ -20,16 +20,16 @@ public class Client {
 		this.cNo = cNo;
 	}
 
-	public Client(int cNo, String cName, String cCeo, String cAddress, String cTel, String cId, String cMail,
-			String cDate, int cSalesman) {
-		this.cNo = cNo;
+	public Client(String cName, String cCeo, String cTel) {
+		this.cName = cName;
+		this.cCeo = cCeo;
+		this.cTel = cTel;
+	}
+
+	public Client(String cName, String cCeo, String cAddress, int cSalesman) {
 		this.cName = cName;
 		this.cCeo = cCeo;
 		this.cAddress = cAddress;
-		this.cTel = cTel;
-		this.cId = cId;
-		this.cMail = cMail;
-		this.cDate = cDate;
 		this.cSalesman = cSalesman;
 	}
 
@@ -42,6 +42,19 @@ public class Client {
 		this.cSalesman = cSalesman;
 	}
 
+	public Client(int cNo, String cName, String cCeo, String cAddress, String cTel, String cId, String cMail,
+			String cDate, int cSalesman) {
+		this.cNo = cNo;
+		this.cName = cName;
+		this.cCeo = cCeo;
+		this.cAddress = cAddress;
+		this.cTel = cTel;
+		this.cId = cId;
+		this.cMail = cMail;
+		this.cDate = cDate;
+		this.cSalesman = cSalesman;
+	}
+	
 	public Client(int cNo, String cName, String cCeo, String cAddress, String cTel, String cId, String cPw,
 			String cMail, String cDate, int cSalesman) {
 		this.cNo = cNo;

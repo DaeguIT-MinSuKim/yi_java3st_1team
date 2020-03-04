@@ -247,6 +247,7 @@ public class SupplyCompanyUIPanel extends JPanel implements ActionListener, Item
 			Supplier upSupp = pSCRPanel.getItem();
 			service.modifySupplier(upSupp);
 			pSCTblPanel.updateRow(upSupp, pSCTblPanel.getSelectedRowIdx());
+			pSCTblPanel.loadDate(service.showSupplierList());
 			pSCRPanel.clearTf();
 			pSCRPanel.setNum(service.lastSupplier());
 		}
@@ -264,6 +265,7 @@ public class SupplyCompanyUIPanel extends JPanel implements ActionListener, Item
 				Supplier newSupp = pSCRPanel.getItem();
 				service.addSupplier(newSupp);
 				pSCTblPanel.addItem(newSupp);
+				pSCTblPanel.loadDate(service.showSupplierList());
 				pSCRPanel.clearTf();
 				pSCRPanel.setNum(newSupp);
 			}
