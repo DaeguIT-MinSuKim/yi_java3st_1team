@@ -27,7 +27,7 @@ public class PMContent extends JPanel {
 	private SCSOListPanel pSCSOListPanel;
 	private CDRegisterPanel pCDRegisterPanel;
 	private CDListPanel pCDListPanel;
-	private SoftwareUIPanel pSWUIPanel;
+	public SoftwareUIPanel pSWUIPanel;
 
 	public PMContent() {
 

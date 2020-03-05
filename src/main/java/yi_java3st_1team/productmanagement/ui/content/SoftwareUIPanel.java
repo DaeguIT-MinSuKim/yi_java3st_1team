@@ -37,7 +37,7 @@ public class SoftwareUIPanel extends JPanel {
 	private JButton btnAdd;
 	private JButton btnUpdate;
 	private JButton btnDel;
-	private JButton btnGoMain;
+	public JButton btnGoMain;
 	private JButton btnDplCheck;
 	private JButton btnPSCheck;
 	private JButton btnImgSearch;
