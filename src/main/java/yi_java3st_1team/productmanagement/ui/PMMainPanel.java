@@ -70,7 +70,6 @@ public class PMMainPanel extends JPanel implements ActionListener{
 		      add(cmp);
 		      revalidate();
 		      repaint();
-		      System.out.println("주문관리-거래처");
 		   }
 		   private void btnPMActionPerformed(ActionEvent e) {
 			      removeAll();
@@ -82,7 +81,6 @@ public class PMMainPanel extends JPanel implements ActionListener{
 			      add(pmp);
 			      revalidate();
 			      repaint();
-			      System.out.println("주문관리-제품");
 		   }
 		   private void btnOMActionPerformed(ActionEvent e) {
 			      removeAll();
@@ -95,7 +93,6 @@ public class PMMainPanel extends JPanel implements ActionListener{
 			      add(omp);
 			      revalidate();
 			      repaint();
-			      System.out.println("주문관리-주문");
 		   }
 		   private void actionPerformedBtnViews(ActionEvent e) {
 				  removeAll();
@@ -107,7 +104,6 @@ public class PMMainPanel extends JPanel implements ActionListener{
 			      add(rmp);
 			      revalidate();
 			      repaint();
-			      System.out.println("주문관리-현황");
 		   }	
 
 }

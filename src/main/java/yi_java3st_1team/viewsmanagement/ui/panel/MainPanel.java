@@ -1,6 +1,6 @@
 package yi_java3st_1team.viewsmanagement.ui.panel;
 
-import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.SystemColor;
@@ -14,7 +14,6 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
-import java.awt.Color;
 
 @SuppressWarnings("serial")
 public class MainPanel extends JPanel implements ActionListener {
@@ -33,6 +32,7 @@ public class MainPanel extends JPanel implements ActionListener {
 		initialize();
 	}
 	private void initialize() {
+		setPreferredSize(new Dimension(1270, 700));
 		setLayout(null);
 		
 		JPanel pTitle = new JPanel();
