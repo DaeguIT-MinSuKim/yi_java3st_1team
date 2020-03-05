@@ -1,5 +1,6 @@
 package yi_java3st_1team.main;
 
+import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Rectangle;
@@ -9,13 +10,14 @@ import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
-import yi_java3st_1team.main.ui.EmployeeMainUIPanel;
+import yi_java3st_1team.clientmanagement.ui.CMMainPanel;
 import yi_java3st_1team.ordermanagement.ui.OMMainPanel;
+import yi_java3st_1team.productmanagement.ui.PMMainPanel;
+import yi_java3st_1team.viewsmanagement.ui.panel.ReportMainPanel;
 
 @SuppressWarnings("serial")
 public class LeftMainMenu extends JPanel implements ActionListener {
@@ -29,33 +31,6 @@ public class LeftMainMenu extends JPanel implements ActionListener {
 	private JLabel lblOM;
 	private JLabel lblViews;
 	private JLabel lblWhite;
-	
-
-
-	public JButton getBtnCM() {
-		return btnCM;
-	}
-	public void setBtnCM(JButton btnCM) {
-		this.btnCM = btnCM;
-	}
-	public JButton getBtnPM() {
-		return btnPM;
-	}
-	public void setBtnPM(JButton btnPM) {
-		this.btnPM = btnPM;
-	}
-	public JButton getBtnOM() {
-		return btnOM;
-	}
-	public void setBtnOM(JButton btnOM) {
-		this.btnOM = btnOM;
-	}
-	public JButton getBtnViews() {
-		return btnViews;
-	}
-	public void setBtnViews(JButton btnViews) {
-		this.btnViews = btnViews;
-	}
 	
 	public LeftMainMenu() {
 
@@ -158,73 +133,48 @@ public class LeftMainMenu extends JPanel implements ActionListener {
 	}
 	//거래처관리
 	private void btnCMActionPerformed(ActionEvent e) {
+	      removeAll();
+	      revalidate();
+	      repaint();
+	      setBounds(new Rectangle(0, 0, 1544, 700));
+	      CMMainPanel cmp = new CMMainPanel();
+	      add(cmp);
+	      revalidate();
+	      repaint();
 	}
 	
 	//제품관리
-	protected void btnPMActionPerformed(ActionEvent e) {		
+	protected void btnPMActionPerformed(ActionEvent e) {
+	      removeAll();
+	      revalidate();
+	      repaint();
+	      setBounds(new Rectangle(0, 0, 1544, 700));
+	      PMMainPanel pmp = new PMMainPanel();
+	      add(pmp);
+	      revalidate();
+	      repaint();
 	}
 	
 	//주문관리
 	protected void btnOMActionPerformed(ActionEvent e) {
-//		JFrame jf = new JFrame();
-//		
-//		EmployeeMainUIPanel emu = new EmployeeMainUIPanel();
-//		emu.getpStop().removeAll();
-//		emu.getpSbot().removeAll();
-//		revalidate();
-//		repaint();
-		
-//		JFrame np = new JFrame();
-//		np.setSize(500,500);
-//		pOMcontent = new OMContent();
-//		np.getContentPane().add(pOMcontent);
-//		np.setVisible(true);
-		
-//		pEmpui.pStop.removeAll();
-//		revalidate();
-//		repaint();
-//		setLayout(new CardLayout(-19,0));
-//		pOMpanel = new OMMainPanel();
-//		pOMpanel.setPreferredSize(new Dimension(1544, 0));
-//		pEmpui.pStop.add(pOMpanel, BorderLayout.WEST);
-//		pEmpui.pStop.revalidate();
-//		pEmpui.pStop.repaint();
-		
-		
-//		EmployeeMainFrame np = new EmployeeMainFrame();
-//		np.setSize(1500,900);
-//		np.pSection.removeAll();
-//		OMMainPanel omp = new OMMainPanel();
-////		pEmpui.add(omp);
-//		np.pSection.add(omp);
-//		np.setVisible(true);
-		
-//		EmployeeMainUIPanel pEmpui = new EmployeeMainUIPanel();
-//		pEmpui.getpStop().removeAll();
-//		pEmpui.getpSbot().removeAll();
-//		pEmpui.revalidate();
-//		pEmpui.repaint();
-//		pEmpui.setLayout(new CardLayout(-19,0));
-//		OMMainPanel omp = new OMMainPanel();
-//		omp.setPreferredSize(new Dimension(1544,0));
-//		pEmpui.getpStop().add(omp, BorderLayout.WEST);
-//		pEmpui.getpStop().revalidate();
-//		pEmpui.getpStop().repaint();
-		
-		EmployeeMainFrame jf = new EmployeeMainFrame();
-		jf.setSize(1500, 900);
-		jf.setResizable(false);
-		EmployeeMainUIPanel pEmpui = new EmployeeMainUIPanel();
-		pEmpui.getpStop().removeAll();
-		pEmpui.getpSbot().removeAll();
-		OMMainPanel omp = new OMMainPanel();
-		pEmpui.getpStop().add(omp);
-		jf.getContentPane().add(pEmpui);
-		jf.setVisible(true);
-		
+	      removeAll();
+	      revalidate();
+	      repaint();
+	      setBounds(new Rectangle(0, 0, 1544, 700));
+	      setLayout(null);
+	      OMMainPanel omp = new OMMainPanel();
+	      add(omp);
+	      revalidate();
+	      repaint();
 	}
 	
 	//현황조회/보고
 	protected void actionPerformedBtnViews(ActionEvent e) {
+		  removeAll();
+	      revalidate();
+	      repaint();
+	      setBounds(new Rectangle(0, 0, 1544, 700));
+	      ReportMainPanel rmp = new ReportMainPanel();
+	      add(rmp);
 	}
 }

@@ -22,7 +22,7 @@ public class OMContent extends JPanel {
 	private JPanel pListPanel;
 	private ORegisterPanel pORegisterPanel;
 	private OListPanel pOListPanel;
-	private OCheckPanel pOCheckPanel;
+	public OCheckPanel pOCheckPanel;
 
 	public OMContent() {
 
