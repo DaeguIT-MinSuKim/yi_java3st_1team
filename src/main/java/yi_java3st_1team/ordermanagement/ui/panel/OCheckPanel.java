@@ -20,14 +20,7 @@ public class OCheckPanel extends JPanel {
 
 	private JLabel lblO;
 	private JPanel pList;
-	private JButton mainBtn;
-	
-	public JButton getMainBtn() {
-		return mainBtn;
-	}
-	public void setMainBtn(JButton mainBtn) {
-		this.mainBtn = mainBtn;
-	}
+	public JButton mainBtn;
 	
 	public OCheckPanel() {
 
