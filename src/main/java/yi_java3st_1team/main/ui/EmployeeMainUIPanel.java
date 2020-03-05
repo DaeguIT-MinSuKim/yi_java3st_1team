@@ -71,23 +71,6 @@ public class EmployeeMainUIPanel extends JPanel implements ActionListener {
 	
 	private EmployeeMainFrame empMain;
 
-	
-	public JPanel getpStop() {
-		return pStop;
-	}
-
-	public void setpStop(JPanel pStop) {
-		this.pStop = pStop;
-	}
-	
-	
-	public JPanel getpSbot() {
-		return pSbot;
-	}
-
-	public void setpSbot(JPanel pSbot) {
-		this.pSbot = pSbot;
-	}
 
 	public EmployeeMainUIPanel() {
 		initialize();

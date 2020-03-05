@@ -9,6 +9,7 @@ import javax.swing.JPanel;
 
 import yi_java3st_1team.clientmanagement.ui.content.CMContent;
 import yi_java3st_1team.main.LeftMainMenu;
+import yi_java3st_1team.main.ui.EmployeeMainUIPanel;
 import yi_java3st_1team.ordermanagement.ui.OMMainPanel;
 import yi_java3st_1team.productmanagement.ui.PMMainPanel;
 import yi_java3st_1team.viewsmanagement.ui.panel.ReportMainPanel;
@@ -17,6 +18,7 @@ import yi_java3st_1team.viewsmanagement.ui.panel.ReportMainPanel;
 public class CMMainPanel extends JPanel implements ActionListener{
 
 	private LeftMainMenu mainMenu;
+	private CMContent pContent;
 	public CMMainPanel() {
 
 		initialize();
@@ -36,10 +38,13 @@ public class CMMainPanel extends JPanel implements ActionListener{
 		mainMenu.btnPM.addActionListener(this);
 		mainMenu.btnViews.addActionListener(this);
 		
-		CMContent pContent = new CMContent();
+		pContent = new CMContent();
 		pContent.setBackground(SystemColor.inactiveCaption);
 		pContent.setBounds(246, 0, 1268, 700);
 		add(pContent);
+		
+		pContent.pSCUIPanel.btnGoMain.addActionListener(this);
+		pContent.pCUIPanel.btnGoMain.addActionListener(this);
 	}
 	
 	   public void actionPerformed(ActionEvent e) {
@@ -57,11 +62,31 @@ public class CMMainPanel extends JPanel implements ActionListener{
 				if (e.getSource() == mainMenu.btnViews) {
 					actionPerformedBtnViews(e);
 				}
+				
+				//메인화면
+			      if (e.getSource() == pContent.pSCUIPanel.btnGoMain) {
+				         actionPerformedMainBtn(e);
+				      }
+			      
+			      if (e.getSource() == pContent.pCUIPanel.btnGoMain) {
+				         actionPerformedMainBtn(e);
+				      }
 
 
 		   }
 	   
-	   private void btnCMActionPerformed(ActionEvent e) {
+	   private void actionPerformedMainBtn(ActionEvent e) {
+		   removeAll();
+		   revalidate();
+		   repaint();
+		   setBounds(new Rectangle(0, 0, 1544, 700));
+		   EmployeeMainUIPanel emp = new EmployeeMainUIPanel();
+		   add(emp);
+		   revalidate();
+		   repaint();
+		
+	}
+	private void btnCMActionPerformed(ActionEvent e) {
 		      removeAll();
 		      revalidate();
 		      repaint();

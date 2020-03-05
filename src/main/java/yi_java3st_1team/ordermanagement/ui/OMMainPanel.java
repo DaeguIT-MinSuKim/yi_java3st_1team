@@ -1,5 +1,6 @@
 package yi_java3st_1team.ordermanagement.ui;
 
+import java.awt.GridLayout;
 import java.awt.Rectangle;
 import java.awt.SystemColor;
 import java.awt.event.ActionEvent;
@@ -62,6 +63,7 @@ public class OMMainPanel extends JPanel  implements ActionListener{
 					actionPerformedBtnViews(e);
 				}
 				
+				//메인화면
 			      if (e.getSource() == pContent.pOCheckPanel.mainBtn) {
 				         actionPerformedMainBtn(e);
 				      }

@@ -40,7 +40,7 @@ public class SupplyCompanyUIPanel extends JPanel implements ActionListener, Item
 	private JButton btnAdd;
 	private JButton btnUpdate;
 	private JButton btnDel;
-	private JButton btnGoMain;
+	public JButton btnGoMain;
 	private JButton btnDplCheck;
 	private JButton btnPostNum;
 	private JLabel lblNewLabel;

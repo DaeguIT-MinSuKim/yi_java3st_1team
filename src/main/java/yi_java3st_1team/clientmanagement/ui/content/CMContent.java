@@ -15,8 +15,8 @@ public class CMContent extends JPanel {
 	private JTabbedPane tpClientManagement;
 	private JPanel pSupplyCompany;
 	private JPanel pClient;
-	private SupplyCompanyUIPanel pSCUIPanel;
-	private ClientUIPanel pCUIPanel;
+	public SupplyCompanyUIPanel pSCUIPanel;
+	public ClientUIPanel pCUIPanel;
 
 	public CMContent() {
 

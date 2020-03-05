@@ -36,7 +36,7 @@ public class ClientUIPanel extends JPanel implements ActionListener, ItemListene
 	private JLabel lblSC;
 	private JButton btnUpdate;
 	private JButton btnDel;
-	private JButton btnGoMain;
+	public JButton btnGoMain;
 	private JButton btnDplCheck;
 	private JButton btnPostNum;
 	private JLabel lblImg;
