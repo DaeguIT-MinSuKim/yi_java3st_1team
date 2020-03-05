@@ -28,6 +28,8 @@ select * from product;
 desc supplier ;
 desc zip_code ;
 
+select p_no from product order by p_no desc limit 1;
+
 
 select s_no from supplier order by s_no desc limit 1;
 select s_no, s_name, s_bln, s_address, s_tel, s_fax from supplier;
@@ -47,6 +49,8 @@ select z_code, z_sido, z_sigungu, z_doro, z_num1, z_num2 from zip_code where z_s
 
 select * from client c ;
 select c_no, c_name, c_ceo, c_address, c_tel, c_id, c_mail, c_date, c_salesman from client where c_no=1;
+
+select * from category c2 ;
 select c_no from client order by c_no desc limit 1;
 delete from client where c_no = 56;
 
