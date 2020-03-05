@@ -32,6 +32,8 @@ import yi_java3st_1team.main.ui.content.login.LoginPanel;
 import yi_java3st_1team.main.ui.content.login.SearchPanel;
 import yi_java3st_1team.ordermanagement.ui.OMMainPanel;
 import yi_java3st_1team.productmanagement.ui.PMMainPanel;
+import yi_java3st_1team.viewsmanagement.ui.panel.MainPanel;
+import yi_java3st_1team.viewsmanagement.ui.panel.ReportMainPanel;
 
 @SuppressWarnings("serial")
 public class EmployeeMainUIPanel extends JPanel implements ActionListener {
@@ -42,7 +44,7 @@ public class EmployeeMainUIPanel extends JPanel implements ActionListener {
 	private JFrame searchFrame;
 	private LoginPanel pLogin;
 	private EmployeeLoginPanel pEmpLogin;
-	private JPanel pStop;
+	public JPanel pStop;
 	
 
 	private JPanel pBtns;
@@ -64,9 +66,28 @@ public class EmployeeMainUIPanel extends JPanel implements ActionListener {
 	private CMMainPanel pCMpanel;
 	private OMMainPanel pOMpanel;
 	private PMMainPanel pPMpanel;
+	private ReportMainPanel pViewpanel;
 	private JPanel pSbot;
 	
 	private EmployeeMainFrame empMain;
+
+	
+	public JPanel getpStop() {
+		return pStop;
+	}
+
+	public void setpStop(JPanel pStop) {
+		this.pStop = pStop;
+	}
+	
+	
+	public JPanel getpSbot() {
+		return pSbot;
+	}
+
+	public void setpSbot(JPanel pSbot) {
+		this.pSbot = pSbot;
+	}
 
 	public EmployeeMainUIPanel() {
 		initialize();
@@ -297,6 +318,8 @@ public class EmployeeMainUIPanel extends JPanel implements ActionListener {
 		pStop.add(pOMpanel, BorderLayout.WEST);
 		pStop.revalidate();
 		pStop.repaint();
+		
+		//System.out.println(pStop);
 	}
 	
 	//현황조회/보고
@@ -306,9 +329,9 @@ public class EmployeeMainUIPanel extends JPanel implements ActionListener {
 		revalidate();
 		repaint();
 		setLayout(new CardLayout(-19,0));
-		pCMpanel = new CMMainPanel();
-		pCMpanel.setPreferredSize(new Dimension(1544, 0));
-		pStop.add(pCMpanel, BorderLayout.WEST);
+		pViewpanel = new ReportMainPanel();
+		pViewpanel.setPreferredSize(new Dimension(1544, 0));
+		pStop.add(pViewpanel, BorderLayout.WEST);
 		pStop.revalidate();
 		pStop.repaint();
 	}
