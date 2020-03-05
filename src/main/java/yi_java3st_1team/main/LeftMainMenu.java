@@ -1,5 +1,6 @@
 package yi_java3st_1team.main;
 
+import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Rectangle;
@@ -138,6 +139,8 @@ public class LeftMainMenu extends JPanel implements ActionListener {
 	      setBounds(new Rectangle(0, 0, 1544, 700));
 	      CMMainPanel cmp = new CMMainPanel();
 	      add(cmp);
+	      revalidate();
+	      repaint();
 	}
 	
 	//제품관리
@@ -148,6 +151,8 @@ public class LeftMainMenu extends JPanel implements ActionListener {
 	      setBounds(new Rectangle(0, 0, 1544, 700));
 	      PMMainPanel pmp = new PMMainPanel();
 	      add(pmp);
+	      revalidate();
+	      repaint();
 	}
 	
 	//주문관리
@@ -158,12 +163,14 @@ public class LeftMainMenu extends JPanel implements ActionListener {
 	      setBounds(new Rectangle(0, 0, 1544, 700));
 	      setLayout(null);
 	      OMMainPanel omp = new OMMainPanel();
-	      add(omp);		
+	      add(omp);
+	      revalidate();
+	      repaint();
 	}
 	
 	//현황조회/보고
 	protected void actionPerformedBtnViews(ActionEvent e) {
-	     removeAll();
+		  removeAll();
 	      revalidate();
 	      repaint();
 	      setBounds(new Rectangle(0, 0, 1544, 700));
