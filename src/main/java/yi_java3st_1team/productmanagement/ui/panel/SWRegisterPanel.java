@@ -1,21 +1,33 @@
 package yi_java3st_1team.productmanagement.ui.panel;
 
-import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Font;
 import java.awt.Rectangle;
 import java.awt.SystemColor;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Date;
 
-import javax.swing.JButton;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
-import java.awt.Color;
-import javax.swing.ImageIcon;
+
+import com.toedter.calendar.JDateChooser;
+
+import yi_java3st_1team.clientmanagement.dto.Supplier;
+import yi_java3st_1team.clientmanagement.ui.panel.AbsItemPanel;
+import yi_java3st_1team.exception.InvalidCheckException;
+import yi_java3st_1team.productmanagement.dto.Category;
+import yi_java3st_1team.productmanagement.dto.Product;
 
 @SuppressWarnings("serial")
-public class SWRegisterPanel extends JPanel {
+public class SWRegisterPanel extends AbsItemPanel<Product> {
 	private JLabel lblPNo;
 	private JLabel lblPCate;
 	private JLabel lblPName;
@@ -30,9 +42,11 @@ public class SWRegisterPanel extends JPanel {
 	private JTextField tfPPrice;
 	private JTextField tfPSName;
 	private JTextField tfPQty;
-	private JTextField tfPDate;
+	private JDateChooser tfPDate;
 	private JComboBox cmbCate;
 	private JTextField tfImgSearch;
+	private String picPath;
+	
 	public SWRegisterPanel() {
 
 		initialize();
@@ -133,12 +147,12 @@ public class SWRegisterPanel extends JPanel {
 		tfPQty.setBounds(176, 304, 200, 30);
 		panel.add(tfPQty);
 		
-		tfPDate = new JTextField();
-		tfPDate.setColumns(10);
+		tfPDate = new JDateChooser(new Date(), "yyyy-MM-dd");
 		tfPDate.setBounds(176, 354, 200, 30);
 		panel.add(tfPDate);
 		
 		cmbCate = new JComboBox();
+		cmbCate.setModel(new DefaultComboBoxModel(new String[] {"선택", "사무", "개발", "전문분야", "멀티미디어", "기업업무", "서버"}));
 		cmbCate.setBounds(176, 54, 200, 30);
 		panel.add(cmbCate);
 		
@@ -159,6 +173,74 @@ public class SWRegisterPanel extends JPanel {
 		lblNewLabel.setBackground(Color.WHITE);
 		lblNewLabel.setBounds(0, 0, 400, 440);
 		panel.add(lblNewLabel);
+		
+	}
+	public void setNum(Product item) {
+		tfPNo.setText(String.format("P%04d", item.getpNo()+1));
+	}
+	
+	@Override
+	public Product getItem() {
+		int pNo = Integer.parseInt(tfPNo.getText().substring(1));
+		Category pCate = (Category) cmbCate.getSelectedItem();
+		String pName = tfPName.getText().trim();
+		int pCost = Integer.parseInt(tfPCost.getText().trim());
+		int pPrice = Integer.parseInt(tfPPrice.getText().trim());
+		Supplier pSno = new Supplier(tfPSName.getText().trim(), null, null);
+		int pQty = Integer.parseInt(tfPQty.getText().trim());
+		String pDate = tfPDate.getDateFormatString();
+		byte[] pPic = getImg(tfImgSearch.getText().trim());
+		
+		return new Product(pNo, pCate, pName, pCost, pPrice, pSno, pQty, pDate, pPic);
+	}
+	private byte[] getImg(String path) {
+		byte[] pic = null;
+		File file = new File(path);
+		try(InputStream is = new FileInputStream(file)){
+			pic = new byte[is.available()];
+			is.read(pic);
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return pic;
+	}
+	@Override
+	public void setItem(Product item) {
+		tfPNo.setText(String.format("P%04d", item.getpNo()));
+		cmbCate.setSelectedItem(item.getpCate());
+		tfPName.setText(item.getpName());
+		tfPCost.setText(String.format("%s", item.getpCost()));
+		tfPPrice.setText(String.format("%s", item.getpPic()));
+		tfPSName.setText(item.getpSno().getsName());
+		tfPQty.setText(String.format("%s", item.getpQty()));
+		tfPDate.setDateFormatString(item.getpDate());
+		if(item.getpPic()==null) {
+			tfImgSearch.setText("");
+		}else {
+			tfImgSearch.setText(item.getpPic().toString());
+		}
+		
+	}
+	@Override
+	public void clearTf() {
+		tfPNo.setText("");
+		cmbCate.setSelectedIndex(-1);;
+		tfPName.setText("");
+		tfPCost.setText("");
+		tfPPrice.setText("");
+		tfPSName.setText("");
+		tfPQty.setText("");
+		tfPDate.setDate(new Date());
+		tfImgSearch.setText("");
+	}
+	@Override
+	public void validCheck() {
+		if(tfPNo.getText().equals("")||cmbCate.getSelectedIndex()==-1||tfPName.getText().equals("")||tfPCost.getText().equals("")
+				||tfPPrice.getText().equals("")||tfPSName.getText().equals("")||tfPQty.getText().equals("")) {
+			throw new InvalidCheckException();
+		}
 		
 	}
 }

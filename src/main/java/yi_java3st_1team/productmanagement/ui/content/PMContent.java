@@ -23,12 +23,11 @@ public class PMContent extends JPanel {
 	private JPanel pSWRegister;
 	private JPanel pSCSO;
 	private JPanel pClientDelivery;
-	private SWRegisterPanel pSWRegisterPanel;
-	private SWListPanel pSWListPanel;
 	private SCSORegisterPanel pSCSORegisterPanel;
 	private SCSOListPanel pSCSOListPanel;
 	private CDRegisterPanel pCDRegisterPanel;
 	private CDListPanel pCDListPanel;
+	private SoftwareUIPanel pSWUIPanel;
 
 	public PMContent() {
 
@@ -49,17 +48,10 @@ public class PMContent extends JPanel {
 		pSWRegister.setBounds(0, 0, 100, 50);
 		pSWRegister.setBackground(SystemColor.inactiveCaptionBorder);
 		tpClientManagement.addTab("제품 등록", null, pSWRegister, null);
-		pSWRegister.setLayout(new GridLayout(0, 2, 0, 0));
+		pSWRegister.setLayout(new BorderLayout(0, 0));
 		
-		pSWRegisterPanel = new SWRegisterPanel();
-		pSWRegisterPanel.setBackground(SystemColor.inactiveCaptionBorder);
-		pSWRegister.add(pSWRegisterPanel);
-		pSWRegisterPanel.setLayout(null);
-		
-		pSWListPanel = new SWListPanel();
-		pSWListPanel.setBackground(SystemColor.inactiveCaptionBorder);
-		pSWRegister.add(pSWListPanel);
-		pSWListPanel.setLayout(null);
+		pSWUIPanel = new SoftwareUIPanel();
+		pSWRegister.add(pSWUIPanel, BorderLayout.CENTER);
 		
 		pSCSO = new JPanel();
 		pSCSO.setBounds(0, 0, 100, 50);

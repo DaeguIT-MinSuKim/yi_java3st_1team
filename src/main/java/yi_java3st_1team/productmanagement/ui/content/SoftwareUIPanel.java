@@ -10,15 +10,39 @@ import java.awt.GridLayout;
 import java.awt.SystemColor;
 
 import javax.swing.JLabel;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.BorderLayout;
 import yi_java3st_1team.productmanagement.ui.panel.SWRegisterPanel;
+import yi_java3st_1team.productmanagement.ui.service.ProductUIService;
+
+import javax.swing.JComboBox;
+import javax.swing.JTextField;
+import yi_java3st_1team.productmanagement.ui.list.SWListTblPanel;
 
 @SuppressWarnings("serial")
 public class SoftwareUIPanel extends JPanel {
+	
+	private JTextField tfSerch;
+	private ProductUIService service;
+	private SWRegisterPanel pSWRegisterPanel;
+	private JLabel lblSW;
+	private JButton btnAdd;
+	private JButton btnUpdate;
+	private JButton btnDel;
+	private JButton btnGoMain;
+	private JButton btnDplCheck;
+	private JButton btnPSCheck;
+	private JButton btnImgSearch;
+	private JLabel lblNewLabel;
+	private SWListTblPanel pSWTblPanel;
+	private JLabel lblImg;
+	private JLabel lblSWList;
+	private JButton btnSerch;
+	private JComboBox cmbCate;
 
 	public SoftwareUIPanel() {
-
+		service = new ProductUIService();;
 		initialize();
 	}
 	private void initialize() {
@@ -30,19 +54,19 @@ public class SoftwareUIPanel extends JPanel {
 		add(pRegisterPanel);
 		pRegisterPanel.setLayout(null);
 		
-		SWRegisterPanel panel = new SWRegisterPanel();
-		panel.setBounds(55, 115, 400, 440);
-		pRegisterPanel.add(panel);
-		panel.setLayout(new BorderLayout(0, 0));
+		pSWRegisterPanel = new SWRegisterPanel();
+		pSWRegisterPanel.setBounds(55, 115, 400, 440);
+		pRegisterPanel.add(pSWRegisterPanel);
+		pSWRegisterPanel.setLayout(new BorderLayout(0, 0));
 		
-		JLabel lblSW = new JLabel("소프트웨어 제품등록");
+		lblSW = new JLabel("소프트웨어 제품등록");
 		lblSW.setForeground(Color.BLACK);
 		lblSW.setFont(new Font("휴먼둥근헤드라인", Font.PLAIN, 40));
 		lblSW.setHorizontalAlignment(SwingConstants.CENTER);
 		lblSW.setBounds(0, 52, 635, 54);
 		pRegisterPanel.add(lblSW);
 		
-		JButton btnAdd = new JButton("등 록");
+		btnAdd = new JButton("등 록");
 		btnAdd.setFocusable(false);
 		btnAdd.setBackground(new Color(135, 206, 250));
 		btnAdd.setForeground(new Color(0, 102, 204));
@@ -50,7 +74,7 @@ public class SoftwareUIPanel extends JPanel {
 		btnAdd.setBounds(66, 580, 100, 30);
 		pRegisterPanel.add(btnAdd);
 		
-		JButton btnUpdate = new JButton("수 정");
+		btnUpdate = new JButton("수 정");
 		btnUpdate.setFocusable(false);
 		btnUpdate.setBackground(new Color(135, 206, 250));
 		btnUpdate.setForeground(new Color(0, 102, 204));
@@ -58,7 +82,7 @@ public class SoftwareUIPanel extends JPanel {
 		btnUpdate.setBounds(198, 580, 100, 30);
 		pRegisterPanel.add(btnUpdate);
 		
-		JButton btnDel = new JButton("삭 제");
+		btnDel = new JButton("삭 제");
 		btnDel.setFocusable(false);
 		btnDel.setBackground(new Color(135, 206, 250));
 		btnDel.setForeground(new Color(0, 102, 204));
@@ -66,7 +90,7 @@ public class SoftwareUIPanel extends JPanel {
 		btnDel.setBounds(330, 580, 100, 30);
 		pRegisterPanel.add(btnDel);
 		
-		JButton btnGoMain = new JButton("메인화면");
+		btnGoMain = new JButton("메인화면");
 		btnGoMain.setFocusable(false);
 		btnGoMain.setBackground(new Color(25, 25, 112));
 		btnGoMain.setForeground(Color.WHITE);
@@ -74,7 +98,7 @@ public class SoftwareUIPanel extends JPanel {
 		btnGoMain.setBounds(465, 580, 100, 30);
 		pRegisterPanel.add(btnGoMain);
 		
-		JButton btnDplCheck = new JButton("중복확인");
+		btnDplCheck = new JButton("중복확인");
 		btnDplCheck.setFocusable(false);
 		btnDplCheck.setFont(new Font("맑은 고딕", Font.BOLD, 16));
 		btnDplCheck.setForeground(Color.WHITE);
@@ -82,7 +106,7 @@ public class SoftwareUIPanel extends JPanel {
 		btnDplCheck.setBounds(465, 220, 100, 30);
 		pRegisterPanel.add(btnDplCheck);
 		
-		JButton btnPSCheck = new JButton("조 회");
+		btnPSCheck = new JButton("조 회");
 		btnPSCheck.setFocusable(false);
 		btnPSCheck.setBackground(SystemColor.activeCaptionBorder);
 		btnPSCheck.setForeground(Color.WHITE);
@@ -90,7 +114,7 @@ public class SoftwareUIPanel extends JPanel {
 		btnPSCheck.setBounds(465, 370, 100, 30);
 		pRegisterPanel.add(btnPSCheck);
 		
-		JButton btnImgSearch = new JButton("검 색");
+		btnImgSearch = new JButton("검 색");
 		btnImgSearch.setFocusable(false);
 		btnImgSearch.setBackground(SystemColor.activeCaptionBorder);
 		btnImgSearch.setForeground(Color.WHITE);
@@ -98,14 +122,49 @@ public class SoftwareUIPanel extends JPanel {
 		btnImgSearch.setBounds(465, 520, 100, 30);
 		pRegisterPanel.add(btnImgSearch);
 		
-		JLabel lblNewLabel = new JLabel("");
+		lblNewLabel = new JLabel("");
 		lblNewLabel.setOpaque(true);
 		lblNewLabel.setBackground(Color.WHITE);
 		lblNewLabel.setBounds(455, 115, 124, 440);
 		pRegisterPanel.add(lblNewLabel);
 		
 		JPanel pListPanel = new JPanel();
+		pListPanel.setBackground(SystemColor.inactiveCaptionBorder);
 		add(pListPanel);
 		pListPanel.setLayout(null);
+		
+		pSWTblPanel = new SWListTblPanel();
+		pSWTblPanel.setBounds(22, 125, 590, 510);
+		pSWTblPanel.loadDate(service.showProductList());
+		pListPanel.add(pSWTblPanel);
+		
+		lblImg = new JLabel("");
+		lblImg.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\etc\\list.png"));
+		lblImg.setBounds(22, 60, 40, 40);
+		pListPanel.add(lblImg);
+		
+		lblSWList = new JLabel("소프트웨어 LIST");
+		lblSWList.setForeground(Color.BLACK);
+		lblSWList.setFont(new Font("휴먼둥근헤드라인", Font.PLAIN, 20));
+		lblSWList.setHorizontalAlignment(SwingConstants.CENTER);
+		lblSWList.setBounds(72, 60, 170, 40);
+		pListPanel.add(lblSWList);
+		
+		JComboBox cmbCate = new JComboBox();
+		cmbCate.setBounds(252, 65, 120, 30);
+		pListPanel.add(cmbCate);
+		
+		tfSerch = new JTextField();
+		tfSerch.setColumns(10);
+		tfSerch.setBounds(392, 65, 130, 30);
+		pListPanel.add(tfSerch);
+		
+		btnSerch = new JButton("검색");
+		btnSerch.setFocusable(false);
+		btnSerch.setBackground(new Color(135, 206, 250));
+		btnSerch.setForeground(Color.WHITE);
+		btnSerch.setFont(new Font("맑은 고딕", Font.BOLD, 16));
+		btnSerch.setBounds(542, 65, 70, 30);
+		pListPanel.add(btnSerch);
 	}
 }
