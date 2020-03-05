@@ -31,33 +31,6 @@ public class LeftMainMenu extends JPanel implements ActionListener {
 	private JLabel lblViews;
 	private JLabel lblWhite;
 	
-
-
-	public JButton getBtnCM() {
-		return btnCM;
-	}
-	public void setBtnCM(JButton btnCM) {
-		this.btnCM = btnCM;
-	}
-	public JButton getBtnPM() {
-		return btnPM;
-	}
-	public void setBtnPM(JButton btnPM) {
-		this.btnPM = btnPM;
-	}
-	public JButton getBtnOM() {
-		return btnOM;
-	}
-	public void setBtnOM(JButton btnOM) {
-		this.btnOM = btnOM;
-	}
-	public JButton getBtnViews() {
-		return btnViews;
-	}
-	public void setBtnViews(JButton btnViews) {
-		this.btnViews = btnViews;
-	}
-	
 	public LeftMainMenu() {
 
 		initialize();
