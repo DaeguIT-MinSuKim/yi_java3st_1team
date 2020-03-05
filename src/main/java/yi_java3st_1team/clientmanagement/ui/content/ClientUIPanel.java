@@ -195,6 +195,7 @@ public class ClientUIPanel extends JPanel implements ActionListener, ItemListene
 				Client delclient = pCTblPanel.getSelectedItem();
 				service.removeClient(delclient);
 				pCTblPanel.removeRow();
+				pCTblPanel.loadDate(service.showClientList());
 			}
 		}
 	};

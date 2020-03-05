@@ -1,6 +1,7 @@
 package yi_java3st_1team.productmanagement.ui.content;
 
 import javax.swing.JPanel;
+import javax.swing.JPopupMenu;
 import javax.swing.SwingConstants;
 
 import java.awt.Color;
@@ -8,8 +9,11 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.SystemColor;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JLabel;
+import javax.swing.JMenuItem;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.BorderLayout;
@@ -18,6 +22,9 @@ import yi_java3st_1team.productmanagement.ui.service.ProductUIService;
 
 import javax.swing.JComboBox;
 import javax.swing.JTextField;
+
+import yi_java3st_1team.clientmanagement.dto.Client;
+import yi_java3st_1team.productmanagement.dto.Product;
 import yi_java3st_1team.productmanagement.ui.list.SWListTblPanel;
 
 @SuppressWarnings("serial")
@@ -56,8 +63,9 @@ public class SoftwareUIPanel extends JPanel {
 		
 		pSWRegisterPanel = new SWRegisterPanel();
 		pSWRegisterPanel.setBounds(55, 115, 400, 440);
+		pSWRegisterPanel.setNum(service.lastProduct());
+		pSWRegisterPanel.setService(service);
 		pRegisterPanel.add(pSWRegisterPanel);
-		pSWRegisterPanel.setLayout(new BorderLayout(0, 0));
 		
 		lblSW = new JLabel("소프트웨어 제품등록");
 		lblSW.setForeground(Color.BLACK);
@@ -136,6 +144,7 @@ public class SoftwareUIPanel extends JPanel {
 		pSWTblPanel = new SWListTblPanel();
 		pSWTblPanel.setBounds(22, 125, 590, 510);
 		pSWTblPanel.loadDate(service.showProductList());
+		pSWTblPanel.setPopupMenu(createPopupMenu());
 		pListPanel.add(pSWTblPanel);
 		
 		lblImg = new JLabel("");
@@ -167,4 +176,35 @@ public class SoftwareUIPanel extends JPanel {
 		btnSerch.setBounds(542, 65, 70, 30);
 		pListPanel.add(btnSerch);
 	}
+	private JPopupMenu createPopupMenu() {
+		JPopupMenu popMenu = new JPopupMenu();
+		
+		JMenuItem updateItem = new JMenuItem("수정");
+		updateItem.addActionListener(myPopupMenuListener);
+		popMenu.add(updateItem);
+		
+		JMenuItem deleteItem = new JMenuItem("삭제");
+		deleteItem.addActionListener(myPopupMenuListener);
+		popMenu.add(deleteItem);
+		
+		return popMenu;
+	}
+	
+	ActionListener myPopupMenuListener = new ActionListener() {
+		
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			if(e.getActionCommand().equals("수정")) {
+				Product upProduct = pSWTblPanel.getSelectedItem();
+				System.out.println(upProduct);
+				pSWRegisterPanel.setItem(upProduct);
+			}
+			if(e.getActionCommand().equals("삭제")) {
+				Product delProduct = pSWTblPanel.getSelectedItem();
+				service.removeProduct(delProduct);
+				pSWTblPanel.removeRow();
+			}
+			
+		}
+	};
 }

@@ -4,12 +4,16 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.Rectangle;
 import java.awt.SystemColor;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Date;
+import java.util.List;
+import java.util.Vector;
 
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JComboBox;
@@ -25,9 +29,10 @@ import yi_java3st_1team.clientmanagement.ui.panel.AbsItemPanel;
 import yi_java3st_1team.exception.InvalidCheckException;
 import yi_java3st_1team.productmanagement.dto.Category;
 import yi_java3st_1team.productmanagement.dto.Product;
+import yi_java3st_1team.productmanagement.ui.service.ProductUIService;
 
 @SuppressWarnings("serial")
-public class SWRegisterPanel extends AbsItemPanel<Product> {
+public class SWRegisterPanel extends AbsItemPanel<Product> implements ItemListener {
 	private JLabel lblPNo;
 	private JLabel lblPCate;
 	private JLabel lblPName;
@@ -43,14 +48,16 @@ public class SWRegisterPanel extends AbsItemPanel<Product> {
 	private JTextField tfPSName;
 	private JTextField tfPQty;
 	private JDateChooser tfPDate;
-	private JComboBox cmbCate;
+	private JComboBox<Category> cmbCate;
 	private JTextField tfImgSearch;
 	private String picPath;
+	private ProductUIService service;
 	
 	public SWRegisterPanel() {
-
+		service = new ProductUIService();
 		initialize();
 	}
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	private void initialize() {
 		setBounds(new Rectangle(0, 0, 635, 700));
 		setLayout(null);
@@ -118,6 +125,7 @@ public class SWRegisterPanel extends AbsItemPanel<Product> {
 		panel.add(lblPDate);
 		
 		tfPNo = new JTextField();
+		tfPNo.setEditable(false);
 		tfPNo.setBounds(176, 4, 200, 30);
 		panel.add(tfPNo);
 		tfPNo.setColumns(10);
@@ -152,7 +160,7 @@ public class SWRegisterPanel extends AbsItemPanel<Product> {
 		panel.add(tfPDate);
 		
 		cmbCate = new JComboBox();
-		cmbCate.setModel(new DefaultComboBoxModel(new String[] {"선택", "사무", "개발", "전문분야", "멀티미디어", "기업업무", "서버"}));
+		cmbCate.addItemListener(this);
 		cmbCate.setBounds(176, 54, 200, 30);
 		panel.add(cmbCate);
 		
@@ -175,6 +183,30 @@ public class SWRegisterPanel extends AbsItemPanel<Product> {
 		panel.add(lblNewLabel);
 		
 	}
+	
+	public void setService(ProductUIService service) {
+		this.service = service;
+		setCmbCateList(service.showCategoryList());
+	}
+	
+	private void setCmbCateList(List<Category> showCategoryList) {
+		DefaultComboBoxModel<Category> model = new DefaultComboBoxModel<Category>(new Vector<>(showCategoryList));
+		cmbCate.setModel(model);
+		cmbCate.setSelectedIndex(-1);
+		
+	}
+	
+	public void itemStateChanged(ItemEvent e) {
+		if (e.getSource() == cmbCate) {
+			cmbCateItemStateChanged(e);
+		}
+	}
+	protected void cmbCateItemStateChanged(ItemEvent e) {
+		if(e.getStateChange() == ItemEvent.SELECTED) {
+			
+		}
+	}
+	
 	public void setNum(Product item) {
 		tfPNo.setText(String.format("P%04d", item.getpNo()+1));
 	}
@@ -211,8 +243,8 @@ public class SWRegisterPanel extends AbsItemPanel<Product> {
 		tfPNo.setText(String.format("P%04d", item.getpNo()));
 		cmbCate.setSelectedItem(item.getpCate());
 		tfPName.setText(item.getpName());
-		tfPCost.setText(String.format("%s", item.getpCost()));
-		tfPPrice.setText(String.format("%s", item.getpPic()));
+		tfPCost.setText(String.format("%,d원", item.getpCost()));
+		tfPPrice.setText(String.format("%,d원", item.getpPrice()));
 		tfPSName.setText(item.getpSno().getsName());
 		tfPQty.setText(String.format("%s", item.getpQty()));
 		tfPDate.setDateFormatString(item.getpDate());
@@ -223,6 +255,7 @@ public class SWRegisterPanel extends AbsItemPanel<Product> {
 		}
 		
 	}
+
 	@Override
 	public void clearTf() {
 		tfPNo.setText("");
@@ -243,4 +276,5 @@ public class SWRegisterPanel extends AbsItemPanel<Product> {
 		}
 		
 	}
+	
 }
