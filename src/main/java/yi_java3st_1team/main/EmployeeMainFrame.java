@@ -73,9 +73,9 @@ public class EmployeeMainFrame extends JFrame {
 		lblLogo.setPreferredSize(new Dimension(300, 120));
 		pHeader.add(lblLogo);
 		
-		JButton btnlogout = new JButton("로그아웃");
-		btnlogout.setBounds(1376, 10, 135, 100);
-		pHeader.add(btnlogout);
+//		JButton btnlogout = new JButton("로그아웃");
+//		btnlogout.setBounds(1376, 10, 135, 100);
+//		pHeader.add(btnlogout);
 		
 		//section
 		pSection = new JPanel();
@@ -88,6 +88,7 @@ public class EmployeeMainFrame extends JFrame {
 		pSection.add(pContents);
 		
 		
+		//footer
 		pFooter = new JPanel();
 		pFooter.setBackground(SystemColor.inactiveCaption);
 		pFooter.setPreferredSize(new Dimension(1150, 30));

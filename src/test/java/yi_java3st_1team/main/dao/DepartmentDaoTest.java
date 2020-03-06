@@ -52,22 +52,27 @@ public class DepartmentDaoTest {
 	@Test
 	public void test03InsertDepartment() {
 		LogUtil.prnLog(Thread.currentThread().getStackTrace()[1].getMethodName()+"()");
-		int res = dao.insertDepartment(new Department("구매부", 100));
-		Assert.assertEquals(1, res);
-		for(Department d : dao.selectDepartmentByAll()) LogUtil.prnLog(d);
+//		int res = dao.insertDepartment(new Department("구매부", 100));
+//		Assert.assertEquals(1, res);
+//		for(Department d : dao.selectDepartmentByAll()) LogUtil.prnLog(d);
 
 	}
 
 	@Test
 	public void test04UpdateDepartment() {
 		LogUtil.prnLog(Thread.currentThread().getStackTrace()[1].getMethodName()+"()");
+//		Department dept = new Department(11,"구매부1", 100);
+//		int res = dao.updateDepartment(dept);
+//		Assert.assertEquals(1, res);
 
 	}
 
 	@Test
 	public void test05DeleteDepartment() {
 		LogUtil.prnLog(Thread.currentThread().getStackTrace()[1].getMethodName()+"()");
-
+//		Department dept = new Department(18);
+//		int res = dao.deleteDepartment(dept);
+//		Assert.assertEquals(1, res);
 	}
 
 }

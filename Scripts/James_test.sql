@@ -2,6 +2,9 @@ select user(), database();
 
 select * from employee;
 
+desc employee;
+select * from department;
+
 select * from client;
 select * from department;
 

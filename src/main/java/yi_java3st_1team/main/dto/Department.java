@@ -1,9 +1,9 @@
 package yi_java3st_1team.main.dto;
 
 public class Department {
-	private int deptNo;
-	private String deptName;
-	private int floor;
+	private int deptNo; // 1
+	private String deptName; // 기획총무부
+	private int floor; // 15
 
 	public Department() {
 	}

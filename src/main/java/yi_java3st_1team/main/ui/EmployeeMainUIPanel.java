@@ -257,8 +257,6 @@ public class EmployeeMainUIPanel extends JPanel implements ActionListener {
 		
 		//관리자(대리~인턴) 로그인시 현황조회&보고서 버튼 비활성화
 		//btn04.setEnabled(false);
-		
-		
 	}
 	
 	//거래처 관리 클릭 : CMMainPanel

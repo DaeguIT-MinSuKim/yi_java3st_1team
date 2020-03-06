@@ -1,14 +1,14 @@
 package yi_java3st_1team.main.dto;
 
 public class Employee {
-	private int empNo;
-	private String empName;
-	private Department dNo;
-	private String empTitle;
-	private int empManager;
-	private String empId;
-	private String empPass;
-	private String empMail;
+	private int empNo; //1
+	private String empName; //현재승
+	private Department dNo; //1 -> 기획총무부
+	private String empTitle; //대표이사
+	private int empManager; // null, 1, 2
+	private String empId; // hceo1004
+	private String empPass; // Jason1234!@
+	private String empMail; //airplant@naver.com
 
 	public Employee() {
 	}
@@ -25,6 +25,17 @@ public class Employee {
 	public Employee(int empNo, String empName, Department dNo, String empTitle, int empManager, String empId, String empPass,
 			String empMail) {
 		this.empNo = empNo;
+		this.empName = empName;
+		this.dNo = dNo;
+		this.empTitle = empTitle;
+		this.empManager = empManager;
+		this.empId = empId;
+		this.empPass = empPass;
+		this.empMail = empMail;
+	}
+
+	public Employee(String empName, Department dNo, String empTitle, int empManager, String empId, String empPass,
+			String empMail) {
 		this.empName = empName;
 		this.dNo = dNo;
 		this.empTitle = empTitle;
