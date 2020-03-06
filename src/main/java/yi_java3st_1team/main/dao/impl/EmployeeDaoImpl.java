@@ -158,6 +158,26 @@ public class EmployeeDaoImpl implements EmployeeDao {
 		return 0;
 	}
 
+	//로그인
+	@Override
+	public Employee loginEmployee(Employee emp) {
+		String sql = "select e_no, e_name, e_dept, e_title, e_manager, e_id, e_pw, e_mail from employee where e_id = ? and e_pw = ?";
+		try(Connection con = MySqlDataSource.getConnection();
+				PreparedStatement pstmt = con.prepareStatement(sql)){
+			pstmt.setString(1, emp.getEmpId());
+			pstmt.setString(2, emp.getEmpPass());
+			LogUtil.prnLog(pstmt);
+			try(ResultSet rs = pstmt.executeQuery()){
+				if(rs.next()) {
+					return getEmployee(rs);
+				}
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
 
 
 }

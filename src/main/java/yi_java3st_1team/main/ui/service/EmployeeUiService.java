@@ -42,4 +42,8 @@ public class EmployeeUiService {
 		empDao.deleteEmployee(emp);
 	}
 	
+	public Employee login(Employee emp) {
+		return empDao.loginEmployee(emp);
+	}
+	
 }

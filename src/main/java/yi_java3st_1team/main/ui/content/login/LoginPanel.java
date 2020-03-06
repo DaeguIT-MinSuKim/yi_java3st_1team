@@ -13,7 +13,7 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
 @SuppressWarnings("serial")
-public class LoginPanel extends JPanel implements ActionListener {
+public class LoginPanel extends JPanel {
 	private JTextField tfId;
 	private JPasswordField pfPasswd;
 
@@ -61,7 +61,5 @@ public class LoginPanel extends JPanel implements ActionListener {
 		pfPasswd.setFont(new Font("굴림", Font.PLAIN, 17));
 		pfPasswd.setBounds(180, 160, 151, 48);
 		add(pfPasswd);
-	}
-	public void actionPerformed(ActionEvent e) {
 	}
 }

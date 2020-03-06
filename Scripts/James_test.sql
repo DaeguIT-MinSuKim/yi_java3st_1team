@@ -39,3 +39,6 @@ select d_no, d_name, d_floor from department where d_no = 1;
 
 -- 마지막 번호 구하기
 select e_no from employee order by e_no desc limit 1;
+
+-- 로그인
+select e_no, e_name, e_dept, e_title, e_manager, e_id, e_pw, e_mail from employee where e_id = 'sujinzzing' and e_pw = 'Jane1234!@';
