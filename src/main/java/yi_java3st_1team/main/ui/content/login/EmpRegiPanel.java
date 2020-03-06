@@ -19,8 +19,13 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
+import yi_java3st_1team.main.dto.Department;
+import yi_java3st_1team.main.dto.Employee;
+import javax.swing.JRadioButton;
+import javax.swing.BoxLayout;
+
 @SuppressWarnings("serial")
-public class EmpRegiPanel<T> extends AbsRegiPanel<T> implements ActionListener {
+public class EmpRegiPanel extends AbsRegiPanel<Employee> implements ActionListener {
 	private JTextField tfNo;
 	private JTextField tfName;
 	private JTextField tfId;
@@ -98,6 +103,11 @@ public class EmpRegiPanel<T> extends AbsRegiPanel<T> implements ActionListener {
 		lblId.setForeground(Color.BLACK);
 		lblId.setFont(new Font("휴먼둥근헤드라인", Font.PLAIN, 13));
 		pName.add(lblId);
+		
+		JLabel lblmanager = new JLabel("직 속 상 사  ");
+		lblmanager.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblmanager.setFont(new Font("휴먼둥근헤드라인", Font.PLAIN, 13));
+		pName.add(lblmanager);
 
 		JLabel lblPass1 = new JLabel("비 밀 번 호  ");
 		lblPass1.setHorizontalAlignment(SwingConstants.RIGHT);
@@ -144,6 +154,25 @@ public class EmpRegiPanel<T> extends AbsRegiPanel<T> implements ActionListener {
 		tfId = new JTextField();
 		tfId.setColumns(10);
 		pInput.add(tfId);
+		
+		JPanel pmanager = new JPanel();
+		pmanager.setBackground(Color.WHITE);
+		pInput.add(pmanager);
+		pmanager.setLayout(new BorderLayout(0, 0));
+		
+		JRadioButton rdbtnManager1 = new JRadioButton("대표이사");
+		rdbtnManager1.setBackground(SystemColor.inactiveCaptionBorder);
+		rdbtnManager1.setFont(new Font("굴림", Font.BOLD, 12));
+		rdbtnManager1.setForeground(Color.BLACK);
+		rdbtnManager1.setHorizontalAlignment(SwingConstants.CENTER);
+		pmanager.add(rdbtnManager1, BorderLayout.WEST);
+		
+		JRadioButton rdbtnManager2 = new JRadioButton("경영관리이사");
+		rdbtnManager2.setBackground(SystemColor.inactiveCaptionBorder);
+		rdbtnManager2.setForeground(Color.BLACK);
+		rdbtnManager2.setFont(new Font("굴림", Font.BOLD, 12));
+		rdbtnManager2.setHorizontalAlignment(SwingConstants.CENTER);
+		pmanager.add(rdbtnManager2, BorderLayout.CENTER);
 
 		passFd1 = new JPasswordField();
 		pInput.add(passFd1);
@@ -212,15 +241,22 @@ public class EmpRegiPanel<T> extends AbsRegiPanel<T> implements ActionListener {
 	}
 
 	@Override
-	public T getItem() {
+	public Employee getItem() {
 		int empNo = Integer.parseInt(tfNo.getText().substring(4)); // EA001 , EA
 		String empName = tfName.getText().trim();
-		// Department dNo = (Department) deptCombo.getSelectedItem();
-		String title = (String) titleCombo.getSelectedItem();
+		Department dNo = (Department) deptCombo.getSelectedItem();
+		String empTitle = (String) titleCombo.getSelectedItem();
+		int empManager = Integer.parseInt(s);
 		String empId = tfId.getText().trim();
 		String empPass = new String(passFd1.getPassword());
 		String empMail = tfMail.getText().trim();
-		return null; // new Employee (empNo, empName, dNo, title, empId, empPass, empMail);
+		return new Employee(empNo, empName, dNo, empTitle, empManager, empId, empPass, empMail);
+	}
+	
+	@Override
+	public void setItem(Employee item) {
+		// TODO Auto-generated method stub
+		
 	}
 
 	@Override
@@ -270,26 +306,4 @@ public class EmpRegiPanel<T> extends AbsRegiPanel<T> implements ActionListener {
 	protected void actionPerformedDoubleCheck2(ActionEvent e) {
 		JOptionPane.showMessageDialog(null, "등록된 ID 입니다.", "중복 알림",JOptionPane.WARNING_MESSAGE);
 	}
-
-
-//		String pw1 = "";
-//		String pw2 = "";
-//		
-//		char[] secretPass1 = passFd1.getPassword();
-//		char[] secretPass2 = passFd2.getPassword();
-//		
-//		for(char c1:secretPass1) {
-//			Character.toString(c1);
-//			pw1 += (pw1.equals(""))?""+c1+"":""+c1+"";
-//		}
-//		
-//		for(char c2:secretPass2) {
-//			Character.toString(c2);
-//			pw2 += (pw2.equals(""))?""+c2+"":""+c2+"";
-//		}
-//		
-//		if(pw1.equals(pw2)) {
-//			System.out.println(1);
-//		}
-	
 }
