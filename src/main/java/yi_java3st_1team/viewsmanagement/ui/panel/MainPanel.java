@@ -147,7 +147,8 @@ public class MainPanel extends JPanel implements ActionListener {
 		ClientSaleUIPanel cs = new ClientSaleUIPanel();
 		frame.getContentPane().add(cs);
 		frame.setVisible(true);
-		frame.setResizable(false);
+		frame.setResizable(false);//사이즈막음
+		frame.setLocationRelativeTo(null);//모니터정중앙에 프레임 뜨도록
 	}
 	protected void btn02ActionPerformed(ActionEvent e) {
 		JFrame frame = new JFrame();
@@ -156,6 +157,7 @@ public class MainPanel extends JPanel implements ActionListener {
 		frame.getContentPane().add(cs);
 		frame.setVisible(true);
 		frame.setResizable(false);
+		frame.setLocationRelativeTo(null);
 	}
 	protected void btn03ActionPerformed(ActionEvent e) {
 		JFrame frame = new JFrame();
@@ -164,6 +166,7 @@ public class MainPanel extends JPanel implements ActionListener {
 		frame.getContentPane().add(cs);
 		frame.setVisible(true);
 		frame.setResizable(false);
+		frame.setLocationRelativeTo(null);
 	}
 	protected void btn04ActionPerformed(ActionEvent e) {
 		JFrame frame = new JFrame();
@@ -172,6 +175,7 @@ public class MainPanel extends JPanel implements ActionListener {
 		frame.getContentPane().add(cs);
 		frame.setVisible(true);
 		frame.setResizable(false);
+		frame.setLocationRelativeTo(null);
 	}
 	protected void btn05ActionPerformed(ActionEvent e) {
 		JFrame frame = new JFrame();
@@ -180,6 +184,7 @@ public class MainPanel extends JPanel implements ActionListener {
 		frame.getContentPane().add(cs);
 		frame.setVisible(true);
 		frame.setResizable(false);
+		frame.setLocationRelativeTo(null);
 	}
 	protected void btn06ActionPerformed(ActionEvent e) {
 		JFrame frame = new JFrame();
@@ -188,5 +193,6 @@ public class MainPanel extends JPanel implements ActionListener {
 		frame.getContentPane().add(cs);
 		frame.setVisible(true);
 		frame.setResizable(false);
+		frame.setLocationRelativeTo(null);
 	}
 }
