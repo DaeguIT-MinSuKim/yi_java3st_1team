@@ -3,6 +3,7 @@ package yi_java3st_1team.productmanagement.ui.content;
 import javax.swing.JPanel;
 import javax.swing.JPopupMenu;
 import javax.swing.SwingConstants;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -11,9 +12,11 @@ import java.awt.GridLayout;
 import java.awt.SystemColor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 
 import javax.swing.JLabel;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.BorderLayout;
@@ -21,18 +24,27 @@ import yi_java3st_1team.productmanagement.ui.panel.SWRegisterPanel;
 import yi_java3st_1team.productmanagement.ui.service.ProductUIService;
 
 import javax.swing.JComboBox;
+import javax.swing.JFileChooser;
 import javax.swing.JTextField;
 
 import yi_java3st_1team.clientmanagement.dto.Client;
+import yi_java3st_1team.clientmanagement.dto.Supplier;
+import yi_java3st_1team.clientmanagement.ui.service.SupplierUIService;
+import yi_java3st_1team.exception.InvalidCheckException;
+import yi_java3st_1team.productmanagement.dto.Category;
 import yi_java3st_1team.productmanagement.dto.Product;
 import yi_java3st_1team.productmanagement.ui.list.SWListTblPanel;
+import javax.swing.DefaultComboBoxModel;
+import java.awt.event.ItemListener;
+import java.awt.event.ItemEvent;
 
 @SuppressWarnings("serial")
-public class SoftwareUIPanel extends JPanel {
+public class SoftwareUIPanel extends JPanel implements ActionListener, ItemListener {
 	
 	private JTextField tfSerch;
 	private ProductUIService service;
-	private SWRegisterPanel pSWRegisterPanel;
+	private SupplierUIService serviceSupplier;
+	private SWRegisterPanel pSWRPanel;
 	private JLabel lblSW;
 	private JButton btnAdd;
 	private JButton btnUpdate;
@@ -47,9 +59,12 @@ public class SoftwareUIPanel extends JPanel {
 	private JLabel lblSWList;
 	private JButton btnSerch;
 	private JComboBox cmbCate;
+	private String picPath;
+	private String selectItem;
 
 	public SoftwareUIPanel() {
-		service = new ProductUIService();;
+		service = new ProductUIService();
+		serviceSupplier = new SupplierUIService();
 		initialize();
 	}
 	private void initialize() {
@@ -61,11 +76,11 @@ public class SoftwareUIPanel extends JPanel {
 		add(pRegisterPanel);
 		pRegisterPanel.setLayout(null);
 		
-		pSWRegisterPanel = new SWRegisterPanel();
-		pSWRegisterPanel.setBounds(55, 115, 400, 440);
-		pSWRegisterPanel.setNum(service.lastProduct());
-		pSWRegisterPanel.setService(service);
-		pRegisterPanel.add(pSWRegisterPanel);
+		pSWRPanel = new SWRegisterPanel();
+		pSWRPanel.setBounds(55, 115, 400, 440);
+		pSWRPanel.setNum(service.lastProduct());
+		pSWRPanel.setService(service);
+		pRegisterPanel.add(pSWRPanel);
 		
 		lblSW = new JLabel("소프트웨어 제품등록");
 		lblSW.setForeground(Color.BLACK);
@@ -75,6 +90,7 @@ public class SoftwareUIPanel extends JPanel {
 		pRegisterPanel.add(lblSW);
 		
 		btnAdd = new JButton("등 록");
+		btnAdd.addActionListener(this);
 		btnAdd.setFocusable(false);
 		btnAdd.setBackground(new Color(135, 206, 250));
 		btnAdd.setForeground(new Color(0, 102, 204));
@@ -83,6 +99,7 @@ public class SoftwareUIPanel extends JPanel {
 		pRegisterPanel.add(btnAdd);
 		
 		btnUpdate = new JButton("수 정");
+		btnUpdate.addActionListener(this);
 		btnUpdate.setFocusable(false);
 		btnUpdate.setBackground(new Color(135, 206, 250));
 		btnUpdate.setForeground(new Color(0, 102, 204));
@@ -90,7 +107,8 @@ public class SoftwareUIPanel extends JPanel {
 		btnUpdate.setBounds(198, 580, 100, 30);
 		pRegisterPanel.add(btnUpdate);
 		
-		btnDel = new JButton("삭 제");
+		btnDel = new JButton("취 소");
+		btnDel.addActionListener(this);
 		btnDel.setFocusable(false);
 		btnDel.setBackground(new Color(135, 206, 250));
 		btnDel.setForeground(new Color(0, 102, 204));
@@ -107,6 +125,7 @@ public class SoftwareUIPanel extends JPanel {
 		pRegisterPanel.add(btnGoMain);
 		
 		btnDplCheck = new JButton("중복확인");
+		btnDplCheck.addActionListener(this);
 		btnDplCheck.setFocusable(false);
 		btnDplCheck.setFont(new Font("맑은 고딕", Font.BOLD, 16));
 		btnDplCheck.setForeground(Color.WHITE);
@@ -115,6 +134,7 @@ public class SoftwareUIPanel extends JPanel {
 		pRegisterPanel.add(btnDplCheck);
 		
 		btnPSCheck = new JButton("조 회");
+		btnPSCheck.addActionListener(this);
 		btnPSCheck.setFocusable(false);
 		btnPSCheck.setBackground(SystemColor.activeCaptionBorder);
 		btnPSCheck.setForeground(Color.WHITE);
@@ -123,6 +143,7 @@ public class SoftwareUIPanel extends JPanel {
 		pRegisterPanel.add(btnPSCheck);
 		
 		btnImgSearch = new JButton("검 색");
+		btnImgSearch.addActionListener(this);
 		btnImgSearch.setFocusable(false);
 		btnImgSearch.setBackground(SystemColor.activeCaptionBorder);
 		btnImgSearch.setForeground(Color.WHITE);
@@ -159,7 +180,9 @@ public class SoftwareUIPanel extends JPanel {
 		lblSWList.setBounds(72, 60, 170, 40);
 		pListPanel.add(lblSWList);
 		
-		JComboBox cmbCate = new JComboBox();
+		cmbCate = new JComboBox();
+		cmbCate.addItemListener(this);
+		cmbCate.setModel(new DefaultComboBoxModel(new String[] {"선택", "전체", "품목명", "분류명", "공급회사명"}));
 		cmbCate.setBounds(252, 65, 120, 30);
 		pListPanel.add(cmbCate);
 		
@@ -169,6 +192,7 @@ public class SoftwareUIPanel extends JPanel {
 		pListPanel.add(tfSerch);
 		
 		btnSerch = new JButton("검색");
+		btnSerch.addActionListener(this);
 		btnSerch.setFocusable(false);
 		btnSerch.setBackground(new Color(135, 206, 250));
 		btnSerch.setForeground(Color.WHITE);
@@ -196,8 +220,7 @@ public class SoftwareUIPanel extends JPanel {
 		public void actionPerformed(ActionEvent e) {
 			if(e.getActionCommand().equals("수정")) {
 				Product upProduct = pSWTblPanel.getSelectedItem();
-				System.out.println(upProduct);
-				pSWRegisterPanel.setItem(upProduct);
+				pSWRPanel.setItem(upProduct);
 			}
 			if(e.getActionCommand().equals("삭제")) {
 				Product delProduct = pSWTblPanel.getSelectedItem();
@@ -207,4 +230,167 @@ public class SoftwareUIPanel extends JPanel {
 			
 		}
 	};
+	
+	public void actionPerformed(ActionEvent e) {
+		if (e.getSource() == btnSerch) {
+			btnSerchActionPerformed(e);
+		}
+		if (e.getSource() == btnUpdate) {
+			btnUpdateActionPerformed(e);
+		}
+		if (e.getSource() == btnAdd) {
+			btnAddActionPerformed(e);
+		}
+		if (e.getSource() == btnImgSearch) {
+			btnImgSearchActionPerformed(e);
+		}
+		if (e.getSource() == btnPSCheck) {
+			btnPSCheckActionPerformed(e);
+		}
+		if (e.getSource() == btnDel) {
+			btnDelActionPerformed(e);
+		}
+		if (e.getSource() == btnDplCheck) {
+			btnDplCheckActionPerformed(e);
+		}
+	}
+	protected void btnDplCheckActionPerformed(ActionEvent e) {
+		if(pSWRPanel.tfPName.getText().equals("")) {
+			JOptionPane.showMessageDialog(null, "품목명을 입력해주세요.");
+		}else {
+			Product overlapProduct = pSWRPanel.getItem1();
+			Product product = service.overlapProduct(overlapProduct);
+			if(product == null) {
+				JOptionPane.showMessageDialog(null, "등록 가능한 상품명입니다.");
+			}else {
+				JOptionPane.showMessageDialog(null, "이미 존재하는 상품명입니다.");
+			}
+		}
+	}
+	protected void btnDelActionPerformed(ActionEvent e) {
+		pSWRPanel.clearTf();
+		pSWRPanel.setNum(service.lastProduct());
+		
+	}
+	protected void btnPSCheckActionPerformed(ActionEvent e) {
+		if(pSWRPanel.tfPSName.getText().equals("")) {
+			JOptionPane.showMessageDialog(null, "공급회사명을 입력해주세요.");
+		}else {
+			String supplierName = pSWRPanel.getTfPSName().getText().trim();
+			Supplier supplier = new Supplier(supplierName, null, null);
+			Supplier checkSupp = serviceSupplier.overlapSupplier(supplier);
+			if(checkSupp == null) {
+				JOptionPane.showMessageDialog(null, "공급회사 등록이 필요합니다.");
+			}else {
+				JOptionPane.showMessageDialog(null, "등록된 공급회사입니다.");
+			}
+		}
+	}
+	protected void btnImgSearchActionPerformed(ActionEvent e) {
+		JFileChooser chooser = new JFileChooser(System.getProperty("user.dir")+"\\document\\sample_data\\software_images");
+		FileNameExtensionFilter filter = new FileNameExtensionFilter("JPG or PNG or GIF", "jpg","png","gif");
+		chooser.setFileFilter(filter);
+		
+		int res = chooser.showOpenDialog(null);
+		if(res != JFileChooser.APPROVE_OPTION) {
+			JOptionPane.showMessageDialog(null, "파일을 선택하지 않았습니다.","경고",JOptionPane.WARNING_MESSAGE);
+			return;
+		}
+		picPath = chooser.getSelectedFile().getPath();
+		pSWRPanel.tfImgSearch.setText(picPath);
+	}
+	protected void btnAddActionPerformed(ActionEvent e) {
+		try {
+			if(pSWRPanel.tfPName.getText().equals("") 
+					|| pSWRPanel.tfPCost.getText().equals("") 
+					|| pSWRPanel.tfPPrice.getText().equals("")
+					|| pSWRPanel.tfPQty.getText().equals("")
+					|| pSWRPanel.tfPDate.getDate()==null) {
+				JOptionPane.showMessageDialog(null, "품목명, 공급가격, 판매가격, 최초재고수량, 최초등록일자는 필수입력사항입니다.");
+				return;
+			}else {
+				Product newProduct = pSWRPanel.getItem();
+				service.addProduct(newProduct);
+				pSWTblPanel.addItem(newProduct);
+				pSWTblPanel.loadDate(service.showProductList());
+				pSWRPanel.clearTf();
+				pSWRPanel.setNum(newProduct);
+			}
+		} catch (InvalidCheckException e1) {
+			JOptionPane.showMessageDialog(null, e1.getMessage());
+		} catch (Exception e1) {
+			SQLException e2 = (SQLException) e1;
+			if(e2.getErrorCode() == 1062) {
+				JOptionPane.showMessageDialog(null, "품목번호가 중복");
+				System.err.println(e2.getMessage());
+				return;
+			}
+			e1.printStackTrace();
+		}
+	}
+	protected void btnUpdateActionPerformed(ActionEvent e) {
+		if(pSWRPanel.tfPName.getText().equals("")) {
+			JOptionPane.showMessageDialog(null, "수정할 품목을 오른쪽 리스트에서 선택해주세요.");
+			return;
+		}else {
+			Product upProduct = pSWRPanel.getItem();
+			service.modifyProduct(upProduct);
+			pSWTblPanel.updateRow(upProduct, pSWTblPanel.getSelectedRowIdx());
+			pSWTblPanel.loadDate(service.showProductList());
+			pSWRPanel.clearTf();
+			pSWRPanel.setNum(service.lastProduct());
+		}
+	}
+	public void itemStateChanged(ItemEvent e) {
+		if (e.getSource() == cmbCate) {
+			cmbCateItemStateChanged(e);
+		}
+	}
+	public String cmbCateItemStateChanged(ItemEvent e) {
+		if(e.getStateChange() == ItemEvent.SELECTED) {
+			selectItem = (String) cmbCate.getSelectedItem();
+		}
+		return null;
+	}
+	public void btnSerchActionPerformed(ActionEvent e) {
+		if(selectItem == null) {
+			return;
+		}
+		if(selectItem.equals("전체")) {
+			pSWTblPanel.loadDate(service.showProductList());
+		}
+		if(selectItem.equals("품목명")) {
+			String pName = tfSerch.getText().trim();
+			Product product = new Product(null, pName, null);
+			pSWTblPanel.loadDate(service.showProductListByName(product));
+			tfSerch.setText("");
+		}
+		if(selectItem.equals("분류명")) {
+			int no = 0;
+			if(tfSerch.getText().trim().equals("사무")) {
+				no = 1;
+			}else if(tfSerch.getText().trim().equals("개발")) {
+				no = 2;
+			}else if(tfSerch.getText().trim().equals("전문분야")) {
+				no = 3;
+			}else if(tfSerch.getText().trim().equals("멀티미디어")) {
+				no = 4;
+			}else if(tfSerch.getText().trim().equals("기업업무")) {
+				no = 5;
+			}else if(tfSerch.getText().trim().equals("서버")) {
+				no = 6;
+			}
+			Category pCate = new Category(no, tfSerch.getText().trim());
+			Product product = new Product(pCate, null, null);
+			pSWTblPanel.loadDate(service.showProductListByCate(product));
+			tfSerch.setText("");
+		}
+		if(selectItem.equals("공급회사명")) {
+			Supplier pSno = new Supplier();
+			pSno.setsName(tfSerch.getText().trim());
+			Product product = new Product(null, null, pSno);
+			pSWTblPanel.loadDate(service.showProductListBySupp(product));
+			tfSerch.setText("");
+		}
+	}
 }

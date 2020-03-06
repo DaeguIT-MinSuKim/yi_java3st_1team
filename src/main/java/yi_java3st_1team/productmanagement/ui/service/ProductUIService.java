@@ -36,4 +36,20 @@ public class ProductUIService {
 	public List<Category> showCategoryList(){
 		return categoryDao.selectCategoryByAll();
 	}
+	
+	public Product overlapProduct(Product overlapProduct) {
+		return productDao.selectProductByName(overlapProduct);
+	}
+
+	public List<Product> showProductListByName(Product product) {
+		return productDao.selectProductListByName(product);
+	}
+
+	public List<Product> showProductListByCate(Product product) {
+		return productDao.selectProductListByCate(product);
+	}
+
+	public List<Product> showProductListBySupp(Product product) {
+		return productDao.selectProductListBySupp(product);
+	}
 }

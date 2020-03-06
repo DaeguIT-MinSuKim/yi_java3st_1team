@@ -30,11 +30,11 @@ public class SWListTblPanel extends AbstractTblPanel<Product> {
 			String.format("P%04d", item.getpNo()),
 			item.getpCate().getCateName(),
 			item.getpName(),
-			String.format("%,d", item.getpCost()),
-			String.format("%,d", item.getpPrice()),
+			String.format("%,d원", item.getpCost()),
+			String.format("%,d원", item.getpPrice()),
 			item.getpSno().getsName(),
 			item.getpQty(),
-			item.getpDate()
+			String.format("%tF", item.getpDate())
 		};
 	}
 

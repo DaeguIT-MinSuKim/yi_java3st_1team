@@ -12,6 +12,10 @@ public class Category {
 		this.cateNo = cateNo;
 	}
 
+	public Category(String cateName) {
+		this.cateName = cateName;
+	}
+
 	public Category(int cateNo, String cateName) {
 		this.cateNo = cateNo;
 		this.cateName = cateName;

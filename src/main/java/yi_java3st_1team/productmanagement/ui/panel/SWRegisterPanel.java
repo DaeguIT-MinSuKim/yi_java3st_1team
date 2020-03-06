@@ -11,6 +11,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.Vector;
@@ -42,21 +43,27 @@ public class SWRegisterPanel extends AbsItemPanel<Product> implements ItemListen
 	private JLabel lblPQty;
 	private JLabel lblPDate;
 	private JTextField tfPNo;
-	private JTextField tfPName;
-	private JTextField tfPCost;
-	private JTextField tfPPrice;
-	private JTextField tfPSName;
-	private JTextField tfPQty;
-	private JDateChooser tfPDate;
+	public JTextField tfPName;
+	public JTextField tfPCost;
+	public JTextField tfPPrice;
+	public JTextField tfPSName;
+	public JTextField tfPQty;
+	public JDateChooser tfPDate;
 	private JComboBox<Category> cmbCate;
-	private JTextField tfImgSearch;
-	private String picPath;
+	public JTextField tfImgSearch;
 	private ProductUIService service;
+	private String pPicPath;
+	private byte[] pPics;
 	
 	public SWRegisterPanel() {
 		service = new ProductUIService();
 		initialize();
 	}
+	
+	public JTextField getTfPSName() {
+		return tfPSName;
+	}
+
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	private void initialize() {
 		setBounds(new Rectangle(0, 0, 635, 700));
@@ -211,6 +218,12 @@ public class SWRegisterPanel extends AbsItemPanel<Product> implements ItemListen
 		tfPNo.setText(String.format("P%04d", item.getpNo()+1));
 	}
 	
+	public Product getItem1() {
+		int pNo = Integer.parseInt(tfPNo.getText().substring(1));
+		String pName = tfPName.getText().trim();
+		return new Product(pNo, pName);
+	}
+	
 	@Override
 	public Product getItem() {
 		int pNo = Integer.parseInt(tfPNo.getText().substring(1));
@@ -220,10 +233,15 @@ public class SWRegisterPanel extends AbsItemPanel<Product> implements ItemListen
 		int pPrice = Integer.parseInt(tfPPrice.getText().trim());
 		Supplier pSno = new Supplier(tfPSName.getText().trim(), null, null);
 		int pQty = Integer.parseInt(tfPQty.getText().trim());
-		String pDate = tfPDate.getDateFormatString();
-		byte[] pPic = getImg(tfImgSearch.getText().trim());
-		
-		return new Product(pNo, pCate, pName, pCost, pPrice, pSno, pQty, pDate, pPic);
+		Date pDate = tfPDate.getDate();
+		if(tfImgSearch.getText().trim().equals("")) {
+			pPicPath = null;
+			pPics = null;
+		}else {
+			pPicPath = tfImgSearch.getText().trim();
+			pPics = getImg(pPicPath);
+		}		
+		return new Product(pNo, pCate, pName, pCost, pPrice, pSno, pQty, pDate, pPics, pPicPath);
 	}
 	private byte[] getImg(String path) {
 		byte[] pic = null;
@@ -243,23 +261,22 @@ public class SWRegisterPanel extends AbsItemPanel<Product> implements ItemListen
 		tfPNo.setText(String.format("P%04d", item.getpNo()));
 		cmbCate.setSelectedItem(item.getpCate());
 		tfPName.setText(item.getpName());
-		tfPCost.setText(String.format("%,d원", item.getpCost()));
-		tfPPrice.setText(String.format("%,d원", item.getpPrice()));
+		tfPCost.setText(String.format("%d", item.getpCost()));
+		tfPPrice.setText(String.format("%d", item.getpPrice()));
 		tfPSName.setText(item.getpSno().getsName());
 		tfPQty.setText(String.format("%s", item.getpQty()));
-		tfPDate.setDateFormatString(item.getpDate());
-		if(item.getpPic()==null) {
+		tfPDate.setDate(item.getpDate());
+		if(item.getpPicPath()==null) {
 			tfImgSearch.setText("");
 		}else {
-			tfImgSearch.setText(item.getpPic().toString());
+			tfImgSearch.setText(item.getpPicPath());
 		}
-		
 	}
 
 	@Override
 	public void clearTf() {
 		tfPNo.setText("");
-		cmbCate.setSelectedIndex(-1);;
+		cmbCate.setSelectedIndex(-1);
 		tfPName.setText("");
 		tfPCost.setText("");
 		tfPPrice.setText("");

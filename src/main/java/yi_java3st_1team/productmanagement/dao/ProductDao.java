@@ -12,4 +12,10 @@ public interface ProductDao {
 	int insertProduct(Product product);
 	int updateProduct(Product product);
 	int deleteProduct(Product product);
+
+	Product selectProductByName(Product overlapProduct);
+
+	List<Product> selectProductListByName(Product product);
+	List<Product> selectProductListByCate(Product product);
+	List<Product> selectProductListBySupp(Product product);
 }
