@@ -31,7 +31,8 @@ import yi_java3st_1team.main.dto.Employee;
 import yi_java3st_1team.main.ui.service.EmployeeUiService;
 
 @SuppressWarnings("serial")
-public class EmpRegiPanel extends AbsRegiPanel<Employee> implements ActionListener {
+public class EmpRegiPanel extends AbsRegiPanel<Employee> implements ActionListener, ItemListener {
+	private Employee item;
 	private JTextField tfNo;
 	private JTextField tfName;
 	private JComboBox<Department> cmbDept;
@@ -51,17 +52,14 @@ public class EmpRegiPanel extends AbsRegiPanel<Employee> implements ActionListen
 	private JPanel pInput;
 	private JRadioButton rBtnManager1;
 	private JRadioButton rBtnManager2;
+	private String selectItem;
 
 	
-	public EmployeeUiService getService() {
-		return service;
-	}
+//	public EmployeeUiService getService() {
+//		return service;
+//	}
+//
 
-	public void setService(EmployeeUiService service) {
-		this.service = service;
-		setCmbDeptList(service.showDeptList());
-		setCmbTitleList(service.showEmployeeList());
-	}
 
 
 	public EmpRegiPanel() {
@@ -73,8 +71,8 @@ public class EmpRegiPanel extends AbsRegiPanel<Employee> implements ActionListen
 	private void initialize() {
 		setSize(new Dimension(500, 650));
 		setLayout(new BorderLayout(0, 0));
-		//setService(service);
-		//setItem(service.showlastEmpNum());
+		setService(service);
+		setNum(service.showlastEmpNum());
 
 		JLabel lblHeader = new JLabel("사용자 등록");
 		lblHeader.setOpaque(true);
@@ -161,8 +159,8 @@ public class EmpRegiPanel extends AbsRegiPanel<Employee> implements ActionListen
 		pInput.setLayout(new GridLayout(0, 1, 10, 10));
 
 		tfNo = new JTextField();
-		
-		tfNo.setEditable(false);
+		tfNo.setText(String.format("EE%s%02d", item.getEmpNo()+1));
+		//tfNo.setEditable(false);
 		tfNo.setColumns(10);
 		pInput.add(tfNo);
 
@@ -171,11 +169,13 @@ public class EmpRegiPanel extends AbsRegiPanel<Employee> implements ActionListen
 		pInput.add(tfName);
 
 		cmbDept = new JComboBox<Department>();
-		//cmbDept.setModel(new DefaultComboBoxModel(new String[] {"기획총무부", "경리회계부", "상품관리부", "영업관리 1부", "영업관리 2부", "영업관리 3부", "쇼핑몰사업부", "해외사업부", "고객만족부"}));
+		cmbDept.addItemListener(this);
+		cmbDept.setModel(new DefaultComboBoxModel(new String[] {"기획총무부", "경리회계부", "상품관리부", "영업관리 1부", "영업관리 2부", "영업관리 3부", "쇼핑몰사업부", "해외사업부", "고객만족부"}));
 		pInput.add(cmbDept);
 
 		cmbTitle = new JComboBox<Employee>();
-		//cmbTitle.setModel(new DefaultComboBoxModel(new String[] {"대표이사", "경영관리이사", "부장", "차장", "과장", "대리", "사원", "인턴"}));
+//		cmbTitle.addItemListener(this);		
+		cmbTitle.setModel(new DefaultComboBoxModel(new String[] {"대표이사", "경영관리이사", "부장", "차장", "과장", "대리", "사원", "인턴"}));
 		pInput.add(cmbTitle);
 		
 		JPanel pManager = new JPanel();
@@ -259,6 +259,29 @@ public class EmpRegiPanel extends AbsRegiPanel<Employee> implements ActionListen
 		pBtns.add(btnCancle);
 	}
 	
+	private void setNum(Employee showlastEmpNum) {
+		tfNo.setText(String.format("EE%s%02d", item.getEmpNo()+1));
+		
+	}
+
+	public void setService(EmployeeUiService service) {
+		this.service = service;
+		setCmbDeptList(service.showDeptList());
+		setCmbTitleList(service.showEmployeeList());
+	}
+
+	public void itemStateChanged(ItemEvent e) {
+		if(e.getSource() == cmbDept) {
+			cmbDeptItemStateChanged(e);
+		}
+	}	
+	private String cmbDeptItemStateChanged(ItemEvent e) {
+		if(e.getStateChange() == ItemEvent.SELECTED) {
+			selectItem = (String) cmbDept.getSelectedItem();
+		}
+		return null;
+	}
+	
 	private void setCmbDeptList(List<Department> deptList) {
 		DefaultComboBoxModel<Department> model = new DefaultComboBoxModel<>(new Vector<>(deptList));
 		cmbDept.setModel(model);
@@ -277,26 +300,6 @@ public class EmpRegiPanel extends AbsRegiPanel<Employee> implements ActionListen
 	public JComboBox<Employee> getCmbTitle(){
 		return cmbTitle;
 	}
-	
-//	public Object[] toArray(Employee item) {
-//		return new Object[] {
-//			String.format("EE%s%02d", item.getEmpNo()),
-//			item.getEmpName(),
-//			item.getdNo(),
-//			item.getEmpTitle(),
-//			item.getEmpManager(),
-//			item.getEmpId(),
-//			item.getEmpPass(),
-//			item.getEmpMail()			
-//		};
-//		
-//	}
-	
-	@Override
-	public Object[] toArray(Employee item) {
-		
-		return null;
-	}
 
 	//데이터 넣기
 	@Override
@@ -310,12 +313,6 @@ public class EmpRegiPanel extends AbsRegiPanel<Employee> implements ActionListen
 		String empPass = new String(passFd1.getPassword());
 		String empMail = tfMail.getText().trim();
 		return new Employee(empNo, empName, dNo, empTitle, empManager, empId, empPass, empMail);
-	}
-	
-	@Override
-	public void setItem(Employee item) {
-		tfNo.setText(String.format("EE%s%02d", item.getEmpNo()+1));
-		
 	}
 	
 	//취소
@@ -333,10 +330,9 @@ public class EmpRegiPanel extends AbsRegiPanel<Employee> implements ActionListen
 
 	}
 	
-//	public void setEmpNo(Employee item) {
-//		//tfNo.setText(String.format("EE%s%02d", item.getEmpNo()+1));
+//	public void setEmpPanel(Employee item) {
+//		tfNo.setText(String.format("EE%s%02d", item.getEmpNo()+1));
 //		
-//		//lblPassword.setText("");
 //	}
 
 	//버튼 이벤트
@@ -354,6 +350,9 @@ public class EmpRegiPanel extends AbsRegiPanel<Employee> implements ActionListen
 
 	// 등록버튼
 	protected void actionPerformedBtnAdd(ActionEvent e) {
+		Employee newEmp = getItem();
+		service.addEmployee(newEmp);
+		clearTf();
 	}
 
 	// 취소버튼(초기화)
