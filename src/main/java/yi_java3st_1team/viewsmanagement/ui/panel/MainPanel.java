@@ -60,9 +60,9 @@ public class MainPanel extends JPanel implements ActionListener {
 		btn01.setBackground(Color.WHITE);
 		btn01.setFocusable(false);
 		btn01.addActionListener(this);
-		btn01.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\reportMenu\\기본1.png"));
+		btn01.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\reportMenu\\btn01.png"));
 		btn01.setPreferredSize(new Dimension(250, 170));
-		btn01.setBounds(219, 59, 250, 170);
+		btn01.setBounds(219, 70, 240, 148);
 		btn01.setFont(new Font("굴림", Font.PLAIN, 15));
 		pBtns.add(btn01);
 		
@@ -70,10 +70,10 @@ public class MainPanel extends JPanel implements ActionListener {
 		btn02.setBackground(new Color(255, 245, 238));
 		btn02.setFocusable(false);
 		btn02.addActionListener(this);
-		btn02.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\reportMenu\\기본2.png"));
+		btn02.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\reportMenu\\btn02_1.png"));
 		btn02.setPreferredSize(new Dimension(250, 170));
 		btn02.setSize(new Dimension(270, 190));
-		btn02.setBounds(494, 59, 250, 170);
+		btn02.setBounds(494, 70, 240, 148);
 		btn02.setFont(new Font("굴림", Font.PLAIN, 15));
 		pBtns.add(btn02);
 		
@@ -81,10 +81,10 @@ public class MainPanel extends JPanel implements ActionListener {
 		btn03.setBackground(new Color(245, 255, 250));
 		btn03.setFocusable(false);
 		btn03.addActionListener(this);
-		btn03.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\reportMenu\\기본3.png"));
+		btn03.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\reportMenu\\btn03.png"));
 		btn03.setPreferredSize(new Dimension(250, 170));
 		btn03.setSize(new Dimension(270, 190));
-		btn03.setBounds(768, 59, 250, 170);
+		btn03.setBounds(768, 70, 240, 148);
 		btn03.setFont(new Font("굴림", Font.PLAIN, 15));
 		pBtns.add(btn03);
 		
@@ -92,10 +92,10 @@ public class MainPanel extends JPanel implements ActionListener {
 		btn04.setBackground(new Color(245, 255, 250));
 		btn04.setFocusable(false);
 		btn04.addActionListener(this);
-		btn04.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\reportMenu\\그림1 (3).png"));
+		btn04.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\reportMenu\\btn04.png"));
 		btn04.setPreferredSize(new Dimension(250, 170));
 		btn04.setSize(new Dimension(270, 190));
-		btn04.setBounds(219, 257, 250, 170);
+		btn04.setBounds(219, 257, 240, 148);
 		btn04.setFont(new Font("굴림", Font.PLAIN, 15));
 		pBtns.add(btn04);
 		
@@ -103,10 +103,10 @@ public class MainPanel extends JPanel implements ActionListener {
 		btn05.setBackground(new Color(255, 245, 238));
 		btn05.setFocusable(false);
 		btn05.addActionListener(this);
-		btn05.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\reportMenu\\기본2.png"));
+		btn05.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\reportMenu\\btn05.png"));
 		btn05.setPreferredSize(new Dimension(250, 170));
 		btn05.setSize(new Dimension(270, 190));
-		btn05.setBounds(494, 257, 250, 170);
+		btn05.setBounds(494, 257, 240, 148);
 		btn05.setFont(new Font("굴림", Font.PLAIN, 15));
 		pBtns.add(btn05);
 		
@@ -114,11 +114,11 @@ public class MainPanel extends JPanel implements ActionListener {
 		btn06.setBackground(Color.WHITE);
 		btn06.setFocusable(false);
 		btn06.addActionListener(this);
-		btn06.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\reportMenu\\기본1.png"));
+		btn06.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\reportMenu\\btn06.png"));
 		btn06.setSize(new Dimension(270, 190));
 		btn06.setPreferredSize(new Dimension(250, 170));
 		btn06.setFont(new Font("굴림", Font.PLAIN, 15));
-		btn06.setBounds(768, 257, 250, 170);
+		btn06.setBounds(768, 257, 240, 148);
 		pBtns.add(btn06);
 	}
 	public void actionPerformed(ActionEvent e) {
