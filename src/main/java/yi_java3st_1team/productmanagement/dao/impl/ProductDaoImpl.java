@@ -68,10 +68,10 @@ public class ProductDaoImpl implements ProductDao {
 	public List<Product> selectProductListByCate(Product product) {
 		String sql ="select p_no, c.cate_no, c.cate_name, p_name, p_cost, p_price, s.s_no, s.s_name, p_qty, p_date, p_picpath from product p "
 				  + "left join category c on p.p_cate = c.cate_no "
-				  + "left join supplier s on p.p_sno = s.s_no where cate_no=?";
+				  + "left join supplier s on p.p_sno = s.s_no where cate_name=?";
 		try(Connection con = MySqlDataSource.getConnection();
 				PreparedStatement pstmt = con.prepareStatement(sql);){
-			pstmt.setInt(1, product.getpCate().getCateNo());
+			pstmt.setString(1, product.getpCate().getCateName());
 			ResultSet rs = pstmt.executeQuery();
 			List<Product> list = new ArrayList<>();
 			while(rs.next()) {

@@ -18,6 +18,10 @@ public class Supplier {
 		this.sTel = sTel;
 	}
 
+	public Supplier(String sName) {
+		this.sName = sName;
+	}
+
 	public Supplier(int sNo) {
 		this.sNo = sNo;
 	}

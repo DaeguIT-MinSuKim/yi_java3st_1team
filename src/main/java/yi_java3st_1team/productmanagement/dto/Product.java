@@ -28,6 +28,11 @@ public class Product {
 		this.pCate = pCate;
 	}
 
+	public Product(String pName, int pCost) {
+		this.pName = pName;
+		this.pCost = pCost;
+	}
+
 	public Product(int pNo, String pName) {
 		this.pNo = pNo;
 		this.pName = pName;

@@ -366,21 +366,7 @@ public class SoftwareUIPanel extends JPanel implements ActionListener, ItemListe
 			tfSerch.setText("");
 		}
 		if(selectItem.equals("분류명")) {
-			int no = 0;
-			if(tfSerch.getText().trim().equals("사무")) {
-				no = 1;
-			}else if(tfSerch.getText().trim().equals("개발")) {
-				no = 2;
-			}else if(tfSerch.getText().trim().equals("전문분야")) {
-				no = 3;
-			}else if(tfSerch.getText().trim().equals("멀티미디어")) {
-				no = 4;
-			}else if(tfSerch.getText().trim().equals("기업업무")) {
-				no = 5;
-			}else if(tfSerch.getText().trim().equals("서버")) {
-				no = 6;
-			}
-			Category pCate = new Category(no, tfSerch.getText().trim());
+			Category pCate = new Category(tfSerch.getText().trim());
 			Product product = new Product(pCate, null, null);
 			pSWTblPanel.loadDate(service.showProductListByCate(product));
 			tfSerch.setText("");

@@ -71,5 +71,12 @@ update product set p_picpath='D:\\workspace\\workspace_gradle\\yi_java3st_1team\
 select p_no, p_cate, c.cate_no, c.cate_name, p_name, p_cost, p_price, s.s_no, s.s_name, p_qty, p_date, p_picpath 
   from product p 
  left join supplier s on p.p_sno = s.s_no
- left join category c on p.p_cate = c.cate_no 
- where c.cate_name ="사무";
+ left join category c on p.p_cate = c.cate_no where c.cate_name ="개발";
+desc product;
+desc supplier;
+desc category;
+select * from category;
+select cate_no from category where cate_name = '사무';
+
+select * from supplier_purchase;
+select sp_no, sp_pno, p.p_name, s.s_name, p.p_cost, sp_qty, sp_date from supplier_purchase sp left join product p on sp.sp_pno = p.p_no left join supplier s on p.p_sno = s.s_no;
