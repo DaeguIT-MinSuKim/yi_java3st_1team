@@ -147,6 +147,7 @@ public class MainPanel extends JPanel implements ActionListener {
 		ClientSaleUIPanel cs = new ClientSaleUIPanel();
 		frame.getContentPane().add(cs);
 		frame.setVisible(true);
+		frame.setResizable(false);
 	}
 	protected void btn02ActionPerformed(ActionEvent e) {
 		JFrame frame = new JFrame();
@@ -154,6 +155,7 @@ public class MainPanel extends JPanel implements ActionListener {
 		SWSaleUIPanel cs = new SWSaleUIPanel();
 		frame.getContentPane().add(cs);
 		frame.setVisible(true);
+		frame.setResizable(false);
 	}
 	protected void btn03ActionPerformed(ActionEvent e) {
 		JFrame frame = new JFrame();
@@ -161,6 +163,7 @@ public class MainPanel extends JPanel implements ActionListener {
 		DateSaleUIPanel cs = new DateSaleUIPanel();
 		frame.getContentPane().add(cs);
 		frame.setVisible(true);
+		frame.setResizable(false);
 	}
 	protected void btn04ActionPerformed(ActionEvent e) {
 		JFrame frame = new JFrame();
@@ -168,6 +171,7 @@ public class MainPanel extends JPanel implements ActionListener {
 		GraphUIPanel cs = new GraphUIPanel();
 		frame.getContentPane().add(cs);
 		frame.setVisible(true);
+		frame.setResizable(false);
 	}
 	protected void btn05ActionPerformed(ActionEvent e) {
 		JFrame frame = new JFrame();
@@ -175,6 +179,7 @@ public class MainPanel extends JPanel implements ActionListener {
 		SW_SpecUIPanel cs = new SW_SpecUIPanel();
 		frame.getContentPane().add(cs);
 		frame.setVisible(true);
+		frame.setResizable(false);
 	}
 	protected void btn06ActionPerformed(ActionEvent e) {
 		JFrame frame = new JFrame();
@@ -182,5 +187,6 @@ public class MainPanel extends JPanel implements ActionListener {
 		IQUIPanel cs = new IQUIPanel();
 		frame.getContentPane().add(cs);
 		frame.setVisible(true);
+		frame.setResizable(false);
 	}
 }
