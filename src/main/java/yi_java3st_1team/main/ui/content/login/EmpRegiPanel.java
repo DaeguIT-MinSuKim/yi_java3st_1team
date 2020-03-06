@@ -8,46 +8,50 @@ import java.awt.GridLayout;
 import java.awt.SystemColor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.util.List;
 import java.util.Vector;
 
+import javax.swing.ButtonGroup;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
+import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
-import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter.DEFAULT;
 
 import yi_java3st_1team.main.dto.Department;
 import yi_java3st_1team.main.dto.Employee;
 import yi_java3st_1team.main.ui.service.EmployeeUiService;
 
-import javax.swing.JRadioButton;
-import javax.swing.BoxLayout;
-import javax.swing.ButtonGroup;
-import javax.swing.DefaultComboBoxModel;
-
 @SuppressWarnings("serial")
 public class EmpRegiPanel extends AbsRegiPanel<Employee> implements ActionListener {
 	private JTextField tfNo;
 	private JTextField tfName;
+	private JComboBox<Department> cmbDept;
+	private JComboBox<Employee> cmbTitle;
+	private final ButtonGroup buttonGroup = new ButtonGroup();
 	private JTextField tfId;
 	private JPasswordField passFd1;
 	private JPasswordField passFd2;
-	private JTextField tfMail;
-	private JComboBox<Department> cmbDept;
-	private JComboBox<Employee> cmbTitle;
 	private JLabel lblPassword;
+	private JTextField tfMail;
+	private JButton doubleCheck;
+	
 	private JButton btnAdd;
 	private JButton btnCancle;
-	private JButton doubleCheck1;
-	private JButton doubleCheck2;
+
 	private EmployeeUiService service;
-	private final ButtonGroup buttonGroup = new ButtonGroup();
+	private JPanel pInput;
+	private JRadioButton rBtnManager1;
+	private JRadioButton rBtnManager2;
+
 	
 	public EmployeeUiService getService() {
 		return service;
@@ -57,12 +61,11 @@ public class EmpRegiPanel extends AbsRegiPanel<Employee> implements ActionListen
 		this.service = service;
 		setCmbDeptList(service.showDeptList());
 		setCmbTitleList(service.showEmployeeList());
-		
 	}
 
 
 	public EmpRegiPanel() {
-
+		service = new EmployeeUiService();
 		initialize();
 
 	}
@@ -70,6 +73,8 @@ public class EmpRegiPanel extends AbsRegiPanel<Employee> implements ActionListen
 	private void initialize() {
 		setSize(new Dimension(500, 650));
 		setLayout(new BorderLayout(0, 0));
+		//setService(service);
+		//setItem(service.showlastEmpNum());
 
 		JLabel lblHeader = new JLabel("사용자 등록");
 		lblHeader.setOpaque(true);
@@ -115,17 +120,17 @@ public class EmpRegiPanel extends AbsRegiPanel<Employee> implements ActionListen
 		lblTitle.setForeground(Color.BLACK);
 		lblTitle.setFont(new Font("휴먼둥근헤드라인", Font.PLAIN, 13));
 		pName.add(lblTitle);
+		
+		JLabel label = new JLabel("관 리 자 구 분  ");
+		label.setHorizontalAlignment(SwingConstants.RIGHT);
+		label.setFont(new Font("휴먼둥근헤드라인", Font.PLAIN, 13));
+		pName.add(label);
 
 		JLabel lblId = new JLabel("아 이 디  ");
 		lblId.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblId.setForeground(Color.BLACK);
 		lblId.setFont(new Font("휴먼둥근헤드라인", Font.PLAIN, 13));
 		pName.add(lblId);
-		
-		JLabel lblmanager = new JLabel("관 리 자 구 분  ");
-		lblmanager.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblmanager.setFont(new Font("휴먼둥근헤드라인", Font.PLAIN, 13));
-		pName.add(lblmanager);
 
 		JLabel lblPass1 = new JLabel("비 밀 번 호  ");
 		lblPass1.setHorizontalAlignment(SwingConstants.RIGHT);
@@ -149,14 +154,15 @@ public class EmpRegiPanel extends AbsRegiPanel<Employee> implements ActionListen
 		lblEmail.setFont(new Font("휴먼둥근헤드라인", Font.PLAIN, 13));
 		pName.add(lblEmail);
 
-		JPanel pInput = new JPanel();
+		pInput = new JPanel();
 		pInput.setBackground(SystemColor.inactiveCaptionBorder);
 		pInput.setPreferredSize(new Dimension(200, 10));
 		pSection.add(pInput, BorderLayout.CENTER);
 		pInput.setLayout(new GridLayout(0, 1, 10, 10));
 
 		tfNo = new JTextField();
-		tfNo.setEnabled(false);
+		
+		tfNo.setEditable(false);
 		tfNo.setColumns(10);
 		pInput.add(tfNo);
 
@@ -165,36 +171,36 @@ public class EmpRegiPanel extends AbsRegiPanel<Employee> implements ActionListen
 		pInput.add(tfName);
 
 		cmbDept = new JComboBox<Department>();
+		//cmbDept.setModel(new DefaultComboBoxModel(new String[] {"기획총무부", "경리회계부", "상품관리부", "영업관리 1부", "영업관리 2부", "영업관리 3부", "쇼핑몰사업부", "해외사업부", "고객만족부"}));
 		pInput.add(cmbDept);
 
 		cmbTitle = new JComboBox<Employee>();
+		//cmbTitle.setModel(new DefaultComboBoxModel(new String[] {"대표이사", "경영관리이사", "부장", "차장", "과장", "대리", "사원", "인턴"}));
 		pInput.add(cmbTitle);
+		
+		JPanel pManager = new JPanel();
+		pManager.setBackground(Color.WHITE);
+		pInput.add(pManager);
+		pManager.setLayout(new GridLayout(0, 2, 0, 0));
+		
+		rBtnManager1 = new JRadioButton("책임관리자");
+		rBtnManager1.setSelected(true); //기본선택
+		rBtnManager1.setHorizontalAlignment(SwingConstants.CENTER);
+		rBtnManager1.setForeground(Color.BLACK);
+		rBtnManager1.setFont(new Font("굴림", Font.BOLD, 11));
+		rBtnManager1.setBackground(SystemColor.inactiveCaptionBorder);
+		pManager.add(rBtnManager1);
+		
+		rBtnManager2 = new JRadioButton("일반관리자");
+		rBtnManager2.setHorizontalAlignment(SwingConstants.CENTER);
+		rBtnManager2.setForeground(Color.BLACK);
+		rBtnManager2.setFont(new Font("굴림", Font.BOLD, 11));
+		rBtnManager2.setBackground(SystemColor.inactiveCaptionBorder);
+		pManager.add(rBtnManager2);
 
 		tfId = new JTextField();
 		tfId.setColumns(10);
 		pInput.add(tfId);
-		
-		JPanel pmanager = new JPanel();
-		pmanager.setBackground(Color.WHITE);
-		pInput.add(pmanager);
-		pmanager.setLayout(new GridLayout(0, 2, 0, 0));
-		
-		JRadioButton rdbtnManager1 = new JRadioButton("책임관리자");
-		rdbtnManager1.setBackground(SystemColor.inactiveCaptionBorder);
-		rdbtnManager1.setFont(new Font("굴림", Font.BOLD, 11));
-		rdbtnManager1.setForeground(Color.BLACK);
-		rdbtnManager1.setHorizontalAlignment(SwingConstants.CENTER);
-		rdbtnManager1.setSelected(true);
-		buttonGroup.add(rdbtnManager1);
-		pmanager.add(rdbtnManager1);
-		
-		JRadioButton rdbtnManager2 = new JRadioButton("일반관리자");
-		rdbtnManager2.setBackground(SystemColor.inactiveCaptionBorder);
-		rdbtnManager2.setForeground(Color.BLACK);
-		rdbtnManager2.setFont(new Font("굴림", Font.BOLD, 11));
-		rdbtnManager2.setHorizontalAlignment(SwingConstants.CENTER);
-		buttonGroup.add(rdbtnManager2);
-		pmanager.add(rdbtnManager2);
 
 		passFd1 = new JPasswordField();
 		pInput.add(passFd1);
@@ -222,23 +228,14 @@ public class EmpRegiPanel extends AbsRegiPanel<Employee> implements ActionListen
 		pSection.add(pDoubleCheck, BorderLayout.EAST);
 		pDoubleCheck.setLayout(null);
 
-		doubleCheck1 = new JButton("<html>중복<br>확인</html>");
-		doubleCheck1.setFocusable(false);
-		doubleCheck1.setForeground(Color.WHITE);
-		doubleCheck1.setBackground(new Color(240, 128, 128));
-		doubleCheck1.addActionListener(this);
-		doubleCheck1.setFont(new Font("맑은 고딕", Font.BOLD, 13));
-		doubleCheck1.setBounds(12, 3, 60, 39);
-		pDoubleCheck.add(doubleCheck1);
-
-		doubleCheck2 = new JButton("<html>중복<br>확인</html>");
-		doubleCheck2.setFocusable(false);
-		doubleCheck2.setForeground(Color.WHITE);
-		doubleCheck2.setBackground(new Color(240, 128, 128));
-		doubleCheck2.addActionListener(this);
-		doubleCheck2.setFont(new Font("맑은 고딕", Font.BOLD, 13));
-		doubleCheck2.setBounds(12, 182, 60, 39);
-		pDoubleCheck.add(doubleCheck2);
+		doubleCheck = new JButton("<html>중복<br>확인</html>");
+		doubleCheck.setFocusable(false);
+		doubleCheck.setForeground(Color.WHITE);
+		doubleCheck.setBackground(new Color(240, 128, 128));
+		doubleCheck.addActionListener(this);
+		doubleCheck.setFont(new Font("맑은 고딕", Font.BOLD, 13));
+		doubleCheck.setBounds(12, 202, 60, 39);
+		pDoubleCheck.add(doubleCheck);
 
 		JPanel pBtns = new JPanel();
 		pBtns.setBackground(SystemColor.inactiveCaptionBorder);
@@ -265,12 +262,12 @@ public class EmpRegiPanel extends AbsRegiPanel<Employee> implements ActionListen
 	private void setCmbDeptList(List<Department> deptList) {
 		DefaultComboBoxModel<Department> model = new DefaultComboBoxModel<>(new Vector<>(deptList));
 		cmbDept.setModel(model);
-		cmbDept.setSelectedIndex(0);		
+		cmbDept.setSelectedIndex(-1);		
 	}
 	private void setCmbTitleList(List<Employee> employeeList) {
 		DefaultComboBoxModel<Employee> model = new DefaultComboBoxModel<>(new Vector<>(employeeList));
 		cmbTitle.setModel(model);
-		cmbTitle.setSelectedIndex(0);	
+		cmbTitle.setSelectedIndex(-1);	
 	}
 	
 	public JComboBox<Department> getCmbDept(){
@@ -280,14 +277,35 @@ public class EmpRegiPanel extends AbsRegiPanel<Employee> implements ActionListen
 	public JComboBox<Employee> getCmbTitle(){
 		return cmbTitle;
 	}
+	
+//	public Object[] toArray(Employee item) {
+//		return new Object[] {
+//			String.format("EE%s%02d", item.getEmpNo()),
+//			item.getEmpName(),
+//			item.getdNo(),
+//			item.getEmpTitle(),
+//			item.getEmpManager(),
+//			item.getEmpId(),
+//			item.getEmpPass(),
+//			item.getEmpMail()			
+//		};
+//		
+//	}
+	
+	@Override
+	public Object[] toArray(Employee item) {
+		
+		return null;
+	}
 
+	//데이터 넣기
 	@Override
 	public Employee getItem() {
-		int empNo = Integer.parseInt(tfNo.getText().substring(4)); // EA001 , EA
+		int empNo = Integer.parseInt(tfNo.getText().substring(4)); // EE0016 -> 16
 		String empName = tfName.getText().trim();
 		Department dNo = (Department) cmbDept.getSelectedItem();
 		String empTitle = (String) cmbTitle.getSelectedItem();
-		int empManager = Integer.parseInt(s);
+		int empManager = rBtnManager1.isSelected()?1:2;
 		String empId = tfId.getText().trim();
 		String empPass = new String(passFd1.getPassword());
 		String empMail = tfMail.getText().trim();
@@ -296,10 +314,11 @@ public class EmpRegiPanel extends AbsRegiPanel<Employee> implements ActionListen
 	
 	@Override
 	public void setItem(Employee item) {
-		cmbDept.setSelectedItem(item.getdNo());
+		tfNo.setText(String.format("EE%s%02d", item.getEmpNo()+1));
 		
 	}
-
+	
+	//취소
 	@Override
 	public void clearTf() {
 		tfNo.setText("");
@@ -313,14 +332,17 @@ public class EmpRegiPanel extends AbsRegiPanel<Employee> implements ActionListen
 		tfMail.setText("");
 
 	}
+	
+//	public void setEmpNo(Employee item) {
+//		//tfNo.setText(String.format("EE%s%02d", item.getEmpNo()+1));
+//		
+//		//lblPassword.setText("");
+//	}
 
 	//버튼 이벤트
 	public void actionPerformed(ActionEvent e) {
-		if (e.getSource() == doubleCheck2) {
+		if (e.getSource() == doubleCheck) {
 			actionPerformedDoubleCheck2(e);
-		}
-		if (e.getSource() == doubleCheck1) {
-			actionPerformedDoubleCheck1(e);
 		}
 		if (e.getSource() == btnCancle) {
 			actionPerformedBtnCancle(e);
@@ -339,13 +361,12 @@ public class EmpRegiPanel extends AbsRegiPanel<Employee> implements ActionListen
 		clearTf();
 	}
 
-	// 중복확인 : 사원번호
-	protected void actionPerformedDoubleCheck1(ActionEvent e) {
-		JOptionPane.showMessageDialog(null, "등록된 사원 번호 입니다.", "중복 알림",JOptionPane.WARNING_MESSAGE);
-	}
-
 	// 중복확인 : 아이디
 	protected void actionPerformedDoubleCheck2(ActionEvent e) {
 		JOptionPane.showMessageDialog(null, "등록된 ID 입니다.", "중복 알림",JOptionPane.WARNING_MESSAGE);
 	}
+
+
+
+
 }

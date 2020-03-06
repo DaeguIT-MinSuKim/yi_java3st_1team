@@ -1,7 +1,7 @@
 select user(), database();
 
 select * from employee;
-
+select * from product;
 desc employee;
 select * from department;
 
