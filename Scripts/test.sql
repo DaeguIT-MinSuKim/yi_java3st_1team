@@ -60,5 +60,16 @@ select e_no from employee e where e_name='양공입';
 desc product ;
 
 
-select p_no, c.cate_name, p_name, p_cost, p_price, s.s_name, p_qty, p_date, p_pic from product p left join category c on p.p_cate = c.cate_no left join supplier s on p.p_sno = s.s_no;
+select p_no, c.cate_name, p_name, p_cost, p_price, s.s_name, p_qty, p_date, p_pic, p_picpath from product p left join category c on p.p_cate = c.cate_no left join supplier s on p.p_sno = s.s_no;
 delete from product where p_no=85;
+
+alter table product add p_picpath varchar(500) default null;
+alter table product drop p_picpath;
+
+update product set p_picpath='D:\\workspace\\workspace_gradle\\yi_java3st_1team\\document\\sample_data\\software_images\\server\\AhnLab GateScan for Email [UNIX] 기본형.jpg' where p_no=84;
+
+select p_no, p_cate, c.cate_no, c.cate_name, p_name, p_cost, p_price, s.s_no, s.s_name, p_qty, p_date, p_picpath 
+  from product p 
+ left join supplier s on p.p_sno = s.s_no
+ left join category c on p.p_cate = c.cate_no 
+ where c.cate_name ="사무";

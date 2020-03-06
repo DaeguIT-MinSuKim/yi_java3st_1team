@@ -1,5 +1,7 @@
 package yi_java3st_1team.productmanagement.dto;
 
+import java.util.Date;
+
 import yi_java3st_1team.clientmanagement.dto.Supplier;
 
 public class Product {
@@ -10,8 +12,9 @@ public class Product {
 	private int pPrice;
 	private Supplier pSno;
 	private int pQty;
-	private String pDate;
+	private Date pDate;
 	private byte[] pPic;
+	private String pPicPath;
 
 	public Product() {
 		// TODO Auto-generated constructor stub
@@ -20,8 +23,32 @@ public class Product {
 	public Product(int pNo) {
 		this.pNo = pNo;
 	}
+	
+	public Product(Category pCate) {
+		this.pCate = pCate;
+	}
 
-	public Product(int pNo, Category pCate, String pName, int pCost, int pPrice, Supplier pSno, int pQty, String pDate) {
+	public Product(int pNo, String pName) {
+		this.pNo = pNo;
+		this.pName = pName;
+	}
+
+	public Product(Category pCate, String pName, Supplier pSno) {
+		this.pCate = pCate;
+		this.pName = pName;
+		this.pSno = pSno;
+	}
+
+	public Product(int pNo, String pName, int pCost, int pPrice, int pQty) {
+		this.pNo = pNo;
+		this.pName = pName;
+		this.pCost = pCost;
+		this.pPrice = pPrice;
+		this.pQty = pQty;
+	}
+
+	public Product(int pNo, Category pCate, String pName, int pCost, int pPrice, Supplier pSno, int pQty, Date pDate,
+			String pPicPath) {
 		this.pNo = pNo;
 		this.pCate = pCate;
 		this.pName = pName;
@@ -30,10 +57,11 @@ public class Product {
 		this.pSno = pSno;
 		this.pQty = pQty;
 		this.pDate = pDate;
+		this.pPicPath = pPicPath;
 	}
 
-	public Product(int pNo, Category pCate, String pName, int pCost, int pPrice, Supplier pSno, int pQty, String pDate,
-			byte[] pPic) {
+	public Product(int pNo, Category pCate, String pName, int pCost, int pPrice, Supplier pSno, int pQty, Date pDate,
+			byte[] pPic, String pPicPath) {
 		this.pNo = pNo;
 		this.pCate = pCate;
 		this.pName = pName;
@@ -43,6 +71,7 @@ public class Product {
 		this.pQty = pQty;
 		this.pDate = pDate;
 		this.pPic = pPic;
+		this.pPicPath = pPicPath;
 	}
 
 	public int getpNo() {
@@ -101,11 +130,11 @@ public class Product {
 		this.pQty = pQty;
 	}
 
-	public String getpDate() {
+	public Date getpDate() {
 		return pDate;
 	}
 
-	public void setpDate(String pDate) {
+	public void setpDate(Date pDate) {
 		this.pDate = pDate;
 	}
 
@@ -115,6 +144,14 @@ public class Product {
 
 	public void setpPic(byte[] pPic) {
 		this.pPic = pPic;
+	}
+
+	public String getpPicPath() {
+		return pPicPath;
+	}
+
+	public void setpPicPath(String pPicPath) {
+		this.pPicPath = pPicPath;
 	}
 
 	@Override
@@ -143,7 +180,7 @@ public class Product {
 	public String toString() {
 		return String.format(
 				"%s %s %s %s %s %s %s %s", pNo,
-				pCate, pName, pCost, pPrice, pSno, pQty, pDate);
+				pCate, pName, pCost, pPrice, pSno, pQty, String.format("%1$tF %1$tT", pDate));
 	}
 
 }
