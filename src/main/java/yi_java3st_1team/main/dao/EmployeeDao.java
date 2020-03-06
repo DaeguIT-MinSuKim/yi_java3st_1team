@@ -8,7 +8,10 @@ public interface EmployeeDao {
 	Employee selectEmployeeByNo(Employee emp);
 	List<Employee> selectEmployeeByAll();
 	
+	Employee selectEmployeebyLastNo();
+	
 	int insertEmployee(Employee emp);
 	int updateEmployee(Employee emp);
 	int deleteEmployee(Employee emp);
+
 }

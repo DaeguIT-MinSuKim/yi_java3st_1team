@@ -21,6 +21,8 @@ import javax.swing.border.EmptyBorder;
 
 import yi_java3st_1team.main.dto.Department;
 import yi_java3st_1team.main.dto.Employee;
+import yi_java3st_1team.main.ui.service.EmployeeUiService;
+
 import javax.swing.JRadioButton;
 import javax.swing.BoxLayout;
 
@@ -32,8 +34,8 @@ public class EmpRegiPanel extends AbsRegiPanel<Employee> implements ActionListen
 	private JPasswordField passFd1;
 	private JPasswordField passFd2;
 	private JTextField tfMail;
-	private JComboBox deptCombo;
-	private JComboBox titleCombo;
+	private JComboBox<Department> deptCombo;
+	private JComboBox<Employee> titleCombo;
 	private JLabel lblPassword;
 	private JButton btnAdd;
 	private JButton btnCancle;
@@ -43,6 +45,9 @@ public class EmpRegiPanel extends AbsRegiPanel<Employee> implements ActionListen
 	/**
 	 * Create the panel.
 	 */
+	public void setService(EmployeeUiService service) {
+		this.setService = service;
+	}
 	public EmpRegiPanel() {
 
 		initialize();
@@ -273,6 +278,7 @@ public class EmpRegiPanel extends AbsRegiPanel<Employee> implements ActionListen
 
 	}
 
+	//버튼 이벤트
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == doubleCheck2) {
 			actionPerformedDoubleCheck2(e);
