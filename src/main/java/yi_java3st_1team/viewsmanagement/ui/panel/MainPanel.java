@@ -70,7 +70,7 @@ public class MainPanel extends JPanel implements ActionListener {
 		btn02.setBackground(new Color(255, 245, 238));
 		btn02.setFocusable(false);
 		btn02.addActionListener(this);
-		btn02.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\reportMenu\\btn02_1.png"));
+		btn02.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\reportMenu\\btn02.png"));
 		btn02.setPreferredSize(new Dimension(250, 170));
 		btn02.setSize(new Dimension(270, 190));
 		btn02.setBounds(494, 70, 240, 148);
