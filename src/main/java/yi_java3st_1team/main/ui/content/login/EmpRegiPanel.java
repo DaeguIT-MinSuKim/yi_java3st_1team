@@ -8,6 +8,8 @@ import java.awt.GridLayout;
 import java.awt.SystemColor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
+import java.util.Vector;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -18,6 +20,7 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter.DEFAULT;
 
 import yi_java3st_1team.main.dto.Department;
 import yi_java3st_1team.main.dto.Employee;
@@ -25,6 +28,8 @@ import yi_java3st_1team.main.ui.service.EmployeeUiService;
 
 import javax.swing.JRadioButton;
 import javax.swing.BoxLayout;
+import javax.swing.ButtonGroup;
+import javax.swing.DefaultComboBoxModel;
 
 @SuppressWarnings("serial")
 public class EmpRegiPanel extends AbsRegiPanel<Employee> implements ActionListener {
@@ -34,20 +39,28 @@ public class EmpRegiPanel extends AbsRegiPanel<Employee> implements ActionListen
 	private JPasswordField passFd1;
 	private JPasswordField passFd2;
 	private JTextField tfMail;
-	private JComboBox<Department> deptCombo;
-	private JComboBox<Employee> titleCombo;
+	private JComboBox<Department> cmbDept;
+	private JComboBox<Employee> cmbTitle;
 	private JLabel lblPassword;
 	private JButton btnAdd;
 	private JButton btnCancle;
 	private JButton doubleCheck1;
 	private JButton doubleCheck2;
-
-	/**
-	 * Create the panel.
-	 */
-	public void setService(EmployeeUiService service) {
-		this.setService = service;
+	private EmployeeUiService service;
+	private final ButtonGroup buttonGroup = new ButtonGroup();
+	
+	public EmployeeUiService getService() {
+		return service;
 	}
+
+	public void setService(EmployeeUiService service) {
+		this.service = service;
+		setCmbDeptList(service.showDeptList());
+		setCmbTitleList(service.showEmployeeList());
+		
+	}
+
+
 	public EmpRegiPanel() {
 
 		initialize();
@@ -143,6 +156,7 @@ public class EmpRegiPanel extends AbsRegiPanel<Employee> implements ActionListen
 		pInput.setLayout(new GridLayout(0, 1, 10, 10));
 
 		tfNo = new JTextField();
+		tfNo.setEnabled(false);
 		tfNo.setColumns(10);
 		pInput.add(tfNo);
 
@@ -150,11 +164,11 @@ public class EmpRegiPanel extends AbsRegiPanel<Employee> implements ActionListen
 		tfName.setColumns(10);
 		pInput.add(tfName);
 
-		deptCombo = new JComboBox();
-		pInput.add(deptCombo);
+		cmbDept = new JComboBox<Department>();
+		pInput.add(cmbDept);
 
-		titleCombo = new JComboBox();
-		pInput.add(titleCombo);
+		cmbTitle = new JComboBox<Employee>();
+		pInput.add(cmbTitle);
 
 		tfId = new JTextField();
 		tfId.setColumns(10);
@@ -170,6 +184,8 @@ public class EmpRegiPanel extends AbsRegiPanel<Employee> implements ActionListen
 		rdbtnManager1.setFont(new Font("굴림", Font.BOLD, 11));
 		rdbtnManager1.setForeground(Color.BLACK);
 		rdbtnManager1.setHorizontalAlignment(SwingConstants.CENTER);
+		rdbtnManager1.setSelected(true);
+		buttonGroup.add(rdbtnManager1);
 		pmanager.add(rdbtnManager1);
 		
 		JRadioButton rdbtnManager2 = new JRadioButton("일반관리자");
@@ -177,6 +193,7 @@ public class EmpRegiPanel extends AbsRegiPanel<Employee> implements ActionListen
 		rdbtnManager2.setForeground(Color.BLACK);
 		rdbtnManager2.setFont(new Font("굴림", Font.BOLD, 11));
 		rdbtnManager2.setHorizontalAlignment(SwingConstants.CENTER);
+		buttonGroup.add(rdbtnManager2);
 		pmanager.add(rdbtnManager2);
 
 		passFd1 = new JPasswordField();
@@ -244,13 +261,32 @@ public class EmpRegiPanel extends AbsRegiPanel<Employee> implements ActionListen
 		btnCancle.setFont(new Font("맑은 고딕", Font.BOLD, 14));
 		pBtns.add(btnCancle);
 	}
+	
+	private void setCmbDeptList(List<Department> deptList) {
+		DefaultComboBoxModel<Department> model = new DefaultComboBoxModel<>(new Vector<>(deptList));
+		cmbDept.setModel(model);
+		cmbDept.setSelectedIndex(0);		
+	}
+	private void setCmbTitleList(List<Employee> employeeList) {
+		DefaultComboBoxModel<Employee> model = new DefaultComboBoxModel<>(new Vector<>(employeeList));
+		cmbTitle.setModel(model);
+		cmbTitle.setSelectedIndex(0);	
+	}
+	
+	public JComboBox<Department> getCmbDept(){
+		return cmbDept;
+	}
+
+	public JComboBox<Employee> getCmbTitle(){
+		return cmbTitle;
+	}
 
 	@Override
 	public Employee getItem() {
 		int empNo = Integer.parseInt(tfNo.getText().substring(4)); // EA001 , EA
 		String empName = tfName.getText().trim();
-		Department dNo = (Department) deptCombo.getSelectedItem();
-		String empTitle = (String) titleCombo.getSelectedItem();
+		Department dNo = (Department) cmbDept.getSelectedItem();
+		String empTitle = (String) cmbTitle.getSelectedItem();
 		int empManager = Integer.parseInt(s);
 		String empId = tfId.getText().trim();
 		String empPass = new String(passFd1.getPassword());
@@ -260,7 +296,7 @@ public class EmpRegiPanel extends AbsRegiPanel<Employee> implements ActionListen
 	
 	@Override
 	public void setItem(Employee item) {
-		// TODO Auto-generated method stub
+		cmbDept.setSelectedItem(item.getdNo());
 		
 	}
 
@@ -268,8 +304,8 @@ public class EmpRegiPanel extends AbsRegiPanel<Employee> implements ActionListen
 	public void clearTf() {
 		tfNo.setText("");
 		tfName.setText("");
-		deptCombo.setSelectedIndex(-1);
-		titleCombo.setSelectedIndex(-1);
+		cmbDept.setSelectedIndex(-1);
+		cmbTitle.setSelectedIndex(-1);
 		tfId.setText("");
 		passFd1.setText("");
 		passFd2.setText("");
