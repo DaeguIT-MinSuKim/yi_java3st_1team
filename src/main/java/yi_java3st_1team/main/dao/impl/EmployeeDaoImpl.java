@@ -22,6 +22,7 @@ public class EmployeeDaoImpl implements EmployeeDao {
 		return instance;
 	}
 	
+	/*** GET *****************************************************************************************/
 	//getEmployee
 	private Employee getEmployee(ResultSet rs) throws SQLException {
 		int empNo = rs.getInt("e_no");
@@ -35,6 +36,15 @@ public class EmployeeDaoImpl implements EmployeeDao {
 		return new Employee(empNo, empName, dNo, empTitle, empManager, empId, empPass, empMail);
 	}
 	
+	//getEmpNo
+	private Employee getEmpNo(ResultSet rs) throws SQLException {
+		int empNo = rs.getInt("e_no");
+		return new Employee(empNo);
+	}
+	
+	/***QUERY****************************************************************************************/
+	
+	//검색 : 번호
 	@Override
 	public Employee selectEmployeeByNo(Employee emp) {
 		String sql = "select e_no, e_name, e_dept, e_title, e_manager, e_id, e_pw, e_mail from employee where e_no = ?";
@@ -53,6 +63,7 @@ public class EmployeeDaoImpl implements EmployeeDao {
 		return null;
 	}
 
+	//검색 : (기본)all
 	@Override
 	public List<Employee> selectEmployeeByAll() {
 		String sql = "select e_no, e_name, e_dept, e_title, e_manager, e_id, e_pw, e_mail from employee";
@@ -70,6 +81,26 @@ public class EmployeeDaoImpl implements EmployeeDao {
 		return null;
 	}
 
+	//검색 : 마지막번호
+	@Override
+	public Employee selectEmployeebyLastNo() {
+		String sql = "select e_no from employee order by e_no desc limit 1";
+		try(Connection con = MySqlDataSource.getConnection();
+				PreparedStatement pstmt = con.prepareStatement(sql);){
+			LogUtil.prnLog(pstmt);
+			try(ResultSet rs = pstmt.executeQuery()){
+				if(rs.next()) {
+					return getEmpNo(rs);
+				}
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+
+	//insert
 	@Override
 	public int insertEmployee(Employee emp) {
 		String sql = "insert into employee (e_no, e_name, e_dept, e_title, e_manager, e_id, e_pw, e_mail) value (null,?,?,?,?,?,?,?)";
@@ -90,6 +121,7 @@ public class EmployeeDaoImpl implements EmployeeDao {
 		return 0;
 	}
 
+	//update
 	@Override
 	public int updateEmployee(Employee emp) {
 		String sql = "update employee set e_name = ?, e_dept = ?, e_title = ?, e_manager = ?, e_id = ?, e_pw = ?, e_mail = ? where e_no = ?";
@@ -111,6 +143,7 @@ public class EmployeeDaoImpl implements EmployeeDao {
 		return 0;
 	}
 
+	//delete
 	@Override
 	public int deleteEmployee(Employee emp) {
 		String sql = "delete from employee where e_no = ?";
@@ -124,5 +157,7 @@ public class EmployeeDaoImpl implements EmployeeDao {
 		}
 		return 0;
 	}
+
+
 
 }

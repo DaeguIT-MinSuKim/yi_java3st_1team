@@ -5,7 +5,7 @@ public class Employee {
 	private String empName; //현재승
 	private Department dNo; //1 -> 기획총무부
 	private String empTitle; //대표이사
-	private int empManager; // null, 1, 2
+	private int empManager; // 책임관리자(1) / 관리자(2)
 	private String empId; // hceo1004
 	private String empPass; // Jason1234!@
 	private String empMail; //airplant@naver.com

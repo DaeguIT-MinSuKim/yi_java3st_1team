@@ -109,7 +109,7 @@ public class EmpRegiPanel extends AbsRegiPanel<Employee> implements ActionListen
 		lblId.setFont(new Font("휴먼둥근헤드라인", Font.PLAIN, 13));
 		pName.add(lblId);
 		
-		JLabel lblmanager = new JLabel("직 속 상 사  ");
+		JLabel lblmanager = new JLabel("관 리 자 구 분  ");
 		lblmanager.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblmanager.setFont(new Font("휴먼둥근헤드라인", Font.PLAIN, 13));
 		pName.add(lblmanager);
@@ -163,21 +163,21 @@ public class EmpRegiPanel extends AbsRegiPanel<Employee> implements ActionListen
 		JPanel pmanager = new JPanel();
 		pmanager.setBackground(Color.WHITE);
 		pInput.add(pmanager);
-		pmanager.setLayout(new BorderLayout(0, 0));
+		pmanager.setLayout(new GridLayout(0, 2, 0, 0));
 		
-		JRadioButton rdbtnManager1 = new JRadioButton("대표이사");
+		JRadioButton rdbtnManager1 = new JRadioButton("책임관리자");
 		rdbtnManager1.setBackground(SystemColor.inactiveCaptionBorder);
-		rdbtnManager1.setFont(new Font("굴림", Font.BOLD, 12));
+		rdbtnManager1.setFont(new Font("굴림", Font.BOLD, 11));
 		rdbtnManager1.setForeground(Color.BLACK);
 		rdbtnManager1.setHorizontalAlignment(SwingConstants.CENTER);
-		pmanager.add(rdbtnManager1, BorderLayout.WEST);
+		pmanager.add(rdbtnManager1);
 		
-		JRadioButton rdbtnManager2 = new JRadioButton("경영관리이사");
+		JRadioButton rdbtnManager2 = new JRadioButton("일반관리자");
 		rdbtnManager2.setBackground(SystemColor.inactiveCaptionBorder);
 		rdbtnManager2.setForeground(Color.BLACK);
-		rdbtnManager2.setFont(new Font("굴림", Font.BOLD, 12));
+		rdbtnManager2.setFont(new Font("굴림", Font.BOLD, 11));
 		rdbtnManager2.setHorizontalAlignment(SwingConstants.CENTER);
-		pmanager.add(rdbtnManager2, BorderLayout.CENTER);
+		pmanager.add(rdbtnManager2);
 
 		passFd1 = new JPasswordField();
 		pInput.add(passFd1);

@@ -36,3 +36,6 @@ update client set c_name = '제임스최고공부방', c_ceo = '제임스', c_ad
 delete from client where c_no = 56;
 
 select d_no, d_name, d_floor from department where d_no = 1;
+
+-- 마지막 번호 구하기
+select e_no from employee order by e_no desc limit 1;
