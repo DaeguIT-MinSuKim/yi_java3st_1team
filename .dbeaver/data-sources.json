@@ -12,8 +12,7 @@
 				"port": "3306",
 				"url": "jdbc:mysql://localhost:3306/",
 				"home": "C:\\Program Files\\MySQL\\MySQL Server 5.7",
-				"type": "dev",
-				"handlers": {}
+				"type": "dev"
 			}
 		},
 		"mysql5-170678b36bb-1eed6f2394edd292": {
@@ -27,6 +26,21 @@
 				"port": "3306",
 				"database": "yi_java3st_1team",
 				"url": "jdbc:mysql://localhost:3306/yi_java3st_1team",
+				"home": "C:\\Program Files\\MySQL\\MySQL Server 5.7",
+				"type": "dev"
+			}
+		},
+		"mysql5-1709ebafa04-6f061795490ab8f5": {
+			"provider": "mysql",
+			"driver": "mysql5",
+			"name": "MySQL - ncs_product",
+			"save-password": true,
+			"read-only": false,
+			"configuration": {
+				"host": "localhost",
+				"port": "3306",
+				"database": "ncs_product",
+				"url": "jdbc:mysql://localhost:3306/ncs_product",
 				"home": "C:\\Program Files\\MySQL\\MySQL Server 5.7",
 				"type": "dev",
 				"handlers": {}
