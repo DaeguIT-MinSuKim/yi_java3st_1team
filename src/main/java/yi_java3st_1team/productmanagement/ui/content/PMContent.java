@@ -1,6 +1,8 @@
 package yi_java3st_1team.productmanagement.ui.content;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.Rectangle;
 import java.awt.SystemColor;
@@ -8,14 +10,10 @@ import java.awt.SystemColor;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 
-import yi_java3st_1team.productmanagement.ui.list.SWListPanel;
-import yi_java3st_1team.productmanagement.ui.panel.SWRegisterPanel;
-import yi_java3st_1team.productmanagement.ui.panel.SCSORegisterPanel;
+import yi_java3st_1team.productmanagement.ui.list.CDListPanel;
 import yi_java3st_1team.productmanagement.ui.list.SCSOListPanel;
 import yi_java3st_1team.productmanagement.ui.panel.CDRegisterPanel;
-import yi_java3st_1team.productmanagement.ui.list.CDListPanel;
-import java.awt.Font;
-import java.awt.Color;
+import yi_java3st_1team.productmanagement.ui.panel.SCSORegisterPanel;
 
 @SuppressWarnings("serial")
 public class PMContent extends JPanel {

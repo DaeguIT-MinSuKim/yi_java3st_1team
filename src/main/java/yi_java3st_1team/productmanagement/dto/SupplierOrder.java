@@ -6,6 +6,7 @@ import yi_java3st_1team.clientmanagement.dto.Supplier;
 
 public class SupplierOrder {
 	private int soNo;
+	private Product soPno;
 	private Product soPname;
 	private Supplier soSname;
 	private Product soPcost;
@@ -20,8 +21,10 @@ public class SupplierOrder {
 		this.soNo = soNo;
 	}
 
-	public SupplierOrder(int soNo, Product soPname, Supplier soSname, Product soPcost, int soQty, Date soDate) {
+	public SupplierOrder(int soNo, Product soPno, Product soPname, Supplier soSname, Product soPcost, int soQty,
+			Date soDate) {
 		this.soNo = soNo;
+		this.soPno = soPno;
 		this.soPname = soPname;
 		this.soSname = soSname;
 		this.soPcost = soPcost;
@@ -35,6 +38,14 @@ public class SupplierOrder {
 
 	public void setSoNo(int soNo) {
 		this.soNo = soNo;
+	}
+
+	public Product getSoPno() {
+		return soPno;
+	}
+
+	public void setSoPno(Product soPno) {
+		this.soPno = soPno;
 	}
 
 	public Product getSoPname() {
@@ -101,8 +112,9 @@ public class SupplierOrder {
 
 	@Override
 	public String toString() {
-		return String.format("SupplierOrder [soNo=%s, soPname=%s, soSname=%s, soPcost=%s, soQty=%s, soDate=%s]", soNo,
-				soPname, soSname, soPcost, soQty, soDate);
+		return String.format(
+				"SupplierOrder [soNo=%s, soPno=%s, soPname=%s, soSname=%s, soPcost=%s, soQty=%s, soDate=%s]", soNo,
+				soPno, soPname, soSname, soPcost, soQty, soDate);
 	}
-
+	
 }

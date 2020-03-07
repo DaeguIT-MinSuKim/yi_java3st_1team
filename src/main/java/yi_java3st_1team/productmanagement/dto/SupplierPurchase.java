@@ -6,6 +6,7 @@ import yi_java3st_1team.clientmanagement.dto.Supplier;
 
 public class SupplierPurchase {
 	private int spNo;
+	private Product spPno;
 	private Product spPname;
 	private Supplier spSname;
 	private Product spPcost;
@@ -20,8 +21,10 @@ public class SupplierPurchase {
 		this.spNo = spNo;
 	}
 
-	public SupplierPurchase(int spNo, Product spPname, Supplier spSname, Product spPcost, int spQty, Date spDate) {
+	public SupplierPurchase(int spNo, Product spPno, Product spPname, Supplier spSname, Product spPcost, int spQty,
+			Date spDate) {
 		this.spNo = spNo;
+		this.spPno = spPno;
 		this.spPname = spPname;
 		this.spSname = spSname;
 		this.spPcost = spPcost;
@@ -35,6 +38,14 @@ public class SupplierPurchase {
 
 	public void setSpNo(int spNo) {
 		this.spNo = spNo;
+	}
+
+	public Product getSpPno() {
+		return spPno;
+	}
+
+	public void setSpPno(Product spPno) {
+		this.spPno = spPno;
 	}
 
 	public Product getSpPname() {
@@ -101,8 +112,9 @@ public class SupplierPurchase {
 
 	@Override
 	public String toString() {
-		return String.format("SupplierPurchase [spNo=%s, spPname=%s, spSname=%s, spPcost=%s, spQty=%s, spDate=%s]",
-				spNo, spPname, spSname, spPcost, spQty, spDate);
+		return String.format(
+				"SupplierPurchase [spNo=%s, spPno=%s, spPname=%s, spSname=%s, spPcost=%s, spQty=%s, spDate=%s]", spNo,
+				spPno, spPname, spSname, spPcost, spQty, spDate);
 	}
-
+	
 }

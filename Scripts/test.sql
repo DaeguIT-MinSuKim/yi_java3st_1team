@@ -78,5 +78,10 @@ desc category;
 select * from category;
 select cate_no from category where cate_name = '사무';
 
+select so_no from supplier_order order by so_no desc limit 1;
+
+select so_no, so_pno, p.p_name, s.s_name, p.p_cost, so_qty, so_date from supplier_order so 
+left join product p on so.so_pno = p.p_no left join supplier s on p.p_sno = s.s_no;
+				   
 select * from supplier_purchase;
 select sp_no, sp_pno, p.p_name, s.s_name, p.p_cost, sp_qty, sp_date from supplier_purchase sp left join product p on sp.sp_pno = p.p_no left join supplier s on p.p_sno = s.s_no;
