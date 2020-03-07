@@ -31,7 +31,7 @@ public class SPSORegisterPanel extends AbsItemPanel<SupplierPurchase> {
 	private JTextField tfSPSONo;
 	private JTextField tfSPSOPName;
 	private JTextField tfSPSOCost;
-	private JTextField tfSPSOSName;
+	public JTextField tfSPSOSName;
 	private JTextField tfSPSOPQty;
 	private JDateChooser tfSPSODate;
 	private JLabel label;
@@ -93,6 +93,7 @@ public class SPSORegisterPanel extends AbsItemPanel<SupplierPurchase> {
 		panel.add(lblSPSODate);
 		
 		tfSPSONo = new JTextField();
+		tfSPSONo.setEditable(false);
 		tfSPSONo.setBounds(176, 37, 200, 30);
 		panel.add(tfSPSONo);
 		tfSPSONo.setColumns(10);
@@ -129,6 +130,22 @@ public class SPSORegisterPanel extends AbsItemPanel<SupplierPurchase> {
 		
 	}
 
+	public JTextField getTfSPSOPName() {
+		return tfSPSOPName;
+	}
+
+	public JTextField getTfSPSOCost() {
+		return tfSPSOCost;
+	}
+
+	public void setNum1(SupplierPurchase item) {
+		tfSPSONo.setText(String.format("SP%04d", item.getSpNo()+1));
+	}
+	
+	public void setNum2(SupplierOrder item) {
+		tfSPSONo.setText(String.format("SO%04d", item.getSoNo()+1));
+	}
+	
 	@Override
 	public SupplierPurchase getItem() {
 		int spNo = Integer.parseInt(tfSPSONo.getText().substring(1));

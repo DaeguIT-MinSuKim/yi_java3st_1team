@@ -34,7 +34,7 @@ public class CListTblPanel extends AbstractTblPanel<Client> {
 				item.getcCeo(),
 				item.getcAddress(),
 				item.getcTel(),
-				String.format("%s", service.showEmployeeName(item))//번호가 아니라 직원테이블과 조인해서 이름이 나오게끔 변경 필요
+				String.format("%s", service.showEmployeeName(item))
 		};
 	}
 

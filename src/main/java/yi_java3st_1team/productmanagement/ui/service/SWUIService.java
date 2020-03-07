@@ -37,6 +37,10 @@ public class SWUIService {
 		return categoryDao.selectCategoryByAll();
 	}
 	
+	public String showSupplierName(Product supProduct) {
+		return productDao.selectSupplierByPName(supProduct);
+	}
+	
 	public Product overlapProduct(Product overlapProduct) {
 		return productDao.selectProductByName(overlapProduct);
 	}

@@ -10,15 +10,19 @@ import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.SwingConstants;
 
+import yi_java3st_1team.productmanagement.dto.Product;
 import yi_java3st_1team.productmanagement.ui.list.SOListTblPanel;
 import yi_java3st_1team.productmanagement.ui.list.SPListTblPanel;
 import yi_java3st_1team.productmanagement.ui.panel.SPSORegisterPanel;
 import yi_java3st_1team.productmanagement.ui.service.SOUIService;
 import yi_java3st_1team.productmanagement.ui.service.SPUIService;
+import yi_java3st_1team.productmanagement.ui.service.SWUIService;
+
 import java.awt.event.ItemListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ActionListener;
@@ -45,10 +49,12 @@ public class SPSOUIPanel extends JPanel implements ActionListener {
 	private SOUIService sOService;
 	private JPanel pListPanel;
 	private SPListTblPanel pSPTblPanel;
+	private SWUIService sWService;
 	
 	public SPSOUIPanel() {
 		sPService = new SPUIService();
 		sOService = new SOUIService();
+		sWService = new SWUIService();
 		initialize();
 	}
 	
@@ -63,6 +69,7 @@ public class SPSOUIPanel extends JPanel implements ActionListener {
 		
 		pSPSOPanel = new SPSORegisterPanel();
 		pSPSOPanel.setBounds(55, 115, 400, 440);
+		pSPSOPanel.setNum1(sPService.lastSP());
 		pRegisterPanel.add(pSPSOPanel);
 		pSPSOPanel.setLayout(null);
 		
@@ -107,6 +114,7 @@ public class SPSOUIPanel extends JPanel implements ActionListener {
 		pRegisterPanel.add(btnGoMain);
 		
 		btnPSSearch = new JButton("조 회");
+		btnPSSearch.addActionListener(this);
 		btnPSSearch.setFocusable(false);
 		btnPSSearch.setBackground(SystemColor.activeCaptionBorder);
 		btnPSSearch.setForeground(Color.WHITE);
@@ -177,6 +185,7 @@ public class SPSOUIPanel extends JPanel implements ActionListener {
 		
 		pSPSOPanel = new SPSORegisterPanel();
 		pSPSOPanel.setBounds(55, 115, 400, 440);
+		pSPSOPanel.setNum2(sOService.lastSO());
 		pRegisterPanel.add(pSPSOPanel);
 		pSPSOPanel.setLayout(null);
 		
@@ -221,6 +230,7 @@ public class SPSOUIPanel extends JPanel implements ActionListener {
 		pRegisterPanel.add(btnGoMain);
 		
 		btnPSSearch = new JButton("조 회");
+		btnPSSearch.addActionListener(this);
 		btnPSSearch.setFocusable(false);
 		btnPSSearch.setBackground(SystemColor.activeCaptionBorder);
 		btnPSSearch.setForeground(Color.WHITE);
@@ -281,6 +291,9 @@ public class SPSOUIPanel extends JPanel implements ActionListener {
 	}
 	
 	public void actionPerformed(ActionEvent e) {
+		if (e.getSource() == btnPSSearch) {
+			btnPSSearchActionPerformed(e);
+		}
 		if (e.getSource() == rdbtnSP) {
 			rdbtnSPActionPerformed(e);
 		}
@@ -303,5 +316,16 @@ public class SPSOUIPanel extends JPanel implements ActionListener {
 		initialize();
 		revalidate();
 		repaint();
+	}
+	protected void btnPSSearchActionPerformed(ActionEvent e) {
+		String pName = pSPSOPanel.getTfSPSOPName().getText().trim();
+		if(pName.equals("")) {
+			JOptionPane.showMessageDialog(null, "품목명을 입력해주세요.");
+		}else {
+			Product product = new Product();
+			product.setpName(pName);
+			String supName = sWService.showSupplierName(product);
+			pSPSOPanel.tfSPSOSName.setText(supName);
+		}
 	}
 }

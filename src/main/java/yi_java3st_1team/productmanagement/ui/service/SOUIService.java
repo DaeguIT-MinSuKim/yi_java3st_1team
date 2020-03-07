@@ -13,6 +13,10 @@ public class SOUIService {
 		return supplierOrderDao.selectSupplierOrderByAll();
 	}
 	
+	public SupplierOrder lastSO() {
+		return supplierOrderDao.selectSupplierOrderLastDate();
+	}
+	
 	public void removeSupplierOrder(SupplierOrder delSO) {
 		supplierOrderDao.deleteSupplierOrder(delSO);
 	}

@@ -85,3 +85,5 @@ left join product p on so.so_pno = p.p_no left join supplier s on p.p_sno = s.s_
 				   
 select * from supplier_purchase;
 select sp_no, sp_pno, p.p_name, s.s_name, p.p_cost, sp_qty, sp_date from supplier_purchase sp left join product p on sp.sp_pno = p.p_no left join supplier s on p.p_sno = s.s_no;
+
+select s.s_name from product p left join supplier s on p.p_sno = s.s_no where p.p_name ="알씨";

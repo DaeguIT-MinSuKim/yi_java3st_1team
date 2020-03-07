@@ -14,6 +14,7 @@ public interface ProductDao {
 	int deleteProduct(Product product);
 
 	Product selectProductByName(Product overlapProduct);
+	String selectSupplierByPName(Product product);
 
 	List<Product> selectProductListByName(Product product);
 	List<Product> selectProductListByCate(Product product);

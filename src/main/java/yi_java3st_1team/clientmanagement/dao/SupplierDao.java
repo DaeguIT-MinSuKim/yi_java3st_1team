@@ -8,6 +8,8 @@ public interface SupplierDao {
 	Supplier selectSupplierByNo(Supplier supplier);
 	Supplier selectSupplierByName(Supplier supplier);
 	Supplier selectSuppplierLastData();
+	
+	
 	List<Supplier> selectSupplierByAll();
 	List<Supplier> selectSupplierListByName(Supplier selectSupplier);
 	List<Supplier> selectSupplierListByBln(Supplier selectSupplier);

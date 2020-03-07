@@ -13,6 +13,10 @@ public class SPUIService {
 		return supplierPurchaseDao.selectSupplierPurchaseByAll();
 	}
 	
+	public SupplierPurchase lastSP() {
+		return supplierPurchaseDao.selectSupplierPurchaseLastDate();
+	}
+	
 	public void removeSupplierPurchase(SupplierPurchase delSP) {
 		supplierPurchaseDao.deleteSupplierPurchase(delSP);
 	}
