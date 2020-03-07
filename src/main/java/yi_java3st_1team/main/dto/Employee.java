@@ -116,9 +116,11 @@ public class Employee {
 
 	@Override
 	public String toString() {
-		return "Employee [empNo=" + empNo + ", empName=" + empName + ", dNo=" + dNo + ", empTitle=" + empTitle
-				+ ", empManager=" + empManager + ", empId=" + empId + ", empPass=" + empPass + ", empMail=" + empMail
-				+ "]";
+//		return "Employee [empNo=" + empNo + ", empName=" + empName + ", dNo=" + dNo + ", empTitle=" + empTitle
+//				+ ", empManager=" + empManager + ", empId=" + empId + ", empPass=" + empPass + ", empMail=" + empMail
+//				+ "]";
+		return String.format("%s %s %s %s %s %s %s %s",
+								empNo, empName, dNo.getDeptNo(), empTitle, empManager, empId, empPass, empMail);
 	}
 
 }

@@ -22,6 +22,7 @@ import javax.swing.border.EmptyBorder;
 
 import yi_java3st_1team.clientmanagement.ui.CMMainPanel;
 import yi_java3st_1team.main.EmployeeMainFrame;
+import yi_java3st_1team.main.dto.Department;
 import yi_java3st_1team.main.dto.Employee;
 import yi_java3st_1team.main.ui.content.LogoImg01Panel;
 import yi_java3st_1team.main.ui.content.LogoImg02Panel;
@@ -47,6 +48,7 @@ public class EmployeeMainUIPanel extends JPanel implements ActionListener {
 	private EmployeeLoginPanel pEmpLogin;
 	private EmployeeUiService empService;
 	public static Employee loginEmp;
+	public static Department loginDept;
 	
 	public JPanel pStop;
 	
@@ -259,9 +261,13 @@ public class EmployeeMainUIPanel extends JPanel implements ActionListener {
 		
 		pStop.remove(pLogin); //제거
 		pEmpLogin = new EmployeeLoginPanel();
+		
 		pEmpLogin.manager.setText("[관리자 로그인]");
+		pEmpLogin.loginImg.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\loginMain\\manager2.png"));
 		pEmpLogin.loginSuc.setText("<html>반갑습니다!<br><span style='color:blue'>"+loginEmp.getEmpName()+" "+loginEmp.getEmpTitle()+"</span>님이<br>로그인 하셨습니다.</html>");
-		pEmpLogin.empInfo.setText("<html>- 사원번호 : <span style='color:red'>"+loginEmp.getEmpNo()+"</span><br>- <span style='color:green'>"+loginEmp.getdNo()+"</span></html>");
+		String empNum = String.format("EE%03d", loginEmp.getEmpNo());
+		pEmpLogin.empInfo.setText("<html>- 사원번호 : <span style='color:red'>"+empNum+"</span><br>- 부서명 : <span style='color:green'>"+loginEmp.getdNo().getDeptName()+"</span></html>");
+		
 		pStop.add(pEmpLogin, BorderLayout.WEST);
 		pStop.revalidate();
 		pStop.repaint();

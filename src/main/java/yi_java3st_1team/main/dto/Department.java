@@ -23,6 +23,7 @@ public class Department {
 		this.floor = floor;
 	}
 
+
 	public int getDeptNo() {
 		return deptNo;
 	}
@@ -49,7 +50,8 @@ public class Department {
 
 	@Override
 	public String toString() {
-		return "Department [deptNo=" + deptNo + ", deptName=" + deptName + ", floor=" + floor + "]";
+		//return "Department [deptNo=" + deptNo + ", deptName=" + deptName + ", floor=" + floor + "]";
+		return String.format("%s %s %s", deptNo, deptName, floor);
 	}
 
 }

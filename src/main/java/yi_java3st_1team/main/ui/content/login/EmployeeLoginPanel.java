@@ -2,6 +2,7 @@ package yi_java3st_1team.main.ui.content.login;
 
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.SystemColor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -10,24 +11,19 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
-import yi_java3st_1team.main.dto.Employee;
-import yi_java3st_1team.main.ui.service.EmployeeUiService;
-
+@SuppressWarnings("serial")
 public class EmployeeLoginPanel extends JPanel implements ActionListener {
 	private JButton btnLogout;
 	public JLabel loginSuc;
-	
-	private EmployeeUiService empService;
-	public static Employee loginEmp;
 	public JLabel manager;
 	public JLabel empInfo;
+	public JLabel loginImg;
 	
 
 	/**
 	 * Create the panel.
 	 */
 	public EmployeeLoginPanel() {
-		empService = new EmployeeUiService();
 		initialize();
 	}
 	private void initialize() {
@@ -35,6 +31,7 @@ public class EmployeeLoginPanel extends JPanel implements ActionListener {
 		setLayout(null);
 		
 		btnLogout = new JButton("LOGOUT");
+		btnLogout.setBackground(SystemColor.controlHighlight);
 		btnLogout.addActionListener(this);
 		btnLogout.setFont(new Font("Arial", Font.BOLD, 17));
 		btnLogout.setFocusable(false);
@@ -57,13 +54,14 @@ public class EmployeeLoginPanel extends JPanel implements ActionListener {
 		empInfo = new JLabel();
 		//empInfo.setText("<html>- 사원번호 : <span style='color:red'>ET123</span><br>- <span style='color:green'>상품관리부</span></html>");
 		empInfo.setFont(new Font("굴림", Font.BOLD, 17));
-		empInfo.setBounds(152, 245, 164, 45);
+		empInfo.setBounds(152, 245, 180, 45);
 		add(empInfo);
 		
-		JLabel label_3 = new JLabel("이미지삽입");
-		label_3.setHorizontalAlignment(SwingConstants.CENTER);
-		label_3.setBounds(20, 71, 120, 120);
-		add(label_3);
+		loginImg = new JLabel();
+		//loginImg.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\loginMain\\manager2.png"));
+		loginImg.setHorizontalAlignment(SwingConstants.CENTER);
+		loginImg.setBounds(20, 71, 120, 120);
+		add(loginImg);
 	}
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == btnLogout) {
