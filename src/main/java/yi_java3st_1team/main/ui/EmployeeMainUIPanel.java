@@ -79,6 +79,7 @@ public class EmployeeMainUIPanel extends JPanel implements ActionListener {
 	
 	private String empId; //로그인 아이디
 	private String empPass; //로그인 비밀번호
+	private int manager;
 
 
 	public EmployeeMainUIPanel() {
@@ -243,10 +244,12 @@ public class EmployeeMainUIPanel extends JPanel implements ActionListener {
 	
 	//로그인
 	protected void actionPerformedBtnLogin(ActionEvent e) {
+		//로그인정보
 		empId = new String(pLogin.tfId.getText().trim());
 		empPass = new String(pLogin.pfPasswd.getPassword());
 		
 		loginEmp = empService.login(new Employee(empId, empPass));
+		manager = loginEmp.getEmpManager();
 		
 		//로그인 성공 못함
 		if(loginEmp == null) {
@@ -262,14 +265,30 @@ public class EmployeeMainUIPanel extends JPanel implements ActionListener {
 		pStop.remove(pLogin); //제거
 		pEmpLogin = new EmployeeLoginPanel();
 		
-		
+		// 직책별 로그인 구분
 		if(loginEmp.getEmpManager() == 1) { //책임관리자 로그인 : 대표이사, 경영관리이사, 부장, 차장, 과장
 			pEmpLogin.manager.setText("[책임관리자 로그인]");
 			pEmpLogin.loginImg.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\loginMain\\topManager.png"));
+			
+			//책임관리자(대표이사~과장) 로그인시 차트 패널 불러오기
+			//1. 라인차트
+			pStop.remove(pImg01); //제거
+			JPanel line = new JPanel();
+			line.setBackground(SystemColor.yellow);
+			pStop.add(line, BorderLayout.CENTER);
+			
+			//2. 바차트
+			pImg02.remove(pLogo); //제거
+			JPanel bar = new JPanel();
+			bar.setBackground(Color.red);
+			bar.setPreferredSize(new Dimension(350, 250));
+			pImg02.add(bar, BorderLayout.NORTH);
+			
 		}		
 		else { //관리자 로그인 : 대리, 사원, 인턴
 			pEmpLogin.manager.setText("[관리자 로그인]");
-			pEmpLogin.loginImg.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\loginMain\\manager2.png"));			
+			pEmpLogin.loginImg.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\loginMain\\manager2.png"));
+			//btn04.setEnabled(false); //현황조회&보고서 버튼 비활성화
 		}		
 		pEmpLogin.loginSuc.setText("<html>반갑습니다!<br><span style='color:blue'>"+loginEmp.getEmpName()+" "+loginEmp.getEmpTitle()+"</span>님이<br>로그인 하셨습니다.</html>");
 		String empNum = String.format("EE%03d", loginEmp.getEmpNo());
@@ -278,23 +297,6 @@ public class EmployeeMainUIPanel extends JPanel implements ActionListener {
 		pStop.add(pEmpLogin, BorderLayout.WEST);
 		pStop.revalidate();
 		pStop.repaint();
-		
-		//책임관리자(대표이사~과장) 로그인시 차트 패널 불러오기
-		//1. 라인차트
-		pStop.remove(pImg01); //제거
-		JPanel line = new JPanel();
-		line.setBackground(SystemColor.yellow);
-		pStop.add(line, BorderLayout.CENTER);
-		
-		//2. 바차트
-		pImg02.remove(pLogo); //제거
-		JPanel bar = new JPanel();
-		bar.setBackground(Color.red);
-		bar.setPreferredSize(new Dimension(350, 250));
-		pImg02.add(bar, BorderLayout.NORTH);
-		
-		//관리자(대리~인턴) 로그인시 현황조회&보고서 버튼 비활성화
-		//btn04.setEnabled(false);
 	}
 	
 	//거래처 관리 클릭 : CMMainPanel
@@ -349,25 +351,34 @@ public class EmployeeMainUIPanel extends JPanel implements ActionListener {
 			pStop.revalidate();
 			pStop.repaint();
 		}
-		//System.out.println(pStop);
 	}
 	
 	//현황조회/보고
 	protected void actionPerformedBtn04(ActionEvent e) {
 		LoginFirst();
 		
-		if(loginEmp != null) {
-			pStop.removeAll();
-			pSbot.removeAll();
-			revalidate();
-			repaint();
-			setLayout(new CardLayout(-19,0));
-			pViewpanel = new ReportMainPanel();
-			pViewpanel.setPreferredSize(new Dimension(1544, 0));
-			pStop.add(pViewpanel, BorderLayout.WEST);
-			pStop.revalidate();
-			pStop.repaint();
+		// 직책별 비활성화 적용
+		switch (manager) {
+			case 1: //책임관리자(활성화)
+				if (loginEmp != null) {
+					pStop.removeAll();
+					pSbot.removeAll();
+					revalidate();
+					repaint();
+					setLayout(new CardLayout(-19, 0));
+					pViewpanel = new ReportMainPanel();
+					pViewpanel.setPreferredSize(new Dimension(1544, 0));
+					pStop.add(pViewpanel, BorderLayout.WEST);
+					pStop.revalidate();
+					pStop.repaint();
+				}
+				break;
+			case 2: //관리자(비활성화)
+				ImageIcon icon = new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\loginMain\\manager1.png");
+				JOptionPane.showMessageDialog(null, "<html><h3 align='center'>권한이 없습니다.</h3></html>","Don't have Premission",JOptionPane.INFORMATION_MESSAGE,icon);
+				break;
 		}
+
 	}
 	
 	//회원가입
