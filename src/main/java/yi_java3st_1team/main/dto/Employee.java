@@ -45,6 +45,11 @@ public class Employee {
 		this.empMail = empMail;
 	}
 
+	public Employee(String empId, String empPass) {
+		this.empId = empId;
+		this.empPass = empPass;
+	}
+
 	public int getEmpNo() {
 		return empNo;
 	}

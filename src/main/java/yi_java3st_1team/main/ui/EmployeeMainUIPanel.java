@@ -22,6 +22,7 @@ import javax.swing.border.EmptyBorder;
 
 import yi_java3st_1team.clientmanagement.ui.CMMainPanel;
 import yi_java3st_1team.main.EmployeeMainFrame;
+import yi_java3st_1team.main.dto.Employee;
 import yi_java3st_1team.main.ui.content.LogoImg01Panel;
 import yi_java3st_1team.main.ui.content.LogoImg02Panel;
 import yi_java3st_1team.main.ui.content.chart.EmpMiniBarChart;
@@ -30,9 +31,9 @@ import yi_java3st_1team.main.ui.content.login.EmpRegiPanel;
 import yi_java3st_1team.main.ui.content.login.EmployeeLoginPanel;
 import yi_java3st_1team.main.ui.content.login.LoginPanel;
 import yi_java3st_1team.main.ui.content.login.SearchPanel;
+import yi_java3st_1team.main.ui.service.EmployeeUiService;
 import yi_java3st_1team.ordermanagement.ui.OMMainPanel;
 import yi_java3st_1team.productmanagement.ui.PMMainPanel;
-import yi_java3st_1team.viewsmanagement.ui.panel.MainPanel;
 import yi_java3st_1team.viewsmanagement.ui.panel.ReportMainPanel;
 
 @SuppressWarnings("serial")
@@ -44,6 +45,9 @@ public class EmployeeMainUIPanel extends JPanel implements ActionListener {
 	private JFrame searchFrame;
 	private LoginPanel pLogin;
 	private EmployeeLoginPanel pEmpLogin;
+	private EmployeeUiService empService;
+	public static Employee loginEmp;
+	
 	public JPanel pStop;
 	
 
@@ -73,6 +77,7 @@ public class EmployeeMainUIPanel extends JPanel implements ActionListener {
 
 
 	public EmployeeMainUIPanel() {
+		empService = new EmployeeUiService();
 		initialize();
 		
 	}
@@ -229,6 +234,18 @@ public class EmployeeMainUIPanel extends JPanel implements ActionListener {
 	
 	//로그인
 	protected void actionPerformedBtnLogin(ActionEvent e) {
+		String empId = new String(pLogin.tfId.getText().trim());
+		String empPass = new String(pLogin.pfPasswd.getPassword());
+		
+		//System.out.println(empId + empPass);
+		
+		loginEmp = empService.login(new Employee(empId, empPass));
+		
+		//로그인 성공 못함
+		if(loginEmp == null) {
+			JOptionPane.showMessageDialog(null, "사원번호 혹은 비밀번호가 틀림");
+			return;
+		}
 		
 		//로그인 성공시 알림 & 로그인된 패널로 전환
 		ImageIcon icon = new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\loginMain\\connect.png");

@@ -2,8 +2,6 @@ package yi_java3st_1team.main.ui.content.login;
 
 import java.awt.Dimension;
 import java.awt.Font;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
@@ -14,8 +12,8 @@ import javax.swing.SwingConstants;
 
 @SuppressWarnings("serial")
 public class LoginPanel extends JPanel {
-	private JTextField tfId;
-	private JPasswordField pfPasswd;
+	public JTextField tfId;
+	public JPasswordField pfPasswd;
 
 	/**
 	 * Create the panel.
