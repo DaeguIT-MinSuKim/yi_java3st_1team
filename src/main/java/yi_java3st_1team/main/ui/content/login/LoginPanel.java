@@ -37,7 +37,7 @@ public class LoginPanel extends JPanel {
 		lblId.setBounds(75, 66, 97, 41);
 		add(lblId);
 		
-		tfId = new JTextField();
+		tfId = new JTextField("hceo1004");
 		tfId.setFont(new Font("굴림", Font.PLAIN, 17));
 		tfId.setColumns(10);
 		tfId.setBounds(180, 60, 151, 48);
@@ -55,7 +55,7 @@ public class LoginPanel extends JPanel {
 		lblPass.setBounds(75, 167, 97, 31);
 		add(lblPass);
 		
-		pfPasswd = new JPasswordField();
+		pfPasswd = new JPasswordField("Json1234!@");
 		pfPasswd.setFont(new Font("굴림", Font.PLAIN, 17));
 		pfPasswd.setBounds(180, 160, 151, 48);
 		add(pfPasswd);
