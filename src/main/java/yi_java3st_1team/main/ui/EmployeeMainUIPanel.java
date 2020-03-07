@@ -249,7 +249,7 @@ public class EmployeeMainUIPanel extends JPanel implements ActionListener {
 		empPass = new String(pLogin.pfPasswd.getPassword());
 		
 		loginEmp = empService.login(new Employee(empId, empPass));
-		manager = loginEmp.getEmpManager();
+
 		
 		//로그인 성공 못함
 		if(loginEmp == null) {
@@ -266,30 +266,34 @@ public class EmployeeMainUIPanel extends JPanel implements ActionListener {
 		pEmpLogin = new EmployeeLoginPanel();
 		
 		// 직책별 로그인 구분
-		if(loginEmp.getEmpManager() == 1) { //책임관리자 로그인 : 대표이사, 경영관리이사, 부장, 차장, 과장
-			pEmpLogin.manager.setText("[책임관리자 로그인]");
-			pEmpLogin.loginImg.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\loginMain\\topManager.png"));
-			
-			//책임관리자(대표이사~과장) 로그인시 차트 패널 불러오기
-			//1. 라인차트
-			pStop.remove(pImg01); //제거
-			JPanel line = new JPanel();
-			line.setBackground(SystemColor.yellow);
-			pStop.add(line, BorderLayout.CENTER);
-			
-			//2. 바차트
-			pImg02.remove(pLogo); //제거
-			JPanel bar = new JPanel();
-			bar.setBackground(Color.red);
-			bar.setPreferredSize(new Dimension(350, 250));
-			pImg02.add(bar, BorderLayout.NORTH);
-			
-		}		
-		else { //관리자 로그인 : 대리, 사원, 인턴
-			pEmpLogin.manager.setText("[관리자 로그인]");
-			pEmpLogin.loginImg.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\loginMain\\manager2.png"));
-			//btn04.setEnabled(false); //현황조회&보고서 버튼 비활성화
-		}		
+		
+		manager = loginEmp.getEmpManager();
+
+		switch (manager) {
+			case 1: // 책임관리자 로그인 : 대표이사, 경영관리이사, 부장, 차장, 과장
+				pEmpLogin.manager.setText("[책임관리자 로그인]");
+				pEmpLogin.loginImg.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\loginMain\\topManager.png"));
+	
+				// 책임관리자(대표이사~과장) 로그인시 차트 패널 불러오기
+				// 1. 라인차트
+				pStop.remove(pImg01); // 제거
+				JPanel line = new JPanel();
+				line.setBackground(SystemColor.yellow);
+				pStop.add(line, BorderLayout.CENTER);
+	
+				// 2. 바차트
+				pImg02.remove(pLogo); // 제거
+				JPanel bar = new JPanel();
+				bar.setBackground(Color.red);
+				bar.setPreferredSize(new Dimension(350, 250));
+				pImg02.add(bar, BorderLayout.NORTH);
+				break;
+			case 2: // 관리자 로그인 : 대리, 사원, 인턴
+				pEmpLogin.manager.setText("[관리자 로그인]");
+				pEmpLogin.loginImg.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\loginMain\\manager2.png"));
+				break;
+		}			
+				
 		pEmpLogin.loginSuc.setText("<html>반갑습니다!<br><span style='color:blue'>"+loginEmp.getEmpName()+" "+loginEmp.getEmpTitle()+"</span>님이<br>로그인 하셨습니다.</html>");
 		String empNum = String.format("EE%03d", loginEmp.getEmpNo());
 		pEmpLogin.empInfo.setText("<html>- 사원번호 : <span style='color:red'>"+empNum+"</span><br>- 부서명 : <span style='color:green'>"+loginEmp.getdNo().getDeptName()+"</span></html>");
@@ -409,7 +413,7 @@ public class EmployeeMainUIPanel extends JPanel implements ActionListener {
 	public void LoginFirst() {
 		if(loginEmp == null) {
 			ImageIcon icon = new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\loginMain\\preLogin.png");
-			JOptionPane.showMessageDialog(null, "<html><h3 align='center'>먼저 로그인부터 해주세요!</h3></html>","Login First",JOptionPane.INFORMATION_MESSAGE,icon);
+			JOptionPane.showMessageDialog(null, "<html><h3 align='center'>로그인부터 먼저 해주세요!</h3></html>","Login First",JOptionPane.INFORMATION_MESSAGE,icon);
 			return;
 		}
 	}
