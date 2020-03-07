@@ -13,12 +13,12 @@ import javax.swing.SwingConstants;
 import java.awt.Color;
 
 @SuppressWarnings("serial")
-public class SCSOListPanel extends JPanel {
+public class SPSOListPanel extends JPanel {
 
 	private JLabel lblImg;
 	private JLabel lblSWList;
 	private JPanel pList;
-	public SCSOListPanel() {
+	public SPSOListPanel() {
 
 		initialize();
 	}

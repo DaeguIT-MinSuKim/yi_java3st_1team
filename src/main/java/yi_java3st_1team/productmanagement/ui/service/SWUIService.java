@@ -9,7 +9,7 @@ import yi_java3st_1team.productmanagement.dao.impl.ProductDaoImpl;
 import yi_java3st_1team.productmanagement.dto.Category;
 import yi_java3st_1team.productmanagement.dto.Product;
 
-public class ProductUIService {
+public class SWUIService {
 	private ProductDao productDao = ProductDaoImpl.getInstance();
 	private CategoryDao categoryDao = CategoryDaoImpl.getInstance();
 	
