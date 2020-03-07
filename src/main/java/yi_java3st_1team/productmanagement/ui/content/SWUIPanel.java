@@ -1,10 +1,5 @@
 package yi_java3st_1team.productmanagement.ui.content;
 
-import javax.swing.JPanel;
-import javax.swing.JPopupMenu;
-import javax.swing.SwingConstants;
-import javax.swing.filechooser.FileNameExtensionFilter;
-
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -12,37 +7,38 @@ import java.awt.GridLayout;
 import java.awt.SystemColor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.sql.SQLException;
 
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JFileChooser;
 import javax.swing.JLabel;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import java.awt.BorderLayout;
-import yi_java3st_1team.productmanagement.ui.panel.SWRegisterPanel;
-import yi_java3st_1team.productmanagement.ui.service.ProductUIService;
-
-import javax.swing.JComboBox;
-import javax.swing.JFileChooser;
+import javax.swing.JPanel;
+import javax.swing.JPopupMenu;
 import javax.swing.JTextField;
+import javax.swing.SwingConstants;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
-import yi_java3st_1team.clientmanagement.dto.Client;
 import yi_java3st_1team.clientmanagement.dto.Supplier;
 import yi_java3st_1team.clientmanagement.ui.service.SupplierUIService;
 import yi_java3st_1team.exception.InvalidCheckException;
 import yi_java3st_1team.productmanagement.dto.Category;
 import yi_java3st_1team.productmanagement.dto.Product;
 import yi_java3st_1team.productmanagement.ui.list.SWListTblPanel;
-import javax.swing.DefaultComboBoxModel;
-import java.awt.event.ItemListener;
-import java.awt.event.ItemEvent;
+import yi_java3st_1team.productmanagement.ui.panel.SWRegisterPanel;
+import yi_java3st_1team.productmanagement.ui.service.SWUIService;
 
 @SuppressWarnings("serial")
-public class SoftwareUIPanel extends JPanel implements ActionListener, ItemListener {
+public class SWUIPanel extends JPanel implements ActionListener, ItemListener {
 	
 	private JTextField tfSerch;
-	private ProductUIService service;
+	private SWUIService service;
 	private SupplierUIService serviceSupplier;
 	private SWRegisterPanel pSWRPanel;
 	private JLabel lblSW;
@@ -62,8 +58,8 @@ public class SoftwareUIPanel extends JPanel implements ActionListener, ItemListe
 	private String picPath;
 	private String selectItem;
 
-	public SoftwareUIPanel() {
-		service = new ProductUIService();
+	public SWUIPanel() {
+		service = new SWUIService();
 		serviceSupplier = new SupplierUIService();
 		initialize();
 	}

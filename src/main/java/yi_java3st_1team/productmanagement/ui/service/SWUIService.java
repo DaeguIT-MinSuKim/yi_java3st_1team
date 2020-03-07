@@ -9,7 +9,7 @@ import yi_java3st_1team.productmanagement.dao.impl.ProductDaoImpl;
 import yi_java3st_1team.productmanagement.dto.Category;
 import yi_java3st_1team.productmanagement.dto.Product;
 
-public class ProductUIService {
+public class SWUIService {
 	private ProductDao productDao = ProductDaoImpl.getInstance();
 	private CategoryDao categoryDao = CategoryDaoImpl.getInstance();
 	
@@ -35,6 +35,10 @@ public class ProductUIService {
 	
 	public List<Category> showCategoryList(){
 		return categoryDao.selectCategoryByAll();
+	}
+	
+	public String showSupplierName(Product supProduct) {
+		return productDao.selectSupplierByPName(supProduct);
 	}
 	
 	public Product overlapProduct(Product overlapProduct) {

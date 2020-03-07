@@ -11,9 +11,7 @@ import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 
 import yi_java3st_1team.productmanagement.ui.list.CDListPanel;
-import yi_java3st_1team.productmanagement.ui.list.SCSOListPanel;
 import yi_java3st_1team.productmanagement.ui.panel.CDRegisterPanel;
-import yi_java3st_1team.productmanagement.ui.panel.SCSORegisterPanel;
 
 @SuppressWarnings("serial")
 public class PMContent extends JPanel {
@@ -21,11 +19,10 @@ public class PMContent extends JPanel {
 	private JPanel pSWRegister;
 	private JPanel pSCSO;
 	private JPanel pClientDelivery;
-	private SCSORegisterPanel pSCSORegisterPanel;
-	private SCSOListPanel pSCSOListPanel;
 	private CDRegisterPanel pCDRegisterPanel;
 	private CDListPanel pCDListPanel;
-	public SoftwareUIPanel pSWUIPanel;
+	public SWUIPanel pSWUIPanel;
+	private SPSOUIPanel pSCSOUIPanel;
 
 	public PMContent() {
 
@@ -48,24 +45,17 @@ public class PMContent extends JPanel {
 		tpClientManagement.addTab("제품 등록", null, pSWRegister, null);
 		pSWRegister.setLayout(new BorderLayout(0, 0));
 		
-		pSWUIPanel = new SoftwareUIPanel();
+		pSWUIPanel = new SWUIPanel();
 		pSWRegister.add(pSWUIPanel, BorderLayout.CENTER);
 		
 		pSCSO = new JPanel();
 		pSCSO.setBounds(0, 0, 100, 50);
 		pSCSO.setBackground(SystemColor.inactiveCaptionBorder);
 		tpClientManagement.addTab("매입 / 발주", null, pSCSO, null);
-		pSCSO.setLayout(new GridLayout(0, 2, 0, 0));
+		pSCSO.setLayout(new BorderLayout(0, 0));
 		
-		pSCSORegisterPanel = new SCSORegisterPanel();
-		pSCSORegisterPanel.setBackground(SystemColor.inactiveCaptionBorder);
-		pSCSO.add(pSCSORegisterPanel);
-		pSCSORegisterPanel.setLayout(null);
-		
-		pSCSOListPanel = new SCSOListPanel();
-		pSCSOListPanel.setBackground(SystemColor.inactiveCaptionBorder);
-		pSCSO.add(pSCSOListPanel);
-		pSCSOListPanel.setLayout(null);
+		pSCSOUIPanel = new SPSOUIPanel();
+		pSCSO.add(pSCSOUIPanel, BorderLayout.CENTER);
 		
 		pClientDelivery = new JPanel();
 		pClientDelivery.setBounds(0, 0, 100, 50);

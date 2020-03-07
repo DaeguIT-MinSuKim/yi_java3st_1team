@@ -216,6 +216,8 @@ public class EmployeeMainUIPanel extends JPanel implements ActionListener {
 		btn04.setPreferredSize(new Dimension(240, 23));
 		btn04.setFocusable(false);
 		pBtns02.add(btn04, BorderLayout.EAST);
+		
+		//pEmpLogin.btnLogout.addActionListener(this);
 	}
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == btn04) {
@@ -239,9 +241,14 @@ public class EmployeeMainUIPanel extends JPanel implements ActionListener {
 		if (e.getSource() == btnLogin) {
 			actionPerformedBtnLogin(e);
 		}
+		
+		if(e.getSource() == pEmpLogin.btnLogout) {
+			actionPerformedBtnLogout(e);
+		}
 	}
 	
-	
+
+
 	//로그인
 	protected void actionPerformedBtnLogin(ActionEvent e) {
 		//로그인정보
@@ -301,6 +308,19 @@ public class EmployeeMainUIPanel extends JPanel implements ActionListener {
 		pStop.add(pEmpLogin, BorderLayout.WEST);
 		pStop.revalidate();
 		pStop.repaint();
+		
+		//로그아웃버튼
+		pEmpLogin.btnLogout.addActionListener(this);
+	}
+	
+	//로그아웃
+	private void actionPerformedBtnLogout(ActionEvent e) {
+		removeAll();
+		revalidate();
+		repaint();
+		initialize();
+		revalidate();
+		repaint();
 	}
 	
 	//거래처 관리 클릭 : CMMainPanel

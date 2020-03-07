@@ -4,7 +4,6 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.SystemColor;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -12,8 +11,8 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
 @SuppressWarnings("serial")
-public class EmployeeLoginPanel extends JPanel implements ActionListener {
-	private JButton btnLogout;
+public class EmployeeLoginPanel extends JPanel{
+	public JButton btnLogout;
 	public JLabel loginSuc;
 	public JLabel manager;
 	public JLabel empInfo;
@@ -32,7 +31,7 @@ public class EmployeeLoginPanel extends JPanel implements ActionListener {
 		
 		btnLogout = new JButton("LOGOUT");
 		btnLogout.setBackground(SystemColor.controlHighlight);
-		btnLogout.addActionListener(this);
+
 		btnLogout.setFont(new Font("Arial", Font.BOLD, 17));
 		btnLogout.setFocusable(false);
 		btnLogout.setBounds(20, 245, 120, 45);

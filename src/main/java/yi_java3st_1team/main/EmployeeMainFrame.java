@@ -16,10 +16,9 @@ import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
 import yi_java3st_1team.main.ui.EmployeeMainUIPanel;
-import javax.swing.JButton;
 
 @SuppressWarnings("serial")
-public class EmployeeMainFrame extends JFrame {
+public class EmployeeMainFrame extends JFrame{
 
 	public JPanel contentPane; //내용물,목차+판유리 - 컴포넌트(구성요소,부품)를 부착
 	public JPanel pHeader;
@@ -102,4 +101,5 @@ public class EmployeeMainFrame extends JFrame {
 		lblCopy.setBorder(BorderFactory.createEmptyBorder(0,0,0,20));
 		pFooter.add(lblCopy, BorderLayout.EAST);
 	}
+	
 }

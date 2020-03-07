@@ -11,7 +11,6 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.Vector;
@@ -30,7 +29,7 @@ import yi_java3st_1team.clientmanagement.ui.panel.AbsItemPanel;
 import yi_java3st_1team.exception.InvalidCheckException;
 import yi_java3st_1team.productmanagement.dto.Category;
 import yi_java3st_1team.productmanagement.dto.Product;
-import yi_java3st_1team.productmanagement.ui.service.ProductUIService;
+import yi_java3st_1team.productmanagement.ui.service.SWUIService;
 
 @SuppressWarnings("serial")
 public class SWRegisterPanel extends AbsItemPanel<Product> implements ItemListener {
@@ -51,12 +50,12 @@ public class SWRegisterPanel extends AbsItemPanel<Product> implements ItemListen
 	public JDateChooser tfPDate;
 	private JComboBox<Category> cmbCate;
 	public JTextField tfImgSearch;
-	private ProductUIService service;
+	private SWUIService service;
 	private String pPicPath;
 	private byte[] pPics;
 	
 	public SWRegisterPanel() {
-		service = new ProductUIService();
+		service = new SWUIService();
 		initialize();
 	}
 	
@@ -191,7 +190,7 @@ public class SWRegisterPanel extends AbsItemPanel<Product> implements ItemListen
 		
 	}
 	
-	public void setService(ProductUIService service) {
+	public void setService(SWUIService service) {
 		this.service = service;
 		setCmbCateList(service.showCategoryList());
 	}
