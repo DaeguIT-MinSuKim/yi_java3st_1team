@@ -262,12 +262,19 @@ public class EmployeeMainUIPanel extends JPanel implements ActionListener {
 		pStop.remove(pLogin); //제거
 		pEmpLogin = new EmployeeLoginPanel();
 		
-		pEmpLogin.manager.setText("[관리자 로그인]");
-		pEmpLogin.loginImg.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\loginMain\\manager2.png"));
+		
+		if(loginEmp.getEmpManager() == 1) { //책임관리자 로그인 : 대표이사, 경영관리이사, 부장, 차장, 과장
+			pEmpLogin.manager.setText("[책임관리자 로그인]");
+			pEmpLogin.loginImg.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\loginMain\\topManager.png"));
+		}		
+		else { //관리자 로그인 : 대리, 사원, 인턴
+			pEmpLogin.manager.setText("[관리자 로그인]");
+			pEmpLogin.loginImg.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\loginMain\\manager2.png"));			
+		}		
 		pEmpLogin.loginSuc.setText("<html>반갑습니다!<br><span style='color:blue'>"+loginEmp.getEmpName()+" "+loginEmp.getEmpTitle()+"</span>님이<br>로그인 하셨습니다.</html>");
 		String empNum = String.format("EE%03d", loginEmp.getEmpNo());
 		pEmpLogin.empInfo.setText("<html>- 사원번호 : <span style='color:red'>"+empNum+"</span><br>- 부서명 : <span style='color:green'>"+loginEmp.getdNo().getDeptName()+"</span></html>");
-		
+
 		pStop.add(pEmpLogin, BorderLayout.WEST);
 		pStop.revalidate();
 		pStop.repaint();
