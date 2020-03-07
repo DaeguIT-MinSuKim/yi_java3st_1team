@@ -259,7 +259,9 @@ public class EmployeeMainUIPanel extends JPanel implements ActionListener {
 		
 		pStop.remove(pLogin); //제거
 		pEmpLogin = new EmployeeLoginPanel();
-		pEmpLogin.setPreferredSize(new Dimension(350, 10));
+		pEmpLogin.manager.setText("[관리자 로그인]");
+		pEmpLogin.loginSuc.setText("<html>반갑습니다!<br><span style='color:blue'>"+loginEmp.getEmpName()+" "+loginEmp.getEmpTitle()+"</span>님이<br>로그인 하셨습니다.</html>");
+		pEmpLogin.empInfo.setText("<html>- 사원번호 : <span style='color:red'>"+loginEmp.getEmpNo()+"</span><br>- <span style='color:green'>"+loginEmp.getdNo()+"</span></html>");
 		pStop.add(pEmpLogin, BorderLayout.WEST);
 		pStop.revalidate();
 		pStop.repaint();
@@ -287,16 +289,16 @@ public class EmployeeMainUIPanel extends JPanel implements ActionListener {
 		LoginFirst();
 		
 		if(loginEmp != null) {
-		pStop.removeAll();
-		pSbot.removeAll();
-		revalidate();
-		repaint();
-		setLayout(new CardLayout(-19,0));
-		pCMpanel = new CMMainPanel();
-		pCMpanel.setPreferredSize(new Dimension(1544, 0));
-		pStop.add(pCMpanel, BorderLayout.WEST);
-		pStop.revalidate();
-		pStop.repaint();
+			pStop.removeAll();
+			pSbot.removeAll();
+			revalidate();
+			repaint();
+			setLayout(new CardLayout(-19,0));
+			pCMpanel = new CMMainPanel();
+			pCMpanel.setPreferredSize(new Dimension(1544, 0));
+			pStop.add(pCMpanel, BorderLayout.WEST);
+			pStop.revalidate();
+			pStop.repaint();
 		}
 	}
 	
@@ -305,16 +307,16 @@ public class EmployeeMainUIPanel extends JPanel implements ActionListener {
 		LoginFirst();
 		
 		if(loginEmp != null) {
-		pStop.removeAll();
-		pSbot.removeAll();
-		revalidate();
-		repaint();
-		setLayout(new CardLayout(-19,0));
-		pPMpanel = new PMMainPanel();
-		pPMpanel.setPreferredSize(new Dimension(1544, 0));
-		pStop.add(pPMpanel, BorderLayout.WEST);
-		pStop.revalidate();
-		pStop.repaint();
+			pStop.removeAll();
+			pSbot.removeAll();
+			revalidate();
+			repaint();
+			setLayout(new CardLayout(-19,0));
+			pPMpanel = new PMMainPanel();
+			pPMpanel.setPreferredSize(new Dimension(1544, 0));
+			pStop.add(pPMpanel, BorderLayout.WEST);
+			pStop.revalidate();
+			pStop.repaint();
 		}
 	}
 	
@@ -323,16 +325,16 @@ public class EmployeeMainUIPanel extends JPanel implements ActionListener {
 		LoginFirst();
 		
 		if(loginEmp != null) {
-		pStop.removeAll();
-		pSbot.removeAll();
-		revalidate();
-		repaint();
-		setLayout(new CardLayout(-19,0));
-		pOMpanel = new OMMainPanel();
-		pOMpanel.setPreferredSize(new Dimension(1544, 0));
-		pStop.add(pOMpanel, BorderLayout.WEST);
-		pStop.revalidate();
-		pStop.repaint();
+			pStop.removeAll();
+			pSbot.removeAll();
+			revalidate();
+			repaint();
+			setLayout(new CardLayout(-19,0));
+			pOMpanel = new OMMainPanel();
+			pOMpanel.setPreferredSize(new Dimension(1544, 0));
+			pStop.add(pOMpanel, BorderLayout.WEST);
+			pStop.revalidate();
+			pStop.repaint();
 		}
 		//System.out.println(pStop);
 	}
@@ -342,16 +344,16 @@ public class EmployeeMainUIPanel extends JPanel implements ActionListener {
 		LoginFirst();
 		
 		if(loginEmp != null) {
-		pStop.removeAll();
-		pSbot.removeAll();
-		revalidate();
-		repaint();
-		setLayout(new CardLayout(-19,0));
-		pViewpanel = new ReportMainPanel();
-		pViewpanel.setPreferredSize(new Dimension(1544, 0));
-		pStop.add(pViewpanel, BorderLayout.WEST);
-		pStop.revalidate();
-		pStop.repaint();
+			pStop.removeAll();
+			pSbot.removeAll();
+			revalidate();
+			repaint();
+			setLayout(new CardLayout(-19,0));
+			pViewpanel = new ReportMainPanel();
+			pViewpanel.setPreferredSize(new Dimension(1544, 0));
+			pStop.add(pViewpanel, BorderLayout.WEST);
+			pStop.revalidate();
+			pStop.repaint();
 		}
 	}
 	
