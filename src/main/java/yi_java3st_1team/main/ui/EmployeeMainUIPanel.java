@@ -44,7 +44,7 @@ public class EmployeeMainUIPanel extends JPanel implements ActionListener {
 	private JButton btnSearch;
 	private JFrame regiFrame;
 	private JFrame searchFrame;
-	private LoginPanel pLogin;
+	public LoginPanel pLogin;
 	private EmployeeLoginPanel pEmpLogin;
 	private EmployeeUiService empService;
 	public static Employee loginEmp;
@@ -62,12 +62,12 @@ public class EmployeeMainUIPanel extends JPanel implements ActionListener {
 	private JLabel lblImg02;
 	private JButton btn03;
 	private JButton btn04;
-	private LogoImg02Panel pImg01;
-	private LogoImg01Panel pLogo;
+	public LogoImg02Panel pImg01;
+	public LogoImg01Panel pLogo;
 	
 	private EmpMiniLineChart pLchart;
 	private EmpMiniBarChart pBchart;
-	private JPanel pImg02;
+	public JPanel pImg02;
 	
 	private CMMainPanel pCMpanel;
 	private OMMainPanel pOMpanel;
@@ -242,6 +242,10 @@ public class EmployeeMainUIPanel extends JPanel implements ActionListener {
 			actionPerformedBtnLogin(e);
 		}
 		
+		if(e.getSource() == pEmpLogin.btnLogout) {
+			actionPerformedBtnLogout(e);
+		}
+		
 
 	}
 	
@@ -310,9 +314,7 @@ public class EmployeeMainUIPanel extends JPanel implements ActionListener {
 		//로그아웃버튼
 		pEmpLogin.btnLogout.addActionListener(this);
 		
-		if(e.getSource() == pEmpLogin.btnLogout) {
-			actionPerformedBtnLogout(e);
-		}
+
 	}
 	
 	//로그아웃
@@ -370,7 +372,7 @@ public class EmployeeMainUIPanel extends JPanel implements ActionListener {
 			pSbot.removeAll();
 			revalidate();
 			repaint();
-			setLayout(new CardLayout(-19,0));
+			setLayout(new CardLayout(-18,0));
 			pOMpanel = new OMMainPanel();
 			pOMpanel.setPreferredSize(new Dimension(1544, 0));
 			pStop.add(pOMpanel, BorderLayout.WEST);
@@ -382,7 +384,6 @@ public class EmployeeMainUIPanel extends JPanel implements ActionListener {
 	//현황조회/보고
 	protected void actionPerformedBtn04(ActionEvent e) {
 		LoginFirst();
-		
 		// 직책별 비활성화 적용
 		switch (manager) {
 			case 1: //책임관리자(활성화)
@@ -391,7 +392,7 @@ public class EmployeeMainUIPanel extends JPanel implements ActionListener {
 					pSbot.removeAll();
 					revalidate();
 					repaint();
-					setLayout(new CardLayout(-19, 0));
+					setLayout(new CardLayout(-18, 0));
 					pViewpanel = new ReportMainPanel();
 					pViewpanel.setPreferredSize(new Dimension(1544, 0));
 					pStop.add(pViewpanel, BorderLayout.WEST);
