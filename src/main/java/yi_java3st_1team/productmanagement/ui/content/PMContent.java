@@ -22,7 +22,7 @@ public class PMContent extends JPanel {
 	private CDRegisterPanel pCDRegisterPanel;
 	private CDListPanel pCDListPanel;
 	public SWUIPanel pSWUIPanel;
-	private SPSOUIPanel pSCSOUIPanel;
+	public SPSOUIPanel pSCSOUIPanel;
 
 	public PMContent() {
 

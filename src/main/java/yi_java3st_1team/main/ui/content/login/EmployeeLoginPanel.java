@@ -4,20 +4,24 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.SystemColor;
-import java.awt.event.ActionEvent;
 
 import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 @SuppressWarnings("serial")
-public class EmployeeLoginPanel extends JPanel{
+public class EmployeeLoginPanel extends JPanel implements ActionListener{
 	public JButton btnLogout;
 	public JLabel loginSuc;
 	public JLabel manager;
 	public JLabel empInfo;
 	public JLabel loginImg;
+	private JButton btnMyProfile;
+	private JFrame regiFrame;
 	
 
 	/**
@@ -31,6 +35,7 @@ public class EmployeeLoginPanel extends JPanel{
 		setLayout(null);
 		
 		btnLogout = new JButton("LOGOUT");
+		btnLogout.addActionListener(this);
 		btnLogout.setBackground(SystemColor.controlHighlight);
 
 		btnLogout.setFont(new Font("Arial", Font.BOLD, 17));
@@ -63,7 +68,8 @@ public class EmployeeLoginPanel extends JPanel{
 		loginImg.setBounds(20, 71, 120, 120);
 		add(loginImg);
 		
-	      JButton btnMyProfile = new JButton("My Profile");
+	      btnMyProfile = new JButton("My Profile");
+	      btnMyProfile.addActionListener(this);
 	      btnMyProfile.setFont(new Font("Arial", Font.BOLD, 13));
 	      btnMyProfile.setFocusable(false);
 	      btnMyProfile.setBackground(new Color(255, 255, 51));
@@ -74,10 +80,22 @@ public class EmployeeLoginPanel extends JPanel{
 		if (e.getSource() == btnLogout) {
 			actionPerformedBtnLogout(e);
 		}
+		if (e.getSource() == btnMyProfile) {
+			actionPerformedBtnMyProfile(e);
+		}
 	}
-	
-	//로그아웃
+	protected void actionPerformedBtnMyProfile(ActionEvent e) {
+		regiFrame = new JFrame();
+		regiFrame.setTitle("[관리자용] 회원가입");
+		regiFrame.setSize(500, 650);
+		regiFrame.setResizable(false);
+		regiFrame.setLocationRelativeTo(null); // 화면중앙에 프레임 띄우기
+		ClientRegiPanel cm = new ClientRegiPanel();
+//		EmpRegiPanel empr = new EmpRegiPanel();
+		regiFrame.getContentPane().add(cm);
+		regiFrame.setVisible(true);
+	}
 	protected void actionPerformedBtnLogout(ActionEvent e) {
-		
+		System.out.println("22");
 	}
 }
