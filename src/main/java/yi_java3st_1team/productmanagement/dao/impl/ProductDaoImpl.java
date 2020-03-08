@@ -255,4 +255,27 @@ public class ProductDaoImpl implements ProductDao {
 		return supName;
 	}
 
+	@Override
+	public int selectProductCost(Product product) {
+		String sql = "select p.p_cost from product p left join supplier s on p.p_sno = s.s_no where p.p_name =?";
+		try(Connection con = MySqlDataSource.getConnection();
+				PreparedStatement pstmt = con.prepareStatement(sql);){
+			pstmt.setString(1, product.getpName());
+			LogUtil.prnLog(pstmt);
+			try(ResultSet rs = pstmt.executeQuery()){
+				if(rs.next()) {
+					return getpCost(rs);
+				}
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return 0;
+	}
+
+	private int getpCost(ResultSet rs) throws SQLException {
+		int pCost = rs.getInt("p_cost");
+		return pCost;
+	}
+
 }

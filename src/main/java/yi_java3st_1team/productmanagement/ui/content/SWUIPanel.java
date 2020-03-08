@@ -222,6 +222,7 @@ public class SWUIPanel extends JPanel implements ActionListener, ItemListener {
 				Product delProduct = pSWTblPanel.getSelectedItem();
 				service.removeProduct(delProduct);
 				pSWTblPanel.removeRow();
+				pSWTblPanel.loadDate(service.showProductList());
 			}
 			
 		}

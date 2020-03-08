@@ -21,6 +21,13 @@ public class SupplierPurchase {
 		this.spNo = spNo;
 	}
 
+	public SupplierPurchase(int spNo, Product spPno, int spQty, Date spDate) {
+		this.spNo = spNo;
+		this.spPno = spPno;
+		this.spQty = spQty;
+		this.spDate = spDate;
+	}
+
 	public SupplierPurchase(int spNo, Product spPname, Supplier spSname, Product spPcost, int spQty, Date spDate) {
 		this.spNo = spNo;
 		this.spPname = spPname;

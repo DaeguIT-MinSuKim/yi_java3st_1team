@@ -19,4 +19,6 @@ public interface ProductDao {
 	List<Product> selectProductListByName(Product product);
 	List<Product> selectProductListByCate(Product product);
 	List<Product> selectProductListBySupp(Product product);
+
+	int selectProductCost(Product product);
 }

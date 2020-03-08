@@ -7,6 +7,8 @@ import java.awt.GridLayout;
 import java.awt.SystemColor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
@@ -22,13 +24,10 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
 import yi_java3st_1team.clientmanagement.dto.Client;
-import yi_java3st_1team.clientmanagement.dto.Supplier;
 import yi_java3st_1team.clientmanagement.ui.ZipCodePanel;
 import yi_java3st_1team.clientmanagement.ui.list.CListTblPanel;
 import yi_java3st_1team.clientmanagement.ui.panel.CRegisterPanel;
 import yi_java3st_1team.clientmanagement.ui.service.ClientUIService;
-import java.awt.event.ItemListener;
-import java.awt.event.ItemEvent;
 
 @SuppressWarnings("serial")
 public class ClientUIPanel extends JPanel implements ActionListener, ItemListener {

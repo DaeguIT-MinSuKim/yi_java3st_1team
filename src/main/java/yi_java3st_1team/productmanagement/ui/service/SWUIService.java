@@ -56,4 +56,8 @@ public class SWUIService {
 	public List<Product> showProductListBySupp(Product product) {
 		return productDao.selectProductListBySupp(product);
 	}
+
+	public int showProductCost(Product product) {
+		return productDao.selectProductCost(product);
+	}
 }
