@@ -44,7 +44,7 @@ public class EmployeeMainUIPanel extends JPanel implements ActionListener {
 	private JButton btnSearch;
 	private JFrame regiFrame;
 	private JFrame searchFrame;
-	private LoginPanel pLogin;
+	public LoginPanel pLogin;
 	private EmployeeLoginPanel pEmpLogin;
 	private EmployeeUiService empService;
 	public static Employee loginEmp;

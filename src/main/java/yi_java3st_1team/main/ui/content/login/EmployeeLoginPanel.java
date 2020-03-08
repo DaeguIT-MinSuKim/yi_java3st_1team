@@ -4,14 +4,14 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.SystemColor;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
 
 @SuppressWarnings("serial")
 public class EmployeeLoginPanel extends JPanel implements ActionListener{
@@ -35,7 +35,7 @@ public class EmployeeLoginPanel extends JPanel implements ActionListener{
 		setLayout(null);
 		
 		btnLogout = new JButton("LOGOUT");
-		btnLogout.addActionListener(this);
+//		btnLogout.addActionListener(this);
 		btnLogout.setBackground(SystemColor.controlHighlight);
 
 		btnLogout.setFont(new Font("Arial", Font.BOLD, 17));
@@ -77,9 +77,9 @@ public class EmployeeLoginPanel extends JPanel implements ActionListener{
 	      add(btnMyProfile);
 	}
 	public void actionPerformed(ActionEvent e) {
-		if (e.getSource() == btnLogout) {
-			actionPerformedBtnLogout(e);
-		}
+//		if (e.getSource() == btnLogout) {
+//			actionPerformedBtnLogout(e);
+//		}
 		if (e.getSource() == btnMyProfile) {
 			actionPerformedBtnMyProfile(e);
 		}
@@ -95,7 +95,13 @@ public class EmployeeLoginPanel extends JPanel implements ActionListener{
 		regiFrame.getContentPane().add(cm);
 		regiFrame.setVisible(true);
 	}
-	protected void actionPerformedBtnLogout(ActionEvent e) {
-		System.out.println("22");
-	}
+	// 로그아웃 버튼 고민
+//	protected void actionPerformedBtnLogout(ActionEvent e) {
+//		removeAll();
+//		revalidate();
+//		repaint();
+//		LoginPanel lo =  new LoginPanel();
+//		add(lo);
+//		setLayout(null);
+//	}
 }
