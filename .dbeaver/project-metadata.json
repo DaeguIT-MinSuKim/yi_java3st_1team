@@ -1,5 +1,1 @@
-<<<<<<< HEAD
-{"resources":{"Scripts/James_test.sql":{"sql-editor-data-source-id":"mysql5-170a465e43c-4b4de140d2c9f288"}}}
-=======
-{"resources":{"Scripts/test.sql":{"sql-editor-data-source-id":"mysql5-170a465e43c-4b4de140d2c9f288"}}}
->>>>>>> branch 'master' of https://github.com/DaeguIT-MinSuKim/yi_java3st_1team.git
+{"resources":{"Scripts/DB_inti.sql":{"sql-editor-data-source-id":"mysql5-170a465e43c-4b4de140d2c9f288"}}}
