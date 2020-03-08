@@ -209,6 +209,7 @@ public class SupplyCompanyUIPanel extends JPanel implements ActionListener, Item
 				Supplier delsupp = pSCTblPanel.getSelectedItem();
 				service.removeSupplier(delsupp);
 				pSCTblPanel.removeRow();
+				pSCTblPanel.loadDate(service.showSupplierList());
 			}
 		}
 	};

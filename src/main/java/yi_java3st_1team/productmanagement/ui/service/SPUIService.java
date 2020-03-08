@@ -4,6 +4,7 @@ import java.util.List;
 
 import yi_java3st_1team.productmanagement.dao.SupplierPurchaseDao;
 import yi_java3st_1team.productmanagement.dao.impl.SupplierPurchaseDaoImpl;
+import yi_java3st_1team.productmanagement.dto.Product;
 import yi_java3st_1team.productmanagement.dto.SupplierPurchase;
 
 public class SPUIService {
@@ -15,6 +16,10 @@ public class SPUIService {
 	
 	public SupplierPurchase lastSP() {
 		return supplierPurchaseDao.selectSupplierPurchaseLastDate();
+	}
+	
+	public int selectSupplierPurchasePno(Product sp) {
+		return supplierPurchaseDao.selectSupplierPurchasePno(sp);
 	}
 	
 	public void removeSupplierPurchase(SupplierPurchase delSP) {

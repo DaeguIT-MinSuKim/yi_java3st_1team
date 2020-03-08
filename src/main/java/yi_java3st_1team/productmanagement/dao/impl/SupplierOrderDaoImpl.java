@@ -121,4 +121,27 @@ public class SupplierOrderDaoImpl implements SupplierOrderDao {
 		return 0;
 	}
 
+	@Override
+	public int selectSupplierOrderPno(Product soPname) {
+		String sql = "select so_pno from supplier_order so left join product p on so.so_pno = p.p_no where p.p_name =?";
+		try(Connection con = MySqlDataSource.getConnection();
+				PreparedStatement pstmt = con.prepareStatement(sql);){
+			pstmt.setString(1, soPname.getpName());
+			LogUtil.prnLog(pstmt);
+			try(ResultSet rs = pstmt.executeQuery()){
+				if(rs.next()) {
+					return getPno(rs);
+				}
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return 0;
+	}
+
+	private int getPno(ResultSet rs) throws SQLException {
+		int soPno = rs.getInt("so_pno");
+		return soPno;
+	}
+
 }
