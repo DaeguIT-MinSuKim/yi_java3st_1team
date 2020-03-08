@@ -242,9 +242,7 @@ public class EmployeeMainUIPanel extends JPanel implements ActionListener {
 			actionPerformedBtnLogin(e);
 		}
 		
-		if(e.getSource() == pEmpLogin.btnLogout) {
-			actionPerformedBtnLogout(e);
-		}
+
 	}
 	
 
@@ -311,6 +309,10 @@ public class EmployeeMainUIPanel extends JPanel implements ActionListener {
 		
 		//로그아웃버튼
 		pEmpLogin.btnLogout.addActionListener(this);
+		
+		if(e.getSource() == pEmpLogin.btnLogout) {
+			actionPerformedBtnLogout(e);
+		}
 	}
 	
 	//로그아웃
