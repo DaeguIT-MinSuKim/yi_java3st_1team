@@ -66,3 +66,14 @@ select	s.s_name as 공급회사명,
   from supplier s natural join client c natural join product p natural join `order` o 
  where s.s_no = p.p_sno and p.p_no = o.o_pno and c.c_no = o.o_cno
  group by 공급회사명, 주문일자;
+ 
+
+-- 주문현황 조회
+select	c.c_name as 고객상호명,
+		p.p_name as 품목명,
+		o.o_qty as 주문수량,
+		p.p_price*o.o_qty as 주문가격,
+		o.o_date as 주문일자,
+		(case when o.o_ok = 1 then 'Y'	when o.o_ok = 0 then 'N' end) as 주문확인
+  from client c natural join product p natural join `order` o
+ where c.c_no = o.o_cno and p.p_no = o.o_pno;
