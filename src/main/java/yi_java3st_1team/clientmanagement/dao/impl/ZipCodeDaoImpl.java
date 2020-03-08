@@ -52,5 +52,46 @@ public class ZipCodeDaoImpl implements ZipCodeDao {
 		int zNum2 = rs.getInt("z_num2");
 		return new ZipCode(zCode, zSido, zSigungu, zDoro, zNum1, zNum2);
 	}
+
+	@Override
+	public ZipCode selectAddressSearchNumAll(ZipCode zipSearch) {
+		String sql = "select z_code, z_sido, z_sigungu, z_doro, z_num1, z_num2 from zip_code where z_sido=? and z_doro=? and z_num1=? and z_num2=?";
+		try(Connection con = MySqlDataSource.getConnection();
+				PreparedStatement pstmt = con.prepareStatement(sql);){
+			pstmt.setString(1, zipSearch.getzSido());
+			pstmt.setString(2, zipSearch.getzDoro());
+			pstmt.setInt(3, zipSearch.getzNum1());
+			pstmt.setInt(4, zipSearch.getzNum2());
+			LogUtil.prnLog(pstmt);
+			try(ResultSet rs = pstmt.executeQuery()){
+				if(rs.next()) {
+					return getZipCode(rs);
+				}
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	@Override
+	public ZipCode selectAddressSearchNumOne(ZipCode zipSearch) {
+		String sql = "select z_code, z_sido, z_sigungu, z_doro, z_num1, z_num2 from zip_code where z_sido=? and z_doro=? and z_num1=?";
+		try(Connection con = MySqlDataSource.getConnection();
+				PreparedStatement pstmt = con.prepareStatement(sql);){
+			pstmt.setString(1, zipSearch.getzSido());
+			pstmt.setString(2, zipSearch.getzDoro());
+			pstmt.setInt(3, zipSearch.getzNum1());
+			LogUtil.prnLog(pstmt);
+			try(ResultSet rs = pstmt.executeQuery()){
+				if(rs.next()) {
+					return getZipCode(rs);
+				}
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
 	
 }	

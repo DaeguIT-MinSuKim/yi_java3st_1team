@@ -1,31 +1,30 @@
 package yi_java3st_1team.main;
 
+import java.awt.Color;
 import java.awt.Font;
 import java.awt.Rectangle;
 import java.awt.SystemColor;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
-import java.awt.Color;
 
 @SuppressWarnings("serial")
-public class LeftMainMenu extends JPanel implements ActionListener {
+public class LeftMainMenu extends JPanel /* implements ActionListener */ {
 	private JLabel lblMenu;
-	private JButton btnCM;
-	private JButton btnPM;
-	private JButton btnOM;
-	private JButton btnViews;
+	public JButton btnCM;
+	public JButton btnPM;
+	public JButton btnOM;
+	public JButton btnViews;
 	private JLabel lblCM;
 	private JLabel lblPM;
 	private JLabel lblOM;
 	private JLabel lblViews;
 	private JLabel lblWhite;
-
+	
+	
 	public LeftMainMenu() {
 
 		initialize();
@@ -43,7 +42,7 @@ public class LeftMainMenu extends JPanel implements ActionListener {
 		add(lblMenu);
 		
 		btnCM = new JButton("");
-		btnCM.addActionListener(this);
+//		btnCM.addActionListener(this);
 		btnCM.setFocusable(false);
 		btnCM.setBackground(SystemColor.inactiveCaptionBorder);
 		btnCM.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\leftMainMenu\\menu1.png"));
@@ -51,7 +50,7 @@ public class LeftMainMenu extends JPanel implements ActionListener {
 		add(btnCM);
 		
 		btnPM = new JButton("");
-		btnPM.addActionListener(this);
+//		btnPM.addActionListener(this);
 		btnPM.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\leftMainMenu\\menu2.png"));
 		btnPM.setFocusable(false);
 		btnPM.setBackground(SystemColor.inactiveCaptionBorder);
@@ -59,7 +58,7 @@ public class LeftMainMenu extends JPanel implements ActionListener {
 		add(btnPM);
 		
 		btnOM = new JButton("");
-		btnOM.addActionListener(this);
+//		btnOM.addActionListener(this);
 		btnOM.setFocusable(false);
 		btnOM.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\leftMainMenu\\menu3.png"));
 		btnOM.setBackground(SystemColor.inactiveCaptionBorder);
@@ -67,6 +66,7 @@ public class LeftMainMenu extends JPanel implements ActionListener {
 		add(btnOM);
 		
 		btnViews = new JButton("");
+//		btnViews.addActionListener(this);
 		btnViews.setFocusable(false);
 		btnViews.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\leftMainMenu\\menu4.png"));
 		btnViews.setBackground(SystemColor.inactiveCaptionBorder);
@@ -107,18 +107,74 @@ public class LeftMainMenu extends JPanel implements ActionListener {
 		lblWhite.setBounds(26, 25, 159, 651);
 		add(lblWhite);
 	}
-	public void actionPerformed(ActionEvent e) {
-		if (e.getSource() == btnOM) {
-			btnOMActionPerformed(e);
+/*	public void actionPerformed(ActionEvent e) {
+
+		if (e.getSource() == btnCM) {
+			btnCMActionPerformed(e);
 		}
 		if (e.getSource() == btnPM) {
 			btnPMActionPerformed(e);
 		}
+		if (e.getSource() == btnOM) {
+			btnOMActionPerformed(e);
+		}
+		if (e.getSource() == btnViews) {
+			actionPerformedBtnViews(e);
+		}
+
 		
 	}
+	//거래처관리
+	private void btnCMActionPerformed(ActionEvent e) {
+	      removeAll();
+	      revalidate();
+	      repaint();
+	      setBackground(SystemColor.inactiveCaption);
+	      setBounds(new Rectangle(0, 0, 1544, 700));
+	      CMMainPanel cmp = new CMMainPanel();
+	      add(cmp);
+	      revalidate();
+	      repaint();
+	}
+	
+	//제품관리
 	protected void btnPMActionPerformed(ActionEvent e) {
-
+	      removeAll();
+	      revalidate();
+	      repaint();
+	      setBackground(SystemColor.inactiveCaption);
+	      setBounds(new Rectangle(0, 0, 1544, 700));
+	      PMMainPanel pmp = new PMMainPanel();
+	      add(pmp);
+	      revalidate();
+	      repaint();
 	}
+	
+	//주문관리
 	protected void btnOMActionPerformed(ActionEvent e) {
+	      removeAll();
+	      revalidate();
+	      repaint();
+	      setBackground(SystemColor.inactiveCaption);
+	      setBounds(new Rectangle(0, 0, 1544, 700));
+	      setLayout(null);
+	      OMMainPanel omp = new OMMainPanel();
+	      add(omp);
+	      revalidate();
+	      repaint();
 	}
+	
+	//현황조회/보고
+	protected void actionPerformedBtnViews(ActionEvent e) {
+		  removeAll();
+	      revalidate();
+	      repaint();
+	      setBackground(SystemColor.inactiveCaption);
+	      setBounds(new Rectangle(0, 0, 1544, 700));
+	      ReportMainPanel rmp = new ReportMainPanel();
+	      add(rmp);
+	      revalidate();
+	      repaint();
+	} */
+	
 }

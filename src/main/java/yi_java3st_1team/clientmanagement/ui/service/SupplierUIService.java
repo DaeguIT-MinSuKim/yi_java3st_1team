@@ -13,6 +13,22 @@ public class SupplierUIService {
 		return supplierDao.selectSupplierByAll();
 	}
 	
+	public List<Supplier> showSupplierListByName(Supplier selectSupplier){
+		return supplierDao.selectSupplierListByName(selectSupplier);
+	}
+	
+	public List<Supplier> showSupplierListByBln(Supplier selectSupplier){
+		return supplierDao.selectSupplierListByBln(selectSupplier);
+	}
+	
+	public List<Supplier> showSupplierListByTel(Supplier selectSupplier){
+		return supplierDao.selectSupplierListByTel(selectSupplier);
+	}
+	
+	public Supplier overlapSupplier(Supplier overlapSupplier) {
+		return supplierDao.selectSupplierByName(overlapSupplier);
+	}
+	
 	public Supplier lastSupplier() {
 		return supplierDao.selectSuppplierLastData();
 	}
@@ -21,11 +37,11 @@ public class SupplierUIService {
 		supplierDao.deleteSupplier(delSupplier);
 	}
 	
-	public void addDepartment(Supplier newSupplier) {
+	public void addSupplier(Supplier newSupplier) {
 		supplierDao.insertSupplier(newSupplier);
 	}
 	
-	public void modifyDepartment(Supplier upSupplier) {
+	public void modifySupplier(Supplier upSupplier) {
 		supplierDao.updateSupplier(upSupplier);
 	}
 }

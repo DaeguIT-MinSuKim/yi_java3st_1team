@@ -8,38 +8,62 @@ import java.awt.GridLayout;
 import java.awt.SystemColor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
+import java.util.List;
+import java.util.Vector;
 
+import javax.swing.ButtonGroup;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
+import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
+import yi_java3st_1team.main.dto.Department;
+import yi_java3st_1team.main.dto.Employee;
+import yi_java3st_1team.main.ui.service.EmployeeUiService;
+
 @SuppressWarnings("serial")
-public class EmpRegiPanel<T> extends AbsRegiPanel<T> implements ActionListener {
+public class EmpRegiPanel extends AbsRegiPanel<Employee> implements ActionListener, ItemListener {
+	private Employee item;
 	private JTextField tfNo;
 	private JTextField tfName;
+	private JComboBox<Department> cmbDept;
+	private JComboBox<Employee> cmbTitle;
+	private final ButtonGroup buttonGroup = new ButtonGroup();
 	private JTextField tfId;
 	private JPasswordField passFd1;
 	private JPasswordField passFd2;
-	private JTextField tfMail;
-	private JComboBox deptCombo;
-	private JComboBox titleCombo;
 	private JLabel lblPassword;
+	private JTextField tfMail;
+	private JButton doubleCheck;
+	
 	private JButton btnAdd;
 	private JButton btnCancle;
-	private JButton doubleCheck1;
-	private JButton doubleCheck2;
 
-	/**
-	 * Create the panel.
-	 */
+	private EmployeeUiService service;
+	private JPanel pInput;
+	private JRadioButton rBtnManager1;
+	private JRadioButton rBtnManager2;
+	private String selectItem;
+
+	
+//	public EmployeeUiService getService() {
+//		return service;
+//	}
+//
+
+
+
 	public EmpRegiPanel() {
-
+		service = new EmployeeUiService();
 		initialize();
 
 	}
@@ -47,6 +71,8 @@ public class EmpRegiPanel<T> extends AbsRegiPanel<T> implements ActionListener {
 	private void initialize() {
 		setSize(new Dimension(500, 650));
 		setLayout(new BorderLayout(0, 0));
+		setService(service);
+		setNum(service.showlastEmpNum());
 
 		JLabel lblHeader = new JLabel("사용자 등록");
 		lblHeader.setOpaque(true);
@@ -92,6 +118,11 @@ public class EmpRegiPanel<T> extends AbsRegiPanel<T> implements ActionListener {
 		lblTitle.setForeground(Color.BLACK);
 		lblTitle.setFont(new Font("휴먼둥근헤드라인", Font.PLAIN, 13));
 		pName.add(lblTitle);
+		
+		JLabel label = new JLabel("관 리 자 구 분  ");
+		label.setHorizontalAlignment(SwingConstants.RIGHT);
+		label.setFont(new Font("휴먼둥근헤드라인", Font.PLAIN, 13));
+		pName.add(label);
 
 		JLabel lblId = new JLabel("아 이 디  ");
 		lblId.setHorizontalAlignment(SwingConstants.RIGHT);
@@ -121,13 +152,15 @@ public class EmpRegiPanel<T> extends AbsRegiPanel<T> implements ActionListener {
 		lblEmail.setFont(new Font("휴먼둥근헤드라인", Font.PLAIN, 13));
 		pName.add(lblEmail);
 
-		JPanel pInput = new JPanel();
+		pInput = new JPanel();
 		pInput.setBackground(SystemColor.inactiveCaptionBorder);
 		pInput.setPreferredSize(new Dimension(200, 10));
 		pSection.add(pInput, BorderLayout.CENTER);
 		pInput.setLayout(new GridLayout(0, 1, 10, 10));
 
 		tfNo = new JTextField();
+		tfNo.setText(String.format("EE%s%02d", item.getEmpNo()+1));
+		//tfNo.setEditable(false);
 		tfNo.setColumns(10);
 		pInput.add(tfNo);
 
@@ -135,11 +168,35 @@ public class EmpRegiPanel<T> extends AbsRegiPanel<T> implements ActionListener {
 		tfName.setColumns(10);
 		pInput.add(tfName);
 
-		deptCombo = new JComboBox();
-		pInput.add(deptCombo);
+		cmbDept = new JComboBox<Department>();
+		cmbDept.addItemListener(this);
+		cmbDept.setModel(new DefaultComboBoxModel(new String[] {"기획총무부", "경리회계부", "상품관리부", "영업관리 1부", "영업관리 2부", "영업관리 3부", "쇼핑몰사업부", "해외사업부", "고객만족부"}));
+		pInput.add(cmbDept);
 
-		titleCombo = new JComboBox();
-		pInput.add(titleCombo);
+		cmbTitle = new JComboBox<Employee>();
+//		cmbTitle.addItemListener(this);		
+		cmbTitle.setModel(new DefaultComboBoxModel(new String[] {"대표이사", "경영관리이사", "부장", "차장", "과장", "대리", "사원", "인턴"}));
+		pInput.add(cmbTitle);
+		
+		JPanel pManager = new JPanel();
+		pManager.setBackground(Color.WHITE);
+		pInput.add(pManager);
+		pManager.setLayout(new GridLayout(0, 2, 0, 0));
+		
+		rBtnManager1 = new JRadioButton("책임관리자");
+		rBtnManager1.setSelected(true); //기본선택
+		rBtnManager1.setHorizontalAlignment(SwingConstants.CENTER);
+		rBtnManager1.setForeground(Color.BLACK);
+		rBtnManager1.setFont(new Font("굴림", Font.BOLD, 11));
+		rBtnManager1.setBackground(SystemColor.inactiveCaptionBorder);
+		pManager.add(rBtnManager1);
+		
+		rBtnManager2 = new JRadioButton("일반관리자");
+		rBtnManager2.setHorizontalAlignment(SwingConstants.CENTER);
+		rBtnManager2.setForeground(Color.BLACK);
+		rBtnManager2.setFont(new Font("굴림", Font.BOLD, 11));
+		rBtnManager2.setBackground(SystemColor.inactiveCaptionBorder);
+		pManager.add(rBtnManager2);
 
 		tfId = new JTextField();
 		tfId.setColumns(10);
@@ -171,23 +228,14 @@ public class EmpRegiPanel<T> extends AbsRegiPanel<T> implements ActionListener {
 		pSection.add(pDoubleCheck, BorderLayout.EAST);
 		pDoubleCheck.setLayout(null);
 
-		doubleCheck1 = new JButton("<html>중복<br>확인</html>");
-		doubleCheck1.setFocusable(false);
-		doubleCheck1.setForeground(Color.WHITE);
-		doubleCheck1.setBackground(new Color(240, 128, 128));
-		doubleCheck1.addActionListener(this);
-		doubleCheck1.setFont(new Font("맑은 고딕", Font.BOLD, 13));
-		doubleCheck1.setBounds(12, 3, 60, 39);
-		pDoubleCheck.add(doubleCheck1);
-
-		doubleCheck2 = new JButton("<html>중복<br>확인</html>");
-		doubleCheck2.setFocusable(false);
-		doubleCheck2.setForeground(Color.WHITE);
-		doubleCheck2.setBackground(new Color(240, 128, 128));
-		doubleCheck2.addActionListener(this);
-		doubleCheck2.setFont(new Font("맑은 고딕", Font.BOLD, 13));
-		doubleCheck2.setBounds(12, 182, 60, 39);
-		pDoubleCheck.add(doubleCheck2);
+		doubleCheck = new JButton("<html>중복<br>확인</html>");
+		doubleCheck.setFocusable(false);
+		doubleCheck.setForeground(Color.WHITE);
+		doubleCheck.setBackground(new Color(240, 128, 128));
+		doubleCheck.addActionListener(this);
+		doubleCheck.setFont(new Font("맑은 고딕", Font.BOLD, 13));
+		doubleCheck.setBounds(12, 202, 60, 39);
+		pDoubleCheck.add(doubleCheck);
 
 		JPanel pBtns = new JPanel();
 		pBtns.setBackground(SystemColor.inactiveCaptionBorder);
@@ -210,25 +258,70 @@ public class EmpRegiPanel<T> extends AbsRegiPanel<T> implements ActionListener {
 		btnCancle.setFont(new Font("맑은 고딕", Font.BOLD, 14));
 		pBtns.add(btnCancle);
 	}
+	
+	private void setNum(Employee showlastEmpNum) {
+		tfNo.setText(String.format("EE%s%02d", item.getEmpNo()+1));
+		
+	}
 
+	public void setService(EmployeeUiService service) {
+		this.service = service;
+		setCmbDeptList(service.showDeptList());
+		setCmbTitleList(service.showEmployeeList());
+	}
+
+	public void itemStateChanged(ItemEvent e) {
+		if(e.getSource() == cmbDept) {
+			cmbDeptItemStateChanged(e);
+		}
+	}	
+	private String cmbDeptItemStateChanged(ItemEvent e) {
+		if(e.getStateChange() == ItemEvent.SELECTED) {
+			selectItem = (String) cmbDept.getSelectedItem();
+		}
+		return null;
+	}
+	
+	private void setCmbDeptList(List<Department> deptList) {
+		DefaultComboBoxModel<Department> model = new DefaultComboBoxModel<>(new Vector<>(deptList));
+		cmbDept.setModel(model);
+		cmbDept.setSelectedIndex(-1);		
+	}
+	private void setCmbTitleList(List<Employee> employeeList) {
+		DefaultComboBoxModel<Employee> model = new DefaultComboBoxModel<>(new Vector<>(employeeList));
+		cmbTitle.setModel(model);
+		cmbTitle.setSelectedIndex(-1);	
+	}
+	
+	public JComboBox<Department> getCmbDept(){
+		return cmbDept;
+	}
+
+	public JComboBox<Employee> getCmbTitle(){
+		return cmbTitle;
+	}
+
+	//데이터 넣기
 	@Override
-	public T getItem() {
-		int empNo = Integer.parseInt(tfNo.getText().substring(4)); // EA001 , EA
+	public Employee getItem() {
+		int empNo = Integer.parseInt(tfNo.getText().substring(4)); // EE0016 -> 16
 		String empName = tfName.getText().trim();
-		// Department dNo = (Department) deptCombo.getSelectedItem();
-		String title = (String) titleCombo.getSelectedItem();
+		Department dNo = (Department) cmbDept.getSelectedItem();
+		String empTitle = (String) cmbTitle.getSelectedItem();
+		int empManager = rBtnManager1.isSelected()?1:2;
 		String empId = tfId.getText().trim();
 		String empPass = new String(passFd1.getPassword());
 		String empMail = tfMail.getText().trim();
-		return null; // new Employee (empNo, empName, dNo, title, empId, empPass, empMail);
+		return new Employee(empNo, empName, dNo, empTitle, empManager, empId, empPass, empMail);
 	}
-
+	
+	//취소
 	@Override
 	public void clearTf() {
 		tfNo.setText("");
 		tfName.setText("");
-		deptCombo.setSelectedIndex(-1);
-		titleCombo.setSelectedIndex(-1);
+		cmbDept.setSelectedIndex(-1);
+		cmbTitle.setSelectedIndex(-1);
 		tfId.setText("");
 		passFd1.setText("");
 		passFd2.setText("");
@@ -236,13 +329,16 @@ public class EmpRegiPanel<T> extends AbsRegiPanel<T> implements ActionListener {
 		tfMail.setText("");
 
 	}
+	
+//	public void setEmpPanel(Employee item) {
+//		tfNo.setText(String.format("EE%s%02d", item.getEmpNo()+1));
+//		
+//	}
 
+	//버튼 이벤트
 	public void actionPerformed(ActionEvent e) {
-		if (e.getSource() == doubleCheck2) {
+		if (e.getSource() == doubleCheck) {
 			actionPerformedDoubleCheck2(e);
-		}
-		if (e.getSource() == doubleCheck1) {
-			actionPerformedDoubleCheck1(e);
 		}
 		if (e.getSource() == btnCancle) {
 			actionPerformedBtnCancle(e);
@@ -254,16 +350,14 @@ public class EmpRegiPanel<T> extends AbsRegiPanel<T> implements ActionListener {
 
 	// 등록버튼
 	protected void actionPerformedBtnAdd(ActionEvent e) {
+		Employee newEmp = getItem();
+		service.addEmployee(newEmp);
+		clearTf();
 	}
 
 	// 취소버튼(초기화)
 	protected void actionPerformedBtnCancle(ActionEvent e) {
 		clearTf();
-	}
-
-	// 중복확인 : 사원번호
-	protected void actionPerformedDoubleCheck1(ActionEvent e) {
-		JOptionPane.showMessageDialog(null, "등록된 사원 번호 입니다.", "중복 알림",JOptionPane.WARNING_MESSAGE);
 	}
 
 	// 중복확인 : 아이디
@@ -272,24 +366,6 @@ public class EmpRegiPanel<T> extends AbsRegiPanel<T> implements ActionListener {
 	}
 
 
-//		String pw1 = "";
-//		String pw2 = "";
-//		
-//		char[] secretPass1 = passFd1.getPassword();
-//		char[] secretPass2 = passFd2.getPassword();
-//		
-//		for(char c1:secretPass1) {
-//			Character.toString(c1);
-//			pw1 += (pw1.equals(""))?""+c1+"":""+c1+"";
-//		}
-//		
-//		for(char c2:secretPass2) {
-//			Character.toString(c2);
-//			pw2 += (pw2.equals(""))?""+c2+"":""+c2+"";
-//		}
-//		
-//		if(pw1.equals(pw2)) {
-//			System.out.println(1);
-//		}
-	
+
+
 }

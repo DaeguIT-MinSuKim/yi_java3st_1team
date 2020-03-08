@@ -22,6 +22,8 @@ import javax.swing.border.EmptyBorder;
 
 import yi_java3st_1team.clientmanagement.ui.CMMainPanel;
 import yi_java3st_1team.main.EmployeeMainFrame;
+import yi_java3st_1team.main.dto.Department;
+import yi_java3st_1team.main.dto.Employee;
 import yi_java3st_1team.main.ui.content.LogoImg01Panel;
 import yi_java3st_1team.main.ui.content.LogoImg02Panel;
 import yi_java3st_1team.main.ui.content.chart.EmpMiniBarChart;
@@ -30,8 +32,10 @@ import yi_java3st_1team.main.ui.content.login.EmpRegiPanel;
 import yi_java3st_1team.main.ui.content.login.EmployeeLoginPanel;
 import yi_java3st_1team.main.ui.content.login.LoginPanel;
 import yi_java3st_1team.main.ui.content.login.SearchPanel;
+import yi_java3st_1team.main.ui.service.EmployeeUiService;
 import yi_java3st_1team.ordermanagement.ui.OMMainPanel;
 import yi_java3st_1team.productmanagement.ui.PMMainPanel;
+import yi_java3st_1team.viewsmanagement.ui.panel.ReportMainPanel;
 
 @SuppressWarnings("serial")
 public class EmployeeMainUIPanel extends JPanel implements ActionListener {
@@ -42,7 +46,11 @@ public class EmployeeMainUIPanel extends JPanel implements ActionListener {
 	private JFrame searchFrame;
 	private LoginPanel pLogin;
 	private EmployeeLoginPanel pEmpLogin;
-	private JPanel pStop;
+	private EmployeeUiService empService;
+	public static Employee loginEmp;
+	public static Department loginDept;
+	
+	public JPanel pStop;
 	
 
 	private JPanel pBtns;
@@ -64,11 +72,18 @@ public class EmployeeMainUIPanel extends JPanel implements ActionListener {
 	private CMMainPanel pCMpanel;
 	private OMMainPanel pOMpanel;
 	private PMMainPanel pPMpanel;
+	private ReportMainPanel pViewpanel;
 	private JPanel pSbot;
 	
 	private EmployeeMainFrame empMain;
+	
+	public String empId; //로그인 아이디
+	public String empPass; //로그인 비밀번호
+	public int manager;
+
 
 	public EmployeeMainUIPanel() {
+		empService = new EmployeeUiService();
 		initialize();
 		
 	}
@@ -85,6 +100,10 @@ public class EmployeeMainUIPanel extends JPanel implements ActionListener {
 		pStop.setLayout(new BorderLayout(10, 10));
 		
 		pLogin =new LoginPanel();
+		pLogin.pfPasswd.setForeground(new Color(0, 0, 255));
+		pLogin.tfId.setForeground(new Color(0, 0, 255));
+		pLogin.pfPasswd.setFont(new Font("굴림", Font.BOLD, 20));
+		pLogin.tfId.setFont(new Font("굴림", Font.BOLD, 20));
 		pLogin.setPreferredSize(new Dimension(350, 10));
 		pStop.add(pLogin, BorderLayout.WEST);
 		
@@ -197,6 +216,8 @@ public class EmployeeMainUIPanel extends JPanel implements ActionListener {
 		btn04.setPreferredSize(new Dimension(240, 23));
 		btn04.setFocusable(false);
 		pBtns02.add(btn04, BorderLayout.EAST);
+		
+		//pEmpLogin.btnLogout.addActionListener(this);
 	}
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == btn04) {
@@ -220,97 +241,170 @@ public class EmployeeMainUIPanel extends JPanel implements ActionListener {
 		if (e.getSource() == btnLogin) {
 			actionPerformedBtnLogin(e);
 		}
+		
+
 	}
 	
-	
+
+
 	//로그인
 	protected void actionPerformedBtnLogin(ActionEvent e) {
+		//로그인정보
+		empId = new String(pLogin.tfId.getText().trim());
+		empPass = new String(pLogin.pfPasswd.getPassword());
+		
+		loginEmp = empService.login(new Employee(empId, empPass));
+
+		
+		//로그인 성공 못함
+		if(loginEmp == null) {
+			ImageIcon icon = new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\loginMain\\loginFail.png");
+			JOptionPane.showMessageDialog(null, "<html><h2 align='center'><span style='color:red'>LOGIN FAILED</span><br></h2><h3 align='center'>다시한번 확인해주세요!</h3></html>","Login Failed",JOptionPane.INFORMATION_MESSAGE,icon);
+			return;
+		}
 		
 		//로그인 성공시 알림 & 로그인된 패널로 전환
 		ImageIcon icon = new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\loginMain\\connect.png");
-		JOptionPane.showMessageDialog(null, "<html><h2 align='center'><span style='color:red'>Smart</span>한 세계에<br> 오신걸 환영합니다</h2></html>","Software Management System",JOptionPane.INFORMATION_MESSAGE,icon);
+		JOptionPane.showMessageDialog(null, "<html><h2 align='center'><span style='color:blue'>"+loginEmp.getEmpName()+"</span>님<br><span style='color:red'>Smart</span>한 세계에<br> 오신걸 환영합니다</h2></html>","Software Management System",JOptionPane.INFORMATION_MESSAGE,icon);
 		
 		pStop.remove(pLogin); //제거
 		pEmpLogin = new EmployeeLoginPanel();
-		pEmpLogin.setPreferredSize(new Dimension(350, 10));
+		
+		// 직책별 로그인 구분
+		
+		manager = loginEmp.getEmpManager();
+
+		switch (manager) {
+			case 1: // 책임관리자 로그인 : 대표이사, 경영관리이사, 부장, 차장, 과장
+				pEmpLogin.manager.setText("[책임관리자 로그인]");
+				pEmpLogin.loginImg.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\loginMain\\topManager.png"));
+	
+				// 책임관리자(대표이사~과장) 로그인시 차트 패널 불러오기
+				// 1. 라인차트
+				pStop.remove(pImg01); // 제거
+				JPanel line = new JPanel();
+				line.setBackground(SystemColor.yellow);
+				pStop.add(line, BorderLayout.CENTER);
+	
+				// 2. 바차트
+				pImg02.remove(pLogo); // 제거
+				JPanel bar = new JPanel();
+				bar.setBackground(Color.red);
+				bar.setPreferredSize(new Dimension(350, 250));
+				pImg02.add(bar, BorderLayout.NORTH);
+				break;
+			case 2: // 관리자 로그인 : 대리, 사원, 인턴
+				pEmpLogin.manager.setText("[관리자 로그인]");
+				pEmpLogin.loginImg.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\loginMain\\manager2.png"));
+				break;
+		}			
+				
+		pEmpLogin.loginSuc.setText("<html>반갑습니다!<br><span style='color:blue'>"+loginEmp.getEmpName()+" "+loginEmp.getEmpTitle()+"</span>님이<br>로그인 하셨습니다.</html>");
+		String empNum = String.format("EE%04d", loginEmp.getEmpNo());
+		pEmpLogin.empInfo.setText("<html>- 사원번호 : <span style='color:red'>"+empNum+"</span><br>- 부서명 : <span style='color:green'>"+loginEmp.getdNo().getDeptName()+"</span></html>");
+
 		pStop.add(pEmpLogin, BorderLayout.WEST);
 		pStop.revalidate();
 		pStop.repaint();
 		
-		//책임관리자(대표이사~과장) 로그인시 차트 패널 불러오기
-		//1. 라인차트
-		pStop.remove(pImg01); //제거
-		JPanel line = new JPanel();
-		line.setBackground(SystemColor.yellow);
-		pStop.add(line, BorderLayout.CENTER);
+		//로그아웃버튼
+		pEmpLogin.btnLogout.addActionListener(this);
 		
-		//2. 바차트
-		pImg02.remove(pLogo); //제거
-		JPanel bar = new JPanel();
-		bar.setBackground(Color.red);
-		bar.setPreferredSize(new Dimension(350, 250));
-		pImg02.add(bar, BorderLayout.NORTH);
-		
-		//관리자(대리~인턴) 로그인시 현황조회&보고서 버튼 비활성화
-		//btn04.setEnabled(false);
-		
-		
+		if(e.getSource() == pEmpLogin.btnLogout) {
+			actionPerformedBtnLogout(e);
+		}
+	}
+	
+	//로그아웃
+	private void actionPerformedBtnLogout(ActionEvent e) {
+		removeAll();
+		revalidate();
+		repaint();
+		initialize();
+		revalidate();
+		repaint();
 	}
 	
 	//거래처 관리 클릭 : CMMainPanel
 	protected void actionPerformedBtn01(ActionEvent e) {
-		pStop.removeAll();
-		pSbot.removeAll();
-		revalidate();
-		repaint();
-		setLayout(new CardLayout(-19,0));
-		pCMpanel = new CMMainPanel();
-		pCMpanel.setPreferredSize(new Dimension(1544, 0));
-		pStop.add(pCMpanel, BorderLayout.WEST);
-		pStop.revalidate();
-		pStop.repaint();	
+		LoginFirst();
+		
+		if(loginEmp != null) {
+			pStop.removeAll();
+			pSbot.removeAll();
+			revalidate();
+			repaint();
+			setLayout(new CardLayout(-18,0));
+			pCMpanel = new CMMainPanel();
+			pCMpanel.setPreferredSize(new Dimension(1544, 0));
+			pStop.add(pCMpanel, BorderLayout.WEST);
+			pStop.revalidate();
+			pStop.repaint();
+		}
 	}
 	
 	//제품 관리 클릭
 	protected void actionPerformedBtn02(ActionEvent e) {
-		pStop.removeAll();
-		pSbot.removeAll();
-		revalidate();
-		repaint();
-		setLayout(new CardLayout(-19,0));
-		pPMpanel = new PMMainPanel();
-		pPMpanel.setPreferredSize(new Dimension(1544, 0));
-		pStop.add(pPMpanel, BorderLayout.WEST);
-		pStop.revalidate();
-		pStop.repaint();
+		LoginFirst();
+		
+		if(loginEmp != null) {
+			pStop.removeAll();
+			pSbot.removeAll();
+			revalidate();
+			repaint();
+			setLayout(new CardLayout(-18,0));
+			pPMpanel = new PMMainPanel();
+			pPMpanel.setPreferredSize(new Dimension(1544, 0));
+			pStop.add(pPMpanel, BorderLayout.WEST);
+			pStop.revalidate();
+			pStop.repaint();
+		}
 	}
 	
 	//주문 관리 클릭
 	protected void actionPerformedBtn03(ActionEvent e) {
-		pStop.removeAll();
-		pSbot.removeAll();
-		revalidate();
-		repaint();
-		setLayout(new CardLayout(-19,0));
-		pOMpanel = new OMMainPanel();
-		pOMpanel.setPreferredSize(new Dimension(1544, 0));
-		pStop.add(pOMpanel, BorderLayout.WEST);
-		pStop.revalidate();
-		pStop.repaint();
+		LoginFirst();
+		
+		if(loginEmp != null) {
+			pStop.removeAll();
+			pSbot.removeAll();
+			revalidate();
+			repaint();
+			setLayout(new CardLayout(-19,0));
+			pOMpanel = new OMMainPanel();
+			pOMpanel.setPreferredSize(new Dimension(1544, 0));
+			pStop.add(pOMpanel, BorderLayout.WEST);
+			pStop.revalidate();
+			pStop.repaint();
+		}
 	}
 	
 	//현황조회/보고
 	protected void actionPerformedBtn04(ActionEvent e) {
-		pStop.removeAll();
-		pSbot.removeAll();
-		revalidate();
-		repaint();
-		setLayout(new CardLayout(-19,0));
-		pCMpanel = new CMMainPanel();
-		pCMpanel.setPreferredSize(new Dimension(1544, 0));
-		pStop.add(pCMpanel, BorderLayout.WEST);
-		pStop.revalidate();
-		pStop.repaint();
+		LoginFirst();
+		
+		// 직책별 비활성화 적용
+		switch (manager) {
+			case 1: //책임관리자(활성화)
+				if (loginEmp != null) {
+					pStop.removeAll();
+					pSbot.removeAll();
+					revalidate();
+					repaint();
+					setLayout(new CardLayout(-19, 0));
+					pViewpanel = new ReportMainPanel();
+					pViewpanel.setPreferredSize(new Dimension(1544, 0));
+					pStop.add(pViewpanel, BorderLayout.WEST);
+					pStop.revalidate();
+					pStop.repaint();
+				}
+				break;
+			case 2: //관리자(비활성화)
+				ImageIcon icon = new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\loginMain\\manager1.png");
+				JOptionPane.showMessageDialog(null, "<html><h3 align='center'>권한이 없습니다.</h3></html>","Don't have Premission",JOptionPane.INFORMATION_MESSAGE,icon);
+				break;
+		}
+
 	}
 	
 	//회원가입
@@ -337,6 +431,13 @@ public class EmployeeMainUIPanel extends JPanel implements ActionListener {
 		searchFrame.setVisible(true);
 	}
 	
-
+	//로그인먼저 선행 적용
+	public void LoginFirst() {
+		if(loginEmp == null) {
+			ImageIcon icon = new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\loginMain\\preLogin.png");
+			JOptionPane.showMessageDialog(null, "<html><h3 align='center'>로그인부터 먼저 해주세요!</h3></html>","Login First",JOptionPane.INFORMATION_MESSAGE,icon);
+			return;
+		}
+	}
 
 }

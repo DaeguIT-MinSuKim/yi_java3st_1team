@@ -10,19 +10,13 @@ import java.awt.SystemColor;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 
-import yi_java3st_1team.clientmanagement.ui.list.CListPanel;
-import yi_java3st_1team.clientmanagement.ui.list.SCListPanel;
-import yi_java3st_1team.clientmanagement.ui.panel.CRegisterPanel;
-import yi_java3st_1team.clientmanagement.ui.panel.SCRegisterPanel;
-
 @SuppressWarnings("serial")
 public class CMContent extends JPanel {
 	private JTabbedPane tpClientManagement;
 	private JPanel pSupplyCompany;
 	private JPanel pClient;
-	private CRegisterPanel pCRegisterPanel;
-	private CListPanel pCListPanel;
-	private SupplyCompanyUIPanel pSCUIPanel;
+	public SupplyCompanyUIPanel pSCUIPanel;
+	public ClientUIPanel pCUIPanel;
 
 	public CMContent() {
 
@@ -52,16 +46,9 @@ public class CMContent extends JPanel {
 		pClient.setBounds(0, 0, 100, 50);
 		pClient.setBackground(SystemColor.inactiveCaptionBorder);
 		tpClientManagement.addTab("고객사", null, pClient, null);
-		pClient.setLayout(new GridLayout(0, 2, 0, 0));
+		pClient.setLayout(new GridLayout(0, 1, 0, 0));
 		
-		pCRegisterPanel = new CRegisterPanel();
-		pCRegisterPanel.setBackground(SystemColor.inactiveCaptionBorder);
-		pClient.add(pCRegisterPanel);
-		pCRegisterPanel.setLayout(null);
-		
-		pCListPanel = new CListPanel();
-		pCListPanel.setBackground(SystemColor.inactiveCaptionBorder);
-		pClient.add(pCListPanel);
-		pCListPanel.setLayout(null);
+		pCUIPanel = new ClientUIPanel();
+		pClient.add(pCUIPanel);
 	}
 }

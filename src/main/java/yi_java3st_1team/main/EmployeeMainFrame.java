@@ -18,10 +18,10 @@ import javax.swing.border.EmptyBorder;
 import yi_java3st_1team.main.ui.EmployeeMainUIPanel;
 
 @SuppressWarnings("serial")
-public class EmployeeMainFrame extends JFrame {
+public class EmployeeMainFrame extends JFrame{
 
 	public JPanel contentPane; //내용물,목차+판유리 - 컴포넌트(구성요소,부품)를 부착
-	private JPanel pHeader;
+	public JPanel pHeader;
 	public JPanel pSection;
 	private JPanel pFooter;
 	private JLabel lblLogo;
@@ -45,6 +45,7 @@ public class EmployeeMainFrame extends JFrame {
 		initialize(); //초기내용 설정
 	}
 	private void initialize() {
+		//전체 frame
 		setTitle("[관리자용] S/W판매관리 프로그램"); //타이틀
 		setSize(1550, 900); // 프레임크기(가로:1150 / 세로:760)
 		setResizable(false);
@@ -70,6 +71,12 @@ public class EmployeeMainFrame extends JFrame {
 		lblLogo.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\loginMain\\topLogo.png"));
 		lblLogo.setPreferredSize(new Dimension(300, 120));
 		pHeader.add(lblLogo);
+		
+//		JButton btnlogout = new JButton("로그아웃");
+//		btnlogout.setBounds(1376, 10, 135, 100);
+//		pHeader.add(btnlogout);
+		
+		//section
 		pSection = new JPanel();
 		pSection.setBackground(SystemColor.inactiveCaption);
 		contentPane.add(pSection, BorderLayout.CENTER);
@@ -80,6 +87,7 @@ public class EmployeeMainFrame extends JFrame {
 		pSection.add(pContents);
 		
 		
+		//footer
 		pFooter = new JPanel();
 		pFooter.setBackground(SystemColor.inactiveCaption);
 		pFooter.setPreferredSize(new Dimension(1150, 30));
@@ -93,4 +101,5 @@ public class EmployeeMainFrame extends JFrame {
 		lblCopy.setBorder(BorderFactory.createEmptyBorder(0,0,0,20));
 		pFooter.add(lblCopy, BorderLayout.EAST);
 	}
+	
 }

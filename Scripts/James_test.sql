@@ -1,6 +1,9 @@
 select user(), database();
 
 select * from employee;
+select * from product;
+desc employee;
+select * from department;
 
 select * from client;
 select * from department;
@@ -33,3 +36,15 @@ update client set c_name = '제임스최고공부방', c_ceo = '제임스', c_ad
 delete from client where c_no = 56;
 
 select d_no, d_name, d_floor from department where d_no = 1;
+
+-- 마지막 번호 구하기
+select e_no from employee order by e_no desc limit 1;
+
+-- 로그인
+select e_no, e_name, e_dept, e_title, e_manager, e_id, e_pw, e_mail from employee where e_id = 'sujinzzing' and e_pw = 'Jane1234!@';
+
+select e.e_no, e.e_name, e.e_dept, d.d_name, d.d_floor, e.e_manager, e.e_id, e.e_pw, e.e_mail
+from employee e left join department d
+on e.e_dept  = d.d_no;
+select * from employee;
+select e.e_no, e.e_name, e.e_title, e.e_dept, d.d_no, d.d_name, d.d_floor, e.e_manager, e.e_id, e.e_pw, e.e_mail from employee e left join department d on e.e_dept  = d.d_no where e.e_id = 'sujinzzing' and e.e_pw = 'Jane1234!@'; 

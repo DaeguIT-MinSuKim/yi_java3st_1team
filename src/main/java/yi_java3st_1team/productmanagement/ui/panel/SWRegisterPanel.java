@@ -1,23 +1,38 @@
 package yi_java3st_1team.productmanagement.ui.panel;
 
-import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Font;
 import java.awt.Rectangle;
 import java.awt.SystemColor;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Date;
+import java.util.List;
+import java.util.Vector;
 
-import javax.swing.JButton;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
-import java.awt.Color;
-import javax.swing.ImageIcon;
+
+import com.toedter.calendar.JDateChooser;
+
+import yi_java3st_1team.clientmanagement.dto.Supplier;
+import yi_java3st_1team.clientmanagement.ui.panel.AbsItemPanel;
+import yi_java3st_1team.exception.InvalidCheckException;
+import yi_java3st_1team.productmanagement.dto.Category;
+import yi_java3st_1team.productmanagement.dto.Product;
+import yi_java3st_1team.productmanagement.ui.service.SWUIService;
 
 @SuppressWarnings("serial")
-public class SWRegisterPanel extends JPanel {
-
-	private JLabel lblSW;
+public class SWRegisterPanel extends AbsItemPanel<Product> implements ItemListener {
 	private JLabel lblPNo;
 	private JLabel lblPCate;
 	private JLabel lblPName;
@@ -27,189 +42,255 @@ public class SWRegisterPanel extends JPanel {
 	private JLabel lblPQty;
 	private JLabel lblPDate;
 	private JTextField tfPNo;
-	private JTextField tfPName;
-	private JTextField tfPCost;
-	private JTextField tfPPrice;
-	private JTextField tfPSName;
-	private JTextField tfPQty;
-	private JTextField tfPDate;
-	private JButton btnAdd;
-	private JButton btnUpdate;
-	private JButton btnDel;
-	private JButton btnGoMain;
-	private JButton btnDplCheck;
-	private JButton btnPSCheck;
-	private JComboBox cmbCate;
-	private JLabel label;
+	public JTextField tfPName;
+	public JTextField tfPCost;
+	public JTextField tfPPrice;
+	public JTextField tfPSName;
+	public JTextField tfPQty;
+	public JDateChooser tfPDate;
+	private JComboBox<Category> cmbCate;
+	public JTextField tfImgSearch;
+	private SWUIService service;
+	private String pPicPath;
+	private byte[] pPics;
+	
 	public SWRegisterPanel() {
-
+		service = new SWUIService();
 		initialize();
 	}
+	
+	public JTextField getTfPSName() {
+		return tfPSName;
+	}
+
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	private void initialize() {
 		setBounds(new Rectangle(0, 0, 635, 700));
-		setLayout(new BorderLayout(0, 0));
+		setLayout(null);
 		
 		JPanel panel = new JPanel();
-		add(panel, BorderLayout.CENTER);
-		panel.setBounds(new Rectangle(0, 0, 635, 700));
+		add(panel);
+		panel.setBounds(new Rectangle(0, 0, 400, 440));
 		panel.setBackground(SystemColor.inactiveCaptionBorder);
 		panel.setLayout(null);
-		
-		lblSW = new JLabel("소프트웨어 제품등록");
-		lblSW.setForeground(Color.BLACK);
-		lblSW.setFont(new Font("휴먼둥근헤드라인", Font.PLAIN, 40));
-		lblSW.setHorizontalAlignment(SwingConstants.CENTER);
-		lblSW.setBounds(0, 52, 635, 54);
-		panel.add(lblSW);
 		
 		lblPNo = new JLabel("품 목 번 호");
 		lblPNo.setForeground(Color.BLACK);
 		lblPNo.setFont(new Font("휴먼둥근헤드라인", Font.PLAIN, 16));
 		lblPNo.setHorizontalAlignment(SwingConstants.CENTER);
-		lblPNo.setBounds(66, 140, 120, 30);
+		lblPNo.setBounds(12, 4, 120, 30);
 		panel.add(lblPNo);
 		
 		lblPCate = new JLabel("분  류  명");
 		lblPCate.setForeground(Color.BLACK);
 		lblPCate.setHorizontalAlignment(SwingConstants.CENTER);
 		lblPCate.setFont(new Font("휴먼둥근헤드라인", Font.PLAIN, 16));
-		lblPCate.setBounds(66, 190, 120, 30);
+		lblPCate.setBounds(12, 54, 120, 30);
 		panel.add(lblPCate);
 		
 		lblPName = new JLabel("품  목  명");
 		lblPName.setForeground(Color.BLACK);
 		lblPName.setHorizontalAlignment(SwingConstants.CENTER);
 		lblPName.setFont(new Font("휴먼둥근헤드라인", Font.PLAIN, 16));
-		lblPName.setBounds(66, 240, 120, 30);
+		lblPName.setBounds(12, 104, 120, 30);
 		panel.add(lblPName);
 		
 		lblPCost = new JLabel("공 급 가 격");
 		lblPCost.setForeground(Color.BLACK);
 		lblPCost.setHorizontalAlignment(SwingConstants.CENTER);
 		lblPCost.setFont(new Font("휴먼둥근헤드라인", Font.PLAIN, 16));
-		lblPCost.setBounds(66, 290, 120, 30);
+		lblPCost.setBounds(12, 154, 120, 30);
 		panel.add(lblPCost);
 		
 		lblPPrice = new JLabel("판 매 가 격");
 		lblPPrice.setForeground(Color.BLACK);
 		lblPPrice.setHorizontalAlignment(SwingConstants.CENTER);
 		lblPPrice.setFont(new Font("휴먼둥근헤드라인", Font.PLAIN, 16));
-		lblPPrice.setBounds(66, 340, 120, 30);
+		lblPPrice.setBounds(12, 204, 120, 30);
 		panel.add(lblPPrice);
 		
-		lblPSName = new JLabel("공급회사명");
+		lblPSName = new JLabel("공급 회사명");
 		lblPSName.setForeground(Color.BLACK);
 		lblPSName.setHorizontalAlignment(SwingConstants.CENTER);
 		lblPSName.setFont(new Font("휴먼둥근헤드라인", Font.PLAIN, 16));
-		lblPSName.setBounds(66, 390, 120, 30);
+		lblPSName.setBounds(12, 254, 120, 30);
 		panel.add(lblPSName);
 		
 		lblPQty = new JLabel("최초재고수량");
 		lblPQty.setForeground(Color.BLACK);
 		lblPQty.setHorizontalAlignment(SwingConstants.CENTER);
 		lblPQty.setFont(new Font("휴먼둥근헤드라인", Font.PLAIN, 16));
-		lblPQty.setBounds(66, 440, 120, 30);
+		lblPQty.setBounds(12, 304, 120, 30);
 		panel.add(lblPQty);
 		
 		lblPDate = new JLabel("최초등록일자");
 		lblPDate.setForeground(Color.BLACK);
 		lblPDate.setHorizontalAlignment(SwingConstants.CENTER);
 		lblPDate.setFont(new Font("휴먼둥근헤드라인", Font.PLAIN, 16));
-		lblPDate.setBounds(66, 490, 120, 30);
+		lblPDate.setBounds(12, 354, 120, 30);
 		panel.add(lblPDate);
 		
 		tfPNo = new JTextField();
-		tfPNo.setBounds(230, 140, 200, 30);
+		tfPNo.setEditable(false);
+		tfPNo.setBounds(176, 4, 200, 30);
 		panel.add(tfPNo);
 		tfPNo.setColumns(10);
 		
 		tfPName = new JTextField();
 		tfPName.setColumns(10);
-		tfPName.setBounds(230, 240, 200, 30);
+		tfPName.setBounds(176, 104, 200, 30);
 		panel.add(tfPName);
 		
 		tfPCost = new JTextField();
 		tfPCost.setColumns(10);
-		tfPCost.setBounds(230, 290, 200, 30);
+		tfPCost.setBounds(176, 154, 200, 30);
 		panel.add(tfPCost);
 		
 		tfPPrice = new JTextField();
 		tfPPrice.setColumns(10);
-		tfPPrice.setBounds(230, 340, 200, 30);
+		tfPPrice.setBounds(176, 204, 200, 30);
 		panel.add(tfPPrice);
 		
 		tfPSName = new JTextField();
 		tfPSName.setColumns(10);
-		tfPSName.setBounds(230, 390, 200, 30);
+		tfPSName.setBounds(176, 254, 200, 30);
 		panel.add(tfPSName);
 		
 		tfPQty = new JTextField();
 		tfPQty.setColumns(10);
-		tfPQty.setBounds(230, 440, 200, 30);
+		tfPQty.setBounds(176, 304, 200, 30);
 		panel.add(tfPQty);
 		
-		tfPDate = new JTextField();
-		tfPDate.setColumns(10);
-		tfPDate.setBounds(230, 490, 200, 30);
+		tfPDate = new JDateChooser(new Date(), "yyyy-MM-dd");
+		tfPDate.setBounds(176, 354, 200, 30);
 		panel.add(tfPDate);
 		
-		btnAdd = new JButton("등 록");
-		btnAdd.setFocusable(false);
-		btnAdd.setBackground(new Color(135, 206, 250));
-		btnAdd.setForeground(new Color(0, 102, 204));
-		btnAdd.setFont(new Font("맑은 고딕", Font.BOLD, 16));
-		btnAdd.setBounds(66, 580, 100, 30);
-		panel.add(btnAdd);
-		
-		btnUpdate = new JButton("수 정");
-		btnUpdate.setFocusable(false);
-		btnUpdate.setBackground(new Color(135, 206, 250));
-		btnUpdate.setForeground(new Color(0, 102, 204));
-		btnUpdate.setFont(new Font("맑은 고딕", Font.BOLD, 16));
-		btnUpdate.setBounds(198, 580, 100, 30);
-		panel.add(btnUpdate);
-		
-		btnDel = new JButton("삭 제");
-		btnDel.setFocusable(false);
-		btnDel.setBackground(new Color(135, 206, 250));
-		btnDel.setForeground(new Color(0, 102, 204));
-		btnDel.setFont(new Font("맑은 고딕", Font.BOLD, 16));
-		btnDel.setBounds(330, 580, 100, 30);
-		panel.add(btnDel);
-		
-		btnGoMain = new JButton("메인화면");
-		btnGoMain.setFocusable(false);
-		btnGoMain.setBackground(new Color(25, 25, 112));
-		btnGoMain.setForeground(Color.WHITE);
-		btnGoMain.setFont(new Font("맑은 고딕", Font.BOLD, 16));
-		btnGoMain.setBounds(465, 580, 100, 30);
-		panel.add(btnGoMain);
-		
-		btnDplCheck = new JButton("중복확인");
-		btnDplCheck.setFocusable(false);
-		btnDplCheck.setFont(new Font("맑은 고딕", Font.BOLD, 16));
-		btnDplCheck.setForeground(Color.WHITE);
-		btnDplCheck.setBackground(new Color(240, 128, 128));
-		btnDplCheck.setBounds(465, 210, 100, 30);
-		panel.add(btnDplCheck);
-		
-		btnPSCheck = new JButton("조 회");
-		btnPSCheck.setFocusable(false);
-		btnPSCheck.setBackground(SystemColor.activeCaptionBorder);
-		btnPSCheck.setForeground(Color.WHITE);
-		btnPSCheck.setFont(new Font("맑은 고딕", Font.BOLD, 16));
-		btnPSCheck.setBounds(465, 390, 100, 30);
-		panel.add(btnPSCheck);
-		
 		cmbCate = new JComboBox();
-		cmbCate.setBounds(230, 190, 200, 30);
+		cmbCate.addItemListener(this);
+		cmbCate.setBounds(176, 54, 200, 30);
 		panel.add(cmbCate);
 		
-		label = new JLabel("");
-		label.setOpaque(true);
-		label.setBackground(Color.WHITE);
-		label.setBounds(54, 116, 525, 430);
-		panel.add(label);
+		JLabel lblImgSearch = new JLabel("제품 이미지");
+		lblImgSearch.setHorizontalAlignment(SwingConstants.CENTER);
+		lblImgSearch.setForeground(Color.BLACK);
+		lblImgSearch.setFont(new Font("휴먼둥근헤드라인", Font.PLAIN, 16));
+		lblImgSearch.setBounds(12, 404, 120, 30);
+		panel.add(lblImgSearch);
+		
+		tfImgSearch = new JTextField();
+		tfImgSearch.setColumns(10);
+		tfImgSearch.setBounds(176, 404, 200, 30);
+		panel.add(tfImgSearch);
+		
+		JLabel lblNewLabel = new JLabel("");
+		lblNewLabel.setOpaque(true);
+		lblNewLabel.setBackground(Color.WHITE);
+		lblNewLabel.setBounds(0, 0, 400, 440);
+		panel.add(lblNewLabel);
 		
 	}
+	
+	public void setService(SWUIService service) {
+		this.service = service;
+		setCmbCateList(service.showCategoryList());
+	}
+	
+	private void setCmbCateList(List<Category> showCategoryList) {
+		DefaultComboBoxModel<Category> model = new DefaultComboBoxModel<Category>(new Vector<>(showCategoryList));
+		cmbCate.setModel(model);
+		cmbCate.setSelectedIndex(-1);
+		
+	}
+	
+	public void itemStateChanged(ItemEvent e) {
+		if (e.getSource() == cmbCate) {
+			cmbCateItemStateChanged(e);
+		}
+	}
+	protected void cmbCateItemStateChanged(ItemEvent e) {
+		if(e.getStateChange() == ItemEvent.SELECTED) {
+			
+		}
+	}
+	
+	public void setNum(Product item) {
+		tfPNo.setText(String.format("P%04d", item.getpNo()+1));
+	}
+	
+	public Product getItem1() {
+		int pNo = Integer.parseInt(tfPNo.getText().substring(1));
+		String pName = tfPName.getText().trim();
+		return new Product(pNo, pName);
+	}
+	
+	@Override
+	public Product getItem() {
+		int pNo = Integer.parseInt(tfPNo.getText().substring(1));
+		Category pCate = (Category) cmbCate.getSelectedItem();
+		String pName = tfPName.getText().trim();
+		int pCost = Integer.parseInt(tfPCost.getText().trim());
+		int pPrice = Integer.parseInt(tfPPrice.getText().trim());
+		Supplier pSno = new Supplier(tfPSName.getText().trim(), null, null);
+		int pQty = Integer.parseInt(tfPQty.getText().trim());
+		Date pDate = tfPDate.getDate();
+		if(tfImgSearch.getText().trim().equals("")) {
+			pPicPath = null;
+			pPics = null;
+		}else {
+			pPicPath = tfImgSearch.getText().trim();
+			pPics = getImg(pPicPath);
+		}		
+		return new Product(pNo, pCate, pName, pCost, pPrice, pSno, pQty, pDate, pPics, pPicPath);
+	}
+	private byte[] getImg(String path) {
+		byte[] pic = null;
+		File file = new File(path);
+		try(InputStream is = new FileInputStream(file)){
+			pic = new byte[is.available()];
+			is.read(pic);
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return pic;
+	}
+	@Override
+	public void setItem(Product item) {
+		tfPNo.setText(String.format("P%04d", item.getpNo()));
+		cmbCate.setSelectedItem(item.getpCate());
+		tfPName.setText(item.getpName());
+		tfPCost.setText(String.format("%d", item.getpCost()));
+		tfPPrice.setText(String.format("%d", item.getpPrice()));
+		tfPSName.setText(item.getpSno().getsName());
+		tfPQty.setText(String.format("%s", item.getpQty()));
+		tfPDate.setDate(item.getpDate());
+		if(item.getpPicPath()==null) {
+			tfImgSearch.setText("");
+		}else {
+			tfImgSearch.setText(item.getpPicPath());
+		}
+	}
+
+	@Override
+	public void clearTf() {
+		tfPNo.setText("");
+		cmbCate.setSelectedIndex(-1);
+		tfPName.setText("");
+		tfPCost.setText("");
+		tfPPrice.setText("");
+		tfPSName.setText("");
+		tfPQty.setText("");
+		tfPDate.setDate(new Date());
+		tfImgSearch.setText("");
+	}
+	@Override
+	public void validCheck() {
+		if(tfPNo.getText().equals("")||cmbCate.getSelectedIndex()==-1||tfPName.getText().equals("")||tfPCost.getText().equals("")
+				||tfPPrice.getText().equals("")||tfPSName.getText().equals("")||tfPQty.getText().equals("")) {
+			throw new InvalidCheckException();
+		}
+		
+	}
+	
 }

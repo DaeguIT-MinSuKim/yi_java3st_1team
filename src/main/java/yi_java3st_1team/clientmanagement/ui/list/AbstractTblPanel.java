@@ -3,6 +3,7 @@ package yi_java3st_1team.clientmanagement.ui.list;
 import java.awt.BorderLayout;
 import java.util.List;
 
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPopupMenu;
 import javax.swing.JScrollPane;
@@ -98,7 +99,8 @@ public abstract class AbstractTblPanel<T> extends JPanel {
 	public int getSelectedRowIdx() {
 		int selectedIdx = table.getSelectedRow();
 		if (selectedIdx == -1) {
-			throw new RuntimeException("해당 사원을 선택하세요");
+			JOptionPane.showMessageDialog(null, "수정/삭제할 사항을 선택하세요.");
+			throw new RuntimeException();
 		}
 		return selectedIdx;
 	}

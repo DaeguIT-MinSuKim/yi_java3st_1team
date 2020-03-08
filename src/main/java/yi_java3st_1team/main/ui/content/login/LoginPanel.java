@@ -2,8 +2,6 @@ package yi_java3st_1team.main.ui.content.login;
 
 import java.awt.Dimension;
 import java.awt.Font;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
@@ -13,9 +11,9 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
 @SuppressWarnings("serial")
-public class LoginPanel extends JPanel implements ActionListener {
-	private JTextField tfId;
-	private JPasswordField pfPasswd;
+public class LoginPanel extends JPanel {
+	public JTextField tfId;
+	public JPasswordField pfPasswd;
 
 	/**
 	 * Create the panel.
@@ -39,7 +37,7 @@ public class LoginPanel extends JPanel implements ActionListener {
 		lblId.setBounds(75, 66, 97, 41);
 		add(lblId);
 		
-		tfId = new JTextField();
+		tfId = new JTextField("hceo1004");
 		tfId.setFont(new Font("굴림", Font.PLAIN, 17));
 		tfId.setColumns(10);
 		tfId.setBounds(180, 60, 151, 48);
@@ -57,11 +55,9 @@ public class LoginPanel extends JPanel implements ActionListener {
 		lblPass.setBounds(75, 167, 97, 31);
 		add(lblPass);
 		
-		pfPasswd = new JPasswordField();
+		pfPasswd = new JPasswordField("Json1234!@");
 		pfPasswd.setFont(new Font("굴림", Font.PLAIN, 17));
 		pfPasswd.setBounds(180, 160, 151, 48);
 		add(pfPasswd);
-	}
-	public void actionPerformed(ActionEvent e) {
 	}
 }

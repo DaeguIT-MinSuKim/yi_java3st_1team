@@ -43,7 +43,7 @@ public class ZipCodeDaoTest {
 	@Test
 	public void test01SelectZipCodeSearch() {
 		LogUtil.prnLog(Thread.currentThread().getStackTrace()[1].getMethodName()+"()");
-		List<ZipCode> list = dao.selectZipCodeSearch(new ZipCode("태전로", 53, 0));
+		List<ZipCode> list = dao.selectZipCodeSearch(new ZipCode("대구광역시","태전로", 53, 0));
 		Assert.assertNotNull(list);
 		
 		for(ZipCode z:list) {

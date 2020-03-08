@@ -20,6 +20,8 @@ public class OCheckPanel extends JPanel {
 
 	private JLabel lblO;
 	private JPanel pList;
+	public JButton mainBtn;
+	
 	public OCheckPanel() {
 
 		initialize();
@@ -53,12 +55,12 @@ public class OCheckPanel extends JPanel {
 		btnNewButton.setBounds(947, 65, 111, 33);
 		panel.add(btnNewButton);
 		
-		JButton btnNewButton_1 = new JButton("메인화면");
-		btnNewButton_1.setBackground(new Color(25, 25, 112));
-		btnNewButton_1.setForeground(Color.WHITE);
-		btnNewButton_1.setFont(new Font("맑은 고딕", Font.BOLD, 16));
-		btnNewButton_1.setBounds(1070, 65, 111, 33);
-		panel.add(btnNewButton_1);
+		mainBtn = new JButton("메인화면");
+		mainBtn.setBackground(new Color(25, 25, 112));
+		mainBtn.setForeground(Color.WHITE);
+		mainBtn.setFont(new Font("맑은 고딕", Font.BOLD, 16));
+		mainBtn.setBounds(1070, 65, 111, 33);
+		panel.add(mainBtn);
 		
 	}
 }

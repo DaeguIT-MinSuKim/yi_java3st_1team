@@ -1,29 +1,24 @@
 package yi_java3st_1team.productmanagement.ui.list;
 
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JComboBox;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
-import javax.swing.SwingConstants;
-
 import java.awt.BorderLayout;
 import java.awt.Font;
 import java.awt.Rectangle;
 import java.awt.SystemColor;
+
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JRadioButton;
+import javax.swing.SwingConstants;
 import java.awt.Color;
 
 @SuppressWarnings("serial")
-public class SWListPanel extends JPanel {
+public class SPSOListPanel extends JPanel {
 
 	private JLabel lblImg;
 	private JLabel lblSWList;
-	private JComboBox cmbCate;
-	private JTextField tfSerch;
-	private JButton btnSerch;
 	private JPanel pList;
-	public SWListPanel() {
+	public SPSOListPanel() {
 
 		initialize();
 	}
@@ -42,33 +37,29 @@ public class SWListPanel extends JPanel {
 		lblImg.setBounds(22, 60, 40, 40);
 		pSWListPanel.add(lblImg);
 		
-		lblSWList = new JLabel("소프트웨어 LIST");
+		lblSWList = new JLabel("매입&발주 LIST");
 		lblSWList.setForeground(Color.BLACK);
 		lblSWList.setFont(new Font("휴먼둥근헤드라인", Font.PLAIN, 20));
 		lblSWList.setHorizontalAlignment(SwingConstants.CENTER);
 		lblSWList.setBounds(72, 60, 170, 40);
 		pSWListPanel.add(lblSWList);
 		
-		cmbCate = new JComboBox();
-		cmbCate.setBounds(252, 65, 120, 30);
-		pSWListPanel.add(cmbCate);
-		
-		tfSerch = new JTextField();
-		tfSerch.setColumns(10);
-		tfSerch.setBounds(392, 65, 130, 30);
-		pSWListPanel.add(tfSerch);
-		
-		btnSerch = new JButton("검색");
-		btnSerch.setFocusable(false);
-		btnSerch.setBackground(new Color(135, 206, 250));
-		btnSerch.setForeground(Color.WHITE);
-		btnSerch.setFont(new Font("맑은 고딕", Font.BOLD, 16));
-		btnSerch.setBounds(542, 65, 70, 30);
-		pSWListPanel.add(btnSerch);
-		
 		pList = new JPanel();
 		pList.setBounds(22, 123, 590, 488);
 		pSWListPanel.add(pList);
+		
+		JRadioButton rdbtnSC = new JRadioButton("  매입 이력");
+		rdbtnSC.setForeground(Color.BLACK);
+		rdbtnSC.setBackground(SystemColor.inactiveCaptionBorder);
+		rdbtnSC.setFont(new Font("휴먼둥근헤드라인", Font.PLAIN, 15));
+		rdbtnSC.setBounds(320, 70, 110, 20);
+		pSWListPanel.add(rdbtnSC);
+		
+		JRadioButton rdbtnSO = new JRadioButton("  발주 이력");
+		rdbtnSO.setForeground(Color.BLACK);
+		rdbtnSO.setBackground(SystemColor.inactiveCaptionBorder);
+		rdbtnSO.setFont(new Font("휴먼둥근헤드라인", Font.PLAIN, 15));
+		rdbtnSO.setBounds(460, 70, 110, 20);
+		pSWListPanel.add(rdbtnSO);
 	}
-
 }

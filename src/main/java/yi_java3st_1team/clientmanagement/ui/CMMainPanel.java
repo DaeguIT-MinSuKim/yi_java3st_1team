@@ -1,18 +1,38 @@
 package yi_java3st_1team.clientmanagement.ui;
 
+import java.awt.BorderLayout;
+import java.awt.CardLayout;
 import java.awt.Rectangle;
 import java.awt.SystemColor;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JPanel;
 
 import yi_java3st_1team.clientmanagement.ui.content.CMContent;
 import yi_java3st_1team.main.LeftMainMenu;
+import yi_java3st_1team.main.dto.Employee;
+import yi_java3st_1team.main.ui.EmployeeMainUIPanel;
+import yi_java3st_1team.main.ui.content.LogoImg02Panel;
+import yi_java3st_1team.main.ui.content.login.EmployeeLoginPanel;
+import yi_java3st_1team.main.ui.content.login.LoginPanel;
+import yi_java3st_1team.main.ui.service.EmployeeUiService;
+import yi_java3st_1team.ordermanagement.ui.OMMainPanel;
+import yi_java3st_1team.productmanagement.ui.PMMainPanel;
+import yi_java3st_1team.viewsmanagement.ui.panel.ReportMainPanel;
 
 @SuppressWarnings("serial")
-public class CMMainPanel extends JPanel {
+public class CMMainPanel extends JPanel implements ActionListener{
 
+	private LeftMainMenu mainMenu;
+	private CMContent pContent;
+	private EmployeeUiService empService;
+	
+	public static Employee loginEmp;
+	
+	
 	public CMMainPanel() {
-
+		empService = new EmployeeUiService();
 		initialize();
 	}
 	private void initialize() {
@@ -20,15 +40,123 @@ public class CMMainPanel extends JPanel {
 		setBounds(new Rectangle(0, 0, 1544, 700));
 		setLayout(null);
 		
-		LeftMainMenu MainMenu = new LeftMainMenu();
-		MainMenu.setBackground(SystemColor.inactiveCaptionBorder);
-		MainMenu.setBounds(20, 0, 214, 700);
-		add(MainMenu);
+		mainMenu = new LeftMainMenu();
+		mainMenu.setBackground(SystemColor.inactiveCaptionBorder);
+		mainMenu.setBounds(20, 0, 214, 700);
+		add(mainMenu);
 		
-		CMContent pContent = new CMContent();
+		mainMenu.btnCM.addActionListener(this);
+		mainMenu.btnOM.addActionListener(this);
+		mainMenu.btnPM.addActionListener(this);
+		mainMenu.btnViews.addActionListener(this);
+		
+		pContent = new CMContent();
 		pContent.setBackground(SystemColor.inactiveCaption);
 		pContent.setBounds(246, 0, 1268, 700);
 		add(pContent);
+		
+		pContent.pSCUIPanel.btnGoMain.addActionListener(this);
+		pContent.pCUIPanel.btnGoMain.addActionListener(this);
 	}
+	
+	   public void actionPerformed(ActionEvent e) {
+		      
+		      //버튼들
+				if (e.getSource() == mainMenu.btnCM) {
+					btnCMActionPerformed(e);
+				}
+				if (e.getSource() == mainMenu.btnPM) {
+					btnPMActionPerformed(e);
+				}
+				if (e.getSource() == mainMenu.btnOM) {
+					btnOMActionPerformed(e);
+				}
+				if (e.getSource() == mainMenu.btnViews) {
+					actionPerformedBtnViews(e);
+				}
+				
+				//메인화면
+			      if (e.getSource() == pContent.pSCUIPanel.btnGoMain) {
+				         actionPerformedMainBtn(e);
+				      }
+			      
+			      if (e.getSource() == pContent.pCUIPanel.btnGoMain) {
+				         actionPerformedMainBtn(e);
+				      }
+
+
+		   }
+	   
+	   //메인화면
+	   private void actionPerformedMainBtn(ActionEvent e) {
+		   removeAll();
+		   revalidate();
+		   repaint();
+		   setBounds(new Rectangle(0, 0, 1544, 700));
+		   EmployeeMainUIPanel emp = new EmployeeMainUIPanel();
+		   add(emp);
+		   
+		   emp.pStop.removeAll();
+		   EmployeeLoginPanel pE = new EmployeeLoginPanel();
+		   emp.pStop.add(pE, BorderLayout.WEST);
+		   System.out.println(emp.loginEmp);
+		   System.out.println(emp.loginEmp.getEmpManager());
+		   
+		   int manager = emp.loginEmp.getEmpManager();
+		   
+		   
+		   LogoImg02Panel lI = new LogoImg02Panel();
+		   emp.pStop.add(lI,BorderLayout.CENTER);
+
+//		   emp.pStop.revalidate();
+//		   emp.pStop.repaint();
+		
+	}
+	private void btnCMActionPerformed(ActionEvent e) {
+		      removeAll();
+		      revalidate();
+		      repaint();
+		      setBackground(SystemColor.inactiveCaption);
+		      setBounds(new Rectangle(0, 0, 1544, 700));
+		      CMMainPanel cmp = new CMMainPanel();
+		      add(cmp);
+		      revalidate();
+		      repaint();
+		   }
+		   private void btnPMActionPerformed(ActionEvent e) {
+			      removeAll();
+			      revalidate();
+			      repaint();
+			      setBackground(SystemColor.inactiveCaption);
+			      setBounds(new Rectangle(0, 0, 1544, 700));
+			      PMMainPanel pmp = new PMMainPanel();
+			      add(pmp);
+			      revalidate();
+			      repaint();
+		   }
+		   private void btnOMActionPerformed(ActionEvent e) {
+			      removeAll();
+			      revalidate();
+			      repaint();
+			      setBackground(SystemColor.inactiveCaption);
+			      setBounds(new Rectangle(0, 0, 1544, 700));
+			      setLayout(null);
+			      OMMainPanel omp = new OMMainPanel();
+			      add(omp);
+			      revalidate();
+			      repaint();
+		   }
+		   private void actionPerformedBtnViews(ActionEvent e) {
+				  removeAll();
+			      revalidate();
+			      repaint();
+			      setBackground(SystemColor.inactiveCaption);
+			      setBounds(new Rectangle(0, 0, 1544, 700));
+			      ReportMainPanel rmp = new ReportMainPanel();
+			      add(rmp);
+			      revalidate();
+			      repaint();
+		   }
+	   
 
 }

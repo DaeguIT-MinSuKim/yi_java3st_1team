@@ -12,6 +12,16 @@ public class Supplier {
 		// TODO Auto-generated constructor stub
 	}
 
+	public Supplier(String sName, String sBln, String sTel) {
+		this.sName = sName;
+		this.sBln = sBln;
+		this.sTel = sTel;
+	}
+
+	public Supplier(String sName) {
+		this.sName = sName;
+	}
+
 	public Supplier(int sNo) {
 		this.sNo = sNo;
 	}

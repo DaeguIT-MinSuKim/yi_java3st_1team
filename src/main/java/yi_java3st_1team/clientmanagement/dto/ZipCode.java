@@ -12,7 +12,14 @@ public class ZipCode {
 		// TODO Auto-generated constructor stub
 	}
 
-	public ZipCode(String zDoro, int zNum1, int zNum2) {
+	public ZipCode(String zSido, String zDoro, int zNum1) {
+		this.zSido = zSido;
+		this.zDoro = zDoro;
+		this.zNum1 = zNum1;
+	}
+
+	public ZipCode(String zSido, String zDoro, int zNum1, int zNum2) {
+		this.zSido = zSido;
 		this.zDoro = zDoro;
 		this.zNum1 = zNum1;
 		this.zNum2 = zNum2;
@@ -77,7 +84,12 @@ public class ZipCode {
 
 	@Override
 	public String toString() {
-		return String.format("%s) %s %s %s %s-%s", zCode, zSido,
+		return String.format("%s %s %s %s", zSido,
+				zSigungu, zDoro, zNum1);
+	}
+	
+	public String toStringAll() {
+		return String.format("%s %s %s %s-%s", zSido,
 				zSigungu, zDoro, zNum1, zNum2);
 	}
 

@@ -1,6 +1,7 @@
 {
 	"folders": {},
 	"connections": {
+<<<<<<< HEAD
 		"mysql5-17067889ed0-7f3644af433aa623": {
 			"provider": "mysql",
 			"driver": "mysql5",
@@ -16,16 +17,19 @@
 			}
 		},
 		"mysql5-170678b36bb-1eed6f2394edd292": {
+=======
+		"mysql5-170a465e43c-4b4de140d2c9f288": {
+>>>>>>> refs/heads/master
 			"provider": "mysql",
 			"driver": "mysql5",
 			"name": "MySQL - yi_java3st_1team",
 			"save-password": true,
 			"read-only": false,
 			"configuration": {
-				"host": "localhost",
+				"host": "192.168.10.145",
 				"port": "3306",
 				"database": "yi_java3st_1team",
-				"url": "jdbc:mysql://localhost:3306/yi_java3st_1team",
+				"url": "jdbc:mysql://192.168.10.145:3306/yi_java3st_1team",
 				"home": "C:\\Program Files\\MySQL\\MySQL Server 5.7",
 				"type": "dev"
 			}
@@ -44,20 +48,6 @@
 				"home": "C:\\Program Files\\MySQL\\MySQL Server 5.7",
 				"type": "dev",
 				"handlers": {}
-			}
-		}
-	},
-	"virtual-models": {
-		"mysql5-170678b36bb-1eed6f2394edd292": {
-			"yi_java3st_1team": {
-				":discount_rate": {
-					"constraints": {
-						"VIRTUAL_PK": {
-							"type": "vpk",
-							"useAllColumns": true
-						}
-					}
-				}
 			}
 		}
 	},
