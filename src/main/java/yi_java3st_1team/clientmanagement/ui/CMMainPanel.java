@@ -1,5 +1,7 @@
 package yi_java3st_1team.clientmanagement.ui;
 
+import java.awt.BorderLayout;
+import java.awt.CardLayout;
 import java.awt.Rectangle;
 import java.awt.SystemColor;
 import java.awt.event.ActionEvent;
@@ -9,7 +11,12 @@ import javax.swing.JPanel;
 
 import yi_java3st_1team.clientmanagement.ui.content.CMContent;
 import yi_java3st_1team.main.LeftMainMenu;
+import yi_java3st_1team.main.dto.Employee;
 import yi_java3st_1team.main.ui.EmployeeMainUIPanel;
+import yi_java3st_1team.main.ui.content.LogoImg02Panel;
+import yi_java3st_1team.main.ui.content.login.EmployeeLoginPanel;
+import yi_java3st_1team.main.ui.content.login.LoginPanel;
+import yi_java3st_1team.main.ui.service.EmployeeUiService;
 import yi_java3st_1team.ordermanagement.ui.OMMainPanel;
 import yi_java3st_1team.productmanagement.ui.PMMainPanel;
 import yi_java3st_1team.viewsmanagement.ui.panel.ReportMainPanel;
@@ -19,8 +26,13 @@ public class CMMainPanel extends JPanel implements ActionListener{
 
 	private LeftMainMenu mainMenu;
 	private CMContent pContent;
+	private EmployeeUiService empService;
+	
+	public static Employee loginEmp;
+	
+	
 	public CMMainPanel() {
-
+		empService = new EmployeeUiService();
 		initialize();
 	}
 	private void initialize() {
@@ -75,6 +87,7 @@ public class CMMainPanel extends JPanel implements ActionListener{
 
 		   }
 	   
+	   //메인화면
 	   private void actionPerformedMainBtn(ActionEvent e) {
 		   removeAll();
 		   revalidate();
@@ -82,8 +95,21 @@ public class CMMainPanel extends JPanel implements ActionListener{
 		   setBounds(new Rectangle(0, 0, 1544, 700));
 		   EmployeeMainUIPanel emp = new EmployeeMainUIPanel();
 		   add(emp);
-		   revalidate();
-		   repaint();
+		   
+		   emp.pStop.removeAll();
+		   EmployeeLoginPanel pE = new EmployeeLoginPanel();
+		   emp.pStop.add(pE, BorderLayout.WEST);
+		   System.out.println(emp.loginEmp);
+		   System.out.println(emp.loginEmp.getEmpManager());
+		   
+		   int manager = emp.loginEmp.getEmpManager();
+		   
+		   
+		   LogoImg02Panel lI = new LogoImg02Panel();
+		   emp.pStop.add(lI,BorderLayout.CENTER);
+
+//		   emp.pStop.revalidate();
+//		   emp.pStop.repaint();
 		
 	}
 	private void btnCMActionPerformed(ActionEvent e) {

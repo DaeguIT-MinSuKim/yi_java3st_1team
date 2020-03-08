@@ -77,9 +77,9 @@ public class EmployeeMainUIPanel extends JPanel implements ActionListener {
 	
 	private EmployeeMainFrame empMain;
 	
-	private String empId; //로그인 아이디
-	private String empPass; //로그인 비밀번호
-	private int manager;
+	public String empId; //로그인 아이디
+	public String empPass; //로그인 비밀번호
+	public int manager;
 
 
 	public EmployeeMainUIPanel() {
@@ -334,7 +334,7 @@ public class EmployeeMainUIPanel extends JPanel implements ActionListener {
 			pSbot.removeAll();
 			revalidate();
 			repaint();
-			setLayout(new CardLayout(-19,0));
+			setLayout(new CardLayout(-18,0));
 			pCMpanel = new CMMainPanel();
 			pCMpanel.setPreferredSize(new Dimension(1544, 0));
 			pStop.add(pCMpanel, BorderLayout.WEST);
@@ -352,7 +352,7 @@ public class EmployeeMainUIPanel extends JPanel implements ActionListener {
 			pSbot.removeAll();
 			revalidate();
 			repaint();
-			setLayout(new CardLayout(-19,0));
+			setLayout(new CardLayout(-18,0));
 			pPMpanel = new PMMainPanel();
 			pPMpanel.setPreferredSize(new Dimension(1544, 0));
 			pStop.add(pPMpanel, BorderLayout.WEST);
