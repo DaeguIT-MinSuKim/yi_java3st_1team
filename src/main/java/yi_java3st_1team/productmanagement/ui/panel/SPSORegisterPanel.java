@@ -19,6 +19,8 @@ import yi_java3st_1team.exception.InvalidCheckException;
 import yi_java3st_1team.productmanagement.dto.Product;
 import yi_java3st_1team.productmanagement.dto.SupplierOrder;
 import yi_java3st_1team.productmanagement.dto.SupplierPurchase;
+import yi_java3st_1team.productmanagement.ui.service.SOUIService;
+import yi_java3st_1team.productmanagement.ui.service.SPUIService;
 
 @SuppressWarnings("serial")
 public class SPSORegisterPanel extends AbsItemPanel<SupplierPurchase> {
@@ -29,14 +31,18 @@ public class SPSORegisterPanel extends AbsItemPanel<SupplierPurchase> {
 	private JLabel lblSPSOPQty;
 	private JLabel lblSPSODate;
 	private JTextField tfSPSONo;
-	private JTextField tfSPSOPName;
-	private JTextField tfSPSOCost;
+	public JTextField tfSPSOPName;
+	public JTextField tfSPSOCost;
 	public JTextField tfSPSOSName;
 	private JTextField tfSPSOPQty;
 	private JDateChooser tfSPSODate;
 	private JLabel label;
+	private SPUIService service1;
+	private SOUIService service2;
 
 	public SPSORegisterPanel() {
+		service1 = new SPUIService();
+		service2 = new SOUIService();
 		initialize();
 	}
 
@@ -104,11 +110,13 @@ public class SPSORegisterPanel extends AbsItemPanel<SupplierPurchase> {
 		panel.add(tfSPSOPName);
 		
 		tfSPSOCost = new JTextField();
+		tfSPSOCost.setEditable(false);
 		tfSPSOCost.setColumns(10);
 		tfSPSOCost.setBounds(176, 238, 200, 30);
 		panel.add(tfSPSOCost);
 		
 		tfSPSOSName = new JTextField();
+		tfSPSOSName.setEditable(false);
 		tfSPSOSName.setColumns(10);
 		tfSPSOSName.setBounds(176, 171, 200, 30);
 		panel.add(tfSPSOSName);
@@ -148,28 +156,30 @@ public class SPSORegisterPanel extends AbsItemPanel<SupplierPurchase> {
 	
 	@Override
 	public SupplierPurchase getItem() {
-		int spNo = Integer.parseInt(tfSPSONo.getText().substring(1));
+		int spNo = Integer.parseInt(tfSPSONo.getText().substring(2));
 		Product spPname = new Product(tfSPSOPName.getText().trim(), Integer.parseInt(tfSPSOCost.getText().trim()));
+		Product spPno = new Product(service1.selectSupplierPurchasePno(spPname));
 		Supplier spSname = new Supplier(tfSPSOSName.getText().trim());
 		Product spPcost = new Product(tfSPSOPName.getText().trim(), Integer.parseInt(tfSPSOCost.getText().trim()));
 		int spQty = Integer.parseInt(tfSPSOPQty.getText().trim());
 		Date spDate = tfSPSODate.getDate();
-		return new SupplierPurchase(spNo, spPname, spSname, spPcost, spQty, spDate);
+		return new SupplierPurchase(spNo, spPno, spPname, spSname, spPcost, spQty, spDate);
 	}
 	
 	public SupplierOrder getSOItem() {
-		int soNo = Integer.parseInt(tfSPSONo.getText().substring(1));
+		int soNo = Integer.parseInt(tfSPSONo.getText().substring(2));
 		Product soPname = new Product(tfSPSOPName.getText().trim(), Integer.parseInt(tfSPSOCost.getText().trim()));
+		Product soPno = new Product(service2.selectSupplierOrderPno(soPname));
 		Supplier soSname = new Supplier(tfSPSOSName.getText().trim());
 		Product soPcost = new Product(tfSPSOPName.getText().trim(), Integer.parseInt(tfSPSOCost.getText().trim()));
 		int soQty = Integer.parseInt(tfSPSOPQty.getText().trim());
 		Date soDate = tfSPSODate.getDate();
-		return new SupplierOrder(soNo, soPname, soSname, soPcost, soQty, soDate);
+		return new SupplierOrder(soNo, soPno, soPname, soSname, soPcost, soQty, soDate);
 	}
 
 	@Override
 	public void setItem(SupplierPurchase item) {
-		tfSPSONo.setText(String.format("SC%04d", item.getSpNo()));
+		tfSPSONo.setText(String.format("SP%04d", item.getSpNo()));
 		tfSPSOPName.setText(item.getSpPname().getpName());
 		tfSPSOSName.setText(item.getSpSname().getsName());
 		tfSPSOCost.setText(String.format("%s", item.getSpPcost().getpCost()));

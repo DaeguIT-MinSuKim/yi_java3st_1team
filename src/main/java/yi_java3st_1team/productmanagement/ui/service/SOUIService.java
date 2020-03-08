@@ -4,6 +4,7 @@ import java.util.List;
 
 import yi_java3st_1team.productmanagement.dao.SupplierOrderDao;
 import yi_java3st_1team.productmanagement.dao.impl.SupplierOrderDaoImpl;
+import yi_java3st_1team.productmanagement.dto.Product;
 import yi_java3st_1team.productmanagement.dto.SupplierOrder;
 
 public class SOUIService {
@@ -27,5 +28,9 @@ public class SOUIService {
 	
 	public void modifySupplierOrder(SupplierOrder upSO) {
 		supplierOrderDao.updateSupplierOrder(upSO);
+	}
+
+	public int selectSupplierOrderPno(Product soPname) {
+		return supplierOrderDao.selectSupplierOrderPno(soPname);
 	}
 }
