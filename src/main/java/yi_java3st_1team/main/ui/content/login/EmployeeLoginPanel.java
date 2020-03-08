@@ -1,5 +1,6 @@
 package yi_java3st_1team.main.ui.content.login;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.SystemColor;
@@ -61,6 +62,13 @@ public class EmployeeLoginPanel extends JPanel{
 		loginImg.setHorizontalAlignment(SwingConstants.CENTER);
 		loginImg.setBounds(20, 71, 120, 120);
 		add(loginImg);
+		
+	      JButton btnMyProfile = new JButton("My Profile");
+	      btnMyProfile.setFont(new Font("Arial", Font.BOLD, 13));
+	      btnMyProfile.setFocusable(false);
+	      btnMyProfile.setBackground(new Color(255, 255, 51));
+	      btnMyProfile.setBounds(20, 205, 120, 29);
+	      add(btnMyProfile);
 	}
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == btnLogout) {
