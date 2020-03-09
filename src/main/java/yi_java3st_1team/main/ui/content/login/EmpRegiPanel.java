@@ -14,6 +14,7 @@ import java.awt.event.ItemListener;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -327,7 +328,14 @@ public class EmpRegiPanel extends AbsRegiPanel<Employee> implements ActionListen
 
 	// 중복확인 : 아이디
 	protected void actionPerformedDoubleCheck2(ActionEvent e) {
-		JOptionPane.showMessageDialog(null, "등록된 ID 입니다.", "중복 알림",JOptionPane.WARNING_MESSAGE);
+		JFrame idCheck = new JFrame();
+		idCheck.setTitle("아이디 중복 확인");
+		idCheck.setSize(400,400);
+		idCheck.setLocation(1250, 195);
+		EmployeeIdChaeck eic = new EmployeeIdChaeck();
+		idCheck.getContentPane().add(eic);
+		idCheck.setVisible(true);
+		//JOptionPane.showMessageDialog(null, "등록된 ID 입니다.", "중복 알림",JOptionPane.WARNING_MESSAGE);
 	}
 
 
