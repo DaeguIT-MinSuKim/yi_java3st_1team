@@ -5,6 +5,8 @@ import java.awt.Dimension;
 import java.awt.SystemColor;
 import java.awt.FlowLayout;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import javax.swing.SwingConstants;
 
@@ -17,6 +19,8 @@ import javax.swing.SpinnerNumberModel;
 import javax.swing.SpinnerDateModel;
 import java.util.Date;
 import java.util.Calendar;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 @SuppressWarnings("serial")
 public class testDateSalePanel extends JPanel {
@@ -140,6 +144,11 @@ public class testDateSalePanel extends JPanel {
 		panel.add(btnEnd);
 		
 		JButton btnMain = new JButton("메인화면");
+		btnMain.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				JOptionPane.showMessageDialog(null, "메인화면으로 이동하시겠습니까?");
+			}
+		});
 		btnMain.setPreferredSize(new Dimension(100, 30));
 		btnMain.setFont(new Font("굴림", Font.PLAIN, 16));
 		panel.add(btnMain);

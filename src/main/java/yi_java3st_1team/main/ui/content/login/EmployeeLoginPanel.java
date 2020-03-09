@@ -5,19 +5,23 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.SystemColor;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
 @SuppressWarnings("serial")
-public class EmployeeLoginPanel extends JPanel{
+public class EmployeeLoginPanel extends JPanel implements ActionListener{
 	public JButton btnLogout;
 	public JLabel loginSuc;
 	public JLabel manager;
 	public JLabel empInfo;
 	public JLabel loginImg;
+	private JButton btnMyProfile;
+	private JFrame profileFrame;
 	
 
 	/**
@@ -31,6 +35,7 @@ public class EmployeeLoginPanel extends JPanel{
 		setLayout(null);
 		
 		btnLogout = new JButton("LOGOUT");
+//		btnLogout.addActionListener(this);
 		btnLogout.setBackground(SystemColor.controlHighlight);
 
 		btnLogout.setFont(new Font("Arial", Font.BOLD, 17));
@@ -63,7 +68,8 @@ public class EmployeeLoginPanel extends JPanel{
 		loginImg.setBounds(20, 71, 120, 120);
 		add(loginImg);
 		
-	      JButton btnMyProfile = new JButton("My Profile");
+	      btnMyProfile = new JButton("My Profile");
+	      btnMyProfile.addActionListener(this);
 	      btnMyProfile.setFont(new Font("Arial", Font.BOLD, 13));
 	      btnMyProfile.setFocusable(false);
 	      btnMyProfile.setBackground(new Color(255, 255, 51));
@@ -71,13 +77,32 @@ public class EmployeeLoginPanel extends JPanel{
 	      add(btnMyProfile);
 	}
 	public void actionPerformed(ActionEvent e) {
-		if (e.getSource() == btnLogout) {
-			actionPerformedBtnLogout(e);
+//		if (e.getSource() == btnLogout) {
+//			actionPerformedBtnLogout(e);
+//		}
+		if (e.getSource() == btnMyProfile) {
+			actionPerformedBtnMyProfile(e);
 		}
 	}
-	
-	//로그아웃
-	protected void actionPerformedBtnLogout(ActionEvent e) {
+	// 프로필
+	protected void actionPerformedBtnMyProfile(ActionEvent e) {
+		profileFrame = new JFrame();
+		profileFrame.setTitle("[관리자용] 사용자 정보");
+		profileFrame.setSize(500, 650);
+		profileFrame.setResizable(false);
+		profileFrame.setLocationRelativeTo(null); // 화면중앙에 프레임 띄우기
+		EmpMyProfile emp = new EmpMyProfile();
+		profileFrame.getContentPane().add(emp);
+		profileFrame.setVisible(true);
 		
 	}
+	// 로그아웃 버튼 고민
+//	protected void actionPerformedBtnLogout(ActionEvent e) {
+//		removeAll();
+//		revalidate();
+//		repaint();
+//		LoginPanel lo =  new LoginPanel();
+//		add(lo);
+//		setLayout(null);
+//	}
 }

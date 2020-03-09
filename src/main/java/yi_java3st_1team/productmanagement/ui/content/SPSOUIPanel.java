@@ -21,6 +21,7 @@ import javax.swing.JRadioButton;
 import javax.swing.SwingConstants;
 
 import yi_java3st_1team.exception.InvalidCheckException;
+import yi_java3st_1team.main.ui.EmployeeMainUIPanel;
 import yi_java3st_1team.productmanagement.dto.Product;
 import yi_java3st_1team.productmanagement.dto.SupplierOrder;
 import yi_java3st_1team.productmanagement.dto.SupplierPurchase;
@@ -39,7 +40,7 @@ public class SPSOUIPanel extends JPanel implements ActionListener {
 	private JButton btnSPAdd;
 	private JButton btnSPUp;
 	private JButton btnDel;
-	private JButton btnGoMain;
+	public JButton btnGoMain;
 	private JButton btnPSSearch;
 	private JLabel lblNewLabel;
 	private SOListTblPanel pSOTblPanel;
@@ -112,6 +113,7 @@ public class SPSOUIPanel extends JPanel implements ActionListener {
 		pRegisterPanel.add(btnDel);
 
 		btnGoMain = new JButton("메인화면");
+		btnGoMain.addActionListener(this);
 		btnGoMain.setFocusable(false);
 		btnGoMain.setBackground(new Color(25, 25, 112));
 		btnGoMain.setForeground(Color.WHITE);
@@ -362,8 +364,12 @@ public class SPSOUIPanel extends JPanel implements ActionListener {
 		}
 	};
 	private JButton btnDel1;
+	private EmployeeMainUIPanel emp;
 
 	public void actionPerformed(ActionEvent e) {
+//		if (e.getSource() == btnGoMain) {
+//			actionPerformedBtnGoMain(e);
+//		}
 		if (e.getSource() == btnSPUp) {
 			btnSPUpActionPerformed(e);
 		}
@@ -391,6 +397,8 @@ public class SPSOUIPanel extends JPanel implements ActionListener {
 		if (e.getSource() == rdbtnSO) {
 			rdbtnSOActionPerformed(e);
 		}
+		
+		
 	}
 
 
@@ -516,4 +524,12 @@ public class SPSOUIPanel extends JPanel implements ActionListener {
 			pSPSOPanel.setNum2(sOService.lastSO());
 		}
 	}
+//	protected void actionPerformedBtnGoMain(ActionEvent e) {
+//		   removeAll();
+//		   revalidate();
+//		   repaint();
+//		   
+//		   emp = new EmployeeMainUIPanel();
+//		   add(emp);
+//	}
 }

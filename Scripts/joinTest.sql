@@ -12,14 +12,18 @@ select	c.c_name as 고객상호명,
  where c.c_no = o.o_cno and p.p_no = o.o_pno;
 
 
--- SW별 판매현황 조회 (할인율 계산필요)
+-- SW별 판매현황 조회
 select	p.p_name as 품목명,
 		cate.cate_name as 분류,
 		s.s_name as 공급회사명,
 		o.o_qty*p.p_cost as 공급금액,
 		o.o_qty*p.p_price as 판매금액,
-		(case when (o.o_qty >= 50 and o.o_qty < 100) then '10%'	when o.o_qty >= 100 then '15%'	else '-'	end) as 할인금액,
-		(o.o_qty*p.p_price)-(o.o_qty*p.p_cost) as 판매이윤
+		(case when (o.o_qty >= 50 and o.o_qty < 100) then format(o.o_qty*p.p_price*0.1, 0)
+			  when o.o_qty >= 100 then format(o.o_qty*p.p_price*0.15, 0)
+		 else '-'	end) as 할인금액,
+		(case when (o.o_qty >= 50 and o.o_qty < 100) then format(o.o_qty*p.p_price*0.9-(o.o_qty*p.p_cost),0)
+			  when o.o_qty >= 100 then format(o.o_qty*p.p_price*0.85-(o.o_qty*p.p_cost),0)
+		 else format((o.o_qty*p.p_price)-(o.o_qty*p.p_cost),0)	end) as 판매이윤
   from product p natural join `order` o natural join supplier s natural join category cate
  where p.p_no = o.o_pno and cate.cate_no = p.p_cate and s.s_no = p.p_sno;
  
@@ -47,7 +51,11 @@ select	p.p_name as 품목명,
 
 
 -- SW 전체 판매현황
-select MID(o.o_date , 1, 7) as 날짜, cate.cate_name as 분류, p.p_name as 품목명, o.o_no as 주문번호, o.o_qty as 주문수량, o.o_qty*p.p_price as 판매금액
+SELECT	MID(o.o_date , 1, 7) as 날짜,
+		cate.cate_name as 분류, p.p_name as 품목명,
+		o.o_no as 주문번호,
+		o.o_qty as 주문수량,
+		o.o_qty*p.p_price as 판매금액
   from `order` o natural join product p natural join category cate
  where p.p_no  = o.o_pno and cate.cate_no = p.p_cate
 group by 날짜, 분류;
@@ -66,3 +74,14 @@ select	s.s_name as 공급회사명,
   from supplier s natural join client c natural join product p natural join `order` o 
  where s.s_no = p.p_sno and p.p_no = o.o_pno and c.c_no = o.o_cno
  group by 공급회사명, 주문일자;
+ 
+
+-- 주문현황 조회
+select	c.c_name as 고객상호명,
+		p.p_name as 품목명,
+		o.o_qty as 주문수량,
+		p.p_price*o.o_qty as 주문가격,
+		o.o_date as 주문일자,
+		(case when o.o_ok = 1 then 'Y'	when o.o_ok = 0 then 'N' end) as 주문확인
+  from client c natural join product p natural join `order` o
+ where c.c_no = o.o_cno and p.p_no = o.o_pno;
