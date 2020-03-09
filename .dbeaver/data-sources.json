@@ -1,25 +1,22 @@
 {
 	"folders": {},
 	"connections": {
-<<<<<<< HEAD
-		"mysql5-17067889ed0-7f3644af433aa623": {
+		"mysql5-170bf38454b-3f519972e645097c": {
 			"provider": "mysql",
 			"driver": "mysql5",
-			"name": "MySQL - localhost",
+			"name": "MySQL - 192.168.10.145",
 			"save-password": true,
 			"read-only": false,
 			"configuration": {
-				"host": "localhost",
+				"host": "192.168.10.145",
 				"port": "3306",
-				"url": "jdbc:mysql://localhost:3306/",
+				"url": "jdbc:mysql://192.168.10.145:3306/",
 				"home": "C:\\Program Files\\MySQL\\MySQL Server 5.7",
-				"type": "dev"
+				"type": "dev",
+				"handlers": {}
 			}
 		},
-		"mysql5-170678b36bb-1eed6f2394edd292": {
-=======
-		"mysql5-170a465e43c-4b4de140d2c9f288": {
->>>>>>> refs/heads/master
+		"mysql5-170bf38aae1-2551cb496cfebcd4": {
 			"provider": "mysql",
 			"driver": "mysql5",
 			"name": "MySQL - yi_java3st_1team",
@@ -30,21 +27,6 @@
 				"port": "3306",
 				"database": "yi_java3st_1team",
 				"url": "jdbc:mysql://192.168.10.145:3306/yi_java3st_1team",
-				"home": "C:\\Program Files\\MySQL\\MySQL Server 5.7",
-				"type": "dev"
-			}
-		},
-		"mysql5-1709ebafa04-6f061795490ab8f5": {
-			"provider": "mysql",
-			"driver": "mysql5",
-			"name": "MySQL - ncs_product",
-			"save-password": true,
-			"read-only": false,
-			"configuration": {
-				"host": "localhost",
-				"port": "3306",
-				"database": "ncs_product",
-				"url": "jdbc:mysql://localhost:3306/ncs_product",
 				"home": "C:\\Program Files\\MySQL\\MySQL Server 5.7",
 				"type": "dev",
 				"handlers": {}

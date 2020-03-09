@@ -21,7 +21,7 @@ public class EmployeeLoginPanel extends JPanel implements ActionListener{
 	public JLabel empInfo;
 	public JLabel loginImg;
 	private JButton btnMyProfile;
-	private JFrame regiFrame;
+	private JFrame profileFrame;
 	
 
 	/**
@@ -84,16 +84,17 @@ public class EmployeeLoginPanel extends JPanel implements ActionListener{
 			actionPerformedBtnMyProfile(e);
 		}
 	}
+	// 프로필
 	protected void actionPerformedBtnMyProfile(ActionEvent e) {
-		regiFrame = new JFrame();
-		regiFrame.setTitle("[관리자용] 회원가입");
-		regiFrame.setSize(500, 650);
-		regiFrame.setResizable(false);
-		regiFrame.setLocationRelativeTo(null); // 화면중앙에 프레임 띄우기
-		ClientRegiPanel cm = new ClientRegiPanel();
-//		EmpRegiPanel empr = new EmpRegiPanel();
-		regiFrame.getContentPane().add(cm);
-		regiFrame.setVisible(true);
+		profileFrame = new JFrame();
+		profileFrame.setTitle("[관리자용] 사용자 정보");
+		profileFrame.setSize(500, 650);
+		profileFrame.setResizable(false);
+		profileFrame.setLocationRelativeTo(null); // 화면중앙에 프레임 띄우기
+		EmpMyProfile emp = new EmpMyProfile();
+		profileFrame.getContentPane().add(emp);
+		profileFrame.setVisible(true);
+		
 	}
 	// 로그아웃 버튼 고민
 //	protected void actionPerformedBtnLogout(ActionEvent e) {

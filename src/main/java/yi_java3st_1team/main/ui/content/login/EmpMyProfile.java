@@ -14,8 +14,8 @@ import java.awt.event.ItemListener;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JRadioButton;
@@ -25,10 +25,11 @@ import javax.swing.border.EmptyBorder;
 
 import yi_java3st_1team.main.dto.Department;
 import yi_java3st_1team.main.dto.Employee;
+import yi_java3st_1team.main.ui.EmployeeMainUIPanel;
 import yi_java3st_1team.main.ui.service.EmployeeUiService;
 
 @SuppressWarnings("serial")
-public class EmpRegiPanel extends AbsRegiPanel<Employee> implements ActionListener, ItemListener {
+public class EmpMyProfile extends AbsRegiPanel<Employee> implements ActionListener, ItemListener {
 	private JTextField tfNo;
 	private JTextField tfName;
 	private JComboBox cmbDept;
@@ -41,28 +42,29 @@ public class EmpRegiPanel extends AbsRegiPanel<Employee> implements ActionListen
 	private JLabel lblPassword;
 	private JTextField tfMail;
 	
-	private JButton doubleCheck;
+	private JButton empSearch;
 	
-	private JButton btnAdd;
-	private JButton btnCancle;
-
+	private JButton btnMod;
+	public JButton btnCancle;
+	
 	private EmployeeUiService empService;
+	private EmployeeMainUIPanel empMUP;
 
+	
 
-
-
-
-	public EmpRegiPanel() {
+	public EmpMyProfile() {
 		empService = new EmployeeUiService();
 		initialize();
-		setEmpNo(empService.showlastEmpNum());
+		setItem();
+
 	}
 
 	private void initialize() {
 		setSize(new Dimension(500, 650));
 		setLayout(new BorderLayout(0, 0));
 
-		JLabel lblHeader = new JLabel("사용자 등록");
+		// < 제 목(Label) >
+		JLabel lblHeader = new JLabel("사용자 정보");
 		lblHeader.setOpaque(true);
 		lblHeader.setBackground(SystemColor.inactiveCaptionBorder);
 		lblHeader.setForeground(Color.BLACK);
@@ -140,6 +142,7 @@ public class EmpRegiPanel extends AbsRegiPanel<Employee> implements ActionListen
 		lblEmail.setFont(new Font("휴먼둥근헤드라인", Font.PLAIN, 13));
 		pName.add(lblEmail);
 
+		// < 입 력 창 >
 		JPanel pInput = new JPanel();
 		pInput.setBackground(SystemColor.inactiveCaptionBorder);
 		pInput.setPreferredSize(new Dimension(200, 10));
@@ -156,25 +159,22 @@ public class EmpRegiPanel extends AbsRegiPanel<Employee> implements ActionListen
 		tfName.setColumns(10);
 		pInput.add(tfName);
 
-		cmbDept = new JComboBox<Department>();
+		cmbDept = new JComboBox();
 		cmbDept.addItemListener(this);
 		cmbDept.setModel(new DefaultComboBoxModel(new String[] {"기획총무부", "경리회계부", "상품관리부", "영업관리 1부", "영업관리 2부", "영업관리 3부", "쇼핑몰사업부", "해외사업부", "고객만족부"}));
 		pInput.add(cmbDept);
-		cmbDept.setSelectedIndex(-1);
 
-		cmbTitle = new JComboBox<Employee>();
+		cmbTitle = new JComboBox();
 		cmbTitle.addItemListener(this);		
 		cmbTitle.setModel(new DefaultComboBoxModel(new String[] {"대표이사", "경영관리이사", "부장", "차장", "과장", "대리", "사원", "인턴"}));
 		pInput.add(cmbTitle);
-		cmbTitle.setSelectedIndex(-1);
-		
+
 		JPanel pManager = new JPanel();
 		pManager.setBackground(Color.WHITE);
 		pInput.add(pManager);
 		pManager.setLayout(new GridLayout(0, 2, 0, 0));
 		
 		rBtnManager1 = new JRadioButton("책임관리자");
-		rBtnManager1.setSelected(true); //기본선택
 		rBtnManager1.setHorizontalAlignment(SwingConstants.CENTER);
 		rBtnManager1.setForeground(Color.BLACK);
 		rBtnManager1.setFont(new Font("굴림", Font.BOLD, 11));
@@ -189,6 +189,7 @@ public class EmpRegiPanel extends AbsRegiPanel<Employee> implements ActionListen
 		pManager.add(rBtnManager2);
 
 		tfId = new JTextField();
+		tfId.setFont(new Font("굴림", Font.BOLD, 12));
 		tfId.setColumns(10);
 		tfId.setEditable(false);
 		pInput.add(tfId);
@@ -213,34 +214,34 @@ public class EmpRegiPanel extends AbsRegiPanel<Employee> implements ActionListen
 		pInput.add(tfMail);
 		tfMail.setColumns(10);
 
-		JPanel pDoubleCheck = new JPanel();
-		pDoubleCheck.setBackground(SystemColor.inactiveCaptionBorder);
-		pDoubleCheck.setPreferredSize(new Dimension(80, 10));
-		pSection.add(pDoubleCheck, BorderLayout.EAST);
-		pDoubleCheck.setLayout(null);
+		JPanel pEmpSearch = new JPanel();
+		pEmpSearch.setBackground(SystemColor.inactiveCaptionBorder);
+		pEmpSearch.setPreferredSize(new Dimension(80, 10));
+		pSection.add(pEmpSearch, BorderLayout.EAST);
+		pEmpSearch.setLayout(null);
 
-		doubleCheck = new JButton("<html>중복<br>확인</html>");
-		doubleCheck.setFocusable(false);
-		doubleCheck.setForeground(Color.WHITE);
-		doubleCheck.setBackground(new Color(240, 128, 128));
-		doubleCheck.addActionListener(this);
-		doubleCheck.setFont(new Font("맑은 고딕", Font.BOLD, 13));
-		doubleCheck.setBounds(12, 202, 60, 39);
-		pDoubleCheck.add(doubleCheck);
-
+		empSearch = new JButton("<html>직원<br>조회</html>");
+		empSearch.setFocusable(false);
+		empSearch.setForeground(Color.WHITE);
+		empSearch.setBackground(new Color(0, 0, 128));
+		empSearch.addActionListener(this);
+		empSearch.setFont(new Font("맑은 고딕", Font.BOLD, 13));
+		empSearch.setBounds(12, 81, 60, 39);
+		pEmpSearch.add(empSearch);
+		
 		JPanel pBtns = new JPanel();
 		pBtns.setBackground(SystemColor.inactiveCaptionBorder);
 		pBtns.setPreferredSize(new Dimension(10, 45));
 		add(pBtns, BorderLayout.SOUTH);
 
-		btnAdd = new JButton("등록");
-		btnAdd.setBackground(SystemColor.controlHighlight);
-		btnAdd.setFocusable(false);
-		btnAdd.setForeground(Color.BLACK);
-		btnAdd.addActionListener(this);
-		btnAdd.setFont(new Font("맑은 고딕", Font.BOLD, 14));
-		pBtns.add(btnAdd);
-
+		btnMod = new JButton("수정");
+		btnMod.setBackground(SystemColor.controlHighlight);
+		btnMod.setFocusable(false);
+		btnMod.setForeground(Color.BLACK);
+		btnMod.addActionListener(this);
+		btnMod.setFont(new Font("맑은 고딕", Font.BOLD, 14));
+		pBtns.add(btnMod);
+		
 		btnCancle = new JButton("취소");
 		btnCancle.setForeground(Color.BLACK);
 		btnCancle.setBackground(SystemColor.controlHighlight);
@@ -249,23 +250,8 @@ public class EmpRegiPanel extends AbsRegiPanel<Employee> implements ActionListen
 		btnCancle.setFont(new Font("맑은 고딕", Font.BOLD, 14));
 		pBtns.add(btnCancle);
 	}
-	
 
-	//이게뭐지
-	public void itemStateChanged(ItemEvent e) {
-		if(e.getSource() == cmbDept) {
-			cmbDeptItemStateChanged(e);
-		}
-	}	
-	private String cmbDeptItemStateChanged(ItemEvent e) {
-		if(e.getStateChange() == ItemEvent.SELECTED) {
-			//selectItem = (String) cmbDept.getSelectedItem();
-		}
-		return null;
-	}
-
-
-	//데이터 넣기
+	//데이터 employee에 넣기
 	@Override
 	public Employee getItem() {
 		int empNo = Integer.parseInt(tfNo.getText().substring(4)); // EE0016 -> 16
@@ -278,57 +264,98 @@ public class EmpRegiPanel extends AbsRegiPanel<Employee> implements ActionListen
 		String empMail = tfMail.getText().trim();
 		return new Employee(empNo, empName, dNo, empTitle, empManager, empId, empPass, empMail);
 	}
-	
-	public void setEmpNo(Employee item) {
-		tfNo.setText(String.format("EE%04d", item.getEmpNo()+1));
+	//로그인 정보 세팅
+	public void setItem() {
+		/*** 로그인(사원번호) 세팅 ***/
+		int No = empMUP.loginEmp.getEmpNo();
+		String empNo = String.format("EE%04d", empMUP.loginEmp.getEmpNo());
+		tfNo.setText(empNo);
+		/*** 로그인(이름) 세팅 ***/
+		tfName.setText(empMUP.loginEmp.getEmpName());
+		/*** 로그인(부서명) 세팅 ***/
+		cmbDept.setSelectedItem(empMUP.loginEmp.getdNo().getDeptName());
+		/*** 로그인(직급) 세팅 ***/
+		cmbTitle.setSelectedItem(empMUP.loginEmp.getEmpTitle());
+		/*** 로그인(관리자권한) 세팅 ***/
+		int manager = empMUP.loginEmp.getEmpManager();		
+		switch (manager) {
+		case 1:
+			rBtnManager1.setSelected(true);
+			break;
+		case 2:
+			rBtnManager2.setSelected(true);
+			break;
+		}
+		/*** 로그인(아이디) 세팅 ***/
+		tfId.setText(empMUP.loginEmp.getEmpId());
+		/*** 로그인(비밀번호) 세팅 ***/
+		passFd1.setText(empMUP.loginEmp.getEmpPass());
+		/*** 로그인(이메일) 세팅 ***/
+		tfMail.setText(empMUP.loginEmp.getEmpMail());
 	}
 	
-	//취소
+
+	//기존정보 + 비밀번호확인 + 비밀번호확인패널 초기화
 	@Override
 	public void clearTf() {
-		tfNo.setText("");
-		tfName.setText("");
-		cmbDept.setSelectedIndex(-1);
-		cmbTitle.setSelectedIndex(-1);
-		tfId.setText("");
-		passFd1.setText("");
+		setItem();
 		passFd2.setText("");
 		lblPassword.setText("");
-		tfMail.setText("");
 
 	}
-	
-
 
 	//버튼 이벤트
 	public void actionPerformed(ActionEvent e) {
-		if (e.getSource() == doubleCheck) {
-			actionPerformedDoubleCheck2(e);
+		if (e.getSource() == empSearch) {
+			actionPerformedEmpSearch(e);
 		}
+		
+		if (e.getSource() == btnMod) {
+			actionPerformedBtnAdd(e);
+		}
+		
 		if (e.getSource() == btnCancle) {
 			actionPerformedBtnCancle(e);
 		}
-		if (e.getSource() == btnAdd) {
-			actionPerformedBtnAdd(e);
-		}
-	}
+		
 
+	}
+	//직원조회
+	private void actionPerformedEmpSearch(ActionEvent e) {
+		JFrame empSearch = new JFrame();
+		empSearch.setTitle("[관리자용] 직원조회");
+		empSearch.setSize(500, 670);
+		empSearch.setResizable(false);
+		empSearch.setLocation(1250,195); //위치조정
+		EmployeeALLInfo empL = new EmployeeALLInfo();
+		empSearch.getContentPane().add(empL);
+		empSearch.setVisible(true);
+		
+	}
+	
 	// 등록버튼
 	protected void actionPerformedBtnAdd(ActionEvent e) {
 		Employee newEmp = getItem();
-		empService.addEmployee(newEmp);
+		empService.modifyEmployee(newEmp);
+	}
+	
+	//취소
+	private void actionPerformedBtnCancle(ActionEvent e) {
 		clearTf();
 	}
 
-	// 취소버튼(초기화)
-	protected void actionPerformedBtnCancle(ActionEvent e) {
-		clearTf();
+	@Override
+	public void itemStateChanged(ItemEvent e) {
+		// TODO Auto-generated method stub
+		
 	}
 
-	// 중복확인 : 아이디
-	protected void actionPerformedDoubleCheck2(ActionEvent e) {
-		JOptionPane.showMessageDialog(null, "등록된 ID 입니다.", "중복 알림",JOptionPane.WARNING_MESSAGE);
-	}
+
+
+
+
+
+
 
 
 
