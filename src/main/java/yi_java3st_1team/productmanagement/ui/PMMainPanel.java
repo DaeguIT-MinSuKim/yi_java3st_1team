@@ -9,6 +9,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import yi_java3st_1team.clientmanagement.ui.CMMainPanel;
@@ -31,6 +32,8 @@ public class PMMainPanel extends JPanel implements ActionListener{
 	private EmployeeLoginPanel pEmpLogin;
 	private EmployeeMainUIPanel emp;
 
+	private int manager = emp.loginEmp.getEmpManager();
+	
 	public PMMainPanel() {
 
 		initialize();
@@ -118,8 +121,6 @@ public class PMMainPanel extends JPanel implements ActionListener{
 		   
 		   pEmpLogin = new EmployeeLoginPanel();
 		   emp.pStop.add(pEmpLogin, BorderLayout.WEST);
-		   
-		   int manager = emp.loginEmp.getEmpManager();
 
 		   switch (manager) {
 			case 1:
@@ -204,6 +205,8 @@ public class PMMainPanel extends JPanel implements ActionListener{
 			      repaint();
 		   }
 		   private void actionPerformedBtnViews(ActionEvent e) {
+			   switch(manager) {
+				case 1:
 				  removeAll();
 			      revalidate();
 			      repaint();
@@ -213,6 +216,12 @@ public class PMMainPanel extends JPanel implements ActionListener{
 			      add(rmp);
 			      revalidate();
 			      repaint();
+					break;
+			case 2:
+				ImageIcon icon = new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\loginMain\\manager1.png");
+				JOptionPane.showMessageDialog(null, "<html><h3 align='center'>권한이 없습니다.</h3></html>","Don't have Premission",JOptionPane.INFORMATION_MESSAGE,icon);
+				break;
+		   }
 		   }	
 
 }
