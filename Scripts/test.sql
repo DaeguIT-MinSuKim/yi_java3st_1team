@@ -92,3 +92,8 @@ select sp_pno from supplier_purchase sp left join product p on sp.sp_pno = p.p_n
 select so_pno from supplier_order so left join product p on so.so_pno = p.p_no where p.p_name ="알씨";
 
 select p.p_cost from product p left join supplier s on p.p_sno = s.s_no where p.p_name ="알씨";
+
+select o_no from `order` order by o_no desc limit 1;
+select * from `order` o ;
+
+select o_no, o_date, c.c_name, p.p_name, o_qty, o_memo, o_dps, o_ok, e.e_name, e.e_no from `order` o left join client c on o.o_cno = c.c_no left join product p on o.o_pno = p.p_no left join employee e on o.o_eno = e.e_no;
