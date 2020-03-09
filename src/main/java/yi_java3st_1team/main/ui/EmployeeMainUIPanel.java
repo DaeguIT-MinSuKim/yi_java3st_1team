@@ -287,6 +287,7 @@ public class EmployeeMainUIPanel extends JPanel implements ActionListener {
 				// 1. 라인차트
 				pStop.remove(pImg01); // 제거
 				JPanel line = new JPanel();
+				//EmpMiniLineChart eLchart = new EmpMiniLineChart();
 				line.setBackground(SystemColor.yellow);
 				pStop.add(line, BorderLayout.CENTER);
 	
