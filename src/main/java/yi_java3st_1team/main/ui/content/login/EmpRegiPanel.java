@@ -190,7 +190,7 @@ public class EmpRegiPanel extends AbsRegiPanel<Employee> implements ActionListen
 
 		tfId = new JTextField();
 		tfId.setColumns(10);
-		//tfId.setEditable(false);
+		tfId.setEditable(false);
 		pInput.add(tfId);
 
 		passFd1 = new JPasswordField();
