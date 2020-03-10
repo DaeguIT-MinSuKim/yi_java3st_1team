@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -83,19 +84,59 @@ public class OrderDaoImpl implements OrderDao {
 
 	@Override
 	public int insertOrder(Order order) {
-		// TODO Auto-generated method stub
+		String sql = "insert into `order` (o_no, o_date, o_cno, o_pno, o_qty, o_memo, o_dps, o_ok, o_eno) values(?, ?, ?, ?, ?, ?, ?, ?, ?)";
+		try(Connection con = MySqlDataSource.getConnection();
+				PreparedStatement pstmt = con.prepareStatement(sql)){
+			pstmt.setInt(1, order.getoNo());
+			pstmt.setTimestamp(2, new Timestamp(order.getoDate().getTime()));
+			pstmt.setInt(3, order.getoCname().getcNo());
+			pstmt.setInt(4, order.getoPname().getpNo());
+			pstmt.setInt(5, order.getoQty());
+			pstmt.setString(6, order.getoMemo());
+			pstmt.setInt(7, order.getoDps());
+			pstmt.setInt(8, order.getoOk());
+			pstmt.setInt(9, order.getoEname().getEmpNo());
+			LogUtil.prnLog(pstmt);
+			return pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 		return 0;
 	}
 
 	@Override
 	public int updateOrder(Order order) {
-		// TODO Auto-generated method stub
+		String sql = "update `order` set o_date=?, o_cno=?, o_pno=?, o_qty=?, o_memo=?, o_dps=?, o_ok=?, o_eno=? where o_no=?";
+		try(Connection con = MySqlDataSource.getConnection();
+				PreparedStatement pstmt = con.prepareStatement(sql)){
+			pstmt.setTimestamp(1, new Timestamp(order.getoDate().getTime()));
+			pstmt.setInt(2, order.getoCname().getcNo()+1);
+			pstmt.setInt(3, order.getoPname().getpNo()+1);
+			pstmt.setInt(4, order.getoQty());
+			pstmt.setString(5, order.getoMemo());
+			pstmt.setInt(6, order.getoDps());
+			pstmt.setInt(7, order.getoOk());
+			pstmt.setInt(8, order.getoEname().getEmpNo()+1);
+			pstmt.setInt(9, order.getoNo());
+			LogUtil.prnLog(pstmt);
+			return pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 		return 0;
 	}
 
 	@Override
 	public int deleteOrder(Order order) {
-		// TODO Auto-generated method stub
+		String sql = "delete from `order` where o_no=?";
+		try(Connection con = MySqlDataSource.getConnection();
+				PreparedStatement pstmt = con.prepareStatement(sql)){
+			pstmt.setInt(1, order.getoNo());
+			LogUtil.prnLog(pstmt);
+			return pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 		return 0;
 	}
 

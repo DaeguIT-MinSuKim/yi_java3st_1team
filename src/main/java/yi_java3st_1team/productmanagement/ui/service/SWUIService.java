@@ -29,6 +29,10 @@ public class SWUIService {
 		productDao.updateProduct(upProduct);
 	}
 	
+	public void SubProductQty(Product subProduct, int sub) {
+		productDao.subProductQty(subProduct, sub);
+	}
+	
 	public Product lastProduct() {
 		return productDao.selectProductLastData();
 	}
@@ -59,5 +63,17 @@ public class SWUIService {
 
 	public int showProductCost(Product product) {
 		return productDao.selectProductCost(product);
+	}
+
+	public int selectOrderPno(Product product) {
+		return productDao.selectProductNo(product);
+	}
+
+	public byte[] selectProductPic(Product product) {
+		return productDao.selectProductPic(product);
+	}
+
+	public Product selectProductSummary(Product product) {
+		return productDao.selectProductSummary(product);
 	}
 }

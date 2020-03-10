@@ -21,4 +21,11 @@ public interface ProductDao {
 	List<Product> selectProductListBySupp(Product product);
 
 	int selectProductCost(Product product);
+	int selectProductNo(Product product);
+
+	byte[] selectProductPic(Product product);
+
+	Product selectProductSummary(Product product);
+
+	void subProductQty(Product subProduct, int sub);
 }

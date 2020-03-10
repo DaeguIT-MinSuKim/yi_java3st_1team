@@ -26,11 +26,14 @@ import com.toedter.calendar.JDateChooser;
 
 import java.util.Calendar;
 import java.util.Date;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 @SuppressWarnings("serial")
-public class DateSaleUIPanel2 extends JPanel {
+public class DateSaleUIPanel2 extends JPanel implements ActionListener {
 	private JPanel pTitle;
 	private JDateChooser tfHireDate;
+	private JButton btnMain;
 
 	/**
 	 * Create the panel.
@@ -188,7 +191,8 @@ public class DateSaleUIPanel2 extends JPanel {
 		tfHireDate.getCalendarButton().setForeground(Color.BLACK);
 		pSearch.add(tfHireDate);
 		
-		JButton btnMain = new JButton("메인화면");
+		btnMain = new JButton("메인화면");
+		btnMain.addActionListener(this);
 		btnMain.setPreferredSize(new Dimension(100, 30));
 		btnMain.setForeground(Color.WHITE);
 		btnMain.setFont(new Font("맑은 고딕", Font.BOLD, 16));
@@ -218,4 +222,12 @@ public class DateSaleUIPanel2 extends JPanel {
 		pAmount.add(pTotalAmount);
 	}
 
+	public void actionPerformed(ActionEvent e) {
+		if (e.getSource() == btnMain) {
+			btnMainActionPerformed(e);
+		}
+	}
+	protected void btnMainActionPerformed(ActionEvent e) {
+		setVisible(false);
+	}
 }

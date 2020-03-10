@@ -24,6 +24,10 @@ public class Product {
 		this.pNo = pNo;
 	}
 	
+	public Product(byte[] pPic) {
+		this.pPic = pPic;
+	}
+
 	public Product(Category pCate) {
 		this.pCate = pCate;
 	}
