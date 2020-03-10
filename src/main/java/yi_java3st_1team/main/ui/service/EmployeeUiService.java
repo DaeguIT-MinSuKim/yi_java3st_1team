@@ -17,6 +17,7 @@ public class EmployeeUiService {
 		empDao = EmployeeDaoImpl.getInstance();
 		deptDao = DepartmentDaoImpl.getInstance();
 	}
+
 	
 	public List<Department> showDeptList(){
 		return deptDao.selectDepartmentByAll();
@@ -26,24 +27,34 @@ public class EmployeeUiService {
 		return empDao.selectEmployeebyLastNo();
 	}
 	
+	public Employee showEmpcol(Employee emp) {
+		return empDao.selectEmployeeByNo(emp);
+	}
+	
 	public List<Employee> showEmployeeList(){
 		return empDao.selectEmployeeByAll();
 	}
+	
 	
 	public void addEmployee(Employee emp) {
 		empDao.insertEmployee(emp);
 	}
 	
+	
 	public void modifyEmployee(Employee emp) {
 		empDao.updateEmployee(emp);
 	}
+	
 	
 	public void removeEmployee(Employee emp) {
 		empDao.deleteEmployee(emp);
 	}
 	
+	
 	public Employee login(Employee emp) {
 		return empDao.loginEmployee(emp);
 	}
+	
+
 	
 }
