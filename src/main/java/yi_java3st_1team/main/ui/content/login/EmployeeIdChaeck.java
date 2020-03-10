@@ -109,7 +109,7 @@ public class EmployeeIdChaeck extends JPanel implements ActionListener {
 		Employee searchId = empService.Idcheck(newId);
 		if(result==true && searchId==null) {
 			lblIdEquals.setText("아이디 사용 가능");
-			regiPanel.tfId.setText(idChk);
+			//regiPanel.tfId.getText();
 		}else {
 			lblIdEquals.setText("아이디 사용 불가");
 		}
