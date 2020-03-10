@@ -28,6 +28,7 @@ import yi_java3st_1team.main.EmployeeMainFrame;
 import yi_java3st_1team.main.dto.Department;
 import yi_java3st_1team.main.dto.Employee;
 import yi_java3st_1team.main.test.InitScene;
+import yi_java3st_1team.main.test.PanelBarChart;
 import yi_java3st_1team.main.test.PanelLineChart;
 import yi_java3st_1team.main.ui.content.LogoImg01Panel;
 import yi_java3st_1team.main.ui.content.LogoImg02Panel;
@@ -292,15 +293,17 @@ public class EmployeeMainUIPanel extends JPanel implements ActionListener {
 				//JPanel plc = new JPanel();
 				//EmpMiniLineChart eLchart = new EmpMiniLineChart();
 				PanelLineChart plc = new PanelLineChart();
-				pStop.add(plc); //pStop.add(plc, BorderLayout.CENTER);
+				pStop.add(plc, BorderLayout.CENTER); //pStop.add(plc, BorderLayout.CENTER);
 				Platform.runLater(() -> initFX(plc));
 	
 				// 2. 바차트
 				pImg02.remove(pLogo); // 제거
-				JPanel bar = new JPanel();
-				bar.setBackground(Color.red);
+				//JPanel bar = new JPanel();
+				PanelBarChart bar = new PanelBarChart();
+				//bar.setBackground(Color.red);
 				bar.setPreferredSize(new Dimension(350, 250));
 				pImg02.add(bar, BorderLayout.NORTH);
+				Platform.runLater(() -> initFX(bar));
 				break;
 			case 2: // 관리자 로그인 : 대리, 사원, 인턴
 				pEmpLogin.manager.setText("[관리자 로그인]");
