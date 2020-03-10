@@ -16,16 +16,17 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
+import javax.swing.event.DocumentListener;
 
 import yi_java3st_1team.main.dto.Department;
 import yi_java3st_1team.main.dto.Employee;
+import yi_java3st_1team.main.ui.listner.MyDocumentListener;
 import yi_java3st_1team.main.ui.service.EmployeeUiService;
 
 @SuppressWarnings("serial")
@@ -36,7 +37,7 @@ public class EmpRegiPanel extends AbsRegiPanel<Employee> implements ActionListen
 	private JComboBox cmbTitle;
 	private JRadioButton rBtnManager1;
 	private JRadioButton rBtnManager2;
-	private JTextField tfId;
+	public JTextField tfId;
 	private JPasswordField passFd1;
 	private JPasswordField passFd2;
 	private JLabel lblPassword;
@@ -48,9 +49,7 @@ public class EmpRegiPanel extends AbsRegiPanel<Employee> implements ActionListen
 	private JButton btnCancle;
 
 	private EmployeeUiService empService;
-
-
-
+	private String selectItem;
 
 
 	public EmpRegiPanel() {
@@ -157,13 +156,13 @@ public class EmpRegiPanel extends AbsRegiPanel<Employee> implements ActionListen
 		tfName.setColumns(10);
 		pInput.add(tfName);
 
-		cmbDept = new JComboBox<Department>();
+		cmbDept = new JComboBox();
 		cmbDept.addItemListener(this);
 		cmbDept.setModel(new DefaultComboBoxModel(new String[] {"기획총무부", "경리회계부", "상품관리부", "영업관리 1부", "영업관리 2부", "영업관리 3부", "쇼핑몰사업부", "해외사업부", "고객만족부"}));
 		pInput.add(cmbDept);
 		cmbDept.setSelectedIndex(-1);
 
-		cmbTitle = new JComboBox<Employee>();
+		cmbTitle = new JComboBox();
 		cmbTitle.addItemListener(this);		
 		cmbTitle.setModel(new DefaultComboBoxModel(new String[] {"대표이사", "경영관리이사", "부장", "차장", "과장", "대리", "사원", "인턴"}));
 		pInput.add(cmbTitle);
@@ -195,6 +194,7 @@ public class EmpRegiPanel extends AbsRegiPanel<Employee> implements ActionListen
 		pInput.add(tfId);
 
 		passFd1 = new JPasswordField();
+		passFd1.getDocument().addDocumentListener(docListener);
 		pInput.add(passFd1);
 
 		JLabel lblPassText = new JLabel("<html>6자리 이상 이어야 하며 영문과 숫자를 반드시 포함해야 합니다<br></html>");
@@ -204,10 +204,13 @@ public class EmpRegiPanel extends AbsRegiPanel<Employee> implements ActionListen
 		pInput.add(lblPassText);
 
 		passFd2 = new JPasswordField();
-		passFd2.addActionListener(this);
+		passFd2.getDocument().addDocumentListener(docListener);
 		pInput.add(passFd2);
 
 		lblPassword = new JLabel();
+		lblPassword.setHorizontalAlignment(SwingConstants.CENTER);
+		lblPassword.setFont(new Font("굴림", Font.BOLD, 12));
+		lblPassword.setForeground(Color.RED);
 		pInput.add(lblPassword);
 
 		tfMail = new JTextField();
@@ -251,33 +254,84 @@ public class EmpRegiPanel extends AbsRegiPanel<Employee> implements ActionListen
 		pBtns.add(btnCancle);
 	}
 	
+	DocumentListener docListener = new MyDocumentListener() {
+		@Override
+		public void msg() {
+			String pw1 = new String(passFd1.getPassword());
+			String pw2 = new String(passFd2.getPassword());
+			if (pw1.length() == 0 || pw2.length() == 0) {
+				lblPassword.setText("");
+			}else if (pw1.contentEquals(pw2)) {
+				lblPassword.setText("비밀번호 일치");
+			}else {
+				lblPassword.setText("비밀번호 불일치");
+			}
+		}
+	};
 
-	//이게뭐지
+
 	public void itemStateChanged(ItemEvent e) {
 		if(e.getSource() == cmbDept) {
 			cmbDeptItemStateChanged(e);
 		}
-	}	
-	private String cmbDeptItemStateChanged(ItemEvent e) {
+	}
+	
+	public String cmbDeptItemStateChanged(ItemEvent e) {
 		if(e.getStateChange() == ItemEvent.SELECTED) {
-			//selectItem = (String) cmbDept.getSelectedItem();
+			selectItem = (String) cmbDept.getSelectedItem();
 		}
 		return null;
 	}
-
+	
 
 	//데이터 넣기
 	@Override
 	public Employee getItem() {
-		int empNo = Integer.parseInt(tfNo.getText().substring(4)); // EE0016 -> 16
-		String empName = tfName.getText().trim();
-		Department dNo = (Department) cmbDept.getSelectedItem();
+		int empNo = Integer.parseInt(tfNo.getText().substring(4)); // EE0081 -> 81
+		String empName = tfName.getText().trim(); // 정아름
+		Department dNo = null;
+		switch(selectItem) {
+		case "기획총무부":
+			Department d1 = new Department(1,"기획총무부");
+			dNo = new Department(d1.getDeptNo());
+			break;
+		case "경리회계부":
+			Department d2 = new Department(2,"경리회계부");
+			dNo = new Department(d2.getDeptNo());
+			break;
+		case "상품관리부":
+			Department d3 = new Department(3,"상품관리부");
+			dNo = new Department(d3.getDeptNo());
+			break;
+		case "영업관리 1부":
+			Department d4 = new Department(4,"영업관리 1부");
+			dNo = new Department(d4.getDeptNo());
+			break;
+		case "영업관리 2부":
+			Department d5 = new Department(5,"영업관리 2부");
+			dNo = new Department(d5.getDeptNo());
+			break;
+		case "영업관리 3부":
+			Department d6 = new Department(6,"영업관리 3부");
+			dNo = new Department(d6.getDeptNo());
+			break;
+		case "쇼핑몰사업부":
+			Department d7 = new Department(7,"쇼핑몰사업부");
+			dNo = new Department(d7.getDeptNo());
+			break;
+		case "해외사업부":
+			Department d8 = new Department(8,"해외사업부");
+			dNo = new Department(d8.getDeptNo());
+			break;			
+		}
+		//Department dNo = new Department(dept.getDeptNo());
 		String empTitle = (String) cmbTitle.getSelectedItem();
-		int empManager = rBtnManager1.isSelected()?1:2;
-		String empId = tfId.getText().trim();
-		String empPass = new String(passFd1.getPassword());
-		String empMail = tfMail.getText().trim();
-		return new Employee(empNo, empName, dNo, empTitle, empManager, empId, empPass, empMail);
+		int empManager = rBtnManager1.isSelected()?1:2; // 1 or 2
+		String empId = tfId.getText().trim(); //정규식
+		String empPass = new String(passFd1.getPassword());//정규식
+		String empMail = tfMail.getText().trim();//정규식
+
+		return new Employee(empNo, empName, dNo , empTitle, empManager, empId, empPass, empMail);
 	}
 	
 	public void setEmpNo(Employee item) {
@@ -287,10 +341,11 @@ public class EmpRegiPanel extends AbsRegiPanel<Employee> implements ActionListen
 	//취소
 	@Override
 	public void clearTf() {
-		tfNo.setText("");
 		tfName.setText("");
 		cmbDept.setSelectedIndex(-1);
 		cmbTitle.setSelectedIndex(-1);
+		rBtnManager1.setSelected(true);
+		rBtnManager2.setSelected(false);
 		tfId.setText("");
 		passFd1.setText("");
 		passFd2.setText("");
@@ -319,6 +374,7 @@ public class EmpRegiPanel extends AbsRegiPanel<Employee> implements ActionListen
 		Employee newEmp = getItem();
 		empService.addEmployee(newEmp);
 		clearTf();
+		setEmpNo(empService.showlastEmpNum());		
 	}
 
 	// 취소버튼(초기화)

@@ -27,13 +27,11 @@ import yi_java3st_1team.clientmanagement.ui.CMMainPanel;
 import yi_java3st_1team.main.EmployeeMainFrame;
 import yi_java3st_1team.main.dto.Department;
 import yi_java3st_1team.main.dto.Employee;
-import yi_java3st_1team.main.test.InitScene;
-import yi_java3st_1team.main.test.PanelBarChart;
-import yi_java3st_1team.main.test.PanelLineChart;
 import yi_java3st_1team.main.ui.content.LogoImg01Panel;
 import yi_java3st_1team.main.ui.content.LogoImg02Panel;
-import yi_java3st_1team.main.ui.content.chart.EmpMiniBarChart;
-import yi_java3st_1team.main.ui.content.chart.EmpMiniLineChart;
+import yi_java3st_1team.main.ui.content.chart.InitScene;
+import yi_java3st_1team.main.ui.content.chart.PanelBarChart;
+import yi_java3st_1team.main.ui.content.chart.PanelLineChart;
 import yi_java3st_1team.main.ui.content.login.EmpRegiPanel;
 import yi_java3st_1team.main.ui.content.login.EmployeeLoginPanel;
 import yi_java3st_1team.main.ui.content.login.LoginPanel;
@@ -71,8 +69,6 @@ public class EmployeeMainUIPanel extends JPanel implements ActionListener {
 	public LogoImg02Panel pImg01;
 	public LogoImg01Panel pLogo;
 	
-	private EmpMiniLineChart pLchart;
-	private EmpMiniBarChart pBchart;
 	public JPanel pImg02;
 	
 	private CMMainPanel pCMpanel;
@@ -290,17 +286,13 @@ public class EmployeeMainUIPanel extends JPanel implements ActionListener {
 				// 책임관리자(대표이사~과장) 로그인시 차트 패널 불러오기
 				// 1. 라인차트
 				pStop.remove(pImg01); // 제거
-				//JPanel plc = new JPanel();
-				//EmpMiniLineChart eLchart = new EmpMiniLineChart();
 				PanelLineChart plc = new PanelLineChart();
-				pStop.add(plc, BorderLayout.CENTER); //pStop.add(plc, BorderLayout.CENTER);
+				pStop.add(plc, BorderLayout.CENTER);
 				Platform.runLater(() -> initFX(plc));
 	
 				// 2. 바차트
 				pImg02.remove(pLogo); // 제거
-				//JPanel bar = new JPanel();
 				PanelBarChart bar = new PanelBarChart();
-				//bar.setBackground(Color.red);
 				bar.setPreferredSize(new Dimension(350, 250));
 				pImg02.add(bar, BorderLayout.NORTH);
 				Platform.runLater(() -> initFX(bar));

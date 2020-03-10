@@ -10,6 +10,8 @@ public interface EmployeeDao {
 	
 	Employee selectEmployeebyLastNo();
 	
+	Employee selectEmployeeByID(Employee emp);
+	
 	int insertEmployee(Employee emp);
 	int updateEmployee(Employee emp);
 	int deleteEmployee(Employee emp);

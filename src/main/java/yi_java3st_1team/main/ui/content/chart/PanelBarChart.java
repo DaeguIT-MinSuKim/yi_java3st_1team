@@ -1,4 +1,4 @@
-package yi_java3st_1team.main.test;
+package yi_java3st_1team.main.ui.content.chart;
 
 import java.util.Iterator;
 
@@ -35,9 +35,9 @@ public class PanelBarChart extends JFXPanel implements InitScene{
 		yAxis.setLabel("점수");
 
 		barChart = new BarChart<>(xAxis, yAxis);
-		barChart.setTitle("Bar Chart");
+		barChart.setTitle("2020년 3월 주거래 고객사");
 		
-		barChart.setPrefSize(500, 250);
+		barChart.setPrefSize(350, 250);
 		barChart.setData(getChartData());
 		
 		root.getChildren().add(barChart);

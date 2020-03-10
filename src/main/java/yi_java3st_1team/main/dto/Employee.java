@@ -17,6 +17,11 @@ public class Employee {
 		this.empNo = empNo;
 	}
 
+	
+	public Employee(Department dNo) {
+		this.dNo = dNo;
+	}
+
 	public Employee(int empNo, String empName) {
 		this.empNo = empNo;
 		this.empName = empName;
@@ -48,6 +53,10 @@ public class Employee {
 	public Employee(String empId, String empPass) {
 		this.empId = empId;
 		this.empPass = empPass;
+	}
+
+	public Employee(String empId) {
+		this.empId = empId;
 	}
 
 	public int getEmpNo() {

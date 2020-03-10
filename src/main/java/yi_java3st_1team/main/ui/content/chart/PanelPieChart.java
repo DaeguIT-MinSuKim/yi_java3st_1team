@@ -1,4 +1,4 @@
-package yi_java3st_1team.main.test;
+package yi_java3st_1team.main.ui.content.chart;
 
 import javafx.beans.binding.Bindings;
 import javafx.collections.FXCollections;

@@ -57,6 +57,11 @@ public class EmployeeDaoImpl implements EmployeeDao {
 		return new Employee(empNo);
 	}
 	
+	private Employee getEmpID(ResultSet rs) throws SQLException {
+		String empID = rs.getString("e_id");
+		return new Employee(empID);
+	}
+	
 	/***QUERY****************************************************************************************/
 	
 	//검색 : 번호
@@ -197,6 +202,26 @@ public class EmployeeDaoImpl implements EmployeeDao {
 		}
 		return null;
 	}
+
+	@Override
+	public Employee selectEmployeeByID(Employee emp) {
+		String sql = "select e_id from employee where e_id = ?";
+		try(Connection con = MySqlDataSource.getConnection();
+				PreparedStatement pstmt = con.prepareStatement(sql);){
+				pstmt.setString(1, emp.getEmpId());
+				LogUtil.prnLog(pstmt);
+				try(ResultSet rs = pstmt.executeQuery()){
+					if(rs.next()) {
+						return getEmpID(rs);
+					}
+				}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+
 
 
 

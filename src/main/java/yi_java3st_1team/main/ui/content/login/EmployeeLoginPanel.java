@@ -13,6 +13,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
+import yi_java3st_1team.main.ui.service.EmployeeUiService;
+
 @SuppressWarnings("serial")
 public class EmployeeLoginPanel extends JPanel implements ActionListener{
 	public JButton btnLogout;
@@ -23,11 +25,11 @@ public class EmployeeLoginPanel extends JPanel implements ActionListener{
 	private JButton btnMyProfile;
 	private JFrame profileFrame;
 	
+	//private EmployeeUiService empService;
 
-	/**
-	 * Create the panel.
-	 */
+	
 	public EmployeeLoginPanel() {
+		//empService = new EmployeeUiService();
 		initialize();
 	}
 	private void initialize() {

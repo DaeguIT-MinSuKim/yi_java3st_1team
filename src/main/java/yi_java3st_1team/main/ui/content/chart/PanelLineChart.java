@@ -1,4 +1,4 @@
-package yi_java3st_1team.main.test;
+package yi_java3st_1team.main.ui.content.chart;
 
 import java.util.Iterator;
 
@@ -16,6 +16,8 @@ import javafx.scene.chart.XYChart.Series;
 
 @SuppressWarnings("serial")
 public class PanelLineChart extends JFXPanel implements InitScene{
+	public PanelLineChart() {
+	}
 
 	private LineChart<String, Number> lineChart;
 	private CategoryAxis xAxis;
@@ -26,17 +28,18 @@ public class PanelLineChart extends JFXPanel implements InitScene{
 		Scene scene = new Scene(root);
 		root.setAutoSizeChildren(true);
 		
+		// X축
 		xAxis = new CategoryAxis();
 		xAxis.setLabel("과목");
 		
-				
+	    // Y축	
 		NumberAxis yAxis = new NumberAxis();
 		yAxis.setLabel("점수");
 
 		lineChart = new LineChart<>(xAxis, yAxis);
-		lineChart.setPrefSize(500, 250);
+		lineChart.setPrefSize(1134, 348); //크기조절
 		lineChart.setData(getChartData());
-		lineChart.setTitle("Line Chart");
+		lineChart.setTitle("2020년 3월 영업관리부 팀별 실적"); //차트제목
 		lineChart.setLegendVisible(true);	// 범례 표시 유무
 		lineChart.setLegendSide(Side.BOTTOM);// 범례 위치
 
@@ -47,11 +50,13 @@ public class PanelLineChart extends JFXPanel implements InitScene{
 	
 	private ObservableList<XYChart.Series<String, Number>> getChartData() {
 		ObservableList<XYChart.Series<String, Number>> list = FXCollections.observableArrayList();
-		Student std01 = new Student("S001", "현빈", 90, 80, 80);
-		Student std02 = new Student("S002", "박신혜", 50, 60, 95);
+		Student std01 = new Student("S001", "영업 1팀", 90, 80, 80);
+		Student std02 = new Student("S002", "영업 2팀", 50, 60, 95);
+		Student std03 = new Student("S003", "영업 3팀", 90, 80, 80);
 				
 		list.add(getChartData(std01));
 		list.add(getChartData(std02));
+		list.add(getChartData(std03));
 		
 		return list;
 	}
@@ -59,12 +64,14 @@ public class PanelLineChart extends JFXPanel implements InitScene{
 	public XYChart.Series<String, Number> getChartData(Student std) {
 		XYChart.Series<String, Number> dataSeries = new Series<String, Number>();
 		dataSeries.setName(std.getStdName());
-		dataSeries.getData().add(new XYChart.Data<>("사전", std.getKorScore()));
-		dataSeries.getData().add(new XYChart.Data<>("중간", std.getEngScore()));
-		dataSeries.getData().add(new XYChart.Data<>("기말", std.getMathScore()));
+		dataSeries.getData().add(new XYChart.Data<>("3월-첫째주", std.getKorScore()));
+		dataSeries.getData().add(new XYChart.Data<>("3월-둘째주", std.getEngScore()));
+		dataSeries.getData().add(new XYChart.Data<>("3월-셋째주", std.getMathScore()));
+		dataSeries.getData().add(new XYChart.Data<>("3월-넷째주", std.getMathScore()));
 		return dataSeries;
 	}
 	
+/*	버튼과 관련있는듯
 	public void addChartData(Student std) {
 		lineChart.getData().add(getChartData(std));
 	}
@@ -112,5 +119,5 @@ public class PanelLineChart extends JFXPanel implements InitScene{
 			Series<String, Number> s = list.get(i);
 			s.getData().add(new XYChart.Data<>(subj, score[i]));
 		}
-	}
+	}*/
 }
