@@ -37,7 +37,7 @@ public class EmpRegiPanel extends AbsRegiPanel<Employee> implements ActionListen
 	private JComboBox cmbTitle;
 	private JRadioButton rBtnManager1;
 	private JRadioButton rBtnManager2;
-	private JTextField tfId;
+	public JTextField tfId;
 	private JPasswordField passFd1;
 	private JPasswordField passFd2;
 	private JLabel lblPassword;

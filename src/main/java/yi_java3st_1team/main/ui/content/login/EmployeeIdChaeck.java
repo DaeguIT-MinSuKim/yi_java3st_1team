@@ -27,6 +27,8 @@ public class EmployeeIdChaeck extends JPanel implements ActionListener {
 	
 	private EmployeeUiService empService;
 	
+	private EmpRegiPanel regiPanel;
+	
 	public EmployeeIdChaeck() {
 		empService = new EmployeeUiService();
 		initialize();
@@ -107,6 +109,7 @@ public class EmployeeIdChaeck extends JPanel implements ActionListener {
 		Employee searchId = empService.Idcheck(newId);
 		if(result==true && searchId==null) {
 			lblIdEquals.setText("아이디 사용 가능");
+			regiPanel.tfId.setText(idChk);
 		}else {
 			lblIdEquals.setText("아이디 사용 불가");
 		}
@@ -114,5 +117,6 @@ public class EmployeeIdChaeck extends JPanel implements ActionListener {
 		
 	}
 	protected void actionPerformedBtnAdd(ActionEvent e) {
+		
 	}
 }
