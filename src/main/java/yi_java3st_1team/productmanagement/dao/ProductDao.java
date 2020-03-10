@@ -21,4 +21,5 @@ public interface ProductDao {
 	List<Product> selectProductListBySupp(Product product);
 
 	int selectProductCost(Product product);
+	int selectProductNo(Product product);
 }

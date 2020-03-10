@@ -171,8 +171,8 @@ public class Order {
 	@Override
 	public String toString() {
 		return String.format(
-				"Order [oNo=%s, oDate=%s, oCname=%s, oPname=%s, oQty=%s, oMemo=%s, oDps=%s, oOk=%s, oEname=%s, oPic=%s]",
-				oNo, oDate, oCname, oPname, oQty, oMemo, oDps, oOk, oEname, oPic);
+				"Order [oNo=%s, oDate=%s, oCname=%s, oPname=%s, oQty=%s, oMemo=%s, oDps=%s, oOk=%s, oEname=%s]",
+				oNo, oDate, oCname.getcNo(), oPname.getpNo(), oQty, oMemo, oDps, oOk, oEname.getEmpNo());
 	}
 	
 

@@ -278,4 +278,27 @@ public class ProductDaoImpl implements ProductDao {
 		return pCost;
 	}
 
+	@Override
+	public int selectProductNo(Product product) {
+		String sql = "select p_no from product where p_name=?";
+		try(Connection con = MySqlDataSource.getConnection();
+				PreparedStatement pstmt = con.prepareStatement(sql);){
+			pstmt.setString(1, product.getpName());
+			LogUtil.prnLog(pstmt);
+			try(ResultSet rs = pstmt.executeQuery()){
+				if(rs.next()) {
+					return getProductNo(rs);
+				}
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return 0;
+	}
+
+	private int getProductNo(ResultSet rs) throws SQLException {
+		int Pno = rs.getInt("p_no");
+		return Pno;
+	}
+
 }

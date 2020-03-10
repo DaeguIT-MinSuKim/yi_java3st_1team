@@ -56,4 +56,8 @@ public class ClientUIService {
 	public int showEmpoyeeNo(String empName) {
 		return clientDao.selectClientsEmpNo(empName);
 	}
+
+	public int selectOrderCno(Client client) {
+		return clientDao.selectClientNo(client);
+	}
 }

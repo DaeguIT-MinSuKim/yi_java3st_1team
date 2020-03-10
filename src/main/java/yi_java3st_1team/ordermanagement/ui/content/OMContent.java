@@ -20,10 +20,9 @@ public class OMContent extends JPanel {
 	private JTabbedPane tpClientManagement;
 	private JPanel pORegister;
 	private JPanel pListPanel;
-	private ORegisterPanel pORegisterPanel;
-	private OListPanel pOListPanel;
 	
 	public OCheckPanel pOCheckPanel;
+	private OrderUIPanel pOrderUIPanel;
 
 	public OMContent() {
 
@@ -44,17 +43,10 @@ public class OMContent extends JPanel {
 		pORegister.setBounds(0, 0, 100, 50);
 		pORegister.setBackground(SystemColor.inactiveCaptionBorder);
 		tpClientManagement.addTab("주문등록", null, pORegister, null);
-		pORegister.setLayout(new GridLayout(0, 2, 0, 0));
+		pORegister.setLayout(new BorderLayout(0, 0));
 		
-		pORegisterPanel = new ORegisterPanel();
-		pORegisterPanel.setBackground(SystemColor.inactiveCaptionBorder);
-		pORegister.add(pORegisterPanel);
-		pORegisterPanel.setLayout(null);
-		
-		pOListPanel = new OListPanel();
-		pOListPanel.setBackground(SystemColor.inactiveCaptionBorder);
-		pORegister.add(pOListPanel);
-		pOListPanel.setLayout(null);
+		pOrderUIPanel = new OrderUIPanel();
+		pORegister.add(pOrderUIPanel, BorderLayout.CENTER);
 		
 		pListPanel = new JPanel();
 		pListPanel.setBounds(0, 0, 100, 50);

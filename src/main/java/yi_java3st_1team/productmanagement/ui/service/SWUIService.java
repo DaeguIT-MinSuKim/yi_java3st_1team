@@ -60,4 +60,8 @@ public class SWUIService {
 	public int showProductCost(Product product) {
 		return productDao.selectProductCost(product);
 	}
+
+	public int selectOrderPno(Product product) {
+		return productDao.selectProductNo(product);
+	}
 }
