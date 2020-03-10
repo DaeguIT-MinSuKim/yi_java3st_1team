@@ -18,7 +18,9 @@ public class EmployeeUiService {
 		deptDao = DepartmentDaoImpl.getInstance();
 	}
 
-	
+	public Employee Idcheck(Employee emp) {
+		return empDao.selectEmployeeByID(emp);
+	}
 	public List<Department> showDeptList(){
 		return deptDao.selectDepartmentByAll();
 	}

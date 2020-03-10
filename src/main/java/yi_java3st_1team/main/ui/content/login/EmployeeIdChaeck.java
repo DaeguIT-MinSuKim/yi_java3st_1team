@@ -1,26 +1,34 @@
 package yi_java3st_1team.main.ui.content.login;
 
-import java.awt.Dimension;
-
-import javax.swing.JPanel;
 import java.awt.BorderLayout;
-import javax.swing.JLabel;
-import java.awt.SystemColor;
-import java.awt.Font;
 import java.awt.Color;
-import javax.swing.SwingConstants;
-import javax.swing.JButton;
-import java.awt.GridLayout;
-import javax.swing.JTextField;
-import java.awt.event.ActionListener;
+import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.SystemColor;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.regex.Pattern;
+
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.SwingConstants;
+
+import yi_java3st_1team.main.dto.Employee;
+import yi_java3st_1team.main.ui.service.EmployeeUiService;
 
 @SuppressWarnings("serial")
 public class EmployeeIdChaeck extends JPanel implements ActionListener {
 	private JTextField tfSearch;
 	private JButton btnSearch;
 	private JButton btnAdd;
+	private JLabel lblIdEquals;
+	
+	private EmployeeUiService empService;
+	
 	public EmployeeIdChaeck() {
+		empService = new EmployeeUiService();
 		initialize();
 	}
 	private void initialize() {
@@ -65,7 +73,7 @@ public class EmployeeIdChaeck extends JPanel implements ActionListener {
 		lblIdText.setBounds(12, 85, 376, 54);
 		pSearch.add(lblIdText);
 		
-		JLabel lblIdEquals = new JLabel("아이디 사용 가능");
+		lblIdEquals = new JLabel();
 		lblIdEquals.setFont(new Font("굴림", Font.BOLD, 17));
 		lblIdEquals.setHorizontalAlignment(SwingConstants.CENTER);
 		lblIdEquals.setForeground(Color.RED);
@@ -89,6 +97,21 @@ public class EmployeeIdChaeck extends JPanel implements ActionListener {
 		}
 	}
 	protected void actionPerformedBtnSearch(ActionEvent e) {
+		/*** (ID)정규표현식 : 5자이상 12자이하, 대소문자,숫자,_ 가능 ***/
+		String idPattern = "^[a-zA-Z0-9_]{5,11}$";
+		/*** 검색할 ID ***/
+		String idChk = tfSearch.getText();
+		/***  정규표현식 검사 ***/
+		boolean result = Pattern.matches(idPattern, idChk);
+		Employee newId = new Employee(idChk);
+		Employee searchId = empService.Idcheck(newId);
+		if(result==true && searchId==null) {
+			lblIdEquals.setText("아이디 사용 가능");
+		}else {
+			lblIdEquals.setText("아이디 사용 불가");
+		}
+		
+		
 	}
 	protected void actionPerformedBtnAdd(ActionEvent e) {
 	}

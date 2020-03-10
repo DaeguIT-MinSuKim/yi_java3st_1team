@@ -55,6 +55,10 @@ public class Employee {
 		this.empPass = empPass;
 	}
 
+	public Employee(String empId) {
+		this.empId = empId;
+	}
+
 	public int getEmpNo() {
 		return empNo;
 	}
