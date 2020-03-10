@@ -288,7 +288,7 @@ public class OrderUIPanel extends JPanel implements ActionListener {
 		
 	}
 	protected void btnQtyCheckActionPerformed(ActionEvent e) {
-		if(pORPanel.tfOQty.getText().equals("")) {
+		if(pORPanel.tfOPName.getText().equals("")) {
 			JOptionPane.showMessageDialog(null, "먼저 품목을 조회해주세요.");
 		}else {
 			// 재고테이블을 이용해서 조회해야함.
