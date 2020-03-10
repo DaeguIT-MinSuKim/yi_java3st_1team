@@ -18,10 +18,6 @@ public class Order {
 	private Employee oEname;
 	private Product oPic;
 
-	public Order() {
-		// TODO Auto-generated constructor stub
-	}
-
 	public Order(int oNo) {
 		this.oNo = oNo;
 	}
