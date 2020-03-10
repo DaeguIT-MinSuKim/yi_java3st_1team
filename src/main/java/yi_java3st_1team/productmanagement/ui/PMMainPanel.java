@@ -101,10 +101,7 @@ public class PMMainPanel extends JPanel implements ActionListener{
 //					actionPerformedMainBtn(e);
 //				}
 			    
-				//로그아웃
-				if(e.getSource() == pEmpLogin.btnLogout) {
-					actionPerformedBtnLogout(e);
-				}
+
 		   }
 	   
 	   
@@ -158,6 +155,11 @@ public class PMMainPanel extends JPanel implements ActionListener{
 			   emp.pStop.repaint();
 			   
 			   pEmpLogin.btnLogout.addActionListener(this);
+			   
+				//로그아웃
+				if(e.getSource() == pEmpLogin.btnLogout) {
+					actionPerformedBtnLogout(e);
+				}
 			
 		}
 		   
