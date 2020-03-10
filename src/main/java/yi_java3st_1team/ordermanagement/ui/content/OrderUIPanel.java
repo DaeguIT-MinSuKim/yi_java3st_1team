@@ -6,6 +6,9 @@ import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.Image;
 import java.awt.SystemColor;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.sql.SQLException;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -15,17 +18,12 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
 
-import yi_java3st_1team.clientmanagement.dto.Supplier;
 import yi_java3st_1team.exception.InvalidCheckException;
 import yi_java3st_1team.ordermanagement.dto.Order;
 import yi_java3st_1team.ordermanagement.ui.panel.ORegisterPanel;
 import yi_java3st_1team.ordermanagement.ui.service.OrderUIService;
 import yi_java3st_1team.productmanagement.dto.Product;
 import yi_java3st_1team.productmanagement.ui.service.SWUIService;
-
-import java.awt.event.ActionListener;
-import java.sql.SQLException;
-import java.awt.event.ActionEvent;
 
 @SuppressWarnings("serial")
 public class OrderUIPanel extends JPanel implements ActionListener {
@@ -50,6 +48,8 @@ public class OrderUIPanel extends JPanel implements ActionListener {
 	private String picPath;
 	private Dimension picDimension = new Dimension(320, 293);
 	private SWUIService pService;
+	private Product proSummary;
+	private int pQty;
 	
 	public OrderUIPanel() {
 		service = new OrderUIService();
@@ -115,6 +115,7 @@ public class OrderUIPanel extends JPanel implements ActionListener {
 		pRegisterPanel.add(btnPCheck);
 		
 		btnQtyCheck = new JButton("수량조회");
+		btnQtyCheck.addActionListener(this);
 		btnQtyCheck.setFocusable(false);
 		btnQtyCheck.setBackground(SystemColor.activeCaptionBorder);
 		btnQtyCheck.setForeground(Color.WHITE);
@@ -191,6 +192,9 @@ public class OrderUIPanel extends JPanel implements ActionListener {
 	}
 	
 	public void actionPerformed(ActionEvent e) {
+		if (e.getSource() == btnQtyCheck) {
+			btnQtyCheckActionPerformed(e);
+		}
 		if (e.getSource() == btnPCheck) {
 			btnPCheckActionPerformed(e);
 		}
@@ -209,11 +213,22 @@ public class OrderUIPanel extends JPanel implements ActionListener {
 				JOptionPane.showMessageDialog(null, "고객상호명, 품목명, 주문수량은 필수입력사항입니다.");
 				return;
 			}else {
-				Order newOrder = pORPanel.getItem();
-				System.out.println(newOrder.toString());
-				service.addOrder(newOrder);
-				pORPanel.clearTf();
-				pORPanel.setNum(newOrder);
+				if(pQty < Integer.parseInt(pORPanel.tfOQty.getText().trim())) {
+					JOptionPane.showMessageDialog(null, "현 재고수량을 초과하여 주문할 수 없습니다.");
+				}else {
+					Order newOrder = pORPanel.getItem();
+					service.addOrder(newOrder);
+					int sub = pQty - Integer.parseInt(pORPanel.tfOQty.getText().trim());
+					pService.SubProductQty(proSummary, sub);
+					pORPanel.clearTf();
+					pORPanel.setNum(newOrder);
+					setPic(getClass().getClassLoader().getResource("mainLogo3.png").getPath());
+					lblPNo.setText("품목번호");
+					lblSCName.setText("품목명");
+					lblSCost.setText("0");
+					lblPPrice.setText("0");
+					pORPanel.tfOQty.setEditable(true);
+				}
 			}
 		} catch (InvalidCheckException e1) {
 			JOptionPane.showMessageDialog(null, e1.getMessage());
@@ -235,20 +250,24 @@ public class OrderUIPanel extends JPanel implements ActionListener {
 		lblSCName.setText("품목명");
 		lblSCost.setText("0");
 		lblPPrice.setText("0");
+		pORPanel.tfOQty.setEditable(true);
 	}
 	protected void btnPCheckActionPerformed(ActionEvent e) {
-		Product product = new Product();
-		product.setpName(pORPanel.tfOPName.getText().trim());
-		Product proImg = new Product(pService.selectProductPic(product));
-		System.out.println(proImg.getpPic());
-		if(proImg.getpPic()==null) {
-			setPic(getClass().getClassLoader().getResource("mainLogo3.png").getPath());
+		if(pORPanel.tfOPName.getText().equals("")) {
+			JOptionPane.showMessageDialog(null, "조회하려는 품목명을 작성해주세요.");
 		}else {
-			setPic(proImg.getpPic());
+			Product product = new Product();
+			product.setpName(pORPanel.tfOPName.getText().trim());
+			Product proImg = new Product(pService.selectProductPic(product));
+			System.out.println(proImg.getpPic());
+			if(proImg.getpPic()==null) {
+				setPic(getClass().getClassLoader().getResource("mainLogo3.png").getPath());
+			}else {
+				setPic(proImg.getpPic());
+			}
+			proSummary = pService.selectProductSummary(product);
+			proSummary(proSummary);
 		}
-		Product proSummary = pService.selectProductSummary(product);
-		proSummary(proSummary);
-		
 	}
 	private void proSummary(Product proSummary) {
 		lblPNo.setText(String.format("P%04d", proSummary.getpNo()));
@@ -267,5 +286,19 @@ public class OrderUIPanel extends JPanel implements ActionListener {
 		lblPic.setIcon(new ImageIcon(new ImageIcon(imgPath).getImage().getScaledInstance((int)picDimension.getWidth(), 
 				(int)picDimension.getHeight(), Image.SCALE_DEFAULT)));
 		
+	}
+	protected void btnQtyCheckActionPerformed(ActionEvent e) {
+		if(pORPanel.tfOQty.getText().equals("")) {
+			JOptionPane.showMessageDialog(null, "먼저 품목을 조회해주세요.");
+		}else {
+			// 재고테이블을 이용해서 조회해야함.
+			pQty = proSummary.getpQty();
+			if(pQty == 0 || pQty < 0) {
+				pORPanel.tfOQty.setEditable(false);
+				JOptionPane.showMessageDialog(null, "수량이 부족하여 주문할 수 없습니다.");
+			}else {
+				JOptionPane.showMessageDialog(null, "본 상품은 현재 수량이 "+pQty+"개 입니다.");
+			}
+		}
 	}
 }

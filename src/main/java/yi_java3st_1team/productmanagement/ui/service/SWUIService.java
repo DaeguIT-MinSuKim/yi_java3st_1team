@@ -29,6 +29,10 @@ public class SWUIService {
 		productDao.updateProduct(upProduct);
 	}
 	
+	public void SubProductQty(Product subProduct, int sub) {
+		productDao.subProductQty(subProduct, sub);
+	}
+	
 	public Product lastProduct() {
 		return productDao.selectProductLastData();
 	}

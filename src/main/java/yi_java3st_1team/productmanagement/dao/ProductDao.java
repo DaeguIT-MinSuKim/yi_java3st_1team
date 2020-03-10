@@ -26,4 +26,6 @@ public interface ProductDao {
 	byte[] selectProductPic(Product product);
 
 	Product selectProductSummary(Product product);
+
+	void subProductQty(Product subProduct, int sub);
 }

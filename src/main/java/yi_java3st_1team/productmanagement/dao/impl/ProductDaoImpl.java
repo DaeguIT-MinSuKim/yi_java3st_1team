@@ -11,6 +11,7 @@ import java.util.List;
 
 import yi_java3st_1team.clientmanagement.dto.Supplier;
 import yi_java3st_1team.ds.MySqlDataSource;
+import yi_java3st_1team.ordermanagement.dto.Order;
 import yi_java3st_1team.productmanagement.dao.ProductDao;
 import yi_java3st_1team.productmanagement.dto.Category;
 import yi_java3st_1team.productmanagement.dto.Product;
@@ -326,7 +327,7 @@ public class ProductDaoImpl implements ProductDao {
 
 	@Override
 	public Product selectProductSummary(Product product) {
-		String sql = "select p_no, p_name, p_cost, p_price from product where p_name=?";
+		String sql = "select p_no, p_name, p_cost, p_price, p_qty from product where p_name=?";
 		try(Connection con = MySqlDataSource.getConnection();
 				PreparedStatement pstmt = con.prepareStatement(sql);){
 			pstmt.setString(1, product.getpName());
@@ -347,7 +348,43 @@ public class ProductDaoImpl implements ProductDao {
 		String pName = rs.getString("p_name");
 		int pCost = rs.getInt("p_cost");
 		int pPrice = rs.getInt("p_price");
-		return new Product(pNo, pName, pCost, pPrice);
+		int pQty = rs.getInt("p_qty");
+		return new Product(pNo, pName, pCost, pPrice, pQty);
 	}
 
+	@Override
+	public void subProductQty(Product subProduct, int sub) {
+		String sql = "update product set p_qty=? where p_name=?";
+		try(Connection con = MySqlDataSource.getConnection();
+				PreparedStatement pstmt = con.prepareStatement(sql)){
+			pstmt.setInt(1, sub);
+			pstmt.setString(2, subProduct.getpName());
+			LogUtil.prnLog(pstmt);
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+	}
+	
+	public int updateOrder(Order order) {
+		String sql = "update `order` set o_date=?, o_cno=?, o_pno=?, o_qty=?, o_memo=?, o_dps=?, o_ok=?, o_eno=? where o_no=?";
+		try(Connection con = MySqlDataSource.getConnection();
+				PreparedStatement pstmt = con.prepareStatement(sql)){
+			pstmt.setTimestamp(1, new Timestamp(order.getoDate().getTime()));
+			pstmt.setInt(2, order.getoCname().getcNo()+1);
+			pstmt.setInt(3, order.getoPname().getpNo()+1);
+			pstmt.setInt(4, order.getoQty());
+			pstmt.setString(5, order.getoMemo());
+			pstmt.setInt(6, order.getoDps());
+			pstmt.setInt(7, order.getoOk());
+			pstmt.setInt(8, order.getoEname().getEmpNo()+1);
+			pstmt.setInt(9, order.getoNo());
+			LogUtil.prnLog(pstmt);
+			return pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return 0;
+	}
 }

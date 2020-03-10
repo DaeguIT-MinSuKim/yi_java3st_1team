@@ -42,13 +42,6 @@ public class Product {
 		this.pName = pName;
 	}
 
-	public Product(int pNo, String pName, int pCost, int pPrice) {
-		this.pNo = pNo;
-		this.pName = pName;
-		this.pCost = pCost;
-		this.pPrice = pPrice;
-	}
-
 	public Product(Category pCate, String pName, Supplier pSno) {
 		this.pCate = pCate;
 		this.pName = pName;

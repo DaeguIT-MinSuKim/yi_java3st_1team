@@ -105,3 +105,8 @@ select p_pic from product p ;
 select  * from employee e ;
 select * from client c2 ;
 select * from product p2 ;
+
+update product set p_qty=55 where p_name='알씨';
+update product set p_qty=45 where p_name='알씨';
+
+select * from inventory_quantity iq ;
