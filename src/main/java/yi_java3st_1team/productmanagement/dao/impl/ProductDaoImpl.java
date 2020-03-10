@@ -301,4 +301,53 @@ public class ProductDaoImpl implements ProductDao {
 		return Pno;
 	}
 
+	@Override
+	public byte[] selectProductPic(Product product) {
+		String sql = "select p_pic from product where p_name=?";
+		try(Connection con = MySqlDataSource.getConnection();
+				PreparedStatement pstmt = con.prepareStatement(sql);){
+			pstmt.setString(1, product.getpName());
+			LogUtil.prnLog(pstmt);
+			try(ResultSet rs = pstmt.executeQuery()){
+				if(rs.next()) {
+					return getProductPic(rs);
+				}
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	private byte[] getProductPic(ResultSet rs) throws SQLException {
+		byte[] pic = rs.getBytes("p_pic");
+		return pic;
+	}
+
+	@Override
+	public Product selectProductSummary(Product product) {
+		String sql = "select p_no, p_name, p_cost, p_price from product where p_name=?";
+		try(Connection con = MySqlDataSource.getConnection();
+				PreparedStatement pstmt = con.prepareStatement(sql);){
+			pstmt.setString(1, product.getpName());
+			LogUtil.prnLog(pstmt);
+			try(ResultSet rs = pstmt.executeQuery()){
+				if(rs.next()) {
+					return getProductSum(rs);
+				}
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	private Product getProductSum(ResultSet rs) throws SQLException {
+		int pNo = rs.getInt("p_no");
+		String pName = rs.getString("p_name");
+		int pCost = rs.getInt("p_cost");
+		int pPrice = rs.getInt("p_price");
+		return new Product(pNo, pName, pCost, pPrice);
+	}
+
 }

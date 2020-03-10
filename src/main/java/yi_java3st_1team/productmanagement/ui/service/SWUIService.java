@@ -64,4 +64,12 @@ public class SWUIService {
 	public int selectOrderPno(Product product) {
 		return productDao.selectProductNo(product);
 	}
+
+	public byte[] selectProductPic(Product product) {
+		return productDao.selectProductPic(product);
+	}
+
+	public Product selectProductSummary(Product product) {
+		return productDao.selectProductSummary(product);
+	}
 }

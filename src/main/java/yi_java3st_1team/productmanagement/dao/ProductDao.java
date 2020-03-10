@@ -22,4 +22,8 @@ public interface ProductDao {
 
 	int selectProductCost(Product product);
 	int selectProductNo(Product product);
+
+	byte[] selectProductPic(Product product);
+
+	Product selectProductSummary(Product product);
 }

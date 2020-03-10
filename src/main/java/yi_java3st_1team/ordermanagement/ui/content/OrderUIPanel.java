@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridLayout;
+import java.awt.Image;
 import java.awt.SystemColor;
 
 import javax.swing.ImageIcon;
@@ -19,6 +20,9 @@ import yi_java3st_1team.exception.InvalidCheckException;
 import yi_java3st_1team.ordermanagement.dto.Order;
 import yi_java3st_1team.ordermanagement.ui.panel.ORegisterPanel;
 import yi_java3st_1team.ordermanagement.ui.service.OrderUIService;
+import yi_java3st_1team.productmanagement.dto.Product;
+import yi_java3st_1team.productmanagement.ui.service.SWUIService;
+
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
 import java.awt.event.ActionEvent;
@@ -35,7 +39,7 @@ public class OrderUIPanel extends JPanel implements ActionListener {
 	private JButton btnQtyCheck;
 	private JLabel lblNewLabel;
 	private JPanel pDispPanel;
-	private JLabel lblNewLabel_1;
+	private JLabel lblPic;
 	private JLabel lblNewLabel_2;
 	private JLabel lblSummary;
 	private JLabel lblPNo;
@@ -43,9 +47,13 @@ public class OrderUIPanel extends JPanel implements ActionListener {
 	private JLabel lblSCost;
 	private JLabel lblPPrice;
 	private OrderUIService service;
+	private String picPath;
+	private Dimension picDimension = new Dimension(320, 293);
+	private SWUIService pService;
 	
 	public OrderUIPanel() {
 		service = new OrderUIService();
+		pService = new SWUIService();
 		initialize();
 	}
 	private void initialize() {
@@ -79,6 +87,7 @@ public class OrderUIPanel extends JPanel implements ActionListener {
 		pRegisterPanel.add(btnAdd);
 		
 		btnReset = new JButton("초기화");
+		btnReset.addActionListener(this);
 		btnReset.setFocusable(false);
 		btnReset.setForeground(Color.WHITE);
 		btnReset.setBackground(new Color(240, 128, 128));
@@ -97,6 +106,7 @@ public class OrderUIPanel extends JPanel implements ActionListener {
 		pRegisterPanel.add(btnGoMain);
 		
 		btnPCheck = new JButton("품목조회");
+		btnPCheck.addActionListener(this);
 		btnPCheck.setFocusable(false);
 		btnPCheck.setBackground(SystemColor.activeCaptionBorder);
 		btnPCheck.setForeground(Color.WHITE);
@@ -130,26 +140,26 @@ public class OrderUIPanel extends JPanel implements ActionListener {
 		pListPanel.add(pDispPanel);
 		pDispPanel.setLayout(null);
 		
-		lblNewLabel_1 = new JLabel("");
-		lblNewLabel_1.setOpaque(true);
-		lblNewLabel_1.setBackground(Color.WHITE);
-		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_1.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\loginMain\\mainLogo3.png"));
-		lblNewLabel_1.setBounds(20, 20, 555, 400);
-		pDispPanel.add(lblNewLabel_1);
+		lblPic = new JLabel("");
+		lblPic.setOpaque(true);
+		lblPic.setBackground(Color.WHITE);
+		lblPic.setHorizontalAlignment(SwingConstants.CENTER);
+		lblPic.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\loginMain\\mainLogo3.png"));
+		lblPic.setBounds(20, 20, 555, 400);
+		pDispPanel.add(lblPic);
 		
 		lblNewLabel_2 = new JLabel("");
 		lblNewLabel_2.setBorder(new LineBorder(Color.DARK_GRAY, 2));
 		lblNewLabel_2.setBounds(20, 435, 555, 50);
 		pDispPanel.add(lblNewLabel_2);
 		
-		lblSummary = new JLabel("               /                     /  공급가 :                  원 /  판매가 :               원");
+		lblSummary = new JLabel("               /                  /  공급가 :                  원 /  판매가 :                   원");
 		lblSummary.setForeground(Color.BLACK);
 		lblSummary.setFont(new Font("굴림", Font.BOLD, 13));
 		lblSummary.setBounds(12, 10, 531, 29);
 		lblNewLabel_2.add(lblSummary);
 		
-		lblPNo = new JLabel("P0001");
+		lblPNo = new JLabel("품목번호");
 		lblPNo.setOpaque(true);
 		lblPNo.setBackground(Color.BLACK);
 		lblPNo.setForeground(Color.WHITE);
@@ -158,29 +168,35 @@ public class OrderUIPanel extends JPanel implements ActionListener {
 		lblPNo.setBounds(12, 10, 70, 29);
 		lblNewLabel_2.add(lblPNo);
 		
-		lblSCName = new JLabel("소프트마켓");
+		lblSCName = new JLabel("품목명");
 		lblSCName.setForeground(new Color(0, 100, 0));
 		lblSCName.setHorizontalAlignment(SwingConstants.CENTER);
 		lblSCName.setFont(new Font("굴림", Font.BOLD, 14));
-		lblSCName.setBounds(95, 10, 100, 29);
+		lblSCName.setBounds(95, 10, 90, 29);
 		lblNewLabel_2.add(lblSCName);
 		
-		lblSCost = new JLabel("80,000");
+		lblSCost = new JLabel("0");
 		lblSCost.setForeground(Color.GRAY);
 		lblSCost.setFont(new Font("굴림", Font.BOLD, 14));
 		lblSCost.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblSCost.setBounds(280, 10, 70, 29);
+		lblSCost.setBounds(240, 10, 100, 29);
 		lblNewLabel_2.add(lblSCost);
 		
-		lblPPrice = new JLabel("80,000");
+		lblPPrice = new JLabel("0");
 		lblPPrice.setForeground(Color.BLUE);
 		lblPPrice.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblPPrice.setFont(new Font("굴림", Font.BOLD, 14));
-		lblPPrice.setBounds(445, 10, 70, 29);
+		lblPPrice.setBounds(420, 10, 100, 29);
 		lblNewLabel_2.add(lblPPrice);
 	}
 	
 	public void actionPerformed(ActionEvent e) {
+		if (e.getSource() == btnPCheck) {
+			btnPCheckActionPerformed(e);
+		}
+		if (e.getSource() == btnReset) {
+			btnResetActionPerformed(e);
+		}
 		if (e.getSource() == btnAdd) {
 			btnAddActionPerformed(e);
 		}
@@ -210,5 +226,46 @@ public class OrderUIPanel extends JPanel implements ActionListener {
 			}
 			e1.printStackTrace();
 		}
+	}
+	protected void btnResetActionPerformed(ActionEvent e) {
+		pORPanel.clearTf();
+		pORPanel.setNum(service.lastOrder());
+		setPic(getClass().getClassLoader().getResource("mainLogo3.png").getPath());
+		lblPNo.setText("품목번호");
+		lblSCName.setText("품목명");
+		lblSCost.setText("0");
+		lblPPrice.setText("0");
+	}
+	protected void btnPCheckActionPerformed(ActionEvent e) {
+		Product product = new Product();
+		product.setpName(pORPanel.tfOPName.getText().trim());
+		Product proImg = new Product(pService.selectProductPic(product));
+		System.out.println(proImg.getpPic());
+		if(proImg.getpPic()==null) {
+			setPic(getClass().getClassLoader().getResource("mainLogo3.png").getPath());
+		}else {
+			setPic(proImg.getpPic());
+		}
+		Product proSummary = pService.selectProductSummary(product);
+		proSummary(proSummary);
+		
+	}
+	private void proSummary(Product proSummary) {
+		lblPNo.setText(String.format("P%04d", proSummary.getpNo()));
+		lblSCName.setText(String.format(proSummary.getpName()));
+		lblSCost.setText(String.format("%,d", proSummary.getpCost()));
+		lblPPrice.setText(String.format("%,d", proSummary.getpPrice()));
+	}
+	
+	private void setPic(byte[] getpPic) {
+		lblPic.setIcon(new ImageIcon(new ImageIcon(getpPic).getImage().getScaledInstance((int)picDimension.getWidth(), 
+				(int)picDimension.getHeight(), Image.SCALE_DEFAULT)));
+		
+	}
+	private void setPic(String imgPath) {
+		picPath = imgPath;
+		lblPic.setIcon(new ImageIcon(new ImageIcon(imgPath).getImage().getScaledInstance((int)picDimension.getWidth(), 
+				(int)picDimension.getHeight(), Image.SCALE_DEFAULT)));
+		
 	}
 }
