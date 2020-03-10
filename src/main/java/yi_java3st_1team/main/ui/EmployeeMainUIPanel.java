@@ -20,10 +20,15 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
+import javafx.application.Platform;
+import javafx.embed.swing.JFXPanel;
+import javafx.scene.Scene;
 import yi_java3st_1team.clientmanagement.ui.CMMainPanel;
 import yi_java3st_1team.main.EmployeeMainFrame;
 import yi_java3st_1team.main.dto.Department;
 import yi_java3st_1team.main.dto.Employee;
+import yi_java3st_1team.main.test.InitScene;
+import yi_java3st_1team.main.test.PanelLineChart;
 import yi_java3st_1team.main.ui.content.LogoImg01Panel;
 import yi_java3st_1team.main.ui.content.LogoImg02Panel;
 import yi_java3st_1team.main.ui.content.chart.EmpMiniBarChart;
@@ -284,10 +289,11 @@ public class EmployeeMainUIPanel extends JPanel implements ActionListener {
 				// 책임관리자(대표이사~과장) 로그인시 차트 패널 불러오기
 				// 1. 라인차트
 				pStop.remove(pImg01); // 제거
-				JPanel line = new JPanel();
+				//JPanel plc = new JPanel();
 				//EmpMiniLineChart eLchart = new EmpMiniLineChart();
-				line.setBackground(SystemColor.yellow);
-				pStop.add(line, BorderLayout.CENTER);
+				PanelLineChart plc = new PanelLineChart();
+				pStop.add(plc); //pStop.add(plc, BorderLayout.CENTER);
+				Platform.runLater(() -> initFX(plc));
 	
 				// 2. 바차트
 				pImg02.remove(pLogo); // 제거
@@ -318,6 +324,12 @@ public class EmployeeMainUIPanel extends JPanel implements ActionListener {
 		}
 		
 
+	}
+	
+	public void initFX(InitScene fxPanel) {
+		Scene scene = fxPanel.createScene();
+		JFXPanel panel = (JFXPanel) fxPanel;
+		panel.setScene(scene);
 	}
 	
 	//로그아웃
