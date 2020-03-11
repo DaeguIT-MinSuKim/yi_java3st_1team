@@ -22,6 +22,8 @@ import javax.swing.SwingConstants;
 
 import yi_java3st_1team.exception.InvalidCheckException;
 import yi_java3st_1team.main.ui.EmployeeMainUIPanel;
+import yi_java3st_1team.ordermanagement.dto.InventoryQuantity;
+import yi_java3st_1team.ordermanagement.ui.service.IQUIService;
 import yi_java3st_1team.productmanagement.dto.Product;
 import yi_java3st_1team.productmanagement.dto.SupplierOrder;
 import yi_java3st_1team.productmanagement.dto.SupplierPurchase;
@@ -60,6 +62,7 @@ public class SPSOUIPanel extends JPanel implements ActionListener {
 		sPService = new SPUIService();
 		sOService = new SOUIService();
 		sWService = new SWUIService();
+		iqService = new IQUIService();
 		initialize();
 	}
 
@@ -207,6 +210,10 @@ public class SPSOUIPanel extends JPanel implements ActionListener {
 			}
 			if (e.getActionCommand().equals("삭제")) {
 				SupplierPurchase delSupPur = pSPTblPanel.getSelectedItem();
+				int nowQty = iqService.showQty(delSupPur.getSpPno());
+				int totalQty = nowQty - delSupPur.getSpQty();
+				InventoryQuantity upIQ = new InventoryQuantity(delSupPur.getSpPno(), totalQty);
+				iqService.motifyIQ(upIQ);
 				sPService.removeSupplierPurchase(delSupPur);
 				pSPTblPanel.removeRow();
 				pSPTblPanel.loadDate(sPService.showSupplierPurchaseList());
@@ -365,6 +372,7 @@ public class SPSOUIPanel extends JPanel implements ActionListener {
 	};
 	private JButton btnDel1;
 	private EmployeeMainUIPanel emp;
+	private IQUIService iqService;
 
 	public void actionPerformed(ActionEvent e) {
 //		if (e.getSource() == btnGoMain) {
@@ -443,6 +451,10 @@ public class SPSOUIPanel extends JPanel implements ActionListener {
 			} else {
 				SupplierPurchase newSupPur = pSPSOPanel.getItem();
 				sPService.addSupplierPurchase(newSupPur);
+				int nowQty = iqService.showQty(newSupPur.getSpPno());
+				int totalQty = nowQty + newSupPur.getSpQty();
+				InventoryQuantity upIQ = new InventoryQuantity(newSupPur.getSpPno(), totalQty);
+				iqService.motifyIQ(upIQ);
 				pSPTblPanel.addItem(newSupPur);
 				pSPTblPanel.loadDate(sPService.showSupplierPurchaseList());
 				pSPSOPanel.clearTf();

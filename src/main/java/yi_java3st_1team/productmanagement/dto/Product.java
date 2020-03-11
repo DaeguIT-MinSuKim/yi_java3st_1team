@@ -42,6 +42,12 @@ public class Product {
 		this.pName = pName;
 	}
 
+	public Product(String pName, int pCost, int pPrice) {
+		this.pName = pName;
+		this.pCost = pCost;
+		this.pPrice = pPrice;
+	}
+
 	public Product(Category pCate, String pName, Supplier pSno) {
 		this.pCate = pCate;
 		this.pName = pName;

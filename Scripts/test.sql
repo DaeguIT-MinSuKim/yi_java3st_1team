@@ -110,3 +110,11 @@ update product set p_qty=55 where p_name='알씨';
 update product set p_qty=45 where p_name='알씨';
 
 select * from inventory_quantity iq ;
+
+insert into inventory_quantity (iq_no, iq_pno, iq_qty) values(?, ?, ?);
+
+select p.p_name , s.s_name , iq.iq_qty , p.p_price , p.p_cost from inventory_quantity iq left join product p on iq.iq_pno = p.p_no left join supplier s on p.p_sno = s.s_no;
+
+select p_no from supplier_purchase sp left join product p on sp.sp_pno = p.p_no where p.p_name ='재승';
+
+select * from supplier_purchase sp ;
