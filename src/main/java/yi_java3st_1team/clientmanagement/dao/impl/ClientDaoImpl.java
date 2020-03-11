@@ -328,4 +328,27 @@ public class ClientDaoImpl implements ClientDao {
 		return Cno;
 	}
 
+	@Override
+	public int selectCsalesman(Client client) {
+		String sql = "select c_salesman from client where c_name=?";
+		try(Connection con = MySqlDataSource.getConnection();
+				PreparedStatement pstmt = con.prepareStatement(sql);){
+			pstmt.setString(1, client.getcName());
+			LogUtil.prnLog(pstmt);
+			try(ResultSet rs = pstmt.executeQuery()){
+				if(rs.next()) {
+					return getSalesman(rs);
+				}
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return 0;
+	}
+
+	private int getSalesman(ResultSet rs) throws SQLException {
+		int cSman = rs.getInt("c_salesman"); 
+		return cSman;
+	}
+
 }

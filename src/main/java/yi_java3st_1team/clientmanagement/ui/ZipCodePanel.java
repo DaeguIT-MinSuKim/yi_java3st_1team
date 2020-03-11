@@ -17,6 +17,7 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
 import yi_java3st_1team.clientmanagement.dto.ZipCode;
+import yi_java3st_1team.clientmanagement.ui.panel.SCRegisterPanel;
 import yi_java3st_1team.clientmanagement.ui.service.ZipCodeUIService;
 
 @SuppressWarnings("serial")
@@ -30,6 +31,10 @@ public class ZipCodePanel extends JPanel implements ItemListener, ActionListener
 	private String selectItem;
 	private JButton btnSearch;
 	private ZipCodeUIService service;
+	private JButton btnAdd;
+	public ZipCode addr;
+	public SCRegisterPanel pSCRPanel;
+	private String total;
 	
 
 	public ZipCodePanel() {
@@ -82,7 +87,8 @@ public class ZipCodePanel extends JPanel implements ItemListener, ActionListener
 		btnSearch.setBounds(640, 120, 120, 30);
 		add(btnSearch);
 		
-		JButton btnAdd = new JButton("등   록");
+		btnAdd = new JButton("등   록");
+		btnAdd.addActionListener(this);
 		btnAdd.setBounds(325, 250, 150, 32);
 		add(btnAdd);
 		
@@ -125,6 +131,9 @@ public class ZipCodePanel extends JPanel implements ItemListener, ActionListener
 	
 	
 	public void actionPerformed(ActionEvent e) {
+		if (e.getSource() == btnAdd) {
+			btnAddActionPerformed(e);
+		}
 		if (e.getSource() == btnSearch) {
 			btnSearchActionPerformed(e);
 		}
@@ -148,5 +157,16 @@ public class ZipCodePanel extends JPanel implements ItemListener, ActionListener
 		tfDoro.setText("");
 		tfNo1.setText("");
 		tfNo2.setText("");
+	}
+	public void btnAddActionPerformed(ActionEvent e) {
+		String add1 = tfAll.getText().trim();
+		String add2 = tfDetail.getText().trim();
+		if(add2.equals("")) {
+			total = add1;
+		}else {
+			total = add1 +" "+ add2;
+		}
+		pSCRPanel.tfSCAddress.setText("a");
+
 	}
 }

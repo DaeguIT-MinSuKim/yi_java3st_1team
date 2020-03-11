@@ -21,4 +21,5 @@ public interface ClientDao {
 	int updateClient(Client client);
 	int deleteClient(Client client);
 	int selectClientNo(Client client);
+	int selectCsalesman(Client client);
 }

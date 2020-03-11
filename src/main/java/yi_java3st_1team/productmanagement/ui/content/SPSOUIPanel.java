@@ -57,6 +57,9 @@ public class SPSOUIPanel extends JPanel implements ActionListener {
 	private SWUIService sWService;
 	private JButton btnSOAdd;
 	private JButton btnSOUp;
+	private JButton btnDel1;
+	private EmployeeMainUIPanel emp;
+	private IQUIService iqService;
 
 	public SPSOUIPanel() {
 		sPService = new SPUIService();
@@ -370,9 +373,6 @@ public class SPSOUIPanel extends JPanel implements ActionListener {
 			}
 		}
 	};
-	private JButton btnDel1;
-	private EmployeeMainUIPanel emp;
-	private IQUIService iqService;
 
 	public void actionPerformed(ActionEvent e) {
 //		if (e.getSource() == btnGoMain) {
@@ -405,11 +405,8 @@ public class SPSOUIPanel extends JPanel implements ActionListener {
 		if (e.getSource() == rdbtnSO) {
 			rdbtnSOActionPerformed(e);
 		}
-		
-		
+
 	}
-
-
 
 	protected void rdbtnSOActionPerformed(ActionEvent e) {
 		removeAll();
@@ -504,16 +501,17 @@ public class SPSOUIPanel extends JPanel implements ActionListener {
 		pSPSOPanel.clearTf();
 		pSPSOPanel.setNum1(sPService.lastSP());
 	}
-	
+
 	protected void btnDel1ActionPerformed(ActionEvent e) {
 		pSPSOPanel.clearSOTf();
 		pSPSOPanel.setNum2(sOService.lastSO());
 	}
+
 	protected void btnSPUpActionPerformed(ActionEvent e) {
-		if(pSPSOPanel.tfSPSOPName.getText().equals("")) {
+		if (pSPSOPanel.tfSPSOPName.getText().equals("")) {
 			JOptionPane.showMessageDialog(null, "수정할 품목을 오른쪽 리스트에서 선택해주세요.");
 			return;
-		}else {
+		} else {
 			SupplierPurchase upSupPur = pSPSOPanel.getItem();
 			sPService.modifySupplierPurchase(upSupPur);
 			pSPTblPanel.updateRow(upSupPur, pSPTblPanel.getSelectedRowIdx());
@@ -522,12 +520,12 @@ public class SPSOUIPanel extends JPanel implements ActionListener {
 			pSPSOPanel.setNum1(sPService.lastSP());
 		}
 	}
-	
+
 	protected void btnSOUpActionPerformed(ActionEvent e) {
-		if(pSPSOPanel.tfSPSOPName.getText().equals("")) {
+		if (pSPSOPanel.tfSPSOPName.getText().equals("")) {
 			JOptionPane.showMessageDialog(null, "수정할 품목을 오른쪽 리스트에서 선택해주세요.");
 			return;
-		}else {
+		} else {
 			SupplierOrder upSupOr = pSPSOPanel.getSOItem();
 			sOService.modifySupplierOrder(upSupOr);
 			pSOTblPanel.updateRow(upSupOr, pSOTblPanel.getSelectedRowIdx());
