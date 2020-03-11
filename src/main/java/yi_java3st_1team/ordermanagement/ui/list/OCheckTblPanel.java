@@ -20,15 +20,15 @@ public class OCheckTblPanel extends AbstractTblPanel<Order>{
 
 	@Override
 	protected Object[] getColNames() {
-		return new String[] {"<html><span style='color:#000042'><b>주문번호</b></html>",
-							 "<html><span style='color:#000042'><b>주문일자</b></html>",
-							 "<html><span style='color:#000042'><b>고객상호명</b></html>",
-							 "<html><span style='color:#000042'><b>품목명</b></html>",
-							 "<html><span style='color:#000042'><b>주문수량</b></html>",
-							 "<html><span style='color:#000042'><b>주문요구사항</b></html>",
-							 "<html><span style='color:#000042'><b>입금여부</b></html>",
-							 "<html><span style='color:#000042'><b>주문완료</b></html>",
-							 "<html><span style='color:#000042'><b>주문담당자</b></html>"};
+		return new String[] {"<html><span style='color:#000042'><b>주문번호</b></span></html>",
+							 "<html><span style='color:#000042'><b>주문일자</b></span></html>",
+							 "<html><span style='color:#000042'><b>고객상호명</b></span></html>",
+							 "<html><span style='color:#000042'><b>품목명</b></span></html>",
+							 "<html><span style='color:#000042'><b>주문수량</b></span></html>",
+							 "<html><span style='color:#000042'><b>주문요구사항</b></span></html>",
+							 "<html><span style='color:#000042'><b>입금여부</b></span></html>",
+							 "<html><span style='color:#000042'><b>주문완료</b></span></html>",
+							 "<html><span style='color:#000042'><b>주문담당자</b></span></html>"};
 	}
 
 	//"주문번호","주문일자","고객상호명","품목명","주문수량","주문요구사항","입금여부","주문완료","주문담당자"
@@ -61,13 +61,13 @@ public class OCheckTblPanel extends AbstractTblPanel<Order>{
 			YN = "<html><b><span style='color:blue'>Y</span></b></html>";
 		}else {
 			YN = "<html><b><span style='color:red'>N</span></b></html>";
-			oNo = String.format("<html><span style='color:red'>O%04d</html>", item.getoNo());
-			oDate = String.format("<html><span style='color:red'>%tF</html>", item.getoDate());
-			cName = String.format("<html><span style='color:red'>%s</html>", item.getoCname().getcName());
-			pName = String.format("<html><span style='color:red'>%s</html>", item.getoPname().getpName());
-			oQty = String.format("<html><span style='color:red'>%d</html>", item.getoQty());
-			oMemo = String.format("<html><span style='color:red'>%s</html>",item.getoMemo());
-			emp = String.format("<html><span style='color:red'>%s(EE%04d)</html>", item.getoEname().getEmpName(), item.getoEname().getEmpNo());
+			oNo = String.format("<html><span style='color:red'>O%04d</span></html>", item.getoNo());
+			oDate = String.format("<html><span style='color:red'>%tF</span></html>", item.getoDate());
+			cName = String.format("<html><span style='color:red'>%s</span></html>", item.getoCname().getcName());
+			pName = String.format("<html><span style='color:red'>%s</span></html>", item.getoPname().getpName());
+			oQty = String.format("<html><span style='color:red'>%d</span></html>", item.getoQty());
+			oMemo = String.format("<html><span style='color:red'>%s</span></html>",item.getoMemo());
+			emp = String.format("<html><span style='color:red'>%s(EE%04d)</span></html>", item.getoEname().getEmpName(), item.getoEname().getEmpNo());
 		}
 		return new Object[] {
 				oNo,

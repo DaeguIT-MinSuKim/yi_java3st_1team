@@ -19,12 +19,12 @@ public class SPListTblPanel extends AbstractTblPanel<SupplierPurchase> {
 
 	@Override
 	protected Object[] getColNames() {
-		return new String[] {"<html><span style='color:#000042'><b>매입번호</b></html>",
-							 "<html><span style='color:#000042'><b>품목명</b></html>",
-							 "<html><span style='color:#000042'><b>공급회사명</b></html>",
-							 "<html><span style='color:#000042'><b>매입가격</b></html>",
-							 "<html><span style='color:#000042'><b>매입수량</b></html>",
-							 "<html><span style='color:#000042'><b>매입일자</b></html>"};
+		return new String[] {"<html><span style='color:#000042'><b>매입번호</b></span></html>",
+							 "<html><span style='color:#000042'><b>품목명</b></span></html>",
+							 "<html><span style='color:#000042'><b>공급회사명</b></span></html>",
+							 "<html><span style='color:#000042'><b>매입가격</b></span></html>",
+							 "<html><span style='color:#000042'><b>매입수량</b></span></html>",
+							 "<html><span style='color:#000042'><b>매입일자</b></span></html>"};
 	}
 
 	@Override

@@ -23,12 +23,12 @@ public class CListTblPanel extends AbstractTblPanel<Client> {
 
 	@Override
 	protected Object[] getColNames() {
-		return new String[] {"<html><span style='color:#000042'><b>고객번호</b></html>",
-				             "<html><span style='color:#000042'><b>상호명</b></html>",
-				             "<html><span style='color:#000042'><b>대표명</b></html>",
-				             "<html><span style='color:#000042'><b>주소</b></html>",
-				             "<html><span style='color:#000042'><b>전화번호</b></html>",
-				             "<html><span style='color:#000042'><b>담당직원</b></html>"};
+		return new String[] {"<html><span style='color:#000042'><b>고객번호</b></span></html>",
+				             "<html><span style='color:#000042'><b>상호명</b></span></html>",
+				             "<html><span style='color:#000042'><b>대표명</b></span></html>",
+				             "<html><span style='color:#000042'><b>주소</b></span></html>",
+				             "<html><span style='color:#000042'><b>전화번호</b></span></html>",
+				             "<html><span style='color:#000042'><b>담당직원</b></span></html>"};
 	}
 
 	@Override
