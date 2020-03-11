@@ -33,6 +33,10 @@ public class EmployeeUiService {
 		return empDao.selectEmployeeByNo(emp);
 	}
 	
+	public Employee showEmpDeptcol(Employee emp) {
+		return empDao.selectEmployeeByDept(emp);
+	}
+	
 	public List<Employee> showEmployeeList(){
 		return empDao.selectEmployeeByAll();
 	}

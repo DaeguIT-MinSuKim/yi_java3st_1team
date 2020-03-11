@@ -6,8 +6,9 @@ import yi_java3st_1team.main.dto.Employee;
 
 public interface EmployeeDao {
 	Employee selectEmployeeByNo(Employee emp);
-	List<Employee> selectEmployeeByAll();
 	
+	Employee selectEmployeeByDept(Employee emp);
+	List<Employee> selectEmployeeByAll();
 	Employee selectEmployeebyLastNo();
 	
 	Employee selectEmployeeByID(Employee emp);

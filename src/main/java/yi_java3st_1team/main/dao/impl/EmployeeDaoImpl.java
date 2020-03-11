@@ -82,6 +82,24 @@ public class EmployeeDaoImpl implements EmployeeDao {
 		}
 		return null;
 	}
+	
+	@Override
+	public Employee selectEmployeeByDept(Employee emp) {
+		String sql = "select e.e_no, e.e_name,  e.e_title, e.e_dept, d.d_no, d.d_name, d.d_floor, e.e_manager, e.e_id, e.e_pw, e.e_mail from employee e left join department d on e.e_dept  = d.d_no where d.d_name = ?";
+		try(Connection con = MySqlDataSource.getConnection();
+				PreparedStatement pstmt = con.prepareStatement(sql);){
+				pstmt.setString(1, emp.getdNo().getDeptName());
+				LogUtil.prnLog(pstmt);
+				try(ResultSet rs = pstmt.executeQuery()){
+					if(rs.next()) {
+						return getEmployee(rs);
+					}
+				}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
 
 	//검색 : (기본)all
 	@Override
@@ -218,6 +236,8 @@ public class EmployeeDaoImpl implements EmployeeDao {
 		}
 		return null;
 	}
+
+
 
 
 

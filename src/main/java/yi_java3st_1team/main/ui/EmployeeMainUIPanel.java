@@ -298,7 +298,7 @@ public class EmployeeMainUIPanel extends JPanel implements ActionListener {
 				Platform.runLater(() -> initFX(bar));
 				break;
 			case 2: // 관리자 로그인 : 대리, 사원, 인턴
-				pEmpLogin.manager.setText("[관리자 로그인]");
+				pEmpLogin.manager.setText("[일반관리자 로그인]");
 				pEmpLogin.loginImg.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\loginMain\\manager2.png"));
 				break;
 		}			

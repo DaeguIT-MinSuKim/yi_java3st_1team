@@ -400,7 +400,7 @@ public class EmpMyProfile extends AbsRegiPanel<Employee> implements ActionListen
 	//직원조회
 	private void actionPerformedEmpSearch(ActionEvent e) {
 		JFrame empSearch = new JFrame();
-		empSearch.setTitle("[관리자용] 직원조회");
+		empSearch.setTitle("[관리자용] 직원 조회");
 		empSearch.setSize(500, 670);
 		empSearch.setResizable(false);
 		empSearch.setLocation(1250,195); //위치조정
