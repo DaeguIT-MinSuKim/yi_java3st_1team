@@ -126,7 +126,7 @@ public class SupplierPurchaseDaoImpl implements SupplierPurchaseDao {
 
 	@Override
 	public int selectSupplierPurchasePno(Product sp) {
-		String sql = "select sp_pno from supplier_purchase sp left join product p on sp.sp_pno = p.p_no where p.p_name =?";
+		String sql = "select p_no from product where p_name =?";
 		try(Connection con = MySqlDataSource.getConnection();
 				PreparedStatement pstmt = con.prepareStatement(sql);){
 			pstmt.setString(1, sp.getpName());
@@ -143,7 +143,7 @@ public class SupplierPurchaseDaoImpl implements SupplierPurchaseDao {
 	}
 
 	private int getPno(ResultSet rs) throws SQLException {
-		int spPno = rs.getInt("sp_pno");
+		int spPno = rs.getInt("p_no");
 		return spPno;
 	}
 

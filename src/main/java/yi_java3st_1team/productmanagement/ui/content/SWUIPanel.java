@@ -28,6 +28,8 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 import yi_java3st_1team.clientmanagement.dto.Supplier;
 import yi_java3st_1team.clientmanagement.ui.service.SupplierUIService;
 import yi_java3st_1team.exception.InvalidCheckException;
+import yi_java3st_1team.ordermanagement.dto.InventoryQuantity;
+import yi_java3st_1team.ordermanagement.ui.service.IQUIService;
 import yi_java3st_1team.productmanagement.dto.Category;
 import yi_java3st_1team.productmanagement.dto.Product;
 import yi_java3st_1team.productmanagement.ui.list.SWListTblPanel;
@@ -57,10 +59,12 @@ public class SWUIPanel extends JPanel implements ActionListener, ItemListener {
 	private JComboBox cmbCate;
 	private String picPath;
 	private String selectItem;
+	private IQUIService iqService;
 
 	public SWUIPanel() {
 		service = new SWUIService();
 		serviceSupplier = new SupplierUIService();
+		iqService = new IQUIService();
 		initialize();
 	}
 	private void initialize() {
@@ -227,6 +231,7 @@ public class SWUIPanel extends JPanel implements ActionListener, ItemListener {
 			
 		}
 	};
+
 	
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == btnSerch) {
@@ -306,8 +311,12 @@ public class SWUIPanel extends JPanel implements ActionListener, ItemListener {
 				JOptionPane.showMessageDialog(null, "품목명, 공급가격, 판매가격, 최초재고수량, 최초등록일자는 필수입력사항입니다.");
 				return;
 			}else {
+				//최초 재고수량이 제고테이블에 insert 되어야함.
 				Product newProduct = pSWRPanel.getItem();
-				service.addProduct(newProduct);
+				service.addProduct(newProduct); 
+				int iqNo = iqService.lastIQ().getIqNo()+1;
+				InventoryQuantity newIQ = new InventoryQuantity(iqNo, newProduct, newProduct.getpQty());
+				iqService.addIQ(newIQ);
 				pSWTblPanel.addItem(newProduct);
 				pSWTblPanel.loadDate(service.showProductList());
 				pSWRPanel.clearTf();

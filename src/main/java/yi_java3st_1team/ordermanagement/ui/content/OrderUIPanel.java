@@ -21,6 +21,7 @@ import javax.swing.border.LineBorder;
 import yi_java3st_1team.exception.InvalidCheckException;
 import yi_java3st_1team.ordermanagement.dto.Order;
 import yi_java3st_1team.ordermanagement.ui.panel.ORegisterPanel;
+import yi_java3st_1team.ordermanagement.ui.service.IQUIService;
 import yi_java3st_1team.ordermanagement.ui.service.OrderUIService;
 import yi_java3st_1team.productmanagement.dto.Product;
 import yi_java3st_1team.productmanagement.ui.service.SWUIService;
@@ -50,10 +51,12 @@ public class OrderUIPanel extends JPanel implements ActionListener {
 	private SWUIService pService;
 	private Product proSummary;
 	private int pQty;
+	private IQUIService iqService;
 	
 	public OrderUIPanel() {
 		service = new OrderUIService();
 		pService = new SWUIService();
+		iqService = new IQUIService();
 		initialize();
 	}
 	private void initialize() {
@@ -219,7 +222,7 @@ public class OrderUIPanel extends JPanel implements ActionListener {
 					Order newOrder = pORPanel.getItem();
 					service.addOrder(newOrder);
 					int sub = pQty - Integer.parseInt(pORPanel.tfOQty.getText().trim());
-					pService.SubProductQty(proSummary, sub);
+					iqService.SubProductQty(proSummary, sub);
 					pORPanel.clearTf();
 					pORPanel.setNum(newOrder);
 					setPic(getClass().getClassLoader().getResource("mainLogo3.png").getPath());
@@ -291,8 +294,7 @@ public class OrderUIPanel extends JPanel implements ActionListener {
 		if(pORPanel.tfOPName.getText().equals("")) {
 			JOptionPane.showMessageDialog(null, "먼저 품목을 조회해주세요.");
 		}else {
-			// 재고테이블을 이용해서 조회해야함.
-			pQty = proSummary.getpQty();
+			pQty = iqService.showQty(proSummary);
 			if(pQty == 0 || pQty < 0) {
 				pORPanel.tfOQty.setEditable(false);
 				JOptionPane.showMessageDialog(null, "수량이 부족하여 주문할 수 없습니다.");
