@@ -119,7 +119,6 @@ public class EmployeeIdChaeck extends JPanel implements ActionListener {
 			tfSearch.setText("");
 		}
 		
-		
 	}
 //	protected void actionPerformedBtnAdd(ActionEvent e) {
 //		//regiPanel.tfId.setText(idOK);
