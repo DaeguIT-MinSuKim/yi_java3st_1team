@@ -10,6 +10,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
+import java.util.regex.Pattern;
 
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
@@ -22,10 +23,12 @@ import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
+import javax.swing.event.DocumentListener;
 
 import yi_java3st_1team.main.dto.Department;
 import yi_java3st_1team.main.dto.Employee;
 import yi_java3st_1team.main.ui.EmployeeMainUIPanel;
+import yi_java3st_1team.main.ui.listner.MyDocumentListener;
 import yi_java3st_1team.main.ui.service.EmployeeUiService;
 
 @SuppressWarnings("serial")
@@ -195,19 +198,25 @@ public class EmpMyProfile extends AbsRegiPanel<Employee> implements ActionListen
 		pInput.add(tfId);
 
 		passFd1 = new JPasswordField();
+		passFd1.getDocument().addDocumentListener(docListener);
 		pInput.add(passFd1);
 
-		JLabel lblPassText = new JLabel("<html>6자리 이상 이어야 하며 영문과 숫자를 반드시 포함해야 합니다<br></html>");
+		//영어 대소문자가 한개이상 포함, 숫자가 한개이상, 특수문자가 한개이상, 8개이상 10개 이하
+		JLabel lblPassText = new JLabel("<html>8~10자 이하, 영어 대소문자,숫자,특수문자 (_@!#$%&) 한개이상 포함</html>");
 		lblPassText.setHorizontalAlignment(SwingConstants.CENTER);
 		lblPassText.setForeground(Color.BLUE);
 		lblPassText.setFont(new Font("굴림", Font.PLAIN, 11));
 		pInput.add(lblPassText);
 
 		passFd2 = new JPasswordField();
-		passFd2.addActionListener(this);
+		//passFd2.addActionListener(this);
+		passFd2.getDocument().addDocumentListener(docListener);
 		pInput.add(passFd2);
 
 		lblPassword = new JLabel();
+		lblPassword.setHorizontalAlignment(SwingConstants.CENTER);
+		lblPassword.setFont(new Font("굴림", Font.BOLD, 12));
+		lblPassword.setForeground(Color.RED);
 		pInput.add(lblPassword);
 
 		tfMail = new JTextField();
@@ -250,6 +259,25 @@ public class EmpMyProfile extends AbsRegiPanel<Employee> implements ActionListen
 		btnCancle.setFont(new Font("맑은 고딕", Font.BOLD, 14));
 		pBtns.add(btnCancle);
 	}
+	
+	DocumentListener docListener = new MyDocumentListener() {
+		@Override
+		public void msg() {
+			String pw1 = new String(passFd1.getPassword());
+			String pw2 = new String(passFd2.getPassword());
+			
+			//영어 대소문자가 한개이상 포함, 숫자가 한개이상, 특수문자가 한개이상, 8개이상 10개 이하
+			String pwPattern =  "^(?=.*[A-Za-z])(?=.*[0-9])(?=.*[_@!#$%&])[A-Za-z[0-9]_@!#$%&]{8,10}$";
+			boolean result = Pattern.matches(pwPattern, pw1);
+			if (pw1.length() == 0 || pw2.length() == 0) {
+				lblPassword.setText("");
+			}else if (result == true && pw1.contentEquals(pw2)) {
+				lblPassword.setText("비밀번호 사용 가능");
+			}else {
+				lblPassword.setText("비밀번호 사용 불가");
+			}
+		}
+	};
 
 	//데이터 employee에 넣기
 	@Override
