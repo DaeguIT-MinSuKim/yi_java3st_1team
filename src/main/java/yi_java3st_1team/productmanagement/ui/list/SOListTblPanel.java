@@ -19,7 +19,12 @@ public class SOListTblPanel extends AbstractTblPanel<SupplierOrder> {
 
 	@Override
 	protected Object[] getColNames() {
-		return new String[] {"발주번호", "품목명", "공급회사명", "발주가격", "발주수량", "발주일자"};
+		return new String[] {"<html><span style='color:#000042'><b>발주번호</b></html>",
+							 "<html><span style='color:#000042'><b>품목명</b></html>",
+							 "<html><span style='color:#000042'><b>공급회사명</b></html>",
+							 "<html><span style='color:#000042'><b>발주가격</b></html>",
+							 "<html><span style='color:#000042'><b>발주수량</b></html>",
+							 "<html><span style='color:#000042'><b>발주일자</b></html>"};
 	}
 
 	@Override

@@ -21,7 +21,14 @@ public class SWListTblPanel extends AbstractTblPanel<Product> {
 
 	@Override
 	protected Object[] getColNames() {
-		return new String[] {"품목번호","분류명","품목명","공급가격","판매가격","공급회사명","최초재고수량","최초등록일자"};
+		return new String[] {"<html><span style='color:#000042'><b>품목번호</b></html>",
+				             "<html><span style='color:#000042'><b>분류명</b></html>",
+				             "<html><span style='color:#000042'><b>품목명</b></html>",
+				             "<html><span style='color:#000042'><b>공급가격</b></html>",
+				             "<html><span style='color:#000042'><b>판매가격</b></html>",
+				             "<html><span style='color:#000042'><b>공급회사명</b></html>",
+				             "<html><span style='color:#000042'><b>최초재고수량</b></html>",
+				             "<html><span style='color:#000042'><b>최초등록일자</b></html>"};
 	}
 
 	@Override

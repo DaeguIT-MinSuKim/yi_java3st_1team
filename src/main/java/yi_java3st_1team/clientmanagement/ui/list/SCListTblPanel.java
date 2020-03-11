@@ -19,7 +19,12 @@ public class SCListTblPanel extends AbstractTblPanel<Supplier> {
 
 	@Override
 	protected Object[] getColNames() {
-		return new String[] {"회사번호", "회사명", "사업자 등록번호", "주 소", "전화번호", "Fax 번호"};
+		return new String[] {"<html><span style='color:#000042'><b>회사번호</b></html>",
+							 "<html><span style='color:#000042'><b>회사명</b></html>",
+							 "<html><span style='color:#000042'><b>사업자 등록번호</b></html>",
+							 "<html><span style='color:#000042'><b>주 소</b></html>",
+							 "<html><span style='color:#000042'><b>전화번호</b></html>",
+							 "<html><span style='color:#000042'><b>Fax 번호</b></html>"};
 	}
 
 	@Override
