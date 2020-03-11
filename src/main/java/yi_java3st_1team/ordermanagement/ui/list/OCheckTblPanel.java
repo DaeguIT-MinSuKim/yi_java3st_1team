@@ -1,12 +1,15 @@
 package yi_java3st_1team.ordermanagement.ui.list;
 
 import javax.swing.SwingConstants;
+import javax.swing.JCheckBox;
 
 import yi_java3st_1team.clientmanagement.ui.list.AbstractTblPanel;
 import yi_java3st_1team.ordermanagement.dto.Order;
 
 @SuppressWarnings("serial")
 public class OCheckTblPanel extends AbstractTblPanel<Order>{
+	public OCheckTblPanel() {
+	}
 
 	@Override
 	protected void setTblWidthAlign() {
@@ -45,15 +48,16 @@ public class OCheckTblPanel extends AbstractTblPanel<Order>{
 		
 		/** 입금여부 **/
 		int oDps = item.getoDps(); //0 or 1
-		if(oDps == 0) {
-			
+		JCheckBox box = new JCheckBox();
+		if(oDps == 1) { //입금 O
+			box.setSelected(true);
 		}else {
-			
+			box.setSelected(false);
 		}
 		/** 주문완료 **/
 		int oOk = item.getoOk(); //0 or 1
 		String YN;
-		if(oOk == 1) {
+		if(oOk == 1) { //입금 O
 			YN = "<html><b><span style='color:blue'>Y</span></b></html>";
 		}else {
 			YN = "<html><b><span style='color:red'>N</span></b></html>";
@@ -72,7 +76,8 @@ public class OCheckTblPanel extends AbstractTblPanel<Order>{
 				pName,
 				oQty,
 				oMemo,
-				item.getoDps(),//입금여부
+				//item.getoDps(),//입금여부
+				box,
 				String.format("%s", YN),
 				emp
 				

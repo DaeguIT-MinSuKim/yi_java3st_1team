@@ -4,25 +4,24 @@ import javax.swing.SwingConstants;
 
 import yi_java3st_1team.clientmanagement.ui.list.AbstractTblPanel;
 import yi_java3st_1team.main.dto.Employee;
-import yi_java3st_1team.main.ui.service.EmployeeUiService;
 
 @SuppressWarnings("serial")
 public class EmployeeTblPanel extends AbstractTblPanel<Employee> {
-	
-	EmployeeUiService empService = new EmployeeUiService();
-	
-	public EmployeeTblPanel() {
-	}
 
 	@Override
 	protected void setTblWidthAlign() {
-		tableSetWidth(80, 140, 80, 280, 110, 80);
+		tableSetWidth(70,70,80,50,100);
 		tableCellAlign(SwingConstants.CENTER, 0, 1, 2, 3, 4, 5);		
 	}
 
 	@Override
 	protected Object[] getColNames() {
-		return new String[] {"사원번호", "사원명", "직책", "관리자 구분", "ID", "E-MAIL"};
+		return new String[] {"<html><span style='color:#000042'><b>사원번호</b></span></html>",
+				             "<html><span style='color:#000042'><b>사원명</b></span></html>",
+				             "<html><span style='color:#000042'><b>직책</b></span></html>",
+				             "<html><span style='color:#000042'><b>권한</b></span></html>",
+				             "<html><span style='color:#000042'><b>ID</b></span></html>",
+				             "<html><span style='color:#000042'><b>E-MAIL</b></span></html>"};
 	}
 
 	@Override

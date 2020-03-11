@@ -18,16 +18,21 @@ import javax.swing.DefaultComboBoxModel;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.table.DefaultTableModel;
+
+import yi_java3st_1team.main.ui.service.EmployeeUiService;
+
 import javax.swing.JScrollPane;
 
 @SuppressWarnings("serial")
 public class EmployeeALLInfo extends JPanel implements ActionListener {
 	private JButton btnSearch;
+	private JPanel pList;
+	private EmployeeTblPanel pEmptbl;
 
-	/**
-	 * Create the panel.
-	 */
+	private EmployeeUiService empService;
+	
 	public EmployeeALLInfo() {
+		empService = new EmployeeUiService();
 		initialize();
 	}
 		private void initialize() {
@@ -69,11 +74,15 @@ public class EmployeeALLInfo extends JPanel implements ActionListener {
 			btnSearch.setFont(new Font("맑은 고딕", Font.BOLD, 11));
 			pSearch.add(btnSearch);
 			
-			EmployeeTblPanel pList = new EmployeeTblPanel();
+			pList = new JPanel();
 			pList.setBackground(SystemColor.inactiveCaptionBorder);
 			pList.setPreferredSize(new Dimension(10, 480));
 			add(pList, BorderLayout.SOUTH);
 			pList.setLayout(new BorderLayout(0, 0));
+			
+			pEmptbl = new EmployeeTblPanel();
+			pEmptbl.loadDate(empService.showEmployeeList());
+			pList.add(pEmptbl, BorderLayout.CENTER);
 		}
 
 	public void actionPerformed(ActionEvent e) {

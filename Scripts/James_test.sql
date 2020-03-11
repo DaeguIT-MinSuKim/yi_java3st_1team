@@ -83,4 +83,7 @@ select cd.cd_no, c.c_name, p.p_name, o.o_qty, cd.cd_date
 select o_no, o_date, c.c_name, p.p_name, o_qty, o_memo, o_dps, o_ok, o_eno, e.e_name, e.e_no from `order` o 
 left join client c on o.o_cno = c.c_no left join product p on o.o_pno = p.p_no 
 left join employee e on o.o_eno = e.e_no;
+
+select e.e_no, e.e_name,  e.e_title, e.e_dept, d.d_no, d.d_name, d.d_floor, e.e_manager, e.e_id, e.e_pw, e.e_mail
+from employee e left join department d on e.e_dept  = d.d_no;
 		
