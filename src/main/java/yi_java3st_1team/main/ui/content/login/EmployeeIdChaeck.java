@@ -22,12 +22,16 @@ import yi_java3st_1team.main.ui.service.EmployeeUiService;
 public class EmployeeIdChaeck extends JPanel implements ActionListener {
 	private JTextField tfSearch;
 	private JButton btnSearch;
-	private JButton btnAdd;
+	public JButton btnAdd;
 	private JLabel lblIdEquals;
 	
 	private EmployeeUiService empService;
 	
 	private EmpRegiPanel regiPanel;
+	public String idChk;
+	public String idOk;
+	
+	
 	
 	public EmployeeIdChaeck() {
 		empService = new EmployeeUiService();
@@ -91,9 +95,9 @@ public class EmployeeIdChaeck extends JPanel implements ActionListener {
 		pSearch.add(btnSearch);
 	}
 	public void actionPerformed(ActionEvent e) {
-		if (e.getSource() == btnAdd) {
-			actionPerformedBtnAdd(e);
-		}
+//		if (e.getSource() == btnAdd) {
+//			actionPerformedBtnAdd(e);
+//		}
 		if (e.getSource() == btnSearch) {
 			actionPerformedBtnSearch(e);
 		}
@@ -101,22 +105,23 @@ public class EmployeeIdChaeck extends JPanel implements ActionListener {
 	protected void actionPerformedBtnSearch(ActionEvent e) {
 		/*** (ID)정규표현식 : 5자이상 12자이하, 대소문자,숫자,_ 가능 ***/
 		String idPattern = "^[a-zA-Z0-9_]{5,11}$";
-		/*** 검색할 ID ***/
-		String idChk = tfSearch.getText();
+		idChk = tfSearch.getText();
 		/***  정규표현식 검사 ***/
 		boolean result = Pattern.matches(idPattern, idChk);
 		Employee newId = new Employee(idChk);
 		Employee searchId = empService.Idcheck(newId);
 		if(result==true && searchId==null) {
 			lblIdEquals.setText("아이디 사용 가능");
-			//regiPanel.tfId.getText();
+			tfSearch.setText(idChk+1);
+			idOk = tfSearch.getText();
 		}else {
 			lblIdEquals.setText("아이디 사용 불가");
+			tfSearch.setText("");
 		}
 		
 		
 	}
-	protected void actionPerformedBtnAdd(ActionEvent e) {
-		
-	}
+//	protected void actionPerformedBtnAdd(ActionEvent e) {
+//		//regiPanel.tfId.setText(idOK);
+//	}
 }
