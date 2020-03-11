@@ -20,7 +20,6 @@ import javax.swing.border.EmptyBorder;
 
 import yi_java3st_1team.main.ui.content.LogoImg01Panel;
 import yi_java3st_1team.main.ui.content.LogoImg03Panel;
-import yi_java3st_1team.main.ui.content.MainBtns03Panel;
 import yi_java3st_1team.main.ui.content.login.ClientRegiPanel;
 import yi_java3st_1team.main.ui.content.login.LoginPanel;
 import yi_java3st_1team.main.ui.content.login.SearchPanel;
@@ -32,6 +31,11 @@ public class ClientMainUIPanel extends JPanel implements ActionListener {
 	private JButton btnSearch;
 	private JFrame cliFrame;
 	private JFrame searchFrame;
+	private JPanel pBtns;
+	private JPanel pBtns01;
+	private JPanel pBtns02;
+	private JButton btn01;
+	private JButton btn02;
 	
 	public ClientMainUIPanel() {
 
@@ -103,12 +107,57 @@ public class ClientMainUIPanel extends JPanel implements ActionListener {
 		label.setBackground(SystemColor.inactiveCaptionBorder);
 		pImg02.add(label, BorderLayout.CENTER);
 		
-		MainBtns03Panel pBtns = new MainBtns03Panel();
+		pBtns = new JPanel();
+		pBtns.setBackground(SystemColor.inactiveCaption);
 		pSbot.add(pBtns, BorderLayout.CENTER);
 		pBtns.setLayout(new GridLayout(0, 1, 0, 10));
+		
+		pBtns01 = new JPanel();
+		pBtns01.setBackground(SystemColor.inactiveCaption);
+		pBtns.add(pBtns01);
+		pBtns01.setLayout(new BorderLayout(10, 0));
+		
+		btn01 = new JButton("");
+		btn01.addActionListener(this);
+		btn01.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\loginMain\\그림8.png"));
+		btn01.setPreferredSize(new Dimension(560, 23));
+		btn01.setFocusable(false);
+		pBtns01.add(btn01, BorderLayout.WEST);
+		
+		JLabel lblImg01 = new JLabel("");
+		lblImg01.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\loginMain\\subMainImg1.png"));
+		lblImg01.setPreferredSize(new Dimension(560, 15));
+		lblImg01.setOpaque(true);
+		lblImg01.setBackground(new Color(240, 255, 255));
+		pBtns01.add(lblImg01, BorderLayout.EAST);
+		
+		pBtns02 = new JPanel();
+		pBtns02.setBackground(SystemColor.inactiveCaption);
+		pBtns.add(pBtns02);
+		pBtns02.setLayout(new BorderLayout(10, 10));
+		
+		JLabel lblImg02 = new JLabel("");
+		lblImg02.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\loginMain\\subMainImg2.png"));
+		lblImg02.setPreferredSize(new Dimension(560, 15));
+		lblImg02.setOpaque(true);
+		lblImg02.setBackground(new Color(240, 255, 255));
+		pBtns02.add(lblImg02, BorderLayout.WEST);
+		
+		btn02 = new JButton("");
+		btn02.addActionListener(this);
+		btn02.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\loginMain\\그림9.png"));
+		btn02.setPreferredSize(new Dimension(560, 23));
+		btn02.setFocusable(false);
+		pBtns02.add(btn02, BorderLayout.EAST);
 	}
 
 	public void actionPerformed(ActionEvent e) {
+		if (e.getSource() == btn02) {
+			actionPerformedBtn02(e);
+		}
+		if (e.getSource() == btn01) {
+			actionPerformedBtn01(e);
+		}
 		if (e.getSource() == btnSearch) {
 			actionPerformedBtnSearch(e);
 		}
@@ -119,8 +168,12 @@ public class ClientMainUIPanel extends JPanel implements ActionListener {
 			actionPerformedBtnLogin(e);
 		}
 	}
+	//로그인
 	protected void actionPerformedBtnLogin(ActionEvent e) {
+		
 	}
+	
+	//회원가입
 	protected void actionPerformedBtnRegi(ActionEvent e) {
 		cliFrame = new JFrame();
 		cliFrame.setTitle("[고객용] 회원가입");
@@ -131,6 +184,8 @@ public class ClientMainUIPanel extends JPanel implements ActionListener {
 		cliFrame.getContentPane().add(empr);
 		cliFrame.setVisible(true);
 	}
+	
+	//찾기
 	protected void actionPerformedBtnSearch(ActionEvent e) {
 		searchFrame = new JFrame();
 		searchFrame.setTitle("아이디 & 비밀번호 찾기");
@@ -140,5 +195,9 @@ public class ClientMainUIPanel extends JPanel implements ActionListener {
 		SearchPanel sp = new SearchPanel();
 		searchFrame.getContentPane().add(sp);
 		searchFrame.setVisible(true);
+	}
+	protected void actionPerformedBtn01(ActionEvent e) {
+	}
+	protected void actionPerformedBtn02(ActionEvent e) {
 	}
 }
