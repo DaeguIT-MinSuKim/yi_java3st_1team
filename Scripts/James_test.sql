@@ -52,3 +52,35 @@ select e.e_no, e.e_name, e.e_title, e.e_dept, d.d_no, d.d_name, d.d_floor, e.e_m
 select * from employee e ;
 
 select e_id from employee where e_id = "hceo1004";
+
+show tables;
+-- 주문번호, 주문일자, 고객상호명, 품목명, 주문수량, 주문요구사항, 입금여부, 주문완료, 주문담당자
+select * from `order` o ; -- 주문번호, 주문일자, 주문수량, 주문요구사항, 입금여부, 주문완료, 주문담당자 
+select * from client c ; -- 고객상호명 o_cno
+select * from product p ; -- 품목명 o_pno
+select * from employee e ; -- 주문담당자 
+
+-- 주문확인 & 처리
+select o.o_no, o.o_date, c.c_name, p.p_name, o.o_qty, o.o_memo, o.o_dps, o.o_ok, e.e_name
+		from `order` o
+		 left join client c
+		 on o.o_cno = c.c_no
+		 left join product p
+		 on o.o_pno = p.p_no
+		 left join employee e
+		 on o.o_eno = e.e_no;
+		 
+-- 출고 이력 관리 : 출고번호, 고객상호명(client), 품목명(product), 출고수량(order), 출고일자
+select cd.cd_no, c.c_name, p.p_name, o.o_qty, cd.cd_date
+		from client_delivery cd
+		left join `order` o
+		on cd.cd_sno = o.o_no
+		left join product p
+		on o.o_pno = p.p_no
+		left join client c
+		on o.o_cno = c.c_no;
+	
+select o_no, o_date, c.c_name, p.p_name, o_qty, o_memo, o_dps, o_ok, o_eno, e.e_name, e.e_no from `order` o 
+left join client c on o.o_cno = c.c_no left join product p on o.o_pno = p.p_no 
+left join employee e on o.o_eno = e.e_no;
+		

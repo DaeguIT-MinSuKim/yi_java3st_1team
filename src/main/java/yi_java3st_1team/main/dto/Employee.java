@@ -128,8 +128,9 @@ public class Employee {
 //		return "Employee [empNo=" + empNo + ", empName=" + empName + ", dNo=" + dNo + ", empTitle=" + empTitle
 //				+ ", empManager=" + empManager + ", empId=" + empId + ", empPass=" + empPass + ", empMail=" + empMail
 //				+ "]";
-		return String.format("%s %s %s %s %s %s %s %s",
-								empNo, empName, dNo.getDeptNo(), empTitle, empManager, empId, empPass, empMail);
+//		return String.format("%s(%d) %s %s %s %s %s %s",
+//								empName, empNo, dNo.getDeptNo(), empTitle, empManager, empId, empPass, empMail);
+		return String.format("%s(%d)", empName, empNo);
 	}
 
 }

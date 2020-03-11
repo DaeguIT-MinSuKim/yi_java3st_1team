@@ -2,18 +2,21 @@ package yi_java3st_1team.ordermanagement.ui.panel;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Rectangle;
 import java.awt.SystemColor;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JMenuItem;
 import javax.swing.JPanel;
-import javax.swing.JSpinner;
-import javax.swing.SpinnerNumberModel;
+import javax.swing.JPopupMenu;
 import javax.swing.SwingConstants;
+
+import yi_java3st_1team.ordermanagement.ui.list.OCheckTblPanel;
+import yi_java3st_1team.ordermanagement.ui.service.OrderUIService;
 
 @SuppressWarnings("serial")
 public class OCheckPanel extends JPanel {
@@ -21,9 +24,12 @@ public class OCheckPanel extends JPanel {
 	private JLabel lblO;
 	private JPanel pList;
 	public JButton mainBtn;
+	private OCheckTblPanel pOCheckList;
+	
+	private OrderUIService odService;
 	
 	public OCheckPanel() {
-
+		odService = new OrderUIService();
 		initialize();
 	}
 	private void initialize() {
@@ -48,6 +54,12 @@ public class OCheckPanel extends JPanel {
 		panel.add(pList);
 		pList.setLayout(new BorderLayout(0, 0));
 		
+		pOCheckList = new OCheckTblPanel();
+		pOCheckList.loadDate(odService.showOrderList());
+		pOCheckList.setPopupMenu(createPopupMenu());
+		pList.add(pOCheckList,BorderLayout.CENTER);
+		
+		
 		JButton btnNewButton = new JButton("확인");
 		btnNewButton.setBackground(new Color(135, 206, 250));
 		btnNewButton.setForeground(Color.WHITE);
@@ -63,4 +75,33 @@ public class OCheckPanel extends JPanel {
 		panel.add(mainBtn);
 		
 	}
+	private JPopupMenu createPopupMenu() {
+		JPopupMenu popMenu = new JPopupMenu();
+		
+		JMenuItem updateItem = new JMenuItem("수정");
+		updateItem.addActionListener(myPopupMenuListener);
+		popMenu.add(updateItem);
+		
+		JMenuItem deleteItem = new JMenuItem("주문취소");
+		deleteItem.addActionListener(myPopupMenuListener);
+		popMenu.add(deleteItem);
+		return popMenu;
+	}
+	
+	//팝업메뉴 기능
+	ActionListener myPopupMenuListener = new ActionListener() {
+		
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			if(e.getActionCommand().equals("수정")) {
+
+			}
+			
+			
+			if(e.getActionCommand().equals("주문취소")) {
+			}			
+			
+			
+		}
+	};
 }

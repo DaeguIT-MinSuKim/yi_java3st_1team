@@ -50,7 +50,7 @@ public class OrderDaoImpl implements OrderDao {
 
 	@Override
 	public List<Order> selectOrderByAll() {
-		String sql = "select o_no, o_date, c.c_name, p.p_name, o_qty, o_memo, o_dps, o_ok, e.e_name, e.e_no from `order` o "
+		String sql = "select o_no, o_date, c.c_name, p.p_name, o_qty, o_memo, o_dps, o_ok, o_eno, e.e_name, e.e_no from `order` o "
 				   + "left join client c on o.o_cno = c.c_no left join product p on o.o_pno = p.p_no "
 				   + "left join employee e on o.o_eno = e.e_no";
 		try(Connection con = MySqlDataSource.getConnection();
