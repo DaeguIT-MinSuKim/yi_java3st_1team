@@ -85,6 +85,38 @@ delimiter ;
 call IQ('아르미 Pro');
 
 
+-- 재고현황 조회_ 재고수량별 조회
+-- 재고부족
+select	p.p_name as 품목명,
+		s.s_name as 공급회사명,
+		iq.iq_qty as 재고수량,
+		p.p_price as 판매가격,
+		p.p_cost as 공급가격,
+		'재고부족' as 재고평가
+  from product p natural join supplier s natural join inventory_quantity iq
+ where s.s_no = p.p_sno and p.p_no = iq.iq_pno and iq.iq_qty < '50';
+
+-- 적정재고
+select	p.p_name as 품목명,
+		s.s_name as 공급회사명,
+		iq.iq_qty as 재고수량,
+		p.p_price as 판매가격,
+		p.p_cost as 공급가격,
+		'적정재고' as 재고평가
+  from product p natural join supplier s natural join inventory_quantity iq
+ where s.s_no = p.p_sno and p.p_no = iq.iq_pno and '50' <= iq.iq_qty and iq.iq_qty < '150';
+
+-- 재고과다
+select	p.p_name as 품목명,
+		s.s_name as 공급회사명,
+		iq.iq_qty as 재고수량,
+		p.p_price as 판매가격,
+		p.p_cost as 공급가격,
+		'재고과다' as 재고평가
+  from product p natural join supplier s natural join inventory_quantity iq
+ where s.s_no = p.p_sno and p.p_no = iq.iq_pno and '150' <= iq.iq_qty;
+
+
 -- 주문현황 조회
 drop procedure if exists ordercheck;
 delimiter $$
