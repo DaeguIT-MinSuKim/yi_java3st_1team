@@ -396,6 +396,7 @@ public class EmpRegiPanel extends AbsRegiPanel<Employee> implements ActionListen
 	protected void actionPerformedBtnCancle(ActionEvent e) {
 		clearTf();
 	}
+	
 
 	// 중복확인 : 아이디
 	protected void actionPerformedDoubleCheck2(ActionEvent e) {

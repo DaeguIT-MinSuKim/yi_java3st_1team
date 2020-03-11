@@ -196,7 +196,7 @@ public class EmpMyProfile extends AbsRegiPanel<Employee> implements ActionListen
 		tfId = new JTextField();
 		tfId.setFont(new Font("굴림", Font.BOLD, 12));
 		tfId.setColumns(10);
-		tfId.setEditable(false);
+		//tfId.setEditable(false);
 		pInput.add(tfId);
 
 		passFd1 = new JPasswordField();
@@ -280,6 +280,19 @@ public class EmpMyProfile extends AbsRegiPanel<Employee> implements ActionListen
 			}
 		}
 	};
+	
+	public void itemStateChanged(ItemEvent e) {
+		if(e.getSource() == cmbDept) {
+			cmbDeptItemStateChanged(e);
+		}
+	}
+	
+	public String cmbDeptItemStateChanged(ItemEvent e) {
+		if(e.getStateChange() == ItemEvent.SELECTED) {
+			selectItem = (String) cmbDept.getSelectedItem();
+		}
+		return null;
+	}
 
 	//데이터 employee에 넣기
 	@Override
@@ -399,8 +412,8 @@ public class EmpMyProfile extends AbsRegiPanel<Employee> implements ActionListen
 	
 	// 수정버튼
 	protected void actionPerformedBtnAdd(ActionEvent e) {
-//		Employee newEmp = getItem();
-//		empService.modifyEmployee(newEmp);
+		Employee newEmp = getItem();
+		empService.modifyEmployee(newEmp);
 	}
 	
 	//취소
@@ -408,11 +421,6 @@ public class EmpMyProfile extends AbsRegiPanel<Employee> implements ActionListen
 		clearTf();
 	}
 
-	@Override
-	public void itemStateChanged(ItemEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
 
 
 
