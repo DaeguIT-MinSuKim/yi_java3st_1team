@@ -10,6 +10,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
+import java.util.regex.Pattern;
 
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
@@ -22,10 +23,12 @@ import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
+import javax.swing.event.DocumentListener;
 
 import yi_java3st_1team.main.dto.Department;
 import yi_java3st_1team.main.dto.Employee;
 import yi_java3st_1team.main.ui.EmployeeMainUIPanel;
+import yi_java3st_1team.main.ui.listner.MyDocumentListener;
 import yi_java3st_1team.main.ui.service.EmployeeUiService;
 
 @SuppressWarnings("serial")
@@ -49,6 +52,8 @@ public class EmpMyProfile extends AbsRegiPanel<Employee> implements ActionListen
 	
 	private EmployeeUiService empService;
 	private EmployeeMainUIPanel empMUP;
+	
+	private String selectItem;
 
 	
 
@@ -191,23 +196,29 @@ public class EmpMyProfile extends AbsRegiPanel<Employee> implements ActionListen
 		tfId = new JTextField();
 		tfId.setFont(new Font("굴림", Font.BOLD, 12));
 		tfId.setColumns(10);
-		tfId.setEditable(false);
+		//tfId.setEditable(false);
 		pInput.add(tfId);
 
 		passFd1 = new JPasswordField();
+		passFd1.getDocument().addDocumentListener(docListener);
 		pInput.add(passFd1);
 
-		JLabel lblPassText = new JLabel("<html>6자리 이상 이어야 하며 영문과 숫자를 반드시 포함해야 합니다<br></html>");
+		//영어 대소문자가 한개이상 포함, 숫자가 한개이상, 특수문자가 한개이상, 8개이상 10개 이하
+		JLabel lblPassText = new JLabel("<html>8~10자 이하, 영어 대소문자,숫자,특수문자 (_@!#$%&) 한개이상 포함</html>");
 		lblPassText.setHorizontalAlignment(SwingConstants.CENTER);
 		lblPassText.setForeground(Color.BLUE);
 		lblPassText.setFont(new Font("굴림", Font.PLAIN, 11));
 		pInput.add(lblPassText);
 
 		passFd2 = new JPasswordField();
-		passFd2.addActionListener(this);
+		//passFd2.addActionListener(this);
+		passFd2.getDocument().addDocumentListener(docListener);
 		pInput.add(passFd2);
 
 		lblPassword = new JLabel();
+		lblPassword.setHorizontalAlignment(SwingConstants.CENTER);
+		lblPassword.setFont(new Font("굴림", Font.BOLD, 12));
+		lblPassword.setForeground(Color.RED);
 		pInput.add(lblPassword);
 
 		tfMail = new JTextField();
@@ -250,13 +261,79 @@ public class EmpMyProfile extends AbsRegiPanel<Employee> implements ActionListen
 		btnCancle.setFont(new Font("맑은 고딕", Font.BOLD, 14));
 		pBtns.add(btnCancle);
 	}
+	
+	DocumentListener docListener = new MyDocumentListener() {
+		@Override
+		public void msg() {
+			String pw1 = new String(passFd1.getPassword());
+			String pw2 = new String(passFd2.getPassword());
+			
+			//영어 대소문자가 한개이상 포함, 숫자가 한개이상, 특수문자가 한개이상, 8개이상 10개 이하
+			String pwPattern =  "^(?=.*[A-Za-z])(?=.*[0-9])(?=.*[_@!#$%&])[A-Za-z[0-9]_@!#$%&]{8,10}$";
+			boolean result = Pattern.matches(pwPattern, pw1);
+			if (pw1.length() == 0 || pw2.length() == 0) {
+				lblPassword.setText("");
+			}else if (result == true && pw1.contentEquals(pw2)) {
+				lblPassword.setText("비밀번호 사용 가능");
+			}else {
+				lblPassword.setText("비밀번호 사용 불가");
+			}
+		}
+	};
+	
+	public void itemStateChanged(ItemEvent e) {
+		if(e.getSource() == cmbDept) {
+			cmbDeptItemStateChanged(e);
+		}
+	}
+	
+	public String cmbDeptItemStateChanged(ItemEvent e) {
+		if(e.getStateChange() == ItemEvent.SELECTED) {
+			selectItem = (String) cmbDept.getSelectedItem();
+		}
+		return null;
+	}
 
 	//데이터 employee에 넣기
 	@Override
 	public Employee getItem() {
-		int empNo = Integer.parseInt(tfNo.getText().substring(4)); // EE0016 -> 16
-		String empName = tfName.getText().trim();
-		Department dNo = (Department) cmbDept.getSelectedItem();
+		int empNo = Integer.parseInt(tfNo.getText().substring(4)); // EE0081 -> 81
+		String empName = tfName.getText().trim(); // 정아름
+		Department dNo = null;
+		switch(selectItem) {
+		case "기획총무부":
+			Department d1 = new Department(1,"기획총무부");
+			dNo = new Department(d1.getDeptNo());
+			break;
+		case "경리회계부":
+			Department d2 = new Department(2,"경리회계부");
+			dNo = new Department(d2.getDeptNo());
+			break;
+		case "상품관리부":
+			Department d3 = new Department(3,"상품관리부");
+			dNo = new Department(d3.getDeptNo());
+			break;
+		case "영업관리 1부":
+			Department d4 = new Department(4,"영업관리 1부");
+			dNo = new Department(d4.getDeptNo());
+			break;
+		case "영업관리 2부":
+			Department d5 = new Department(5,"영업관리 2부");
+			dNo = new Department(d5.getDeptNo());
+			break;
+		case "영업관리 3부":
+			Department d6 = new Department(6,"영업관리 3부");
+			dNo = new Department(d6.getDeptNo());
+			break;
+		case "쇼핑몰사업부":
+			Department d7 = new Department(7,"쇼핑몰사업부");
+			dNo = new Department(d7.getDeptNo());
+			break;
+		case "해외사업부":
+			Department d8 = new Department(8,"해외사업부");
+			dNo = new Department(d8.getDeptNo());
+			break;			
+		}
 		String empTitle = (String) cmbTitle.getSelectedItem();
 		int empManager = rBtnManager1.isSelected()?1:2;
 		String empId = tfId.getText().trim();
@@ -333,7 +410,7 @@ public class EmpMyProfile extends AbsRegiPanel<Employee> implements ActionListen
 		
 	}
 	
-	// 등록버튼
+	// 수정버튼
 	protected void actionPerformedBtnAdd(ActionEvent e) {
 		Employee newEmp = getItem();
 		empService.modifyEmployee(newEmp);
@@ -344,11 +421,6 @@ public class EmpMyProfile extends AbsRegiPanel<Employee> implements ActionListen
 		clearTf();
 	}
 
-	@Override
-	public void itemStateChanged(ItemEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
 
 
 
