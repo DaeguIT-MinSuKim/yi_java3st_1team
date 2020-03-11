@@ -334,12 +334,11 @@ public class EmpRegiPanel extends AbsRegiPanel<Employee> implements ActionListen
 			dNo = new Department(d8.getDeptNo());
 			break;			
 		}
-		//Department dNo = new Department(dept.getDeptNo());
 		String empTitle = (String) cmbTitle.getSelectedItem();
-		int empManager = rBtnManager1.isSelected()?1:2; // 1 or 2
-		String empId = tfId.getText().trim(); //정규식
-		String empPass = new String(passFd1.getPassword());//정규식
-		String empMail = tfMail.getText().trim();//정규식
+		int empManager = rBtnManager1.isSelected()?1:2;
+		String empId = tfId.getText().trim();
+		String empPass = new String(passFd1.getPassword());
+		String empMail = tfMail.getText().trim();
 
 		return new Employee(empNo, empName, dNo , empTitle, empManager, empId, empPass, empMail);
 	}

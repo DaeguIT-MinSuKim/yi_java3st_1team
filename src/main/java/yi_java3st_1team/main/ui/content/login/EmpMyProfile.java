@@ -52,6 +52,8 @@ public class EmpMyProfile extends AbsRegiPanel<Employee> implements ActionListen
 	
 	private EmployeeUiService empService;
 	private EmployeeMainUIPanel empMUP;
+	
+	private String selectItem;
 
 	
 
@@ -282,9 +284,43 @@ public class EmpMyProfile extends AbsRegiPanel<Employee> implements ActionListen
 	//데이터 employee에 넣기
 	@Override
 	public Employee getItem() {
-		int empNo = Integer.parseInt(tfNo.getText().substring(4)); // EE0016 -> 16
-		String empName = tfName.getText().trim();
-		Department dNo = (Department) cmbDept.getSelectedItem();
+		int empNo = Integer.parseInt(tfNo.getText().substring(4)); // EE0081 -> 81
+		String empName = tfName.getText().trim(); // 정아름
+		Department dNo = null;
+		switch(selectItem) {
+		case "기획총무부":
+			Department d1 = new Department(1,"기획총무부");
+			dNo = new Department(d1.getDeptNo());
+			break;
+		case "경리회계부":
+			Department d2 = new Department(2,"경리회계부");
+			dNo = new Department(d2.getDeptNo());
+			break;
+		case "상품관리부":
+			Department d3 = new Department(3,"상품관리부");
+			dNo = new Department(d3.getDeptNo());
+			break;
+		case "영업관리 1부":
+			Department d4 = new Department(4,"영업관리 1부");
+			dNo = new Department(d4.getDeptNo());
+			break;
+		case "영업관리 2부":
+			Department d5 = new Department(5,"영업관리 2부");
+			dNo = new Department(d5.getDeptNo());
+			break;
+		case "영업관리 3부":
+			Department d6 = new Department(6,"영업관리 3부");
+			dNo = new Department(d6.getDeptNo());
+			break;
+		case "쇼핑몰사업부":
+			Department d7 = new Department(7,"쇼핑몰사업부");
+			dNo = new Department(d7.getDeptNo());
+			break;
+		case "해외사업부":
+			Department d8 = new Department(8,"해외사업부");
+			dNo = new Department(d8.getDeptNo());
+			break;			
+		}
 		String empTitle = (String) cmbTitle.getSelectedItem();
 		int empManager = rBtnManager1.isSelected()?1:2;
 		String empId = tfId.getText().trim();
@@ -361,10 +397,10 @@ public class EmpMyProfile extends AbsRegiPanel<Employee> implements ActionListen
 		
 	}
 	
-	// 등록버튼
+	// 수정버튼
 	protected void actionPerformedBtnAdd(ActionEvent e) {
-		Employee newEmp = getItem();
-		empService.modifyEmployee(newEmp);
+//		Employee newEmp = getItem();
+//		empService.modifyEmployee(newEmp);
 	}
 	
 	//취소
