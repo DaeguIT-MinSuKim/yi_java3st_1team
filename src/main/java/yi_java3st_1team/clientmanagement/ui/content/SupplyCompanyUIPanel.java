@@ -346,6 +346,7 @@ public class SupplyCompanyUIPanel extends JPanel implements ActionListener, Item
 			ZipCodePanel zc = new ZipCodePanel();
 			zipcodeFrame.getContentPane().add(zc);
 			zipcodeFrame.setVisible(true);
+			
 		}else {
 			if(zipcodeFrame.isVisible()) {
 				return;

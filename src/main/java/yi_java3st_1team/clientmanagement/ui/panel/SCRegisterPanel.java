@@ -10,6 +10,7 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
 import yi_java3st_1team.clientmanagement.dto.Supplier;
+import yi_java3st_1team.clientmanagement.dto.ZipCode;
 import yi_java3st_1team.exception.InvalidCheckException;
 
 @SuppressWarnings("serial")
@@ -24,13 +25,14 @@ public class SCRegisterPanel extends AbsItemPanel<Supplier> {
 	private JTextField tfSCNo;
 	private JTextField tfSCName;
 	private JTextField tfSCBln;
-	private JTextField tfSCAddress;
+	public JTextField tfSCAddress;
 	private JTextField tfSCTel;
 	private JTextField tfSCFax;
 	public SCRegisterPanel() {
 
 		initialize();
 	}
+
 	private void initialize() {
 		setBounds(new Rectangle(0, 0, 635, 700));
 		setLayout(null);
@@ -116,6 +118,7 @@ public class SCRegisterPanel extends AbsItemPanel<Supplier> {
 		panel.add(tfSCFax);
 		
 	}
+	
 	public void setNum(Supplier item) {
 		tfSCNo.setText(String.format("S%04d", item.getsNo()+1));
 	}
@@ -140,6 +143,11 @@ public class SCRegisterPanel extends AbsItemPanel<Supplier> {
 		tfSCFax.setText(item.getsFax());
 		
 	}
+	
+	public void setAddr(ZipCode item) {
+		tfSCAddress.setText(item.getAddress());
+	}
+	
 	@Override
 	public void clearTf() {
 		tfSCNo.setText("");

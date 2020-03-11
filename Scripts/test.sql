@@ -118,3 +118,7 @@ select p.p_name , s.s_name , iq.iq_qty , p.p_price , p.p_cost from inventory_qua
 select p_no from supplier_purchase sp left join product p on sp.sp_pno = p.p_no where p.p_name ='재승';
 
 select * from supplier_purchase sp ;
+
+select c_salesman from client where c_name=?
+
+select * from discount_rate dr ;

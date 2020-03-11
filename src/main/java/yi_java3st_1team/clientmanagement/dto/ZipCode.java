@@ -7,9 +7,14 @@ public class ZipCode {
 	private String zDoro;
 	private int zNum1;
 	private int zNum2;
+	private String address;
 
 	public ZipCode() {
 		// TODO Auto-generated constructor stub
+	}
+
+	public ZipCode(String address) {
+		this.address = address;
 	}
 
 	public ZipCode(String zSido, String zDoro, int zNum1) {
@@ -33,7 +38,15 @@ public class ZipCode {
 		this.zNum1 = zNum1;
 		this.zNum2 = zNum2;
 	}
+	
+	public String getAddress() {
+		return address;
+	}
 
+	public void setAddress(String address) {
+		this.address = address;
+	}
+	
 	public String getzCode() {
 		return zCode;
 	}
@@ -91,6 +104,10 @@ public class ZipCode {
 	public String toStringAll() {
 		return String.format("%s %s %s %s-%s", zSido,
 				zSigungu, zDoro, zNum1, zNum2);
+	}
+	
+	public String toStringAddress() {
+		return String.format("%s", address);
 	}
 
 }

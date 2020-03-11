@@ -15,46 +15,42 @@ import yi_java3st_1team.ordermanagement.ui.panel.ClientOCheckPanel;
 import yi_java3st_1team.ordermanagement.ui.panel.ORegisterPanel;
 import java.awt.Font;
 import java.awt.Color;
+import java.awt.Dimension;
+import javax.swing.JLabel;
+import yi_java3st_1team.ordermanagement.ui.content.ClientOrderUIPanel;
 
 @SuppressWarnings("serial")
 public class ClientOMainPanel extends JPanel {
 	private JTabbedPane tpClientManagement;
 	private JPanel pORegister;
 	private JPanel pListPanel;
-	private ClientORegisterPanel pCORegisterPanel;
-	private ClientOListPanel pCOListPanel;
 	private ClientOCheckPanel pOCheckPanel;
+	private ClientOrderUIPanel pCOrderUIPanel;
 
 	public ClientOMainPanel() {
 
 		initialize();
 	}
 	private void initialize() {
+		setPreferredSize(new Dimension(1530, 700));
 		setBackground(SystemColor.inactiveCaptionBorder);
-		setBounds(new Rectangle(0, 0, 1270, 700));
-		setLayout(new BorderLayout(0, 0));
+		setBounds(new Rectangle(0, 0, 1530, 700));
+		setLayout(new GridLayout(0, 1, 0, 0));
 		
 		tpClientManagement = new JTabbedPane(JTabbedPane.TOP);
 		tpClientManagement.setForeground(Color.BLACK);
 		tpClientManagement.setFont(new Font("맑은 고딕", Font.BOLD, 18));
 		tpClientManagement.setBackground(SystemColor.inactiveCaptionBorder);
-		add(tpClientManagement, BorderLayout.CENTER);
+		add(tpClientManagement);
 		
 		pORegister = new JPanel();
 		pORegister.setBounds(0, 0, 100, 50);
 		pORegister.setBackground(SystemColor.inactiveCaptionBorder);
 		tpClientManagement.addTab("주문 등록", null, pORegister, null);
-		pORegister.setLayout(new GridLayout(0, 2, 0, 0));
+		pORegister.setLayout(new BorderLayout(0, 0));
 		
-		pCORegisterPanel = new ClientORegisterPanel();
-		pCORegisterPanel.setBackground(SystemColor.inactiveCaptionBorder);
-		pORegister.add(pCORegisterPanel);
-		pCORegisterPanel.setLayout(null);
-		
-		pCOListPanel = new ClientOListPanel();
-		pCOListPanel.setBackground(SystemColor.inactiveCaptionBorder);
-		pORegister.add(pCOListPanel);
-		pCOListPanel.setLayout(null);
+		pCOrderUIPanel = new ClientOrderUIPanel();
+		pORegister.add(pCOrderUIPanel, BorderLayout.CENTER);
 		
 		pListPanel = new JPanel();
 		pListPanel.setBounds(0, 0, 100, 50);

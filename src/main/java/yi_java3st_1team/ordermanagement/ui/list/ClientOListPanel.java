@@ -28,12 +28,12 @@ public class ClientOListPanel extends JPanel {
 		initialize();
 	}
 	private void initialize() {
-		setBounds(new Rectangle(0, 0, 635, 700));
-		setLayout(new BorderLayout(0, 0));
+		setBounds(new Rectangle(0, 0, 765, 700));
+		setLayout(null);
 		
 		JPanel pSCListPanel = new JPanel();
-		pSCListPanel.setBounds(new Rectangle(0, 0, 635, 700));
-		add(pSCListPanel, BorderLayout.CENTER);
+		pSCListPanel.setBounds(new Rectangle(0, 0, 765, 700));
+		add(pSCListPanel);
 		pSCListPanel.setBackground(SystemColor.inactiveCaptionBorder);
 		pSCListPanel.setLayout(null);
 		
@@ -41,7 +41,7 @@ public class ClientOListPanel extends JPanel {
 		pImgBoard.setForeground(Color.BLACK);
 		pImgBoard.setBackground(SystemColor.inactiveCaptionBorder);
 		pImgBoard.setBorder(new LineBorder(Color.DARK_GRAY, 3));
-		pImgBoard.setBounds(20, 100, 595, 446);
+		pImgBoard.setBounds(85, 100, 595, 446);
 		pSCListPanel.add(pImgBoard);
 		pImgBoard.setLayout(null);
 		
@@ -97,7 +97,7 @@ public class ClientOListPanel extends JPanel {
 		
 		JPanel panel = new JPanel();
 		panel.setBorder(new LineBorder(new Color(0, 0, 0), 3));
-		panel.setBounds(20, 543, 595, 65);
+		panel.setBounds(85, 543, 595, 65);
 		pSCListPanel.add(panel);
 		panel.setBackground(SystemColor.inactiveCaptionBorder);
 		panel.setLayout(null);
@@ -124,7 +124,7 @@ public class ClientOListPanel extends JPanel {
 		JComboBox comboBox = new JComboBox();
 		comboBox.setFont(new Font("굴림", Font.PLAIN, 12));
 		comboBox.setForeground(Color.BLACK);
-		comboBox.setModel(new DefaultComboBoxModel(new String[] {"30개 이상", "50개 이상", "100개 이상"}));
+		comboBox.setModel(new DefaultComboBoxModel(new String[] {"50개 이상", "100개 이상"}));
 		comboBox.setBounds(380, 20, 131, 25);
 		panel.add(comboBox);
 		
@@ -132,21 +132,21 @@ public class ClientOListPanel extends JPanel {
 		label.setForeground(Color.BLACK);
 		label.setHorizontalAlignment(SwingConstants.CENTER);
 		label.setFont(new Font("굴림", Font.BOLD, 14));
-		label.setBounds(320, 618, 131, 25);
+		label.setBounds(388, 618, 131, 25);
 		pSCListPanel.add(label);
 		
 		textField = new JTextField();
 		textField.setForeground(Color.BLACK);
 		textField.setFont(new Font("굴림", Font.BOLD, 13));
 		textField.setEditable(false);
-		textField.setBounds(453, 618, 130, 25);
+		textField.setBounds(521, 618, 130, 25);
 		pSCListPanel.add(textField);
 		textField.setColumns(10);
 		
 		JLabel lblNewLabel_1 = new JLabel("원");
 		lblNewLabel_1.setForeground(Color.BLACK);
 		lblNewLabel_1.setFont(new Font("굴림", Font.BOLD, 14));
-		lblNewLabel_1.setBounds(590, 618, 22, 25);
+		lblNewLabel_1.setBounds(658, 618, 22, 25);
 		pSCListPanel.add(lblNewLabel_1);
 	}
 }
