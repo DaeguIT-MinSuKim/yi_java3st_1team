@@ -61,6 +61,8 @@ public class EmployeeUIService {
 		return empDao.loginEmployee(emp);
 	}
 	
-
+	public List<Employee> showEmployeeListByDeptName(Department dept){
+		return empDao.selectEmployeeListByDeptName(dept);
+	}
 	
 }

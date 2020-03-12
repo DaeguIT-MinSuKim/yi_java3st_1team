@@ -18,11 +18,16 @@ import javax.swing.SpinnerDateModel;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.SwingConstants;
 
+import yi_java3st_1team.clientmanagement.dto.Client;
+import yi_java3st_1team.main.ui.ClientMainUIPanel;
+import yi_java3st_1team.ordermanagement.ui.list.ClientOCheckTblPanel;
+import yi_java3st_1team.ordermanagement.ui.service.OrderUIService;
+
 @SuppressWarnings("serial")
 public class ClientOCheckPanel extends JPanel {
 
 	private JLabel lblO;
-	private JPanel pList;
+	private ClientOCheckTblPanel pList;
 	private JLabel lblStart;
 	private JSpinner spSYear;
 	private JLabel lblSYear;
@@ -41,12 +46,14 @@ public class ClientOCheckPanel extends JPanel {
 	private JLabel lblEDay;
 	private JButton btnEnd;
 	private JButton btnMain;
+	private OrderUIService service;
+	
 	public ClientOCheckPanel() {
-
+		service = new OrderUIService();
 		initialize();
 	}
 	private void initialize() {
-		setBounds(new Rectangle(0, 0, 1270, 700));
+		setBounds(new Rectangle(0, 0, 1530, 700));
 		setLayout(new BorderLayout(0, 0));
 		
 		JPanel panel = new JPanel();
@@ -59,15 +66,17 @@ public class ClientOCheckPanel extends JPanel {
 		lblO.setForeground(Color.BLACK);
 		lblO.setFont(new Font("휴먼둥근헤드라인", Font.BOLD, 40));
 		lblO.setHorizontalAlignment(SwingConstants.CENTER);
-		lblO.setBounds(0, 25, 1270, 60);
+		lblO.setBounds(0, 25, 1530, 60);
 		panel.add(lblO);
 		
 		JPanel pDate = new JPanel();
 		pDate.setBackground(Color.WHITE);
-		pDate.setBounds(81, 99, 1100, 77);
+		pDate.setBounds(81, 99, 1370, 77);
 		panel.add(pDate);
+		pDate.setLayout(null);
 		
 		lblStart = new JLabel("시   작");
+		lblStart.setBounds(145, 5, 65, 30);
 		lblStart.setForeground(Color.BLACK);
 		lblStart.setPreferredSize(new Dimension(110, 30));
 		lblStart.setHorizontalAlignment(SwingConstants.LEFT);
@@ -79,6 +88,7 @@ public class ClientOCheckPanel extends JPanel {
 		
 		SpinnerDateModel dateModel = new SpinnerDateModel(value, null, null, Calendar.YEAR);		
 		spSYear = new JSpinner(dateModel);
+		spSYear.setBounds(290, 5, 150, 30);
 		spSYear.setEditor(new JSpinner.DateEditor(spSYear, "yyyy"));
 		spSYear.setModel(new SpinnerDateModel(new Date(1582174800000L), new Date(631170000000L), null, Calendar.YEAR));
 		spSYear.setPreferredSize(new Dimension(150, 30));
@@ -86,12 +96,14 @@ public class ClientOCheckPanel extends JPanel {
 		pDate.add(spSYear);
 		
 		lblSYear = new JLabel("년도");
+		lblSYear.setBounds(445, 10, 30, 20);
 		lblSYear.setPreferredSize(new Dimension(80, 20));
 		lblSYear.setHorizontalAlignment(SwingConstants.LEFT);
 		lblSYear.setFont(new Font("굴림", Font.BOLD, 12));
 		pDate.add(lblSYear);
 		
 		spSMonth = new JSpinner(dateModel);
+		spSMonth.setBounds(530, 5, 150, 30);
 		spSMonth.setEditor(new JSpinner.DateEditor(spSMonth, "MM"));
 		spSMonth.setModel(new SpinnerDateModel(new Date(1582174800000L), new Date(631170000000L), null, Calendar.MONTH));
 		spSMonth.setPreferredSize(new Dimension(150, 30));
@@ -99,11 +111,13 @@ public class ClientOCheckPanel extends JPanel {
 		pDate.add(spSMonth);
 		
 		lblSMonth = new JLabel("월");
+		lblSMonth.setBounds(685, 10, 20, 20);
 		lblSMonth.setPreferredSize(new Dimension(70, 20));
 		lblSMonth.setFont(new Font("굴림", Font.BOLD, 12));
 		pDate.add(lblSMonth);
 		
 		spSDay = new JSpinner(dateModel);
+		spSDay.setBounds(760, 5, 150, 30);
 		spSDay.setEditor(new JSpinner.DateEditor(spSDay, "dd"));
 		spSDay.setModel(new SpinnerDateModel(new Date(1582174800000L), new Date(631170000000L), null, Calendar.MONTH));
 		spSDay.setPreferredSize(new Dimension(150, 30));
@@ -111,11 +125,13 @@ public class ClientOCheckPanel extends JPanel {
 		pDate.add(spSDay);
 		
 		lblSDay = new JLabel("일");
+		lblSDay.setBounds(915, 10, 20, 20);
 		lblSDay.setPreferredSize(new Dimension(70, 20));
 		lblSDay.setFont(new Font("굴림", Font.BOLD, 12));
 		pDate.add(lblSDay);
 		
 		btnStart = new JButton("시작");
+		btnStart.setBounds(1010, 4, 80, 30);
 		btnStart.setBackground(new Color(135, 206, 250));
 		btnStart.setForeground(new Color(0, 102, 204));
 		btnStart.setPreferredSize(new Dimension(80, 30));
@@ -123,6 +139,7 @@ public class ClientOCheckPanel extends JPanel {
 		pDate.add(btnStart);
 		
 		btnSearch = new JButton("검색");
+		btnSearch.setBounds(1095, 5, 130, 30);
 		btnSearch.setBackground(new Color(255, 204, 153));
 		btnSearch.setForeground(Color.WHITE);
 		btnSearch.setPreferredSize(new Dimension(100, 30));
@@ -130,6 +147,7 @@ public class ClientOCheckPanel extends JPanel {
 		pDate.add(btnSearch);
 		
 		lblEnd = new JLabel("종   료");
+		lblEnd.setBounds(145, 40, 65, 30);
 		lblEnd.setForeground(Color.BLACK);
 		lblEnd.setPreferredSize(new Dimension(110, 30));
 		lblEnd.setHorizontalAlignment(SwingConstants.LEFT);
@@ -137,6 +155,7 @@ public class ClientOCheckPanel extends JPanel {
 		pDate.add(lblEnd);
 		
 		spEYear = new JSpinner(dateModel);
+		spEYear.setBounds(290, 40, 150, 30);
 		spEYear.setEditor(new JSpinner.DateEditor(spEYear, "yyyy"));
 		spEYear.setModel(new SpinnerDateModel(new Date(1582174800000L), new Date(631170000000L), null, Calendar.YEAR));
 		spEYear.setPreferredSize(new Dimension(150, 30));
@@ -144,12 +163,14 @@ public class ClientOCheckPanel extends JPanel {
 		pDate.add(spEYear);
 		
 		lblEYear = new JLabel("년도");
+		lblEYear.setBounds(445, 45, 30, 20);
 		lblEYear.setPreferredSize(new Dimension(80, 20));
 		lblEYear.setHorizontalAlignment(SwingConstants.LEFT);
 		lblEYear.setFont(new Font("굴림", Font.BOLD, 12));
 		pDate.add(lblEYear);
 		
 		spEMonth = new JSpinner(dateModel);
+		spEMonth.setBounds(530, 40, 150, 30);
 		spEMonth.setEditor(new JSpinner.DateEditor(spEMonth, "MM"));
 		spEMonth.setModel(new SpinnerDateModel(new Date(1582174800000L), new Date(631170000000L), null, Calendar.MONTH));
 		spEMonth.setPreferredSize(new Dimension(150, 30));
@@ -157,11 +178,13 @@ public class ClientOCheckPanel extends JPanel {
 		pDate.add(spEMonth);
 		
 		lblEMonth = new JLabel("월");
+		lblEMonth.setBounds(685, 45, 20, 20);
 		lblEMonth.setPreferredSize(new Dimension(70, 20));
 		lblEMonth.setFont(new Font("굴림", Font.BOLD, 12));
 		pDate.add(lblEMonth);
 		
 		spEDay = new JSpinner(dateModel);
+		spEDay.setBounds(760, 40, 150, 30);
 		spEDay.setEditor(new JSpinner.DateEditor(spEDay, "dd"));
 		spEDay.setModel(new SpinnerDateModel(new Date(1582174800000L), new Date(631170000000L), null, Calendar.MONTH));
 		spEDay.setPreferredSize(new Dimension(150, 30));
@@ -169,11 +192,13 @@ public class ClientOCheckPanel extends JPanel {
 		pDate.add(spEDay);
 		
 		lblEDay = new JLabel("일");
+		lblEDay.setBounds(915, 45, 20, 20);
 		lblEDay.setPreferredSize(new Dimension(70, 20));
 		lblEDay.setFont(new Font("굴림", Font.BOLD, 12));
 		pDate.add(lblEDay);
 		
 		btnEnd = new JButton("종료");
+		btnEnd.setBounds(1010, 39, 80, 30);
 		btnEnd.setBackground(new Color(135, 206, 250));
 		btnEnd.setForeground(new Color(0, 102, 204));
 		btnEnd.setPreferredSize(new Dimension(80, 30));
@@ -181,6 +206,7 @@ public class ClientOCheckPanel extends JPanel {
 		pDate.add(btnEnd);
 		
 		btnMain = new JButton("메인화면");
+		btnMain.setBounds(1095, 40, 130, 30);
 		btnMain.setBackground(new Color(25, 25, 112));
 		btnMain.setForeground(Color.WHITE);
 		btnMain.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\btns\\메인화면.png"));
@@ -188,10 +214,11 @@ public class ClientOCheckPanel extends JPanel {
 		btnMain.setFont(new Font("맑은 고딕", Font.BOLD, 16));
 		pDate.add(btnMain);
 		
-		pList = new JPanel();
-		pList.setBounds(81, 186, 1100, 460);
+		pList = new ClientOCheckTblPanel();
+		pList.setBounds(80, 186, 1370, 460);
+		Client info = ClientMainUIPanel.loginCl;
+		pList.loadDate(service.showClientOrderList(info));
 		panel.add(pList);
-		pList.setLayout(new BorderLayout(0, 0));
 		
 	}
 }
