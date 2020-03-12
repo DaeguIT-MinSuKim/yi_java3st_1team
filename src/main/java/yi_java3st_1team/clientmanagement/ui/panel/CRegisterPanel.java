@@ -25,7 +25,7 @@ public class CRegisterPanel extends AbsItemPanel<Client> {
 	private JTextField tfCNo;
 	private JTextField tfCName;
 	private JTextField tfCCEO;
-	private JTextField tfCAddress;
+	public JTextField tfCAddress;
 	private JTextField tfCTel;
 	private JTextField tfStaff;
 	private JLabel lblNewLabel;

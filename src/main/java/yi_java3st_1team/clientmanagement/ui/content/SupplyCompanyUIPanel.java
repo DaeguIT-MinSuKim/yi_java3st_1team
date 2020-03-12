@@ -52,6 +52,9 @@ public class SupplyCompanyUIPanel extends JPanel implements ActionListener, Item
 	private SCRegisterPanel pSCRPanel;
 	private JFrame zipcodeFrame;
 	private String selectItem;
+	private JButton btnZip;
+	private ZipCodePanel zipPanel;
+	private String total;
 
 	public SupplyCompanyUIPanel() {
 		service = new SupplierUIService();
@@ -212,6 +215,7 @@ public class SupplyCompanyUIPanel extends JPanel implements ActionListener, Item
 			}
 		}
 	};
+	
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
@@ -232,6 +236,9 @@ public class SupplyCompanyUIPanel extends JPanel implements ActionListener, Item
 		}
 		if (e.getSource() == btnDel) {
 			btnDelActionPerformed(e);
+		}
+		if (e.getSource() == btnZip) {
+			btnZipActionPerformed(e);
 		}
 		
 	}
@@ -343,8 +350,12 @@ public class SupplyCompanyUIPanel extends JPanel implements ActionListener, Item
 			zipcodeFrame = new JFrame();
 			zipcodeFrame.setBounds(100, 100, 810, 350);
 			zipcodeFrame.setTitle("주소 검색");
-			ZipCodePanel zc = new ZipCodePanel();
-			zipcodeFrame.getContentPane().add(zc);
+			zipPanel = new ZipCodePanel();
+			zipcodeFrame.getContentPane().add(zipPanel);
+			btnZip = new JButton("등   록");
+			btnZip.addActionListener(this);
+			btnZip.setBounds(325, 250, 150, 32);
+			zipPanel.add(btnZip);
 			zipcodeFrame.setVisible(true);
 			
 		}else {
@@ -353,5 +364,16 @@ public class SupplyCompanyUIPanel extends JPanel implements ActionListener, Item
 			}
 			zipcodeFrame.setVisible(true);
 		}
+	}
+	protected void btnZipActionPerformed(ActionEvent e) {
+		String add1 = zipPanel.getTfAll().getText().trim();
+		String add2 = zipPanel.getTfDetail().getText().trim();
+		if(add2.equals("")) {
+			total = add1;
+		}else {
+			total = add1 +" "+ add2;
+		}
+		pSCRPanel.tfSCAddress.setText(total);
+		zipcodeFrame.dispose();
 	}
 }

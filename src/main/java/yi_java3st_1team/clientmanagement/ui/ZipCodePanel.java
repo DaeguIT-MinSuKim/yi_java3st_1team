@@ -31,16 +31,31 @@ public class ZipCodePanel extends JPanel implements ItemListener, ActionListener
 	private String selectItem;
 	private JButton btnSearch;
 	private ZipCodeUIService service;
-	private JButton btnAdd;
 	public ZipCode addr;
 	public SCRegisterPanel pSCRPanel;
-	private String total;
 	
 
 	public ZipCodePanel() {
 		service = new ZipCodeUIService();
 		initialize();
 	}
+	
+	public JTextField getTfAll() {
+		return tfAll;
+	}
+
+	public void setTfAll(JTextField tfAll) {
+		this.tfAll = tfAll;
+	}
+
+	public JTextField getTfDetail() {
+		return tfDetail;
+	}
+
+	public void setTfDetail(JTextField tfDetail) {
+		this.tfDetail = tfDetail;
+	}
+
 	private void initialize() {
 		setBounds(new Rectangle(0, 0, 800, 300));
 		setBackground(SystemColor.inactiveCaptionBorder);
@@ -87,11 +102,6 @@ public class ZipCodePanel extends JPanel implements ItemListener, ActionListener
 		btnSearch.setBounds(640, 120, 120, 30);
 		add(btnSearch);
 		
-		btnAdd = new JButton("등   록");
-		btnAdd.addActionListener(this);
-		btnAdd.setBounds(325, 250, 150, 32);
-		add(btnAdd);
-		
 		cmbSido = new JComboBox();
 		cmbSido.addItemListener(this);
 		cmbSido.setModel(new DefaultComboBoxModel(new String[] {"선택", "서울특별시", "부산광역시", "대구광역시", "인천광역시", "광주광역시", "대전광역시", "울산광역시", "경기도", "강원도", "충청북도", "충청남도", "전라북도", "전라남도", "경상북도", "경상남도", "제주특별자치도", "세종특별자치시"}));
@@ -131,9 +141,6 @@ public class ZipCodePanel extends JPanel implements ItemListener, ActionListener
 	
 	
 	public void actionPerformed(ActionEvent e) {
-		if (e.getSource() == btnAdd) {
-			btnAddActionPerformed(e);
-		}
 		if (e.getSource() == btnSearch) {
 			btnSearchActionPerformed(e);
 		}
@@ -157,16 +164,5 @@ public class ZipCodePanel extends JPanel implements ItemListener, ActionListener
 		tfDoro.setText("");
 		tfNo1.setText("");
 		tfNo2.setText("");
-	}
-	public void btnAddActionPerformed(ActionEvent e) {
-		String add1 = tfAll.getText().trim();
-		String add2 = tfDetail.getText().trim();
-		if(add2.equals("")) {
-			total = add1;
-		}else {
-			total = add1 +" "+ add2;
-		}
-		pSCRPanel.tfSCAddress.setText("a");
-
 	}
 }

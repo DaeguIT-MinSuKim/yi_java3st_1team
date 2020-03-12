@@ -122,3 +122,5 @@ select * from supplier_purchase sp ;
 select c_salesman from client where c_name=?
 
 select * from discount_rate dr ;
+
+select z_code, z_sido, z_sigungu, z_doro, z_num1, z_num2 from zip_code where z_sido='대구광역시' and z_doro='삼각지6길' and z_num1=12 and z_num2=5;
