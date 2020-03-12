@@ -31,6 +31,11 @@ public class Product {
 	public Product(Category pCate) {
 		this.pCate = pCate;
 	}
+	
+	
+	public Product(String pName) {
+		this.pName = pName;
+	}
 
 	public Product(String pName, int pCost) {
 		this.pName = pName;

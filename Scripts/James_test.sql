@@ -97,4 +97,7 @@ insert into client values(56,'테스트','테스트님','대구광역시 달성�
 
 select * from employee;
 insert into employee (e_no, e_name, e_dept, e_title, e_manager, e_id, e_pw, e_mail) value (null,?,?,?,?,?,?,?)";
+
+show tables;
+
 		
