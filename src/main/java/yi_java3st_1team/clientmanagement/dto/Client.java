@@ -21,6 +21,10 @@ public class Client {
 	}
 
 	
+	public Client(String cName) {
+		this.cName = cName;
+	}
+
 	public Client(String cId, String cPw) {
 		this.cId = cId;
 		this.cPw = cPw;

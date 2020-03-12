@@ -94,6 +94,13 @@ public class Order {
 		this.oPic = oPic;
 	}
 
+	public Order(int oNo, Client oCname , int oQty) {
+		this.oNo = oNo;
+		this.oCname = oCname;
+		this.oQty = oQty;
+	}
+
+
 	public Employee getoEno() {
 		return oEno;
 	}

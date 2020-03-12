@@ -10,6 +10,10 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
+
+import yi_java3st_1team.productmanagement.dto.ClientDelivery;
+import yi_java3st_1team.productmanagement.ui.service.CDUIService;
+
 import java.awt.Color;
 import javax.swing.ImageIcon;
 
@@ -33,8 +37,13 @@ public class CDRegisterPanel extends JPanel {
 	private JButton btnGoMain;
 	private JLabel label;
 
+	private CDUIService cdService;
+	
 	public CDRegisterPanel() {
+		cdService = new CDUIService();
 		initialize();
+		setCDNum(cdService.showlastNum());
+
 	}
 
 	private void initialize() {
@@ -93,6 +102,8 @@ public class CDRegisterPanel extends JPanel {
 		tfPCDNo.setBounds(230, 140, 200, 30);
 		panel.add(tfPCDNo);
 		tfPCDNo.setColumns(10);
+		tfPCDNo.setEditable(false);
+
 		
 		tfSCName = new JTextField();
 		tfSCName.setColumns(10);
@@ -152,6 +163,10 @@ public class CDRegisterPanel extends JPanel {
 		label.setBounds(54, 116, 525, 430);
 		panel.add(label);
 		
+	}
+	
+	public void setCDNum (ClientDelivery item) {
+		tfPCDNo.setText(String.format("CD%04d", item.getCdNo()+1));
 	}
 
 }
