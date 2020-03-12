@@ -355,10 +355,6 @@ public class EmpRegiPanel extends AbsRegiPanel<Employee> implements ActionListen
 		tfNo.setText(String.format("EE%04d", item.getEmpNo()+1));
 	}
 	
-//	public void setEmpId() {
-//		System.out.println(empidChk.idOk);
-//	}
-	
 	//취소
 	@Override
 	public void clearTf() {
@@ -385,8 +381,13 @@ public class EmpRegiPanel extends AbsRegiPanel<Employee> implements ActionListen
 		if (e.getSource() == btnCancle) {
 			actionPerformedBtnCancle(e);
 		}
-		if (e.getSource() == btnAdd) {
-			actionPerformedBtnAdd(e);
+		
+		try {
+			if (e.getSource() == btnAdd) {
+				actionPerformedBtnAdd(e);
+			}
+		}catch(NullPointerException n) {
+			JOptionPane.showMessageDialog(null, "다시 확인 해주세요!","",JOptionPane.WARNING_MESSAGE);
 		}
 		
 		if(e.getSource() == chkAdd) {
@@ -398,15 +399,24 @@ public class EmpRegiPanel extends AbsRegiPanel<Employee> implements ActionListen
 
 
 
-	// 등록버튼 (수정...?)
+	// 등록버튼
 	protected void actionPerformedBtnAdd(ActionEvent e) {
-		Employee newEmp = getItem();
-		empService.addEmployee(newEmp);
-		clearTf();
-		setEmpNo(empService.showlastEmpNum());
-		JOptionPane.showMessageDialog(null, "등록되었습니다.");
-
-		
+		//대표이사~과장 : 책임관리자  / 대리~인턴 : 일반관리자  // 비밀번호 사용 불가일 경우 등록막기
+		if(cmbTitle.getSelectedIndex()<=4 && rBtnManager2.isSelected()) {
+			JOptionPane.showMessageDialog(null, "'책임관리자'를 선택해야 합니다","관리자 선택 오류",JOptionPane.ERROR_MESSAGE);
+		}else if ((cmbTitle.getSelectedIndex()>=5)&&(cmbTitle.getSelectedIndex()<=7) && rBtnManager1.isSelected()) {
+			JOptionPane.showMessageDialog(null, "'일반관리자'를 선택해야 합니다","관리자 선택 오류",JOptionPane.ERROR_MESSAGE);
+		}else if(lblPassword.getText().equals("비밀번호 사용 불가")){
+			JOptionPane.showMessageDialog(null, "'비밀번호 다시 확인해주세요!'","비밀번호 입력 오류",JOptionPane.ERROR_MESSAGE);
+		}
+		else {
+			Employee newEmp = getItem();
+			empService.addEmployee(newEmp);
+			clearTf();
+			setEmpNo(empService.showlastEmpNum());
+			JOptionPane.showMessageDialog(null, "등록되었습니다.");			
+		}
+				
 	}
 
 	// 취소버튼(초기화)
