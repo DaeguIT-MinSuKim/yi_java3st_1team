@@ -79,7 +79,8 @@ public class OrderDaoImpl implements OrderDao {
 		int oOk = rs.getInt("o_ok");
 		Employee oEname = new Employee();
 		oEname.setEmpName(rs.getString("e_name"));
-		return new Order(oNo, oDate, oCname, oPname, oQty, oMemo, oDps, oOk, oEname);
+		Employee oEno = new Employee(rs.getInt("e_no"));
+		return new Order(oNo, oDate, oCname, oPname, oQty, oMemo, oDps, oOk, oEname, oEno);
 	}
 
 	@Override
