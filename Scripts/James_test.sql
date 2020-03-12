@@ -92,4 +92,9 @@ select e.e_no, e.e_name,  e.e_title, e.e_dept, d.d_no, d.d_name, d.d_floor, e.e_
 select * from client;
 
 select c_no, c_name, c_ceo, c_address, c_tel, c_id, c_pw, c_mail, c_date, c_salesman  from client where c_id = 'jamesareuming' and c_pw = 'James1234!@';
+
+insert into client values(56,'테스트','테스트님','대구광역시 달성군 다사읍 대실역남로 5','053-111-1111','test0003', 'Test0003!', 'hothihi5@gmail.com', '2020-03-12', 46);
+
+select * from employee;
+insert into employee (e_no, e_name, e_dept, e_title, e_manager, e_id, e_pw, e_mail) value (null,?,?,?,?,?,?,?)";
 		
