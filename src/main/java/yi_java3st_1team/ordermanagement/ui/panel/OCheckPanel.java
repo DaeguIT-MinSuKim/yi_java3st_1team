@@ -9,6 +9,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
@@ -94,7 +95,15 @@ public class OCheckPanel extends JPanel {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			if(e.getActionCommand().equals("수정")) {
-
+				JFrame modify = new JFrame();
+				modify.setTitle("주문 수정");
+				modify.setSize(500,500);
+				OrderModify om = new OrderModify();
+				
+				modify.setLocationRelativeTo(null);
+				modify.setResizable(false);
+				modify.getContentPane().add(om);
+				modify.setVisible(true);
 			}
 			
 			

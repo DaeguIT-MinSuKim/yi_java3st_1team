@@ -38,9 +38,10 @@ public class Jamestest extends JFrame {
 	   JScrollPane jsp = new JScrollPane(table);
 	   panel.add(jsp,"Center");
 	   
-	   JCheckBox chckbxNewCheckBox = new JCheckBox("체크박스");
-	   chckbxNewCheckBox.setSelected(true);
-	   jsp.setRowHeaderView(chckbxNewCheckBox);
+//	   JCheckBox chckbxNewCheckBox = new JCheckBox("체크박스");
+//	   chckbxNewCheckBox.setSelected(true);
+//	   jsp.setRowHeaderView(chckbxNewCheckBox);
+	   
 	  setContentPane(panel);
 	  pack();
 	  setVisible(true);
@@ -49,6 +50,7 @@ public class Jamestest extends JFrame {
 	 public static void main(String[] args) {  
 	  new Jamestest();
 	 }
+	 
 	 DefaultTableCellRenderer dcr = new DefaultTableCellRenderer()
 	 {
 	  public Component getTableCellRendererComponent  // 셀렌더러
