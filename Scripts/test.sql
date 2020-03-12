@@ -125,4 +125,4 @@ select * from discount_rate dr ;
 
 select z_code, z_sido, z_sigungu, z_doro, z_num1, z_num2 from zip_code where z_sido='대구광역시' and z_doro='삼각지6길' and z_num1=12 and z_num2=5;
 
-
+select e2.e_no , e2.e_name , e2.e_title , e2.e_manager , e2.e_mail from employee e2 left join department d on e2.e_dept = d.d_no where d.d_name ="영업관리 1부";

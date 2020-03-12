@@ -60,6 +60,10 @@ public class EmployeeUiService {
 	public Employee login(Employee emp) {
 		return empDao.loginEmployee(emp);
 	}
+
+	public List<Employee> showEmployeeListByDeptName(Department dept) {
+		return empDao.selectEmployeeListByDeptName(dept);
+	}
 	
 
 	
