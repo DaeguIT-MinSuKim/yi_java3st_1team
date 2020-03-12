@@ -87,6 +87,8 @@ left join employee e on o.o_eno = e.e_no;
 select e.e_no, e.e_name,  e.e_title, e.e_dept, d.d_no, d.d_name, d.d_floor, e.e_manager, e.e_id, e.e_pw, e.e_mail
 from employee e left join department d on e.e_dept  = d.d_no;
 
+select cd_no from client_delivery order by cd_no desc limit 1;
+
 select e.e_no, e.e_name,  e.e_title, e.e_dept, d.d_no, d.d_name, d.d_floor, e.e_manager, e.e_id, e.e_pw, e.e_mail from employee e left join department d on e.e_dept  = d.d_no where d.d_no = 10;
 
 select * from client;
@@ -99,5 +101,8 @@ select * from employee;
 insert into employee (e_no, e_name, e_dept, e_title, e_manager, e_id, e_pw, e_mail) value (null,?,?,?,?,?,?,?)";
 
 show tables;
+
+select * from `order` o ;
+select * from client_delivery cd ;
 
 		

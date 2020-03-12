@@ -12,6 +12,7 @@ import javax.swing.JTabbedPane;
 
 import yi_java3st_1team.productmanagement.ui.list.CDListPanel;
 import yi_java3st_1team.productmanagement.ui.panel.CDRegisterPanel;
+import yi_java3st_1team.productmanagement.ui.service.CDUIService;
 
 @SuppressWarnings("serial")
 public class PMContent extends JPanel {
@@ -25,7 +26,6 @@ public class PMContent extends JPanel {
 	public SPSOUIPanel pSCSOUIPanel;
 
 	public PMContent() {
-
 		initialize();
 	}
 	private void initialize() {
