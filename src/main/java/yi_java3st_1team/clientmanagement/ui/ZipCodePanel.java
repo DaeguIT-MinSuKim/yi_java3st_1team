@@ -1,5 +1,6 @@
 package yi_java3st_1team.clientmanagement.ui;
 
+import java.awt.Color;
 import java.awt.Font;
 import java.awt.Rectangle;
 import java.awt.SystemColor;
@@ -99,6 +100,9 @@ public class ZipCodePanel extends JPanel implements ItemListener, ActionListener
 		
 		btnSearch = new JButton("검  색");
 		btnSearch.addActionListener(this);
+		btnSearch.setBackground(new Color(70, 130, 180));
+		btnSearch.setForeground(Color.WHITE);
+		btnSearch.setFont(new Font("맑은 고딕", Font.BOLD, 16));
 		btnSearch.setBounds(640, 120, 120, 30);
 		add(btnSearch);
 		
