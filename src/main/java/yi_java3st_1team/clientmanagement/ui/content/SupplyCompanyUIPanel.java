@@ -30,6 +30,8 @@ import yi_java3st_1team.clientmanagement.ui.list.SCListTblPanel;
 import yi_java3st_1team.clientmanagement.ui.panel.SCRegisterPanel;
 import yi_java3st_1team.clientmanagement.ui.service.SupplierUIService;
 import yi_java3st_1team.exception.InvalidCheckException;
+import yi_java3st_1team.main.dto.Employee;
+import yi_java3st_1team.main.ui.EmployeeMainUIPanel;
 
 @SuppressWarnings("serial")
 public class SupplyCompanyUIPanel extends JPanel implements ActionListener, ItemListener {

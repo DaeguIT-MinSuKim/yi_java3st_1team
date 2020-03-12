@@ -27,8 +27,18 @@ public class Order {
 	public Order(int oNo) {
 		this.oNo = oNo;
 	}
-
 	
+	public Order(int oNo, Date oDate, Client oCname, Product oPname, int oQty, String oMemo, int oDps, int oOk) {
+		this.oNo = oNo;
+		this.oDate = oDate;
+		this.oCname = oCname;
+		this.oPname = oPname;
+		this.oQty = oQty;
+		this.oMemo = oMemo;
+		this.oDps = oDps;
+		this.oOk = oOk;
+	}
+
 	public Order(int oNo, Date oDate, Client oCname, Product oPname, int oQty, String oMemo, int oDps, int oOk,
 			Employee oEname) {
 		this.oNo = oNo;

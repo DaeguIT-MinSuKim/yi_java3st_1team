@@ -19,6 +19,7 @@ import javax.swing.SpinnerNumberModel;
 import javax.swing.SwingConstants;
 
 import yi_java3st_1team.exception.InvalidCheckException;
+import yi_java3st_1team.main.ui.EmployeeMainUIPanel;
 import yi_java3st_1team.ordermanagement.dto.Order;
 import yi_java3st_1team.ordermanagement.ui.panel.ClientORegisterPanel;
 import yi_java3st_1team.ordermanagement.ui.service.IQUIService;
@@ -285,6 +286,7 @@ public class ClientOrderUIPanel extends JPanel implements ActionListener, Change
 					JOptionPane.showMessageDialog(null, "현 재고수량을 초과하여 주문할 수 없습니다.");
 				}else {
 					Order newOrder = pCORPanel.getItem();
+//					newOrder.setoEname(EmployeeMainUIPanel.loginEmp); 로그인한 고객의 정보가 필요
 					service.addOrder(newOrder);
 					int sub = pQty - Integer.parseInt(pCORPanel.tfOQty.getText().trim());
 					iqService.SubProductQty(proSummary, sub);

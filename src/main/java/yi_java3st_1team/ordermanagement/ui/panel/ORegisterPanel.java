@@ -155,8 +155,7 @@ public class ORegisterPanel extends AbsItemPanel<Order> {
 		String oMemo = taOWant.getText().trim();
 		int oDps = 0;
 		int oOk = 0;
-		Employee oEname = new Employee(80);
-		return new Order(oNo, oDate, oCname, oPname, oQty, oMemo, oDps, oOk, oEname);
+		return new Order(oNo, oDate, oCname, oPname, oQty, oMemo, oDps, oOk);
 	}
 	@Override
 	public void setItem(Order item) {
