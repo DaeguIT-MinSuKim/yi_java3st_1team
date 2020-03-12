@@ -408,6 +408,7 @@ public class EmployeeMainUIPanel extends JPanel implements ActionListener {
 	protected void actionPerformedBtn04(ActionEvent e) {
 		LoginFirst();
 		// 직책별 비활성화 적용
+		int manager = loginEmp.getEmpManager();
 		switch (manager) {
 			case 1: //책임관리자(활성화)
 				if (loginEmp != null) {

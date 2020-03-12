@@ -12,11 +12,13 @@ import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.util.regex.Pattern;
 
+import javax.swing.ButtonGroup;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JRadioButton;
@@ -43,6 +45,8 @@ public class EmpRegiPanel extends AbsRegiPanel<Employee> implements ActionListen
 	private JPasswordField passFd2;
 	private JLabel lblPassword;
 	private JTextField tfMail;
+	
+	private final ButtonGroup buttonGroup = new ButtonGroup();
 	
 	private JButton doubleCheck;
 	
@@ -178,6 +182,7 @@ public class EmpRegiPanel extends AbsRegiPanel<Employee> implements ActionListen
 		pManager.setLayout(new GridLayout(0, 2, 0, 0));
 		
 		rBtnManager1 = new JRadioButton("책임관리자");
+		buttonGroup.add(rBtnManager1);
 		rBtnManager1.setSelected(true); //기본선택
 		rBtnManager1.setHorizontalAlignment(SwingConstants.CENTER);
 		rBtnManager1.setForeground(Color.BLACK);
@@ -186,6 +191,7 @@ public class EmpRegiPanel extends AbsRegiPanel<Employee> implements ActionListen
 		pManager.add(rBtnManager1);
 		
 		rBtnManager2 = new JRadioButton("일반관리자");
+		buttonGroup.add(rBtnManager2);
 		rBtnManager2.setHorizontalAlignment(SwingConstants.CENTER);
 		rBtnManager2.setForeground(Color.BLACK);
 		rBtnManager2.setFont(new Font("굴림", Font.BOLD, 11));
@@ -278,6 +284,8 @@ public class EmpRegiPanel extends AbsRegiPanel<Employee> implements ActionListen
 			}
 		}
 	};
+	private JButton chkAdd;
+	private JFrame idCheck;
 
 
 	public void itemStateChanged(ItemEvent e) {
@@ -381,15 +389,24 @@ public class EmpRegiPanel extends AbsRegiPanel<Employee> implements ActionListen
 			actionPerformedBtnAdd(e);
 		}
 		
+		if(e.getSource() == chkAdd) {
+			actionPerformedChkAdd(e);
+		}
+		
 
 	}
 
-	// 등록버튼
+
+
+	// 등록버튼 (수정...?)
 	protected void actionPerformedBtnAdd(ActionEvent e) {
 		Employee newEmp = getItem();
 		empService.addEmployee(newEmp);
 		clearTf();
-		setEmpNo(empService.showlastEmpNum());		
+		setEmpNo(empService.showlastEmpNum());
+		JOptionPane.showMessageDialog(null, "등록되었습니다.");
+
+		
 	}
 
 	// 취소버튼(초기화)
@@ -400,17 +417,30 @@ public class EmpRegiPanel extends AbsRegiPanel<Employee> implements ActionListen
 
 	// 중복확인 : 아이디
 	protected void actionPerformedDoubleCheck2(ActionEvent e) {
-		JFrame idCheck = new JFrame();
+		idCheck = new JFrame();
 		idCheck.setTitle("아이디 중복 확인");
 		idCheck.setSize(400,400);
 		idCheck.setLocation(1250, 195);
 		EmployeeIdChaeck eic = new EmployeeIdChaeck();
+		
+		chkAdd = new JButton("등록");
+		chkAdd.addActionListener(this);
+		chkAdd.setForeground(Color.BLACK);
+		chkAdd.setFont(new Font("맑은 고딕", Font.BOLD, 14));
+		chkAdd.setFocusable(false);
+		chkAdd.setBackground(SystemColor.controlHighlight);
+		EmployeeIdChaeck.pBtn.add(chkAdd);
+		
 		idCheck.getContentPane().add(eic);
 		idCheck.setVisible(true);
 		
 	}
 
-
+	private void actionPerformedChkAdd(ActionEvent e) {
+		tfId.setText(EmployeeIdChaeck.idOk);
+		idCheck.dispose();
+		
+	}
 
 
 }

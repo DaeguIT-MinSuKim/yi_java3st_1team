@@ -10,7 +10,7 @@ public class EmployeeTblPanel extends AbstractTblPanel<Employee> {
 
 	@Override
 	protected void setTblWidthAlign() {
-		tableSetWidth(70,70,80,80,160);
+		tableSetWidth(70,70,80,80,170);
 		tableCellAlign(SwingConstants.CENTER, 0, 1, 2, 3, 4);		
 	}
 

@@ -20,16 +20,17 @@ import yi_java3st_1team.main.ui.service.EmployeeUIService;
 
 @SuppressWarnings("serial")
 public class EmployeeIdChaeck extends JPanel implements ActionListener {
-	private JTextField tfSearch;
+	public JTextField tfSearch;
 	private JButton btnSearch;
-	public JButton btnAdd;
+//	public JButton btnAdd;
 	private JLabel lblIdEquals;
 	
 	private EmployeeUIService empService;
 	
 	private EmpRegiPanel regiPanel;
 	public String idChk;
-	public String idOk;
+	public static String idOk;
+	public static JPanel pBtn;
 	
 	
 	
@@ -50,18 +51,18 @@ public class EmployeeIdChaeck extends JPanel implements ActionListener {
 		label.setBackground(SystemColor.inactiveCaptionBorder);
 		add(label, BorderLayout.NORTH);
 		
-		JPanel pBtn = new JPanel();
+		pBtn = new JPanel();
 		pBtn.setBackground(SystemColor.inactiveCaptionBorder);
 		pBtn.setPreferredSize(new Dimension(10, 55));
 		add(pBtn, BorderLayout.SOUTH);
 		
-		btnAdd = new JButton("등록");
-		btnAdd.addActionListener(this);
-		btnAdd.setForeground(Color.BLACK);
-		btnAdd.setFont(new Font("맑은 고딕", Font.BOLD, 14));
-		btnAdd.setFocusable(false);
-		btnAdd.setBackground(SystemColor.controlHighlight);
-		pBtn.add(btnAdd);
+//		btnAdd = new JButton("등록");
+//		btnAdd.addActionListener(this);
+//		btnAdd.setForeground(Color.BLACK);
+//		btnAdd.setFont(new Font("맑은 고딕", Font.BOLD, 14));
+//		btnAdd.setFocusable(false);
+//		btnAdd.setBackground(SystemColor.controlHighlight);
+//		pBtn.add(btnAdd);
 		
 		JPanel pSearch = new JPanel();
 		pSearch.setBackground(SystemColor.inactiveCaptionBorder);
@@ -112,7 +113,7 @@ public class EmployeeIdChaeck extends JPanel implements ActionListener {
 		Employee searchId = empService.Idcheck(newId);
 		if(result==true && searchId==null) {
 			lblIdEquals.setText("아이디 사용 가능");
-			tfSearch.setText(idChk+1);
+			tfSearch.setText(idChk);
 			idOk = tfSearch.getText();
 		}else {
 			lblIdEquals.setText("아이디 사용 불가");

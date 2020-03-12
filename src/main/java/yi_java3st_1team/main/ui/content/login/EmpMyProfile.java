@@ -12,6 +12,7 @@ import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.util.regex.Pattern;
 
+import javax.swing.ButtonGroup;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -44,6 +45,8 @@ public class EmpMyProfile extends AbsRegiPanel<Employee> implements ActionListen
 	private JPasswordField passFd2;
 	private JLabel lblPassword;
 	private JTextField tfMail;
+	
+	private final ButtonGroup buttonGroup = new ButtonGroup();
 	
 	private JButton empSearch;
 	
@@ -180,6 +183,7 @@ public class EmpMyProfile extends AbsRegiPanel<Employee> implements ActionListen
 		pManager.setLayout(new GridLayout(0, 2, 0, 0));
 		
 		rBtnManager1 = new JRadioButton("책임관리자");
+		buttonGroup.add(rBtnManager1);
 		rBtnManager1.setHorizontalAlignment(SwingConstants.CENTER);
 		rBtnManager1.setForeground(Color.BLACK);
 		rBtnManager1.setFont(new Font("굴림", Font.BOLD, 11));
@@ -187,6 +191,7 @@ public class EmpMyProfile extends AbsRegiPanel<Employee> implements ActionListen
 		pManager.add(rBtnManager1);
 		
 		rBtnManager2 = new JRadioButton("일반관리자");
+		buttonGroup.add(rBtnManager2);
 		rBtnManager2.setHorizontalAlignment(SwingConstants.CENTER);
 		rBtnManager2.setForeground(Color.BLACK);
 		rBtnManager2.setFont(new Font("굴림", Font.BOLD, 11));
@@ -196,7 +201,7 @@ public class EmpMyProfile extends AbsRegiPanel<Employee> implements ActionListen
 		tfId = new JTextField();
 		tfId.setFont(new Font("굴림", Font.BOLD, 12));
 		tfId.setColumns(10);
-		//tfId.setEditable(false);
+		tfId.setEditable(false);
 		pInput.add(tfId);
 
 		passFd1 = new JPasswordField();
