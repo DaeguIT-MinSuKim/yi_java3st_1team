@@ -1,5 +1,6 @@
 package yi_java3st_1team.clientmanagement.ui;
 
+import java.awt.Color;
 import java.awt.Font;
 import java.awt.Rectangle;
 import java.awt.SystemColor;
@@ -31,16 +32,31 @@ public class ZipCodePanel extends JPanel implements ItemListener, ActionListener
 	private String selectItem;
 	private JButton btnSearch;
 	private ZipCodeUIService service;
-	private JButton btnAdd;
 	public ZipCode addr;
 	public SCRegisterPanel pSCRPanel;
-	private String total;
 	
 
 	public ZipCodePanel() {
 		service = new ZipCodeUIService();
 		initialize();
 	}
+	
+	public JTextField getTfAll() {
+		return tfAll;
+	}
+
+	public void setTfAll(JTextField tfAll) {
+		this.tfAll = tfAll;
+	}
+
+	public JTextField getTfDetail() {
+		return tfDetail;
+	}
+
+	public void setTfDetail(JTextField tfDetail) {
+		this.tfDetail = tfDetail;
+	}
+
 	private void initialize() {
 		setBounds(new Rectangle(0, 0, 800, 300));
 		setBackground(SystemColor.inactiveCaptionBorder);
@@ -84,13 +100,11 @@ public class ZipCodePanel extends JPanel implements ItemListener, ActionListener
 		
 		btnSearch = new JButton("검  색");
 		btnSearch.addActionListener(this);
+		btnSearch.setBackground(new Color(70, 130, 180));
+		btnSearch.setForeground(Color.WHITE);
+		btnSearch.setFont(new Font("맑은 고딕", Font.BOLD, 16));
 		btnSearch.setBounds(640, 120, 120, 30);
 		add(btnSearch);
-		
-		btnAdd = new JButton("등   록");
-		btnAdd.addActionListener(this);
-		btnAdd.setBounds(325, 250, 150, 32);
-		add(btnAdd);
 		
 		cmbSido = new JComboBox();
 		cmbSido.addItemListener(this);
@@ -131,9 +145,6 @@ public class ZipCodePanel extends JPanel implements ItemListener, ActionListener
 	
 	
 	public void actionPerformed(ActionEvent e) {
-		if (e.getSource() == btnAdd) {
-			btnAddActionPerformed(e);
-		}
 		if (e.getSource() == btnSearch) {
 			btnSearchActionPerformed(e);
 		}
@@ -157,16 +168,5 @@ public class ZipCodePanel extends JPanel implements ItemListener, ActionListener
 		tfDoro.setText("");
 		tfNo1.setText("");
 		tfNo2.setText("");
-	}
-	public void btnAddActionPerformed(ActionEvent e) {
-		String add1 = tfAll.getText().trim();
-		String add2 = tfDetail.getText().trim();
-		if(add2.equals("")) {
-			total = add1;
-		}else {
-			total = add1 +" "+ add2;
-		}
-		pSCRPanel.tfSCAddress.setText("a");
-
 	}
 }

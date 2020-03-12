@@ -42,7 +42,7 @@ public class OCheckTblPanel extends AbstractTblPanel<Order>{
 		String pName = String.format("%s", item.getoPname().getpName());
 		String oQty = String.format("%d", item.getoQty());
 		String oMemo = String.format("%s",item.getoMemo());
-		String emp = String.format("%s(EE%04d)", item.getoEname().getEmpName(), item.getoEname().getEmpNo());
+		String emp = String.format("%s(EE%04d)", item.getoEname().getEmpName(), item.getoEno().getEmpNo());
 		
 		
 		
@@ -67,7 +67,7 @@ public class OCheckTblPanel extends AbstractTblPanel<Order>{
 			pName = String.format("<html><span style='color:red'>%s</span></html>", item.getoPname().getpName());
 			oQty = String.format("<html><span style='color:red'>%d</span></html>", item.getoQty());
 			oMemo = String.format("<html><span style='color:red'>%s</span></html>",item.getoMemo());
-			emp = String.format("<html><span style='color:red'>%s(EE%04d)</span></html>", item.getoEname().getEmpName(), item.getoEname().getEmpNo());
+			emp = String.format("<html><span style='color:red'>%s(EE%04d)</span></html>", item.getoEname().getEmpName(), item.getoEno().getEmpNo());
 		}
 		return new Object[] {
 				oNo,

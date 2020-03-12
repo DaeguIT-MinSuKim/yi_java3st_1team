@@ -19,6 +19,7 @@ import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
 
 import yi_java3st_1team.exception.InvalidCheckException;
+import yi_java3st_1team.main.ui.EmployeeMainUIPanel;
 import yi_java3st_1team.ordermanagement.dto.Order;
 import yi_java3st_1team.ordermanagement.ui.panel.ORegisterPanel;
 import yi_java3st_1team.ordermanagement.ui.service.IQUIService;
@@ -220,6 +221,7 @@ public class OrderUIPanel extends JPanel implements ActionListener {
 					JOptionPane.showMessageDialog(null, "현 재고수량을 초과하여 주문할 수 없습니다.");
 				}else {
 					Order newOrder = pORPanel.getItem();
+					newOrder.setoEname(EmployeeMainUIPanel.loginEmp);
 					service.addOrder(newOrder);
 					int sub = pQty - Integer.parseInt(pORPanel.tfOQty.getText().trim());
 					iqService.SubProductQty(proSummary, sub);
