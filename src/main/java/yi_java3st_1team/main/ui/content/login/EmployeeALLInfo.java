@@ -18,7 +18,7 @@ import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
 import yi_java3st_1team.main.dto.Department;
-import yi_java3st_1team.main.ui.service.EmployeeUiService;
+import yi_java3st_1team.main.ui.service.EmployeeUIService;
 
 @SuppressWarnings("serial")
 public class EmployeeALLInfo extends JPanel implements ActionListener {
@@ -26,12 +26,12 @@ public class EmployeeALLInfo extends JPanel implements ActionListener {
 	private JPanel pList;
 	private EmployeeTblPanel pEmptbl;
 
-	private EmployeeUiService empService;
+	private EmployeeUIService empService;
 	private JComboBox cmbDept;
 	private String selectItem;
 	
 	public EmployeeALLInfo() {
-		empService = new EmployeeUiService();
+		empService = new EmployeeUIService();
 		initialize();
 	}
 		private void initialize() {

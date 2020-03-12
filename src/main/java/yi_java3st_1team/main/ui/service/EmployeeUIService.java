@@ -9,11 +9,11 @@ import yi_java3st_1team.main.dao.impl.EmployeeDaoImpl;
 import yi_java3st_1team.main.dto.Department;
 import yi_java3st_1team.main.dto.Employee;
 
-public class EmployeeUiService {
+public class EmployeeUIService {
 	private EmployeeDao empDao;
 	private DepartmentDao deptDao;
 	
-	public EmployeeUiService() {
+	public EmployeeUIService() {
 		empDao = EmployeeDaoImpl.getInstance();
 		deptDao = DepartmentDaoImpl.getInstance();
 	}

@@ -64,4 +64,8 @@ public class ClientUIService {
 	public int selectOrderCsalesman(Client client) {
 		return clientDao.selectCsalesman(client);
 	}
+	
+	public Client login(Client client) {
+		return clientDao.loginClient(client);
+	}
 }

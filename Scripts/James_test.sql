@@ -88,4 +88,8 @@ select e.e_no, e.e_name,  e.e_title, e.e_dept, d.d_no, d.d_name, d.d_floor, e.e_
 from employee e left join department d on e.e_dept  = d.d_no;
 
 select e.e_no, e.e_name,  e.e_title, e.e_dept, d.d_no, d.d_name, d.d_floor, e.e_manager, e.e_id, e.e_pw, e.e_mail from employee e left join department d on e.e_dept  = d.d_no where d.d_no = 10;
+
+select * from client;
+
+select c_no, c_name, c_ceo, c_address, c_tel, c_id, c_pw, c_mail, c_date, c_salesman  from client where c_id = 'jamesareuming' and c_pw = 'James1234!@';
 		
