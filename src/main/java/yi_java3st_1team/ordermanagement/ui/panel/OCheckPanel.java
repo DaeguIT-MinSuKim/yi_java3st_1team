@@ -55,7 +55,7 @@ public class OCheckPanel extends JPanel {
 		panel.add(pList);
 		pList.setLayout(new BorderLayout(0, 0));
 		
-		pOCheckList = new OCheckTblPanel();
+		pOCheckList = new OCheckTblPanel(); //테이블
 		pOCheckList.loadDate(odService.showOrderList());
 		pOCheckList.setPopupMenu(createPopupMenu());
 		pList.add(pOCheckList,BorderLayout.CENTER);

@@ -3,6 +3,7 @@ package yi_java3st_1team.clientmanagement.ui.list;
 import java.awt.BorderLayout;
 import java.util.List;
 
+import javax.swing.JCheckBox;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPopupMenu;
@@ -32,9 +33,10 @@ public abstract class AbstractTblPanel<T> extends JPanel {
 
 		scrollPane = new JScrollPane();
 		add(scrollPane, BorderLayout.CENTER);
-
 		table = new JTable();
 		table.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+		
+		
 		scrollPane.setViewportView(table);
 	}
 

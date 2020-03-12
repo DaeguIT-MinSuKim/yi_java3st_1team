@@ -1,7 +1,15 @@
 package yi_java3st_1team.ordermanagement.ui.list;
 
-import javax.swing.SwingConstants;
+import java.awt.Checkbox;
+import java.awt.Component;
+
+import javax.swing.DefaultCellEditor;
 import javax.swing.JCheckBox;
+import javax.swing.JLabel;
+import javax.swing.JTable;
+import javax.swing.SwingConstants;
+import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.DefaultTableModel;
 
 import yi_java3st_1team.clientmanagement.ui.list.AbstractTblPanel;
 import yi_java3st_1team.ordermanagement.dto.Order;
@@ -9,6 +17,7 @@ import yi_java3st_1team.ordermanagement.dto.Order;
 @SuppressWarnings("serial")
 public class OCheckTblPanel extends AbstractTblPanel<Order>{
 	public OCheckTblPanel() {
+		
 	}
 
 	@Override
@@ -17,7 +26,8 @@ public class OCheckTblPanel extends AbstractTblPanel<Order>{
 		tableCellAlign(SwingConstants.CENTER,0,1,2,3,4,5,6,7,8);
 		
 	}
-
+//"<html><span style='color:#000042'><b>입금여부</b></span></html>"
+	/** 칼럼이름 **/
 	@Override
 	protected Object[] getColNames() {
 		return new String[] {"<html><span style='color:#000042'><b>주문번호</b></span></html>",
@@ -26,11 +36,12 @@ public class OCheckTblPanel extends AbstractTblPanel<Order>{
 							 "<html><span style='color:#000042'><b>품목명</b></span></html>",
 							 "<html><span style='color:#000042'><b>주문수량</b></span></html>",
 							 "<html><span style='color:#000042'><b>주문요구사항</b></span></html>",
-							 "<html><span style='color:#000042'><b>입금여부</b></span></html>",
+							 "입금여부",
 							 "<html><span style='color:#000042'><b>주문완료</b></span></html>",
 							 "<html><span style='color:#000042'><b>주문담당자</b></span></html>"};
 	}
 
+	/** 데이터 **/
 	//"주문번호","주문일자","고객상호명","품목명","주문수량","주문요구사항","입금여부","주문완료","주문담당자"
 	// O0001, 2020-01-01, 아름시스템, 오토캐드, 10, 빠른배송부탁, 체크박스, Y/N, 김주문(EE0002)
 	@Override
@@ -47,19 +58,22 @@ public class OCheckTblPanel extends AbstractTblPanel<Order>{
 		
 		
 		/** 입금여부 **/
-		int oDps = item.getoDps(); //0 or 1
-		JCheckBox box = new JCheckBox();
-		if(oDps == 1) { //입금 O
-			box.setSelected(true);
+		int oDps = item.getoDps(); //0 or 1Checkbox qq;
+		String qq;
+		if(oDps == 1) {
+			qq = "뭐지";
+			
 		}else {
-			box.setSelected(false);
+			qq = "몰라요";
 		}
+		
+		
 		/** 주문완료 **/
 		int oOk = item.getoOk(); //0 or 1
 		String YN;
-		if(oOk == 1) { //입금 O
+		if(oOk == 1) { //입금 O, 파란색
 			YN = "<html><b><span style='color:blue'>Y</span></b></html>";
-		}else {
+		}else { //입금X, 빨간색
 			YN = "<html><b><span style='color:red'>N</span></b></html>";
 			oNo = String.format("<html><span style='color:red'>O%04d</span></html>", item.getoNo());
 			oDate = String.format("<html><span style='color:red'>%tF</span></html>", item.getoDate());
@@ -76,9 +90,8 @@ public class OCheckTblPanel extends AbstractTblPanel<Order>{
 				pName,
 				oQty,
 				oMemo,
-				//item.getoDps(),//입금여부
-				box,
-				String.format("%s", YN),
+				qq,
+				YN,
 				emp
 				
 		};
@@ -89,5 +102,6 @@ public class OCheckTblPanel extends AbstractTblPanel<Order>{
 		// TODO Auto-generated method stub
 		
 	}
+
 
 }
