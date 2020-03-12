@@ -1,6 +1,9 @@
 package yi_java3st_1team.ordermanagement.ui;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.Rectangle;
 import java.awt.SystemColor;
@@ -8,16 +11,8 @@ import java.awt.SystemColor;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 
-import yi_java3st_1team.ordermanagement.ui.list.ClientOListPanel;
-import yi_java3st_1team.ordermanagement.ui.list.OListPanel;
-import yi_java3st_1team.ordermanagement.ui.panel.ClientORegisterPanel;
-import yi_java3st_1team.ordermanagement.ui.panel.ClientOCheckPanel;
-import yi_java3st_1team.ordermanagement.ui.panel.ORegisterPanel;
-import java.awt.Font;
-import java.awt.Color;
-import java.awt.Dimension;
-import javax.swing.JLabel;
 import yi_java3st_1team.ordermanagement.ui.content.ClientOrderUIPanel;
+import yi_java3st_1team.ordermanagement.ui.panel.ClientOCheckPanel;
 
 @SuppressWarnings("serial")
 public class ClientOMainPanel extends JPanel {
@@ -33,7 +28,7 @@ public class ClientOMainPanel extends JPanel {
 	}
 	private void initialize() {
 		setPreferredSize(new Dimension(1530, 700));
-		setBackground(SystemColor.inactiveCaptionBorder);
+		setBackground(SystemColor.inactiveCaption);
 		setBounds(new Rectangle(0, 0, 1530, 700));
 		setLayout(new GridLayout(0, 1, 0, 0));
 		
