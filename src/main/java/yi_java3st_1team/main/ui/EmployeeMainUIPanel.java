@@ -36,58 +36,74 @@ import yi_java3st_1team.main.ui.content.login.EmpRegiPanel;
 import yi_java3st_1team.main.ui.content.login.EmployeeLoginPanel;
 import yi_java3st_1team.main.ui.content.login.LoginPanel;
 import yi_java3st_1team.main.ui.content.login.SearchPanel;
-import yi_java3st_1team.main.ui.service.EmployeeUiService;
+import yi_java3st_1team.main.ui.service.EmployeeUIService;
 import yi_java3st_1team.ordermanagement.ui.OMMainPanel;
 import yi_java3st_1team.productmanagement.ui.PMMainPanel;
 import yi_java3st_1team.viewsmanagement.ui.panel.ReportMainPanel;
 
 @SuppressWarnings("serial")
 public class EmployeeMainUIPanel extends JPanel implements ActionListener {
+	/**** pStop ****/
+	public JPanel pStop;
+	
+	//로그인(1)
+	public LoginPanel pLogin;
 	private JButton btnLogin;
 	private JButton btnRegi;
 	private JButton btnSearch;
 	private JFrame regiFrame;
 	private JFrame searchFrame;
-	public LoginPanel pLogin;
+	
+	//로그인(2)
 	private EmployeeLoginPanel pEmpLogin;
-	private EmployeeUiService empService;
+	private EmployeeUIService empService;
 	public static Employee loginEmp;
 	public static Department loginDept;
 	
-	public JPanel pStop;
+	//로그인(3)
+	public String empId; //로그인 아이디
+	public String empPass; //로그인 비밀번호
+	public int manager;
 	
-
+	//이미지패널(1)
+	public LogoImg02Panel pImg01;
+	
+	
+	/**** pSbot ****/
+	private JPanel pSbot;
+	
+	//이미지패널(2)
+	public LogoImg01Panel pLogo; //로고
+	private JLabel lblCall; //콜센터
+	
+	//버튼
 	private JPanel pBtns;
 	private JPanel pBtns01;
 	private JPanel pBtns02;
 	private JButton btn01;
 	private JButton btn02;
-	private JLabel lblImg01;
-	private JLabel lblImg02;
 	private JButton btn03;
 	private JButton btn04;
-	public LogoImg02Panel pImg01;
-	public LogoImg01Panel pLogo;
 	
+	//+ 이미지
 	public JPanel pImg02;
+	private JLabel lblImg01;
+	private JLabel lblImg02;
 	
-	private CMMainPanel pCMpanel;
-	private OMMainPanel pOMpanel;
-	private PMMainPanel pPMpanel;
-	private ReportMainPanel pViewpanel;
-	private JPanel pSbot;
+	/** 버튼 -> 화면전환 **/
+	private CMMainPanel pCMpanel; //거래처관리
+	private PMMainPanel pPMpanel; //제품관리
+	private OMMainPanel pOMpanel; //주문관리
+	private ReportMainPanel pViewpanel; //현황조회
 	
+	/** 메인프레임 **/
 	private EmployeeMainFrame empMain;
+
 	
-	public String empId; //로그인 아이디
-	public String empPass; //로그인 비밀번호
-	public int manager;
-
-
+	
 	public EmployeeMainUIPanel() {
-		empService = new EmployeeUiService();
-		initialize();
-		
+		empService = new EmployeeUIService();
+		initialize();		
 	}
 	
 	private void initialize() {
@@ -156,7 +172,7 @@ public class EmployeeMainUIPanel extends JPanel implements ActionListener {
 		pLogo.setPreferredSize(new Dimension(350, 250));
 		pImg02.add(pLogo, BorderLayout.NORTH);
 		
-		JLabel lblCall = new JLabel("");
+		lblCall = new JLabel("");
 		lblCall.setBackground(new Color(255, 250, 240));
 		lblCall.setOpaque(true);
 		lblCall.setForeground(SystemColor.inactiveCaptionBorder);
@@ -222,35 +238,32 @@ public class EmployeeMainUIPanel extends JPanel implements ActionListener {
 		//pEmpLogin.btnLogout.addActionListener(this);
 	}
 	public void actionPerformed(ActionEvent e) {
-		if (e.getSource() == btn04) {
-			actionPerformedBtn04(e);
-		}
-		if (e.getSource() == btn03) {
-			actionPerformedBtn03(e);
-		}
-		if (e.getSource() == btn02) {
-			actionPerformedBtn02(e);
-		}
-		if (e.getSource() == btn01) {
-			actionPerformedBtn01(e);
-		}
-		if (e.getSource() == btnSearch) {
-			actionPerformedBtnSearch(e);
+		//로그인
+		if (e.getSource() == btnLogin) {
+			actionPerformedBtnLogin(e);
 		}
 		if (e.getSource() == btnRegi) {
 			actionPerformedBtnRegi(e);
 		}
-		if (e.getSource() == btnLogin) {
-			actionPerformedBtnLogin(e);
+		if (e.getSource() == btnSearch) {
+			actionPerformedBtnSearch(e);
 		}
-		
-
-		
-
+		//버튼
+		if (e.getSource() == btn01) {
+			actionPerformedBtn01(e);
+		}
+		if (e.getSource() == btn02) {
+			actionPerformedBtn02(e);
+		}
+		if (e.getSource() == btn03) {
+			actionPerformedBtn03(e);
+		}
+		if (e.getSource() == btn04) {
+			actionPerformedBtn04(e);
+		}
 	}
 	
-
-
+	
 	//로그인
 	protected void actionPerformedBtnLogin(ActionEvent e) {
 		//로그인정보

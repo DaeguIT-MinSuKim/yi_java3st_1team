@@ -9,11 +9,10 @@ import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.ImageIcon;
 
+@SuppressWarnings("serial")
 public class ClientLoginPanel extends JPanel {
 
-	/**
-	 * Create the panel.
-	 */
+	
 	public ClientLoginPanel() {
 
 		initialize();

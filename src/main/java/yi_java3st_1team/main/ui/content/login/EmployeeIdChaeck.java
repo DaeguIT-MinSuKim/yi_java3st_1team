@@ -16,7 +16,7 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
 import yi_java3st_1team.main.dto.Employee;
-import yi_java3st_1team.main.ui.service.EmployeeUiService;
+import yi_java3st_1team.main.ui.service.EmployeeUIService;
 
 @SuppressWarnings("serial")
 public class EmployeeIdChaeck extends JPanel implements ActionListener {
@@ -25,7 +25,7 @@ public class EmployeeIdChaeck extends JPanel implements ActionListener {
 	public JButton btnAdd;
 	private JLabel lblIdEquals;
 	
-	private EmployeeUiService empService;
+	private EmployeeUIService empService;
 	
 	private EmpRegiPanel regiPanel;
 	public String idChk;
@@ -34,7 +34,7 @@ public class EmployeeIdChaeck extends JPanel implements ActionListener {
 	
 	
 	public EmployeeIdChaeck() {
-		empService = new EmployeeUiService();
+		empService = new EmployeeUIService();
 		initialize();
 	}
 	private void initialize() {
