@@ -28,7 +28,7 @@ import javax.swing.event.DocumentListener;
 import yi_java3st_1team.main.dto.Department;
 import yi_java3st_1team.main.dto.Employee;
 import yi_java3st_1team.main.ui.listner.MyDocumentListener;
-import yi_java3st_1team.main.ui.service.EmployeeUiService;
+import yi_java3st_1team.main.ui.service.EmployeeUIService;
 
 @SuppressWarnings("serial")
 public class EmpRegiPanel extends AbsRegiPanel<Employee> implements ActionListener, ItemListener {
@@ -49,14 +49,14 @@ public class EmpRegiPanel extends AbsRegiPanel<Employee> implements ActionListen
 	private JButton btnAdd;
 	private JButton btnCancle;
 
-	private EmployeeUiService empService;
+	private EmployeeUIService empService;
 	private String selectItem;
 	
 	private EmployeeIdChaeck empidChk;
 
 
 	public EmpRegiPanel() {
-		empService = new EmployeeUiService();
+		empService = new EmployeeUIService();
 		initialize();
 		setEmpNo(empService.showlastEmpNum());
 		//setEmpId();

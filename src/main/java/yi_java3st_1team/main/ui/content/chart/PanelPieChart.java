@@ -24,7 +24,7 @@ public class PanelPieChart extends JFXPanel implements InitScene{
 		root.setAutoSizeChildren(true);
 		
 		pieChart = new PieChart();
-		pieChart.setPrefSize(500, 250);
+		pieChart.setPrefSize(350, 250);
 		pieChart.setData(getChartData());
 		pieChart.setTitle("Pie Chart");
 		pieChart.setLegendVisible(true);	// 범례 표시 유무

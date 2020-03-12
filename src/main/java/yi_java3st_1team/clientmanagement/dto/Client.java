@@ -20,6 +20,12 @@ public class Client {
 		this.cNo = cNo;
 	}
 
+	
+	public Client(String cId, String cPw) {
+		this.cId = cId;
+		this.cPw = cPw;
+	}
+
 	public Client(String cName, String cCeo, String cTel) {
 		this.cName = cName;
 		this.cCeo = cCeo;

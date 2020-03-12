@@ -6,6 +6,11 @@ import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.Image;
 import java.awt.SystemColor;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
+import java.sql.SQLException;
 
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
@@ -14,9 +19,13 @@ import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JSpinner;
 import javax.swing.JTextField;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.SwingConstants;
+import javax.swing.border.LineBorder;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 
 import yi_java3st_1team.exception.InvalidCheckException;
 import yi_java3st_1team.ordermanagement.dto.Order;
@@ -25,16 +34,6 @@ import yi_java3st_1team.ordermanagement.ui.service.IQUIService;
 import yi_java3st_1team.ordermanagement.ui.service.OrderUIService;
 import yi_java3st_1team.productmanagement.dto.Product;
 import yi_java3st_1team.productmanagement.ui.service.SWUIService;
-
-import javax.swing.border.LineBorder;
-import javax.swing.JSpinner;
-import java.awt.event.ActionListener;
-import java.sql.SQLException;
-import java.awt.event.ActionEvent;
-import javax.swing.event.ChangeListener;
-import javax.swing.event.ChangeEvent;
-import java.awt.event.ItemListener;
-import java.awt.event.ItemEvent;
 
 @SuppressWarnings("serial")
 public class ClientOrderUIPanel extends JPanel implements ActionListener, ChangeListener, ItemListener {
@@ -285,6 +284,7 @@ public class ClientOrderUIPanel extends JPanel implements ActionListener, Change
 					JOptionPane.showMessageDialog(null, "현 재고수량을 초과하여 주문할 수 없습니다.");
 				}else {
 					Order newOrder = pCORPanel.getItem();
+//					newOrder.setoEname(EmployeeMainUIPanel.loginEmp); 로그인한 고객의 정보가 필요
 					service.addOrder(newOrder);
 					int sub = pQty - Integer.parseInt(pCORPanel.tfOQty.getText().trim());
 					iqService.SubProductQty(proSummary, sub);

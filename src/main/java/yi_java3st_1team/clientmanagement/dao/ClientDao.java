@@ -22,4 +22,6 @@ public interface ClientDao {
 	int deleteClient(Client client);
 	int selectClientNo(Client client);
 	int selectCsalesman(Client client);
+	
+	Client loginClient(Client client);
 }

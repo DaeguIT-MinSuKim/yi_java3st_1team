@@ -48,6 +48,8 @@ public class ClientUIPanel extends JPanel implements ActionListener, ItemListene
 	private JFrame zipcodeFrame;
 	private JComboBox cmbCate;
 	private String selectItem;
+	private JButton btnZip;
+	private String total;
 
 	public ClientUIPanel() {
 		service = new ClientUIService();
@@ -198,6 +200,7 @@ public class ClientUIPanel extends JPanel implements ActionListener, ItemListene
 			}
 		}
 	};
+	private ZipCodePanel zipPanel;
 	
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == btnSerch) {
@@ -214,6 +217,9 @@ public class ClientUIPanel extends JPanel implements ActionListener, ItemListene
 		}
 		if (e.getSource() == btnDplCheck) {
 			btnDplCheckActionPerformed(e);
+		}
+		if (e.getSource() == btnZip) {
+			btnZipActionPerformed(e);
 		}
 	}
 	protected void btnDplCheckActionPerformed(ActionEvent e) {
@@ -238,8 +244,17 @@ public class ClientUIPanel extends JPanel implements ActionListener, ItemListene
 			zipcodeFrame = new JFrame();
 			zipcodeFrame.setBounds(100, 100, 810, 350);
 			zipcodeFrame.setTitle("주소 검색");
-			ZipCodePanel zc = new ZipCodePanel();
-			zipcodeFrame.getContentPane().add(zc);
+			zipPanel = new ZipCodePanel();
+			zipcodeFrame.getContentPane().add(zipPanel);
+			
+			btnZip = new JButton("등   록");
+			btnZip.addActionListener(this);
+			btnZip.setForeground(new Color(0, 102, 204));
+			btnZip.setFont(new Font("맑은 고딕", Font.BOLD, 16));
+			btnZip.setBackground(new Color(135, 206, 250));
+			btnZip.setBounds(325, 250, 150, 32);
+			zipPanel.add(btnZip);
+			
 			zipcodeFrame.setVisible(true);
 		}else {
 			if(zipcodeFrame.isVisible()) {
@@ -248,6 +263,19 @@ public class ClientUIPanel extends JPanel implements ActionListener, ItemListene
 			zipcodeFrame.setVisible(true);
 		}
 	}
+	
+	protected void btnZipActionPerformed(ActionEvent e) {
+		String add1 = zipPanel.getTfAll().getText().trim();
+		String add2 = zipPanel.getTfDetail().getText().trim();
+		if(add2.equals("")) {
+			total = add1;
+		}else {
+			total = add1 +" "+ add2;
+		}
+		pCRPanel.tfCAddress.setText(total);
+		zipcodeFrame.dispose();
+	}
+	
 	protected void btnUpdateActionPerformed(ActionEvent e) {
 		if(pCRPanel.getName().equals("")) {
 			JOptionPane.showMessageDialog(null, "수정할 고객사를 선택해주세요.");

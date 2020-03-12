@@ -13,7 +13,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
-import yi_java3st_1team.main.ui.service.EmployeeUiService;
+import yi_java3st_1team.main.ui.service.EmployeeUIService;
 
 @SuppressWarnings("serial")
 public class EmployeeLoginPanel extends JPanel implements ActionListener{

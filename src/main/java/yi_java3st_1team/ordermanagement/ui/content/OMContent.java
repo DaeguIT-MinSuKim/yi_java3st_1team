@@ -1,6 +1,8 @@
 package yi_java3st_1team.ordermanagement.ui.content;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.Rectangle;
 import java.awt.SystemColor;
@@ -8,11 +10,6 @@ import java.awt.SystemColor;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 
-import yi_java3st_1team.ordermanagement.ui.list.OListPanel;
-import yi_java3st_1team.ordermanagement.ui.panel.ClientOCheckPanel;
-import yi_java3st_1team.ordermanagement.ui.panel.ORegisterPanel;
-import java.awt.Font;
-import java.awt.Color;
 import yi_java3st_1team.ordermanagement.ui.panel.OCheckPanel;
 
 @SuppressWarnings("serial")

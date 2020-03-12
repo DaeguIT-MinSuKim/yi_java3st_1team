@@ -16,6 +16,7 @@ public class Order {
 	private int oDps;
 	private int oOk;
 	private Employee oEname;
+	private Employee oEno;
 	private Product oPic;
 
 
@@ -27,8 +28,33 @@ public class Order {
 	public Order(int oNo) {
 		this.oNo = oNo;
 	}
-
 	
+	public Order(int oNo, Date oDate, Client oCname, Product oPname, int oQty, String oMemo, int oDps, int oOk,
+			Employee oEname, Employee oEno) {
+		this.oNo = oNo;
+		this.oDate = oDate;
+		this.oCname = oCname;
+		this.oPname = oPname;
+		this.oQty = oQty;
+		this.oMemo = oMemo;
+		this.oDps = oDps;
+		this.oOk = oOk;
+		this.oEname = oEname;
+		this.oEno = oEno;
+	}
+
+
+	public Order(int oNo, Date oDate, Client oCname, Product oPname, int oQty, String oMemo, int oDps, int oOk) {
+		this.oNo = oNo;
+		this.oDate = oDate;
+		this.oCname = oCname;
+		this.oPname = oPname;
+		this.oQty = oQty;
+		this.oMemo = oMemo;
+		this.oDps = oDps;
+		this.oOk = oOk;
+	}
+
 	public Order(int oNo, Date oDate, Client oCname, Product oPname, int oQty, String oMemo, int oDps, int oOk,
 			Employee oEname) {
 		this.oNo = oNo;
@@ -66,6 +92,14 @@ public class Order {
 		this.oOk = oOk;
 		this.oEname = oEname;
 		this.oPic = oPic;
+	}
+
+	public Employee getoEno() {
+		return oEno;
+	}
+
+	public void setoEno(Employee oEno) {
+		this.oEno = oEno;
 	}
 
 	public int getoNo() {
@@ -173,9 +207,7 @@ public class Order {
 	@Override
 	public String toString() {
 		return String.format(
-				"Order [oNo=%s, oDate=%s, oCname=%s, oPname=%s, oQty=%s, oMemo=%s, oDps=%s, oOk=%s, oEname=%s]",
-				oNo, oDate, oCname.getcNo(), oPname.getpNo(), oQty, oMemo, oDps, oOk, oEname.getEmpNo());
+				"Order [oNo=%s, oDate=%s, oCname=%s, oPname=%s, oQty=%s, oMemo=%s, oDps=%s, oOk=%s, oEname=%s, oEno=%s]",
+				oNo, oDate, oCname, oPname, oQty, oMemo, oDps, oOk, oEname, oEno);
 	}
-	
-
 }

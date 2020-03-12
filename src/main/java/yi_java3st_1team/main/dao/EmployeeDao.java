@@ -2,6 +2,7 @@ package yi_java3st_1team.main.dao;
 
 import java.util.List;
 
+import yi_java3st_1team.main.dto.Department;
 import yi_java3st_1team.main.dto.Employee;
 
 public interface EmployeeDao {
@@ -18,6 +19,8 @@ public interface EmployeeDao {
 	int deleteEmployee(Employee emp);
 	
 	Employee loginEmployee(Employee emp);
+
+	List<Employee> selectEmployeeListByDeptName(Department dept);
 	
 
 

@@ -1,14 +1,12 @@
 package yi_java3st_1team.clientmanagement.ui;
 
-import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
-import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 @SuppressWarnings("serial")
-public class ZipCodeFrame extends JFrame {
+public class ZipCodeFrame extends JFrame{
 
 	private ZipCodePanel contentPane;
 
@@ -34,8 +32,7 @@ public class ZipCodeFrame extends JFrame {
 		setBounds(100, 100, 810, 350);
 		contentPane = new ZipCodePanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
+		contentPane.setLayout(null);
 	}
-
 }

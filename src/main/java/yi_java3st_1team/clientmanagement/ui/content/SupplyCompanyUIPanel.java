@@ -30,6 +30,8 @@ import yi_java3st_1team.clientmanagement.ui.list.SCListTblPanel;
 import yi_java3st_1team.clientmanagement.ui.panel.SCRegisterPanel;
 import yi_java3st_1team.clientmanagement.ui.service.SupplierUIService;
 import yi_java3st_1team.exception.InvalidCheckException;
+import yi_java3st_1team.main.dto.Employee;
+import yi_java3st_1team.main.ui.EmployeeMainUIPanel;
 
 @SuppressWarnings("serial")
 public class SupplyCompanyUIPanel extends JPanel implements ActionListener, ItemListener {
@@ -52,6 +54,9 @@ public class SupplyCompanyUIPanel extends JPanel implements ActionListener, Item
 	private SCRegisterPanel pSCRPanel;
 	private JFrame zipcodeFrame;
 	private String selectItem;
+	private JButton btnZip;
+	private ZipCodePanel zipPanel;
+	private String total;
 
 	public SupplyCompanyUIPanel() {
 		service = new SupplierUIService();
@@ -212,6 +217,7 @@ public class SupplyCompanyUIPanel extends JPanel implements ActionListener, Item
 			}
 		}
 	};
+	
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
@@ -232,6 +238,9 @@ public class SupplyCompanyUIPanel extends JPanel implements ActionListener, Item
 		}
 		if (e.getSource() == btnDel) {
 			btnDelActionPerformed(e);
+		}
+		if (e.getSource() == btnZip) {
+			btnZipActionPerformed(e);
 		}
 		
 	}
@@ -343,8 +352,17 @@ public class SupplyCompanyUIPanel extends JPanel implements ActionListener, Item
 			zipcodeFrame = new JFrame();
 			zipcodeFrame.setBounds(100, 100, 810, 350);
 			zipcodeFrame.setTitle("주소 검색");
-			ZipCodePanel zc = new ZipCodePanel();
-			zipcodeFrame.getContentPane().add(zc);
+			zipPanel = new ZipCodePanel();
+			zipcodeFrame.getContentPane().add(zipPanel);
+			
+			btnZip = new JButton("등   록");
+			btnZip.addActionListener(this);
+			btnZip.setForeground(new Color(0, 102, 204));
+			btnZip.setFont(new Font("맑은 고딕", Font.BOLD, 16));
+			btnZip.setBackground(new Color(135, 206, 250));
+			btnZip.setBounds(325, 250, 150, 32);
+			zipPanel.add(btnZip);
+			
 			zipcodeFrame.setVisible(true);
 			
 		}else {
@@ -353,5 +371,16 @@ public class SupplyCompanyUIPanel extends JPanel implements ActionListener, Item
 			}
 			zipcodeFrame.setVisible(true);
 		}
+	}
+	protected void btnZipActionPerformed(ActionEvent e) {
+		String add1 = zipPanel.getTfAll().getText().trim();
+		String add2 = zipPanel.getTfDetail().getText().trim();
+		if(add2.equals("")) {
+			total = add1;
+		}else {
+			total = add1 +" "+ add2;
+		}
+		pSCRPanel.tfSCAddress.setText(total);
+		zipcodeFrame.dispose();
 	}
 }

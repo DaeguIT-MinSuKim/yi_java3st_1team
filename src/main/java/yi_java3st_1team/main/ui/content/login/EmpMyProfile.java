@@ -29,7 +29,7 @@ import yi_java3st_1team.main.dto.Department;
 import yi_java3st_1team.main.dto.Employee;
 import yi_java3st_1team.main.ui.EmployeeMainUIPanel;
 import yi_java3st_1team.main.ui.listner.MyDocumentListener;
-import yi_java3st_1team.main.ui.service.EmployeeUiService;
+import yi_java3st_1team.main.ui.service.EmployeeUIService;
 
 @SuppressWarnings("serial")
 public class EmpMyProfile extends AbsRegiPanel<Employee> implements ActionListener, ItemListener {
@@ -50,7 +50,7 @@ public class EmpMyProfile extends AbsRegiPanel<Employee> implements ActionListen
 	private JButton btnMod;
 	public JButton btnCancle;
 	
-	private EmployeeUiService empService;
+	private EmployeeUIService empService;
 	private EmployeeMainUIPanel empMUP;
 	
 	private String selectItem;
@@ -58,7 +58,7 @@ public class EmpMyProfile extends AbsRegiPanel<Employee> implements ActionListen
 	
 
 	public EmpMyProfile() {
-		empService = new EmployeeUiService();
+		empService = new EmployeeUIService();
 		initialize();
 		setItem();
 

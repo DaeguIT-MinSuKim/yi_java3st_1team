@@ -237,6 +237,34 @@ public class EmployeeDaoImpl implements EmployeeDao {
 		return null;
 	}
 
+	@Override
+	public List<Employee> selectEmployeeListByDeptName(Department dept) {
+		String sql = "select e.e_no , e.e_name , e.e_title , e.e_manager , e.e_mail from employee e "
+	               + "left join department d on e.e_dept = d.d_no where d.d_name =?";
+		try(Connection con = MySqlDataSource.getConnection();
+				PreparedStatement pstmt = con.prepareStatement(sql);){
+			pstmt.setString(1, dept.getDeptName());
+			ResultSet rs = pstmt.executeQuery();
+			List<Employee> list = new ArrayList<Employee>();
+			while(rs.next()) {
+				list.add(getEmp(rs));
+			}
+			return list;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	private Employee getEmp(ResultSet rs) throws SQLException {
+		int empNo = rs.getInt("e_no");
+		String empName = rs.getString("e_name");
+		String empTitle = rs.getString("e_title");
+		int empManager = rs.getInt("e_manager");
+		String empMail = rs.getString("e_mail");
+		return new Employee(empNo, empName, empTitle, empManager, empMail);
+	}
+
 
 
 

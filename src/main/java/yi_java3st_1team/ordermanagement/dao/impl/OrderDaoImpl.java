@@ -79,7 +79,8 @@ public class OrderDaoImpl implements OrderDao {
 		int oOk = rs.getInt("o_ok");
 		Employee oEname = new Employee();
 		oEname.setEmpName(rs.getString("e_name"));
-		return new Order(oNo, oDate, oCname, oPname, oQty, oMemo, oDps, oOk, oEname);
+		Employee oEno = new Employee(rs.getInt("e_no"));
+		return new Order(oNo, oDate, oCname, oPname, oQty, oMemo, oDps, oOk, oEname, oEno);
 	}
 
 	@Override
@@ -138,6 +139,38 @@ public class OrderDaoImpl implements OrderDao {
 			e.printStackTrace();
 		}
 		return 0;
+	}
+
+	@Override
+	public List<Order> selectClientOrderList(Client info) {
+		String sql = "select o_no, o_date, o_cno, p.p_name, p.p_cost, p.p_price, o_qty, o_memo, o_dps, o_ok, o_eno from `order` o "
+	               + "left join product p on o.o_pno =p.p_no where o_cno = ?";
+		try(Connection con = MySqlDataSource.getConnection();
+				PreparedStatement pstmt = con.prepareStatement(sql);){
+			pstmt.setInt(1, info.getcNo());
+			ResultSet rs = pstmt.executeQuery();
+			List<Order> list = new ArrayList<Order>();
+			while(rs.next()) {
+				list.add(getOrder(rs));
+			}
+			return list;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	private Order getOrder(ResultSet rs) throws SQLException {
+		int oNo = rs.getInt("o_no");
+		Date oDate = rs.getTimestamp("o_date");
+		Client oCname = new Client(rs.getInt("o_cno"));
+		Product oPname = new Product(rs.getString("p_name"), rs.getInt("p_cost"), rs.getInt("p_price"));
+		int oQty = rs.getInt("o_qty");
+		String oMemo = rs.getString("o_memo");
+		int oDps = rs.getInt("o_dps");
+		int oOk = rs.getInt("o_ok");
+		Employee oEname = new Employee(rs.getInt("o_eno"));
+		return new Order(oNo, oDate, oCname, oPname, oQty, oMemo, oDps, oOk, oEname);
 	}
 
 }
