@@ -431,6 +431,7 @@ public class EmpRegiPanel extends AbsRegiPanel<Employee> implements ActionListen
 		idCheck.setTitle("아이디 중복 확인");
 		idCheck.setSize(400,400);
 		idCheck.setLocation(1250, 195);
+		idCheck.setResizable(false);
 		EmployeeIdChaeck eic = new EmployeeIdChaeck();
 		
 		chkAdd = new JButton("등록");
