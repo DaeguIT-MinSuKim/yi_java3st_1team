@@ -21,6 +21,7 @@ import yi_java3st_1team.main.ui.content.login.EmployeeLoginPanel;
 import yi_java3st_1team.ordermanagement.ui.OMMainPanel;
 import yi_java3st_1team.productmanagement.ui.content.PMContent;
 import yi_java3st_1team.viewsmanagement.ui.panel.ReportMainPanel;
+import javax.swing.JButton;
 
 @SuppressWarnings("serial")
 public class PMMainPanel extends JPanel implements ActionListener{
@@ -91,19 +92,16 @@ public class PMMainPanel extends JPanel implements ActionListener{
 				//제품등록(메인버튼)
 				if (e.getSource() == pContent.pSWUIPanel.btnGoMain) {
 					actionPerformedMainBtn(e);
-					System.out.println(3);
 				}
 
 			    //매입&발주(메인버튼)
 				if (e.getSource() == pContent.pSCSOUIPanel.btnGoMain) {
 					actionPerformedMainBtn(e);
-					System.out.println(1);
 				}
 				
 			    //출고
 				if (e.getSource() == pContent.pCDRegisterPanel.btnGoMain) {
 					actionPerformedMainBtn(e);
-					System.out.println(2);
 				}
 				
 			      //로그아웃

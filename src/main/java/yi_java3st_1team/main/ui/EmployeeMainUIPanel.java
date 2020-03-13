@@ -11,6 +11,7 @@ import java.awt.SystemColor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -364,12 +365,14 @@ public class EmployeeMainUIPanel extends JPanel implements ActionListener {
 			pSbot.removeAll();
 			revalidate();
 			repaint();
-			setLayout(new CardLayout(-18,0));
+			setLayout(new CardLayout(-20,0));
 			pCMpanel = new CMMainPanel();
 			pCMpanel.setPreferredSize(new Dimension(1544, 0));
 			pStop.add(pCMpanel, BorderLayout.WEST);
 			pStop.revalidate();
 			pStop.repaint();
+			
+			
 		}
 	}
 	

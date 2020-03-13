@@ -9,6 +9,7 @@ import java.awt.SystemColor;
 
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -27,6 +28,7 @@ public class EmployeeMainFrame extends JFrame{
 	private JLabel lblLogo;
 	private JLabel lblCopy;
 	public EmployeeMainUIPanel pContents;
+	public JButton btnlogout;
 
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -72,9 +74,11 @@ public class EmployeeMainFrame extends JFrame{
 		lblLogo.setPreferredSize(new Dimension(300, 120));
 		pHeader.add(lblLogo);
 		
-//		JButton btnlogout = new JButton("로그아웃");
-//		btnlogout.setBounds(1376, 10, 135, 100);
-//		pHeader.add(btnlogout);
+		//로그아웃버튼
+		btnlogout = new JButton("로그아웃");
+		btnlogout.setBounds(1376, 10, 135, 100);
+		pHeader.add(btnlogout);
+		btnlogout.setVisible(false);
 		
 		//section
 		pSection = new JPanel();
@@ -101,5 +105,4 @@ public class EmployeeMainFrame extends JFrame{
 		lblCopy.setBorder(BorderFactory.createEmptyBorder(0,0,0,20));
 		pFooter.add(lblCopy, BorderLayout.EAST);
 	}
-	
 }
