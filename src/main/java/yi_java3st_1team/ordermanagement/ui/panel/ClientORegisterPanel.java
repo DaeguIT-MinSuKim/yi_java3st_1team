@@ -42,7 +42,6 @@ public class ClientORegisterPanel extends AbsItemPanel<Order> implements ItemLis
 	private JLabel lblOWant;
 	private JTextField tfONo;
 	public JTextField tfOCName;
-	public JTextField tfOPName;
 	public JTextField tfOQty;
 	private JTextArea taOWant;
 	private JLabel label;
@@ -124,11 +123,6 @@ public class ClientORegisterPanel extends AbsItemPanel<Order> implements ItemLis
 		tfOCName.setColumns(10);
 		tfOCName.setBounds(232, 122, 200, 30);
 		panel.add(tfOCName);
-		
-//		tfOPName = new JTextField();
-//		tfOPName.setColumns(10);
-//		tfOPName.setBounds(232, 172, 200, 30);
-//		panel.add(tfOPName);
 		
 		tfOQty = new JTextField();
 		tfOQty.setColumns(10);
