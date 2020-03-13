@@ -1,5 +1,6 @@
-package yi_java3st_1team.viewsmanagement.impl;
+package yi_java3st_1team.viewsmanagement.dao.impl;
 
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -8,8 +9,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import yi_java3st_1team.ds.MySqlDataSource;
+import yi_java3st_1team.util.LogUtil;
 import yi_java3st_1team.viewsmanagement.dao.SWSaleDao;
-import yi_java3st_1team.viewsmanagement.dto.ClientSale;
 import yi_java3st_1team.viewsmanagement.dto.SWSale;
 
 public class SWSaleDaoImpl implements SWSaleDao {
@@ -28,12 +29,12 @@ public class SWSaleDaoImpl implements SWSaleDao {
 				"		s.s_name as 공급회사명, " + 
 				"		o.o_qty*p.p_cost as 공급금액, " + 
 				"		o.o_qty*p.p_price as 판매금액, " + 
-				"		(case when (o.o_qty >= 50 and o.o_qty < 100) then format(o.o_qty*p.p_price*0.1, 0) " + 
-				"			  when o.o_qty >= 100 then format(o.o_qty*p.p_price*0.15, 0) " + 
+				"		(case when (o.o_qty >= 50 and o.o_qty < 100) then o.o_qty*p.p_price*0.1 " + 
+				"			  when o.o_qty >= 100 then o.o_qty*p.p_price*0.15 " + 
 				"		 else '0'	end) as 할인금액, " + 
-				"		(case when (o.o_qty >= 50 and o.o_qty < 100) then format(o.o_qty*p.p_price*0.9-(o.o_qty*p.p_cost),0) " + 
-				"			  when o.o_qty >= 100 then format(o.o_qty*p.p_price*0.85-(o.o_qty*p.p_cost),0) " + 
-				"		 else format((o.o_qty*p.p_price)-(o.o_qty*p.p_cost),0)	end) as 판매이윤 " + 
+				"		(case when (o.o_qty >= 50 and o.o_qty < 100) then o.o_qty*p.p_price*0.9-(o.o_qty*p.p_cost) " + 
+				"			  when o.o_qty >= 100 then o.o_qty*p.p_price*0.85-(o.o_qty*p.p_cost) " + 
+				"		 else (o.o_qty*p.p_price)-(o.o_qty*p.p_cost)	end) as 판매이윤 " + 
 				"  from product p natural join `order` o natural join supplier s natural join category cate " + 
 				" where p.p_no = o.o_pno and cate.cate_no = p.p_cate and s.s_no = p.p_sno;";
 		List<SWSale> list = new ArrayList<SWSale>();
@@ -58,5 +59,31 @@ public class SWSaleDaoImpl implements SWSaleDao {
 		}
 		return null;
 		
+	}
+
+	@Override
+	public List<SWSale> procedureSWSaleByPName(SWSale sw) throws SQLException {
+		List<SWSale> list = new ArrayList<SWSale>();
+		String sql = "{call swSale(?)}";
+		Connection con = MySqlDataSource.getConnection();
+		try(CallableStatement cstmt = con.prepareCall(sql);){
+			cstmt.setString(1, sw.getP_name());
+			LogUtil.prnLog(cstmt);
+			try(ResultSet rs = cstmt.executeQuery()){
+				while(rs.next()) {
+					SWSale swSale = new SWSale();
+					swSale.setP_name(rs.getString(1));
+					swSale.setCate_name(rs.getString(2));
+					swSale.setS_name(rs.getString(3));
+					swSale.setSupplyAmount(rs.getInt(4));
+					swSale.setSalesAmount(rs.getInt(5));
+					swSale.setDiscount(rs.getInt(6));
+					swSale.setSalesProfit(rs.getInt(7));
+					
+					list.add(swSale);
+				}
+			}
+		}
+		return list;
 	}
 }

@@ -13,6 +13,11 @@ public class SWSale {
 		// TODO Auto-generated constructor stub
 	}
 
+	public SWSale(String p_name) {
+		super();
+		this.p_name = p_name;
+	}
+
 	public SWSale(String p_name, String cate_name, String s_name, int supplyAmount, int salesAmount, int discount,
 			int salesProfit) {
 		super();
@@ -79,31 +84,6 @@ public class SWSale {
 
 	public void setSalesProfit(int salesProfit) {
 		this.salesProfit = salesProfit;
-	}
-
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((p_name == null) ? 0 : p_name.hashCode());
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		SWSale other = (SWSale) obj;
-		if (p_name == null) {
-			if (other.p_name != null)
-				return false;
-		} else if (!p_name.equals(other.p_name))
-			return false;
-		return true;
 	}
 
 	@Override
