@@ -34,7 +34,7 @@ public class CDRegisterPanel extends JPanel {
 	private JButton btnAdd;
 	private JButton btnUpdate;
 	private JButton btnDel;
-	private JButton btnGoMain;
+	public JButton btnGoMain;
 	private JLabel label;
 
 	private CDUIService cdService;

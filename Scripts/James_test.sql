@@ -102,7 +102,42 @@ insert into employee (e_no, e_name, e_dept, e_title, e_manager, e_id, e_pw, e_ma
 
 show tables;
 
-select * from `order` o ;
+select * from `order` o;
+
+select c_name, count(c_name) from `order` o left join client on o_cno = c_no where c_no = 20;
+
 select * from client_delivery cd ;
+
+select * from client;
+
+select * from client where c_salesman = 46;
+
+-- 통계
+-- 라인차트
+-- 영업부 실적 : 영업관리 1부, 2부, 3부 실적
+select * from client c left join employee e on c.c_salesman = e.e_no left join department d on e.e_dept = d.d_no; -- 56개 // 해외사업부 2개 빼고 총 영업 (54개)
+select * from client c left join employee e on c.c_salesman = e.e_no left join department d on e.e_dept = d.d_no where d.d_no = 4; -- 영업관리 1부 : 13개
+select * from client c left join employee e on c.c_salesman = e.e_no left join department d on e.e_dept = d.d_no where d.d_no = 5; -- 영업관리 2부 : 24개
+select * from client c left join employee e on c.c_salesman = e.e_no left join department d on e.e_dept = d.d_no where d.d_no = 6; -- 영업관리 3부 : 17개
+
+-- 부서명, 고객번호(고객유치수)
+select d.d_name, count(c.c_no) from client c left join employee e on c.c_salesman = e.e_no left join department d on e.e_dept = d.d_no where d.d_no = 4 -- 영업관리 1부
+union
+select d.d_name, count(c.c_no) from client c left join employee e on c.c_salesman = e.e_no left join department d on e.e_dept = d.d_no where d.d_no = 5 -- 영업관리 2부
+union
+select d.d_name, count(c.c_no) from client c left join employee e on c.c_salesman = e.e_no left join department d on e.e_dept = d.d_no where d.d_no = 6; -- 영업관리 3부
+
+
+-- 바차트
+select * from client; -- 고객 : 총56명
+select * from `order` o left join client on o_cno = c_no;
+-- 가장 많이 주문한 고객 : 고객사이름, 주문번호(주문한횟수)
+select c_no, c_name, count(o_no) as 주문횟수 from `order` o left join client on o_cno = c_no group by c_name
+union
+
+set @count(o_no):=0, @rank:=0;
+
+select c_no, c_name, count(o_no) as ff from `order` o left join client on o_cno = c_no group by  c_no;
+-- 1(0)/2(1)/3(1)/4(0)/5(1)/6(1)/7(1)/8(0)/9(1)/10(0)/11(0)/12(0)/13(2)/14(1)/15(1)/16(2)/17(0)/18(0)/19(1)/20(3)/21(0)/22(0)/23(0)/24(1)/
 
 		

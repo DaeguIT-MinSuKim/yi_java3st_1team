@@ -24,7 +24,7 @@ public class OCheckPanel extends JPanel {
 
 	private JLabel lblO;
 	private JPanel pList;
-	public JButton mainBtn;
+	public JButton btnGoMain;
 	private OCheckTblPanel pOCheckList;
 	
 	private OrderUIService odService;
@@ -68,12 +68,12 @@ public class OCheckPanel extends JPanel {
 		btnNewButton.setBounds(947, 65, 111, 33);
 		panel.add(btnNewButton);
 		
-		mainBtn = new JButton("메인화면");
-		mainBtn.setBackground(new Color(25, 25, 112));
-		mainBtn.setForeground(Color.WHITE);
-		mainBtn.setFont(new Font("맑은 고딕", Font.BOLD, 16));
-		mainBtn.setBounds(1070, 65, 111, 33);
-		panel.add(mainBtn);
+		btnGoMain = new JButton("메인화면");
+		btnGoMain.setBackground(new Color(25, 25, 112));
+		btnGoMain.setForeground(Color.WHITE);
+		btnGoMain.setFont(new Font("맑은 고딕", Font.BOLD, 16));
+		btnGoMain.setBounds(1070, 65, 111, 33);
+		panel.add(btnGoMain);
 		
 	}
 	private JPopupMenu createPopupMenu() {
