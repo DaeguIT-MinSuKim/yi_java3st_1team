@@ -9,12 +9,15 @@ import org.junit.AfterClass;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.BeforeClass;
+import org.junit.FixMethodOrder;
 import org.junit.Test;
+import org.junit.runners.MethodSorters;
 
 import yi_java3st_1team.util.LogUtil;
+import yi_java3st_1team.viewsmanagement.dao.impl.ClientSaleDaoImpl;
 import yi_java3st_1team.viewsmanagement.dto.ClientSale;
-import yi_java3st_1team.viewsmanagement.impl.ClientSaleDaoImpl;
 
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class ClientSaleDaoTest {
 	static ClientSaleDao dao;
 	static Connection con;
@@ -43,7 +46,7 @@ public class ClientSaleDaoTest {
 	}
 
 	@Test
-	public void testSelectClientSaleByAll() throws SQLException {
+	public void test01SelectClientSaleByAll() throws SQLException {
 		LogUtil.prnLog(Thread.currentThread().getStackTrace()[1].getMethodName()+"()");
 		List<ClientSale> list = dao.selectClientSaleByAll();
 		Assert.assertNotNull(list);
@@ -51,6 +54,14 @@ public class ClientSaleDaoTest {
 		for(ClientSale cs : list) {
 			LogUtil.prnLog(cs);
 		}
+	}
+	
+	@Test
+	public void test02procedureClientSaleByCName() throws SQLException {
+		LogUtil.prnLog(Thread.currentThread().getStackTrace()[1].getMethodName()+"()");
+		List<ClientSale> list = dao.procedureClientSaleByCName(new ClientSale("전라북도청"));
+		Assert.assertNotNull(list);
+		LogUtil.prnLog(list);
 	}
 
 }
