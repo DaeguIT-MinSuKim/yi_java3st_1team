@@ -7,7 +7,7 @@ select	c.c_name as 고객상호명,
 		(case o.o_dps when '0' then '미입금' when '1' then '완료'	end) as 입금여부,
 		p.p_price as 판매가격,
 		o.o_qty*p.p_price as 매출금,
-		(case o.o_dps when '0' then format(o.o_qty*p.p_price, 0) when '1' then '-' end) as 미수금
+		(case o.o_dps when '0' then o.o_qty*p.p_price when '1' then '0' end) as 미수금
   from client c natural join `order` o natural join product p
  where c.c_no = o.o_cno and p.p_no = o.o_pno;
 
@@ -18,12 +18,12 @@ select	p.p_name as 품목명,
 		s.s_name as 공급회사명,
 		o.o_qty*p.p_cost as 공급금액,
 		o.o_qty*p.p_price as 판매금액,
-		(case when (o.o_qty >= 50 and o.o_qty < 100) then format(o.o_qty*p.p_price*0.1, 0)
-			  when o.o_qty >= 100 then format(o.o_qty*p.p_price*0.15, 0)
-		 else '-'	end) as 할인금액,
-		(case when (o.o_qty >= 50 and o.o_qty < 100) then format(o.o_qty*p.p_price*0.9-(o.o_qty*p.p_cost),0)
-			  when o.o_qty >= 100 then format(o.o_qty*p.p_price*0.85-(o.o_qty*p.p_cost),0)
-		 else format((o.o_qty*p.p_price)-(o.o_qty*p.p_cost),0)	end) as 판매이윤
+		(case when (o.o_qty >= 50 and o.o_qty < 100) then o.o_qty*p.p_price*0.1
+			  when o.o_qty >= 100 then o.o_qty*p.p_price*0.15
+		 else '0'	end) as 할인금액,
+		(case when (o.o_qty >= 50 and o.o_qty < 100) then o.o_qty*p.p_price*0.9-(o.o_qty*p.p_cost)
+			  when o.o_qty >= 100 then o.o_qty*p.p_price*0.85-(o.o_qty*p.p_cost)
+		 else (o.o_qty*p.p_price)-(o.o_qty*p.p_cost)	end) as 판매이윤
   from product p natural join `order` o natural join supplier s natural join category cate
  where p.p_no = o.o_pno and cate.cate_no = p.p_cate and s.s_no = p.p_sno;
  
@@ -50,9 +50,10 @@ select	p.p_name as 품목명,
  where s.s_no = p.p_sno and p.p_no = iq.iq_pno;
 
 
--- SW 전체 판매현황
-SELECT	MID(o.o_date , 1, 7) as 날짜,
-		cate.cate_name as 분류, p.p_name as 품목명,
+-- SW 전체 판매현황 (할인포함x 판매금액)
+select	MID(o.o_date , 1, 7) as 날짜,
+		cate.cate_name as 분류,
+		p.p_name as 품목명,
 		o.o_no as 주문번호,
 		o.o_qty as 주문수량,
 		o.o_qty*p.p_price as 판매금액

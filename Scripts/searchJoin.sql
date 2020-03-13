@@ -10,7 +10,7 @@ begin
 			(case o.o_dps when '0' then '미입금' when '1' then '완료'	end) as 입금여부,
 			p.p_price as 판매가격,
 			o.o_qty*p.p_price as 매출금,
-			(case o.o_dps when '0' then format(o.o_qty*p.p_price, 0) when '1' then '-' end) as 미수금
+			(case o.o_dps when '0' then o.o_qty*p.p_price when '1' then '0' end) as 미수금
 	  from client c natural join `order` o natural join product p
 	 where c.c_no = o.o_cno and p.p_no = o.o_pno and c.c_name = in_c_name;
 end $$
@@ -20,9 +20,9 @@ call clientSale('전라북도청');
 
 
 -- S/W별 판매현황 조회_ 품목명 조회
-drop procedure if exists SWSale;
+drop procedure if exists swSale;
 delimiter $$
-create procedure SWSale(
+create procedure swSale(
 	in in_p_name varchar(50))
 begin
 	select	p.p_name as 품목명,
@@ -30,24 +30,24 @@ begin
 			s.s_name as 공급회사명,
 			o.o_qty*p.p_cost as 공급금액,
 			o.o_qty*p.p_price as 판매금액,
-			(case when (o.o_qty >= 50 and o.o_qty < 100) then format(o.o_qty*p.p_price*0.1, 0)
-				  when o.o_qty >= 100 then format(o.o_qty*p.p_price*0.15, 0)
-			 else '-'	end) as 할인금액,
-			(case when (o.o_qty >= 50 and o.o_qty < 100) then format(o.o_qty*p.p_price*0.9-(o.o_qty*p.p_cost),0)
-				  when o.o_qty >= 100 then format(o.o_qty*p.p_price*0.85-(o.o_qty*p.p_cost),0)
-			 else format((o.o_qty*p.p_price)-(o.o_qty*p.p_cost),0)	end) as 판매이윤
+			(case when (o.o_qty >= 50 and o.o_qty < 100) then o.o_qty*p.p_price*0.1
+				  when o.o_qty >= 100 then o.o_qty*p.p_price*0.15
+			 else '0'	end) as 할인금액,
+			(case when (o.o_qty >= 50 and o.o_qty < 100) then o.o_qty*p.p_price*0.9-(o.o_qty*p.p_cost)
+				  when o.o_qty >= 100 then o.o_qty*p.p_price*0.85-(o.o_qty*p.p_cost)
+			 else (o.o_qty*p.p_price)-(o.o_qty*p.p_cost)	end) as 판매이윤
  	 from product p natural join `order` o natural join supplier s natural join category cate
 	 where p.p_no = o.o_pno and cate.cate_no = p.p_cate and s.s_no = p.p_sno and p.p_name = in_p_name;
 end $$
 delimiter ;
 
-call SWSale('한글 2020');
+call swSale('한글 2020');
 
 
 -- 날짜별 판매현황 조회_ 날짜 조회
-drop procedure if exists DateSale;
+drop procedure if exists dateSale;
 delimiter $$
-create procedure DateSale(
+create procedure dateSale(
 	in start_o_date date,
 	in end_o_date date)
 begin
@@ -62,13 +62,13 @@ begin
 end $$
 delimiter ;
 
-call DateSale('2019-03-01', '2019-09-30');
+call dateSale('2019-03-01', '2019-09-30');
 
 
 -- 재고현황 조회_ 품목명 조회
-drop procedure if exists IQ;
+drop procedure if exists iq;
 delimiter $$
-create procedure IQ(
+create procedure iq(
 	in in_p_name varchar(50))
 begin
 	select	p.p_name as 품목명,
@@ -82,7 +82,7 @@ begin
 end $$
 delimiter ;
 
-call IQ('아르미 Pro');
+call iq('아르미 Pro');
 
 
 -- 재고현황 조회_ 재고수량별 조회
