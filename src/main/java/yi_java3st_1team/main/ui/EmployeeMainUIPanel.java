@@ -70,7 +70,7 @@ public class EmployeeMainUIPanel extends JPanel implements ActionListener {
 	
 	
 	/**** pSbot ****/
-	private JPanel pSbot;
+	public JPanel pSbot;
 	
 	//이미지패널(2)
 	public LogoImg01Panel pLogo; //로고

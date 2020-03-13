@@ -12,11 +12,16 @@ import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
+import javafx.application.Platform;
+import javafx.embed.swing.JFXPanel;
+import javafx.scene.Scene;
 import yi_java3st_1team.clientmanagement.ui.content.CMContent;
 import yi_java3st_1team.main.LeftMainMenu;
 import yi_java3st_1team.main.dto.Employee;
 import yi_java3st_1team.main.ui.EmployeeMainUIPanel;
 import yi_java3st_1team.main.ui.content.LogoImg02Panel;
+import yi_java3st_1team.main.ui.content.chart.InitScene;
+import yi_java3st_1team.main.ui.content.chart.PanelLineChart;
 import yi_java3st_1team.main.ui.content.login.EmployeeLoginPanel;
 import yi_java3st_1team.ordermanagement.ui.OMMainPanel;
 import yi_java3st_1team.productmanagement.ui.PMMainPanel;
@@ -104,55 +109,61 @@ public class CMMainPanel extends JPanel implements ActionListener{
 		   removeAll();
 		   revalidate();
 		   repaint();
+		   
 		   emp = new EmployeeMainUIPanel();
 		   add(emp);
 		   
 		   emp.pStop.removeAll();
 		   
 		   pEmpLogin = new EmployeeLoginPanel();
-		   
 		   emp.pStop.add(pEmpLogin, BorderLayout.WEST);
 
 		   switch (manager) {
-		case 1:
-			pEmpLogin.manager.setText("[책임관리자 로그인]");
-			pEmpLogin.loginImg.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\loginMain\\topManager.png"));
+			case 1:
+				pEmpLogin.manager.setText("[책임관리자 로그인]");
+				pEmpLogin.loginImg.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\loginMain\\topManager.png"));
 
-			// 책임관리자(대표이사~과장) 로그인시 차트 패널 불러오기
-			// 1. 라인차트
-			emp.pStop.remove(emp.pImg01); // 제거
-			JPanel line = new JPanel();
-			line.setBackground(SystemColor.yellow);
-			emp.pStop.add(line, BorderLayout.CENTER);
+				// 책임관리자(대표이사~과장) 로그인시 차트 패널 불러오기
+				// 1. 라인차트
+				emp.pStop.remove(emp.pImg01); // 제거
+				JPanel line = new JPanel();
+				line.setBackground(SystemColor.yellow);
+				emp.pStop.add(line, BorderLayout.CENTER);
 
-			// 2. 바차트
-			emp.pImg02.remove(emp.pLogo); // 제거
-			JPanel bar = new JPanel();
-			bar.setBackground(Color.red);
-			bar.setPreferredSize(new Dimension(350, 250));
-			emp.pImg02.add(bar, BorderLayout.NORTH);
-			break;
-		case 2:
-			pEmpLogin.manager.setText("[관리자 로그인]");
-			pEmpLogin.loginImg.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\loginMain\\manager2.png"));
-		    LogoImg02Panel logo01 = new LogoImg02Panel();
-		    emp.pStop.add(logo01,BorderLayout.CENTER);
-			break;
-		
-		}
-		pEmpLogin.loginSuc.setText("<html>반갑습니다!<br><span style='color:blue'>"+emp.loginEmp.getEmpName()+" "+emp.loginEmp.getEmpTitle()+"</span>님이<br>로그인 하셨습니다.</html>");
-		String empNum = String.format("EE%04d", emp.loginEmp.getEmpNo());
-		pEmpLogin.empInfo.setText("<html>- 사원번호 : <span style='color:red'>"+empNum+"</span><br>- 부서명 : <span style='color:green'>"+emp.loginEmp.getdNo().getDeptName()+"</span></html>");
+				// 2. 바차트
+				emp.pImg02.remove(emp.pLogo); // 제거
+				JPanel bar = new JPanel();
+				bar.setBackground(Color.red);
+				bar.setPreferredSize(new Dimension(350, 250));
+				emp.pImg02.add(bar, BorderLayout.NORTH);
+				break;
+			case 2:
+				pEmpLogin.manager.setText("[관리자 로그인]");
+				pEmpLogin.loginImg.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\loginMain\\manager2.png"));
+			    LogoImg02Panel logo01 = new LogoImg02Panel();
+			    emp.pStop.add(logo01,BorderLayout.CENTER);
+				break;
+			
+			}
+			pEmpLogin.loginSuc.setText("<html>반갑습니다!<br><span style='color:blue'>"+emp.loginEmp.getEmpName()+" "+emp.loginEmp.getEmpTitle()+"</span>님이<br>로그인 하셨습니다.</html>");
+			String empNum = String.format("EE%04d", emp.loginEmp.getEmpNo());
+			pEmpLogin.empInfo.setText("<html>- 사원번호 : <span style='color:red'>"+empNum+"</span><br>- 부서명 : <span style='color:green'>"+emp.loginEmp.getdNo().getDeptName()+"</span></html>");
 
 
-		   emp.pStop.revalidate();
-		   emp.pStop.repaint();
-		   
-		   pEmpLogin.btnLogout.addActionListener(this);
+			   emp.pStop.revalidate();
+			   emp.pStop.repaint();
+			   
+			   pEmpLogin.btnLogout.addActionListener(this);
 		   
 
 		
 	}
+	   
+		public void initFX(InitScene fxPanel) {
+			Scene scene = fxPanel.createScene();
+			JFXPanel panel = (JFXPanel) fxPanel;
+			panel.setScene(scene);
+		}
 	   
 		private void actionPerformedBtnLogout(ActionEvent e) {
 			removeAll();

@@ -55,5 +55,6 @@ public class ClientOMainPanel extends JPanel {
 		
 		pOCheckPanel = new ClientOCheckPanel();
 		pListPanel.add(pOCheckPanel);
+		//tpClientManagement.setSelectedIndex(1); 탭순서 변경
 	}
 }
