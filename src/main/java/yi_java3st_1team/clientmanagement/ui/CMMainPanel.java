@@ -88,9 +88,13 @@ public class CMMainPanel extends JPanel implements ActionListener{
 				      }
 			      
 			      //로그아웃
-					if(e.getSource() == pEmpLogin.btnLogout) {
-						actionPerformedBtnLogout(e);
-					}
+			      	try {
+						if(e.getSource() == pEmpLogin.btnLogout) {
+							actionPerformedBtnLogout(e);
+						}
+			      	}catch(NullPointerException a) {
+			      		
+			      	}
 
 
 		   }

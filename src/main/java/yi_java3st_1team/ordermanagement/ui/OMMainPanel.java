@@ -87,10 +87,14 @@ public class OMMainPanel extends JPanel  implements ActionListener{
 				      }
 
 			      
-					//로그아웃
-					if(e.getSource() == pEmpLogin.btnLogout) {
-						actionPerformedBtnLogout(e);
-					}
+			      //로그아웃
+			      	try {
+						if(e.getSource() == pEmpLogin.btnLogout) {
+							actionPerformedBtnLogout(e);
+						}
+			      	}catch(NullPointerException a) {
+			      		
+			      	}
 					
 					
 		   }

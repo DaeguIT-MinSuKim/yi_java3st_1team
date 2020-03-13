@@ -137,7 +137,7 @@ union
 
 set @count(o_no):=0, @rank:=0;
 
-select c_no, c_name, count(o_no) as ff from `order` o left join client on o_cno = c_no group by  c_no;
+select c_no, c_name, count(o_no) as 주문횟수 from `order` o left join client on o_cno = c_no group by  c_no;
 -- 1(0)/2(1)/3(1)/4(0)/5(1)/6(1)/7(1)/8(0)/9(1)/10(0)/11(0)/12(0)/13(2)/14(1)/15(1)/16(2)/17(0)/18(0)/19(1)/20(3)/21(0)/22(0)/23(0)/24(1)/
 
 		
