@@ -12,6 +12,11 @@ public class IQEvaluation {
 		// TODO Auto-generated constructor stub
 	}
 
+	public IQEvaluation(String p_name) {
+		super();
+		this.p_name = p_name;
+	}
+
 	public IQEvaluation(String p_name, String s_name, int iq_qty, int p_price, int p_cost, String evaluation) {
 		super();
 		this.p_name = p_name;
@@ -68,31 +73,6 @@ public class IQEvaluation {
 
 	public void setEvaluation(String evaluation) {
 		this.evaluation = evaluation;
-	}
-
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((p_name == null) ? 0 : p_name.hashCode());
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		IQEvaluation other = (IQEvaluation) obj;
-		if (p_name == null) {
-			if (other.p_name != null)
-				return false;
-		} else if (!p_name.equals(other.p_name))
-			return false;
-		return true;
 	}
 
 	@Override
