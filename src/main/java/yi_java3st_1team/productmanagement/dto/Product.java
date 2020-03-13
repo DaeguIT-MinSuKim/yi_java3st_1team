@@ -195,12 +195,18 @@ public class Product {
 			return false;
 		return true;
 	}
-
 	@Override
 	public String toString() {
+		return String.format("%s", pName);
+	}
+
+	
+	public String toString1() {
 		return String.format(
 				"%s %s %s %s %s %s %s %s", pNo,
 				pCate, pName, pCost, pPrice, pSno, pQty, String.format("%1$tF %1$tT", pDate));
 	}
+	
+	
 
 }

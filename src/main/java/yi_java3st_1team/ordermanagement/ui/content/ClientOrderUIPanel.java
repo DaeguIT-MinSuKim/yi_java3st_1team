@@ -28,6 +28,7 @@ import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
 import yi_java3st_1team.exception.InvalidCheckException;
+import yi_java3st_1team.main.ui.ClientMainUIPanel;
 import yi_java3st_1team.ordermanagement.dto.Order;
 import yi_java3st_1team.ordermanagement.ui.panel.ClientORegisterPanel;
 import yi_java3st_1team.ordermanagement.ui.service.IQUIService;
@@ -68,7 +69,6 @@ public class ClientOrderUIPanel extends JPanel implements ActionListener, Change
 	private Dimension picDimension = new Dimension(320, 293);
 	private String picPath;
 	private int pQty;
-	private String selectItem;
 	
 	public ClientOrderUIPanel() {
 		service = new OrderUIService();
@@ -88,6 +88,8 @@ public class ClientOrderUIPanel extends JPanel implements ActionListener, Change
 		pCORPanel = new ClientORegisterPanel();
 		pCORPanel.setBounds(60, 117, 460, 445);
 		pCORPanel.setNum(service.lastOrder());
+		pCORPanel.setCName(ClientMainUIPanel.loginCl);
+		pCORPanel.setService(pService);
 		pRegisterPanel.add(pCORPanel);
 		
 		lblO = new JLabel("주문 등록");
@@ -275,7 +277,7 @@ public class ClientOrderUIPanel extends JPanel implements ActionListener, Change
 	protected void btnAddActionPerformed(ActionEvent e) {
 		try {
 			if(pCORPanel.tfOCName.getText().equals("") 
-					|| pCORPanel.tfOPName.getText().equals("") 
+					|| pCORPanel.cmbPList.getSelectedItem().toString().equals("") 
 					|| pCORPanel.tfOQty.getText().equals("")) {
 				JOptionPane.showMessageDialog(null, "고객상호명, 품목명, 주문수량은 필수입력사항입니다.");
 				return;
@@ -284,7 +286,6 @@ public class ClientOrderUIPanel extends JPanel implements ActionListener, Change
 					JOptionPane.showMessageDialog(null, "현 재고수량을 초과하여 주문할 수 없습니다.");
 				}else {
 					Order newOrder = pCORPanel.getItem();
-//					newOrder.setoEname(EmployeeMainUIPanel.loginEmp); 로그인한 고객의 정보가 필요
 					service.addOrder(newOrder);
 					int sub = pQty - Integer.parseInt(pCORPanel.tfOQty.getText().trim());
 					iqService.SubProductQty(proSummary, sub);
@@ -311,11 +312,11 @@ public class ClientOrderUIPanel extends JPanel implements ActionListener, Change
 	}
 	
 	protected void btnPCheckActionPerformed(ActionEvent e) {
-		if(pCORPanel.tfOPName.getText().equals("")) {
-			JOptionPane.showMessageDialog(null, "조회하려는 품목명을 작성해주세요.");
+		if(pCORPanel.cmbPList.getSelectedItem().toString().equals("")) {
+			JOptionPane.showMessageDialog(null, "조회하려는 품목명을 선택해주세요.");
 		}else {
 			Product product = new Product();
-			product.setpName(pCORPanel.tfOPName.getText().trim());
+			product.setpName(pCORPanel.cmbPList.getSelectedItem().toString().trim());
 			Product proImg = new Product(pService.selectProductPic(product));
 			System.out.println(proImg.getpPic());
 			if(proImg.getpPic()==null) {
@@ -351,6 +352,7 @@ public class ClientOrderUIPanel extends JPanel implements ActionListener, Change
 	protected void btnResetActionPerformed(ActionEvent e) {
 		pCORPanel.clearTf();
 		pCORPanel.setNum(service.lastOrder());
+		pCORPanel.setCName(ClientMainUIPanel.loginCl);
 		setPic(getClass().getClassLoader().getResource("mainLogo3.png").getPath());
 		lblPNo.setText("품목번호");
 		lblSCName.setText("품목명");
@@ -362,7 +364,7 @@ public class ClientOrderUIPanel extends JPanel implements ActionListener, Change
 	}
 	
 	protected void btnQtyCheckActionPerformed(ActionEvent e) {
-		if(pCORPanel.tfOPName.getText().equals("")) {
+		if(pCORPanel.cmbPList.getSelectedItem().toString().equals("")) {
 			JOptionPane.showMessageDialog(null, "먼저 품목을 조회해주세요.");
 		}else {
 			pQty = iqService.showQty(proSummary);

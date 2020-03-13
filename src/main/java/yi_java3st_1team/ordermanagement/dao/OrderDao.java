@@ -15,4 +15,6 @@ public interface OrderDao {
 	int deleteOrder(Order order);
 
 	List<Order> selectClientOrderList(Client info);
+
+	List<Order> selectOrderListByCal(String startDate, String endDate);
 }

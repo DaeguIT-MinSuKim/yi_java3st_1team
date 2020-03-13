@@ -6,6 +6,8 @@ import java.awt.Font;
 import java.awt.Rectangle;
 import java.awt.SystemColor;
 import java.util.Date;
+import java.util.List;
+import java.util.Vector;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -25,8 +27,13 @@ import yi_java3st_1team.ordermanagement.dto.Order;
 import yi_java3st_1team.productmanagement.dto.Product;
 import yi_java3st_1team.productmanagement.ui.service.SWUIService;
 
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JComboBox;
+import java.awt.event.ItemListener;
+import java.awt.event.ItemEvent;
+
 @SuppressWarnings("serial")
-public class ClientORegisterPanel extends AbsItemPanel<Order> {
+public class ClientORegisterPanel extends AbsItemPanel<Order> implements ItemListener {
 	private JLabel lblONo;
 	private JLabel lblODate;
 	private JLabel lblOCName;
@@ -42,6 +49,7 @@ public class ClientORegisterPanel extends AbsItemPanel<Order> {
 	private JDateChooser tfODate;
 	private ClientUIService cService;
 	private SWUIService pService;
+	public JComboBox<Product> cmbPList;
 	
 	public ClientORegisterPanel() {
 		cService = new ClientUIService();
@@ -112,14 +120,15 @@ public class ClientORegisterPanel extends AbsItemPanel<Order> {
 		panel.add(tfODate);
 		
 		tfOCName = new JTextField();
+		tfOCName.setEditable(false);
 		tfOCName.setColumns(10);
 		tfOCName.setBounds(232, 122, 200, 30);
 		panel.add(tfOCName);
 		
-		tfOPName = new JTextField();
-		tfOPName.setColumns(10);
-		tfOPName.setBounds(232, 172, 200, 30);
-		panel.add(tfOPName);
+//		tfOPName = new JTextField();
+//		tfOPName.setColumns(10);
+//		tfOPName.setBounds(232, 172, 200, 30);
+//		panel.add(tfOPName);
 		
 		tfOQty = new JTextField();
 		tfOQty.setColumns(10);
@@ -131,6 +140,11 @@ public class ClientORegisterPanel extends AbsItemPanel<Order> {
 		taOWant.setBounds(70, 322, 364, 100);
 		panel.add(taOWant);
 		
+		cmbPList = new JComboBox<>();
+		cmbPList.addItemListener(this);
+		cmbPList.setBounds(232, 172, 200, 30);
+		panel.add(cmbPList);
+		
 		label = new JLabel("");
 		label.setOpaque(true);
 		label.setBackground(Color.WHITE);
@@ -139,8 +153,35 @@ public class ClientORegisterPanel extends AbsItemPanel<Order> {
 		
 	}
 	
+	public void setService(SWUIService service) {
+		this.pService = service;
+		setCmbPList(service.showProductList());
+	}
+	
+	private void setCmbPList(List<Product> showProductList) {
+		DefaultComboBoxModel<Product> model = new DefaultComboBoxModel<Product>(new Vector<>(showProductList));
+		cmbPList.setModel(model);
+		cmbPList.setSelectedIndex(-1);
+		
+	}
+	
+	public void itemStateChanged(ItemEvent e) {
+		if (e.getSource() == cmbPList) {
+			cmbPListItemStateChanged(e);
+		}
+	}
+	protected void cmbPListItemStateChanged(ItemEvent e) {
+		if(e.getStateChange() == ItemEvent.SELECTED) {
+			
+		}
+	}
+	
 	public void setNum(Order item) {
 		tfONo.setText(String.format("O%04d", item.getoNo()+1));
+	}
+	
+	public void setCName(Client item) {
+		tfOCName.setText(item.getcName());
 	}
 	
 	@Override
@@ -151,7 +192,7 @@ public class ClientORegisterPanel extends AbsItemPanel<Order> {
 		client.setcName(tfOCName.getText().trim());
 		Client oCname = new Client(cService.selectOrderCno(client));
 		Product product = new Product();
-		product.setpName(tfOPName.getText().trim());
+		product.setpName(cmbPList.getSelectedItem().toString());
 		Product oPname = new Product(pService.selectOrderPno(product));
 		int oQty = Integer.parseInt(tfOQty.getText().trim());
 		String oMemo = taOWant.getText().trim();
@@ -170,17 +211,18 @@ public class ClientORegisterPanel extends AbsItemPanel<Order> {
 		tfONo.setText("");
 		tfODate.setDate(new Date());
 		tfOCName.setText("");
-		tfOPName.setText("");
+		cmbPList.setSelectedIndex(-1);
 		tfOQty.setText("");
 		taOWant.setText("");
 		
 	}
 	@Override
 	public void validCheck() {
-		if(tfOCName.getText().equals("")||tfOPName.getText().equals("")
+		if(tfOCName.getText().equals("")||cmbPList.getSelectedItem().toString().equals("")
 				||tfOQty.getText().equals("")) {
 			throw new InvalidCheckException();
 		}
 		
 	}
+	
 }
