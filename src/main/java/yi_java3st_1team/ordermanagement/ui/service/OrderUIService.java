@@ -33,4 +33,8 @@ public class OrderUIService {
 	public List<Order> showClientOrderList(Client info) {
 		return orderDao.selectClientOrderList(info);
 	}
+
+	public List<Order> showOrderListByCal(String startDate, String endDate) {
+		return orderDao.selectOrderListByCal(startDate, endDate);
+	}
 }

@@ -4,10 +4,16 @@ import javax.swing.SwingConstants;
 
 import yi_java3st_1team.clientmanagement.ui.list.AbstractTblPanel;
 import yi_java3st_1team.ordermanagement.dto.Order;
+import javax.swing.JTable;
 
 @SuppressWarnings("serial")
 public class ClientOCheckTblPanel extends AbstractTblPanel<Order> {
 	public ClientOCheckTblPanel() {
+		initialize();
+	}
+	private void initialize() {
+		table.setAutoscrolls(false);
+		table.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
 	}
 
 	private int total;
@@ -46,7 +52,6 @@ public class ClientOCheckTblPanel extends AbstractTblPanel<Order> {
 		}else if(item.getoQty()>=100) {
 			int price = item.getoPname().getpPrice()*item.getoQty();
 			int sub = (int) Math.floor(price*hund);
-			System.out.println(sub);
 			total = price-sub;
 		}
 		
@@ -68,7 +73,12 @@ public class ClientOCheckTblPanel extends AbstractTblPanel<Order> {
 
 	@Override
 	public void updateRow(Order item, int updateIdx) {
-		// TODO Auto-generated method stub
+		model.setValueAt(String.format("O%04d", item.getoNo()), updateIdx, 0);
+		model.setValueAt(item.getoPname().getpName(), updateIdx, 1);
+		model.setValueAt(item.getoQty(), updateIdx, 2);
+		model.setValueAt(String.format("%,d원 ", total), updateIdx, 3);
+		model.setValueAt(String.format("%tF", item.getoDate()), updateIdx, 4);
+		model.setValueAt(check, updateIdx, 5);
 		
 	}
 

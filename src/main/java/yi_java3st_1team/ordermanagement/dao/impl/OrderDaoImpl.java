@@ -173,4 +173,24 @@ public class OrderDaoImpl implements OrderDao {
 		return new Order(oNo, oDate, oCname, oPname, oQty, oMemo, oDps, oOk, oEname);
 	}
 
+	@Override
+	public List<Order> selectOrderListByCal(String startDate, String endDate) {
+		String sql = "select o_no, o_date, o_cno, p.p_name, p.p_cost, p.p_price, o_qty, o_memo, o_dps, o_ok, o_eno from `order` o " 
+	               + "left join product p on o.o_pno =p.p_no where DATE(o_date) between ? and ?";
+		try(Connection con = MySqlDataSource.getConnection();
+				PreparedStatement pstmt = con.prepareStatement(sql);){
+			pstmt.setString(1, startDate);
+			pstmt.setString(2, endDate);
+			ResultSet rs = pstmt.executeQuery();
+			List<Order> list = new ArrayList<Order>();
+			while(rs.next()) {
+				list.add(getOrder(rs));
+			}
+			return list;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
 }

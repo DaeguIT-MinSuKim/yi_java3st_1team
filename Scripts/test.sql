@@ -111,6 +111,10 @@ update product set p_qty=45 where p_name='알씨';
 
 select * from inventory_quantity iq ;
 
+select * from `order` o where DATE(o_date) between '2019-03-01' and '2019-05-01';
+
+select o_no, o_date, o_cno, p.p_name, p.p_cost, p.p_price, o_qty, o_memo, o_dps, o_ok, o_eno from `order` o left join product p on o.o_pno =p.p_no where DATE(o_date) between '2019-03-01' and '2019-05-01';
+
 insert into inventory_quantity (iq_no, iq_pno, iq_qty) values(?, ?, ?);
 
 select p.p_name , s.s_name , iq.iq_qty , p.p_price , p.p_cost from inventory_quantity iq left join product p on iq.iq_pno = p.p_no left join supplier s on p.p_sno = s.s_no;

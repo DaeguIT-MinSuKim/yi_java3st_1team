@@ -112,6 +112,7 @@ public class ClientORegisterPanel extends AbsItemPanel<Order> {
 		panel.add(tfODate);
 		
 		tfOCName = new JTextField();
+		tfOCName.setEditable(false);
 		tfOCName.setColumns(10);
 		tfOCName.setBounds(232, 122, 200, 30);
 		panel.add(tfOCName);
@@ -141,6 +142,10 @@ public class ClientORegisterPanel extends AbsItemPanel<Order> {
 	
 	public void setNum(Order item) {
 		tfONo.setText(String.format("O%04d", item.getoNo()+1));
+	}
+	
+	public void setCName(Client item) {
+		tfOCName.setText(item.getcName());
 	}
 	
 	@Override
