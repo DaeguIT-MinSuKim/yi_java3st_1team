@@ -59,6 +59,8 @@ public class PMMainPanel extends JPanel implements ActionListener{
 		add(pContent);
 		
 		pContent.pSWUIPanel.btnGoMain.addActionListener(this);
+		pContent.pSCSOUIPanel.btnGoMain.addActionListener(this);
+		pContent.pCDRegisterPanel.btnGoMain.addActionListener(this);
 	}
 	   public void actionPerformed(ActionEvent e) {
 		      
@@ -89,17 +91,25 @@ public class PMMainPanel extends JPanel implements ActionListener{
 				//제품등록(메인버튼)
 				if (e.getSource() == pContent.pSWUIPanel.btnGoMain) {
 					actionPerformedMainBtn(e);
+					System.out.println(3);
 				}
 
 			    //매입&발주(메인버튼)
 				if (e.getSource() == pContent.pSCSOUIPanel.btnGoMain) {
 					actionPerformedMainBtn(e);
+					System.out.println(1);
 				}
 				
 			    //출고
-//				if (e.getSource() == pContent.pSCSOUIPanel.btnGoMain) {
-//					actionPerformedMainBtn(e);
-//				}
+				if (e.getSource() == pContent.pCDRegisterPanel.btnGoMain) {
+					actionPerformedMainBtn(e);
+					System.out.println(2);
+				}
+				
+				//로그아웃
+				if(e.getSource() == pEmpLogin.btnLogout) {
+					actionPerformedBtnLogout(e);
+				}
 			    
 
 		   }
@@ -156,10 +166,7 @@ public class PMMainPanel extends JPanel implements ActionListener{
 			   
 			   pEmpLogin.btnLogout.addActionListener(this);
 			   
-				//로그아웃
-				if(e.getSource() == pEmpLogin.btnLogout) {
-					actionPerformedBtnLogout(e);
-				}
+
 			
 		}
 		   
@@ -172,6 +179,7 @@ public class PMMainPanel extends JPanel implements ActionListener{
 				revalidate();
 				repaint();
 			}
+			
 	private void btnCMActionPerformed(ActionEvent e) {
 		      removeAll();
 		      revalidate();

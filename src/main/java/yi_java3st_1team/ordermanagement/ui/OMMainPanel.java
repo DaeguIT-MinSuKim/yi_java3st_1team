@@ -55,7 +55,9 @@ public class OMMainPanel extends JPanel  implements ActionListener{
 		pContent.setBackground(SystemColor.inactiveCaption);
 		pContent.setBounds(246, 0, 1268, 700);
 		add(pContent);
-		pContent.pOCheckPanel.mainBtn.addActionListener(this);
+		
+		pContent.pOrderUIPanel.btnGoMain.addActionListener(this);
+		pContent.pOCheckPanel.btnGoMain.addActionListener(this);
 
 	}
 	
@@ -76,12 +78,32 @@ public class OMMainPanel extends JPanel  implements ActionListener{
 				}
 				
 				//메인화면
-			      if (e.getSource() == pContent.pOCheckPanel.mainBtn) {
+			      if (e.getSource() == pContent.pOrderUIPanel.btnGoMain) {
+				         actionPerformedMainBtn(e);
+				      }
+				
+			      if (e.getSource() == pContent.pOCheckPanel.btnGoMain) {
 				         actionPerformedMainBtn(e);
 				      }
 
+			      
+					//로그아웃
+					if(e.getSource() == pEmpLogin.btnLogout) {
+						actionPerformedBtnLogout(e);
+					}
+					
+					
 		   }
-	   private void actionPerformedMainBtn(ActionEvent e) {
+	   private void actionPerformedBtnLogout(ActionEvent e) {
+			removeAll();
+			revalidate();
+			repaint();
+			emp = new EmployeeMainUIPanel();
+			add(emp);
+			revalidate();
+			repaint();	
+	}
+	private void actionPerformedMainBtn(ActionEvent e) {
 		   removeAll();
 		   revalidate();
 		   repaint();

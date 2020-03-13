@@ -15,6 +15,7 @@ public class CMContent extends JPanel {
 	private JTabbedPane tpClientManagement;
 	private JPanel pSupplyCompany;
 	private JPanel pClient;
+	
 	public SupplyCompanyUIPanel pSCUIPanel;
 	public ClientUIPanel pCUIPanel;
 
@@ -22,6 +23,7 @@ public class CMContent extends JPanel {
 
 		initialize();
 	}
+	
 	private void initialize() {
 		setBackground(SystemColor.inactiveCaptionBorder);
 		setBounds(new Rectangle(0, 0, 1270, 700));

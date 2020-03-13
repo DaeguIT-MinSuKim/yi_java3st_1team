@@ -34,7 +34,7 @@ public class OrderUIPanel extends JPanel implements ActionListener {
 	private JLabel lblO;
 	private JButton btnAdd;
 	private JButton btnReset;
-	private JButton btnGoMain;
+	public JButton btnGoMain;
 	private JButton btnPCheck;
 	private JButton btnQtyCheck;
 	private JLabel lblNewLabel;

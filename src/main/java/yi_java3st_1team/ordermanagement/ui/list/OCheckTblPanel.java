@@ -60,11 +60,11 @@ public class OCheckTblPanel extends AbstractTblPanel<Order>{
 		/** 입금여부 **/
 		int oDps = item.getoDps(); //0 or 1Checkbox qq;
 		String qq;
-		if(oDps == 1) {
-			qq = "뭐지";
+		if(oDps == 0) {
+			qq = "<html><input type= 'checkbox' name='chk'></html>";
 			
 		}else {
-			qq = "몰라요";
+			qq = "<html><input type= 'checkbox' name='chk' checked></html>";
 		}
 		
 		

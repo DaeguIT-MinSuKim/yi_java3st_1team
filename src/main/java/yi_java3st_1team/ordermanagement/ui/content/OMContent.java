@@ -19,7 +19,7 @@ public class OMContent extends JPanel {
 	private JPanel pListPanel;
 	
 	public OCheckPanel pOCheckPanel;
-	private OrderUIPanel pOrderUIPanel;
+	public OrderUIPanel pOrderUIPanel;
 
 	public OMContent() {
 

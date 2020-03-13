@@ -20,22 +20,24 @@ public class PMContent extends JPanel {
 	private JPanel pSWRegister;
 	private JPanel pSCSO;
 	private JPanel pClientDelivery;
-	private CDRegisterPanel pCDRegisterPanel;
 	private CDListPanel pCDListPanel;
-	public SWUIPanel pSWUIPanel;
-	public SPSOUIPanel pSCSOUIPanel;
+	
+	public SWUIPanel pSWUIPanel; // 제품등록
+	public SPSOUIPanel pSCSOUIPanel; // 매입발주
+	public CDRegisterPanel pCDRegisterPanel; // 출고이력
 
 	public PMContent() {
 		initialize();
 	}
+	
 	private void initialize() {
 		setBackground(SystemColor.inactiveCaptionBorder);
 		setBounds(new Rectangle(0, 0, 1270, 700));
 		setLayout(new BorderLayout(0, 0));
 		
 		tpClientManagement = new JTabbedPane(JTabbedPane.TOP);
-		tpClientManagement.setForeground(Color.BLACK);
 		tpClientManagement.setFont(new Font("맑은 고딕", Font.BOLD, 18));
+		tpClientManagement.setForeground(Color.BLACK);
 		tpClientManagement.setBackground(SystemColor.inactiveCaptionBorder);
 		add(tpClientManagement, BorderLayout.CENTER);
 		
