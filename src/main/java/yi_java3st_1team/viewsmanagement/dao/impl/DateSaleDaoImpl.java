@@ -1,5 +1,6 @@
-package yi_java3st_1team.viewsmanagement.impl;
+package yi_java3st_1team.viewsmanagement.dao.impl;
 
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -8,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import yi_java3st_1team.ds.MySqlDataSource;
+import yi_java3st_1team.util.LogUtil;
 import yi_java3st_1team.viewsmanagement.dao.DateSaleDao;
 import yi_java3st_1team.viewsmanagement.dto.DateSale;
 
@@ -50,6 +52,32 @@ public class DateSaleDaoImpl implements DateSaleDao {
 			e.printStackTrace();
 		}
 		return null;
+	}
+
+	@Override
+	public List<DateSale> procedureDateSaleByDate(DateSale ds) throws SQLException {
+		List<DateSale> list = new ArrayList<DateSale>();
+		String sql = "{call dateSale(?, ?)}";
+		Connection con = MySqlDataSource.getConnection();
+		try(CallableStatement cstmt = con.prepareCall(sql);){
+			cstmt.setString(1, ds.getStart_o_date());
+			cstmt.setString(2, ds.getEnd_o_date());
+			LogUtil.prnLog(cstmt);
+			try(ResultSet rs = cstmt.executeQuery()){
+				while(rs.next()) {
+					DateSale dateSale = new DateSale();
+					dateSale.setO_no(rs.getString(1));
+					dateSale.setC_name(rs.getString(2));
+					dateSale.setP_name(rs.getString(3));
+					dateSale.setO_qty(rs.getInt(4));
+					dateSale.setO_dps(rs.getString(5));
+					dateSale.setO_date(rs.getDate(6));
+					
+					list.add(dateSale);
+				}
+			}
+		}
+		return list;
 	}
 
 }

@@ -9,9 +9,17 @@ public class DateSale {
 	private int o_qty;
 	private String o_dps;
 	private Date o_date;
+	private String start_o_date;
+	private String end_o_date;
 
 	public DateSale() {
 		// TODO Auto-generated constructor stub
+	}
+
+	public DateSale(String start_o_date, String end_o_date) {
+		super();
+		this.start_o_date = start_o_date;
+		this.end_o_date = end_o_date;
 	}
 
 	public DateSale(String o_no, String c_name, String p_name, int o_qty, String o_dps, Date o_date) {
@@ -72,29 +80,20 @@ public class DateSale {
 		this.o_date = o_date;
 	}
 
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((o_date == null) ? 0 : o_date.hashCode());
-		return result;
+	public String getStart_o_date() {
+		return start_o_date;
 	}
 
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		DateSale other = (DateSale) obj;
-		if (o_date == null) {
-			if (other.o_date != null)
-				return false;
-		} else if (!o_date.equals(other.o_date))
-			return false;
-		return true;
+	public void setStart_o_date(String start_o_date) {
+		this.start_o_date = start_o_date;
+	}
+
+	public String getEnd_o_date() {
+		return end_o_date;
+	}
+
+	public void setEnd_o_date(String end_o_date) {
+		this.end_o_date = end_o_date;
 	}
 
 	@Override
