@@ -72,6 +72,7 @@ public class OrderUIPanel extends JPanel implements ActionListener {
 		pORPanel = new ORegisterPanel();
 		pORPanel.setBounds(55, 115, 400, 440);
 		pORPanel.setNum(service.lastOrder());
+		pORPanel.setService(pService);
 		pRegisterPanel.add(pORPanel);
 		
 		lblO = new JLabel("소프트웨어 주문 등록");
@@ -212,7 +213,7 @@ public class OrderUIPanel extends JPanel implements ActionListener {
 	protected void btnAddActionPerformed(ActionEvent e) {
 		try {
 			if(pORPanel.tfOCName.getText().equals("") 
-					|| pORPanel.tfOPName.getText().equals("") 
+					|| pORPanel.cmbPList.getSelectedItem().toString().equals("") 
 					|| pORPanel.tfOQty.getText().equals("")) {
 				JOptionPane.showMessageDialog(null, "고객상호명, 품목명, 주문수량은 필수입력사항입니다.");
 				return;
@@ -258,13 +259,12 @@ public class OrderUIPanel extends JPanel implements ActionListener {
 		pORPanel.tfOQty.setEditable(true);
 	}
 	protected void btnPCheckActionPerformed(ActionEvent e) {
-		if(pORPanel.tfOPName.getText().equals("")) {
-			JOptionPane.showMessageDialog(null, "조회하려는 품목명을 작성해주세요.");
+		if(pORPanel.cmbPList.getSelectedItem().toString().equals("")) {
+			JOptionPane.showMessageDialog(null, "조회하려는 품목명을 선택해주세요.");
 		}else {
 			Product product = new Product();
-			product.setpName(pORPanel.tfOPName.getText().trim());
+			product.setpName(pORPanel.cmbPList.getSelectedItem().toString().trim());
 			Product proImg = new Product(pService.selectProductPic(product));
-			System.out.println(proImg.getpPic());
 			if(proImg.getpPic()==null) {
 				setPic(getClass().getClassLoader().getResource("mainLogo3.png").getPath());
 			}else {
@@ -293,7 +293,7 @@ public class OrderUIPanel extends JPanel implements ActionListener {
 		
 	}
 	protected void btnQtyCheckActionPerformed(ActionEvent e) {
-		if(pORPanel.tfOPName.getText().equals("")) {
+		if(pORPanel.cmbPList.getSelectedItem().toString().equals("")) {
 			JOptionPane.showMessageDialog(null, "먼저 품목을 조회해주세요.");
 		}else {
 			pQty = iqService.showQty(proSummary);
