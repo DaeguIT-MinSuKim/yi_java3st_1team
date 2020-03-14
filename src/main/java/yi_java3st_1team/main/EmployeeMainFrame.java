@@ -75,8 +75,10 @@ public class EmployeeMainFrame extends JFrame{
 		pHeader.add(lblLogo);
 		
 		//로그아웃버튼
-		btnlogout = new JButton("로그아웃");
-		btnlogout.setBounds(1376, 10, 135, 100);
+		btnlogout = new JButton("");
+		btnlogout.setBackground(SystemColor.activeCaption);
+		btnlogout.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\loginMain\\Logoutbtn.png"));
+		btnlogout.setBounds(1415, 25, 95, 85);
 		pHeader.add(btnlogout);
 		btnlogout.setVisible(false);
 		
