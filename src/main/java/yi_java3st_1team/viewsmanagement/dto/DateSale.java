@@ -3,7 +3,7 @@ package yi_java3st_1team.viewsmanagement.dto;
 import java.sql.Date;
 
 public class DateSale {
-	private String o_no;
+	private int o_no;
 	private String c_name;
 	private String p_name;
 	private int o_qty;
@@ -17,12 +17,11 @@ public class DateSale {
 	}
 
 	public DateSale(String start_o_date, String end_o_date) {
-		super();
 		this.start_o_date = start_o_date;
 		this.end_o_date = end_o_date;
 	}
 
-	public DateSale(String o_no, String c_name, String p_name, int o_qty, String o_dps, Date o_date) {
+	public DateSale(int o_no, String c_name, String p_name, int o_qty, String o_dps, Date o_date) {
 		super();
 		this.o_no = o_no;
 		this.c_name = c_name;
@@ -32,11 +31,11 @@ public class DateSale {
 		this.o_date = o_date;
 	}
 
-	public String getO_no() {
+	public int getO_no() {
 		return o_no;
 	}
 
-	public void setO_no(String o_no) {
+	public void setO_no(int o_no) {
 		this.o_no = o_no;
 	}
 
