@@ -234,7 +234,7 @@ public class EmployeeMainUIPanel extends JPanel implements ActionListener {
 		btn04.setPreferredSize(new Dimension(240, 23));
 		btn04.setFocusable(false);
 		pBtns02.add(btn04, BorderLayout.EAST);
-		
+
 		//pEmpLogin.btnLogout.addActionListener(this);
 	}
 	public void actionPerformed(ActionEvent e) {
@@ -350,6 +350,8 @@ public class EmployeeMainUIPanel extends JPanel implements ActionListener {
 		removeAll();
 		revalidate();
 		repaint();
+		loginEmp = null;
+		System.out.println("임플로이메인유아이");
 		initialize();
 		revalidate();
 		repaint();

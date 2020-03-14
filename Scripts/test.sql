@@ -132,3 +132,5 @@ select z_code, z_sido, z_sigungu, z_doro, z_num1, z_num2 from zip_code where z_s
 select e2.e_no , e2.e_name , e2.e_title , e2.e_manager , e2.e_mail from employee e2 left join department d on e2.e_dept = d.d_no where d.d_name ="영업관리 1부";
 
 select o_no, o_date, o_cno, p.p_name, p.p_price, p.p_cost, o_qty, o_memo, o_dps, o_ok, o_eno from `order` o left join product p on o.o_pno =p.p_no where o_cno = 56;
+
+select e.e_no, e.e_name, e.e_title, e.e_dept, d.d_no, d.d_name, d.d_floor, e.e_manager, e.e_id, e.e_pw, e.e_mail from employee e left join department d on e.e_dept  = d.d_no where e.e_id = null and e.e_pw = null;
