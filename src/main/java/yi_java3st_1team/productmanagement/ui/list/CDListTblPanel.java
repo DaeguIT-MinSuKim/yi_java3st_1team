@@ -40,7 +40,11 @@ public class CDListTblPanel extends AbstractTblPanel<ClientDelivery>{
 
 	@Override
 	public void updateRow(ClientDelivery item, int updateIdx) {
-		// TODO Auto-generated method stub
+		model.setValueAt(String.format("CD%04d", item.getCdNo()), updateIdx, 0);
+		model.setValueAt(item.getcName().getcName(), updateIdx, 1);
+		model.setValueAt(item.getpName().getpName(), updateIdx, 2);
+		model.setValueAt(item.getCdSno().getoQty(), updateIdx, 3);
+		model.setValueAt(item.getCdDate(), updateIdx, 4);
 		
 	}
 

@@ -281,6 +281,8 @@ public class ClientMainUIPanel extends JPanel implements ActionListener {
 		pStop.add(pECLogin, BorderLayout.WEST);
 		pStop.revalidate();
 		pStop.repaint();
+		
+		//로그아웃버튼
 	}
 
 	// 주문등록
@@ -315,7 +317,7 @@ public class ClientMainUIPanel extends JPanel implements ActionListener {
 			pStop.add(pCOrder, BorderLayout.WEST);
 			pStop.revalidate();
 			pStop.repaint();
-			
+			pCOrder.tpClientManagement.setSelectedIndex(1);
 			ClientMainFrame.btnlogout.setVisible(true);
 		}
 	}

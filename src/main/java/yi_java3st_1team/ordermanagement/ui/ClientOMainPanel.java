@@ -16,7 +16,7 @@ import yi_java3st_1team.ordermanagement.ui.panel.ClientOCheckPanel;
 
 @SuppressWarnings("serial")
 public class ClientOMainPanel extends JPanel {
-	private JTabbedPane tpClientManagement;
+	public JTabbedPane tpClientManagement;
 	private JPanel pORegister;
 	private JPanel pListPanel;
 	private ClientOCheckPanel pOCheckPanel;
