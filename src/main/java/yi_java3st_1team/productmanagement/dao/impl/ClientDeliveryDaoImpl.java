@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -87,19 +88,46 @@ public class ClientDeliveryDaoImpl implements ClientDeliveryDao{
 
 	@Override
 	public int insertClientDelivery(ClientDelivery cd) {
-		String sql = "";
+		String sql = "insert into client_delivery (cd_no, cd_sno, cd_date) value(null, ?, ?)";
+		try(Connection con = MySqlDataSource.getConnection();
+				PreparedStatement pstmt = con.prepareStatement(sql)){
+			pstmt.setInt(1, cd.getCdSno().getoNo());
+			pstmt.setTimestamp(2, new Timestamp(cd.getCdDate().getTime()));
+			LogUtil.prnLog(pstmt);
+			return pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 		return 0;
 	}
 
 	@Override
 	public int updateClientDelivery(ClientDelivery cd) {
-		String sql = "";
+		String sql = "update client_delivery set cd_sno = ?, cd_date = ? where cd_no = ?";
+		try(Connection con = MySqlDataSource.getConnection();
+				PreparedStatement pstmt = con.prepareStatement(sql)){
+			pstmt.setInt(1, cd.getCdSno().getoNo());
+			pstmt.setTimestamp(2, new Timestamp(cd.getCdDate().getTime()));
+			pstmt.setInt(3, cd.getCdNo());
+			LogUtil.prnLog(pstmt);
+			return pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 		return 0;
 	}
 
 	@Override
 	public int deleteClientDelivery(ClientDelivery cd) {
-		String sql = "";
+		String sql = "delete from client_delivery where cd_no = ?";
+		try(Connection con = MySqlDataSource.getConnection();
+				PreparedStatement pstmt = con.prepareStatement(sql)){
+			pstmt.setInt(1, cd.getCdNo());
+			LogUtil.prnLog(pstmt);
+			return pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 		return 0;
 	}
 }

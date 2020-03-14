@@ -1,9 +1,12 @@
 package yi_java3st_1team.productmanagement.ui.panel;
 
-import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Font;
 import java.awt.Rectangle;
 import java.awt.SystemColor;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
+import java.util.Date;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -13,18 +16,18 @@ import javax.swing.SwingConstants;
 
 import com.toedter.calendar.JDateChooser;
 
+import yi_java3st_1team.clientmanagement.dto.Client;
 import yi_java3st_1team.clientmanagement.ui.panel.AbsItemPanel;
+import yi_java3st_1team.clientmanagement.ui.service.ClientUIService;
+import yi_java3st_1team.ordermanagement.dto.Order;
+import yi_java3st_1team.ordermanagement.ui.service.OrderUIService;
 import yi_java3st_1team.productmanagement.dto.ClientDelivery;
+import yi_java3st_1team.productmanagement.dto.Product;
 import yi_java3st_1team.productmanagement.ui.service.CDUIService;
-
-import java.awt.Color;
-import javax.swing.ImageIcon;
-import java.awt.event.ActionListener;
-import java.util.Date;
-import java.awt.event.ActionEvent;
+import yi_java3st_1team.productmanagement.ui.service.SWUIService;
 
 @SuppressWarnings("serial")
-public class CDRegisterPanel extends AbsItemPanel<ClientDelivery>{
+public class CDRegisterPanel extends AbsItemPanel<ClientDelivery> implements ItemListener {
 	
 	private JLabel lblCD;
 	private JLabel lblCDNo;
@@ -35,18 +38,23 @@ public class CDRegisterPanel extends AbsItemPanel<ClientDelivery>{
 	private JTextField tfPCDNo;
 	private JTextField tfSCName;
 	private JTextField tfSCDQty;
-	private JTextField tfSCDPName;
 	private JButton btnAdd;
 	private JButton btnUpdate;
 	private JButton btnDel;
 	public JButton btnGoMain;
-	private JLabel label;
 
 	private CDUIService cdService;
 	private JDateChooser tfCDDate;
+	private SWUIService pService;
+	private ClientUIService cService;
+	private OrderUIService oService;
+	private JTextField tfCDPName;
 	
 	public CDRegisterPanel(){
+		cService = new ClientUIService();
 		cdService = new CDUIService();
+		pService = new SWUIService();
+		oService = new OrderUIService();
 		initialize();
 
 	}
@@ -120,39 +128,58 @@ public class CDRegisterPanel extends AbsItemPanel<ClientDelivery>{
 				tfCDDate.setBounds(176, 373, 200, 30);
 				panel.add(tfCDDate);
 				
-				tfSCDPName = new JTextField();
-				tfSCDPName.setColumns(10);
-				tfSCDPName.setBounds(176, 203, 200, 30);
-				panel.add(tfSCDPName);
+				tfCDPName = new JTextField();
+				tfCDPName.setBounds(176, 203, 200, 30);
+				panel.add(tfCDPName);
+				tfCDPName.setColumns(10);
 				
-
-				
-				label = new JLabel("");
+				JLabel label = new JLabel("");
 				label.setOpaque(true);
 				label.setBackground(Color.WHITE);
 				label.setBounds(0, 0, 400, 440);
 				panel.add(label);
 	}
-	
+
 	public void setCDNum (ClientDelivery item) {
 		tfPCDNo.setText(String.format("CD%04d", item.getCdNo()+1));
 	}
 
 	@Override
 	public ClientDelivery getItem() {
-		// TODO Auto-generated method stub
-		return null;
+		int cdNo = Integer.parseInt(tfPCDNo.getText().substring(1));
+		
+		Order order = new Order();
+		order.setoQty(Integer.parseInt(tfSCDQty.getText().trim()));
+		Order cdSno = new Order();
+		
+		Client client =  new Client();
+		client.setcName(tfSCName.getText().trim());
+		Client cName = new Client(cService.selectOrderCno(client));
+		
+		Product product = new Product();
+		product.setpName(tfCDPName.getText().trim());
+		Product pName = new Product(pService.selectOrderPno(product));
+		
+		Date cdDate =  tfCDDate.getDate();
+		return new ClientDelivery(cdNo, cdSno, cName, pName, cdDate);
 	}
 
 	@Override
 	public void setItem(ClientDelivery item) {
-		// TODO Auto-generated method stub
-		
+		tfPCDNo.setText(String.format("CD%04d", item.getCdNo())); // ex. CD0004
+		tfSCName.setText(item.getcName().getcName()); // ex. 제임스포워딩
+		tfCDPName.setText(item.getpName().getpName()); // ex. dropbox business 
+		tfSCDQty.setText(String.format("%s", item.getCdSno().getoQty())); // ex. 46
+		tfCDDate.setDate(item.getCdDate());	// ex. 	2019-02-02
 	}
 
 	@Override
 	public void clearTf() {
-		// TODO Auto-generated method stub
+		tfPCDNo.setText("");
+		tfSCDQty.setText("");
+		tfSCName.setText("");
+		tfCDPName.setText("");
+		tfCDDate.setDate(new Date());
 		
 	}
 
@@ -161,5 +188,12 @@ public class CDRegisterPanel extends AbsItemPanel<ClientDelivery>{
 		// TODO Auto-generated method stub
 		
 	}
+
+	@Override
+	public void itemStateChanged(ItemEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
 
 }

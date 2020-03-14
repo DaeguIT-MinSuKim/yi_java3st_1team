@@ -63,7 +63,7 @@ public class PMMainPanel extends JPanel implements ActionListener{
 		
 		pContent.pSWUIPanel.btnGoMain.addActionListener(this);
 		pContent.pSCSOUIPanel.btnGoMain.addActionListener(this);
-		//pContent.pCDUIPPanel.btnGoMain.addActionListener(this);
+		pContent.pCDUIPPanel.btnGoMain.addActionListener(this);
 	}
 	   public void actionPerformed(ActionEvent e) {
 		      
@@ -102,9 +102,9 @@ public class PMMainPanel extends JPanel implements ActionListener{
 				}
 				
 			    //출고
-//				if (e.getSource() == pContent.pCDUIPPanel.btnGoMain) {
-//					actionPerformedMainBtn(e);
-//				}
+				if (e.getSource() == pContent.pCDUIPPanel.btnGoMain) {
+					actionPerformedMainBtn(e);
+				}
 				
 			      //로그아웃
 		      	try {

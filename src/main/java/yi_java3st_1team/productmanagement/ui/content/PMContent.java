@@ -3,16 +3,11 @@ package yi_java3st_1team.productmanagement.ui.content;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
-import java.awt.GridLayout;
 import java.awt.Rectangle;
 import java.awt.SystemColor;
 
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
-
-import yi_java3st_1team.productmanagement.ui.list.CDListPanel;
-import yi_java3st_1team.productmanagement.ui.panel.CDRegisterPanel;
-import yi_java3st_1team.productmanagement.ui.service.CDUIService;
 
 @SuppressWarnings("serial")
 public class PMContent extends JPanel {
@@ -24,10 +19,7 @@ public class PMContent extends JPanel {
 	
 	public SWUIPanel pSWUIPanel; // 제품등록
 	public SPSOUIPanel pSCSOUIPanel; // 매입발주
-	private CDUIPanel panel;
-	
-//	public CDRegisterPanel pCDRegisterPanel; // 출고이력
-//	private CDListPanel pCDListPanel;
+	public CDUIPanel pCDUIPPanel; // 출고
 
 	public PMContent() {
 		initialize();
@@ -68,8 +60,8 @@ public class PMContent extends JPanel {
 		tpClientManagement.addTab("출  고", null, pClientDelivery, null);
 		pClientDelivery.setLayout(new BorderLayout(0, 0));
 		
-		panel = new CDUIPanel();
-		pClientDelivery.add(panel, BorderLayout.CENTER);
+		pCDUIPPanel = new CDUIPanel();
+		pClientDelivery.add(pCDUIPPanel, BorderLayout.CENTER);
 		
 //		pCDRegisterPanel = new CDRegisterPanel();
 //		pCDRegisterPanel.setBackground(SystemColor.inactiveCaptionBorder);

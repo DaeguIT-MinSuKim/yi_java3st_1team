@@ -104,6 +104,12 @@ show tables;
 
 select * from `order` o;
 
+select * from client_delivery cd;
+
+insert into client_delivery  values(31, 52, '2020-03-14');
+
+select * from `order` o;
+
 select c_name, count(c_name) from `order` o left join client on o_cno = c_no where c_no = 20;
 
 select * from client_delivery cd ;
@@ -140,4 +146,10 @@ set @count(o_no):=0, @rank:=0;
 select c_no, c_name, count(o_no) as 주문횟수 from `order` o left join client on o_cno = c_no group by  c_no;
 -- 1(0)/2(1)/3(1)/4(0)/5(1)/6(1)/7(1)/8(0)/9(1)/10(0)/11(0)/12(0)/13(2)/14(1)/15(1)/16(2)/17(0)/18(0)/19(1)/20(3)/21(0)/22(0)/23(0)/24(1)/
 
-		
+delete from client where c_no = 56;
+
+select * from client_delivery;
+
+delete from client_delivery where cd_no = 31;
+
+insert into client_delivery  values(31, 52, '2020-03-14');
