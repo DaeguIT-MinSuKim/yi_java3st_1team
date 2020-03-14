@@ -21,6 +21,7 @@ import yi_java3st_1team.main.dto.Employee;
 import yi_java3st_1team.main.ui.EmployeeMainUIPanel;
 import yi_java3st_1team.main.ui.content.LogoImg02Panel;
 import yi_java3st_1team.main.ui.content.chart.InitScene;
+import yi_java3st_1team.main.ui.content.chart.PanelBarChart;
 import yi_java3st_1team.main.ui.content.login.EmployeeLoginPanel;
 import yi_java3st_1team.main.ui.service.EmployeeUIService;
 import yi_java3st_1team.ordermanagement.ui.OMMainPanel;
@@ -173,7 +174,6 @@ public class CMMainPanel extends JPanel implements ActionListener{
 			repaint();
 			emp = new EmployeeMainUIPanel();
 			emp.loginEmp = null;
-			System.out.println("씨엠메인패널");
 			add(emp);
 			revalidate();
 			repaint();

@@ -299,19 +299,16 @@ public class EmployeeMainUIPanel extends JPanel implements ActionListener {
 		// 직책별 로그인 구분
 		
 		manager = loginEmp.getEmpManager();
-
 		switch (manager) {
 			case 1: // 책임관리자 로그인 : 대표이사, 경영관리이사, 부장, 차장, 과장
 				pEmpLogin.manager.setText("[책임관리자 로그인]");
 				pEmpLogin.loginImg.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\loginMain\\topManager.png"));
-	
 				// 책임관리자(대표이사~과장) 로그인시 차트 패널 불러오기
 				// 1. 라인차트
 				pStop.remove(pImg01); // 제거
 				PanelLineChart plc = new PanelLineChart();
 				pStop.add(plc, BorderLayout.CENTER);
 				Platform.runLater(() -> initFX(plc));
-	
 				// 2. 바차트
 				pImg02.remove(pLogo); // 제거
 				PanelBarChart bar = new PanelBarChart();
@@ -351,7 +348,6 @@ public class EmployeeMainUIPanel extends JPanel implements ActionListener {
 		revalidate();
 		repaint();
 		loginEmp = null;
-		System.out.println("임플로이메인유아이");
 		initialize();
 		revalidate();
 		repaint();
@@ -420,29 +416,32 @@ public class EmployeeMainUIPanel extends JPanel implements ActionListener {
 	protected void actionPerformedBtn04(ActionEvent e) {
 		LoginFirst();
 		// 직책별 비활성화 적용
-		int manager = loginEmp.getEmpManager();
-		switch (manager) {
-			case 1: //책임관리자(활성화)
-				if (loginEmp != null) {
-					pStop.removeAll();
-					pSbot.removeAll();
-					revalidate();
-					repaint();
-					setLayout(new CardLayout(-18, 0));
-					pViewpanel = new ReportMainPanel();
-					pViewpanel.setPreferredSize(new Dimension(1544, 0));
-					pStop.add(pViewpanel, BorderLayout.WEST);
-					pStop.revalidate();
-					pStop.repaint();
-					EmployeeMainFrame.btnlogout.setVisible(true);
-				}
-				break;
-			case 2: //관리자(비활성화)
-				ImageIcon icon = new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\loginMain\\manager1.png");
-				JOptionPane.showMessageDialog(null, "<html><h3 align='center'>권한이 없습니다.</h3></html>","Don't have Premission",JOptionPane.INFORMATION_MESSAGE,icon);
-				break;
+		if(loginEmp == null) {
+			return;
+		}else {
+			int manager = loginEmp.getEmpManager();
+			switch (manager) {
+				case 1: //책임관리자(활성화)
+					if (loginEmp != null) {
+						pStop.removeAll();
+						pSbot.removeAll();
+						revalidate();
+						repaint();
+						setLayout(new CardLayout(-18, 0));
+						pViewpanel = new ReportMainPanel();
+						pViewpanel.setPreferredSize(new Dimension(1544, 0));
+						pStop.add(pViewpanel, BorderLayout.WEST);
+						pStop.revalidate();
+						pStop.repaint();
+						EmployeeMainFrame.btnlogout.setVisible(true);
+					}
+					break;
+				case 2: //관리자(비활성화)
+					ImageIcon icon = new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\loginMain\\manager1.png");
+					JOptionPane.showMessageDialog(null, "<html><h3 align='center'>권한이 없습니다.</h3></html>","Don't have Premission",JOptionPane.INFORMATION_MESSAGE,icon);
+					break;
+			}
 		}
-
 	}
 	
 	//회원가입
