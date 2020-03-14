@@ -28,6 +28,7 @@ public class SCRegisterPanel extends AbsItemPanel<Supplier> {
 	public JTextField tfSCAddress;
 	private JTextField tfSCTel;
 	private JTextField tfSCFax;
+
 	public SCRegisterPanel() {
 
 		initialize();
@@ -36,93 +37,93 @@ public class SCRegisterPanel extends AbsItemPanel<Supplier> {
 	private void initialize() {
 		setBounds(new Rectangle(0, 0, 635, 700));
 		setLayout(null);
-		
+
 		JPanel panel = new JPanel();
 		add(panel);
 		panel.setBounds(new Rectangle(0, 0, 400, 430));
 		panel.setBackground(Color.WHITE);
 		panel.setLayout(null);
-		
+
 		lblSCNo = new JLabel("회 사 번 호");
 		lblSCNo.setForeground(Color.BLACK);
 		lblSCNo.setFont(new Font("휴먼둥근헤드라인", Font.PLAIN, 16));
 		lblSCNo.setHorizontalAlignment(SwingConstants.CENTER);
 		lblSCNo.setBounds(12, 25, 120, 30);
 		panel.add(lblSCNo);
-		
+
 		lblSCName = new JLabel("회  사  명");
 		lblSCName.setForeground(Color.BLACK);
 		lblSCName.setHorizontalAlignment(SwingConstants.CENTER);
 		lblSCName.setFont(new Font("휴먼둥근헤드라인", Font.PLAIN, 16));
 		lblSCName.setBounds(12, 95, 120, 30);
 		panel.add(lblSCName);
-		
+
 		lblSCBln = new JLabel("사업자등록번호");
 		lblSCBln.setForeground(Color.BLACK);
 		lblSCBln.setHorizontalAlignment(SwingConstants.CENTER);
 		lblSCBln.setFont(new Font("휴먼둥근헤드라인", Font.PLAIN, 16));
 		lblSCBln.setBounds(12, 165, 120, 30);
 		panel.add(lblSCBln);
-		
+
 		lblSCAddress = new JLabel("주       소");
 		lblSCAddress.setForeground(Color.BLACK);
 		lblSCAddress.setHorizontalAlignment(SwingConstants.CENTER);
 		lblSCAddress.setFont(new Font("휴먼둥근헤드라인", Font.PLAIN, 16));
 		lblSCAddress.setBounds(12, 235, 120, 30);
 		panel.add(lblSCAddress);
-		
+
 		lblSCTel = new JLabel("전 화 번 호");
 		lblSCTel.setForeground(Color.BLACK);
 		lblSCTel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblSCTel.setFont(new Font("휴먼둥근헤드라인", Font.PLAIN, 16));
 		lblSCTel.setBounds(12, 305, 120, 30);
 		panel.add(lblSCTel);
-		
+
 		lblSCFax = new JLabel("FAX 번 호");
 		lblSCFax.setForeground(Color.BLACK);
 		lblSCFax.setHorizontalAlignment(SwingConstants.CENTER);
 		lblSCFax.setFont(new Font("휴먼둥근헤드라인", Font.PLAIN, 16));
 		lblSCFax.setBounds(12, 375, 120, 30);
 		panel.add(lblSCFax);
-		
+
 		tfSCNo = new JTextField();
 		tfSCNo.setEditable(false);
 		tfSCNo.setBounds(176, 25, 200, 30);
 		panel.add(tfSCNo);
 		tfSCNo.setColumns(10);
-		
+
 		tfSCName = new JTextField();
 		tfSCName.setColumns(10);
 		tfSCName.setBounds(176, 95, 200, 30);
 		panel.add(tfSCName);
-		
+
 		tfSCBln = new JTextField();
 		tfSCBln.setColumns(10);
 		tfSCBln.setBounds(176, 165, 200, 30);
 		panel.add(tfSCBln);
-		
+
 		tfSCAddress = new JTextField();
 		tfSCAddress.setHorizontalAlignment(SwingConstants.LEFT);
 		tfSCAddress.setColumns(10);
 		tfSCAddress.setBounds(176, 235, 200, 30);
 		panel.add(tfSCAddress);
-		
+
 		tfSCTel = new JTextField();
 		tfSCTel.setColumns(10);
 		tfSCTel.setBounds(176, 305, 200, 30);
 		panel.add(tfSCTel);
-		
+
 		tfSCFax = new JTextField();
 		tfSCFax.setColumns(10);
 		tfSCFax.setBounds(176, 375, 200, 30);
 		panel.add(tfSCFax);
-		
+
 	}
-	
+
 	public void setNum(Supplier item) {
-		tfSCNo.setText(String.format("S%04d", item.getsNo()+1));
+		tfSCNo.setText(String.format("S%04d", item.getsNo() + 1));
 	}
-	
+
 	@Override
 	public Supplier getItem() {
 		int sNo = Integer.parseInt(tfSCNo.getText().substring(1));
@@ -133,6 +134,7 @@ public class SCRegisterPanel extends AbsItemPanel<Supplier> {
 		String sFax = tfSCFax.getText().trim();
 		return new Supplier(sNo, sName, sBln, sAddress, sTel, sFax);
 	}
+
 	@Override
 	public void setItem(Supplier item) {
 		tfSCNo.setText(String.format("S%04d", item.getsNo()));
@@ -141,13 +143,13 @@ public class SCRegisterPanel extends AbsItemPanel<Supplier> {
 		tfSCAddress.setText(item.getsAddress());
 		tfSCTel.setText(item.getsTel());
 		tfSCFax.setText(item.getsFax());
-		
+
 	}
-	
+
 	public void setAddr(ZipCode item) {
 		tfSCAddress.setText(item.getAddress());
 	}
-	
+
 	@Override
 	public void clearTf() {
 		tfSCNo.setText("");
@@ -156,12 +158,13 @@ public class SCRegisterPanel extends AbsItemPanel<Supplier> {
 		tfSCAddress.setText("");
 		tfSCTel.setText("");
 		tfSCFax.setText("");
-		
+
 	}
+
 	@Override
 	public void validCheck() {
-		if(tfSCNo.getText().equals("") || tfSCName.getText().equals("") || tfSCBln.getText().equals("") || tfSCAddress.getText().equals("") ||
-				tfSCTel.getText().equals("") || tfSCFax.getText().equals("")) {
+		if (tfSCNo.getText().equals("") || tfSCName.getText().equals("") || tfSCBln.getText().equals("")
+				|| tfSCAddress.getText().equals("") || tfSCTel.getText().equals("") || tfSCFax.getText().equals("")) {
 			throw new InvalidCheckException();
 		}
 	}

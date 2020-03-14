@@ -6,7 +6,7 @@ import javax.swing.JFrame;
 import javax.swing.border.EmptyBorder;
 
 @SuppressWarnings("serial")
-public class ZipCodeFrame extends JFrame{
+public class ZipCodeFrame extends JFrame {
 
 	private ZipCodePanel contentPane;
 
@@ -26,6 +26,7 @@ public class ZipCodeFrame extends JFrame{
 	public ZipCodeFrame() {
 		initialize();
 	}
+
 	private void initialize() {
 		setTitle("주소검색");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

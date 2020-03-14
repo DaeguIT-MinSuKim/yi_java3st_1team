@@ -19,23 +19,18 @@ public class SCListTblPanel extends AbstractTblPanel<Supplier> {
 
 	@Override
 	protected Object[] getColNames() {
-		return new String[] {"<html><span style='color:#000042'><b>회사번호</b></html>",
-							 "<html><span style='color:#000042'><b>회사명</b></html>",
-							 "<html><span style='color:#000042'><b>사업자 등록번호</b></html>",
-							 "<html><span style='color:#000042'><b>주 소</b></html>",
-							 "<html><span style='color:#000042'><b>전화번호</b></html>",
-							 "<html><span style='color:#000042'><b>Fax 번호</b></html>"};
+		return new String[] { "<html><span style='color:#000042'><b>회사번호</b></html>",
+				"<html><span style='color:#000042'><b>회사명</b></html>",
+				"<html><span style='color:#000042'><b>사업자 등록번호</b></html>",
+				"<html><span style='color:#000042'><b>주 소</b></html>",
+				"<html><span style='color:#000042'><b>전화번호</b></html>",
+				"<html><span style='color:#000042'><b>Fax 번호</b></html>" };
 	}
 
 	@Override
 	protected Object[] toArray(Supplier item) {
-		return new Object[] {
-				String.format("S%04d", item.getsNo()),
-				item.getsName(),
-				item.getsBln(),
-				item.getsAddress(),
-				item.getsTel(),
-				item.getsFax()};
+		return new Object[] { String.format("S%04d", item.getsNo()), item.getsName(), item.getsBln(),
+				item.getsAddress(), item.getsTel(), item.getsFax() };
 	}
 
 	@Override

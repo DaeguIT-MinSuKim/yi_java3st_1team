@@ -30,8 +30,6 @@ import yi_java3st_1team.clientmanagement.ui.list.SCListTblPanel;
 import yi_java3st_1team.clientmanagement.ui.panel.SCRegisterPanel;
 import yi_java3st_1team.clientmanagement.ui.service.SupplierUIService;
 import yi_java3st_1team.exception.InvalidCheckException;
-import yi_java3st_1team.main.dto.Employee;
-import yi_java3st_1team.main.ui.EmployeeMainUIPanel;
 
 @SuppressWarnings("serial")
 public class SupplyCompanyUIPanel extends JPanel implements ActionListener, ItemListener {
@@ -162,7 +160,7 @@ public class SupplyCompanyUIPanel extends JPanel implements ActionListener, Item
 
 		cmbCate = new JComboBox();
 		cmbCate.addItemListener(this);
-		cmbCate.setModel(new DefaultComboBoxModel(new String[] {"선택", "전체", "회사명", "사업자등록번호", "전화번호"}));
+		cmbCate.setModel(new DefaultComboBoxModel(new String[] { "선택", "전체", "회사명", "사업자등록번호", "전화번호" }));
 		cmbCate.setBounds(252, 65, 120, 30);
 		pListPanel.add(cmbCate);
 
@@ -186,30 +184,30 @@ public class SupplyCompanyUIPanel extends JPanel implements ActionListener, Item
 		pSCTblPanel.setPopupMenu(createPopupMenu());
 		pListPanel.add(pSCTblPanel);
 	}
-	
+
 	private JPopupMenu createPopupMenu() {
 		JPopupMenu popMenu = new JPopupMenu();
-		
+
 		JMenuItem updateItem = new JMenuItem("수정");
 		updateItem.addActionListener(myPopupMenuListener);
 		popMenu.add(updateItem);
-		
+
 		JMenuItem deleteItem = new JMenuItem("삭제");
 		deleteItem.addActionListener(myPopupMenuListener);
 		popMenu.add(deleteItem);
-		
+
 		return popMenu;
 	}
-	
+
 	ActionListener myPopupMenuListener = new ActionListener() {
-		
+
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			if(e.getActionCommand().equals("수정")) {
+			if (e.getActionCommand().equals("수정")) {
 				Supplier upsupp = pSCTblPanel.getSelectedItem();
 				pSCRPanel.setItem(upsupp);
 			}
-			if(e.getActionCommand().equals("삭제")) {
+			if (e.getActionCommand().equals("삭제")) {
 				Supplier delsupp = pSCTblPanel.getSelectedItem();
 				service.removeSupplier(delsupp);
 				pSCTblPanel.removeRow();
@@ -217,7 +215,6 @@ public class SupplyCompanyUIPanel extends JPanel implements ActionListener, Item
 			}
 		}
 	};
-	
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
@@ -242,17 +239,15 @@ public class SupplyCompanyUIPanel extends JPanel implements ActionListener, Item
 		if (e.getSource() == btnZip) {
 			btnZipActionPerformed(e);
 		}
-		
+
 	}
 
 	private void btnUpdateActionPerformed(ActionEvent e) {
-		if(pSCRPanel.getItem().getsName().equals("") 
-				|| pSCRPanel.getItem().getsAddress().equals("") 
-				|| pSCRPanel.getItem().getsBln().equals("")
-				|| pSCRPanel.getItem().getsTel().equals("")) {
+		if (pSCRPanel.getItem().getsName().equals("") || pSCRPanel.getItem().getsAddress().equals("")
+				|| pSCRPanel.getItem().getsBln().equals("") || pSCRPanel.getItem().getsTel().equals("")) {
 			JOptionPane.showMessageDialog(null, "수정할 회사를 오른쪽 리스트에서 선택해주세요.");
 			return;
-		}else {
+		} else {
 			Supplier upSupp = pSCRPanel.getItem();
 			service.modifySupplier(upSupp);
 			pSCTblPanel.updateRow(upSupp, pSCTblPanel.getSelectedRowIdx());
@@ -264,13 +259,11 @@ public class SupplyCompanyUIPanel extends JPanel implements ActionListener, Item
 
 	private void btnAddActionPerformed(ActionEvent e) {
 		try {
-			if(pSCRPanel.getItem().getsName().equals("") 
-					|| pSCRPanel.getItem().getsAddress().equals("") 
-					|| pSCRPanel.getItem().getsBln().equals("")
-					|| pSCRPanel.getItem().getsTel().equals("")) {
+			if (pSCRPanel.getItem().getsName().equals("") || pSCRPanel.getItem().getsAddress().equals("")
+					|| pSCRPanel.getItem().getsBln().equals("") || pSCRPanel.getItem().getsTel().equals("")) {
 				JOptionPane.showMessageDialog(null, "회사명, 사업자등록번호, 회사주소, 전화번호는 필수입력사항입니다.");
 				return;
-			}else {
+			} else {
 				Supplier newSupp = pSCRPanel.getItem();
 				service.addSupplier(newSupp);
 				pSCTblPanel.addItem(newSupp);
@@ -282,7 +275,7 @@ public class SupplyCompanyUIPanel extends JPanel implements ActionListener, Item
 			JOptionPane.showMessageDialog(null, e1.getMessage());
 		} catch (Exception e1) {
 			SQLException e2 = (SQLException) e1;
-			if(e2.getErrorCode() == 1062) {
+			if (e2.getErrorCode() == 1062) {
 				JOptionPane.showMessageDialog(null, "부서번호가 중복");
 				System.err.println(e2.getMessage());
 				return;
@@ -297,64 +290,67 @@ public class SupplyCompanyUIPanel extends JPanel implements ActionListener, Item
 	}
 
 	protected void btnDplCheckActionPerformed(ActionEvent e) {
-		if(pSCRPanel.getItem().getsName().equals("")) {
+		if (pSCRPanel.getItem().getsName().equals("")) {
 			JOptionPane.showMessageDialog(null, "회사명을 입력해주세요.");
-		}else {
+		} else {
 			Supplier overlapSupp = pSCRPanel.getItem();
 			Supplier supplier = service.overlapSupplier(overlapSupp);
-			if(supplier == null) {
+			if (supplier == null) {
 				JOptionPane.showMessageDialog(null, "등록 가능한 회사입니다.");
-			}else {
+			} else {
 				JOptionPane.showMessageDialog(null, "이미 존재하는 회사입니다.");
 			}
-		}		
+		}
 	}
-	
+
 	public void itemStateChanged(ItemEvent e) {
 		if (e.getSource() == cmbCate) {
 			cmbCateItemStateChanged(e);
 		}
 	}
+
 	public String cmbCateItemStateChanged(ItemEvent e) {
-		if(e.getStateChange() == ItemEvent.SELECTED) {
+		if (e.getStateChange() == ItemEvent.SELECTED) {
 			selectItem = (String) cmbCate.getSelectedItem();
 		}
 		return null;
 	}
+
 	public void btnSerchActionPerformed(ActionEvent e) {
-		if(selectItem == null) {
+		if (selectItem == null) {
 			return;
 		}
-		if(selectItem.equals("전체")) {
+		if (selectItem.equals("전체")) {
 			pSCTblPanel.loadDate(service.showSupplierList());
 		}
-		if(selectItem.equals("회사명")) {
+		if (selectItem.equals("회사명")) {
 			String sName = tfSerch.getText();
 			Supplier supplier = new Supplier(sName, null, null);
 			pSCTblPanel.loadDate(service.showSupplierListByName(supplier));
 			tfSerch.setText("");
 		}
-		if(selectItem.equals("사업자등록번호")) {
+		if (selectItem.equals("사업자등록번호")) {
 			String sBln = tfSerch.getText();
 			Supplier supplier = new Supplier(null, sBln, null);
 			pSCTblPanel.loadDate(service.showSupplierListByBln(supplier));
 			tfSerch.setText("");
 		}
-		if(selectItem.equals("전화번호")) {
+		if (selectItem.equals("전화번호")) {
 			String sTel = tfSerch.getText();
 			Supplier supplier = new Supplier(null, null, sTel);
 			pSCTblPanel.loadDate(service.showSupplierListByTel(supplier));
 			tfSerch.setText("");
 		}
 	}
+
 	public void btnPostNumActionPerformed(ActionEvent e) {
-		if(zipcodeFrame == null) {
+		if (zipcodeFrame == null) {
 			zipcodeFrame = new JFrame();
 			zipcodeFrame.setBounds(100, 100, 810, 350);
 			zipcodeFrame.setTitle("주소 검색");
 			zipPanel = new ZipCodePanel();
 			zipcodeFrame.getContentPane().add(zipPanel);
-			
+
 			btnZip = new JButton("등   록");
 			btnZip.addActionListener(this);
 			btnZip.setForeground(new Color(0, 102, 204));
@@ -362,23 +358,24 @@ public class SupplyCompanyUIPanel extends JPanel implements ActionListener, Item
 			btnZip.setBackground(new Color(135, 206, 250));
 			btnZip.setBounds(325, 250, 150, 32);
 			zipPanel.add(btnZip);
-			
+
 			zipcodeFrame.setVisible(true);
-			
-		}else {
-			if(zipcodeFrame.isVisible()) {
+
+		} else {
+			if (zipcodeFrame.isVisible()) {
 				return;
 			}
 			zipcodeFrame.setVisible(true);
 		}
 	}
+
 	protected void btnZipActionPerformed(ActionEvent e) {
 		String add1 = zipPanel.getTfAll().getText().trim();
 		String add2 = zipPanel.getTfDetail().getText().trim();
-		if(add2.equals("")) {
+		if (add2.equals("")) {
 			total = add1;
-		}else {
-			total = add1 +" "+ add2;
+		} else {
+			total = add1 + " " + add2;
 		}
 		pSCRPanel.tfSCAddress.setText(total);
 		zipcodeFrame.dispose();
