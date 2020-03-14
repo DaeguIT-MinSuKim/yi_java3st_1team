@@ -99,7 +99,10 @@ public class EmployeeMainUIPanel extends JPanel implements ActionListener {
 	/** 메인프레임 **/
 	private EmployeeMainFrame empMain;
 
-	
+	public PanelLineChart lineChart;
+	public PanelBarChart barChart;
+
+	private Thread thread;
 	
 	public EmployeeMainUIPanel() {
 		empService = new EmployeeUIService();
@@ -234,7 +237,16 @@ public class EmployeeMainUIPanel extends JPanel implements ActionListener {
 		btn04.setPreferredSize(new Dimension(240, 23));
 		btn04.setFocusable(false);
 		pBtns02.add(btn04, BorderLayout.EAST);
-
+		thread = new Thread(new Runnable() {
+			@Override
+			public void run() {
+				lineChart = new PanelLineChart();
+				barChart = new PanelBarChart();
+				Platform.runLater(() -> initFX(lineChart));
+				Platform.runLater(() -> initFX(barChart));
+			}
+		});
+		thread.run();
 		//pEmpLogin.btnLogout.addActionListener(this);
 	}
 	public void actionPerformed(ActionEvent e) {
@@ -303,18 +315,26 @@ public class EmployeeMainUIPanel extends JPanel implements ActionListener {
 			case 1: // 책임관리자 로그인 : 대표이사, 경영관리이사, 부장, 차장, 과장
 				pEmpLogin.manager.setText("[책임관리자 로그인]");
 				pEmpLogin.loginImg.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\loginMain\\topManager.png"));
+				thread.interrupt();
+				thread.run();
 				// 책임관리자(대표이사~과장) 로그인시 차트 패널 불러오기
 				// 1. 라인차트
 				pStop.remove(pImg01); // 제거
-				PanelLineChart plc = new PanelLineChart();
-				pStop.add(plc, BorderLayout.CENTER);
-				Platform.runLater(() -> initFX(plc));
+				pStop.add(lineChart, BorderLayout.CENTER);
 				// 2. 바차트
-				pImg02.remove(pLogo); // 제거
-				PanelBarChart bar = new PanelBarChart();
-				bar.setPreferredSize(new Dimension(350, 250));
+				pImg02.removeAll(); // 제거
+				JPanel bar = new JPanel();
+				bar.add(barChart);
 				pImg02.add(bar, BorderLayout.NORTH);
-				Platform.runLater(() -> initFX(bar));
+				
+				lblCall = new JLabel("");
+				lblCall.setBackground(new Color(255, 250, 240));
+				lblCall.setOpaque(true);
+				lblCall.setForeground(SystemColor.inactiveCaptionBorder);
+				lblCall.setHorizontalAlignment(SwingConstants.CENTER);
+				lblCall.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\loginMain\\callcenter.png"));
+				pImg02.add(lblCall, BorderLayout.CENTER);
+				
 				break;
 			case 2: // 관리자 로그인 : 대리, 사원, 인턴
 				pEmpLogin.manager.setText("[일반관리자 로그인]");
@@ -358,6 +378,8 @@ public class EmployeeMainUIPanel extends JPanel implements ActionListener {
 		LoginFirst();
 		
 		if(loginEmp != null) {
+			thread.interrupt();
+			thread.run();
 			pStop.removeAll();
 			pSbot.removeAll();
 			revalidate();

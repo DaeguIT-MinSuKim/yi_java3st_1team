@@ -36,8 +36,7 @@ public abstract class AbstractTblPanel<T> extends JPanel {
 		add(scrollPane, BorderLayout.CENTER);
 		table = new JTable();
 		table.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
-		
-		
+
 		scrollPane.setViewportView(table);
 	}
 
@@ -56,7 +55,7 @@ public abstract class AbstractTblPanel<T> extends JPanel {
 		RowSorter<TableModel> sorter = new TableRowSorter<TableModel>(model);
 		table.setRowSorter(sorter);
 	}
-	
+
 	public void loadDateCheck(List<T> items) {
 		list = items;
 		model2 = new CheckTableModel(getRows(items), getColNames());
@@ -95,7 +94,7 @@ public abstract class AbstractTblPanel<T> extends JPanel {
 	protected void tableSetWidth(int... width) {
 		TableColumnModel cModel = table.getColumnModel();
 		for (int i = 0; i < width.length; i++) {
-			cModel.getColumn(i).setPreferredWidth(width[i]);	
+			cModel.getColumn(i).setPreferredWidth(width[i]);
 		}
 	}
 
@@ -136,7 +135,7 @@ public abstract class AbstractTblPanel<T> extends JPanel {
 			return false;
 		}
 	}
-	
+
 	protected class CheckTableModel extends DefaultTableModel {
 
 		public CheckTableModel(Object[][] data, Object[] columnNames) {
@@ -156,7 +155,7 @@ public abstract class AbstractTblPanel<T> extends JPanel {
 			}
 			return clazz;
 		}
-		
+
 		@Override
 		public boolean isCellEditable(int row, int column) {
 			return column == 6;

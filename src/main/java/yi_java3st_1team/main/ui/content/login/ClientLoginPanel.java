@@ -1,13 +1,13 @@
 package yi_java3st_1team.main.ui.content.login;
 
-import javax.swing.JPanel;
 import java.awt.Dimension;
-import javax.swing.JLabel;
-import javax.swing.SwingConstants;
 import java.awt.Font;
-import javax.swing.JTextField;
-import javax.swing.JButton;
+
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.SwingConstants;
 
 @SuppressWarnings("serial")
 public class ClientLoginPanel extends JPanel {

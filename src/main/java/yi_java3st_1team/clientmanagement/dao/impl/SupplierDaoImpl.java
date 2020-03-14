@@ -14,22 +14,22 @@ import yi_java3st_1team.util.LogUtil;
 
 public class SupplierDaoImpl implements SupplierDao {
 	private static final SupplierDaoImpl Instance = new SupplierDaoImpl();
-	
-	public SupplierDaoImpl() {}
-	
+
+	public SupplierDaoImpl() {
+	}
+
 	public static SupplierDaoImpl getInstance() {
 		return Instance;
 	}
-	
+
 	@Override
 	public Supplier selectSupplierByName(Supplier supplier) {
 		String sql = "select s_no, s_name, s_bln, s_address, s_tel, s_fax from supplier where s_name=?";
-		try(Connection con = MySqlDataSource.getConnection();
-				PreparedStatement pstmt = con.prepareStatement(sql);){
+		try (Connection con = MySqlDataSource.getConnection(); PreparedStatement pstmt = con.prepareStatement(sql);) {
 			pstmt.setString(1, supplier.getsName());
 			LogUtil.prnLog(pstmt);
-			try(ResultSet rs = pstmt.executeQuery()){
-				if(rs.next()) {
+			try (ResultSet rs = pstmt.executeQuery()) {
+				if (rs.next()) {
 					return getSupplier(rs);
 				}
 			}
@@ -38,16 +38,15 @@ public class SupplierDaoImpl implements SupplierDao {
 		}
 		return null;
 	}
-	
+
 	@Override
 	public Supplier selectSupplierByNo(Supplier supplier) {
 		String sql = "select s_no, s_name, s_bln, s_address, s_tel, s_fax from supplier where s_no=?";
-		try(Connection con = MySqlDataSource.getConnection();
-				PreparedStatement pstmt = con.prepareStatement(sql);){
+		try (Connection con = MySqlDataSource.getConnection(); PreparedStatement pstmt = con.prepareStatement(sql);) {
 			pstmt.setInt(1, supplier.getsNo());
 			LogUtil.prnLog(pstmt);
-			try(ResultSet rs = pstmt.executeQuery()){
-				if(rs.next()) {
+			try (ResultSet rs = pstmt.executeQuery()) {
+				if (rs.next()) {
 					return getSupplier(rs);
 				}
 			}
@@ -70,11 +69,10 @@ public class SupplierDaoImpl implements SupplierDao {
 	@Override
 	public Supplier selectSuppplierLastData() {
 		String sql = "select s_no from supplier order by s_no desc limit 1";
-		try(Connection con = MySqlDataSource.getConnection();
-				PreparedStatement pstmt = con.prepareStatement(sql);){
+		try (Connection con = MySqlDataSource.getConnection(); PreparedStatement pstmt = con.prepareStatement(sql);) {
 			LogUtil.prnLog(pstmt);
-			try(ResultSet rs = pstmt.executeQuery()){
-				if(rs.next()) {
+			try (ResultSet rs = pstmt.executeQuery()) {
+				if (rs.next()) {
 					return getSNo(rs);
 				}
 			}
@@ -92,12 +90,11 @@ public class SupplierDaoImpl implements SupplierDao {
 	@Override
 	public List<Supplier> selectSupplierListByName(Supplier selectSupplier) {
 		String sql = "select s_no, s_name, s_bln, s_address, s_tel, s_fax from supplier where s_name=?";
-		try(Connection con = MySqlDataSource.getConnection();
-				PreparedStatement pstmt = con.prepareStatement(sql);){
+		try (Connection con = MySqlDataSource.getConnection(); PreparedStatement pstmt = con.prepareStatement(sql);) {
 			pstmt.setString(1, selectSupplier.getsName());
 			ResultSet rs = pstmt.executeQuery();
 			List<Supplier> list = new ArrayList<Supplier>();
-			while(rs.next()) {
+			while (rs.next()) {
 				list.add(getSupplier(rs));
 			}
 			return list;
@@ -106,16 +103,15 @@ public class SupplierDaoImpl implements SupplierDao {
 		}
 		return null;
 	}
-	
+
 	@Override
 	public List<Supplier> selectSupplierListByBln(Supplier selectSupplier) {
 		String sql = "select s_no, s_name, s_bln, s_address, s_tel, s_fax from supplier where s_bln=?";
-		try(Connection con = MySqlDataSource.getConnection();
-				PreparedStatement pstmt = con.prepareStatement(sql);){
+		try (Connection con = MySqlDataSource.getConnection(); PreparedStatement pstmt = con.prepareStatement(sql);) {
 			pstmt.setString(1, selectSupplier.getsBln());
 			ResultSet rs = pstmt.executeQuery();
 			List<Supplier> list = new ArrayList<Supplier>();
-			while(rs.next()) {
+			while (rs.next()) {
 				list.add(getSupplier(rs));
 			}
 			return list;
@@ -124,16 +120,15 @@ public class SupplierDaoImpl implements SupplierDao {
 		}
 		return null;
 	}
-	
+
 	@Override
 	public List<Supplier> selectSupplierListByTel(Supplier selectSupplier) {
 		String sql = "select s_no, s_name, s_bln, s_address, s_tel, s_fax from supplier where s_tel=?";
-		try(Connection con = MySqlDataSource.getConnection();
-				PreparedStatement pstmt = con.prepareStatement(sql);){
+		try (Connection con = MySqlDataSource.getConnection(); PreparedStatement pstmt = con.prepareStatement(sql);) {
 			pstmt.setString(1, selectSupplier.getsTel());
 			ResultSet rs = pstmt.executeQuery();
 			List<Supplier> list = new ArrayList<Supplier>();
-			while(rs.next()) {
+			while (rs.next()) {
 				list.add(getSupplier(rs));
 			}
 			return list;
@@ -142,15 +137,15 @@ public class SupplierDaoImpl implements SupplierDao {
 		}
 		return null;
 	}
-	
+
 	@Override
 	public List<Supplier> selectSupplierByAll() {
 		String sql = "select s_no, s_name, s_bln, s_address, s_tel, s_fax from supplier";
-		try(Connection con = MySqlDataSource.getConnection();
+		try (Connection con = MySqlDataSource.getConnection();
 				PreparedStatement pstmt = con.prepareStatement(sql);
-				ResultSet rs = pstmt.executeQuery();){
+				ResultSet rs = pstmt.executeQuery();) {
 			List<Supplier> list = new ArrayList<Supplier>();
-			while(rs.next()) {
+			while (rs.next()) {
 				list.add(getSupplier(rs));
 			}
 			return list;
@@ -164,8 +159,7 @@ public class SupplierDaoImpl implements SupplierDao {
 	public int insertSupplier(Supplier supplier) {
 		String sql = "insert into supplier values(?,?,?,?,?,?)";
 		int res = -1;
-		try(Connection con = MySqlDataSource.getConnection();
-				PreparedStatement pstmt = con.prepareStatement(sql);){
+		try (Connection con = MySqlDataSource.getConnection(); PreparedStatement pstmt = con.prepareStatement(sql);) {
 			pstmt.setInt(1, supplier.getsNo());
 			pstmt.setString(2, supplier.getsName());
 			pstmt.setString(3, supplier.getsBln());
@@ -184,8 +178,7 @@ public class SupplierDaoImpl implements SupplierDao {
 	public int updateSupplier(Supplier supplier) {
 		String sql = "update supplier set s_name=?, s_bln=?, s_address=?, s_tel=?, s_fax=? where s_no=?";
 		int res = -1;
-		try(Connection con = MySqlDataSource.getConnection();
-				PreparedStatement pstmt = con.prepareStatement(sql);){
+		try (Connection con = MySqlDataSource.getConnection(); PreparedStatement pstmt = con.prepareStatement(sql);) {
 			pstmt.setString(1, supplier.getsName());
 			pstmt.setString(2, supplier.getsBln());
 			pstmt.setString(3, supplier.getsAddress());
@@ -204,8 +197,7 @@ public class SupplierDaoImpl implements SupplierDao {
 	public int deleteSupplier(Supplier supplier) {
 		String sql = "delete from supplier where s_no = ?";
 		int res = -1;
-		try(Connection con = MySqlDataSource.getConnection();
-				PreparedStatement pstmt = con.prepareStatement(sql);){
+		try (Connection con = MySqlDataSource.getConnection(); PreparedStatement pstmt = con.prepareStatement(sql);) {
 			pstmt.setInt(1, supplier.getsNo());
 			LogUtil.prnLog(pstmt);
 			res = pstmt.executeUpdate();
