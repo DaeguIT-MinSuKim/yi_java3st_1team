@@ -180,7 +180,7 @@ public class MainPanel extends JPanel implements ActionListener {
 	protected void btn05ActionPerformed(ActionEvent e) {
 		JFrame frame = new JFrame();
 		frame.setBounds(100, 100, 1500, 900);
-		SW_SpecUIPanel cs = new SW_SpecUIPanel();
+		SW_TSUIPanel cs = new SW_TSUIPanel();
 		frame.getContentPane().add(cs);
 		frame.setVisible(true);
 		frame.setResizable(false);
@@ -189,7 +189,7 @@ public class MainPanel extends JPanel implements ActionListener {
 	protected void btn06ActionPerformed(ActionEvent e) {
 		JFrame frame = new JFrame();
 		frame.setBounds(100, 100, 1500, 900);
-		IQUIPanel cs = new IQUIPanel();
+		IQEvaluationUIPanel cs = new IQEvaluationUIPanel();
 		frame.getContentPane().add(cs);
 		frame.setVisible(true);
 		frame.setResizable(false);
