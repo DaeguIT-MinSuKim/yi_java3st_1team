@@ -1,15 +1,6 @@
 package yi_java3st_1team.ordermanagement.ui.list;
 
-import java.awt.Checkbox;
-import java.awt.Component;
-
-import javax.swing.DefaultCellEditor;
-import javax.swing.JCheckBox;
-import javax.swing.JLabel;
-import javax.swing.JTable;
 import javax.swing.SwingConstants;
-import javax.swing.table.DefaultTableCellRenderer;
-import javax.swing.table.DefaultTableModel;
 
 import yi_java3st_1team.clientmanagement.ui.list.AbstractTblPanel;
 import yi_java3st_1team.ordermanagement.dto.Order;
@@ -23,7 +14,7 @@ public class OCheckTblPanel extends AbstractTblPanel<Order>{
 	@Override
 	protected void setTblWidthAlign() {
 		tableSetWidth(80, 90, 150, 150, 80, 273, 80, 80,100);
-		tableCellAlign(SwingConstants.CENTER,0,1,2,3,4,5,6,7,8);
+		tableCellAlign(SwingConstants.CENTER,0,1,2,3,4,5,7,8);
 		
 	}
 //"<html><span style='color:#000042'><b>입금여부</b></span></html>"
@@ -36,7 +27,7 @@ public class OCheckTblPanel extends AbstractTblPanel<Order>{
 							 "<html><span style='color:#000042'><b>품목명</b></span></html>",
 							 "<html><span style='color:#000042'><b>주문수량</b></span></html>",
 							 "<html><span style='color:#000042'><b>주문요구사항</b></span></html>",
-							 "입금여부",
+							 "<html><span style='color:#000042'><b>입금여부</b></span></html>",
 							 "<html><span style='color:#000042'><b>주문완료</b></span></html>",
 							 "<html><span style='color:#000042'><b>주문담당자</b></span></html>"};
 	}
@@ -59,12 +50,11 @@ public class OCheckTblPanel extends AbstractTblPanel<Order>{
 		
 		/** 입금여부 **/
 		int oDps = item.getoDps(); //0 or 1Checkbox qq;
-		String qq;
+		boolean qq;
 		if(oDps == 0) {
-			qq = "<html><input type= 'checkbox' name='chk'></html>";
-			
+			qq = false;
 		}else {
-			qq = "<html><input type= 'checkbox' name='chk' checked></html>";
+			qq = true;
 		}
 		
 		
@@ -83,18 +73,7 @@ public class OCheckTblPanel extends AbstractTblPanel<Order>{
 			oMemo = String.format("<html><span style='color:red'>%s</span></html>",item.getoMemo());
 			emp = String.format("<html><span style='color:red'>%s(EE%04d)</span></html>", item.getoEname().getEmpName(), item.getoEno().getEmpNo());
 		}
-		return new Object[] {
-				oNo,
-				oDate,
-				cName,
-				pName,
-				oQty,
-				oMemo,
-				qq,
-				YN,
-				emp
-				
-		};
+		return new Object[] {oNo, oDate, cName, pName, oQty, oMemo, qq, YN, emp};
 	}
 
 	@Override
