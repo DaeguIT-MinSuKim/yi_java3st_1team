@@ -92,7 +92,6 @@ public class EmployeeMainFrame extends JFrame {
 		pContents.setBackground(SystemColor.inactiveCaption);
 		pSection.add(pContents);
 		
-		
 		//footer
 		pFooter = new JPanel();
 		pFooter.setBackground(SystemColor.inactiveCaption);
