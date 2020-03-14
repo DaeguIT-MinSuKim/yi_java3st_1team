@@ -1,28 +1,45 @@
 package yi_java3st_1team.viewsmanagement.ui.list;
 
-import javax.swing.JPanel;
-import java.awt.Dimension;
-import javax.swing.JTable;
-import java.awt.GridLayout;
-import java.awt.BorderLayout;
+import javax.swing.SwingConstants;
+
+import yi_java3st_1team.clientmanagement.ui.list.AbstractTblPanel;
+import yi_java3st_1team.viewsmanagement.dto.DateSale;
 
 @SuppressWarnings("serial")
-public class DateSaleTblPanel extends JPanel {
-	private JTable table;
-
-	/**
-	 * Create the panel.
-	 */
+public class DateSaleTblPanel extends AbstractTblPanel<DateSale> {
 	public DateSaleTblPanel() {
+	}
+	
+	@Override
+	protected void setTblWidthAlign() {
+		tableSetWidth(200, 300, 360, 175, 247);
+		tableCellAlign(SwingConstants.CENTER, 0, 1, 2, 3, 4);
+	}
 
-		initialize();
+	@Override
+	protected String[] getColNames() {
+		return new String[] {"주문번호", "고객상호명", "품목명", "주문수량", "주문일자"};
 	}
-	private void initialize() {
-		setSize(new Dimension(1300, 620));
-		setLayout(new BorderLayout(0, 0));
-		
-		table = new JTable();
-		add(table, BorderLayout.NORTH);
+
+	@Override
+	protected Object[] toArray(DateSale item) {
+		return new Object[] {
+				String.format("O%04d", item.getO_no()),
+				item.getC_name(),
+				item.getP_name(),
+				item.getO_qty(),
+				item.getO_date()
+			};
 	}
+
+	@Override
+	public void updateRow(DateSale item, int updateIdx) {
+		model.setValueAt(String.format("O%04d", item.getO_no()), updateIdx, 0);
+		model.setValueAt(item.getC_name(), updateIdx, 1);
+		model.setValueAt(item.getP_name(), updateIdx, 2);
+		model.setValueAt(item.getO_qty(), updateIdx, 3);
+		model.setValueAt(item.getO_date(), updateIdx, 4);
+	}
+
 
 }

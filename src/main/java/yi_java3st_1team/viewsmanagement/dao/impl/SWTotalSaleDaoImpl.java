@@ -9,7 +9,6 @@ import java.util.List;
 
 import yi_java3st_1team.ds.MySqlDataSource;
 import yi_java3st_1team.viewsmanagement.dao.SWTotalSaleDao;
-import yi_java3st_1team.viewsmanagement.dto.ClientSale;
 import yi_java3st_1team.viewsmanagement.dto.SWTotalSale;
 
 public class SWTotalSaleDaoImpl implements SWTotalSaleDao {
@@ -41,7 +40,7 @@ public class SWTotalSaleDaoImpl implements SWTotalSaleDao {
 				swTotal.setO_date(rs.getString(1));
 				swTotal.setCate_name(rs.getString(2));
 				swTotal.setP_name(rs.getString(3));
-				swTotal.setO_no(rs.getString(4));
+				swTotal.setO_no(rs.getInt(4));
 				swTotal.setO_qty(rs.getInt(5));
 				swTotal.setSalesAmount(rs.getInt(6));
 				

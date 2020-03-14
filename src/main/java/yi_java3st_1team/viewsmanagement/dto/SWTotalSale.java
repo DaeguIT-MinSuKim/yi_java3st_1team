@@ -4,7 +4,7 @@ public class SWTotalSale {
 	private String o_date;
 	private String cate_name;
 	private String p_name;
-	private String o_no;
+	private int o_no;
 	private int o_qty;
 	private int salesAmount;
 
@@ -12,7 +12,7 @@ public class SWTotalSale {
 		// TODO Auto-generated constructor stub
 	}
 
-	public SWTotalSale(String o_date, String cate_name, String p_name, String o_no, int o_qty, int salesAmount) {
+	public SWTotalSale(String o_date, String cate_name, String p_name, int o_no, int o_qty, int salesAmount) {
 		super();
 		this.o_date = o_date;
 		this.cate_name = cate_name;
@@ -46,11 +46,11 @@ public class SWTotalSale {
 		this.p_name = p_name;
 	}
 
-	public String getO_no() {
+	public int getO_no() {
 		return o_no;
 	}
 
-	public void setO_no(String o_no) {
+	public void setO_no(int o_no) {
 		this.o_no = o_no;
 	}
 
