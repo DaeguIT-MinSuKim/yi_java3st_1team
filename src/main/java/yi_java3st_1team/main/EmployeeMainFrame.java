@@ -1,6 +1,7 @@
 package yi_java3st_1team.main;
 
 import java.awt.BorderLayout;
+import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.EventQueue;
@@ -17,9 +18,11 @@ import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
 import yi_java3st_1team.main.ui.EmployeeMainUIPanel;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 @SuppressWarnings("serial")
-public class EmployeeMainFrame extends JFrame{
+public class EmployeeMainFrame extends JFrame implements ActionListener{
 
 	public JPanel contentPane; //내용물,목차+판유리 - 컴포넌트(구성요소,부품)를 부착
 	public JPanel pHeader;
@@ -76,6 +79,7 @@ public class EmployeeMainFrame extends JFrame{
 		
 		//로그아웃버튼
 		btnlogout = new JButton("");
+		btnlogout.addActionListener(this);
 		btnlogout.setOpaque(false);
 		btnlogout.setFocusPainted(false);
 		btnlogout.setFocusable(false);
@@ -109,5 +113,19 @@ public class EmployeeMainFrame extends JFrame{
 		lblCopy.setPreferredSize(new Dimension(400, 30));
 		lblCopy.setBorder(BorderFactory.createEmptyBorder(0,0,0,20));
 		pFooter.add(lblCopy, BorderLayout.EAST);
+	}
+	public void actionPerformed(ActionEvent e) {
+		if (e.getSource() == btnlogout) {
+			actionPerformedBtnlogout(e);
+		}
+	}
+	protected void actionPerformedBtnlogout(ActionEvent e) {
+		pSection.removeAll();
+		pSection.revalidate();
+		pSection.repaint();
+		pSection.setLayout(new CardLayout(-18,0));
+		pContents = new EmployeeMainUIPanel();
+		pSection.add(pContents, BorderLayout.WEST);
+		
 	}
 }
