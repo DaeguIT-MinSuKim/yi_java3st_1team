@@ -1,33 +1,50 @@
 package yi_java3st_1team.viewsmanagement.ui.panel;
 
-import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.SystemColor;
 
+import javax.swing.ButtonGroup;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
-import yi_java3st_1team.viewsmanagement.ui.list.SWTotalTblPanel;
-import yi_java3st_1team.viewsmanagement.ui.list.SpecTblPanel;
-import java.awt.Color;
+
+import yi_java3st_1team.viewsmanagement.ui.list.SWTotalSaleTblPanel;
+import yi_java3st_1team.viewsmanagement.ui.list.TSTblPanel;
+import yi_java3st_1team.viewsmanagement.ui.service.SW_TSUISerivce;
 
 @SuppressWarnings("serial")
-public class SW_SpecUIPanel extends JPanel {
+public class SW_TSUIPanel extends JPanel {
+	private SW_TSUISerivce service;
 	private JPanel pTitle;
 	private JTextField tfLTotal;
 	private JTextField tfRTotal;
+	private JLabel lblTitle;
+	private JPanel pLeft;
+	private JPanel pSW;
+	private JPanel pLeftTop;
+	private JRadioButton rdbtnSW;
+	private JPanel pLeftList;
+	private SWTotalSaleTblPanel pSWList;
+	private JPanel pLeftResult;
+	private JLabel lblLTotal;
+	private JPanel pRight;
+	private JPanel pTS;
+	private JRadioButton rdbtnTS;
+	private JPanel pRightList;
+	private TSTblPanel pTSList;
+	private JPanel pRightResult;
+	private JLabel lblRTotal;
 
-	/**
-	 * Create the panel.
-	 */
-	public SW_SpecUIPanel() {
-
+	
+	public SW_TSUIPanel() {
+		service = new SW_TSUISerivce();
 		initialize();
 	}
 	private void initialize() {
@@ -41,49 +58,50 @@ public class SW_SpecUIPanel extends JPanel {
 		add(pTitle);
 		pTitle.setLayout(null);
 		
-		JLabel lblTitle = new JLabel("전체 판매 현황 / 거래명세서");
+		lblTitle = new JLabel("전체 판매 현황 / 거래명세서");
 		lblTitle.setForeground(Color.BLACK);
 		lblTitle.setBounds(0, 30, 1500, 42);
 		lblTitle.setHorizontalAlignment(SwingConstants.CENTER);
 		lblTitle.setFont(new Font("휴먼둥근헤드라인", Font.PLAIN, 32));
 		pTitle.add(lblTitle);
 		
-		JPanel pLeft = new JPanel();
+		pLeft = new JPanel();
 		pLeft.setBounds(0, 72, 1500, 828);
 		pTitle.add(pLeft);
 		pLeft.setLayout(null);
 		
-		JPanel pSW = new JPanel();
+		pSW = new JPanel();
 		pSW.setBounds(0, 0, 750, 828);
 		pLeft.add(pSW);
 		pSW.setLayout(null);
 		
-		JPanel pLeftTop = new JPanel();
+		pLeftTop = new JPanel();
 		pLeftTop.setBounds(0, 0, 750, 75);
 		pLeftTop.setBackground(SystemColor.inactiveCaption);
 		pLeftTop.setBorder(new EmptyBorder(30, 50, 5, 5));
 		pSW.add(pLeftTop);
 		pLeftTop.setLayout(new FlowLayout(FlowLayout.LEFT, 5, 5));
 		
-		JRadioButton rdbtnSW = new JRadioButton(" S/W 전체 판매현황");
+		rdbtnSW = new JRadioButton(" S/W 전체 판매현황");
 		rdbtnSW.setPreferredSize(new Dimension(230, 30));
 		rdbtnSW.setBackground(SystemColor.inactiveCaption);
 		rdbtnSW.setFont(new Font("휴먼둥근헤드라인", Font.PLAIN, 20));
 		rdbtnSW.setHorizontalAlignment(SwingConstants.CENTER);
 		pLeftTop.add(rdbtnSW);
 		
-		JPanel pLeftList = new JPanel();
+		pLeftList = new JPanel();
 		pLeftList.setBounds(0, 75, 750, 658);
 		pLeftList.setBackground(SystemColor.inactiveCaption);
 		pLeftList.setBorder(new EmptyBorder(5, 55, 5, 35));
 		pSW.add(pLeftList);
 		pLeftList.setLayout(new GridLayout(0, 1, 0, 0));
 		
-		SWTotalTblPanel pSWList = new SWTotalTblPanel();
+		pSWList = new SWTotalSaleTblPanel();
 		pSWList.setBackground(SystemColor.inactiveCaptionBorder);
+		pSWList.loadDate(service.showSWTotalSaleList());
 		pLeftList.add(pSWList);
 		
-		JPanel pLeftResult = new JPanel();
+		pLeftResult = new JPanel();
 		pLeftResult.setBounds(0, 733, 750, 95);
 		pLeftResult.setBackground(SystemColor.inactiveCaption);
 		pLeftResult.setBorder(new EmptyBorder(5, 5, 50, 30));
@@ -91,7 +109,7 @@ public class SW_SpecUIPanel extends JPanel {
 		fl_pLeftResult.setAlignment(FlowLayout.RIGHT);
 		pSW.add(pLeftResult);
 		
-		JLabel lblLTotal = new JLabel("총 판매금액");
+		lblLTotal = new JLabel("총 판매금액");
 		lblLTotal.setForeground(Color.BLACK);
 		lblLTotal.setHorizontalAlignment(SwingConstants.CENTER);
 		lblLTotal.setPreferredSize(new Dimension(130, 30));
@@ -104,39 +122,44 @@ public class SW_SpecUIPanel extends JPanel {
 		pLeftResult.add(tfLTotal);
 		tfLTotal.setColumns(15);
 		
-		JPanel pRight = new JPanel();
+		pRight = new JPanel();
 		pRight.setBounds(750, 0, 750, 828);
 		pLeft.add(pRight);
 		pRight.setLayout(null);
 		
-		JPanel pSpec = new JPanel();
-		pSpec.setBounds(0, 0, 750, 75);
-		pSpec.setBackground(SystemColor.inactiveCaption);
-		pSpec.setBorder(new EmptyBorder(30, 35, 5, 5));
-		FlowLayout fl_pSpec = (FlowLayout) pSpec.getLayout();
+		pTS = new JPanel();
+		pTS.setBounds(0, 0, 750, 75);
+		pTS.setBackground(SystemColor.inactiveCaption);
+		pTS.setBorder(new EmptyBorder(30, 35, 5, 5));
+		FlowLayout fl_pSpec = (FlowLayout) pTS.getLayout();
 		fl_pSpec.setAlignment(FlowLayout.LEFT);
-		pRight.add(pSpec);
+		pRight.add(pTS);
 		
-		JRadioButton rdbtnTS = new JRadioButton(" 거래명세서");
+		rdbtnTS = new JRadioButton(" 거래명세서");
 		rdbtnTS.setForeground(Color.BLACK);
 		rdbtnTS.setPreferredSize(new Dimension(150, 30));
 		rdbtnTS.setBackground(SystemColor.inactiveCaption);
 		rdbtnTS.setHorizontalAlignment(SwingConstants.CENTER);
 		rdbtnTS.setFont(new Font("휴먼둥근헤드라인", Font.PLAIN, 20));
-		pSpec.add(rdbtnTS);
+		pTS.add(rdbtnTS);
 		
-		JPanel pRightList = new JPanel();
+		ButtonGroup group = new ButtonGroup();
+		group.add(rdbtnSW);
+		group.add(rdbtnTS);
+		
+		pRightList = new JPanel();
 		pRightList.setBounds(0, 75, 750, 658);
 		pRightList.setBackground(SystemColor.inactiveCaption);
 		pRightList.setBorder(new EmptyBorder(5, 35, 5, 55));
 		pRight.add(pRightList);
 		pRightList.setLayout(new GridLayout(0, 1, 0, 0));
 		
-		SpecTblPanel pSpecList = new SpecTblPanel();
-		pSpecList.setBackground(SystemColor.inactiveCaptionBorder);
-		pRightList.add(pSpecList);
+		pTSList = new TSTblPanel();
+		pTSList.setBackground(SystemColor.inactiveCaptionBorder);
+		pTSList.loadDate(service.showTSList());
+		pRightList.add(pTSList);
 		
-		JPanel pRightResult = new JPanel();
+		pRightResult = new JPanel();
 		pRightResult.setBounds(0, 733, 750, 95);
 		pRightResult.setBackground(SystemColor.inactiveCaption);
 		FlowLayout fl_pRightResult = (FlowLayout) pRightResult.getLayout();
@@ -144,7 +167,7 @@ public class SW_SpecUIPanel extends JPanel {
 		pRightResult.setBorder(new EmptyBorder(5, 5, 50, 50));
 		pRight.add(pRightResult);
 		
-		JLabel lblRTotal = new JLabel("총 납품금액");
+		lblRTotal = new JLabel("총 납품금액");
 		lblRTotal.setForeground(Color.BLACK);
 		lblRTotal.setHorizontalAlignment(SwingConstants.CENTER);
 		lblRTotal.setPreferredSize(new Dimension(130, 30));

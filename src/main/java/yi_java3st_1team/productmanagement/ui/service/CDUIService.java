@@ -10,7 +10,7 @@ import yi_java3st_1team.productmanagement.dto.ClientDelivery;
 public class CDUIService {
 	private ClientDeliveryDao CDDao = ClientDeliveryDaoImpl.getInstance();
 	
-	public List<ClientDelivery> shpwClientDeliveryList(){
+	public List<ClientDelivery> showClientDeliveryList(){
 		return CDDao.selectClientDeliveryByAll();
 	}
 	

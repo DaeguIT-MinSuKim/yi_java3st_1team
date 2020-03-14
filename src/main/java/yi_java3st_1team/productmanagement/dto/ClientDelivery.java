@@ -86,7 +86,7 @@ public class ClientDelivery {
 
 	@Override
 	public String toString() {
-		return "ClientDelivery [cdNo=" + cdNo + ", cdSno=" + cdSno + ", cName=" + cName + ", pName=" + pName
+		return "ClientDelivery [cdNo=" + cdNo + ", cdSno=" + cdSno + ", cName=" + cName + ", pName=" + pName.getpName()
 				+ ", cdDate=" + cdDate + "]";
 	}	
 	

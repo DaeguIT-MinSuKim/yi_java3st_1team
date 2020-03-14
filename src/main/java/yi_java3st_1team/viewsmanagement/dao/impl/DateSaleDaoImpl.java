@@ -38,7 +38,7 @@ public class DateSaleDaoImpl implements DateSaleDao {
 				ResultSet rs = pstmt.executeQuery();){
 			while(rs.next()) {
 				DateSale dateSale = new DateSale();
-				dateSale.setO_no(rs.getString(1));
+				dateSale.setO_no(rs.getInt(1));
 				dateSale.setC_name(rs.getString(2));
 				dateSale.setP_name(rs.getString(3));
 				dateSale.setO_qty(rs.getInt(4));
@@ -66,7 +66,7 @@ public class DateSaleDaoImpl implements DateSaleDao {
 			try(ResultSet rs = cstmt.executeQuery()){
 				while(rs.next()) {
 					DateSale dateSale = new DateSale();
-					dateSale.setO_no(rs.getString(1));
+					dateSale.setO_no(rs.getInt(1));
 					dateSale.setC_name(rs.getString(2));
 					dateSale.setP_name(rs.getString(3));
 					dateSale.setO_qty(rs.getInt(4));

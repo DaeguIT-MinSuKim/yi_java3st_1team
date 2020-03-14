@@ -3,16 +3,11 @@ package yi_java3st_1team.productmanagement.ui.content;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
-import java.awt.GridLayout;
 import java.awt.Rectangle;
 import java.awt.SystemColor;
 
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
-
-import yi_java3st_1team.productmanagement.ui.list.CDListPanel;
-import yi_java3st_1team.productmanagement.ui.panel.CDRegisterPanel;
-import yi_java3st_1team.productmanagement.ui.service.CDUIService;
 
 @SuppressWarnings("serial")
 public class PMContent extends JPanel {
@@ -20,11 +15,11 @@ public class PMContent extends JPanel {
 	private JPanel pSWRegister;
 	private JPanel pSCSO;
 	private JPanel pClientDelivery;
-	private CDListPanel pCDListPanel;
+
 	
 	public SWUIPanel pSWUIPanel; // 제품등록
 	public SPSOUIPanel pSCSOUIPanel; // 매입발주
-	public CDRegisterPanel pCDRegisterPanel; // 출고이력
+	public CDUIPanel pCDUIPPanel; // 출고
 
 	public PMContent() {
 		initialize();
@@ -63,16 +58,19 @@ public class PMContent extends JPanel {
 		pClientDelivery.setBounds(0, 0, 100, 50);
 		pClientDelivery.setBackground(SystemColor.inactiveCaptionBorder);
 		tpClientManagement.addTab("출  고", null, pClientDelivery, null);
-		pClientDelivery.setLayout(new GridLayout(0, 2, 0, 0));
+		pClientDelivery.setLayout(new BorderLayout(0, 0));
 		
-		pCDRegisterPanel = new CDRegisterPanel();
-		pCDRegisterPanel.setBackground(SystemColor.inactiveCaptionBorder);
-		pClientDelivery.add(pCDRegisterPanel);
-		pCDRegisterPanel.setLayout(null);
+		pCDUIPPanel = new CDUIPanel();
+		pClientDelivery.add(pCDUIPPanel, BorderLayout.CENTER);
 		
-		pCDListPanel = new CDListPanel();
-		pCDListPanel.setBackground(SystemColor.inactiveCaptionBorder);
-		pClientDelivery.add(pCDListPanel);
-		pCDListPanel.setLayout(null);
+//		pCDRegisterPanel = new CDRegisterPanel();
+//		pCDRegisterPanel.setBackground(SystemColor.inactiveCaptionBorder);
+//		pClientDelivery.add(pCDRegisterPanel);
+//		pCDRegisterPanel.setLayout(null);
+//		
+//		pCDListPanel = new CDListPanel();
+//		pCDListPanel.setBackground(SystemColor.inactiveCaptionBorder);
+//		pClientDelivery.add(pCDListPanel);
+//		pCDListPanel.setLayout(null);
 	}
 }
