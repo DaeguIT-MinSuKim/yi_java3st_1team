@@ -1,7 +1,5 @@
 package yi_java3st_1team.viewsmanagement.dao;
 
-import static org.junit.Assert.fail;
-
 import java.sql.Connection;
 import java.util.List;
 
@@ -14,7 +12,6 @@ import org.junit.Test;
 
 import yi_java3st_1team.util.LogUtil;
 import yi_java3st_1team.viewsmanagement.dao.impl.SWTotalSaleDaoImpl;
-import yi_java3st_1team.viewsmanagement.dto.ClientSale;
 import yi_java3st_1team.viewsmanagement.dto.SWTotalSale;
 
 public class SWTotalSaleDaoTest {
