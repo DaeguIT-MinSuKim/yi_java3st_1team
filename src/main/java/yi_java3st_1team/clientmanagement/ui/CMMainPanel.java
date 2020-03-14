@@ -12,17 +12,18 @@ import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
-import javafx.application.Platform;
 import javafx.embed.swing.JFXPanel;
 import javafx.scene.Scene;
 import yi_java3st_1team.clientmanagement.ui.content.CMContent;
+import yi_java3st_1team.main.EmployeeMainFrame;
 import yi_java3st_1team.main.LeftMainMenu;
 import yi_java3st_1team.main.dto.Employee;
 import yi_java3st_1team.main.ui.EmployeeMainUIPanel;
 import yi_java3st_1team.main.ui.content.LogoImg02Panel;
 import yi_java3st_1team.main.ui.content.chart.InitScene;
-import yi_java3st_1team.main.ui.content.chart.PanelLineChart;
+import yi_java3st_1team.main.ui.content.chart.PanelBarChart;
 import yi_java3st_1team.main.ui.content.login.EmployeeLoginPanel;
+import yi_java3st_1team.main.ui.service.EmployeeUIService;
 import yi_java3st_1team.ordermanagement.ui.OMMainPanel;
 import yi_java3st_1team.productmanagement.ui.PMMainPanel;
 import yi_java3st_1team.viewsmanagement.ui.panel.ReportMainPanel;
@@ -38,9 +39,11 @@ public class CMMainPanel extends JPanel implements ActionListener{
 	private EmployeeMainUIPanel emp;
 	
 	private int manager = emp.loginEmp.getEmpManager();
+	private EmployeeUIService empService;
 	
 	
 	public CMMainPanel() {
+		empService = new EmployeeUIService();
 		initialize();
 	}
 	private void initialize() {
@@ -155,7 +158,7 @@ public class CMMainPanel extends JPanel implements ActionListener{
 			   
 			   pEmpLogin.btnLogout.addActionListener(this);
 		   
-
+			   EmployeeMainFrame.btnlogout.setVisible(false);
 		
 	}
 	   
@@ -170,6 +173,7 @@ public class CMMainPanel extends JPanel implements ActionListener{
 			revalidate();
 			repaint();
 			emp = new EmployeeMainUIPanel();
+			emp.loginEmp = null;
 			add(emp);
 			revalidate();
 			repaint();
