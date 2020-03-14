@@ -126,9 +126,11 @@ public class EmployeeMainFrame extends JFrame implements ActionListener{
 		pSection.removeAll();
 		pSection.revalidate();
 		pSection.repaint();
-		pSection.setLayout(new CardLayout(-18,0));
+		pSection.setLayout(new CardLayout(0,0));
 		pContents = new EmployeeMainUIPanel();
-		pSection.add(pContents, BorderLayout.WEST);
+		pSection.add(pContents, BorderLayout.CENTER);
+		pContents.loginEmp = null;
+		btnlogout.setVisible(false);
 		
 	}
 }

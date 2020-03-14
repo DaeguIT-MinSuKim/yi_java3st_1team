@@ -297,24 +297,27 @@ public class ClientMainUIPanel extends JPanel implements ActionListener {
 			pStop.add(pCOrder, BorderLayout.WEST);
 			pStop.revalidate();
 			pStop.repaint();
+			ClientMainFrame.btnlogout.setVisible(true);
 		}
 	}
 
 	// 주문현황
 	protected void actionPerformedBtn02(ActionEvent e) {
 		LoginFirst();
-//		if(loginEmp != null) {
-//			pStop.removeAll();
-//			pSbot.removeAll();
-//			revalidate();
-//			repaint();
-//			setLayout(new CardLayout(-18,0));
-//			pPMpanel = new PMMainPanel();
-//			pPMpanel.setPreferredSize(new Dimension(1544, 0));
-//			pStop.add(pPMpanel, BorderLayout.WEST);
-//			pStop.revalidate();
-//			pStop.repaint();
-//		}
+		if(loginCl != null) {
+			pStop.removeAll();
+			pSbot.removeAll();
+			revalidate();
+			repaint();
+			setLayout(new CardLayout(-18, 0));
+			pCOrder = new ClientOMainPanel();
+			pCOrder.setPreferredSize(new Dimension(1544, 0));
+			pStop.add(pCOrder, BorderLayout.WEST);
+			pStop.revalidate();
+			pStop.repaint();
+			
+			ClientMainFrame.btnlogout.setVisible(true);
+		}
 	}
 
 	// 회원가입

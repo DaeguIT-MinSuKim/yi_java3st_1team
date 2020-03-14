@@ -1,14 +1,18 @@
 package yi_java3st_1team.main;
 
 import java.awt.BorderLayout;
+import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.EventQueue;
 import java.awt.GridLayout;
 import java.awt.SystemColor;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -18,7 +22,7 @@ import javax.swing.border.EmptyBorder;
 import yi_java3st_1team.main.ui.ClientMainUIPanel;
 
 @SuppressWarnings("serial")
-public class ClientMainFrame extends JFrame {
+public class ClientMainFrame extends JFrame implements ActionListener{
 
 	private JPanel contentPane; // 내용물,목차+판유리 - 컴포넌트(구성요소,부품)를 부착
 	private JPanel pHeader;
@@ -27,6 +31,7 @@ public class ClientMainFrame extends JFrame {
 	private JLabel lblLogo;
 	private JLabel lblCopy;
 	private ClientMainUIPanel pContents;
+	public static JButton btnlogout;
 
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -72,6 +77,19 @@ public class ClientMainFrame extends JFrame {
 				new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\loginMain\\topLogo.png"));
 		lblLogo.setPreferredSize(new Dimension(300, 120));
 		pHeader.add(lblLogo);
+		
+		// 로그아웃버튼
+		btnlogout = new JButton("");
+		btnlogout.addActionListener(this);
+		btnlogout.setOpaque(false);
+		btnlogout.setFocusPainted(false);
+		btnlogout.setFocusable(false);
+		btnlogout.setBackground(SystemColor.inactiveCaption);
+		btnlogout.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\loginMain\\Logoutbtn.png"));
+		btnlogout.setBounds(1415, 30, 95, 85);
+		pHeader.add(btnlogout);
+		btnlogout.setVisible(false);
+		
 		pSection = new JPanel();
 		pSection.setBackground(SystemColor.inactiveCaption);
 		contentPane.add(pSection, BorderLayout.CENTER);
@@ -95,4 +113,23 @@ public class ClientMainFrame extends JFrame {
 		lblCopy.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 20));
 		pFooter.add(lblCopy, BorderLayout.EAST);
 	}
-}
+
+	public void actionPerformed(ActionEvent e) {
+		if (e.getSource() == btnlogout) {
+			actionPerformedBtnlogout(e);
+		}
+		
+	}
+	protected void actionPerformedBtnlogout(ActionEvent e) {
+		pSection.removeAll();
+		pSection.revalidate();
+		pSection.repaint();
+		pSection.setLayout(new CardLayout(0,0));
+		pContents = new ClientMainUIPanel();
+		pSection.add(pContents, BorderLayout.CENTER);
+		pContents.loginCl = null;
+		btnlogout.setVisible(false);
+		
+	}
+	
+	}

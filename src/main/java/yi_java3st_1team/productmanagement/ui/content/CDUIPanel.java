@@ -20,6 +20,7 @@ import yi_java3st_1team.productmanagement.ui.list.CDListTblPanel;
 import yi_java3st_1team.productmanagement.ui.panel.CDRegisterPanel;
 import yi_java3st_1team.productmanagement.ui.service.CDUIService;
 import yi_java3st_1team.productmanagement.ui.service.SWUIService;
+import java.awt.GridLayout;
 
 @SuppressWarnings("serial")
 public class CDUIPanel extends JPanel implements ActionListener {
@@ -43,18 +44,16 @@ public class CDUIPanel extends JPanel implements ActionListener {
 	}
 	private void initialize() {
 		setPreferredSize(new Dimension(1270, 700));
-		setLayout(null);
+		setLayout(new GridLayout(0, 2, 0, 0));
 		
 		JPanel pRegisterPanel = new JPanel();
-		pRegisterPanel.setLocation(0, 0);
-		pRegisterPanel.setSize(new Dimension(635, 700));
 		pRegisterPanel.setBackground(SystemColor.inactiveCaptionBorder);
 		add(pRegisterPanel);
 		pRegisterPanel.setLayout(null);
 		
 		pCDregiPanel = new CDRegisterPanel();
 		pCDregiPanel.setBackground(Color.WHITE);
-		pCDregiPanel.setBounds(54, 116, 525, 430);
+		pCDregiPanel.setBounds(54, 116, 525, 440);
 		pCDregiPanel.setCDNum(cdService.showlastNum()); //마지막번호
 		pRegisterPanel.add(pCDregiPanel);
 		pCDregiPanel.setLayout(null);
@@ -104,7 +103,6 @@ public class CDUIPanel extends JPanel implements ActionListener {
 		
 		pListPanel = new JPanel();
 		pListPanel.setBackground(SystemColor.inactiveCaptionBorder);
-		pListPanel.setBounds(635, 0, 635, 700);
 		add(pListPanel);
 		pListPanel.setLayout(null);
 		
