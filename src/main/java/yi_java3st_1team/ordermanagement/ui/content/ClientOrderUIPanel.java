@@ -291,6 +291,7 @@ public class ClientOrderUIPanel extends JPanel implements ActionListener, Change
 					iqService.SubProductQty(proSummary, sub);
 					pCORPanel.clearTf();
 					pCORPanel.setNum(newOrder);
+					pCORPanel.setCName(ClientMainUIPanel.loginCl);
 					setPic(getClass().getClassLoader().getResource("mainLogo3.png").getPath());
 					lblPNo.setText("품목번호");
 					lblSCName.setText("품목명");
