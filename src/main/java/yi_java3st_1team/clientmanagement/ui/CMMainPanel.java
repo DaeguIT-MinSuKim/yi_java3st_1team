@@ -14,6 +14,7 @@ import javax.swing.JPanel;
 
 import javafx.embed.swing.JFXPanel;
 import javafx.scene.Scene;
+import javafx.scene.chart.LineChart;
 import yi_java3st_1team.clientmanagement.ui.content.CMContent;
 import yi_java3st_1team.main.EmployeeMainFrame;
 import yi_java3st_1team.main.LeftMainMenu;
@@ -111,7 +112,6 @@ public class CMMainPanel extends JPanel implements ActionListener{
 		   removeAll();
 		   revalidate();
 		   repaint();
-		   
 		   emp = new EmployeeMainUIPanel();
 		   add(emp);
 		   
@@ -129,14 +129,13 @@ public class CMMainPanel extends JPanel implements ActionListener{
 				// 1. 라인차트
 				emp.pStop.remove(emp.pImg01); // 제거
 				JPanel line = new JPanel();
-				line.setBackground(SystemColor.yellow);
+				line.add(emp.lineChart);
 				emp.pStop.add(line, BorderLayout.CENTER);
 
 				// 2. 바차트
 				emp.pImg02.remove(emp.pLogo); // 제거
 				JPanel bar = new JPanel();
-				bar.setBackground(Color.red);
-				bar.setPreferredSize(new Dimension(350, 250));
+				bar.add(emp.barChart);
 				emp.pImg02.add(bar, BorderLayout.NORTH);
 				break;
 			case 2:
