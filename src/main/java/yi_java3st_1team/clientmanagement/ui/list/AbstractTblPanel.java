@@ -2,8 +2,8 @@ package yi_java3st_1team.clientmanagement.ui.list;
 
 import java.awt.BorderLayout;
 import java.util.List;
+import java.util.Vector;
 
-import javax.swing.JCheckBox;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPopupMenu;
@@ -22,6 +22,7 @@ public abstract class AbstractTblPanel<T> extends JPanel {
 	private JScrollPane scrollPane;
 	protected List<T> list;
 	protected NotEditableModel model;
+	protected CheckTableModel model2;
 
 	public AbstractTblPanel() {
 
@@ -53,6 +54,17 @@ public abstract class AbstractTblPanel<T> extends JPanel {
 		setTblWidthAlign();
 
 		RowSorter<TableModel> sorter = new TableRowSorter<TableModel>(model);
+		table.setRowSorter(sorter);
+	}
+	
+	public void loadDateCheck(List<T> items) {
+		list = items;
+		model2 = new CheckTableModel(getRows(items), getColNames());
+		table.setModel(model2);
+
+		setTblWidthAlign();
+
+		RowSorter<TableModel> sorter = new TableRowSorter<TableModel>(model2);
 		table.setRowSorter(sorter);
 	}
 
@@ -122,6 +134,41 @@ public abstract class AbstractTblPanel<T> extends JPanel {
 		@Override
 		public boolean isCellEditable(int row, int column) {
 			return false;
+		}
+	}
+	
+	protected class CheckTableModel extends DefaultTableModel {
+
+		public CheckTableModel(Object[][] data, Object[] columnNames) {
+			super(data, columnNames);
+		}
+
+		@Override
+		public Class<?> getColumnClass(int columnIndex) {
+			Class clazz = String.class;
+			switch (columnIndex) {
+			case 0:
+				clazz = Integer.class;
+				break;
+			case 6:
+				clazz = Boolean.class;
+				break;
+			}
+			return clazz;
+		}
+		
+		@Override
+		public boolean isCellEditable(int row, int column) {
+			return column == 6;
+		}
+
+		@Override
+		public void setValueAt(Object aValue, int row, int column) {
+			if (aValue instanceof Boolean && column == 6) {
+				Vector rowData = (Vector) getDataVector().get(row);
+				rowData.set(6, (boolean) aValue);
+				fireTableCellUpdated(row, column);
+			}
 		}
 	}
 
