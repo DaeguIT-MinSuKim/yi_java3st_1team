@@ -19,7 +19,12 @@ public class SWTotalSaleTblPanel extends AbstractTblPanel<SWTotalSale> {
 
 	@Override
 	protected String[] getColNames() {
-		return new String[] {"날짜", "분류", "품목명", "주문번호", "주문수량", "판매금액"};
+		return new String[] {"<html><span style='color:#000042'><b>날짜</b></span></html>",
+				             "<html><span style='color:#000042'><b>분류</b></span></html>",
+				             "<html><span style='color:#000042'><b>품목명</b></span></html>",
+				             "<html><span style='color:#000042'><b>주문번호</b></span></html>",
+				             "<html><span style='color:#000042'><b>주문수량</b></span></html>",
+				             "<html><span style='color:#000042'><b>판매금액</b></span></html>"};
 	}
 
 	@Override

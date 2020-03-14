@@ -18,7 +18,11 @@ public class DateSaleTblPanel extends AbstractTblPanel<DateSale> {
 
 	@Override
 	protected String[] getColNames() {
-		return new String[] {"주문번호", "고객상호명", "품목명", "주문수량", "주문일자"};
+		return new String[] {"<html><span style='color:#000042'><b>주문번호</b></span></html>",
+							 "<html><span style='color:#000042'><b>고객상호명</b></span></html>",
+							 "<html><span style='color:#000042'><b>품목명</b></span></html>",
+							 "<html><span style='color:#000042'><b>주문수량</b></span></html>",
+							 "<html><span style='color:#000042'><b>주문일자</b></span></html>"};
 	}
 
 	@Override
