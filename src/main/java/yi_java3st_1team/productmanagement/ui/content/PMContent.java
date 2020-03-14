@@ -20,11 +20,14 @@ public class PMContent extends JPanel {
 	private JPanel pSWRegister;
 	private JPanel pSCSO;
 	private JPanel pClientDelivery;
-	private CDListPanel pCDListPanel;
+
 	
 	public SWUIPanel pSWUIPanel; // 제품등록
 	public SPSOUIPanel pSCSOUIPanel; // 매입발주
-	public CDRegisterPanel pCDRegisterPanel; // 출고이력
+	private CDUIPanel panel;
+	
+//	public CDRegisterPanel pCDRegisterPanel; // 출고이력
+//	private CDListPanel pCDListPanel;
 
 	public PMContent() {
 		initialize();
@@ -63,16 +66,19 @@ public class PMContent extends JPanel {
 		pClientDelivery.setBounds(0, 0, 100, 50);
 		pClientDelivery.setBackground(SystemColor.inactiveCaptionBorder);
 		tpClientManagement.addTab("출  고", null, pClientDelivery, null);
-		pClientDelivery.setLayout(new GridLayout(0, 2, 0, 0));
+		pClientDelivery.setLayout(new BorderLayout(0, 0));
 		
-		pCDRegisterPanel = new CDRegisterPanel();
-		pCDRegisterPanel.setBackground(SystemColor.inactiveCaptionBorder);
-		pClientDelivery.add(pCDRegisterPanel);
-		pCDRegisterPanel.setLayout(null);
+		panel = new CDUIPanel();
+		pClientDelivery.add(panel, BorderLayout.CENTER);
 		
-		pCDListPanel = new CDListPanel();
-		pCDListPanel.setBackground(SystemColor.inactiveCaptionBorder);
-		pClientDelivery.add(pCDListPanel);
-		pCDListPanel.setLayout(null);
+//		pCDRegisterPanel = new CDRegisterPanel();
+//		pCDRegisterPanel.setBackground(SystemColor.inactiveCaptionBorder);
+//		pClientDelivery.add(pCDRegisterPanel);
+//		pCDRegisterPanel.setLayout(null);
+//		
+//		pCDListPanel = new CDListPanel();
+//		pCDListPanel.setBackground(SystemColor.inactiveCaptionBorder);
+//		pClientDelivery.add(pCDListPanel);
+//		pCDListPanel.setLayout(null);
 	}
 }

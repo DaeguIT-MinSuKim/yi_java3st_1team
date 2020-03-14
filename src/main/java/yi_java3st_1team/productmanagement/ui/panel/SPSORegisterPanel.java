@@ -77,7 +77,7 @@ public class SPSORegisterPanel extends AbsItemPanel<SupplierPurchase> {
 		lblSPSOPrice.setBounds(12, 238, 120, 30);
 		panel.add(lblSPSOPrice);
 		
-		lblSPSOSName = new JLabel("공급회사명");
+		lblSPSOSName = new JLabel("공급 회사명");
 		lblSPSOSName.setForeground(Color.BLACK);
 		lblSPSOSName.setHorizontalAlignment(SwingConstants.CENTER);
 		lblSPSOSName.setFont(new Font("휴먼둥근헤드라인", Font.PLAIN, 16));
