@@ -19,7 +19,15 @@ public class TSTblPanel extends AbstractTblPanel<TransactionStatement> {
 
 	@Override
 	protected String[] getColNames() {
-		return new String[] {"공급회사명", "주문일자", "고객상호명", "품목명", "수량", "단가", "금액", "세금", "총납품금액"};
+		return new String[] {"<html><span style='color:#000042'><b>공급회사명</b></span></html>",
+				             "<html><span style='color:#000042'><b>주문일자</b></span></html>",
+				             "<html><span style='color:#000042'><b>고객상호명</b></span></html>",
+				             "<html><span style='color:#000042'><b>품목명</b></span></html>",
+				             "<html><span style='color:#000042'><b>수량</b></span></html>",
+				             "<html><span style='color:#000042'><b>단가</b></span></html>",
+				             "<html><span style='color:#000042'><b>금액</b></span></html>",
+				             "<html><span style='color:#000042'><b>세금</b></span></html>",
+				             "<html><span style='color:#000042'><b>총납품금액</b></span></html>"};
 	}
 
 	@Override

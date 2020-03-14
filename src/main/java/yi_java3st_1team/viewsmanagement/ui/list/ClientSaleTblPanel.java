@@ -19,20 +19,42 @@ public class ClientSaleTblPanel extends AbstractTblPanel<ClientSale> {
 
 	@Override
 	protected String[] getColNames() {
-		return new String[] {"고객상호명", "품목명", "수량", "입금여부", "판매가격", "매출금", "미수금"};
+		return new String[] {"<html><span style='color:#000042'><b>고객상호명</b></span></html>",
+							 "<html><span style='color:#000042'><b>품목명</b></span></html>",
+							 "<html><span style='color:#000042'><b>수량</b></span></html>",
+							 "<html><span style='color:#000042'><b>입금여부</b></span></html>",
+							 "<html><span style='color:#000042'><b>판매가격</b></span></html>",
+							 "<html><span style='color:#000042'><b>매출금</b></span></html>",
+							 "<html><span style='color:#000042'><b>미수금</b></span></html>"};
 	}
 
 	@Override
 	protected Object[] toArray(ClientSale item) {
-		return new Object[] {
-				item.getC_name(),
-				item.getP_name(),
-				item.getO_qty(),
-				item.getO_dps(),
-				String.format("%,d    ", item.getP_price()),
-				String.format("%,d    ", item.getSalesMoney()),
-				String.format("%,d    ", item.getUncollected())
-			};
+		String cName = String.format("%s", item.getC_name());
+		String pName = String.format("%s", item.getP_name());
+		String oQty = String.format("%d", item.getO_qty());
+		String pPrice = String.format("%,d    ", item.getP_price());
+		String saleMoney = String.format("%,d    ", item.getSalesMoney());
+		String unCollected = String.format("%,d    ", item.getUncollected());
+		
+		//입금여부
+		String odps = item.getO_dps();
+		String YN;
+		if(odps.equals("미입금")) {
+			YN = "<html><b><span style='color:red'>N</span></b></html>";
+			
+			cName = String.format("<html><span style='color:red'>%s</span></html>", item.getC_name());
+			pName = String.format("<html><span style='color:red'>%s</span></html>", item.getP_name());
+			oQty = String.format("<html><span style='color:red'>%d</span></html>", item.getO_qty());
+			pPrice = String.format("<html><span style='color:red'>%,d    </span></html>", item.getP_price());
+			saleMoney = String.format("<html><span style='color:red'>%,d    </span></html>", item.getSalesMoney());
+			unCollected = String.format("<html><span style='color:red'>%,d    </span></html>", item.getUncollected());
+			
+		}else {
+			YN = "<html><b><span style='color:blue'>Y</span></b></html>";
+		}
+		
+		return new Object[] {cName, pName, oQty, YN, pPrice, saleMoney, unCollected};
 	}
 
 	@Override
