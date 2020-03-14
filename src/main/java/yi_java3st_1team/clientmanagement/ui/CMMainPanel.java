@@ -16,6 +16,7 @@ import javafx.application.Platform;
 import javafx.embed.swing.JFXPanel;
 import javafx.scene.Scene;
 import yi_java3st_1team.clientmanagement.ui.content.CMContent;
+import yi_java3st_1team.main.EmployeeMainFrame;
 import yi_java3st_1team.main.LeftMainMenu;
 import yi_java3st_1team.main.dto.Employee;
 import yi_java3st_1team.main.ui.EmployeeMainUIPanel;
@@ -155,7 +156,7 @@ public class CMMainPanel extends JPanel implements ActionListener{
 			   
 			   pEmpLogin.btnLogout.addActionListener(this);
 		   
-
+			   EmployeeMainFrame.btnlogout.setVisible(false);
 		
 	}
 	   

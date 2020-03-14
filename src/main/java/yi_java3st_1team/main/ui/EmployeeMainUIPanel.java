@@ -11,7 +11,6 @@ import java.awt.SystemColor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -371,6 +370,7 @@ public class EmployeeMainUIPanel extends JPanel implements ActionListener {
 			pStop.add(pCMpanel, BorderLayout.WEST);
 			pStop.revalidate();
 			pStop.repaint();
+			EmployeeMainFrame.btnlogout.setVisible(true);
 			
 			
 		}
@@ -391,6 +391,7 @@ public class EmployeeMainUIPanel extends JPanel implements ActionListener {
 			pStop.add(pPMpanel, BorderLayout.WEST);
 			pStop.revalidate();
 			pStop.repaint();
+			EmployeeMainFrame.btnlogout.setVisible(true);
 		}
 	}
 	
@@ -409,6 +410,7 @@ public class EmployeeMainUIPanel extends JPanel implements ActionListener {
 			pStop.add(pOMpanel, BorderLayout.WEST);
 			pStop.revalidate();
 			pStop.repaint();
+			EmployeeMainFrame.btnlogout.setVisible(true);
 		}
 	}
 	
@@ -430,6 +432,7 @@ public class EmployeeMainUIPanel extends JPanel implements ActionListener {
 					pStop.add(pViewpanel, BorderLayout.WEST);
 					pStop.revalidate();
 					pStop.repaint();
+					EmployeeMainFrame.btnlogout.setVisible(true);
 				}
 				break;
 			case 2: //관리자(비활성화)

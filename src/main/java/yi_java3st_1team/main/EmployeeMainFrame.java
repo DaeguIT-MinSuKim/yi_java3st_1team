@@ -28,7 +28,7 @@ public class EmployeeMainFrame extends JFrame{
 	private JLabel lblLogo;
 	private JLabel lblCopy;
 	public EmployeeMainUIPanel pContents;
-	public JButton btnlogout;
+	public static JButton btnlogout;
 
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
