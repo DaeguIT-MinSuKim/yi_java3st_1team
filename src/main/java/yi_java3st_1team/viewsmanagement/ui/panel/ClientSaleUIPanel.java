@@ -18,13 +18,15 @@ import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
 import yi_java3st_1team.viewsmanagement.dto.ClientSale;
-import yi_java3st_1team.viewsmanagement.ui.content.TotalAmountPanel;
+import yi_java3st_1team.viewsmanagement.dto.Total;
 import yi_java3st_1team.viewsmanagement.ui.list.ClientSaleTblPanel;
 import yi_java3st_1team.viewsmanagement.ui.service.ClientSaleUIService;
+import yi_java3st_1team.viewsmanagement.ui.service.TotalUIService;
 
 @SuppressWarnings("serial")
 public class ClientSaleUIPanel extends JPanel {
 	private ClientSaleUIService service;
+	private TotalUIService service2;
 	private JPanel pTitle;
 	private JTextField textField;
 	private JLabel lblTitle;
@@ -36,11 +38,15 @@ public class ClientSaleUIPanel extends JPanel {
 	private JPanel pList;
 	private ClientSaleTblPanel pClientList;
 	private JPanel pAmount;
-	private TotalAmountPanel pTotalAmount;
+	private JLabel lblAmount01;
+	private JTextField textField_1;
+	private JLabel lblAmount02;
+	private JTextField textField_2;
 
 	
 	public ClientSaleUIPanel() {
 		service = new ClientSaleUIService();
+		service2 = new TotalUIService();
 		initialize();
 	}
 	private void initialize() {
@@ -135,11 +141,38 @@ public class ClientSaleUIPanel extends JPanel {
 		pAmount.setBounds(100, 738, 1300, 40);
 		pAmount.setBackground(SystemColor.inactiveCaption);
 		pTop.add(pAmount);
-		pAmount.setLayout(null);
+		pAmount.setLayout(new FlowLayout(FlowLayout.RIGHT, 5, 5));
 		
-		pTotalAmount = new TotalAmountPanel();
-		pTotalAmount.setBounds(0, 0, 1300, 40);
-		pAmount.add(pTotalAmount);
+		lblAmount01 = new JLabel("총 매출금");
+		lblAmount01.setPreferredSize(new Dimension(130, 30));
+		lblAmount01.setHorizontalAlignment(SwingConstants.CENTER);
+		lblAmount01.setForeground(Color.BLUE);
+		lblAmount01.setFont(new Font("휴먼둥근헤드라인", Font.PLAIN, 18));
+		pAmount.add(lblAmount01);
+		
+		textField_1 = new JTextField();
+		textField_1.setPreferredSize(new Dimension(200, 30));
+		textField_1.setFont(new Font("굴림", Font.PLAIN, 16));
+		textField_1.setColumns(15);
+		Total total = service2.showClientSaleTotalSales();
+		String to = String.format("%s", String.valueOf(total));
+		String restr = to.replaceAll("[^0-9]", "");
+		textField_1.setText(restr);
+		pAmount.add(textField_1);
+		
+		lblAmount02 = new JLabel(" 총 미수금 ");
+		lblAmount02.setPreferredSize(new Dimension(130, 30));
+		lblAmount02.setHorizontalAlignment(SwingConstants.CENTER);
+		lblAmount02.setForeground(Color.RED);
+		lblAmount02.setFont(new Font("휴먼둥근헤드라인", Font.PLAIN, 18));
+		pAmount.add(lblAmount02);
+		
+		textField_2 = new JTextField();
+		textField_2.setEnabled(false);
+		textField_2.setPreferredSize(new Dimension(200, 30));
+		textField_2.setFont(new Font("굴림", Font.PLAIN, 16));
+		textField_2.setColumns(15);
+		pAmount.add(textField_2);
 	}
 
 }
