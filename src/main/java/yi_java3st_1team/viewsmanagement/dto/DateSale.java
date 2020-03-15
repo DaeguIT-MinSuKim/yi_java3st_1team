@@ -9,16 +9,16 @@ public class DateSale {
 	private int o_qty;
 	private String o_dps;
 	private Date o_date;
-	private String start_o_date;
-	private String end_o_date;
+	private Date start_o_date;
+	private Date end_o_date;
 
 	public DateSale() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public DateSale(String start_o_date, String end_o_date) {
-		this.start_o_date = start_o_date;
-		this.end_o_date = end_o_date;
+	public DateSale(Date sDate, Date eDate) {
+		this.start_o_date = sDate;
+		this.end_o_date = eDate;
 	}
 
 	public DateSale(int o_no, String c_name, String p_name, int o_qty, String o_dps, Date o_date) {
@@ -79,19 +79,19 @@ public class DateSale {
 		this.o_date = o_date;
 	}
 
-	public String getStart_o_date() {
+	public Date getStart_o_date() {
 		return start_o_date;
 	}
 
-	public void setStart_o_date(String start_o_date) {
+	public void setStart_o_date(Date start_o_date) {
 		this.start_o_date = start_o_date;
 	}
 
-	public String getEnd_o_date() {
+	public Date getEnd_o_date() {
 		return end_o_date;
 	}
 
-	public void setEnd_o_date(String end_o_date) {
+	public void setEnd_o_date(Date end_o_date) {
 		this.end_o_date = end_o_date;
 	}
 

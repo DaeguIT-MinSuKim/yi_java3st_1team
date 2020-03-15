@@ -60,8 +60,8 @@ public class DateSaleDaoImpl implements DateSaleDao {
 		String sql = "{call dateSale(?, ?)}";
 		Connection con = MySqlDataSource.getConnection();
 		try(CallableStatement cstmt = con.prepareCall(sql);){
-			cstmt.setString(1, ds.getStart_o_date());
-			cstmt.setString(2, ds.getEnd_o_date());
+			cstmt.setDate(1, ds.getStart_o_date());
+			cstmt.setDate(2, ds.getEnd_o_date());
 			LogUtil.prnLog(cstmt);
 			try(ResultSet rs = cstmt.executeQuery()){
 				while(rs.next()) {

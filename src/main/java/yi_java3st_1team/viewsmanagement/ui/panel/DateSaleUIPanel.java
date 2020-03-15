@@ -112,9 +112,11 @@ public class DateSaleUIPanel extends JPanel {
 		btnSearch = new JButton("검색");
 		btnSearch.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				String SDate = dcStart.getDateFormatString();
-				String EDate = dcEnd.getDateFormatString();
-				DateSale ds = new DateSale(SDate, EDate);
+				java.util.Date uSDate = dcStart.getDate();
+				java.sql.Date startDate = new java.sql.Date(uSDate.getTime());
+				java.util.Date uEDate = dcEnd.getDate();
+				java.sql.Date endDate = new java.sql.Date(uEDate.getTime());
+				DateSale ds = new DateSale(startDate, endDate);
 				try {
 					pDateSaleList.loadDate(service.showDateSaleListByDate(ds));
 				} catch (SQLException e1) {
@@ -130,6 +132,11 @@ public class DateSaleUIPanel extends JPanel {
 		pSearch.add(btnSearch);
 		
 		btnTotal = new JButton("전체");
+		btnTotal.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				pDateSaleList.loadDate(service.showDateSaleList());
+			}
+		});
 		btnTotal.setPreferredSize(new Dimension(80, 30));
 		btnTotal.setForeground(Color.WHITE);
 		btnTotal.setFont(new Font("맑은 고딕", Font.BOLD, 16));
