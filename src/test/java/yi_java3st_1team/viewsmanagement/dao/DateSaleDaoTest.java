@@ -1,6 +1,7 @@
 package yi_java3st_1team.viewsmanagement.dao;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -58,7 +59,9 @@ public class DateSaleDaoTest {
 	@Test
 	public void test02procedureDateSaleByDate() throws SQLException {
 		LogUtil.prnLog(Thread.currentThread().getStackTrace()[1].getMethodName()+"()");
-		List<DateSale> list = dao.procedureDateSaleByDate(new DateSale("2019-03-01", "2019-09-30"));
+		Date start = Date.valueOf("2019-03-01");
+		Date end = Date.valueOf("2019-03-01");
+		List<DateSale> list = dao.procedureDateSaleByDate(new DateSale(start, end));
 		Assert.assertNotNull(list);
 		LogUtil.prnLog(list);
 	}
