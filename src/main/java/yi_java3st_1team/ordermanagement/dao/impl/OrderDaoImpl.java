@@ -111,8 +111,8 @@ public class OrderDaoImpl implements OrderDao {
 		try(Connection con = MySqlDataSource.getConnection();
 				PreparedStatement pstmt = con.prepareStatement(sql)){
 			pstmt.setTimestamp(1, new Timestamp(order.getoDate().getTime()));
-			pstmt.setInt(2, order.getoCname().getcNo()+1);
-			pstmt.setInt(3, order.getoPname().getpNo()+1);
+			pstmt.setInt(2, order.getoCname().getcNo());
+			pstmt.setInt(3, order.getoPname().getpNo());
 			pstmt.setInt(4, order.getoQty());
 			pstmt.setString(5, order.getoMemo());
 			pstmt.setInt(6, order.getoNo());
