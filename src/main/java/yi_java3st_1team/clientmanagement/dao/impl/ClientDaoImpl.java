@@ -54,6 +54,20 @@ public class ClientDaoImpl implements ClientDao {
 		int cSalesman = rs.getInt("c_salesman");
 		return new Client(cNo, cName, cCeo, cAddress, cTel, cId, cMail, cDate, cSalesman);
 	}
+	
+	private Client getClient2(ResultSet rs) throws SQLException {
+		int cNo = rs.getInt("c_no");
+		String cName = rs.getString("c_name");
+		String cCeo = rs.getString("c_ceo");
+		String cAddress = rs.getString("c_address");
+		String cTel = rs.getString("c_tel");
+		String cId = rs.getString("c_id");
+		String cPw = rs.getString("c_pw");
+		String cMail = rs.getString("c_mail");
+		String cDate = rs.getString("c_date");
+		int cSalesman = rs.getInt("c_salesman");
+		return new Client(cNo, cName, cCeo, cAddress, cTel, cId, cPw, cMail, cDate, cSalesman);
+	}
 
 	@Override
 	public List<Client> selectClientByAll() {
@@ -348,7 +362,7 @@ public class ClientDaoImpl implements ClientDao {
 			LogUtil.prnLog(pstmt);
 			try (ResultSet rs = pstmt.executeQuery()) {
 				if (rs.next()) {
-					return getClient(rs);
+					return getClient2(rs);
 				}
 			}
 		} catch (SQLException e) {

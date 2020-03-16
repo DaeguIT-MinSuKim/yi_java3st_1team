@@ -250,7 +250,7 @@ public class ClientMainUIPanel extends JPanel implements ActionListener {
 		cPass = new String(pLogin.pfPasswd.getPassword());
 
 		loginCl = clService.login(new Client(cId, cPass));
-		//System.out.println(loginCl);
+		System.out.println(loginCl);
 
 		// 로그인 성공 못함
 		if (loginCl == null) {

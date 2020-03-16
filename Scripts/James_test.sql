@@ -137,6 +137,7 @@ select d.d_name, count(c.c_no) from client c left join employee e on c.c_salesma
 -- 바차트
 select * from client; -- 고객 : 총56명
 select * from `order` o left join client on o_cno = c_no;
+
 -- 가장 많이 주문한 고객 : 고객사이름, 주문번호(주문한횟수)
 select c_no, c_name, count(o_no) as 주문횟수 from `order` o left join client on o_cno = c_no group by c_name
 union

@@ -18,6 +18,7 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JRadioButton;
@@ -421,6 +422,7 @@ public class EmpMyProfile extends AbsRegiPanel<Employee> implements ActionListen
 	protected void actionPerformedBtnAdd(ActionEvent e) {
 		Employee upEmp = getItem();
 		empService.modifyEmployee(upEmp);
+		JOptionPane.showMessageDialog(null, "수정되었습니다.");
 	}
 	
 	//취소

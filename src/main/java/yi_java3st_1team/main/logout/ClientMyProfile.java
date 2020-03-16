@@ -8,17 +8,21 @@ import java.awt.GridLayout;
 import java.awt.SystemColor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Date;
 import java.util.regex.Pattern;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 import javax.swing.event.DocumentListener;
+
+import com.toedter.calendar.JDateChooser;
 
 import yi_java3st_1team.clientmanagement.dto.Client;
 import yi_java3st_1team.clientmanagement.ui.ZipCodePanel;
@@ -46,7 +50,7 @@ public class ClientMyProfile  extends AbsRegiPanel<Client> implements ActionList
 	private JButton btnAdd;
 	private JButton btnCancle;
 	private JLabel lblPassword;
-	
+	private JTextField tfDate;
 	private JFrame zipcodeFrame;
 	private ZipCodePanel zipPanel;
 	private JButton btnZip;
@@ -143,6 +147,11 @@ public class ClientMyProfile  extends AbsRegiPanel<Client> implements ActionList
 		label_6.setFont(new Font("휴먼둥근헤드라인", Font.PLAIN, 13));
 		pName.add(label_6);
 		
+		JLabel lblNewLabel = new JLabel("등 록 일  ");
+		lblNewLabel.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblNewLabel.setFont(new Font("휴먼둥근헤드라인", Font.PLAIN, 13));
+		pName.add(lblNewLabel);
+		
 		JLabel lblNewLabel_4 = new JLabel("담 당 직 원  ");
 		lblNewLabel_4.setFont(new Font("휴먼둥근헤드라인", Font.PLAIN, 13));
 		lblNewLabel_4.setForeground(Color.BLACK);
@@ -207,6 +216,11 @@ public class ClientMyProfile  extends AbsRegiPanel<Client> implements ActionList
 		pInput.add(tfMail);
 		tfMail.setColumns(10);
 		
+		tfDate = new JTextField();
+		pInput.add(tfDate);
+		tfDate.setColumns(10);
+		tfDate.setEditable(false);
+		
 		tfSalesman = new JTextField();
 		pInput.add(tfSalesman);
 		tfSalesman.setColumns(10);
@@ -265,7 +279,7 @@ public class ClientMyProfile  extends AbsRegiPanel<Client> implements ActionList
 				lblPassword.setText("비밀번호 사용 불가");
 			}
 		}
-	};	
+	};
 	
 	@Override
 	public Client getItem() {
@@ -275,10 +289,11 @@ public class ClientMyProfile  extends AbsRegiPanel<Client> implements ActionList
 		String cAddress = tfAdd.getText().trim();
 		String cTel = tfTell.getText().trim();
 		String cId = tfId.getText().trim();
+		String cPw = new String(passFd1.getPassword());
 		String cMail = tfMail.getText().trim();
-		//String cDate = tf
-		//int cSalesman = Integer.pa
-		return new Client(cNo, cName, cCeo, cAddress, cTel, cId, cMail, cDate, cSalesman);
+		String cDate = tfDate.getText().trim();
+		int cSalesman = Integer.parseInt(tfSalesman.getText().substring(8,10));
+		return new Client(cNo, cName, cCeo, cAddress, cTel, cId, cPw, cMail, cDate, cSalesman);
 	}
 	
 	
@@ -310,6 +325,8 @@ public class ClientMyProfile  extends AbsRegiPanel<Client> implements ActionList
 		passFd1.setText(cMUP.loginCl.getcPw());
 		/*** 로그인(이메일) 세팅 ***/
 		tfMail.setText(cMUP.loginCl.getcMail());
+		/*** 로그인(등록일) 세팅 ***/
+		tfDate.setText(cMUP.loginCl.getcDate());
 		/*** 로그인(담당직원) 세팅 : 직원이름(사원번호)-부서명 ***/
 		int salesNo = cMUP.loginCl.getcSalesman();
 		Employee sales = new Employee(salesNo); //46
@@ -336,8 +353,9 @@ public class ClientMyProfile  extends AbsRegiPanel<Client> implements ActionList
 	
 	//수정
 	protected void actionPerformedBtnAdd(ActionEvent e) {
-		Client upcl = getItem();
-		cService.modifyClient(upcl);
+			Client upcl = getItem();
+			cService.modifyClient(upcl);
+			JOptionPane.showMessageDialog(null, "수정되었습니다.");
 	}
 	
 	//취소(초기화)
@@ -371,5 +389,4 @@ public class ClientMyProfile  extends AbsRegiPanel<Client> implements ActionList
 			zipcodeFrame.setVisible(true);
 		}
 	}
-
 }
