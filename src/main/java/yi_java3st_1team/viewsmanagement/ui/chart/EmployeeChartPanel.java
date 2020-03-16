@@ -1,4 +1,4 @@
-package yi_java3st_1team.viewsmanagement.ui.graph;
+package yi_java3st_1team.viewsmanagement.ui.chart;
 
 import javax.swing.JPanel;
 import java.awt.Dimension;
@@ -6,12 +6,12 @@ import java.awt.BorderLayout;
 import javax.swing.JTable;
 
 @SuppressWarnings("serial")
-public class EmployeeGraphPanel extends JPanel {
+public class EmployeeChartPanel extends JPanel {
 
 	/**
 	 * Create the panel.
 	 */
-	public EmployeeGraphPanel() {
+	public EmployeeChartPanel() {
 
 		initialize();
 	}
