@@ -7,6 +7,7 @@ import java.awt.Rectangle;
 import java.awt.SystemColor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Date;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -19,17 +20,23 @@ import javax.swing.SwingConstants;
 import yi_java3st_1team.ordermanagement.dto.Order;
 import yi_java3st_1team.ordermanagement.ui.list.OCheckTblPanel;
 import yi_java3st_1team.ordermanagement.ui.service.OrderUIService;
+import yi_java3st_1team.productmanagement.dto.ClientDelivery;
+import yi_java3st_1team.productmanagement.ui.service.CDUIService;
 
 @SuppressWarnings("serial")
-public class OCheckPanel extends JPanel {
+public class OCheckPanel extends JPanel implements ActionListener {
 
 	private JLabel lblO;
 	private JPanel pList;
 	public JButton btnGoMain;
 	private OCheckTblPanel pOCheckList;
 	private OrderUIService odService;
+	private JButton btnConfirm;
+	private CDUIService cdService;
+	
 	
 	public OCheckPanel() {
+		cdService = new CDUIService();
 		odService = new OrderUIService();
 		initialize();
 	}
@@ -61,12 +68,13 @@ public class OCheckPanel extends JPanel {
 		pList.add(pOCheckList,BorderLayout.CENTER);
 		
 		
-		JButton btnNewButton = new JButton("확인");
-		btnNewButton.setBackground(new Color(135, 206, 250));
-		btnNewButton.setForeground(Color.WHITE);
-		btnNewButton.setFont(new Font("맑은 고딕", Font.BOLD, 16));
-		btnNewButton.setBounds(947, 65, 111, 33);
-		panel.add(btnNewButton);
+		btnConfirm = new JButton("확인");
+		btnConfirm.addActionListener(this);
+		btnConfirm.setBackground(new Color(135, 206, 250));
+		btnConfirm.setForeground(Color.WHITE);
+		btnConfirm.setFont(new Font("맑은 고딕", Font.BOLD, 16));
+		btnConfirm.setBounds(947, 65, 111, 33);
+		panel.add(btnConfirm);
 		
 		btnGoMain = new JButton("메인화면");
 		btnGoMain.setBackground(new Color(25, 25, 112));
@@ -123,6 +131,12 @@ public class OCheckPanel extends JPanel {
 			}
 						
 			if(e.getActionCommand().equals("주문취소")) {
+				Order delOrder = pOCheckList.getSelectedItem();
+				ClientDelivery cd = new ClientDelivery(delOrder, new Date());
+            	cdService.removeClientDeliveryByOno(cd);
+				odService.removeOrder(delOrder);
+				pOCheckList.loadDateCheck(odService.showOrderList());
+				
 			}			
 		}
 		protected void btnModifyActionPerformed(ActionEvent e) {
@@ -131,4 +145,32 @@ public class OCheckPanel extends JPanel {
 			modify.dispose();
 		}
 	};
+
+
+	public void actionPerformed(ActionEvent e) {
+		if (e.getSource() == btnConfirm) {
+			btnConfirmActionPerformed(e);
+		}
+	}
+	protected void btnConfirmActionPerformed(ActionEvent e) {
+		for(int i=0; i<pOCheckList.table.getRowCount(); i++) {
+            Boolean checkCdt = (Boolean) pOCheckList.table.getValueAt(i, 6);
+            if(checkCdt == true) {
+            	Order order = odService.showOrderByNo(i+1);
+            	if(cdService.showClientDeliveryByOno(order) == null) {
+            		ClientDelivery cd = new ClientDelivery(order, new Date());
+                	cdService.addClientDelivery(cd);
+                	odService.modifyTrue(order);
+            	}
+            }else {
+            	Order order = odService.showOrderByNo(i+1);
+            	if(cdService.showClientDeliveryByOno(order) != null) {
+            		ClientDelivery cd = new ClientDelivery(order, new Date());
+                	cdService.removeClientDeliveryByOno(cd);
+                	odService.modifyFalse(order);
+            	}
+            }
+		}
+		pOCheckList.loadDateCheck(odService.showOrderList());
+	}
 }

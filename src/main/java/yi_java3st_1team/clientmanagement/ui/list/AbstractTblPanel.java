@@ -18,7 +18,7 @@ import javax.swing.table.TableRowSorter;
 
 @SuppressWarnings("serial")
 public abstract class AbstractTblPanel<T> extends JPanel {
-	protected JTable table;
+	public JTable table;
 	private JScrollPane scrollPane;
 	protected List<T> list;
 	protected NotEditableModel model;
@@ -122,7 +122,7 @@ public abstract class AbstractTblPanel<T> extends JPanel {
 		int selectedIdx = getSelectedRowIdx();
 		return list.get(selectedIdx);
 	}
-
+	
 	// 수정금지하기위한 모델 선언
 	protected class NotEditableModel extends DefaultTableModel {
 

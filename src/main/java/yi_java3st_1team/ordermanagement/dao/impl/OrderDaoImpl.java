@@ -19,8 +19,9 @@ import yi_java3st_1team.util.LogUtil;
 
 public class OrderDaoImpl implements OrderDao {
 	private static final OrderDaoImpl Instance = new OrderDaoImpl();
-	
-	public OrderDaoImpl() {}
+
+	public OrderDaoImpl() {
+	}
 
 	public static OrderDaoImpl getInstance() {
 		return Instance;
@@ -29,11 +30,10 @@ public class OrderDaoImpl implements OrderDao {
 	@Override
 	public Order selectOrderLastDate() {
 		String sql = "select o_no from `order` order by o_no desc limit 1";
-		try(Connection con = MySqlDataSource.getConnection();
-				PreparedStatement pstmt = con.prepareStatement(sql);){
+		try (Connection con = MySqlDataSource.getConnection(); PreparedStatement pstmt = con.prepareStatement(sql);) {
 			LogUtil.prnLog(pstmt);
-			try(ResultSet rs = pstmt.executeQuery()){
-				if(rs.next()) {
+			try (ResultSet rs = pstmt.executeQuery()) {
+				if (rs.next()) {
 					return getONo(rs);
 				}
 			}
@@ -51,13 +51,13 @@ public class OrderDaoImpl implements OrderDao {
 	@Override
 	public List<Order> selectOrderByAll() {
 		String sql = "select o_no, o_date, c.c_name, p.p_name, o_qty, o_memo, o_dps, o_ok, o_eno, e.e_name, e.e_no from `order` o "
-				   + "left join client c on o.o_cno = c.c_no left join product p on o.o_pno = p.p_no "
-				   + "left join employee e on o.o_eno = e.e_no";
-		try(Connection con = MySqlDataSource.getConnection();
+				+ "left join client c on o.o_cno = c.c_no left join product p on o.o_pno = p.p_no "
+				+ "left join employee e on o.o_eno = e.e_no";
+		try (Connection con = MySqlDataSource.getConnection();
 				PreparedStatement pstmt = con.prepareStatement(sql);
-				ResultSet rs = pstmt.executeQuery()){
+				ResultSet rs = pstmt.executeQuery()) {
 			List<Order> list = new ArrayList<Order>();
-			while(rs.next()) {
+			while (rs.next()) {
 				list.add(getOrderJoin(rs));
 			}
 			return list;
@@ -86,8 +86,7 @@ public class OrderDaoImpl implements OrderDao {
 	@Override
 	public int insertOrder(Order order) {
 		String sql = "insert into `order` (o_no, o_date, o_cno, o_pno, o_qty, o_memo, o_dps, o_ok, o_eno) values(?, ?, ?, ?, ?, ?, ?, ?, ?)";
-		try(Connection con = MySqlDataSource.getConnection();
-				PreparedStatement pstmt = con.prepareStatement(sql)){
+		try (Connection con = MySqlDataSource.getConnection(); PreparedStatement pstmt = con.prepareStatement(sql)) {
 			pstmt.setInt(1, order.getoNo());
 			pstmt.setTimestamp(2, new Timestamp(order.getoDate().getTime()));
 			pstmt.setInt(3, order.getoCname().getcNo());
@@ -108,8 +107,7 @@ public class OrderDaoImpl implements OrderDao {
 	@Override
 	public int updateOrder(Order order) {
 		String sql = "update `order` set o_date=?, o_cno=?, o_pno=?, o_qty=?, o_memo=? where o_no=?";
-		try(Connection con = MySqlDataSource.getConnection();
-				PreparedStatement pstmt = con.prepareStatement(sql)){
+		try (Connection con = MySqlDataSource.getConnection(); PreparedStatement pstmt = con.prepareStatement(sql)) {
 			pstmt.setTimestamp(1, new Timestamp(order.getoDate().getTime()));
 			pstmt.setInt(2, order.getoCname().getcNo());
 			pstmt.setInt(3, order.getoPname().getpNo());
@@ -127,8 +125,7 @@ public class OrderDaoImpl implements OrderDao {
 	@Override
 	public int deleteOrder(Order order) {
 		String sql = "delete from `order` where o_no=?";
-		try(Connection con = MySqlDataSource.getConnection();
-				PreparedStatement pstmt = con.prepareStatement(sql)){
+		try (Connection con = MySqlDataSource.getConnection(); PreparedStatement pstmt = con.prepareStatement(sql)) {
 			pstmt.setInt(1, order.getoNo());
 			LogUtil.prnLog(pstmt);
 			return pstmt.executeUpdate();
@@ -141,13 +138,12 @@ public class OrderDaoImpl implements OrderDao {
 	@Override
 	public List<Order> selectClientOrderList(Client info) {
 		String sql = "select o_no, o_date, o_cno, p.p_name, p.p_cost, p.p_price, o_qty, o_memo, o_dps, o_ok, o_eno from `order` o "
-	               + "left join product p on o.o_pno =p.p_no where o_cno = ?";
-		try(Connection con = MySqlDataSource.getConnection();
-				PreparedStatement pstmt = con.prepareStatement(sql);){
+				+ "left join product p on o.o_pno =p.p_no where o_cno = ?";
+		try (Connection con = MySqlDataSource.getConnection(); PreparedStatement pstmt = con.prepareStatement(sql);) {
 			pstmt.setInt(1, info.getcNo());
 			ResultSet rs = pstmt.executeQuery();
 			List<Order> list = new ArrayList<Order>();
-			while(rs.next()) {
+			while (rs.next()) {
 				list.add(getOrder(rs));
 			}
 			return list;
@@ -172,15 +168,14 @@ public class OrderDaoImpl implements OrderDao {
 
 	@Override
 	public List<Order> selectOrderListByCal(String startDate, String endDate) {
-		String sql = "select o_no, o_date, o_cno, p.p_name, p.p_cost, p.p_price, o_qty, o_memo, o_dps, o_ok, o_eno from `order` o " 
-	               + "left join product p on o.o_pno =p.p_no where DATE(o_date) between ? and ?";
-		try(Connection con = MySqlDataSource.getConnection();
-				PreparedStatement pstmt = con.prepareStatement(sql);){
+		String sql = "select o_no, o_date, o_cno, p.p_name, p.p_cost, p.p_price, o_qty, o_memo, o_dps, o_ok, o_eno from `order` o "
+				+ "left join product p on o.o_pno =p.p_no where DATE(o_date) between ? and ?";
+		try (Connection con = MySqlDataSource.getConnection(); PreparedStatement pstmt = con.prepareStatement(sql);) {
 			pstmt.setString(1, startDate);
 			pstmt.setString(2, endDate);
 			ResultSet rs = pstmt.executeQuery();
 			List<Order> list = new ArrayList<Order>();
-			while(rs.next()) {
+			while (rs.next()) {
 				list.add(getOrder(rs));
 			}
 			return list;
@@ -190,4 +185,56 @@ public class OrderDaoImpl implements OrderDao {
 		return null;
 	}
 
+	@Override
+	public Order selectOrderByNo(int i) {
+		String sql = "select o_no, o_date, o_cno, p.p_name, p.p_price, p.p_cost, o_qty, o_memo, o_dps, o_ok, o_eno from `order` o "
+				+ "left join product p on o.o_pno =p.p_no where o_no = ?";
+		try (Connection con = MySqlDataSource.getConnection(); PreparedStatement pstmt = con.prepareStatement(sql);) {
+			pstmt.setInt(1, i);
+			LogUtil.prnLog(pstmt);
+			try (ResultSet rs = pstmt.executeQuery()) {
+				if (rs.next()) {
+					return getOrder2(rs);
+				}
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return null;
+	}
+
+	private Order getOrder2(ResultSet rs) throws SQLException {
+		int oNo = rs.getInt("o_no");
+		Date oDate = rs.getTimestamp("o_date");
+		Client oCname = new Client(rs.getInt("o_cno"));
+		Product oPname = new Product(rs.getString("p_name"), rs.getInt("p_cost"), rs.getInt("p_price"));
+		int oQty = rs.getInt("o_qty");
+		String oMemo = rs.getString("o_memo");
+		return new Order(oNo, oDate, oCname, oPname, oQty, oMemo);
+	}
+
+	@Override
+	public void updateOrderDps1(Order order) {
+		String sql = "update `order` set o_dps=1, o_ok=1 where o_no=?";
+		try (Connection con = MySqlDataSource.getConnection(); PreparedStatement pstmt = con.prepareStatement(sql)) {
+			pstmt.setInt(1, order.getoNo());
+			LogUtil.prnLog(pstmt);
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+
+	@Override
+	public void updateOrderDps0(Order order) {
+		String sql = "update `order` set o_dps=0, o_ok=0 where o_no=?";
+		try (Connection con = MySqlDataSource.getConnection(); PreparedStatement pstmt = con.prepareStatement(sql)) {
+			pstmt.setInt(1, order.getoNo());
+			LogUtil.prnLog(pstmt);
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
 }
