@@ -7,7 +7,19 @@ import yi_java3st_1team.viewsmanagement.dto.Total;
 public class TotalUIService {
 	private TotalDao totalDao = TotalDaoImpl.getInstance();
 	
-	public Total showClientSaleTotalSales() {
-		return totalDao.selectClientSaleTotalSales();
+	public Total showTotalSales() {
+		return totalDao.selectTotalSales();
+	}
+	
+	public Total showTotalUncollected() {
+		return totalDao.selectTotalUncollected();
+	}
+	
+	public Total showSalesProfit() {
+		return totalDao.selectSalesProfit();
+	}
+	
+	public Total showDeliveryAmount() {
+		return totalDao.selectDeliveryAmount();
 	}
 }

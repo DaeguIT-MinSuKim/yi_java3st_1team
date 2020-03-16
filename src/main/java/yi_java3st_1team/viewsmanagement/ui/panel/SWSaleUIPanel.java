@@ -19,13 +19,16 @@ import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
 import yi_java3st_1team.viewsmanagement.dto.SWSale;
+import yi_java3st_1team.viewsmanagement.dto.Total;
 import yi_java3st_1team.viewsmanagement.ui.content.SWSaleAmountPanel;
 import yi_java3st_1team.viewsmanagement.ui.list.SWSaleTblPanel;
 import yi_java3st_1team.viewsmanagement.ui.service.SWSaleUIService;
+import yi_java3st_1team.viewsmanagement.ui.service.TotalUIService;
 
 @SuppressWarnings("serial")
 public class SWSaleUIPanel extends JPanel {
 	private SWSaleUIService service;
+	private TotalUIService service2;
 	private JPanel pTitle;
 	private JTextField textField;
 	private JLabel lblTitle;
@@ -37,11 +40,15 @@ public class SWSaleUIPanel extends JPanel {
 	private JPanel pList;
 	private SWSaleTblPanel pSWSaleList;
 	private JPanel pAmount;
-	private SWSaleAmountPanel pSaleAmount;
+	private JLabel label;
+	private JTextField textField_1;
+	private JLabel label_1;
+	private JTextField textField_2;
 
 
 	public SWSaleUIPanel() {
 		service = new SWSaleUIService();
+		service2 = new TotalUIService();
 		initialize();
 	}
 	private void initialize() {
@@ -135,11 +142,43 @@ public class SWSaleUIPanel extends JPanel {
 		pAmount.setPreferredSize(new Dimension(1300, 40));
 		pAmount.setBackground(SystemColor.inactiveCaption);
 		pTop.add(pAmount);
-		pAmount.setLayout(null);
+		pAmount.setLayout(new FlowLayout(FlowLayout.RIGHT, 5, 5));
 		
-		pSaleAmount = new SWSaleAmountPanel();
-		pSaleAmount.setBounds(0, 0, 1300, 40);
-		pAmount.add(pSaleAmount);
+		label = new JLabel("총 판매금액");
+		label.setPreferredSize(new Dimension(130, 30));
+		label.setHorizontalAlignment(SwingConstants.CENTER);
+		label.setForeground(Color.BLACK);
+		label.setFont(new Font("휴먼둥근헤드라인", Font.PLAIN, 18));
+		pAmount.add(label);
+		
+		textField_1 = new JTextField();
+		textField_1.setEnabled(false);
+		textField_1.setHorizontalAlignment(SwingConstants.RIGHT);
+		textField_1.setPreferredSize(new Dimension(200, 30));
+		textField_1.setFont(new Font("굴림", Font.PLAIN, 16));
+		textField_1.setColumns(15);
+		Total total = service2.showTotalSales();
+		String ts = String.format("%s", String.valueOf(total));
+		textField_1.setText(ts);
+		pAmount.add(textField_1);
+		
+		label_1 = new JLabel(" 총 판매이윤");
+		label_1.setPreferredSize(new Dimension(130, 30));
+		label_1.setHorizontalAlignment(SwingConstants.CENTER);
+		label_1.setForeground(Color.BLACK);
+		label_1.setFont(new Font("휴먼둥근헤드라인", Font.PLAIN, 18));
+		pAmount.add(label_1);
+		
+		textField_2 = new JTextField();
+		textField_2.setHorizontalAlignment(SwingConstants.RIGHT);
+		textField_2.setEnabled(false);
+		textField_2.setPreferredSize(new Dimension(200, 30));
+		textField_2.setFont(new Font("굴림", Font.PLAIN, 16));
+		textField_2.setColumns(15);
+		Total profit = service2.showSalesProfit();
+		String sp = String.format("%s", String.valueOf(profit));
+		textField_2.setText(sp);
+		pAmount.add(textField_2);
 	}
 
 }
