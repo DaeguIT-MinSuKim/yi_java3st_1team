@@ -3,17 +3,16 @@ package yi_java3st_1team.viewsmanagement.dto;
 public class Total {
 	private int o_qty;
 	private int p_price;
-	private String total;
+	private long total;
 
 	public Total() {
 	}
 
-	public Total(String total) {
-		super();
+	public Total(long total) {
 		this.total = total;
 	}
 
-	public Total(int o_qty, int p_price, String total) {
+	public Total(int o_qty, int p_price, long total) {
 		super();
 		this.o_qty = o_qty;
 		this.p_price = p_price;
@@ -36,17 +35,17 @@ public class Total {
 		this.p_price = p_price;
 	}
 
-	public String getTotal() {
+	public long getTotal() {
 		return total;
 	}
 
-	public void setTotal(String total) {
+	public void setTotal(long total) {
 		this.total = total;
 	}
 
 	@Override
 	public String toString() {
-		return total;
+		return String.format("%,d", total);
 	}
 
 	

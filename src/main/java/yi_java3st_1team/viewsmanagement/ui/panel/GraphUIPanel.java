@@ -16,10 +16,11 @@ import javax.swing.JSpinner;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
+
+import yi_java3st_1team.viewsmanagement.ui.chart.EmployeeChartPanel;
 import yi_java3st_1team.viewsmanagement.ui.content.ClientPanel;
 import yi_java3st_1team.viewsmanagement.ui.content.EmployeePanel;
 import java.awt.BorderLayout;
-import yi_java3st_1team.viewsmanagement.ui.graph.EmployeeGraphPanel;
 import java.awt.Color;
 
 @SuppressWarnings("serial")
@@ -134,7 +135,7 @@ public class GraphUIPanel extends JPanel {
 		pRChart.add(pRRChart);
 		pRRChart.setLayout(new GridLayout(0, 1, 0, 0));
 		
-		EmployeeGraphPanel pEmpGraph = new EmployeeGraphPanel();
+		EmployeeChartPanel pEmpGraph = new EmployeeChartPanel();
 		pEmpGraph.setBackground(SystemColor.inactiveCaptionBorder);
 		pRRChart.add(pEmpGraph);
 	}
