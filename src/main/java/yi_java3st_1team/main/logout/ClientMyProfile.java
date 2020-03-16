@@ -235,6 +235,14 @@ public class ClientMyProfile  extends AbsRegiPanel<Client> implements ActionList
 		zipCod.setFocusable(false);
 		zipCod.setBackground(new Color(70, 130, 180));
 		zipCod.addActionListener(this);
+		
+		JButton button = new JButton("<html>중복<br>확인</html>");
+		button.setForeground(Color.WHITE);
+		button.setFont(new Font("맑은 고딕", Font.BOLD, 13));
+		button.setFocusable(false);
+		button.setBackground(new Color(240, 128, 128));
+		button.setBounds(12, 40, 60, 39);
+		pDoubleCheck.add(button);
 		zipCod.setForeground(Color.WHITE);
 		zipCod.setFont(new Font("맑은 고딕", Font.BOLD, 13));
 		zipCod.setBounds(12, 112, 60, 39);

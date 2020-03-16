@@ -180,7 +180,7 @@ public class ClientMainUIPanel extends JPanel implements ActionListener {
 
 		btn01 = new JButton("");
 		btn01.addActionListener(this);
-		btn01.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\loginMain\\그림8.png"));
+		btn01.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\loginMain\\clientBtn01.png"));
 		btn01.setPreferredSize(new Dimension(560, 23));
 		btn01.setFocusable(false);
 		pBtns01.add(btn01, BorderLayout.WEST);
@@ -208,7 +208,7 @@ public class ClientMainUIPanel extends JPanel implements ActionListener {
 
 		btn02 = new JButton("");
 		btn02.addActionListener(this);
-		btn02.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\loginMain\\그림9.png"));
+		btn02.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\loginMain\\clientBtn02.png"));
 		btn02.setPreferredSize(new Dimension(560, 23));
 		btn02.setFocusable(false);
 		pBtns02.add(btn02, BorderLayout.EAST);
