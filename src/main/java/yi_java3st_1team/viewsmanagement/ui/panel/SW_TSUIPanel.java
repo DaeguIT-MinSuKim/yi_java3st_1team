@@ -121,9 +121,10 @@ public class SW_TSUIPanel extends JPanel {
 		pLeftResult.add(lblLTotal);
 		
 		tfLTotal = new JTextField();
-		tfLTotal.setEnabled(false);
+		tfLTotal.setForeground(Color.BLACK);
+		tfLTotal.setEditable(false);
 		tfLTotal.setHorizontalAlignment(SwingConstants.RIGHT);
-		tfLTotal.setFont(new Font("굴림", Font.PLAIN, 16));
+		tfLTotal.setFont(new Font("굴림", Font.BOLD, 16));
 		tfLTotal.setPreferredSize(new Dimension(200, 30));
 		Total total = service2.showTotalSales();
 		String ts = String.format("%s", String.valueOf(total));
@@ -184,9 +185,10 @@ public class SW_TSUIPanel extends JPanel {
 		pRightResult.add(lblRTotal);
 		
 		tfRTotal = new JTextField();
-		tfRTotal.setEnabled(false);
+		tfRTotal.setForeground(Color.BLACK);
+		tfRTotal.setEditable(false);
 		tfRTotal.setHorizontalAlignment(SwingConstants.RIGHT);
-		tfRTotal.setFont(new Font("굴림", Font.PLAIN, 16));
+		tfRTotal.setFont(new Font("굴림", Font.BOLD, 16));
 		tfRTotal.setPreferredSize(new Dimension(200, 30));
 		tfRTotal.setColumns(15);
 		Total delivery = service2.showDeliveryAmount();

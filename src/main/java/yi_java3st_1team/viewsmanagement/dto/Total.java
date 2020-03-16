@@ -45,7 +45,7 @@ public class Total {
 
 	@Override
 	public String toString() {
-		return String.format("%,d", total);
+		return String.format("%,d 원", total);
 	}
 
 	
