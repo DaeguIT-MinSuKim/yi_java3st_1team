@@ -24,4 +24,6 @@ public interface ClientDao {
 	int selectCsalesman(Client client);
 	
 	Client loginClient(Client client);
+	
+	Client selectClientById(Client client);
 }

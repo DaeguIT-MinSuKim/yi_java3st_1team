@@ -30,6 +30,7 @@ import javax.swing.event.DocumentListener;
 import yi_java3st_1team.main.dto.Department;
 import yi_java3st_1team.main.dto.Employee;
 import yi_java3st_1team.main.ui.listner.MyDocumentListener;
+import yi_java3st_1team.main.ui.panel.JTextFieldHintUI;
 import yi_java3st_1team.main.ui.service.EmployeeUIService;
 
 @SuppressWarnings("serial")
@@ -202,6 +203,7 @@ public class EmpRegiPanel extends AbsRegiPanel<Employee> implements ActionListen
 		tfId.setFont(new Font("굴림", Font.BOLD, 12));
 		tfId.setColumns(10);
 		tfId.setEditable(false);
+		tfId.setUI(new JTextFieldHintUI(">> 중복확인", Color.gray));
 		pInput.add(tfId);
 
 		passFd1 = new JPasswordField();

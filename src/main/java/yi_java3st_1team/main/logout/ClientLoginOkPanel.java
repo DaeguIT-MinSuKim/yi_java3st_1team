@@ -53,13 +53,13 @@ public class ClientLoginOkPanel extends JPanel implements ActionListener{
 		loginSuc = new JLabel();
 		//loginSuc.setText("<html>반갑습니다!<br><span style='color:blue'>권수진 인턴</span>님이<br>로그인 하셨습니다.</html>");
 		loginSuc.setFont(new Font("굴림", Font.BOLD, 15));
-		loginSuc.setBounds(152, 113, 164, 91);
+		loginSuc.setBounds(152, 113, 180, 91);
 		add(loginSuc);
 		
 		empInfo = new JLabel();
 		//empInfo.setText("<html>- 사원번호 : <span style='color:red'>ET123</span><br>- <span style='color:green'>상품관리부</span></html>");
 		empInfo.setFont(new Font("굴림", Font.BOLD, 15));
-		empInfo.setBounds(152, 245, 180, 45);
+		empInfo.setBounds(152, 217, 180, 73);
 		add(empInfo);
 		
 		loginImg = new JLabel();

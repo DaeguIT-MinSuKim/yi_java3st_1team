@@ -32,6 +32,7 @@ import yi_java3st_1team.main.dto.Employee;
 import yi_java3st_1team.main.login.AbsRegiPanel;
 import yi_java3st_1team.main.ui.ClientMainUIPanel;
 import yi_java3st_1team.main.ui.listner.MyDocumentListener;
+import yi_java3st_1team.main.ui.panel.JTextFieldHintUI;
 import yi_java3st_1team.main.ui.service.EmployeeUIService;
 
 @SuppressWarnings("serial")
@@ -241,11 +242,11 @@ public class ClientMyProfile  extends AbsRegiPanel<Client> implements ActionList
 		button.setFont(new Font("맑은 고딕", Font.BOLD, 13));
 		button.setFocusable(false);
 		button.setBackground(new Color(240, 128, 128));
-		button.setBounds(12, 40, 60, 39);
+		button.setBounds(12, 26, 60, 39);
 		pDoubleCheck.add(button);
 		zipCod.setForeground(Color.WHITE);
 		zipCod.setFont(new Font("맑은 고딕", Font.BOLD, 13));
-		zipCod.setBounds(12, 112, 60, 39);
+		zipCod.setBounds(12, 100, 60, 39);
 		pDoubleCheck.add(zipCod);
 		
 		JPanel pBtns = new JPanel();

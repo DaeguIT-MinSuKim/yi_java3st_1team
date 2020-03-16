@@ -68,4 +68,8 @@ public class ClientUIService {
 	public Client login(Client client) {
 		return clientDao.loginClient(client);
 	}
+	
+	public Client Idcheck(Client client) {
+		return clientDao.selectClientById(client);
+	}
 }

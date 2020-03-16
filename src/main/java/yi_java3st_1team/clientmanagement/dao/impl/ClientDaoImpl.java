@@ -99,7 +99,7 @@ public class ClientDaoImpl implements ClientDao {
 			pstmt.setString(6, client.getcId());
 			pstmt.setString(7, client.getcPw());
 			pstmt.setString(8, client.getcMail());
-			pstmt.setString(9, realtime());
+			pstmt.setString(9, client.getcDate());
 			pstmt.setInt(10, client.getcSalesman());
 			LogUtil.prnLog(pstmt);
 			res = pstmt.executeUpdate();
@@ -109,12 +109,7 @@ public class ClientDaoImpl implements ClientDao {
 		return res;
 	}
 
-	private String realtime() {
-		SimpleDateFormat format1 = new SimpleDateFormat("yyyy-MM-dd");
-		Date time = new Date();
-		String realTime = format1.format(time);
-		return realTime;
-	}
+
 
 	@Override
 	public int updateClient(Client client) {
@@ -369,6 +364,30 @@ public class ClientDaoImpl implements ClientDao {
 			e.printStackTrace();
 		}
 		return null;
+	}
+
+	@Override
+	public Client selectClientById(Client client) {
+		String sql = "select c_id from client where c_id = ?";
+		try(Connection con = MySqlDataSource.getConnection();
+				PreparedStatement pstmt = con.prepareStatement(sql);){
+			pstmt.setString(1, client.getcId());
+			LogUtil.prnLog(pstmt);
+			try(ResultSet rs = pstmt.executeQuery()){
+				if(rs.next()) {
+					return getClientID(rs);
+				}
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	private Client getClientID(ResultSet rs) throws SQLException {
+		String cId = rs.getString("c_id");
+		String cPw = null;
+		return new Client(cId, cPw);
 	}
 
 }
