@@ -8,7 +8,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JPanel;
 
 import yi_java3st_1team.clientmanagement.ui.CMMainPanel;
-import yi_java3st_1team.main.LeftMainMenu;
+import yi_java3st_1team.main.ui.panel.LeftMainMenu;
 import yi_java3st_1team.ordermanagement.ui.OMMainPanel;
 import yi_java3st_1team.productmanagement.ui.PMMainPanel;
 

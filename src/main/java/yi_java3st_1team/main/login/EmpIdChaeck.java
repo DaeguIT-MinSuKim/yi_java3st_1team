@@ -1,4 +1,4 @@
-package yi_java3st_1team.main.ui.content.login;
+package yi_java3st_1team.main.login;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -19,7 +19,7 @@ import yi_java3st_1team.main.dto.Employee;
 import yi_java3st_1team.main.ui.service.EmployeeUIService;
 
 @SuppressWarnings("serial")
-public class EmployeeIdChaeck extends JPanel implements ActionListener {
+public class EmpIdChaeck extends JPanel implements ActionListener {
 	public JTextField tfSearch;
 	private JButton btnSearch;
 //	public JButton btnAdd;
@@ -34,7 +34,7 @@ public class EmployeeIdChaeck extends JPanel implements ActionListener {
 	
 	
 	
-	public EmployeeIdChaeck() {
+	public EmpIdChaeck() {
 		empService = new EmployeeUIService();
 		initialize();
 	}

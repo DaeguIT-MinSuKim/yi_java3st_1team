@@ -1,4 +1,4 @@
-package yi_java3st_1team.main.ui.content.chart;
+package yi_java3st_1team.main.chart;
 
 public class Student {
 	private String stdNo;

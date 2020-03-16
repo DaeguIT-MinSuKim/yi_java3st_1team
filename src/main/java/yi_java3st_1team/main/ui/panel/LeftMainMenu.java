@@ -1,4 +1,4 @@
-package yi_java3st_1team.main;
+package yi_java3st_1team.main.ui.panel;
 
 import java.awt.Color;
 import java.awt.Font;

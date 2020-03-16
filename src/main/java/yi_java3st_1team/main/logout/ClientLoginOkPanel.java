@@ -1,4 +1,4 @@
-package yi_java3st_1team.main.ui.content.login;
+package yi_java3st_1team.main.logout;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -14,7 +14,7 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
 @SuppressWarnings("serial")
-public class EmployeeLoginPanel extends JPanel implements ActionListener{
+public class ClientLoginOkPanel extends JPanel implements ActionListener{
 	public JButton btnLogout;
 	public JLabel loginSuc;
 	public JLabel manager;
@@ -26,7 +26,7 @@ public class EmployeeLoginPanel extends JPanel implements ActionListener{
 	//private EmployeeUiService empService;
 
 	
-	public EmployeeLoginPanel() {
+	public ClientLoginOkPanel() {
 		//empService = new EmployeeUiService();
 		initialize();
 	}
@@ -52,13 +52,13 @@ public class EmployeeLoginPanel extends JPanel implements ActionListener{
 		
 		loginSuc = new JLabel();
 		//loginSuc.setText("<html>반갑습니다!<br><span style='color:blue'>권수진 인턴</span>님이<br>로그인 하셨습니다.</html>");
-		loginSuc.setFont(new Font("굴림", Font.BOLD, 17));
+		loginSuc.setFont(new Font("굴림", Font.BOLD, 15));
 		loginSuc.setBounds(152, 113, 164, 91);
 		add(loginSuc);
 		
 		empInfo = new JLabel();
 		//empInfo.setText("<html>- 사원번호 : <span style='color:red'>ET123</span><br>- <span style='color:green'>상품관리부</span></html>");
-		empInfo.setFont(new Font("굴림", Font.BOLD, 17));
+		empInfo.setFont(new Font("굴림", Font.BOLD, 15));
 		empInfo.setBounds(152, 245, 180, 45);
 		add(empInfo);
 		
@@ -77,9 +77,6 @@ public class EmployeeLoginPanel extends JPanel implements ActionListener{
 	      add(btnMyProfile);
 	}
 	public void actionPerformed(ActionEvent e) {
-//		if (e.getSource() == btnLogout) {
-//			actionPerformedBtnLogout(e);
-//		}
 		if (e.getSource() == btnMyProfile) {
 			actionPerformedBtnMyProfile(e);
 		}
@@ -90,19 +87,11 @@ public class EmployeeLoginPanel extends JPanel implements ActionListener{
 		profileFrame.setTitle("[관리자용] 사용자 정보");
 		profileFrame.setSize(500, 650);
 		profileFrame.setResizable(false);
-		profileFrame.setLocationRelativeTo(null); // 화면중앙에 프레임 띄우기
-		EmpMyProfile emp = new EmpMyProfile();
-		profileFrame.getContentPane().add(emp);
+		//profileFrame.setLocationRelativeTo(null); // 화면중앙에 프레임 띄우기
+		profileFrame.setLocation(400, 195);
+		ClientMyProfile cmp = new ClientMyProfile();
+		profileFrame.getContentPane().add(cmp);
 		profileFrame.setVisible(true);
 		
 	}
-	// 로그아웃 버튼 고민
-//	protected void actionPerformedBtnLogout(ActionEvent e) {
-//		removeAll();
-//		revalidate();
-//		repaint();
-//		LoginPanel lo =  new LoginPanel();
-//		add(lo);
-//		setLayout(null);
-//	}
 }

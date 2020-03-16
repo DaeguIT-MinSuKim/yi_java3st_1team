@@ -1,4 +1,4 @@
-package yi_java3st_1team.main.ui.content.login;
+package yi_java3st_1team.main.logout;
 
 import javax.swing.SwingConstants;
 
@@ -7,6 +7,8 @@ import yi_java3st_1team.main.dto.Employee;
 
 @SuppressWarnings("serial")
 public class EmployeeTblPanel extends AbstractTblPanel<Employee> {
+	public EmployeeTblPanel() {
+	}
 
 	@Override
 	protected void setTblWidthAlign() {

@@ -26,14 +26,15 @@ import javafx.scene.Scene;
 import yi_java3st_1team.clientmanagement.dto.Client;
 import yi_java3st_1team.clientmanagement.ui.service.ClientUIService;
 import yi_java3st_1team.main.ClientMainFrame;
-import yi_java3st_1team.main.ui.content.LogoImg01Panel;
-import yi_java3st_1team.main.ui.content.LogoImg03Panel;
-import yi_java3st_1team.main.ui.content.chart.InitScene;
-import yi_java3st_1team.main.ui.content.chart.PanelPieChart;
-import yi_java3st_1team.main.ui.content.login.ClientRegiPanel;
-import yi_java3st_1team.main.ui.content.login.EmployeeLoginPanel;
-import yi_java3st_1team.main.ui.content.login.LoginPanel;
-import yi_java3st_1team.main.ui.content.login.SearchPanel;
+import yi_java3st_1team.main.chart.InitScene;
+import yi_java3st_1team.main.chart.PanelPieChart;
+import yi_java3st_1team.main.login.ClientRegiPanel;
+import yi_java3st_1team.main.login.LoginInputPanel;
+import yi_java3st_1team.main.login.SearchPanel;
+import yi_java3st_1team.main.logout.ClientLoginOkPanel;
+import yi_java3st_1team.main.logout.EmpLoginOkPanel;
+import yi_java3st_1team.main.ui.panel.LogoImg01Panel;
+import yi_java3st_1team.main.ui.panel.LogoImg03Panel;
 import yi_java3st_1team.ordermanagement.ui.ClientOMainPanel;
 
 @SuppressWarnings("serial")
@@ -42,7 +43,7 @@ public class ClientMainUIPanel extends JPanel implements ActionListener {
 	public JPanel pStop;
 
 	// 로그인(1)
-	public LoginPanel pLogin;
+	public LoginInputPanel pLogin;
 	private JButton btnLogin;
 	private JButton btnRegi;
 	private JButton btnSearch;
@@ -50,8 +51,7 @@ public class ClientMainUIPanel extends JPanel implements ActionListener {
 	private JFrame searchFrame;
 
 	// 로그인(2)
-	// private ClientLoginPanel pClLogin;
-	private EmployeeLoginPanel pECLogin;
+	private ClientLoginOkPanel pCLogin;
 	private ClientUIService clService;
 	public static Client loginCl;
 
@@ -103,7 +103,7 @@ public class ClientMainUIPanel extends JPanel implements ActionListener {
 		add(pStop);
 		pStop.setLayout(new BorderLayout(10, 10));
 
-		pLogin = new LoginPanel();
+		pLogin = new LoginInputPanel();
 		pLogin.pfPasswd.setForeground(new Color(0, 100, 0));
 		pLogin.tfId.setForeground(new Color(0, 100, 0));
 		pLogin.pfPasswd.setFont(new Font("굴림", Font.BOLD, 20));
@@ -232,6 +232,15 @@ public class ClientMainUIPanel extends JPanel implements ActionListener {
 		if (e.getSource() == btn02) {
 			actionPerformedBtn02(e);
 		}
+		
+		// 로그아웃
+		try {
+			if (e.getSource() == pCLogin.btnLogout) {
+				actionPerformedBtnLogout(e);
+			}
+		} catch (NullPointerException a) {
+
+		}
 	}
 
 	// 로그인
@@ -241,6 +250,7 @@ public class ClientMainUIPanel extends JPanel implements ActionListener {
 		cPass = new String(pLogin.pfPasswd.getPassword());
 
 		loginCl = clService.login(new Client(cId, cPass));
+		//System.out.println(loginCl);
 
 		// 로그인 성공 못함
 		if (loginCl == null) {
@@ -261,15 +271,15 @@ public class ClientMainUIPanel extends JPanel implements ActionListener {
 				"Software Management System", JOptionPane.INFORMATION_MESSAGE, icon);
 
 		pStop.remove(pLogin); // 제거
-		pECLogin = new EmployeeLoginPanel();
+		pCLogin = new ClientLoginOkPanel();
 
-		pECLogin.manager.setText("[고객 로그인]");
-		pECLogin.loginImg.setIcon(new ImageIcon(
+		pCLogin.manager.setText("[고객 로그인]");
+		pCLogin.loginImg.setIcon(new ImageIcon(
 				"D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\loginMain\\loginCustomer.png"));
-		pECLogin.loginSuc.setText(
+		pCLogin.loginSuc.setText(
 				"<html>반갑습니다!<br><span style='color:blue'>" + loginCl.getcName() + "고객</span>님이<br>로그인 하셨습니다.</html>");
 		String cNum = String.format("C%04d", loginCl.getcNo());
-		pECLogin.empInfo.setText("<html>- 고객번호 : <span style='color:red'>" + cNum
+		pCLogin.empInfo.setText("<html>- 고객번호 : <span style='color:red'>" + cNum
 				+ "</span><br>- 상호명 : <span style='color:green'>" + loginCl.getcName() + "</span></html>");
 
 		// 파이차트
@@ -278,11 +288,23 @@ public class ClientMainUIPanel extends JPanel implements ActionListener {
 		pie.setPreferredSize(new Dimension(350, 250));
 		pImg02.add(pie, BorderLayout.NORTH);
 		Platform.runLater(() -> initFX(pie));
-		pStop.add(pECLogin, BorderLayout.WEST);
+		pStop.add(pCLogin, BorderLayout.WEST);
 		pStop.revalidate();
 		pStop.repaint();
 		
 		//로그아웃버튼
+		pCLogin.btnLogout.addActionListener(this);
+	}
+	
+	//로그아웃
+	private void actionPerformedBtnLogout(ActionEvent e) {
+		removeAll();
+		revalidate();
+		repaint();
+		loginCl = null;
+		initialize();
+		revalidate();
+		repaint();
 	}
 
 	// 주문등록

@@ -15,12 +15,12 @@ import javafx.embed.swing.JFXPanel;
 import javafx.scene.Scene;
 import yi_java3st_1team.clientmanagement.ui.content.CMContent;
 import yi_java3st_1team.main.EmployeeMainFrame;
-import yi_java3st_1team.main.LeftMainMenu;
+import yi_java3st_1team.main.chart.InitScene;
 import yi_java3st_1team.main.dto.Employee;
+import yi_java3st_1team.main.logout.EmpLoginOkPanel;
 import yi_java3st_1team.main.ui.EmployeeMainUIPanel;
-import yi_java3st_1team.main.ui.content.LogoImg02Panel;
-import yi_java3st_1team.main.ui.content.chart.InitScene;
-import yi_java3st_1team.main.ui.content.login.EmployeeLoginPanel;
+import yi_java3st_1team.main.ui.panel.LeftMainMenu;
+import yi_java3st_1team.main.ui.panel.LogoImg02Panel;
 import yi_java3st_1team.main.ui.service.EmployeeUIService;
 import yi_java3st_1team.ordermanagement.ui.OMMainPanel;
 import yi_java3st_1team.productmanagement.ui.PMMainPanel;
@@ -33,7 +33,7 @@ public class CMMainPanel extends JPanel implements ActionListener {
 	private CMContent pContent;
 
 	public static Employee loginEmp;
-	private EmployeeLoginPanel pEmpLogin;
+	private EmpLoginOkPanel pEmpLogin;
 	private EmployeeMainUIPanel emp;
 
 	private int manager = emp.loginEmp.getEmpManager();
@@ -114,7 +114,7 @@ public class CMMainPanel extends JPanel implements ActionListener {
 
 		emp.pStop.removeAll();
 
-		pEmpLogin = new EmployeeLoginPanel();
+		pEmpLogin = new EmpLoginOkPanel();
 		emp.pStop.add(pEmpLogin, BorderLayout.WEST);
 
 		switch (manager) {

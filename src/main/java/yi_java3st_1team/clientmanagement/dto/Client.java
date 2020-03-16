@@ -79,6 +79,21 @@ public class Client {
 		this.cSalesman = cSalesman;
 	}
 
+	
+	public Client(String cName, String cCeo, String cAddress, String cTel, String cId, String cPw, String cMail,
+			String cDate, int cSalesman) {
+		super();
+		this.cName = cName;
+		this.cCeo = cCeo;
+		this.cAddress = cAddress;
+		this.cTel = cTel;
+		this.cId = cId;
+		this.cPw = cPw;
+		this.cMail = cMail;
+		this.cDate = cDate;
+		this.cSalesman = cSalesman;
+	}
+
 	public int getcNo() {
 		return cNo;
 	}
@@ -183,10 +198,18 @@ public class Client {
 
 	@Override
 	public String toString() {
-		return String.format(
-				"Client [cNo=%s, cName=%s, cCeo=%s, cAddress=%s, cTel=%s, cId=%s, cPw=%s, cMail=%s, cDate=%s, cSalesman=%s]",
-				cNo, cName, cCeo, cAddress, cTel, cId, cPw, cMail, cDate, cSalesman);
+		return "Client [cNo=" + cNo + ", cName=" + cName + ", cCeo=" + cCeo + ", cAddress=" + cAddress + ", cTel="
+				+ cTel + ", cId=" + cId + ", cPw=" + cPw + ", cMail=" + cMail + ", cDate=" + cDate + ", cSalesman="
+				+ cSalesman + "]";
 	}
+
+//	@Override
+//	public String toString() {
+//		return String.format(
+//				"Client [cNo=%s, cName=%s, cCeo=%s, cAddress=%s, cTel=%s, cId=%s, cPw=%s, cMail=%s, cDate=%s, cSalesman=%s]",
+//				cNo, cName, cCeo, cAddress, cTel, cId, cPw, cMail, cDate, cSalesman);
+//	}
+	
 	
 	
 }

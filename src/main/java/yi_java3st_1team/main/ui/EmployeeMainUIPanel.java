@@ -25,17 +25,17 @@ import javafx.embed.swing.JFXPanel;
 import javafx.scene.Scene;
 import yi_java3st_1team.clientmanagement.ui.CMMainPanel;
 import yi_java3st_1team.main.EmployeeMainFrame;
+import yi_java3st_1team.main.chart.InitScene;
+import yi_java3st_1team.main.chart.PanelBarChart;
+import yi_java3st_1team.main.chart.PanelLineChart;
 import yi_java3st_1team.main.dto.Department;
 import yi_java3st_1team.main.dto.Employee;
-import yi_java3st_1team.main.ui.content.LogoImg01Panel;
-import yi_java3st_1team.main.ui.content.LogoImg02Panel;
-import yi_java3st_1team.main.ui.content.chart.InitScene;
-import yi_java3st_1team.main.ui.content.chart.PanelBarChart;
-import yi_java3st_1team.main.ui.content.chart.PanelLineChart;
-import yi_java3st_1team.main.ui.content.login.EmpRegiPanel;
-import yi_java3st_1team.main.ui.content.login.EmployeeLoginPanel;
-import yi_java3st_1team.main.ui.content.login.LoginPanel;
-import yi_java3st_1team.main.ui.content.login.SearchPanel;
+import yi_java3st_1team.main.login.EmpRegiPanel;
+import yi_java3st_1team.main.login.LoginInputPanel;
+import yi_java3st_1team.main.login.SearchPanel;
+import yi_java3st_1team.main.logout.EmpLoginOkPanel;
+import yi_java3st_1team.main.ui.panel.LogoImg01Panel;
+import yi_java3st_1team.main.ui.panel.LogoImg02Panel;
 import yi_java3st_1team.main.ui.service.EmployeeUIService;
 import yi_java3st_1team.ordermanagement.ui.OMMainPanel;
 import yi_java3st_1team.productmanagement.ui.PMMainPanel;
@@ -47,7 +47,7 @@ public class EmployeeMainUIPanel extends JPanel implements ActionListener {
 	public JPanel pStop;
 	
 	//로그인(1)
-	public LoginPanel pLogin;
+	public LoginInputPanel pLogin;
 	private JButton btnLogin;
 	private JButton btnRegi;
 	private JButton btnSearch;
@@ -55,7 +55,7 @@ public class EmployeeMainUIPanel extends JPanel implements ActionListener {
 	private JFrame searchFrame;
 	
 	//로그인(2)
-	private EmployeeLoginPanel pEmpLogin;
+	private EmpLoginOkPanel pEmpLogin;
 	private EmployeeUIService empService;
 	public static Employee loginEmp;
 	public static Department loginDept;
@@ -120,7 +120,7 @@ public class EmployeeMainUIPanel extends JPanel implements ActionListener {
 		add(pStop);
 		pStop.setLayout(new BorderLayout(10, 10));
 		
-		pLogin =new LoginPanel();
+		pLogin =new LoginInputPanel();
 		pLogin.pfPasswd.setForeground(new Color(0, 0, 255));
 		pLogin.tfId.setForeground(new Color(0, 0, 255));
 		pLogin.pfPasswd.setFont(new Font("굴림", Font.BOLD, 20));
@@ -292,7 +292,7 @@ public class EmployeeMainUIPanel extends JPanel implements ActionListener {
 		empPass = new String(pLogin.pfPasswd.getPassword());
 		
 		loginEmp = empService.login(new Employee(empId, empPass));
-
+		System.out.println(loginEmp);
 		
 		//로그인 성공 못함
 		if(loginEmp == null) {
@@ -306,7 +306,7 @@ public class EmployeeMainUIPanel extends JPanel implements ActionListener {
 		JOptionPane.showMessageDialog(null, "<html><h2 align='center'><span style='color:blue'>"+loginEmp.getEmpName()+"</span>님<br><span style='color:red'>Smart</span>한 세계에<br> 오신걸 환영합니다</h2></html>","Software Management System",JOptionPane.INFORMATION_MESSAGE,icon);
 		
 		pStop.remove(pLogin); //제거
-		pEmpLogin = new EmployeeLoginPanel();
+		pEmpLogin = new EmpLoginOkPanel();
 		
 		// 직책별 로그인 구분
 		

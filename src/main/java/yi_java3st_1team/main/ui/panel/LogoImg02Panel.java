@@ -1,4 +1,4 @@
-package yi_java3st_1team.main.ui.content;
+package yi_java3st_1team.main.ui.panel;
 
 import javax.swing.JPanel;
 import java.awt.Dimension;
@@ -6,12 +6,12 @@ import java.awt.SystemColor;
 import javax.swing.JLabel;
 import javax.swing.ImageIcon;
 
-public class LogoImg03Panel extends JPanel {
+public class LogoImg02Panel extends JPanel {
 
 	/**
 	 * Create the panel.
 	 */
-	public LogoImg03Panel() {
+	public LogoImg02Panel() {
 
 		initialize();
 	}
@@ -26,7 +26,7 @@ public class LogoImg03Panel extends JPanel {
 		add(lblImg1);
 		
 		JLabel lblImg2 = new JLabel("");
-		lblImg2.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\loginMain\\cuLog.png"));
+		lblImg2.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\loginMain\\mainLogo3.png"));
 		lblImg2.setBounds(669, 37, 335, 298);
 		add(lblImg2);
 		

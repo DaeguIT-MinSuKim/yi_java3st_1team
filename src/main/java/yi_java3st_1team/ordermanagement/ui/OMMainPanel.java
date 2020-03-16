@@ -12,11 +12,11 @@ import javax.swing.JPanel;
 
 import yi_java3st_1team.clientmanagement.ui.CMMainPanel;
 import yi_java3st_1team.main.EmployeeMainFrame;
-import yi_java3st_1team.main.LeftMainMenu;
 import yi_java3st_1team.main.dto.Employee;
+import yi_java3st_1team.main.logout.EmpLoginOkPanel;
 import yi_java3st_1team.main.ui.EmployeeMainUIPanel;
-import yi_java3st_1team.main.ui.content.LogoImg02Panel;
-import yi_java3st_1team.main.ui.content.login.EmployeeLoginPanel;
+import yi_java3st_1team.main.ui.panel.LeftMainMenu;
+import yi_java3st_1team.main.ui.panel.LogoImg02Panel;
 import yi_java3st_1team.main.ui.service.EmployeeUIService;
 import yi_java3st_1team.ordermanagement.ui.content.OMContent;
 import yi_java3st_1team.productmanagement.ui.PMMainPanel;
@@ -29,7 +29,7 @@ public class OMMainPanel extends JPanel  implements ActionListener{
 	private LeftMainMenu mainMenu;
 	
 	public static Employee loginEmp;
-	private EmployeeLoginPanel pEmpLogin;
+	private EmpLoginOkPanel pEmpLogin;
 	private EmployeeMainUIPanel emp;
 	private int manager = emp.loginEmp.getEmpManager();
 	private EmployeeUIService empService;
@@ -120,7 +120,7 @@ public class OMMainPanel extends JPanel  implements ActionListener{
 		   
 		   emp.pStop.removeAll();
 		   
-		   pEmpLogin = new EmployeeLoginPanel();
+		   pEmpLogin = new EmpLoginOkPanel();
 		   emp.pStop.add(pEmpLogin, BorderLayout.WEST);
 
 		   switch (manager) {
