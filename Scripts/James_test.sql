@@ -149,7 +149,15 @@ select c_no, c_name, count(o_no) as 주문횟수 from `order` o left join client
 delete from client where c_no = 56;
 
 select * from client_delivery;
+select * from client;
 
 delete from client_delivery where cd_no = 31;
 
 insert into client_delivery  values(31, 52, '2020-03-14');
+update 
+
+select *from `order` o;
+
+select * from supplier_order so ;
+
+update client_delivery  set cd_date = '2020-03-15' where cd_no = 31;

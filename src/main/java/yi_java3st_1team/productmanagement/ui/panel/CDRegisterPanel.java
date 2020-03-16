@@ -36,7 +36,7 @@ public class CDRegisterPanel extends AbsItemPanel<ClientDelivery> implements Ite
 	private JLabel lblCDPName;
 	private JLabel lblCDDate;
 	private JTextField tfPCDNo;
-	private JTextField tfSCName;
+	public JTextField tfSCName;
 	private JTextField tfSCDQty;
 	private JButton btnAdd;
 	private JButton btnUpdate;
@@ -118,11 +118,13 @@ public class CDRegisterPanel extends AbsItemPanel<ClientDelivery> implements Ite
 				tfSCName.setColumns(10);
 				tfSCName.setBounds(176, 120, 200, 30);
 				panel.add(tfSCName);
+				tfSCName.setEditable(false);
 				
 				tfSCDQty = new JTextField();
 				tfSCDQty.setColumns(10);
 				tfSCDQty.setBounds(176, 286, 200, 30);
 				panel.add(tfSCDQty);
+				tfSCDQty.setEditable(false);
 				
 				tfCDDate = new JDateChooser(new Date(), "yyyy-MM-dd");
 				tfCDDate.setBounds(176, 373, 200, 30);
@@ -132,7 +134,7 @@ public class CDRegisterPanel extends AbsItemPanel<ClientDelivery> implements Ite
 				tfCDPName.setBounds(176, 203, 200, 30);
 				panel.add(tfCDPName);
 				tfCDPName.setColumns(10);
-				
+				tfCDPName.setEditable(false);
 				JLabel label = new JLabel("");
 				label.setOpaque(true);
 				label.setBackground(Color.WHITE);

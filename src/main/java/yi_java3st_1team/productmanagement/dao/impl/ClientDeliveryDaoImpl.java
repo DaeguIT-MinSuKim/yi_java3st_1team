@@ -103,12 +103,11 @@ public class ClientDeliveryDaoImpl implements ClientDeliveryDao{
 
 	@Override
 	public int updateClientDelivery(ClientDelivery cd) {
-		String sql = "update client_delivery set cd_sno = ?, cd_date = ? where cd_no = ?";
+		String sql = "update client_delivery set cd_date = ? where cd_no = ?";
 		try(Connection con = MySqlDataSource.getConnection();
 				PreparedStatement pstmt = con.prepareStatement(sql)){
-			pstmt.setInt(1, cd.getCdSno().getoNo());
-			pstmt.setTimestamp(2, new Timestamp(cd.getCdDate().getTime()));
-			pstmt.setInt(3, cd.getCdNo());
+			pstmt.setTimestamp(1, new Timestamp(cd.getCdDate().getTime()));
+			pstmt.setInt(2, cd.getCdNo());
 			LogUtil.prnLog(pstmt);
 			return pstmt.executeUpdate();
 		} catch (SQLException e) {

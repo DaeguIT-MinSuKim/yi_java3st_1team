@@ -30,11 +30,11 @@ public class CDListTblPanel extends AbstractTblPanel<ClientDelivery>{
 	@Override
 	protected Object[] toArray(ClientDelivery item) {
 		return new Object[] {
-			String.format("CD%04d", item.getCdNo()),
-			item.getcName().getcName(),
-			item.getpName().getpName(),
-			item.getCdSno().getoQty(),
-			String.format("%tF", item.getCdDate())
+			String.format("CD%04d", item.getCdNo()), //번호
+			item.getcName().getcName(), //상호명
+			item.getpName().getpName(), //품목명
+			item.getCdSno().getoQty(), //수량
+			String.format("%tF", item.getCdDate()) //날짜
 		};
 	}
 

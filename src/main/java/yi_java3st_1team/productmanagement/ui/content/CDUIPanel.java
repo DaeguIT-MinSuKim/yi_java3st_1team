@@ -11,6 +11,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPopupMenu;
 import javax.swing.SwingConstants;
@@ -29,16 +30,13 @@ public class CDUIPanel extends JPanel implements ActionListener {
 	private CDRegisterPanel pCDregiPanel;
 
 	private CDUIService cdService;
-	private JButton btnAdd;
 	private JButton btnUpdate;
 	private JButton btnDel;
 	public JButton btnGoMain;
 	private JPanel pListPanel;
 	private CDListTblPanel pCDTblPanel;
-	private SWUIService pService;
 	
 	public CDUIPanel() {
-		pService = new SWUIService();
 		cdService = new CDUIService();
 		initialize();
 	}
@@ -66,22 +64,13 @@ public class CDUIPanel extends JPanel implements ActionListener {
 		lblCD.setBounds(0, 52, 635, 54);
 		pRegisterPanel.add(lblCD);
 		
-		btnAdd = new JButton("등 록");
-		btnAdd.addActionListener(this);
-		btnAdd.setBackground(new Color(135, 206, 250));
-		btnAdd.setForeground(new Color(0, 102, 204));
-		btnAdd.setFont(new Font("맑은 고딕", Font.BOLD, 16));
-		btnAdd.setFocusable(false);
-		btnAdd.setBounds(66, 580, 100, 30);
-		pRegisterPanel.add(btnAdd);
-		
 		btnUpdate = new JButton("수 정");
 		btnUpdate.addActionListener(this);
 		btnUpdate.setBackground(new Color(135, 206, 250));
 		btnUpdate.setForeground(new Color(0, 102, 204));
 		btnUpdate.setFont(new Font("맑은 고딕", Font.BOLD, 16));
 		btnUpdate.setFocusable(false);
-		btnUpdate.setBounds(198, 580, 100, 30);
+		btnUpdate.setBounds(66, 580, 100, 30);
 		pRegisterPanel.add(btnUpdate);
 		
 		btnDel = new JButton("취 소");
@@ -90,7 +79,7 @@ public class CDUIPanel extends JPanel implements ActionListener {
 		btnDel.setForeground(new Color(0, 102, 204));
 		btnDel.setFont(new Font("맑은 고딕", Font.BOLD, 16));
 		btnDel.setFocusable(false);
-		btnDel.setBounds(330, 580, 100, 30);
+		btnDel.setBounds(270, 580, 100, 30);
 		pRegisterPanel.add(btnDel);
 		
 		btnGoMain = new JButton("메인화면");
@@ -160,11 +149,8 @@ public class CDUIPanel extends JPanel implements ActionListener {
 		}
 	};
 	
-	//등록, 수정, 취소
+	//수정, 취소
 	public void actionPerformed(ActionEvent e) {
-		if (e.getSource() == btnAdd) {
-			actionPerformedBtnAdd(e);
-		}
 		
 		if (e.getSource() == btnUpdate) {
 			actionPerformedBtnUpdate(e);
@@ -175,12 +161,20 @@ public class CDUIPanel extends JPanel implements ActionListener {
 		}
 	}
 	
-	//등록
-	protected void actionPerformedBtnAdd(ActionEvent e) {
-	}
-	
 	//수정
 	protected void actionPerformedBtnUpdate(ActionEvent e) {
+		if(pCDregiPanel.tfSCName.getText().equals("")) {
+			JOptionPane.showMessageDialog(null, "수정할 품목을 오른쪽 리스트에서 선택해주세요.");
+			return;
+		} else {
+			ClientDelivery upCD = new ClientDelivery();
+			cdService.modifyClientDelivery(upCD);
+			pCDTblPanel.updateRow(upCD, pCDTblPanel.getSelectedRowIdx());
+			pCDTblPanel.loadDate(cdService.showClientDeliveryList());
+			pCDregiPanel.clearTf();
+			pCDregiPanel.setCDNum(cdService.showlastNum());
+		}
+
 	}
 	
 	//취소
