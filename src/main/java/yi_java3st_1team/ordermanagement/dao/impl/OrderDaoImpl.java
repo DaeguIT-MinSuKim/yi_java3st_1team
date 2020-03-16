@@ -107,18 +107,15 @@ public class OrderDaoImpl implements OrderDao {
 
 	@Override
 	public int updateOrder(Order order) {
-		String sql = "update `order` set o_date=?, o_cno=?, o_pno=?, o_qty=?, o_memo=?, o_dps=?, o_ok=?, o_eno=? where o_no=?";
+		String sql = "update `order` set o_date=?, o_cno=?, o_pno=?, o_qty=?, o_memo=? where o_no=?";
 		try(Connection con = MySqlDataSource.getConnection();
 				PreparedStatement pstmt = con.prepareStatement(sql)){
 			pstmt.setTimestamp(1, new Timestamp(order.getoDate().getTime()));
-			pstmt.setInt(2, order.getoCname().getcNo()+1);
-			pstmt.setInt(3, order.getoPname().getpNo()+1);
+			pstmt.setInt(2, order.getoCname().getcNo());
+			pstmt.setInt(3, order.getoPname().getpNo());
 			pstmt.setInt(4, order.getoQty());
 			pstmt.setString(5, order.getoMemo());
-			pstmt.setInt(6, order.getoDps());
-			pstmt.setInt(7, order.getoOk());
-			pstmt.setInt(8, order.getoEname().getEmpNo()+1);
-			pstmt.setInt(9, order.getoNo());
+			pstmt.setInt(6, order.getoNo());
 			LogUtil.prnLog(pstmt);
 			return pstmt.executeUpdate();
 		} catch (SQLException e) {

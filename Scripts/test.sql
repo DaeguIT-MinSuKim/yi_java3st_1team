@@ -134,3 +134,9 @@ select e2.e_no , e2.e_name , e2.e_title , e2.e_manager , e2.e_mail from employee
 select o_no, o_date, o_cno, p.p_name, p.p_price, p.p_cost, o_qty, o_memo, o_dps, o_ok, o_eno from `order` o left join product p on o.o_pno =p.p_no where o_cno = 56;
 
 select e.e_no, e.e_name, e.e_title, e.e_dept, d.d_no, d.d_name, d.d_floor, e.e_manager, e.e_id, e.e_pw, e.e_mail from employee e left join department d on e.e_dept  = d.d_no where e.e_id = null and e.e_pw = null;
+
+update `order` set o_date='2019-05-01', o_cno=25, o_pno=17, o_qty=50, o_memo='부재시 전화주세요' where o_no=6;
+
+update `order` set o_date='2020-03-14 00:00:00', o_cno=57, o_pno=2, o_qty=5, o_memo='빨리 보내 주세요.' where o_no=58;
+
+select * from client c ;

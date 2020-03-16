@@ -29,6 +29,15 @@ public class Order {
 		this.oNo = oNo;
 	}
 	
+	public Order(int oNo, Date oDate, Client oCname, Product oPname, int oQty, String oMemo) {
+		this.oNo = oNo;
+		this.oDate = oDate;
+		this.oCname = oCname;
+		this.oPname = oPname;
+		this.oQty = oQty;
+		this.oMemo = oMemo;
+	}
+
 	public Order(int oNo, Date oDate, Client oCname, Product oPname, int oQty, String oMemo, int oDps, int oOk,
 			Employee oEname, Employee oEno) {
 		this.oNo = oNo;
@@ -216,5 +225,11 @@ public class Order {
 		return String.format(
 				"Order [oNo=%s, oDate=%s, oCname=%s, oPname=%s, oQty=%s, oMemo=%s, oDps=%s, oOk=%s, oEname=%s, oEno=%s]",
 				oNo, oDate, oCname, oPname, oQty, oMemo, oDps, oOk, oEname, oEno);
+	}
+	
+	public String toStringModify() {
+		return String.format(
+				"Order [oNo=%s, oDate=%s, oCname=%s, oPname=%s, oQty=%s, oMemo=%s]",
+				oNo, oDate, oCname, oPname, oQty, oMemo);
 	}
 }

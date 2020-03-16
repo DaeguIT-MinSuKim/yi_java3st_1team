@@ -1,26 +1,44 @@
 package yi_java3st_1team.ordermanagement.ui.panel;
 
-import javax.swing.JPanel;
-import java.awt.Dimension;
-import java.awt.SystemColor;
 import java.awt.BorderLayout;
-import javax.swing.JLabel;
-import java.awt.Font;
 import java.awt.Color;
-import javax.swing.SwingConstants;
-import javax.swing.JTextField;
-import javax.swing.JButton;
-import javax.swing.border.EmptyBorder;
+import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.GridLayout;
+import java.awt.SystemColor;
+import java.util.Date;
 
-public class OrderModify extends JPanel{
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
-	private JTextField textField_3;
-	private JTextField textField_4;
-	private JTextField textField_5;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.SwingConstants;
+import javax.swing.border.EmptyBorder;
+
+import com.toedter.calendar.JDateChooser;
+
+import yi_java3st_1team.clientmanagement.dto.Client;
+import yi_java3st_1team.clientmanagement.ui.panel.AbsItemPanel;
+import yi_java3st_1team.clientmanagement.ui.service.ClientUIService;
+import yi_java3st_1team.ordermanagement.dto.Order;
+import yi_java3st_1team.productmanagement.dto.Product;
+import yi_java3st_1team.productmanagement.ui.service.SWUIService;
+
+@SuppressWarnings("serial")
+public class OrderModify extends AbsItemPanel<Order> {
+	private JTextField tfONo;
+	private JDateChooser tfODate;
+	private JTextField tfOCName;
+	private JTextField tfOPName;
+	private JTextField tfOQty;
+	private JTextField tfOMemo;
+	private JPanel pOModifyPanel;
+	private ClientUIService cService;
+	private SWUIService pService;
+	public JPanel panel;
+	
 	public OrderModify() {
+		cService = new ClientUIService();
+		pService = new SWUIService();
 		initialize();
 	}
 	private void initialize() {
@@ -37,76 +55,100 @@ public class OrderModify extends JPanel{
 		lblNewLabel.setPreferredSize(new Dimension(60, 90));
 		add(lblNewLabel, BorderLayout.NORTH);
 		
-		JPanel panel = new JPanel();
+		panel = new JPanel();
 		panel.setPreferredSize(new Dimension(10, 60));
 		panel.setBackground(SystemColor.inactiveCaptionBorder);
 		add(panel, BorderLayout.SOUTH);
 		
-		JButton btnNewButton = new JButton("수 정");
-		btnNewButton.setForeground(Color.WHITE);
-		btnNewButton.setBackground(new Color(135, 206, 235));
-		btnNewButton.setFont(new Font("맑은 고딕", Font.PLAIN, 12));
-		panel.add(btnNewButton);
+		pOModifyPanel = new JPanel();
+		pOModifyPanel.setBorder(new EmptyBorder(20, 40, 20, 40));
+		pOModifyPanel.setBackground(SystemColor.inactiveCaptionBorder);
+		add(pOModifyPanel, BorderLayout.CENTER);
+		pOModifyPanel.setLayout(new GridLayout(0, 2, 10, 10));
 		
-		JPanel panel_1 = new JPanel();
-		panel_1.setBorder(new EmptyBorder(20, 40, 20, 40));
-		panel_1.setBackground(SystemColor.inactiveCaptionBorder);
-		add(panel_1, BorderLayout.CENTER);
-		panel_1.setLayout(new GridLayout(0, 2, 10, 10));
+		JLabel lblONo = new JLabel("주 문 번 호   ");
+		lblONo.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblONo.setFont(new Font("휴먼둥근헤드라인", Font.PLAIN, 15));
+		pOModifyPanel.add(lblONo);
 		
-		JLabel lblNewLabel_1 = new JLabel("주 문 번 호   ");
-		lblNewLabel_1.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblNewLabel_1.setFont(new Font("휴먼둥근헤드라인", Font.PLAIN, 15));
-		panel_1.add(lblNewLabel_1);
+		tfONo = new JTextField();
+		tfONo.setEditable(false);
+		pOModifyPanel.add(tfONo);
+		tfONo.setColumns(10);
 		
-		textField = new JTextField();
-		panel_1.add(textField);
-		textField.setColumns(10);
+		JLabel lblODate = new JLabel("주 문 일 자   ");
+		lblODate.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblODate.setFont(new Font("휴먼둥근헤드라인", Font.PLAIN, 15));
+		pOModifyPanel.add(lblODate);
 		
-		JLabel lblNewLabel_2 = new JLabel("주 문 일 자   ");
-		lblNewLabel_2.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblNewLabel_2.setFont(new Font("휴먼둥근헤드라인", Font.PLAIN, 15));
-		panel_1.add(lblNewLabel_2);
+		tfODate = new JDateChooser(new Date(), "yyyy-MM-dd");
+		pOModifyPanel.add(tfODate);
 		
-		textField_1 = new JTextField();
-		panel_1.add(textField_1);
-		textField_1.setColumns(10);
+		JLabel lblOCName = new JLabel("고 객 상 호 명   ");
+		lblOCName.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblOCName.setFont(new Font("휴먼둥근헤드라인", Font.PLAIN, 15));
+		pOModifyPanel.add(lblOCName);
 		
-		JLabel lblNewLabel_3 = new JLabel("고 객 상 호 명   ");
-		lblNewLabel_3.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblNewLabel_3.setFont(new Font("휴먼둥근헤드라인", Font.PLAIN, 15));
-		panel_1.add(lblNewLabel_3);
+		tfOCName = new JTextField();
+		pOModifyPanel.add(tfOCName);
+		tfOCName.setColumns(10);
 		
-		textField_2 = new JTextField();
-		panel_1.add(textField_2);
-		textField_2.setColumns(10);
+		JLabel lblOPName = new JLabel("품 목 명   ");
+		lblOPName.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblOPName.setFont(new Font("휴먼둥근헤드라인", Font.PLAIN, 15));
+		pOModifyPanel.add(lblOPName);
 		
-		JLabel label = new JLabel("품 목 명   ");
-		label.setHorizontalAlignment(SwingConstants.RIGHT);
-		label.setFont(new Font("휴먼둥근헤드라인", Font.PLAIN, 15));
-		panel_1.add(label);
+		tfOPName = new JTextField();
+		tfOPName.setColumns(10);
+		pOModifyPanel.add(tfOPName);
 		
-		textField_3 = new JTextField();
-		textField_3.setColumns(10);
-		panel_1.add(textField_3);
+		JLabel lblOQty = new JLabel("주 문 수 량   ");
+		lblOQty.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblOQty.setFont(new Font("휴먼둥근헤드라인", Font.PLAIN, 15));
+		pOModifyPanel.add(lblOQty);
 		
-		JLabel label_1 = new JLabel("주 문 수 량   ");
-		label_1.setHorizontalAlignment(SwingConstants.RIGHT);
-		label_1.setFont(new Font("휴먼둥근헤드라인", Font.PLAIN, 15));
-		panel_1.add(label_1);
+		tfOQty = new JTextField();
+		tfOQty.setColumns(10);
+		pOModifyPanel.add(tfOQty);
 		
-		textField_4 = new JTextField();
-		textField_4.setColumns(10);
-		panel_1.add(textField_4);
+		JLabel lblOMemo = new JLabel("고 객 요 구 사 항   ");
+		lblOMemo.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblOMemo.setFont(new Font("휴먼둥근헤드라인", Font.PLAIN, 15));
+		pOModifyPanel.add(lblOMemo);
 		
-		JLabel label_2 = new JLabel("고 객 요 구 사 항   ");
-		label_2.setHorizontalAlignment(SwingConstants.RIGHT);
-		label_2.setFont(new Font("휴먼둥근헤드라인", Font.PLAIN, 15));
-		panel_1.add(label_2);
-		
-		textField_5 = new JTextField();
-		textField_5.setColumns(10);
-		panel_1.add(textField_5);
+		tfOMemo = new JTextField();
+		tfOMemo.setColumns(10);
+		pOModifyPanel.add(tfOMemo);
 	}
-
+	@Override
+	public Order getItem() {
+		int oNo = Integer.parseInt(tfONo.getText().substring(1));
+		Date oDate = tfODate.getDate();
+		Client client = new Client(tfOCName.getText().trim());
+		Client oCname = new Client(cService.selectOrderCno(client));
+		Product product = new Product(tfOPName.getText().trim());
+		Product oPname = new Product(pService.selectOrderPno(product));
+		int oQty = Integer.parseInt(tfOQty.getText().trim());
+		String oMemo = tfOMemo.getText().trim();
+		return new Order(oNo, oDate, oCname, oPname, oQty, oMemo);
+	}
+	@Override
+	public void setItem(Order item) {
+		tfONo.setText(String.format("O%04d", item.getoNo()));
+		tfODate.setDate(item.getoDate());
+		tfOCName.setText(item.getoCname().getcName());
+		tfOPName.setText(item.getoPname().getpName());
+		tfOQty.setText(item.getoQty()+"");
+		tfOMemo.setText(item.getoMemo());
+	}
+	@Override
+	public void clearTf() {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void validCheck() {
+		// TODO Auto-generated method stub
+		
+	}
 }
