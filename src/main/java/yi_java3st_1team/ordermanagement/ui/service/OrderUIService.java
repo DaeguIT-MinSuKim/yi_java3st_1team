@@ -37,4 +37,18 @@ public class OrderUIService {
 	public List<Order> showOrderListByCal(String startDate, String endDate) {
 		return orderDao.selectOrderListByCal(startDate, endDate);
 	}
+
+	public Order showOrderByNo(int i) {
+		return orderDao.selectOrderByNo(i);
+	}
+
+	public void modifyTrue(Order order) {
+		orderDao.updateOrderDps1(order);
+	}
+
+	public void modifyFalse(Order order) {
+		orderDao.updateOrderDps0(order);
+		
+	}
+	
 }

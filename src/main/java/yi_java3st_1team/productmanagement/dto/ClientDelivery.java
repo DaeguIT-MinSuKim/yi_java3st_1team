@@ -34,7 +34,10 @@ public class ClientDelivery {
 		this.cdDate = cdDate;
 	}
 	
-	
+	public ClientDelivery(Order cdSno, Date cdDate) {
+		this.cdSno = cdSno;
+		this.cdDate = cdDate;
+	}
 
 	public ClientDelivery(int cdNo, Order cdSno, Client cName, Product pName, Date cdDate) {
 		this.cdNo = cdNo;
@@ -88,6 +91,10 @@ public class ClientDelivery {
 	public String toString() {
 		return "ClientDelivery [cdNo=" + cdNo + ", cdSno=" + cdSno + ", cName=" + cName + ", pName=" + pName.getpName()
 				+ ", cdDate=" + cdDate + "]";
+	}	
+	
+	public String toStringCD() {
+		return "ClientDelivery [cdNo=" + cdNo + ", cdSno=" + cdSno + ", cdDate=" + cdDate + "]";
 	}	
 	
 }

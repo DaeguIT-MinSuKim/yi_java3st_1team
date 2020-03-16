@@ -48,7 +48,7 @@ fields terminated by ',';
 
 select * from zip_code zc ;
 
-load data local infile 'E:/workspace/workspace_gradle/yi_java3st_1team/document/sample_data/order.txt'
+load data local infile 'D:/workspace/workspace_gradle/yi_java3st_1team/document/sample_data/order.txt'
 into table yi_java3st_1team.order
 character set 'utf8'
 fields terminated by ',';

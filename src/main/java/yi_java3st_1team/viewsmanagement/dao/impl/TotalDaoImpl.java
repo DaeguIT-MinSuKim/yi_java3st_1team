@@ -18,7 +18,7 @@ private static final TotalDaoImpl Instance = new TotalDaoImpl();
 		return Instance;
 	}
 	
-	public Total selectClientSaleTotalSales() {
+	public Total selectTotalSales() {
 		String sql = "select SUM(o.o_qty * p.p_price) " + 
 				"  from `order` o natural join product p " + 
 				" where p.p_no = o.o_pno";
@@ -26,11 +26,66 @@ private static final TotalDaoImpl Instance = new TotalDaoImpl();
 				PreparedStatement pstmt = con.prepareStatement(sql);
 				ResultSet rs = pstmt.executeQuery();){
 			if(rs.next()) {
-				return new Total(rs.getString(1));
+				return new Total(rs.getLong(1));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		return null;
 	}
+
+	
+	@Override
+	public Total selectTotalUncollected() {
+		String sql = "select SUM(o.o_qty * p.p_price)\r\n" + 
+				"  from `order` o natural join product p\r\n" + 
+				" where p.p_no = o.o_pno and o.o_dps = '0'";
+		try(Connection con = MySqlDataSource.getConnection();
+				PreparedStatement pstmt = con.prepareStatement(sql);
+				ResultSet rs = pstmt.executeQuery();){
+			if(rs.next()) {
+				return new Total(rs.getLong(1));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	@Override
+	public Total selectSalesProfit() {
+		String sql = "select	SUM(case when (o.o_qty >= 50 and o.o_qty < 100) then o.o_qty*p.p_price*0.9-(o.o_qty*p.p_cost) " + 
+				"			  when o.o_qty >= 100 then o.o_qty*p.p_price*0.85-(o.o_qty*p.p_cost) " + 
+				"		 else (o.o_qty*p.p_price)-(o.o_qty*p.p_cost)	end) as 판매이윤 " + 
+				"  from product p natural join `order` o " + 
+				" where p.p_no = o.o_pno";
+		try(Connection con = MySqlDataSource.getConnection();
+				PreparedStatement pstmt = con.prepareStatement(sql);
+				ResultSet rs = pstmt.executeQuery();){
+			if(rs.next()) {
+				return new Total(rs.getLong(1));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	@Override
+	public Total selectDeliveryAmount() {
+		String sql = "select SUM(o.o_qty*p.p_price+o.o_qty*p.p_price*0.1) " + 
+				"  from `order` o natural join product p " + 
+				" where p.p_no = o.o_pno";
+		try(Connection con = MySqlDataSource.getConnection();
+				PreparedStatement pstmt = con.prepareStatement(sql);
+				ResultSet rs = pstmt.executeQuery();){
+			if(rs.next()) {
+				return new Total(rs.getLong(1));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
 }

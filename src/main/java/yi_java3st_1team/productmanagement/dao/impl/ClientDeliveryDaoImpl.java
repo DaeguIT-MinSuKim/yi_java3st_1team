@@ -88,7 +88,7 @@ public class ClientDeliveryDaoImpl implements ClientDeliveryDao{
 
 	@Override
 	public int insertClientDelivery(ClientDelivery cd) {
-		String sql = "insert into client_delivery (cd_no, cd_sno, cd_date) value(null, ?, ?)";
+		String sql = "insert into client_delivery (cd_sno, cd_date) value( ?, ?)";
 		try(Connection con = MySqlDataSource.getConnection();
 				PreparedStatement pstmt = con.prepareStatement(sql)){
 			pstmt.setInt(1, cd.getCdSno().getoNo());
@@ -128,5 +128,43 @@ public class ClientDeliveryDaoImpl implements ClientDeliveryDao{
 			e.printStackTrace();
 		}
 		return 0;
+	}
+
+	@Override
+	public ClientDelivery selectClientDeliveryByOno(Order order) {
+		String sql = "select cd_sno from client_delivery cd where cd_sno = ? ";
+		try(Connection con = MySqlDataSource.getConnection();
+				PreparedStatement pstmt = con.prepareStatement(sql);){
+			pstmt.setInt(1, order.getoNo());
+			LogUtil.prnLog(pstmt);
+			try(ResultSet rs = pstmt.executeQuery()){
+				if(rs.next()) {
+					return getCD(rs);
+				}
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+				
+		return null;
+	}
+
+	private ClientDelivery getCD(ResultSet rs) throws SQLException {
+		int cdSno = rs.getInt("cd_sno"); 
+		return new ClientDelivery(cdSno);
+	}
+
+	@Override
+	public void deleteClientDeliveryByOno(ClientDelivery cd) {
+		String sql = "delete from client_delivery where cd_sno = ?";
+		try(Connection con = MySqlDataSource.getConnection();
+				PreparedStatement pstmt = con.prepareStatement(sql)){
+			pstmt.setInt(1, cd.getCdSno().getoNo());
+			LogUtil.prnLog(pstmt);
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
 	}
 }

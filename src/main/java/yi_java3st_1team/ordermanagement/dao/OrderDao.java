@@ -17,4 +17,10 @@ public interface OrderDao {
 	List<Order> selectClientOrderList(Client info);
 
 	List<Order> selectOrderListByCal(String startDate, String endDate);
+
+	Order selectOrderByNo(int i);
+
+	void updateOrderDps1(Order order);
+
+	void updateOrderDps0(Order order);
 }

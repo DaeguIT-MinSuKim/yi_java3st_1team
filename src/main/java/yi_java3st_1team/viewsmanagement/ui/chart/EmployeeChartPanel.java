@@ -1,17 +1,17 @@
-package yi_java3st_1team.viewsmanagement.ui.graph;
+package yi_java3st_1team.viewsmanagement.ui.chart;
 
 import javax.swing.JPanel;
 import java.awt.Dimension;
-import javax.swing.JTable;
 import java.awt.BorderLayout;
+import javax.swing.JTable;
 
 @SuppressWarnings("serial")
-public class ClientGraphPanel extends JPanel {
+public class EmployeeChartPanel extends JPanel {
 
 	/**
 	 * Create the panel.
 	 */
-	public ClientGraphPanel() {
+	public EmployeeChartPanel() {
 
 		initialize();
 	}

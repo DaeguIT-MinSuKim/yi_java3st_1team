@@ -151,13 +151,14 @@ public class ClientSaleUIPanel extends JPanel {
 		pAmount.add(lblAmount01);
 		
 		textField_1 = new JTextField();
+		textField_1.setEnabled(false);
+		textField_1.setHorizontalAlignment(SwingConstants.RIGHT);
 		textField_1.setPreferredSize(new Dimension(200, 30));
 		textField_1.setFont(new Font("굴림", Font.PLAIN, 16));
 		textField_1.setColumns(15);
-		Total total = service2.showClientSaleTotalSales();
-		String to = String.format("%s", String.valueOf(total));
-		String restr = to.replaceAll("[^0-9]", "");
-		textField_1.setText(restr);
+		Total total = service2.showTotalSales();
+		String ts = String.format("%s", String.valueOf(total));
+		textField_1.setText(ts);
 		pAmount.add(textField_1);
 		
 		lblAmount02 = new JLabel(" 총 미수금 ");
@@ -169,9 +170,13 @@ public class ClientSaleUIPanel extends JPanel {
 		
 		textField_2 = new JTextField();
 		textField_2.setEnabled(false);
+		textField_2.setHorizontalAlignment(SwingConstants.RIGHT);
 		textField_2.setPreferredSize(new Dimension(200, 30));
 		textField_2.setFont(new Font("굴림", Font.PLAIN, 16));
 		textField_2.setColumns(15);
+		Total uncollected = service2.showTotalUncollected();
+		String tu = String.format("%s", String.valueOf(uncollected));
+		textField_2.setText(tu);
 		pAmount.add(textField_2);
 	}
 

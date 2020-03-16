@@ -15,13 +15,16 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
+import yi_java3st_1team.viewsmanagement.dto.Total;
 import yi_java3st_1team.viewsmanagement.ui.list.SWTotalSaleTblPanel;
 import yi_java3st_1team.viewsmanagement.ui.list.TSTblPanel;
 import yi_java3st_1team.viewsmanagement.ui.service.SW_TSUISerivce;
+import yi_java3st_1team.viewsmanagement.ui.service.TotalUIService;
 
 @SuppressWarnings("serial")
 public class SW_TSUIPanel extends JPanel {
 	private SW_TSUISerivce service;
+	private TotalUIService service2;
 	private JPanel pTitle;
 	private JTextField tfLTotal;
 	private JTextField tfRTotal;
@@ -45,6 +48,7 @@ public class SW_TSUIPanel extends JPanel {
 	
 	public SW_TSUIPanel() {
 		service = new SW_TSUISerivce();
+		service2 = new TotalUIService();
 		initialize();
 	}
 	private void initialize() {
@@ -117,8 +121,13 @@ public class SW_TSUIPanel extends JPanel {
 		pLeftResult.add(lblLTotal);
 		
 		tfLTotal = new JTextField();
+		tfLTotal.setEnabled(false);
+		tfLTotal.setHorizontalAlignment(SwingConstants.RIGHT);
 		tfLTotal.setFont(new Font("굴림", Font.PLAIN, 16));
 		tfLTotal.setPreferredSize(new Dimension(200, 30));
+		Total total = service2.showTotalSales();
+		String ts = String.format("%s", String.valueOf(total));
+		tfLTotal.setText(ts);
 		pLeftResult.add(tfLTotal);
 		tfLTotal.setColumns(15);
 		
@@ -175,9 +184,14 @@ public class SW_TSUIPanel extends JPanel {
 		pRightResult.add(lblRTotal);
 		
 		tfRTotal = new JTextField();
+		tfRTotal.setEnabled(false);
+		tfRTotal.setHorizontalAlignment(SwingConstants.RIGHT);
 		tfRTotal.setFont(new Font("굴림", Font.PLAIN, 16));
 		tfRTotal.setPreferredSize(new Dimension(200, 30));
 		tfRTotal.setColumns(15);
+		Total delivery = service2.showDeliveryAmount();
+		String da = String.format("%s", String.valueOf(delivery));
+		tfRTotal.setText(da);
 		pRightResult.add(tfRTotal);
 	}
 
