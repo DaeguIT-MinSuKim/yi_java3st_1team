@@ -108,8 +108,9 @@ public class ClientIdChaeck extends JPanel implements ActionListener {
 		idChk = tfSearch.getText();
 		/***  정규표현식 검사 ***/
 		boolean result = Pattern.matches(idPattern, idChk);
-		Client newId = new Client(idChk);
-		Client searchId = cService.Idcheck(newId);
+		//Client newId = new Client(idChk);
+		//Client searchId = cService.Idcheck(newId);
+		String searchId = cService.Idcheck(idChk);
 		if(result==true && searchId==null) {
 			lblIdEquals.setText("아이디 사용 가능");
 			tfSearch.setText(idChk);

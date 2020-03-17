@@ -69,7 +69,7 @@ public class ClientUIService {
 		return clientDao.loginClient(client);
 	}
 	
-	public Client Idcheck(Client client) {
-		return clientDao.selectClientById(client);
+	public String Idcheck(String idChk) {
+		return clientDao.selectClientById(idChk);
 	}
 }

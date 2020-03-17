@@ -1,5 +1,6 @@
 package yi_java3st_1team.clientmanagement.dao.impl;
 
+import java.security.interfaces.RSAKey;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -367,14 +368,14 @@ public class ClientDaoImpl implements ClientDao {
 	}
 
 	@Override
-	public Client selectClientById(Client client) {
+	public String selectClientById(String idChk) {
 		String sql = "select c_id from client where c_id = ?";
 		try(Connection con = MySqlDataSource.getConnection();
 				PreparedStatement pstmt = con.prepareStatement(sql);){
-			pstmt.setString(1, client.getcId());
+			pstmt.setString(1, idChk);
 			LogUtil.prnLog(pstmt);
 			try(ResultSet rs = pstmt.executeQuery()){
-				if(rs.next()) {
+				if (rs.next()) {
 					return getClientID(rs);
 				}
 			}
@@ -384,10 +385,12 @@ public class ClientDaoImpl implements ClientDao {
 		return null;
 	}
 
-	private Client getClientID(ResultSet rs) throws SQLException {
-		String cId = rs.getString("c_id");
-		String cPw = null;
-		return new Client(cId, cPw);
+	private String getClientID(ResultSet rs) throws SQLException {
+		if(rs.getString("c_id") == null) {
+			return null;
+		}else {
+			return rs.getString("c_id");
+		}
 	}
 
 }

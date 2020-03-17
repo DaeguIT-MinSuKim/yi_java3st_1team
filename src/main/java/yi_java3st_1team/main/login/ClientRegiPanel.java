@@ -368,6 +368,11 @@ public class ClientRegiPanel  extends AbsRegiPanel<Client> implements ActionList
 	
 	//등록
 	protected void actionPerformedBtnAdd(ActionEvent e) {
+//		if(tfName.getText().equals("")||tfAdd.getText().equals("")||tfTell.getText().equals("")
+//				||tfId.getText().equals("")||passFd1.getPassword().equals("")||lblPassword.setText("비밀번호 사용 불가")||
+//				tfMail.getText().equals("")) {
+//			
+//		}
 		Client newClient = getItem();
 		cService.addClient(newClient);
 		clearTf();
@@ -436,6 +441,17 @@ public class ClientRegiPanel  extends AbsRegiPanel<Client> implements ActionList
 
 	//상호명 중복검색
 	protected void actionPerformedDoubleChk1(ActionEvent e) {
-		
+		if(tfName.getText().equals("")) {
+			JOptionPane.showMessageDialog(null, "등록할 상호명을 입력해주세요.");
+		} else {
+			Client sName = new Client(tfName.getText());
+			Client cName = cService.overlapClient(sName);
+			
+			if(cName == null) {
+				JOptionPane.showMessageDialog(null, "등록 가능한 상호 입니다.");
+			}else {
+				JOptionPane.showMessageDialog(null, "이미 존재하는 상호 입니다.");
+			}
+		}
 	}
 }
