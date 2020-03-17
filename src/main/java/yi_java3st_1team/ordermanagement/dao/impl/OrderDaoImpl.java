@@ -11,7 +11,7 @@ import java.util.List;
 
 import yi_java3st_1team.clientmanagement.dto.Client;
 import yi_java3st_1team.ds.MySqlDataSource;
-import yi_java3st_1team.main.dto.Employee;
+import yi_java3st_1team.main.employee.dto.Employee;
 import yi_java3st_1team.ordermanagement.dao.OrderDao;
 import yi_java3st_1team.ordermanagement.dto.Order;
 import yi_java3st_1team.productmanagement.dto.Product;

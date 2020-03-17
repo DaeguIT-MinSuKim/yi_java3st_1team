@@ -21,7 +21,7 @@ import javax.swing.SwingConstants;
 import com.toedter.calendar.JDateChooser;
 
 import yi_java3st_1team.clientmanagement.dto.Client;
-import yi_java3st_1team.main.ui.ClientMainUIPanel;
+import yi_java3st_1team.main.employee.ui.ClientMainUIPanel;
 import yi_java3st_1team.ordermanagement.ui.list.ClientOCheckTblPanel;
 import yi_java3st_1team.ordermanagement.ui.service.OrderUIService;
 import javax.swing.JComboBox;

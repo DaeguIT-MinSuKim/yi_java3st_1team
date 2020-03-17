@@ -9,8 +9,9 @@ import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
 
-import yi_java3st_1team.main.dao.impl.EmployeeDaoImpl;
-import yi_java3st_1team.main.dto.Employee;
+import yi_java3st_1team.main.employee.dao.EmployeeDao;
+import yi_java3st_1team.main.employee.dao.impl.EmployeeDaoImpl;
+import yi_java3st_1team.main.employee.dto.Employee;
 import yi_java3st_1team.util.LogUtil;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)

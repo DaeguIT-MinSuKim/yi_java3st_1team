@@ -3,7 +3,7 @@ package yi_java3st_1team.ordermanagement.dto;
 import java.util.Date;
 
 import yi_java3st_1team.clientmanagement.dto.Client;
-import yi_java3st_1team.main.dto.Employee;
+import yi_java3st_1team.main.employee.dto.Employee;
 import yi_java3st_1team.productmanagement.dto.Product;
 
 public class Order {

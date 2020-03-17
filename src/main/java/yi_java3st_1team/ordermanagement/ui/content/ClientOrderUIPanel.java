@@ -28,7 +28,7 @@ import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
 import yi_java3st_1team.exception.InvalidCheckException;
-import yi_java3st_1team.main.ui.ClientMainUIPanel;
+import yi_java3st_1team.main.employee.ui.ClientMainUIPanel;
 import yi_java3st_1team.ordermanagement.dto.Order;
 import yi_java3st_1team.ordermanagement.ui.panel.ClientORegisterPanel;
 import yi_java3st_1team.ordermanagement.ui.service.IQUIService;

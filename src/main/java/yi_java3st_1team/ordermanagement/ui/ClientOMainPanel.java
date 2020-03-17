@@ -15,10 +15,10 @@ import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 
 import javafx.application.Platform;
-import yi_java3st_1team.main.ClientMainFrame;
-import yi_java3st_1team.main.chart.PanelPieChart;
-import yi_java3st_1team.main.logout.ClientLoginOkPanel;
-import yi_java3st_1team.main.ui.ClientMainUIPanel;
+import yi_java3st_1team.main.client.ClientMainFrame;
+import yi_java3st_1team.main.client.chart.PanelPieChart;
+import yi_java3st_1team.main.client.logout.ClientLoginOkPanel;
+import yi_java3st_1team.main.employee.ui.ClientMainUIPanel;
 import yi_java3st_1team.ordermanagement.ui.content.ClientOrderUIPanel;
 import yi_java3st_1team.ordermanagement.ui.panel.ClientOCheckPanel;
 

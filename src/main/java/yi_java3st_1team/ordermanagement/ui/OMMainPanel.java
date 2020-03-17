@@ -11,13 +11,13 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import yi_java3st_1team.clientmanagement.ui.CMMainPanel;
-import yi_java3st_1team.main.EmployeeMainFrame;
-import yi_java3st_1team.main.dto.Employee;
-import yi_java3st_1team.main.logout.EmpLoginOkPanel;
-import yi_java3st_1team.main.ui.EmployeeMainUIPanel;
+import yi_java3st_1team.main.employee.EmployeeMainFrame;
+import yi_java3st_1team.main.employee.dto.Employee;
+import yi_java3st_1team.main.employee.logout.EmpLoginOkPanel;
+import yi_java3st_1team.main.employee.ui.EmployeeMainUIPanel;
+import yi_java3st_1team.main.employee.ui.service.EmployeeUIService;
 import yi_java3st_1team.main.ui.panel.LeftMainMenu;
 import yi_java3st_1team.main.ui.panel.LogoImg02Panel;
-import yi_java3st_1team.main.ui.service.EmployeeUIService;
 import yi_java3st_1team.ordermanagement.ui.content.OMContent;
 import yi_java3st_1team.productmanagement.ui.PMMainPanel;
 import yi_java3st_1team.viewsmanagement.ui.panel.ReportMainPanel;

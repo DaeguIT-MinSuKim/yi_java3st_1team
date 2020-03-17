@@ -21,7 +21,7 @@ import javax.swing.JRadioButton;
 import javax.swing.SwingConstants;
 
 import yi_java3st_1team.exception.InvalidCheckException;
-import yi_java3st_1team.main.ui.EmployeeMainUIPanel;
+import yi_java3st_1team.main.employee.ui.EmployeeMainUIPanel;
 import yi_java3st_1team.ordermanagement.dto.InventoryQuantity;
 import yi_java3st_1team.ordermanagement.ui.service.IQUIService;
 import yi_java3st_1team.productmanagement.dto.Product;

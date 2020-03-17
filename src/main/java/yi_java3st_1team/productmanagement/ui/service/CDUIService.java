@@ -2,7 +2,7 @@ package yi_java3st_1team.productmanagement.ui.service;
 
 import java.util.List;
 
-import yi_java3st_1team.main.dto.Employee;
+import yi_java3st_1team.main.employee.dto.Employee;
 import yi_java3st_1team.ordermanagement.dto.Order;
 import yi_java3st_1team.productmanagement.dao.ClientDeliveryDao;
 import yi_java3st_1team.productmanagement.dao.impl.ClientDeliveryDaoImpl;

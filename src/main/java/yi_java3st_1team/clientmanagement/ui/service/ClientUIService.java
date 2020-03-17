@@ -5,7 +5,7 @@ import java.util.List;
 import yi_java3st_1team.clientmanagement.dao.ClientDao;
 import yi_java3st_1team.clientmanagement.dao.impl.ClientDaoImpl;
 import yi_java3st_1team.clientmanagement.dto.Client;
-import yi_java3st_1team.main.dto.Employee;
+import yi_java3st_1team.main.employee.dto.Employee;
 
 public class ClientUIService {
 	private ClientDao clientDao = ClientDaoImpl.getInstance();

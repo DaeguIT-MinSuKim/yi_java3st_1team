@@ -19,7 +19,7 @@ import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
 
 import yi_java3st_1team.exception.InvalidCheckException;
-import yi_java3st_1team.main.ui.EmployeeMainUIPanel;
+import yi_java3st_1team.main.employee.ui.EmployeeMainUIPanel;
 import yi_java3st_1team.ordermanagement.dto.Order;
 import yi_java3st_1team.ordermanagement.ui.panel.ORegisterPanel;
 import yi_java3st_1team.ordermanagement.ui.service.IQUIService;
