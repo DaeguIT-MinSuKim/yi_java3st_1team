@@ -230,6 +230,7 @@ public class EmpRegiPanel extends AbsRegiPanel<Employee> implements ActionListen
 		tfMail = new JTextField();
 		pInput.add(tfMail);
 		tfMail.setColumns(10);
+		tfMail.setUI(new JTextFieldHintUI("email@address.com", Color.gray));
 
 		JPanel pDoubleCheck = new JPanel();
 		pDoubleCheck.setBackground(SystemColor.inactiveCaptionBorder);

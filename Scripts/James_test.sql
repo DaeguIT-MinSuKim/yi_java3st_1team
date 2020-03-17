@@ -116,6 +116,8 @@ select * from client_delivery cd ;
 
 select * from client;
 
+desc client;
+
 select * from client where c_salesman = 46;
 
 -- 통계
@@ -163,4 +165,5 @@ select * from supplier_order so ;
 
 update client_delivery  set cd_date = '2020-03-15' where cd_no = 31;
 
+select c_id from client where c_id = 'test0003';
 select c_id from client where c_id = 'test0003';
