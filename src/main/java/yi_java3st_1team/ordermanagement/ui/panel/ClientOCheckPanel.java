@@ -37,7 +37,7 @@ public class ClientOCheckPanel extends JPanel implements ActionListener {
 	private JDateChooser dcStart;
 	private JDateChooser dcEnd;
 	private JButton btnSearch;
-	private JButton btnGoMain;
+	public JButton btnGoMain;
 	private Client info;
 	
 	public ClientOCheckPanel() {

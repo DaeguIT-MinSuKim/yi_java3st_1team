@@ -44,7 +44,7 @@ public class ClientOrderUIPanel extends JPanel implements ActionListener, Change
 	private JLabel lblO;
 	private JButton btnAdd;
 	private JButton btnReset;
-	private JButton btnGoMain;
+	public JButton btnGoMain;
 	private JButton btnQtyCheck;
 	private JButton btnPCheck;
 	private JLabel lblNewLabel;

@@ -61,13 +61,13 @@ public class ClientMainUIPanel extends JPanel implements ActionListener {
 	public String cPass; // 로그인 비밀번호
 
 	// 이미지패널(1)
-	private LogoImg03Panel pImg01;
+	public LogoImg03Panel pImg01;
 
 	/**** pSbot ****/
 	private JPanel pSbot;
 
 	// 이미지패널(2)
-	private LogoImg01Panel pLogo; // 로고
+	public LogoImg01Panel pLogo; // 로고
 	private JLabel lblCall; // 콜센터
 
 	// 버튼
@@ -78,7 +78,7 @@ public class ClientMainUIPanel extends JPanel implements ActionListener {
 	private JButton btn02; // 주문현황
 
 	// + 이미지
-	private JPanel pImg02;
+	public JPanel pImg02;
 	private JLabel lblImg01;
 	private JLabel lblImg02;
 
