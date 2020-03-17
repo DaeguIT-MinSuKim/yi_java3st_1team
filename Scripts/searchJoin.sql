@@ -65,6 +65,23 @@ delimiter ;
 call dateSale('2019-03-01', '2019-09-30');
 
 
+-- 고객사 주문현황 그래프
+drop procedure if exists clientOrder;
+delimiter $$
+create procedure clientOrder(
+	in in_o_date date
+	)
+begin
+	select  c.c_name, o.o_qty*p.p_price as 판매금액, o.o_date 
+	  from `order` o natural join client c natural join product p
+	 where o.o_cno = c.c_no and p.p_no = o.o_pno and o.o_date >= in_o_date
+	 order by o.o_qty*p.p_price desc limit 10;
+end $$
+delimiter ;
+
+call clientOrder('2019-11-01');
+
+
 -- 재고현황 조회_ 품목명 조회
 drop procedure if exists iq;
 delimiter $$
