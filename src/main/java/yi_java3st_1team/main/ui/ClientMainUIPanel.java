@@ -29,8 +29,9 @@ import yi_java3st_1team.main.ClientMainFrame;
 import yi_java3st_1team.main.chart.InitScene;
 import yi_java3st_1team.main.chart.PanelPieChart;
 import yi_java3st_1team.main.login.ClientRegiPanel;
+import yi_java3st_1team.main.login.ClientSearchPanel;
 import yi_java3st_1team.main.login.LoginInputPanel;
-import yi_java3st_1team.main.login.SearchPanel;
+import yi_java3st_1team.main.login.EmpSearchPanel;
 import yi_java3st_1team.main.logout.ClientLoginOkPanel;
 import yi_java3st_1team.main.logout.EmpLoginOkPanel;
 import yi_java3st_1team.main.ui.panel.LogoImg01Panel;
@@ -364,8 +365,8 @@ public class ClientMainUIPanel extends JPanel implements ActionListener {
 		searchFrame.setSize(500, 500);
 		searchFrame.setResizable(false);
 		searchFrame.setLocationRelativeTo(null); // 화면중앙에 프레임 띄우기
-		SearchPanel sp = new SearchPanel();
-		searchFrame.getContentPane().add(sp);
+		ClientSearchPanel csp = new ClientSearchPanel();
+		searchFrame.getContentPane().add(csp);
 		searchFrame.setVisible(true);
 	}
 

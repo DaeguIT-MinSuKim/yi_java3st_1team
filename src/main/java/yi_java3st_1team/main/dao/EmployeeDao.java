@@ -22,6 +22,8 @@ public interface EmployeeDao {
 
 	List<Employee> selectEmployeeListByDeptName(Department dept);
 	
+	Employee selectEmployeeByID2(Employee emp);
+	
 
 
 }

@@ -266,6 +266,31 @@ public class EmployeeDaoImpl implements EmployeeDao {
 		return new Employee(empNo, empName, empTitle, empManager, empMail);
 	}
 
+	@Override
+	public Employee selectEmployeeByID2(Employee emp) {
+		String sql = "select e_id from employee where e_no=? and e_name =?";
+		try(Connection con = MySqlDataSource.getConnection();
+				PreparedStatement pstmt = con.prepareStatement(sql);){
+				pstmt.setInt(1, emp.getEmpNo());
+				pstmt.setString(2, emp.getEmpName());
+				LogUtil.prnLog(pstmt);
+				try(ResultSet rs = pstmt.executeQuery()){
+					if(rs.next()) {
+						return getEmpID(rs);
+					}
+				}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	private Employee getEmpID2(ResultSet rs) throws SQLException {
+		int empNo = rs.getInt("e_no");
+		String empName = rs.getString("e_name");
+		return new Employee(empNo, empName);
+	}
+
 
 
 

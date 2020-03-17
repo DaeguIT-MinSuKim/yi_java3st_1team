@@ -25,7 +25,6 @@ public class Client {
 		this.cName = cName;
 	}
 	
-	
 
 	public Client(String cId, String cPw) {
 		this.cId = cId;

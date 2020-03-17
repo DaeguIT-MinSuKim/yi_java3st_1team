@@ -167,3 +167,15 @@ update client_delivery  set cd_date = '2020-03-15' where cd_no = 31;
 
 select c_id from client where c_id = 'test0003';
 select c_id from client where c_id = 'test0003';
+
+select * from employee;
+
+select e_id from employee where e_name = '현재순' and e_no = 6;
+
+select e_id from employee where e_name = '현재순' and e_no = 6;
+
+select e_id from employee where e_no=1 and e_name ='현재승';
+
+select e_id from employee where e_no=2 and e_name ='장금력';
+
+select * from employee;

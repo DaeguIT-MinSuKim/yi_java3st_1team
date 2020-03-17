@@ -32,7 +32,7 @@ import yi_java3st_1team.main.dto.Department;
 import yi_java3st_1team.main.dto.Employee;
 import yi_java3st_1team.main.login.EmpRegiPanel;
 import yi_java3st_1team.main.login.LoginInputPanel;
-import yi_java3st_1team.main.login.SearchPanel;
+import yi_java3st_1team.main.login.EmpSearchPanel;
 import yi_java3st_1team.main.logout.EmpLoginOkPanel;
 import yi_java3st_1team.main.ui.panel.LogoImg01Panel;
 import yi_java3st_1team.main.ui.panel.LogoImg02Panel;
@@ -485,7 +485,7 @@ public class EmployeeMainUIPanel extends JPanel implements ActionListener {
 		searchFrame.setSize(500, 500);
 		searchFrame.setResizable(false);
 		searchFrame.setLocationRelativeTo(null);
-		SearchPanel sp = new SearchPanel();
+		EmpSearchPanel sp = new EmpSearchPanel();
 		searchFrame.getContentPane().add(sp);
 		searchFrame.setVisible(true);
 	}

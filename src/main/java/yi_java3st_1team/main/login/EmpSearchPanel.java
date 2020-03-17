@@ -5,26 +5,39 @@ import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.BorderLayout;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import java.awt.Color;
 import javax.swing.JButton;
 import java.awt.SystemColor;
 import javax.swing.border.EmptyBorder;
+
+import yi_java3st_1team.main.dto.Employee;
+import yi_java3st_1team.main.ui.panel.JTextFieldHintUI;
+import yi_java3st_1team.main.ui.service.EmployeeUIService;
+
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 @SuppressWarnings("serial")
-public class SearchPanel extends JPanel {
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
-	private JTextField textField_3;
+public class EmpSearchPanel extends JPanel implements ActionListener {
+	private JTextField tfNo;
+	private JTextField tfName;
+	public JTextField tfId;
+	public JTextField tfMail;
+	private JButton btnSearch;
+	private JButton btnPass;
+	private EmployeeUIService empService;
+	private MailService mailService;
 
 	/**
 	 * Create the panel.
 	 */
-	public SearchPanel() {
-
+	public EmpSearchPanel() {
+		empService = new EmployeeUIService();
 		initialize();
 	}
 	private void initialize() {
@@ -47,12 +60,13 @@ public class SearchPanel extends JPanel {
 		panel_2.setBackground(SystemColor.inactiveCaptionBorder);
 		panel_1.add(panel_2, BorderLayout.SOUTH);
 		
-		JButton btnNewButton = new JButton("조회");
-		btnNewButton.setFocusable(false);
-		btnNewButton.setBackground(SystemColor.controlHighlight);
-		btnNewButton.setForeground(Color.BLACK);
-		btnNewButton.setFont(new Font("맑은 고딕", Font.BOLD, 14));
-		panel_2.add(btnNewButton);
+		btnSearch = new JButton("조회");
+		btnSearch.addActionListener(this);
+		btnSearch.setFocusable(false);
+		btnSearch.setBackground(SystemColor.controlHighlight);
+		btnSearch.setForeground(Color.BLACK);
+		btnSearch.setFont(new Font("맑은 고딕", Font.BOLD, 14));
+		panel_2.add(btnSearch);
 		
 		JPanel panel_4 = new JPanel();
 		panel_4.setBorder(new EmptyBorder(20, 40, 20, 40));
@@ -60,15 +74,15 @@ public class SearchPanel extends JPanel {
 		panel_1.add(panel_4, BorderLayout.CENTER);
 		panel_4.setLayout(new GridLayout(0, 2, 10, 10));
 		
-		JLabel lblNewLabel_2 = new JLabel("등 록 번 호");
+		JLabel lblNewLabel_2 = new JLabel("사 원 번 호");
 		lblNewLabel_2.setForeground(Color.BLACK);
 		lblNewLabel_2.setFont(new Font("휴먼둥근헤드라인", Font.PLAIN, 13));
 		lblNewLabel_2.setHorizontalAlignment(SwingConstants.CENTER);
 		panel_4.add(lblNewLabel_2);
 		
-		textField = new JTextField();
-		panel_4.add(textField);
-		textField.setColumns(10);
+		tfNo = new JTextField();
+		panel_4.add(tfNo);
+		tfNo.setColumns(10);
 		
 		JLabel lblNewLabel_3 = new JLabel("이       름");
 		lblNewLabel_3.setForeground(Color.BLACK);
@@ -76,9 +90,9 @@ public class SearchPanel extends JPanel {
 		lblNewLabel_3.setFont(new Font("휴먼둥근헤드라인", Font.PLAIN, 13));
 		panel_4.add(lblNewLabel_3);
 		
-		textField_1 = new JTextField();
-		panel_4.add(textField_1);
-		textField_1.setColumns(10);
+		tfName = new JTextField();
+		panel_4.add(tfName);
+		tfName.setColumns(10);
 		
 		JPanel panel = new JPanel();
 		panel.setBackground(SystemColor.inactiveCaptionBorder);
@@ -95,12 +109,13 @@ public class SearchPanel extends JPanel {
 		panel_3.setBackground(SystemColor.inactiveCaptionBorder);
 		panel.add(panel_3, BorderLayout.SOUTH);
 		
-		JButton btnNewButton_1 = new JButton("임시 비밀번호 전송");
-		btnNewButton_1.setFocusable(false);
-		btnNewButton_1.setBackground(SystemColor.controlHighlight);
-		btnNewButton_1.setForeground(Color.BLACK);
-		btnNewButton_1.setFont(new Font("맑은 고딕", Font.BOLD, 14));
-		panel_3.add(btnNewButton_1);
+		btnPass = new JButton("임시 비밀번호 전송");
+		btnPass.addActionListener(this);
+		btnPass.setFocusable(false);
+		btnPass.setBackground(SystemColor.controlHighlight);
+		btnPass.setForeground(Color.BLACK);
+		btnPass.setFont(new Font("맑은 고딕", Font.BOLD, 14));
+		panel_3.add(btnPass);
 		
 		JPanel panel_5 = new JPanel();
 		panel_5.setBorder(new EmptyBorder(20, 40, 20, 40));
@@ -114,9 +129,9 @@ public class SearchPanel extends JPanel {
 		lblNewLabel_4.setFont(new Font("휴먼둥근헤드라인", Font.PLAIN, 13));
 		panel_5.add(lblNewLabel_4);
 		
-		textField_2 = new JTextField();
-		panel_5.add(textField_2);
-		textField_2.setColumns(10);
+		tfId = new JTextField();
+		panel_5.add(tfId);
+		tfId.setColumns(10);
 		
 		JLabel lblNewLabel_5 = new JLabel("이 메 일  주 소");
 		lblNewLabel_5.setForeground(Color.BLACK);
@@ -124,9 +139,43 @@ public class SearchPanel extends JPanel {
 		lblNewLabel_5.setHorizontalAlignment(SwingConstants.CENTER);
 		panel_5.add(lblNewLabel_5);
 		
-		textField_3 = new JTextField();
-		panel_5.add(textField_3);
-		textField_3.setColumns(10);
+		tfMail = new JTextField();
+		panel_5.add(tfMail);
+		tfMail.setColumns(10);
+		tfMail.setUI(new JTextFieldHintUI(">> 가입당시 등록한 이메일을 입력", Color.gray));
 	}
 
+	public void actionPerformed(ActionEvent e) {
+		if (e.getSource() == btnPass) {
+			actionPerformedBtnPass(e);
+		}
+		if (e.getSource() == btnSearch) {
+			actionPerformedBtnSearch(e);
+		}
+	}
+	
+	//조회
+	protected void actionPerformedBtnSearch(ActionEvent e) {
+		String no = tfNo.getText(); //EE0001
+		String no1 = no.replaceAll("[^1-9]",""); //1 // 숫자만 쏙 빼올 수 있는 정규식 찾아보기
+		int no2 = Integer.parseInt(no1); // 숫자1
+		String name = tfName.getText(); //현재승
+		
+		Employee searchId = empService.lostID(new Employee(no2, name));
+		System.out.println(searchId);
+		JOptionPane.showMessageDialog(null, searchId);
+		
+	}
+	
+	//임시비밀번호전송
+	protected void actionPerformedBtnPass(ActionEvent e) {
+//		String empId = tfId.getText();
+//		String empMail = tfMail.getText();
+//		String email = "hothihi5@gmail.com";
+//		String title = "메일전송";
+//		String content = "test 메일";
+//		MailService.gmailSend(email, title, content);
+		
+		
+	}
 }

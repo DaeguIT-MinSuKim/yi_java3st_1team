@@ -65,4 +65,7 @@ public class EmployeeUIService {
 		return empDao.selectEmployeeListByDeptName(dept);
 	}
 	
+	public Employee lostID(Employee emp) {
+		return empDao.selectEmployeeByID2(emp);
+	}
 }

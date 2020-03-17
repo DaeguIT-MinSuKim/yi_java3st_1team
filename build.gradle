@@ -31,6 +31,9 @@ dependencies {
 	compile group: 'com.toedter', name: 'jcalendar', version: '1.4'
 	
     testImplementation 'junit:junit:4.12'
+    // https://mvnrepository.com/artifact/com.sun.mail/javax.mail
+	compile group: 'com.sun.mail', name: 'javax.mail', version: '1.6.2'
+    
 }
 
 jar{
