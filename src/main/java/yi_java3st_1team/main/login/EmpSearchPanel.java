@@ -157,11 +157,11 @@ public class EmpSearchPanel extends JPanel implements ActionListener {
 	//조회
 	protected void actionPerformedBtnSearch(ActionEvent e) {
 		String no = tfNo.getText(); //EE0001
-		String no1 = no.replaceAll("[^1-9]",""); //1 // 숫자만 쏙 빼올 수 있는 정규식 찾아보기
-		int no2 = Integer.parseInt(no1); // 숫자1
-		String name = tfName.getText(); //현재승
+		String no1 = no.replaceAll("[EE]",""); //1 // 숫자만 쏙 빼올 수 있는 정규식 찾아보기
+		int empNo = Integer.parseInt(no1); // 숫자1
+		String empName = tfName.getText(); //현재순
 		
-		Employee searchId = empService.lostID(new Employee(no2, name));
+		Employee searchId = empService.lostID(new Employee(empNo, empName));
 		System.out.println(searchId);
 		JOptionPane.showMessageDialog(null, searchId);
 		
@@ -169,12 +169,12 @@ public class EmpSearchPanel extends JPanel implements ActionListener {
 	
 	//임시비밀번호전송
 	protected void actionPerformedBtnPass(ActionEvent e) {
-//		String empId = tfId.getText();
-//		String empMail = tfMail.getText();
-//		String email = "hothihi5@gmail.com";
-//		String title = "메일전송";
-//		String content = "test 메일";
-//		MailService.gmailSend(email, title, content);
+		String empId = tfId.getText();
+		String email = tfMail.getText();
+		//String email = "hothihi5@gmail.com";
+		String title = "메일전송";
+		String content = "test 메일";
+		MailService.gmailSend(email, title, content);
 		
 		
 	}

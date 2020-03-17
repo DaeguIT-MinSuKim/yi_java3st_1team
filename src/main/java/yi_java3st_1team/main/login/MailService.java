@@ -19,7 +19,7 @@ import javax.swing.JOptionPane;
 	   public static boolean gmailSend(String email, String title, String content) {
 		   	String host = "smtp.gmail.com";
 	        String user = "hothihi5@gmail.com"; 
-	        String password = "dlstjs1!";  
+	        String password = "dkfnwwkd";  
 	        // SMTP 서버 정보를 설정한다.
 	        Properties prop = new Properties();
 	        prop.put("mail.smtp.host", "smtp.gmail.com"); 

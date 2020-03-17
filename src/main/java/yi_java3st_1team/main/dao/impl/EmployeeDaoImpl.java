@@ -285,12 +285,6 @@ public class EmployeeDaoImpl implements EmployeeDao {
 		return null;
 	}
 
-	private Employee getEmpID2(ResultSet rs) throws SQLException {
-		int empNo = rs.getInt("e_no");
-		String empName = rs.getString("e_name");
-		return new Employee(empNo, empName);
-	}
-
 
 
 

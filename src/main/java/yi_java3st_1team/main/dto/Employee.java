@@ -141,7 +141,7 @@ public class Employee {
 //								empName, empNo, dNo.getDeptNo(), empTitle, empManager, empId, empPass, empMail);
 //		return String.format("%s(%d)", empName, empNo);
 		
-		return String.format("%s", empId);
+		return String.format("아이디 : %s", empId);
 	}
 
 }
