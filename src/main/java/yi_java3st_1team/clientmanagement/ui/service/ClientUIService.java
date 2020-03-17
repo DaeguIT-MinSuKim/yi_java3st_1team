@@ -5,6 +5,7 @@ import java.util.List;
 import yi_java3st_1team.clientmanagement.dao.ClientDao;
 import yi_java3st_1team.clientmanagement.dao.impl.ClientDaoImpl;
 import yi_java3st_1team.clientmanagement.dto.Client;
+import yi_java3st_1team.main.dto.Employee;
 
 public class ClientUIService {
 	private ClientDao clientDao = ClientDaoImpl.getInstance();
@@ -71,5 +72,9 @@ public class ClientUIService {
 	
 	public String Idcheck(String idChk) {
 		return clientDao.selectClientById(idChk);
+	}
+	
+	public Client lostID(Client client) {
+		return clientDao.selectClientByID2(client);
 	}
 }

@@ -179,3 +179,5 @@ select e_id from employee where e_no=1 and e_name ='현재승';
 select e_id from employee where e_no=2 and e_name ='장금력';
 
 select * from employee;
+
+select * from client;

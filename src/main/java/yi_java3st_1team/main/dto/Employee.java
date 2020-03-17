@@ -134,14 +134,14 @@ public class Employee {
 
 	@Override
 	public String toString() {
-//		return "Employee [empNo=" + empNo + ", empName=" + empName + ", dNo=" + dNo + ", empTitle=" + empTitle
-//				+ ", empManager=" + empManager + ", empId=" + empId + ", empPass=" + empPass + ", empMail=" + empMail
-//				+ "]";
+		return "Employee [empNo=" + empNo + ", empName=" + empName + ", dNo=" + dNo + ", empTitle=" + empTitle
+				+ ", empManager=" + empManager + ", empId=" + empId + ", empPass=" + empPass + ", empMail=" + empMail
+				+ "]";
 //		return String.format("%s(%d) %s %s %s %s %s %s",
 //								empName, empNo, dNo.getDeptNo(), empTitle, empManager, empId, empPass, empMail);
 //		return String.format("%s(%d)", empName, empNo);
 		
-		return String.format("아이디 : %s", empId);
+
 	}
 
 }

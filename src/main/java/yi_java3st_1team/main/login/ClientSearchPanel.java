@@ -5,12 +5,15 @@ import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.BorderLayout;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import java.awt.Color;
 import javax.swing.JButton;
 import java.awt.SystemColor;
 import javax.swing.border.EmptyBorder;
 
+import yi_java3st_1team.clientmanagement.dto.Client;
 import yi_java3st_1team.clientmanagement.ui.service.ClientUIService;
 
 import javax.swing.JTextField;
@@ -150,6 +153,13 @@ public class ClientSearchPanel extends JPanel implements ActionListener {
 	
 	//조회
 	protected void actionPerformedBtnSearch(ActionEvent e) {
+		String no = tfNo.getText();
+		String no1 = no.replaceAll("[C]", "");
+		int clientNo = Integer.parseInt(no1);
+		String clientName = tfName.getText();
+		
+		Client searchId = cService.lostID(new Client(clientNo, clientName));
+		JOptionPane.showMessageDialog(null, "아이디 : "+searchId.getcId());
 		
 	}
 	

@@ -95,6 +95,11 @@ public class Client {
 		this.cSalesman = cSalesman;
 	}
 
+	public Client(int cNo, String cName) {
+		this.cNo = cNo;
+		this.cName = cName;
+	}
+
 	public int getcNo() {
 		return cNo;
 	}

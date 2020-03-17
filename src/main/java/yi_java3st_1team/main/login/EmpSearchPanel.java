@@ -157,13 +157,12 @@ public class EmpSearchPanel extends JPanel implements ActionListener {
 	//조회
 	protected void actionPerformedBtnSearch(ActionEvent e) {
 		String no = tfNo.getText(); //EE0001
-		String no1 = no.replaceAll("[EE]",""); //1 // 숫자만 쏙 빼올 수 있는 정규식 찾아보기
+		String no1 = no.replaceAll("[EE]",""); //1 
 		int empNo = Integer.parseInt(no1); // 숫자1
 		String empName = tfName.getText(); //현재순
 		
 		Employee searchId = empService.lostID(new Employee(empNo, empName));
-		System.out.println(searchId);
-		JOptionPane.showMessageDialog(null, searchId);
+		JOptionPane.showMessageDialog(null, "아이디: "+searchId.getEmpId());
 		
 	}
 	

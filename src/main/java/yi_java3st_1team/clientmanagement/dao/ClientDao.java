@@ -26,4 +26,6 @@ public interface ClientDao {
 	Client loginClient(Client client);
 	
 	String selectClientById(String idChk);
+	
+	Client selectClientByID2(Client client);
 }
