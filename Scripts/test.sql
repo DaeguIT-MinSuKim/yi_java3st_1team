@@ -145,8 +145,8 @@ select * from `order` o where o_dps=0;
 
 select * from `order`;
 
-ALTER TABLE `order` AUTO_INCREMENT=1;
+ALTER TABLE client_delivery AUTO_INCREMENT=1;
 
 update `order` set o_dps=1, o_ok=1, where o_no=3;
 
-select cd_sno from client_delivery cd where cd_sno = 55;
+select cd_sno from client_delivery cd where cd_sno = 50;

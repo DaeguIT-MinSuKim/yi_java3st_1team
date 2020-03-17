@@ -8,6 +8,7 @@ import java.awt.SystemColor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Date;
+import java.util.List;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -153,17 +154,18 @@ public class OCheckPanel extends JPanel implements ActionListener {
 		}
 	}
 	protected void btnConfirmActionPerformed(ActionEvent e) {
+		List<Order> list = odService.showOrderList();
 		for(int i=0; i<pOCheckList.table.getRowCount(); i++) {
             Boolean checkCdt = (Boolean) pOCheckList.table.getValueAt(i, 6);
             if(checkCdt == true) {
-            	Order order = odService.showOrderByNo(i+1);
+            	Order order = list.get(i);
             	if(cdService.showClientDeliveryByOno(order) == null) {
             		ClientDelivery cd = new ClientDelivery(order, new Date());
                 	cdService.addClientDelivery(cd);
                 	odService.modifyTrue(order);
             	}
             }else {
-            	Order order = odService.showOrderByNo(i+1);
+            	Order order = list.get(i);
             	if(cdService.showClientDeliveryByOno(order) != null) {
             		ClientDelivery cd = new ClientDelivery(order, new Date());
                 	cdService.removeClientDeliveryByOno(cd);
