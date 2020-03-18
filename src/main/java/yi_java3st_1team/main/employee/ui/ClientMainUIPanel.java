@@ -88,6 +88,10 @@ public class ClientMainUIPanel extends JPanel implements ActionListener {
 	/** 메인프레임 **/
 	private ClientMainFrame cMain;
 
+	private Thread thread;
+
+	private PanelPieChart pie;
+
 	public ClientMainUIPanel() {
 		clService = new ClientUIService();
 		initialize();
@@ -213,6 +217,15 @@ public class ClientMainUIPanel extends JPanel implements ActionListener {
 		btn02.setPreferredSize(new Dimension(560, 23));
 		btn02.setFocusable(false);
 		pBtns02.add(btn02, BorderLayout.EAST);
+		thread = new Thread(new Runnable() {
+			
+			@Override
+			public void run() {
+				pie = new PanelPieChart();
+				Platform.runLater(() -> initFX(pie));
+			}
+		});
+		thread.run();
 	}
 
 	public void actionPerformed(ActionEvent e) {
@@ -284,11 +297,12 @@ public class ClientMainUIPanel extends JPanel implements ActionListener {
 				+ "</span><br>- 상호명 : <span style='color:green'>" + loginCl.getcName() + "</span></html>");
 
 		// 파이차트
-		pImg02.remove(pLogo);
-		PanelPieChart pie = new PanelPieChart();
-		pie.setPreferredSize(new Dimension(350, 250));
-		pImg02.add(pie, BorderLayout.NORTH);
-		Platform.runLater(() -> initFX(pie));
+		thread.interrupt();
+		thread.run();
+		pImg02.removeAll();
+		JPanel pPie = new JPanel();
+		pPie.add(pie);
+		pImg02.add(pPie, BorderLayout.NORTH);
 		pStop.add(pCLogin, BorderLayout.WEST);
 		pStop.revalidate();
 		pStop.repaint();

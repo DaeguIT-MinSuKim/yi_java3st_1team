@@ -181,3 +181,5 @@ select e_id from employee where e_no=2 and e_name ='장금력';
 select * from employee;
 
 select * from client;
+
+select e_mail from employee where e_id ='hceo1004';

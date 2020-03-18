@@ -24,6 +24,6 @@ public interface EmployeeDao {
 	
 	Employee selectEmployeeByID2(Employee emp);
 	
-
+	Employee selectEmployeeByMail(Employee emp);
 
 }
