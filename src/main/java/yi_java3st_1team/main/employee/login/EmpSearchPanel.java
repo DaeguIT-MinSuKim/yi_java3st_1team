@@ -82,23 +82,31 @@ public class EmpSearchPanel extends JPanel implements ActionListener, KeyListene
 		panel_4.setLayout(new GridLayout(0, 2, 10, 10));
 		
 		JLabel lblNewLabel_2 = new JLabel("사 원 번 호");
+		lblNewLabel_2.setOpaque(true);
+		lblNewLabel_2.setBackground(new Color(255, 255, 240));
 		lblNewLabel_2.setForeground(Color.BLACK);
-		lblNewLabel_2.setFont(new Font("휴먼둥근헤드라인", Font.PLAIN, 13));
+		lblNewLabel_2.setFont(new Font("휴먼둥근헤드라인", Font.PLAIN, 14));
 		lblNewLabel_2.setHorizontalAlignment(SwingConstants.CENTER);
 		panel_4.add(lblNewLabel_2);
 		
-		tfNo = new JTextField();
+		tfNo = new JTextField("EE");
+		tfNo.setForeground(Color.BLUE);
+		tfNo.setFont(new Font("굴림", Font.BOLD, 15));
 		panel_4.add(tfNo);
 		tfNo.setColumns(10);
 		tfNo.addKeyListener(this);
 		
 		JLabel lblNewLabel_3 = new JLabel("이       름");
+		lblNewLabel_3.setBackground(new Color(255, 255, 240));
+		lblNewLabel_3.setOpaque(true);
 		lblNewLabel_3.setForeground(Color.BLACK);
 		lblNewLabel_3.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_3.setFont(new Font("휴먼둥근헤드라인", Font.PLAIN, 13));
+		lblNewLabel_3.setFont(new Font("휴먼둥근헤드라인", Font.PLAIN, 14));
 		panel_4.add(lblNewLabel_3);
 		
 		tfName = new JTextField();
+		tfName.setForeground(Color.BLUE);
+		tfName.setFont(new Font("굴림", Font.BOLD, 15));
 		panel_4.add(tfName);
 		tfName.setColumns(10);
 		
@@ -132,24 +140,30 @@ public class EmpSearchPanel extends JPanel implements ActionListener, KeyListene
 		panel_5.setLayout(new GridLayout(0, 2, 10, 10));
 		
 		JLabel lblNewLabel_4 = new JLabel("아 이 디");
+		lblNewLabel_4.setOpaque(true);
+		lblNewLabel_4.setBackground(new Color(255, 255, 240));
 		lblNewLabel_4.setForeground(Color.BLACK);
 		lblNewLabel_4.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_4.setFont(new Font("휴먼둥근헤드라인", Font.PLAIN, 13));
+		lblNewLabel_4.setFont(new Font("휴먼둥근헤드라인", Font.PLAIN, 14));
 		panel_5.add(lblNewLabel_4);
 		
 		tfId = new JTextField();
+		tfId.setForeground(Color.BLACK);
 		panel_5.add(tfId);
 		tfId.setColumns(10);
 		tfId.setEditable(false);
 		tfId.setUI(new JTextFieldHintUI(">> 아이디 조회부터 먼저 해주세요.", Color.red));
 		
 		JLabel lblNewLabel_5 = new JLabel("이 메 일  주 소");
+		lblNewLabel_5.setBackground(new Color(255, 255, 240));
+		lblNewLabel_5.setOpaque(true);
 		lblNewLabel_5.setForeground(Color.BLACK);
-		lblNewLabel_5.setFont(new Font("휴먼둥근헤드라인", Font.PLAIN, 13));
+		lblNewLabel_5.setFont(new Font("휴먼둥근헤드라인", Font.PLAIN, 14));
 		lblNewLabel_5.setHorizontalAlignment(SwingConstants.CENTER);
 		panel_5.add(lblNewLabel_5);
 		
 		tfMail = new JTextField();
+		tfMail.setForeground(Color.BLACK);
 		panel_5.add(tfMail);
 		tfMail.setColumns(10);
 		tfMail.setUI(new JTextFieldHintUI(">> 가입당시 등록한 이메일", Color.red));
@@ -175,6 +189,7 @@ public class EmpSearchPanel extends JPanel implements ActionListener, KeyListene
 		
 		/*** 사원번호 ***/
 		String no = tfNo.getText(); // EE0001
+		tfNo.setText(no.toUpperCase()); //소문자입력시 대문자로
 		String no1 = no.replaceAll("[^0-9]", ""); // 0001
 		empNo = Integer.parseInt(no1);// 1
 		
