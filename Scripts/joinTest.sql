@@ -42,7 +42,7 @@ select	o.o_no as 주문번호,
 -- 고객사 주문현황 그래프(전체날짜 기준)
 select  c.c_name, o.o_qty*p.p_price as 판매금액, o.o_date 
   from `order` o natural join client c natural join product p
- where o.o_cno = c.c_no and p.p_no = o.o_pno and o.o_date
+ where o.o_cno = c.c_no and p.p_no = o.o_pno and o.o_date >= '2019-11-01'
  order by o.o_qty*p.p_price desc limit 10;
 
 -- 재고현황 조회

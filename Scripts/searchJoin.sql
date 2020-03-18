@@ -66,9 +66,9 @@ call dateSale('2019-03-01', '2019-09-30');
 
 
 -- 고객사 주문현황 그래프
-drop procedure if exists clientOrder;
+drop procedure if exists clientChart;
 delimiter $$
-create procedure clientOrder(
+create procedure clientChart(
 	in in_o_date date
 	)
 begin
@@ -79,7 +79,7 @@ begin
 end $$
 delimiter ;
 
-call clientOrder('2019-11-01');
+call clientChart('2019-11-01');
 
 
 -- 재고현황 조회_ 품목명 조회
