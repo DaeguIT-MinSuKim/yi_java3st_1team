@@ -22,6 +22,8 @@ import javax.swing.SwingConstants;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.util.Arrays;
+import java.util.Random;
 import java.awt.event.ActionEvent;
 
 @SuppressWarnings("serial")
@@ -182,9 +184,8 @@ public class EmpSearchPanel extends JPanel implements ActionListener, KeyListene
 	protected void actionPerformedBtnSearch(ActionEvent e) {
 		/*** 공백이 있을 경우 ***/
 		if(tfNo.getText().equals("") || tfName.getText().equals("") || tfNo.getText().length() < 6) {
-			JOptionPane.showMessageDialog(null, "사원번호와 이름을 정확히 입력하셔야 합니다.");
-			tfNo.setText("");
-			tfName.setText("");
+			JOptionPane.showMessageDialog(null, "사원번호와 이름을 정확히 입력하세요.");
+			clearTf();
 		} 
 		
 		/*** 사원번호 ***/
@@ -204,37 +205,79 @@ public class EmpSearchPanel extends JPanel implements ActionListener, KeyListene
 			tfId.setText(empId);
 		} else {
 			JOptionPane.showMessageDialog(null, "사원번호와 이름이 일치하지 않습니다.");
-			tfNo.setText("");
-			tfName.setText("");
+			clearTf();
 		}
 	}
 	
 	//임시비밀번호전송
 	protected void actionPerformedBtnPass(ActionEvent e) {
-		empMail = tfMail.getText();
+		/*** 공백이 있을 경우***/
+		if(tfId.getText().equals("")||tfMail.getText().equals("")) {
+			JOptionPane.showMessageDialog(null, "아이디와 이메일을 정확히 입력하세요.");
+			clearTf();
+		}
+		
+		/*** 메일 ***/
+		empMail = tfMail.getText(); // hothihi5@gmail.com
 		Employee test = empService.empMail(new Employee(empNo, empName, empId, empMail));
 		
-		String empMail2 = test.getEmpMail().trim();
-		System.out.println(empMail2 + empMail);
+		String dbMail = test.getEmpMail(); // hothihi5@gmail.com
 
-		if(empMail2.equals(empMail)) {
-			System.out.println("똑같다");
+		if(dbMail.equals(empMail)) {
+			int acc = empMail.lastIndexOf("@");
+			String mail = dbMail.substring(acc, 14); //@gmail or @naver
+			String email = dbMail; //임시비밀번호를 받을 메일주소
+			String title = "[Smart 소프트웨어] 임시비밀번호 재발급 인증 메일입니다."; //메일제목
+			
+			/*** 임시비밀번호 생성 ***/
+			Random rnd = new Random();
+			StringBuffer buf = new StringBuffer();
+			for(int i=0;i<10;i++) {
+				 if(rnd.nextBoolean()){
+				        buf.append((char)((int)(rnd.nextInt(26))+97));
+				    }else{
+
+				        buf.append((rnd.nextInt(10)));
+				    }
+				}
+			String empPass = String.format("%s", buf);
+			String content = String.format("임시비밀번호는 %s 입니다. 해당 비밀번호로 로그인 해주세요.", empPass); //메일내용(임시비밀번호)
+			
+			Employee emp = new Employee(empNo, empName, empId, empPass, empMail);
+			System.out.println(emp);
+			empService.resetEmpPass(emp);
+			
+			switch (mail) {
+				case "@naver":
+					//System.out.println("네이버");
+					MailService.naverMailSend(email, title, content);
+					break;
+	
+				case "@gmail":
+					//System.out.println("지메일");
+					MailService.gmailSend(email, title, content);
+					break;
+			}
+			JOptionPane.showMessageDialog(null, "해당 주소로 임시비밀번호를 전송하였습니다.");
+			clearTf();
+		}else {
+			JOptionPane.showMessageDialog(null, "가입 당시 등록한 이메일이 아닙니다.");
+			clearTf();
+		
 		}
-
-		
-//		String email = "pinkmiin@naver.com";
-//		String title = "[Smart 소프트웨어] 임시비밀번호 재발급 인증 메일입니다.";
-//		String content = "내용테스트";
-//			
-//		if(MailService.naverMailSend(email, title, content)) {
-//			System.out.println("성공");
-//		}else {
-//			System.out.println("실패");
-//		}		
-		
+				
+	}
+	
+	//초기화
+	private void clearTf() {
+		tfNo.setText("EE");
+		tfName.setText("");
+		tfId.setText("");
+		tfMail.setText("");
 	}
 	
 
+	/*** 사원번호 자리수 제한 ***/
 	@Override
 	public void keyTyped(KeyEvent e) {
 		if(e.getSource() == tfNo) {

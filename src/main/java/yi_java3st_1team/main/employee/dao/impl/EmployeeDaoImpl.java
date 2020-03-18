@@ -318,6 +318,24 @@ public class EmployeeDaoImpl implements EmployeeDao {
 		return new Employee(empNo, empName, empId, empMail);
 	}
 
+	@Override
+	public int updateEmpPassword(Employee emp) {
+		String sql = "update employee set e_pw = ? where e_no = ? and e_name = ? and e_id = ? and e_mail = ?";
+		try(Connection con = MySqlDataSource.getConnection();
+			PreparedStatement pstmt = con.prepareStatement(sql)){
+			pstmt.setString(1, emp.getEmpPass());
+			pstmt.setInt(2, emp.getEmpNo());
+			pstmt.setString(3, emp.getEmpName());
+			pstmt.setString(4, emp.getEmpId());
+			pstmt.setString(5, emp.getEmpMail());
+			LogUtil.prnLog(pstmt);
+			return pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return 0;
+	}
+
 
 
 

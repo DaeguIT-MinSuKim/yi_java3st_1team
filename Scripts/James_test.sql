@@ -183,3 +183,8 @@ select * from employee;
 select * from client;
 
 select e_mail from employee where e_id ='hceo1004';
+
+-- 84, 테스트2, test0002, Test0002!, hothihi5@gmail.com
+-- 83, 테스트1, test0001, Test0001!, pinkmiin@naver.com
+
+update employee set e_pw = '7m967598l4'where e_no = 84 and e_name='테스트2' and e_id = 'test0002'and e_mail='hothihi5@gmail.com';
