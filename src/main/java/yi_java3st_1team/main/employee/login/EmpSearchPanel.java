@@ -20,10 +20,12 @@ import yi_java3st_1team.main.ui.panel.JTextFieldHintUI;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.event.ActionEvent;
 
 @SuppressWarnings("serial")
-public class EmpSearchPanel extends JPanel implements ActionListener {
+public class EmpSearchPanel extends JPanel implements ActionListener, KeyListener {
 	private JTextField tfNo;
 	private JTextField tfName;
 	public JTextField tfId;
@@ -32,6 +34,11 @@ public class EmpSearchPanel extends JPanel implements ActionListener {
 	private JButton btnPass;
 	private EmployeeUIService empService;
 	private MailService mailService;
+	
+	private int empNo; // 사원번호
+	private String empName; //사원명
+	private String empId; // 사원아이디
+	private String empMail; //사원메일
 
 	/**
 	 * Create the panel.
@@ -83,6 +90,7 @@ public class EmpSearchPanel extends JPanel implements ActionListener {
 		tfNo = new JTextField();
 		panel_4.add(tfNo);
 		tfNo.setColumns(10);
+		tfNo.addKeyListener(this);
 		
 		JLabel lblNewLabel_3 = new JLabel("이       름");
 		lblNewLabel_3.setForeground(Color.BLACK);
@@ -132,6 +140,8 @@ public class EmpSearchPanel extends JPanel implements ActionListener {
 		tfId = new JTextField();
 		panel_5.add(tfId);
 		tfId.setColumns(10);
+		tfId.setEditable(false);
+		tfId.setUI(new JTextFieldHintUI(">> 아이디 조회부터 먼저 해주세요.", Color.red));
 		
 		JLabel lblNewLabel_5 = new JLabel("이 메 일  주 소");
 		lblNewLabel_5.setForeground(Color.BLACK);
@@ -142,7 +152,7 @@ public class EmpSearchPanel extends JPanel implements ActionListener {
 		tfMail = new JTextField();
 		panel_5.add(tfMail);
 		tfMail.setColumns(10);
-		tfMail.setUI(new JTextFieldHintUI(">> 가입당시 등록한 이메일을 입력", Color.gray));
+		tfMail.setUI(new JTextFieldHintUI(">> 가입당시 등록한 이메일", Color.red));
 	}
 
 	public void actionPerformed(ActionEvent e) {
@@ -156,25 +166,80 @@ public class EmpSearchPanel extends JPanel implements ActionListener {
 	
 	//조회
 	protected void actionPerformedBtnSearch(ActionEvent e) {
-		String no = tfNo.getText(); //EE0001
-		String no1 = no.replaceAll("[EE]",""); //1 
-		int empNo = Integer.parseInt(no1); // 숫자1
-		String empName = tfName.getText(); //현재순
+		/*** 공백이 있을 경우 ***/
+		if(tfNo.getText().equals("") || tfName.getText().equals("")) {
+			JOptionPane.showMessageDialog(null, "사원번호와 이름을 모두 입력하셔야 합니다.");
+		} 
 		
+		/*** 사원번호 ***/
+		String no = tfNo.getText(); // EE0001
+		String no1 = no.replaceAll("[^0-9]", ""); // 0001
+		empNo = Integer.parseInt(no1);// 1
+		
+		/*** 이름 ***/
+		empName = tfName.getText();
 		Employee searchId = empService.lostID(new Employee(empNo, empName));
-		JOptionPane.showMessageDialog(null, "아이디: "+searchId.getEmpId());
 		
+		/*** 아이디 ***/
+		if(searchId != null) {
+			empId = searchId.getEmpId();
+			JOptionPane.showMessageDialog(null, "아이디: " + empId);
+			tfId.setText(empId);
+		} else {
+			JOptionPane.showMessageDialog(null, "사원번호와 이름이 일치하지 않습니다.");
+		}
 	}
 	
 	//임시비밀번호전송
 	protected void actionPerformedBtnPass(ActionEvent e) {
-		String empId = tfId.getText();
-		String email = tfMail.getText();
-		//String email = "hothihi5@gmail.com";
-		String title = "메일전송";
-		String content = "test 메일";
-		MailService.gmailSend(email, title, content);
+		empMail = tfMail.getText();
+		Employee test = empService.empMail(new Employee(empNo, empName, empId, empMail));
 		
+		String empMail2 = test.getEmpMail().trim();
+		System.out.println(empMail2 + empMail);
+
+		if(empMail2.equals(empMail)) {
+			System.out.println("똑같다");
+		}
+
+		
+//		String email = "pinkmiin@naver.com";
+//		String title = "[Smart 소프트웨어] 임시비밀번호 재발급 인증 메일입니다.";
+//		String content = "내용테스트";
+//			
+//		if(MailService.naverMailSend(email, title, content)) {
+//			System.out.println("성공");
+//		}else {
+//			System.out.println("실패");
+//		}		
 		
 	}
+	
+
+	@Override
+	public void keyTyped(KeyEvent e) {
+		if(e.getSource() == tfNo) {
+			tfNoKeyLength(e);
+		}
+		
+	}
+
+	@Override
+	public void keyPressed(KeyEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void keyReleased(KeyEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	//글자수 막기
+	private void tfNoKeyLength(KeyEvent e) {
+		if(tfNo.getText().length()>=6) {
+			e.consume();
+		}		
+	}
+
 }

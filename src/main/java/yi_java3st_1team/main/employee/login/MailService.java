@@ -63,11 +63,11 @@ import javax.swing.JOptionPane;
 	   //naver메일
 	    public static boolean naverMailSend(String email, String title, String content) { 
 	        String host = "smtp.naver.com"; 
-	        String user = "dlstjs8246@naver.com";  
-	        String password = "qkrdlstjs1";   
+	        String user = "pinkmiin@naver.com";  
+	        String password = "wnghd3840";   
 	        Properties props = new Properties(); 
 	        props.put("mail.smtp.host", host); 
-	        props.put("mail.smtp.port", 587); 
+	        props.put("mail.smtp.port", 587); //포트넘버
 	          props.put("mail.smtp.auth", "true"); 
 	          Session session = Session.getDefaultInstance(props, new javax.mail.Authenticator() { 
 	             protected PasswordAuthentication getPasswordAuthentication() { 
