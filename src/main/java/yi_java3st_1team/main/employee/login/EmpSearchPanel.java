@@ -167,8 +167,10 @@ public class EmpSearchPanel extends JPanel implements ActionListener, KeyListene
 	//조회
 	protected void actionPerformedBtnSearch(ActionEvent e) {
 		/*** 공백이 있을 경우 ***/
-		if(tfNo.getText().equals("") || tfName.getText().equals("")) {
-			JOptionPane.showMessageDialog(null, "사원번호와 이름을 모두 입력하셔야 합니다.");
+		if(tfNo.getText().equals("") || tfName.getText().equals("") || tfNo.getText().length() < 6) {
+			JOptionPane.showMessageDialog(null, "사원번호와 이름을 정확히 입력하셔야 합니다.");
+			tfNo.setText("");
+			tfName.setText("");
 		} 
 		
 		/*** 사원번호 ***/
@@ -187,6 +189,8 @@ public class EmpSearchPanel extends JPanel implements ActionListener, KeyListene
 			tfId.setText(empId);
 		} else {
 			JOptionPane.showMessageDialog(null, "사원번호와 이름이 일치하지 않습니다.");
+			tfNo.setText("");
+			tfName.setText("");
 		}
 	}
 	

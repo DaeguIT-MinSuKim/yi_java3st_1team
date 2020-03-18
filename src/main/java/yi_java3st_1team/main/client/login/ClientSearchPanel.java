@@ -15,14 +15,17 @@ import javax.swing.border.EmptyBorder;
 
 import yi_java3st_1team.clientmanagement.dto.Client;
 import yi_java3st_1team.clientmanagement.ui.service.ClientUIService;
+import yi_java3st_1team.main.ui.panel.JTextFieldHintUI;
 
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.event.ActionEvent;
 
 @SuppressWarnings("serial")
-public class ClientSearchPanel extends JPanel implements ActionListener {
+public class ClientSearchPanel extends JPanel implements ActionListener, KeyListener {
 	private JTextField tfNo;
 	private JTextField tfName;
 	private JTextField tfId;
@@ -30,6 +33,7 @@ public class ClientSearchPanel extends JPanel implements ActionListener {
 	private JButton btnSearch;
 	private JButton btnPass;
 	private ClientUIService cService;
+	private String clientId;
 
 	/**
 	 * Create the panel.
@@ -81,6 +85,7 @@ public class ClientSearchPanel extends JPanel implements ActionListener {
 		tfNo = new JTextField();
 		panel_4.add(tfNo);
 		tfNo.setColumns(10);
+		tfNo.addKeyListener(this);
 		
 		JLabel lblNewLabel_3 = new JLabel("이       름");
 		lblNewLabel_3.setForeground(Color.BLACK);
@@ -130,6 +135,8 @@ public class ClientSearchPanel extends JPanel implements ActionListener {
 		tfId = new JTextField();
 		panel_5.add(tfId);
 		tfId.setColumns(10);
+		tfId.setEditable(false);
+		tfId.setUI(new JTextFieldHintUI(">> 아이디 조회부터 먼저 해주세요.", Color.red));
 		
 		JLabel lblNewLabel_5 = new JLabel("이 메 일  주 소");
 		lblNewLabel_5.setForeground(Color.BLACK);
@@ -140,6 +147,7 @@ public class ClientSearchPanel extends JPanel implements ActionListener {
 		tfMail = new JTextField();
 		panel_5.add(tfMail);
 		tfMail.setColumns(10);
+		tfMail.setUI(new JTextFieldHintUI(">> 가입당시 등록한 이메일", Color.red));
 	}
 
 	public void actionPerformed(ActionEvent e) {
@@ -153,18 +161,60 @@ public class ClientSearchPanel extends JPanel implements ActionListener {
 	
 	//조회
 	protected void actionPerformedBtnSearch(ActionEvent e) {
-		String no = tfNo.getText();
-		String no1 = no.replaceAll("[C]", "");
-		int clientNo = Integer.parseInt(no1);
-		String clientName = tfName.getText();
+		/*** 공백이 있을 경우***/
+		if(tfNo.getText().equals("") || tfName.getText().equals("") || tfNo.getText().length() < 6) {
+			JOptionPane.showMessageDialog(null, "고객번호와 상호명을 정확히 입력하셔야 합니다.");
+			tfNo.setText("");
+			tfName.setText("");
+		}
 		
+		/*** 고객번호 ***/
+		String no = tfNo.getText(); // C0001
+		String no1 = no.replaceAll("[^0-9]", ""); // 0001
+		int clientNo = Integer.parseInt(no1); // 1
+		
+		/*** 상호명 ***/
+		String clientName = tfName.getText(); 
 		Client searchId = cService.lostID(new Client(clientNo, clientName));
-		JOptionPane.showMessageDialog(null, "아이디 : "+searchId.getcId());
 		
+		if(searchId !=null) {
+			clientId = searchId.getcId();
+			JOptionPane.showMessageDialog(null, "아이디 : " + clientId);
+			tfId.setText(clientId);
+		}else {
+			JOptionPane.showMessageDialog(null, "고객번호와 상호명이 일치하지 않습니다.");
+			tfNo.setText("");
+			tfName.setText("");
+		}
 	}
 	
 	//임시비밀번호전송
 	protected void actionPerformedBtnPass(ActionEvent e) {
 		
+	}
+	
+	@Override
+	public void keyTyped(KeyEvent e) {
+		if(e.getSource() == tfNo) {
+			tfNoKeyLength(e);
+		}
+		
+	}
+
+	@Override
+	public void keyPressed(KeyEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void keyReleased(KeyEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	private void tfNoKeyLength(KeyEvent e) {
+		if(tfNo.getText().length()>=6) {
+			e.consume();
+		}
 	}
 }
