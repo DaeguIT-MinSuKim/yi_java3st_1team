@@ -145,8 +145,14 @@ select * from `order` o where o_dps=0;
 
 select * from `order`;
 
+select p2.p_name ,p2.p_price from product p2 join (select * from `order` o2 join (select * from employee e where e_dept =6) e on o_eno =e.e_no) o3 on p2.p_no = o3.o_pno;
+select * from employee e where e_dept =4;
+
 ALTER TABLE client_delivery AUTO_INCREMENT=1;
 
 update `order` set o_dps=1, o_ok=1, where o_no=3;
 
 select cd_sno from client_delivery cd where cd_sno = 50;
+
+select s_no, s_name, s_bln, s_address, s_tel, s_fax from supplier where s_name like '마%';
+select s_no, s_name, s_bln, s_address, s_tel, s_fax from supplier where s_name like '마이크로%';
