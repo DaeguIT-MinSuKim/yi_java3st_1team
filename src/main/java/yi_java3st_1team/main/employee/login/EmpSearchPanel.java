@@ -227,7 +227,7 @@ public class EmpSearchPanel extends JPanel implements ActionListener, KeyListene
 			int acc = empMail.lastIndexOf("@");
 			String mail = dbMail.substring(acc, 14); //@gmail or @naver
 			String email = dbMail; //임시비밀번호를 받을 메일주소
-			String title = "[Smart 소프트웨어] 임시비밀번호 재발급 인증 메일입니다."; //메일제목
+			String title = "[Smart 소프트웨어(관리자용)] 임시비밀번호 재발급 인증 메일입니다."; //메일제목
 			
 			/*** 임시비밀번호 생성 ***/
 			Random rnd = new Random();
