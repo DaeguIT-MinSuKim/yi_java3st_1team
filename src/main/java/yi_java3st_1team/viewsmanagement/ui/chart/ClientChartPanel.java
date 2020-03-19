@@ -1,5 +1,11 @@
 package yi_java3st_1team.viewsmanagement.ui.chart;
 
+import java.awt.List;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+import java.util.Locale;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.embed.swing.JFXPanel;
@@ -11,18 +17,22 @@ import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
 import javafx.scene.chart.XYChart.Series;
 import javafx.scene.paint.Color;
+import yi_java3st_1team.main.employee.chart.DateOfMonth;
+import yi_java3st_1team.main.employee.chart.Performance;
 import yi_java3st_1team.viewsmanagement.dto.ClientChart;
 import yi_java3st_1team.viewsmanagement.ui.service.ClientChartUIService;
 
 @SuppressWarnings("serial")
 public class ClientChartPanel extends JFXPanel implements InitScene {
 	private ClientChartUIService service;
+	private BarChart<String, Number> barChart;
+	private GregorianCalendar calendar;
+	private int year;
+	private int month;
 	
 	public ClientChartPanel() {
 		service = new ClientChartUIService();
 	}
-	
-	private BarChart<String, Number> barChart;
 	
 	public Scene createScene() {
 		Group root = new Group();
@@ -35,8 +45,13 @@ public class ClientChartPanel extends JFXPanel implements InitScene {
 		NumberAxis yAxis = new NumberAxis();
 //		yAxis.setLabel("판매금액");
 		
+		calendar = new GregorianCalendar(Locale.KOREA);
+		year = calendar.get(Calendar.YEAR);
+		month = calendar.get(Calendar.MONTH) + 1;
+		
 		barChart = new BarChart<>(xAxis, yAxis);
-		barChart.setTitle("주요거래 10대 고객사");
+		barChart.setData(getChartData());
+		barChart.setTitle(year+"년 "+month+"월 고객사 그래프");
 		
 		barChart.setPrefSize(500, 500);
 		barChart.setData(getChartData());
@@ -54,12 +69,32 @@ public class ClientChartPanel extends JFXPanel implements InitScene {
 	}
 
 	private ObservableList<Series<String, Number>> getChartData() {
-		ObservableList<XYChart.Series<String, Number>> list = FXCollections.observableArrayList();ClientChartPanel
+		service = new ClientChartUIService();
 		
+		String sYear = year + "";
+		String sMonth = month + "";
+		List<ClientChart> dateList = getWeekInMonths(sYear, sMonth);
+		int[][] total = new int[3][dateList.size()];
+		int dept = 4;
+		for(int i=0; i<3; i++) {
+			for(int j=0; j<dateList.size(); j++) {
+				String startDate = year + "-" + month + "-" + dateList.get(j).getStartDay();
+				String endDate = year + "-" + month + "-" + dateList.get(j).getEndDay();
+				total[i][j] = service.procedureClientChart(cChart);
+			}
+			dept++;
+		}
+		System.out.println(total[0][4]);
+		ObservableList<XYChart.Series<String, Number>> list = FXCollections.observableArrayList();
+		Performance per01 = new Performance("S001", "영업 1팀", total[0][0], total[0][1], total[0][2], total[0][3], total[0][4]);
+		Performance per02 = new Performance("S002", "영업 2팀", total[1][0], total[1][1], total[1][2], total[1][3], total[1][4]);
+		Performance per03 = new Performance("S003", "영업 3팀", total[2][0], total[2][1], total[2][2], total[2][3], total[2][4]);
 		
+		list.add(getChartData(per01));
+		list.add(getChartData(per02));
+		list.add(getChartData(per03));
 		
-		ClientChart client = new ClientChart();
-		
+		return list;
 		
 //		ClientChart client = new ClientChart("세종특별자치시 교육청", 69360000);
 //		ClientChart client2 = new ClientChart("제주특별자치도 교육청", 141120000);
@@ -84,6 +119,46 @@ public class ClientChartPanel extends JFXPanel implements InitScene {
 //		list.add(getChartData(client10));
 		
 		return list;
+	}
+	
+	public XYChart.Series<String, Number> getChartData(Performance per) {
+		XYChart.Series<String, Number> dataSeries = new Series<String, Number>();
+		dataSeries.setName(per.getSaleName());
+		dataSeries.getData().add(new XYChart.Data<>("1주차", per.getSales1()));
+		dataSeries.getData().add(new XYChart.Data<>("2주차", per.getSales2()));
+		dataSeries.getData().add(new XYChart.Data<>("3주차", per.getSales3()));
+		dataSeries.getData().add(new XYChart.Data<>("4주차", per.getSales4()));
+		dataSeries.getData().add(new XYChart.Data<>("5주차", per.getSales5()));
+		return dataSeries;
+	}
+	
+	public List<DateOfMonth> getWeekInMonths(String year, String month) {
+		Calendar cal = Calendar.getInstance();
+		int intYear = Integer.parseInt(year);
+		int intMonth = Integer.parseInt(month);
+
+		cal.set(Calendar.YEAR, intYear);
+		cal.set(Calendar.MONTH, intMonth - 1);
+		List<DateOfMonth> dateList = new ArrayList<DateOfMonth>();
+		for (int week = 1; week < cal.getMaximum(Calendar.WEEK_OF_MONTH); week++) {
+			cal.set(Calendar.WEEK_OF_MONTH, week);
+
+			cal.set(Calendar.DAY_OF_WEEK, Calendar.SUNDAY);
+			int startDay = cal.get(Calendar.DAY_OF_MONTH);
+
+			cal.set(Calendar.DAY_OF_WEEK, Calendar.SATURDAY);
+			int endDay = cal.get(Calendar.DAY_OF_MONTH);
+
+			if (week == 1 && startDay >= 7) {
+				startDay = 1;
+			}
+
+			if (week == cal.getMaximum(Calendar.WEEK_OF_MONTH) - 1 && endDay <= 7) {
+				endDay = cal.getActualMaximum(Calendar.DAY_OF_MONTH);
+			}
+			dateList.add(new DateOfMonth(startDay, endDay));
+		}
+		return dateList;
 	}
 
 }
