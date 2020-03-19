@@ -217,15 +217,15 @@ public class ClientMainUIPanel extends JPanel implements ActionListener {
 		btn02.setPreferredSize(new Dimension(560, 23));
 		btn02.setFocusable(false);
 		pBtns02.add(btn02, BorderLayout.EAST);
-		thread = new Thread(new Runnable() {
-			
-			@Override
-			public void run() {
-				pie = new PanelPieChart();
-				Platform.runLater(() -> initFX(pie));
-			}
-		});
-		thread.run();
+//		thread = new Thread(new Runnable() {
+//			
+//			@Override
+//			public void run() {
+//				pie = new PanelPieChart();
+//				Platform.runLater(() -> initFX(pie));
+//			}
+//		});
+//		thread.run();
 	}
 
 	public void actionPerformed(ActionEvent e) {
@@ -297,7 +297,16 @@ public class ClientMainUIPanel extends JPanel implements ActionListener {
 				+ "</span><br>- 상호명 : <span style='color:green'>" + loginCl.getcName() + "</span></html>");
 
 		// 파이차트
-		thread.interrupt();
+//		thread.interrupt();
+//		thread.run();
+		thread = new Thread(new Runnable() {
+			
+			@Override
+			public void run() {
+				pie = new PanelPieChart();
+				Platform.runLater(() -> initFX(pie));
+			}
+		});
 		thread.run();
 		pImg02.removeAll();
 		JPanel pPie = new JPanel();

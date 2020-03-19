@@ -11,6 +11,7 @@ import java.util.List;
 
 import yi_java3st_1team.clientmanagement.dto.Client;
 import yi_java3st_1team.ds.MySqlDataSource;
+import yi_java3st_1team.main.client.chart.OrderRanking;
 import yi_java3st_1team.main.employee.dto.Employee;
 import yi_java3st_1team.ordermanagement.dao.OrderDao;
 import yi_java3st_1team.ordermanagement.dto.Order;
@@ -259,5 +260,55 @@ public class OrderDaoImpl implements OrderDao {
 		}
 
 		return 0;
+	}
+
+	@Override
+	public int selectOrderTotalMoney(String firstDate, String lastDate, Client info) {
+		String sql = "select sum(p.p_price * o.o_qty) from `order` o left join product p on o.o_pno =p.p_no " 
+				   + "left join client c on o.o_cno = c.c_no where DATE(o_date) between ? and ? " 
+				   + "and c.c_no = ? order by p.p_price * o.o_qty desc limit 5;";
+		try (Connection con = MySqlDataSource.getConnection(); PreparedStatement pstmt = con.prepareStatement(sql);) {
+			pstmt.setString(1, firstDate);
+			pstmt.setString(2, lastDate);
+			pstmt.setInt(3, info.getcNo());
+			LogUtil.prnLog(pstmt);
+			try (ResultSet rs = pstmt.executeQuery()) {
+				if (rs.next()) {
+					return rs.getInt("sum(p.p_price * o.o_qty)");
+				}
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return 0;
+	}
+	
+	@Override
+	public List<OrderRanking> selectOrderMoney(String firstDate, String lastDate, Client info) {
+		String sql = "select o.o_no, p.p_name, (p.p_price * o_qty) from `order` o left join product p on o.o_pno =p.p_no "
+				   + "left join client c on o.o_cno = c.c_no where DATE(o_date) between ? and ? "
+				   + "and c.c_no = ? order by p.p_price * o.o_qty desc limit 5;";
+		try (Connection con = MySqlDataSource.getConnection(); PreparedStatement pstmt = con.prepareStatement(sql);) {
+			pstmt.setString(1, firstDate);
+			pstmt.setString(2, lastDate);
+			pstmt.setInt(3, info.getcNo());
+			ResultSet rs = pstmt.executeQuery();
+			List<OrderRanking> list = new ArrayList<OrderRanking>();
+			while (rs.next()) {
+				list.add(getMoney(rs));
+			}
+			return list;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	private OrderRanking getMoney(ResultSet rs) throws SQLException {
+		int orNo = rs.getInt("o_no");
+		String orName = rs.getString("p_name");
+		int orMoney = rs.getInt("(p.p_price * o_qty)");
+		return new OrderRanking(orNo, orName, orMoney);
 	}
 }
