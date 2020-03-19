@@ -11,11 +11,15 @@ import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
 import javafx.scene.chart.XYChart.Series;
 import javafx.scene.paint.Color;
-import yi_java3st_1team.viewsmanagement.dto.ClientOrder;
+import yi_java3st_1team.viewsmanagement.dto.ClientChart;
+import yi_java3st_1team.viewsmanagement.ui.service.ClientChartUIService;
 
 @SuppressWarnings("serial")
 public class ClientChartPanel extends JFXPanel implements InitScene {
+	private ClientChartUIService service;
+	
 	public ClientChartPanel() {
+		service = new ClientChartUIService();
 	}
 	
 	private BarChart<String, Number> barChart;
@@ -42,7 +46,7 @@ public class ClientChartPanel extends JFXPanel implements InitScene {
 		return scene;
 	}
 	
-	public XYChart.Series<String, Number> getChartData(ClientOrder co) {
+	public XYChart.Series<String, Number> getChartData(ClientChart co) {
 		XYChart.Series<String, Number> dataSeries = new Series<String, Number>();
 		dataSeries.setName(co.getC_name());
 		dataSeries.getData().add(new XYChart.Data<>("고객사", co.getP_price()));
@@ -50,28 +54,34 @@ public class ClientChartPanel extends JFXPanel implements InitScene {
 	}
 
 	private ObservableList<Series<String, Number>> getChartData() {
-		ObservableList<XYChart.Series<String, Number>> list = FXCollections.observableArrayList();
-		ClientOrder client = new ClientOrder("세종특별자치시 교육청", 69360000);
-		ClientOrder client2 = new ClientOrder("제주특별자치도 교육청", 141120000);
-		ClientOrder client3 = new ClientOrder("윤복시스템", 288090000);
-		ClientOrder client4 = new ClientOrder("상내정보통신", 135794000);
-		ClientOrder client5 = new ClientOrder("대전광역시청", 438895000);
-		ClientOrder client6 = new ClientOrder("금변시스템", 1439658000);
-		ClientOrder client7 = new ClientOrder("대우시스템", 82560000);
-		ClientOrder client8 = new ClientOrder("전라북도 교육청", 1293600000);
-		ClientOrder client9 = new ClientOrder("대전광역시청", 438895000);
-		ClientOrder client10 = new ClientOrder("우고PC방", 61272000);
+		ObservableList<XYChart.Series<String, Number>> list = FXCollections.observableArrayList();ClientChartPanel
 		
-		list.add(getChartData(client));
-		list.add(getChartData(client2));
-		list.add(getChartData(client3));
-		list.add(getChartData(client4));
-		list.add(getChartData(client5));
-		list.add(getChartData(client6));
-		list.add(getChartData(client7));
-		list.add(getChartData(client8));
-		list.add(getChartData(client9));
-		list.add(getChartData(client10));
+		
+		
+		ClientChart client = new ClientChart();
+		
+		
+//		ClientChart client = new ClientChart("세종특별자치시 교육청", 69360000);
+//		ClientChart client2 = new ClientChart("제주특별자치도 교육청", 141120000);
+//		ClientChart client3 = new ClientChart("윤복시스템", 288090000);
+//		ClientChart client4 = new ClientChart("상내정보통신", 135794000);
+//		ClientChart client5 = new ClientChart("대전광역시청", 438895000);
+//		ClientChart client6 = new ClientChart("금변시스템", 1439658000);
+//		ClientChart client7 = new ClientChart("대우시스템", 82560000);
+//		ClientChart client8 = new ClientChart("전라북도 교육청", 1293600000);
+//		ClientChart client9 = new ClientChart("대전광역시청", 438895000);
+//		ClientChart client10 = new ClientChart("우고PC방", 61272000);
+		
+//		list.add(getChartData(client));
+//		list.add(getChartData(client2));
+//		list.add(getChartData(client3));
+//		list.add(getChartData(client4));
+//		list.add(getChartData(client5));
+//		list.add(getChartData(client6));
+//		list.add(getChartData(client7));
+//		list.add(getChartData(client8));
+//		list.add(getChartData(client9));
+//		list.add(getChartData(client10));
 		
 		return list;
 	}

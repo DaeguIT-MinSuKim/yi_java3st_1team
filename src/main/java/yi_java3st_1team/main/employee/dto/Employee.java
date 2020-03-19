@@ -18,6 +18,22 @@ public class Employee {
 	}
 
 	
+
+	public Employee(int empNo, String empName, String empId, String empPass, String empMail) {
+		this.empNo = empNo;
+		this.empName = empName;
+		this.empId = empId;
+		this.empPass = empPass;
+		this.empMail = empMail;
+	}
+
+	public Employee(int empNo, String empName, String empId, String empMail) {
+		this.empNo = empNo;
+		this.empName = empName;
+		this.empId = empId;
+		this.empMail = empMail;
+	}
+
 	public Employee(Department dNo) {
 		this.dNo = dNo;
 	}

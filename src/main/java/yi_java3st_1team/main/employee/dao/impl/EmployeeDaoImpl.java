@@ -62,6 +62,13 @@ public class EmployeeDaoImpl implements EmployeeDao {
 		return new Employee(empID);
 	}
 	
+	
+//	private Employee getEmpID(ResultSet rs) throws SQLException {
+//		String empID = rs.getString("e_id");
+//		return new Employee(empID);
+//	}
+	
+	
 	/***QUERY****************************************************************************************/
 	
 	//검색 : 번호
@@ -283,6 +290,50 @@ public class EmployeeDaoImpl implements EmployeeDao {
 			e.printStackTrace();
 		}
 		return null;
+	}
+
+	@Override
+	public Employee selectEmployeeByMail(Employee emp) {
+		String sql = "select e_no, e_name, e_id, e_mail from employee where e_id = ?";
+		try(Connection con = MySqlDataSource.getConnection();
+				PreparedStatement pstmt = con.prepareStatement(sql);){
+				pstmt.setString(1, emp.getEmpId());
+				LogUtil.prnLog(pstmt);
+				try(ResultSet rs = pstmt.executeQuery()){
+					if(rs.next()) {
+						return getEmpMail(rs);
+					}
+				}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	private Employee getEmpMail(ResultSet rs) throws SQLException {
+		int empNo = rs.getInt("e_no");
+		String empName = rs.getString("e_name");
+		String empId = rs.getString("e_id");
+		String empMail = rs.getString("e_mail");
+		return new Employee(empNo, empName, empId, empMail);
+	}
+
+	@Override
+	public int updateEmpPassword(Employee emp) {
+		String sql = "update employee set e_pw = ? where e_no = ? and e_name = ? and e_id = ? and e_mail = ?";
+		try(Connection con = MySqlDataSource.getConnection();
+			PreparedStatement pstmt = con.prepareStatement(sql)){
+			pstmt.setString(1, emp.getEmpPass());
+			pstmt.setInt(2, emp.getEmpNo());
+			pstmt.setString(3, emp.getEmpName());
+			pstmt.setString(4, emp.getEmpId());
+			pstmt.setString(5, emp.getEmpMail());
+			LogUtil.prnLog(pstmt);
+			return pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return 0;
 	}
 
 

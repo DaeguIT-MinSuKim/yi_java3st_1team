@@ -1,22 +1,26 @@
 package yi_java3st_1team.viewsmanagement.dto;
 
-import java.util.Date;
+import java.sql.Date;
 
-public class ClientOrder {
+public class ClientChart {
 	private String c_name;
 	private int p_price;
 	private Date o_date;
 
-	public ClientOrder() {
+	public ClientChart() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public ClientOrder(String c_name, int p_price) {
+	public ClientChart(Date o_date) {
+		this.o_date = o_date;
+	}
+
+	public ClientChart(String c_name, int p_price) {
 		this.c_name = c_name;
 		this.p_price = p_price;
 	}
 
-	public ClientOrder(String c_name, int p_price, Date o_date) {
+	public ClientChart(String c_name, int p_price, Date o_date) {
 		this.c_name = c_name;
 		this.p_price = p_price;
 		this.o_date = o_date;

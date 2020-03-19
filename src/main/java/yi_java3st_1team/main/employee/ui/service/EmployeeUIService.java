@@ -68,4 +68,12 @@ public class EmployeeUIService {
 	public Employee lostID(Employee emp) {
 		return empDao.selectEmployeeByID2(emp);
 	}
+	
+	public Employee empMail(Employee emp) {
+		return empDao.selectEmployeeByMail(emp);
+	}
+	
+	public void resetEmpPass(Employee emp) {
+		empDao.updateEmpPassword(emp);
+	}
 }
