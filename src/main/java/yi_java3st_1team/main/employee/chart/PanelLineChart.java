@@ -28,11 +28,11 @@ public class PanelLineChart extends JFXPanel implements InitScene{
 		
 		// X축
 		xAxis = new CategoryAxis();
-		xAxis.setLabel("과목");
+//		xAxis.setLabel("분기");
 		
 	    // Y축	
 		NumberAxis yAxis = new NumberAxis();
-		yAxis.setLabel("점수");
+		yAxis.setLabel("매출액");
 
 		lineChart = new LineChart<>(xAxis, yAxis);
 		lineChart.setPrefSize(1134, 348); //크기조절
@@ -48,24 +48,24 @@ public class PanelLineChart extends JFXPanel implements InitScene{
 	
 	private ObservableList<XYChart.Series<String, Number>> getChartData() {
 		ObservableList<XYChart.Series<String, Number>> list = FXCollections.observableArrayList();
-		Student std01 = new Student("S001", "영업 1팀", 90, 80, 80);
-		Student std02 = new Student("S002", "영업 2팀", 50, 60, 95);
-		Student std03 = new Student("S003", "영업 3팀", 90, 80, 80);
-				
-		list.add(getChartData(std01));
-		list.add(getChartData(std02));
-		list.add(getChartData(std03));
+		Performance per01 = new Performance("S001", "영업 1팀", 153601000, 40752000, 56800000, 180323000);
+		Performance per02 = new Performance("S002", "영업 2팀", 6776000, 29360000, 16050000, 197689000);
+		Performance per03 = new Performance("S003", "영업 3팀", 225932000, 368796000, 50190000, 80317000);
+		
+		list.add(getChartData(per01));
+		list.add(getChartData(per02));
+		list.add(getChartData(per03));
 		
 		return list;
 	}
 	
-	public XYChart.Series<String, Number> getChartData(Student std) {
+	public XYChart.Series<String, Number> getChartData(Performance per) {
 		XYChart.Series<String, Number> dataSeries = new Series<String, Number>();
-		dataSeries.setName(std.getStdName());
-		dataSeries.getData().add(new XYChart.Data<>("3월-첫째주", std.getKorScore()));
-		dataSeries.getData().add(new XYChart.Data<>("3월-둘째주", std.getEngScore()));
-		dataSeries.getData().add(new XYChart.Data<>("3월-셋째주", std.getMathScore()));
-		dataSeries.getData().add(new XYChart.Data<>("3월-넷째주", std.getMathScore()));
+		dataSeries.setName(per.getSaleName());
+		dataSeries.getData().add(new XYChart.Data<>("1주차", per.getSales1()));
+		dataSeries.getData().add(new XYChart.Data<>("2주차", per.getSales2()));
+		dataSeries.getData().add(new XYChart.Data<>("3주차", per.getSales3()));
+		dataSeries.getData().add(new XYChart.Data<>("4주차", per.getSales4()));
 		return dataSeries;
 	}
 	

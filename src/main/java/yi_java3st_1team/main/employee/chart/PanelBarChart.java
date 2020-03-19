@@ -32,10 +32,10 @@ public class PanelBarChart extends JFXPanel implements InitScene{
 		xAxis.setLabel("과목");
 
 		NumberAxis yAxis = new NumberAxis();
-		yAxis.setLabel("점수");
+		yAxis.setLabel("구매액");
 
 		barChart = new BarChart<>(xAxis, yAxis);
-		barChart.setTitle("2020년 3월 주거래 고객사");
+		barChart.setTitle("2020년 10대 주거래 고객사");
 		
 		barChart.setPrefSize(350, 250);
 		barChart.setData(getChartData());
@@ -114,7 +114,7 @@ public class PanelBarChart extends JFXPanel implements InitScene{
 	}
 	
 	private ObservableList<XYChart.Series<String, Number>> getChartData() {
-		ObservableList<XYChart.Series<String, Number>> list = FXCollections.observableArrayList();
+		ObservableList<XYChart.Series<String, Number>> list = FXCollections.observableArrayList();		
 		Student std = new Student("S001", "현빈", 90, 60,70);
 		Student std2 = new Student("S002", "박신혜", 60, 55,88);
 		
