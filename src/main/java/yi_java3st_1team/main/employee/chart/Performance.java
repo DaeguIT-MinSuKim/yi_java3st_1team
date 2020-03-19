@@ -7,6 +7,7 @@ public class Performance {
 	private int sales2;
 	private int sales3;
 	private int sales4;
+	private int sales5;
 	public Performance() {
 		// TODO Auto-generated constructor stub
 	}
@@ -17,13 +18,14 @@ public class Performance {
 		this.sales1 = sales1;
 	}
 
-	public Performance(String saleNo, String saleName, int sales1, int sales2, int sales3, int sales4) {
+	public Performance(String saleNo, String saleName, int sales1, int sales2, int sales3, int sales4, int sales5) {
 		this.saleNo = saleNo;
 		this.saleName = saleName;
 		this.sales1 = sales1;
 		this.sales2 = sales2;
 		this.sales3 = sales3;
 		this.sales4 = sales4;
+		this.sales5 = sales5;
 	}
 
 	public String getSaleNo() {
@@ -69,6 +71,14 @@ public class Performance {
 
 	public void setSales4(int sales4) {
 		this.sales4 = sales4;
+	}
+
+	public int getSales5() {
+		return sales5;
+	}
+
+	public void setSales5(int sales5) {
+		this.sales5 = sales5;
 	}
 
 	

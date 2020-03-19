@@ -50,5 +50,9 @@ public class OrderUIService {
 		orderDao.updateOrderDps0(order);
 		
 	}
+
+	public int selectSalesMoney(String startDate, String endDate, int dept) {
+		return orderDao.selectSalesMoney(startDate, endDate, dept);
+	}
 	
 }

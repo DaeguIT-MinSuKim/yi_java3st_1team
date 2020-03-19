@@ -23,4 +23,6 @@ public interface OrderDao {
 	void updateOrderDps1(Order order);
 
 	void updateOrderDps0(Order order);
+
+	int selectSalesMoney(String startDate, String endDate, int dept);
 }
