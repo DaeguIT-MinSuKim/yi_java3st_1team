@@ -172,11 +172,13 @@ public class EmpMyProfile extends AbsRegiPanel<Employee> implements ActionListen
 		cmbDept = new JComboBox();
 		cmbDept.addItemListener(this);
 		cmbDept.setModel(new DefaultComboBoxModel(new String[] {"기획총무부", "경리회계부", "상품관리부", "영업관리 1부", "영업관리 2부", "영업관리 3부", "쇼핑몰사업부", "해외사업부", "고객만족부"}));
+		cmbDept.setEnabled(false);
 		pInput.add(cmbDept);
 
 		cmbTitle = new JComboBox();
 		cmbTitle.addItemListener(this);		
 		cmbTitle.setModel(new DefaultComboBoxModel(new String[] {"대표이사", "경영관리이사", "부장", "차장", "과장", "대리", "사원", "인턴"}));
+		cmbTitle.setEnabled(false);
 		pInput.add(cmbTitle);
 
 		JPanel pManager = new JPanel();
@@ -190,6 +192,7 @@ public class EmpMyProfile extends AbsRegiPanel<Employee> implements ActionListen
 		rBtnManager1.setForeground(Color.BLACK);
 		rBtnManager1.setFont(new Font("굴림", Font.BOLD, 11));
 		rBtnManager1.setBackground(SystemColor.inactiveCaptionBorder);
+		rBtnManager1.setEnabled(false);
 		pManager.add(rBtnManager1);
 		
 		rBtnManager2 = new JRadioButton("일반관리자");
@@ -198,6 +201,7 @@ public class EmpMyProfile extends AbsRegiPanel<Employee> implements ActionListen
 		rBtnManager2.setForeground(Color.BLACK);
 		rBtnManager2.setFont(new Font("굴림", Font.BOLD, 11));
 		rBtnManager2.setBackground(SystemColor.inactiveCaptionBorder);
+		rBtnManager2.setEnabled(false);
 		pManager.add(rBtnManager2);
 
 		tfId = new JTextField();

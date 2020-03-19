@@ -424,14 +424,15 @@ public class ClientRegiPanel  extends AbsRegiPanel<Client> implements ActionList
 	}
 	
 	private void btnZipActionPerformed(ActionEvent e) {
-		String add1 = zipPanel.getTfAll().getText().trim();
-		String add2 = zipPanel.getTfDetail().getText().trim();
-		if (add2.equals("")) {
-			total = add1;
-		} else {
-			total = add1 + " " + add2;
-		}
-		tfAdd.setText("123");
+		//String add1 = zipPanel.getTfAll().getText().trim();
+		System.out.println(zipPanel.getTfAll().getText());
+//		String add2 = zipPanel.getTfDetail().getText().trim();
+//		if (add2.equals("")) {
+//			total = add1;
+//		} else {
+//			total = add1 + " " + add2;
+//		}
+//		tfAdd.setText(total);
 		zipcodeFrame.dispose();
 		
 	}
