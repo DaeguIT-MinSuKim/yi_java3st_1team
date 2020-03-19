@@ -145,7 +145,22 @@ select * from `order` o where o_dps=0;
 
 select * from `order`;
 
-select p2.p_name ,p2.p_price from product p2 join (select * from `order` o2 join (select * from employee e where e_dept =6) e on o_eno =e.e_no) o3 on p2.p_no = o3.o_pno;
+select sum(p.p_price * o.o_qty )
+  from `order` o 
+  join product p on o.o_pno = p.p_no 
+  join employee e on o.o_eno = e.e_no 
+ where o.o_date 
+between '2020-03-22' and '2020-03-28'
+    and e.e_dept =6;
+
+
+select c.c_name ,p.p_price * o.o_qty
+  from `order` o 
+  join product p on o.o_pno = p.p_no 
+  join employee e on o.o_eno = e.e_no
+  join client c on o.o_cno = c.c_no
+ order by p.p_price * o.o_qty desc;
+
 select * from employee e where e_dept =4;
 
 ALTER TABLE client_delivery AUTO_INCREMENT=1;

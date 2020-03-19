@@ -1,5 +1,11 @@
 package yi_java3st_1team.main.employee.chart;
 
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+import java.util.List;
+import java.util.Locale;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.embed.swing.JFXPanel;
@@ -11,14 +17,19 @@ import javafx.scene.chart.LineChart;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
 import javafx.scene.chart.XYChart.Series;
+import yi_java3st_1team.ordermanagement.ui.service.OrderUIService;
 
 @SuppressWarnings("serial")
 public class PanelLineChart extends JFXPanel implements InitScene{
-	public PanelLineChart() {
-	}
-
 	private LineChart<String, Number> lineChart;
 	private CategoryAxis xAxis;
+	private OrderUIService service;
+	private Calendar calendar;
+	private int year;
+	private int month;
+	
+	public PanelLineChart() {
+	}
 	
 	@Override
 	public Scene createScene() {
@@ -28,16 +39,20 @@ public class PanelLineChart extends JFXPanel implements InitScene{
 		
 		// X축
 		xAxis = new CategoryAxis();
-		xAxis.setLabel("과목");
+//		xAxis.setLabel("분기");
 		
 	    // Y축	
 		NumberAxis yAxis = new NumberAxis();
-		yAxis.setLabel("점수");
+		yAxis.setLabel("매출액");
 
+		calendar = new GregorianCalendar(Locale.KOREA);
+		year = calendar.get(Calendar.YEAR);
+		month = calendar.get(Calendar.MONTH) + 1;
+		
 		lineChart = new LineChart<>(xAxis, yAxis);
 		lineChart.setPrefSize(1134, 348); //크기조절
 		lineChart.setData(getChartData());
-		lineChart.setTitle("2020년 3월 영업관리부 팀별 실적"); //차트제목
+		lineChart.setTitle(year+"년 "+month+"월 영업관리부 팀별 실적"); //차트제목
 		lineChart.setLegendVisible(true);	// 범례 표시 유무
 		lineChart.setLegendSide(Side.BOTTOM);// 범례 위치
 
@@ -47,26 +62,73 @@ public class PanelLineChart extends JFXPanel implements InitScene{
 	}
 	
 	private ObservableList<XYChart.Series<String, Number>> getChartData() {
+		service = new OrderUIService();
+		//월별 각주차별 시작일 종료일 계산
+		String sYear = year+"";
+		String sMonth = month+"";
+		List<DateOfMonth> dateList = getWeekInMonths(sYear, sMonth);
+		int[][] total = new int[3][dateList.size()];
+		int dept = 4;
+		for(int i = 0; i<3; i++) {
+			for (int j = 0; j < dateList.size(); j++) {
+				String startDate = year + "-" + month + "-" + dateList.get(j).getStartDay();
+				String endDate = year + "-" + month + "-" + dateList.get(j).getEndDay();
+				total[i][j] = service.selectSalesMoney(startDate, endDate, dept); // 부서별, 주차 시작일, 종료일별 매출액 계산
+			}
+			dept++;
+		}
+		System.out.println(total[0][4]);
 		ObservableList<XYChart.Series<String, Number>> list = FXCollections.observableArrayList();
-		Student std01 = new Student("S001", "영업 1팀", 90, 80, 80);
-		Student std02 = new Student("S002", "영업 2팀", 50, 60, 95);
-		Student std03 = new Student("S003", "영업 3팀", 90, 80, 80);
-				
-		list.add(getChartData(std01));
-		list.add(getChartData(std02));
-		list.add(getChartData(std03));
+		Performance per01 = new Performance("S001", "영업 1팀", total[0][0], total[0][1], total[0][2], total[0][3], total[0][4]);
+		Performance per02 = new Performance("S002", "영업 2팀", total[1][0], total[1][1], total[1][2], total[1][3], total[1][4]);
+		Performance per03 = new Performance("S003", "영업 3팀", total[2][0], total[2][1], total[2][2], total[2][3], total[2][4]);
+		
+		list.add(getChartData(per01));
+		list.add(getChartData(per02));
+		list.add(getChartData(per03));
 		
 		return list;
 	}
 	
-	public XYChart.Series<String, Number> getChartData(Student std) {
+	public XYChart.Series<String, Number> getChartData(Performance per) {
 		XYChart.Series<String, Number> dataSeries = new Series<String, Number>();
-		dataSeries.setName(std.getStdName());
-		dataSeries.getData().add(new XYChart.Data<>("3월-첫째주", std.getKorScore()));
-		dataSeries.getData().add(new XYChart.Data<>("3월-둘째주", std.getEngScore()));
-		dataSeries.getData().add(new XYChart.Data<>("3월-셋째주", std.getMathScore()));
-		dataSeries.getData().add(new XYChart.Data<>("3월-넷째주", std.getMathScore()));
+		dataSeries.setName(per.getSaleName());
+		dataSeries.getData().add(new XYChart.Data<>("1주차", per.getSales1()));
+		dataSeries.getData().add(new XYChart.Data<>("2주차", per.getSales2()));
+		dataSeries.getData().add(new XYChart.Data<>("3주차", per.getSales3()));
+		dataSeries.getData().add(new XYChart.Data<>("4주차", per.getSales4()));
+		dataSeries.getData().add(new XYChart.Data<>("5주차", per.getSales5()));
 		return dataSeries;
+	}
+	
+	public List<DateOfMonth> getWeekInMonths(String year, String month) {
+
+		Calendar cal = Calendar.getInstance();
+		int intYear = Integer.parseInt(year);
+		int intMonth = Integer.parseInt(month);
+
+		cal.set(Calendar.YEAR, intYear);
+		cal.set(Calendar.MONTH, intMonth - 1);
+		List<DateOfMonth> dateList = new ArrayList<DateOfMonth>();
+		for (int week = 1; week < cal.getMaximum(Calendar.WEEK_OF_MONTH); week++) {
+			cal.set(Calendar.WEEK_OF_MONTH, week);
+
+			cal.set(Calendar.DAY_OF_WEEK, Calendar.SUNDAY);
+			int startDay = cal.get(Calendar.DAY_OF_MONTH);
+
+			cal.set(Calendar.DAY_OF_WEEK, Calendar.SATURDAY);
+			int endDay = cal.get(Calendar.DAY_OF_MONTH);
+
+			if (week == 1 && startDay >= 7) {
+				startDay = 1;
+			}
+
+			if (week == cal.getMaximum(Calendar.WEEK_OF_MONTH) - 1 && endDay <= 7) {
+				endDay = cal.getActualMaximum(Calendar.DAY_OF_MONTH);
+			}
+			dateList.add(new DateOfMonth(startDay, endDay));
+		}
+		return dateList;
 	}
 	
 /*	버튼과 관련있는듯

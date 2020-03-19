@@ -237,4 +237,25 @@ public class OrderDaoImpl implements OrderDao {
 			e.printStackTrace();
 		}
 	}
+
+	@Override
+	public int selectSalesMoney(String startDate, String endDate, int dept) {
+		String sql = "select sum(p.p_price * o.o_qty) from `order` o join product p on o.o_pno = p.p_no "
+				   + "join employee e on o.o_eno = e.e_no where o.o_date between ? and ? and e.e_dept = ?";
+		try (Connection con = MySqlDataSource.getConnection(); PreparedStatement pstmt = con.prepareStatement(sql);) {
+			pstmt.setString(1, startDate);
+			pstmt.setString(2, endDate);
+			pstmt.setInt(3, dept);
+			LogUtil.prnLog(pstmt);
+			try (ResultSet rs = pstmt.executeQuery()) {
+				if (rs.next()) {
+					return rs.getInt("sum(p.p_price * o.o_qty)");
+				}
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return 0;
+	}
 }
