@@ -15,6 +15,7 @@ import javax.swing.border.EmptyBorder;
 
 import yi_java3st_1team.clientmanagement.dto.Client;
 import yi_java3st_1team.clientmanagement.ui.service.ClientUIService;
+import yi_java3st_1team.main.employee.login.MailService;
 import yi_java3st_1team.main.ui.panel.JTextFieldHintUI;
 
 import javax.swing.JTextField;
@@ -22,6 +23,7 @@ import javax.swing.SwingConstants;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.util.Random;
 import java.awt.event.ActionEvent;
 
 @SuppressWarnings("serial")
@@ -33,7 +35,10 @@ public class ClientSearchPanel extends JPanel implements ActionListener, KeyList
 	private JButton btnSearch;
 	private JButton btnPass;
 	private ClientUIService cService;
-	private String clientId;
+	private String cId;
+	private String cMail;
+	private int cNo;
+	private String cName;
 
 	/**
 	 * Create the panel.
@@ -76,7 +81,7 @@ public class ClientSearchPanel extends JPanel implements ActionListener, KeyList
 		panel_1.add(panel_4, BorderLayout.CENTER);
 		panel_4.setLayout(new GridLayout(0, 2, 10, 10));
 		
-		JLabel lblNewLabel_2 = new JLabel("등 록 번 호");
+		JLabel lblNewLabel_2 = new JLabel("고 객 번 호");
 		lblNewLabel_2.setOpaque(true);
 		lblNewLabel_2.setBackground(new Color(255, 255, 240));
 		lblNewLabel_2.setForeground(Color.BLACK);
@@ -91,7 +96,7 @@ public class ClientSearchPanel extends JPanel implements ActionListener, KeyList
 		tfNo.setColumns(10);
 		tfNo.addKeyListener(this);
 		
-		JLabel lblNewLabel_3 = new JLabel("이       름");
+		JLabel lblNewLabel_3 = new JLabel("상  호  명");
 		lblNewLabel_3.setOpaque(true);
 		lblNewLabel_3.setBackground(new Color(255, 255, 240));
 		lblNewLabel_3.setForeground(Color.BLACK);
@@ -175,39 +180,103 @@ public class ClientSearchPanel extends JPanel implements ActionListener, KeyList
 	
 	//조회
 	protected void actionPerformedBtnSearch(ActionEvent e) {
-		/*** 공백이 있을 경우***/
-		if(tfNo.getText().equals("") || tfName.getText().equals("") || tfNo.getText().length() < 5) {
-			JOptionPane.showMessageDialog(null, "고객번호와 상호명을 정확히 입력하셔야 합니다.");
-			tfNo.setText("");
-			tfName.setText("");
+		/*** 공백 & 일치하지 않는경우 & 고객번호 자리수 맞지 않는 경우 ***/
+		if(tfNo.getText().equals("") || tfName.getText().equals("") || tfNo.getText().length() < 5 ){
+			JOptionPane.showMessageDialog(null, "고객번호와 상호명을 정확히 입력해주세요.");
+			clearTf();
 		}
 		
 		/*** 고객번호 ***/
 		String no = tfNo.getText(); // C0001
 		tfNo.setText(no.toUpperCase()); //소문자입력시 대문자로
-		String no1 = no.replaceAll("[^0-9]", ""); // 0001
-		int clientNo = Integer.parseInt(no1); // 1
-		
-		/*** 상호명 ***/
-		String clientName = tfName.getText(); 
-		Client searchId = cService.lostID(new Client(clientNo, clientName));
-		
-		if(searchId !=null) {
-			clientId = searchId.getcId();
-			JOptionPane.showMessageDialog(null, "아이디 : " + clientId);
-			tfId.setText(clientId);
-		}else {
-			JOptionPane.showMessageDialog(null, "고객번호와 상호명이 일치하지 않습니다.");
-			tfNo.setText("");
-			tfName.setText("");
+		try {
+			String no1 = no.replaceAll("[C]", ""); // 0001
+			cNo = Integer.parseInt(no1);
+		}catch(NumberFormatException n) {
+			
 		}
+		
+		cName = tfName.getText(); 
+		Client searchId = cService.lostID(new Client(cNo, cName));
+		
+		/*** 아이디 ***/
+		if(searchId != null) {
+			cId = searchId.getcId();
+			JOptionPane.showMessageDialog(null, "아이디: " + cId);
+			tfId.setText(cId);
+		} else {
+			JOptionPane.showMessageDialog(null, "사원번호와 이름이 일치하지 않습니다.");
+			clearTf();
+		}		
 	}
 	
 	//임시비밀번호전송
 	protected void actionPerformedBtnPass(ActionEvent e) {
+		/*** 공백이 있을 경우 ***/
+		if(tfId.getText().equals("")||tfMail.getText().equals("")) {
+			JOptionPane.showMessageDialog(null, "아이디와 이메일을 정확히 입력하세요.");
+			clearTf();
+		}
 		
+		/*** 메일 ***/
+		cMail = tfMail.getText();
+		Client test = cService.clientMail(new Client(cNo, cName, cId, cMail));
+		
+		String dbMail = test.getcMail();
+		
+		if(dbMail.equals(cMail)) {
+			int acc = cMail.lastIndexOf("@");
+			String mail = dbMail.substring(acc, 14);
+			String email = dbMail;
+			String title = "[Smart 소프트웨어(고객용)] 임시비밀번호 재발급 인증 메일입니다.";
+			
+			/*** 임시비밀번호 생성 ***/
+			Random rnd = new Random();
+			StringBuffer buf = new StringBuffer();
+			for(int i=0;i<10;i++) {
+				 if(rnd.nextBoolean()){
+				        buf.append((char)((int)(rnd.nextInt(26))+97));
+				    }else{
+
+				        buf.append((rnd.nextInt(10)));
+				    }
+				}
+			String cPw = String.format("%s", buf);
+			String content = String.format("임시비밀번호는 %s 입니다. 해당 비밀번호로 로그인 해주세요.", cPw); 
+			
+			Client client = new Client(cNo, cName, cId, cPw, cMail);
+			cService.resetClientPass(client);
+			
+			switch (mail) {
+			case "@naver":
+				// System.out.println("네이버");
+				MailService.naverMailSend(email, title, content);
+				break;
+
+			case "@gmail":
+				// System.out.println("지메일");
+				MailService.gmailSend(email, title, content);
+				break;
+			}
+			JOptionPane.showMessageDialog(null, "해당 주소로 임시비밀번호를 전송하였습니다.");
+			clearTf();
+		} else {
+			JOptionPane.showMessageDialog(null, "가입 당시 등록한 이메일이 아닙니다.");
+			clearTf();
+
+		}
 	}
 	
+	//초기화
+	private void clearTf() {
+		tfNo.setText("C");
+		tfName.setText("");
+		tfId.setText("");
+		tfMail.setText("");
+	}
+	
+
+	/*** 고객번호 자리수 제한 ***/
 	@Override
 	public void keyTyped(KeyEvent e) {
 		if(e.getSource() == tfNo) {
@@ -227,6 +296,7 @@ public class ClientSearchPanel extends JPanel implements ActionListener, KeyList
 		
 	}
 	
+	//글자수 막기
 	private void tfNoKeyLength(KeyEvent e) {
 		if(tfNo.getText().length()>=5) {
 			e.consume();

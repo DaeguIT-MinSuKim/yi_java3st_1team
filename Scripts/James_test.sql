@@ -188,3 +188,7 @@ select e_mail from employee where e_id ='hceo1004';
 -- 83, 테스트1, test0001, Test0001!, pinkmiin@naver.com
 
 update employee set e_pw = '7m967598l4'where e_no = 84 and e_name='테스트2' and e_id = 'test0002'and e_mail='hothihi5@gmail.com';
+
+select c_no, c_name, c_id, c_mail from client where c_id = 'test0003';
+
+update client set c_pw = ? where c_no = ? and c_name = ? and c_id = ? and c_mail = ?

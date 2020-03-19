@@ -191,8 +191,12 @@ public class EmpSearchPanel extends JPanel implements ActionListener, KeyListene
 		/*** 사원번호 ***/
 		String no = tfNo.getText(); // EE0001
 		tfNo.setText(no.toUpperCase()); //소문자입력시 대문자로
-		String no1 = no.replaceAll("[^0-9]", ""); // 0001
-		empNo = Integer.parseInt(no1);// 1
+		try {
+			String no1 = no.replaceAll("[^0-9]", ""); // 0001
+			empNo = Integer.parseInt(no1);// 1
+		}catch(NumberFormatException n) {
+			
+		}
 		
 		/*** 이름 ***/
 		empName = tfName.getText();
@@ -244,7 +248,6 @@ public class EmpSearchPanel extends JPanel implements ActionListener, KeyListene
 			String content = String.format("임시비밀번호는 %s 입니다. 해당 비밀번호로 로그인 해주세요.", empPass); //메일내용(임시비밀번호)
 			
 			Employee emp = new Employee(empNo, empName, empId, empPass, empMail);
-			System.out.println(emp);
 			empService.resetEmpPass(emp);
 			
 			switch (mail) {

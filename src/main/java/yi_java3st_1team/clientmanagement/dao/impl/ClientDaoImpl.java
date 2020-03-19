@@ -418,5 +418,49 @@ public class ClientDaoImpl implements ClientDao {
 		return new Client(cId, cPw);
 	}
 
+	@Override
+	public Client selectClientByMail(Client client) {
+		String sql = "select c_no, c_name, c_id, c_mail from client where c_id = ?";
+		try(Connection con = MySqlDataSource.getConnection();
+				PreparedStatement pstmt = con.prepareStatement(sql);){
+			pstmt.setString(1, client.getcId());
+			LogUtil.prnLog(pstmt);
+			try(ResultSet rs = pstmt.executeQuery()){
+				if(rs.next()) {
+					return getClientMail(rs);
+				}
+			}
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	private Client getClientMail(ResultSet rs) throws SQLException {
+		int cNo = rs.getInt("c_no");
+		String cName = rs.getString("c_name");
+		String cId = rs.getString("c_id");
+		String cMail = rs.getString("c_mail");
+		return new Client(cNo, cName, cId, cMail);
+	}
+
+	@Override
+	public int updateClientPassword(Client client) {
+		String sql = "update client set c_pw = ? where c_no = ? and c_name = ? and c_id = ? and c_mail = ?";
+		try(Connection con = MySqlDataSource.getConnection();
+				PreparedStatement pstmt = con.prepareStatement(sql)){
+			pstmt.setString(1, client.getcPw());
+			pstmt.setInt(2, client.getcNo());
+			pstmt.setString(3, client.getcName());
+			pstmt.setString(4, client.getcId());
+			pstmt.setString(5, client.getcMail());
+			LogUtil.prnLog(pstmt);
+			return pstmt.executeUpdate();
+		}catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return 0;
+	}
+
 
 }
