@@ -77,4 +77,13 @@ public class ClientUIService {
 	public Client lostID(Client client) {
 		return clientDao.selectClientByID2(client);
 	}
+	
+	public Client clientMail(Client client) {
+		return clientDao.selectClientByMail(client);
+	}
+
+	public void resetClientPass(Client client) {
+		clientDao.updateClientPassword(client);
+		
+	}
 }

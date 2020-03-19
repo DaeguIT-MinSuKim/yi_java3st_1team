@@ -55,6 +55,11 @@ public class ClientRegiPanel  extends AbsRegiPanel<Client> implements ActionList
 	private JButton doubleChk1;
 	private JFrame zipcodeFrame;
 	private JButton btnZip;
+	
+	private JFrame idCheck;
+	private JButton chkAdd;
+	private ZipCodePanel zipPanel;
+	private String total;
 
 	
 	public ClientRegiPanel() {
@@ -307,8 +312,7 @@ public class ClientRegiPanel  extends AbsRegiPanel<Client> implements ActionList
 			}
 		}
 	};
-	private JFrame idCheck;
-	private JButton chkAdd;
+
 
 	
 	@Override
@@ -365,8 +369,14 @@ public class ClientRegiPanel  extends AbsRegiPanel<Client> implements ActionList
 			actionPerformedChkAdd(e);
 		}
 		
+		if (e.getSource() == btnZip) {
+			btnZipActionPerformed(e);
+		}
+		
 	}
 	
+
+
 	//등록
 	protected void actionPerformedBtnAdd(ActionEvent e) {
 //		if(tfName.getText().equals("")||tfAdd.getText().equals("")||tfTell.getText().equals("")
@@ -412,6 +422,20 @@ public class ClientRegiPanel  extends AbsRegiPanel<Client> implements ActionList
 			zipcodeFrame.setVisible(true);
 		}
 	}
+	
+	private void btnZipActionPerformed(ActionEvent e) {
+		String add1 = zipPanel.getTfAll().getText().trim();
+		String add2 = zipPanel.getTfDetail().getText().trim();
+		if (add2.equals("")) {
+			total = add1;
+		} else {
+			total = add1 + " " + add2;
+		}
+		tfAdd.setText("123");
+		zipcodeFrame.dispose();
+		
+	}
+
 	
 	//중복확인
 	protected void actionPerformedDoubleCheck(ActionEvent e) {

@@ -28,4 +28,8 @@ public interface ClientDao {
 	String selectClientById(String idChk);
 	
 	Client selectClientByID2(Client client);
+	
+	Client selectClientByMail(Client client);
+	
+	int updateClientPassword(Client client);
 }

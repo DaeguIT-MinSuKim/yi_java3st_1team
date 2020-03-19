@@ -99,6 +99,26 @@ public class Client {
 		this.cNo = cNo;
 		this.cName = cName;
 	}
+	
+	
+
+	public Client(int cNo, String cName, String cId, String cMail) {
+		this.cNo = cNo;
+		this.cName = cName;
+		this.cId = cId;
+		this.cMail = cMail;
+	}
+	
+	
+
+	public Client(int cNo, String cName, String cId, String cPw, String cMail) {
+		super();
+		this.cNo = cNo;
+		this.cName = cName;
+		this.cId = cId;
+		this.cPw = cPw;
+		this.cMail = cMail;
+	}
 
 	public int getcNo() {
 		return cNo;
