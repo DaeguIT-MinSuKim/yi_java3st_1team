@@ -16,7 +16,7 @@ public interface OrderDao {
 
 	List<Order> selectClientOrderList(Client info);
 
-	List<Order> selectOrderListByCal(String startDate, String endDate);
+	List<Order> selectOrderListByCal(String startDate, String endDate, Client info);
 
 	Order selectOrderByNo(int i);
 

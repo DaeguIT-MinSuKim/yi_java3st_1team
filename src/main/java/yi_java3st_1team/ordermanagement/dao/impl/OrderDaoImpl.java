@@ -167,12 +167,14 @@ public class OrderDaoImpl implements OrderDao {
 	}
 
 	@Override
-	public List<Order> selectOrderListByCal(String startDate, String endDate) {
+	public List<Order> selectOrderListByCal(String startDate, String endDate, Client info) {
 		String sql = "select o_no, o_date, o_cno, p.p_name, p.p_cost, p.p_price, o_qty, o_memo, o_dps, o_ok, o_eno from `order` o "
-				+ "left join product p on o.o_pno =p.p_no where DATE(o_date) between ? and ?";
+				   + "left join product p on o.o_pno =p.p_no left join client c on o.o_cno = c.c_no where DATE(o_date) " 
+				   + "between ? and ? and  c.c_no = ?";
 		try (Connection con = MySqlDataSource.getConnection(); PreparedStatement pstmt = con.prepareStatement(sql);) {
 			pstmt.setString(1, startDate);
 			pstmt.setString(2, endDate);
+			pstmt.setInt(3, info.getcNo());
 			ResultSet rs = pstmt.executeQuery();
 			List<Order> list = new ArrayList<Order>();
 			while (rs.next()) {

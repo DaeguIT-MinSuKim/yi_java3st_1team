@@ -9,9 +9,7 @@ import java.awt.SystemColor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
-import java.util.logging.SimpleFormatter;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -24,7 +22,6 @@ import yi_java3st_1team.clientmanagement.dto.Client;
 import yi_java3st_1team.main.employee.ui.ClientMainUIPanel;
 import yi_java3st_1team.ordermanagement.ui.list.ClientOCheckTblPanel;
 import yi_java3st_1team.ordermanagement.ui.service.OrderUIService;
-import javax.swing.JComboBox;
 
 @SuppressWarnings("serial")
 public class ClientOCheckPanel extends JPanel implements ActionListener {
@@ -150,6 +147,6 @@ public class ClientOCheckPanel extends JPanel implements ActionListener {
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		String startDate = sdf.format(dcStart.getDate());
 		String endDate = sdf.format(dcEnd.getDate());
-		pList.loadDate(service.showOrderListByCal(startDate, endDate));
+		pList.loadDate(service.showOrderListByCal(startDate, endDate, info));
 	}
 }
