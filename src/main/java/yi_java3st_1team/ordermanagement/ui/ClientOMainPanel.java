@@ -122,16 +122,16 @@ public class ClientOMainPanel extends JPanel implements ActionListener{
 				+ "</span><br>- 상호명 : <span style='color:green'>" + client.loginCl.getcName() + "</span></html>");
 
 		client.pStop.add(client.pImg01);
-		
-		// 파이차트
-		client.pImg02.remove(client.pLogo);
-		PanelPieChart pie = new PanelPieChart();
-		pie.setPreferredSize(new Dimension(350, 250));
-		client.pImg02.add(pie, BorderLayout.NORTH);
-		Platform.runLater(() -> client.initFX(pie));
-		client.pStop.add(pCLogin, BorderLayout.WEST);
-		client.pStop.revalidate();
-		client.pStop.repaint();
+//		
+//		// 파이차트
+//		client.pImg02.remove(client.pLogo);
+//		PanelPieChart pie = new PanelPieChart();
+//		pie.setPreferredSize(new Dimension(350, 250));
+//		client.pImg02.add(pie, BorderLayout.NORTH);
+//		Platform.runLater(() -> client.initFX(pie));
+//		client.pStop.add(pCLogin, BorderLayout.WEST);
+//		client.pStop.revalidate();
+//		client.pStop.repaint();
 		
 		//로그아웃버튼
 		pCLogin.btnLogout.addActionListener(this);
