@@ -141,9 +141,9 @@ update `order` set o_date='2020-03-14 00:00:00', o_cno=57, o_pno=2, o_qty=5, o_m
 
 select * from client_delivery cd ;
 
-select * from `order` o where o_dps=0;
+select * from `order` o;
 
-select * from `order`;
+select * from client c ;
 
 select sum(p.p_price * o.o_qty )
   from `order` o 
@@ -153,7 +153,23 @@ select sum(p.p_price * o.o_qty )
 between '2020-03-22' and '2020-03-28'
     and e.e_dept =6;
 
+select o_date, o_cno, p.p_name, p.p_cost, p.p_price, o_qty, o_memo, o_dps, o_ok, o_eno from `order` o left join product p on o.o_pno =p.p_no where o_cno = 56;
 
+select o.o_no, p.p_name, (p.p_price * o_qty) from `order` o
+left join product p on o.o_pno =p.p_no 
+left join client c on o.o_cno = c.c_no 
+where DATE(o_date) between '2020-03-01' and '2020-03-31' 
+and c.c_no = 56 
+order by p.p_price * o.o_qty desc limit 5;
+
+select sum(p.p_price * o_qty) from `order` o
+left join product p on o.o_pno =p.p_no 
+left join client c on o.o_cno = c.c_no 
+where DATE(o_date) between '2020-03-01' and '2020-03-31' 
+and c.c_no = 56 
+order by p.p_price * o.o_qty desc limit 5;
+
+   
 select c.c_name ,p.p_price * o.o_qty
   from `order` o 
   join product p on o.o_pno = p.p_no 
