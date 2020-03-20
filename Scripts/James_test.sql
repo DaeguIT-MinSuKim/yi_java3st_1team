@@ -31,8 +31,8 @@ select c_no, c_name, c_ceo, c_address, c_tel, c_id, c_pw, c_mail, c_salesman fro
 select c_no, c_name, c_ceo, c_address, c_tel, c_id, c_pw, c_mail, c_salesman from client where c_no = 1;
 
 insert into client (c_no, c_name, c_ceo, c_address, c_tel, c_id, c_pw, c_mail, c_salesman) value
-	(null, '제임스공부방', '제임스JEONG', '대구광역시 달성군 다사읍 대실역북로', '053-123-4567', 'james', 'qwer1234', 'hothihi5@gmail.com', 46);
-update client set c_name = '제임스최고공부방', c_ceo = '제임스', c_address = '대구광역시 달성군 다사읍 대실역북로', c_tel = '053-123-4567', c_id = 'james', c_pw = 'qwer1234', c_mail = 'hothihi5@gmail.com', c_salesman = 46 where c_no = 56;
+	(null, '테스트', '제임스JEONG', '대구광역시 달성군 다사읍 대실역북로', '053-123-4567', 'test0003', 'Test0003!', 'hothihi5@gmail.com', 46);
+update client set c_name = '테스트', c_ceo = '제임스', c_address = '대구광역시 달성군 다사읍 대실역북로', c_tel = '053-123-4567', c_id = 'test0003', c_pw = 'Test0003!', c_mail = 'hothihi5@gmail.com', c_salesman = 46 where c_no = 56;
 delete from client where c_no = 56;
 
 select d_no, d_name, d_floor from department where d_no = 1;
@@ -196,3 +196,5 @@ update client set c_pw = ? where c_no = ? and c_name = ? and c_id = ? and c_mail
 select * from employee;
 
 select * from inventory_quantity iq ;
+
+select * from client;

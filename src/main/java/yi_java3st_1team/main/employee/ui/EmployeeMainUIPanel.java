@@ -342,7 +342,7 @@ public class EmployeeMainUIPanel extends JPanel implements ActionListener {
 				break;
 		}			
 				
-		pEmpLogin.loginSuc.setText("<html>반갑습니다!<br><span style='color:blue'>"+loginEmp.getEmpName()+" "+loginEmp.getEmpTitle()+"</span>님이<br>로그인 하셨습니다.</html>");
+		pEmpLogin.loginSuc.setText("<html>반갑습니다!<br><span style='color:blue'>"+loginEmp.getEmpName()+" "+"</span>"+loginEmp.getEmpTitle()+"님이<br>로그인 하셨습니다.</html>");
 		String empNum = String.format("EE%04d", loginEmp.getEmpNo());
 		pEmpLogin.empInfo.setText("<html>- 사원번호 : <span style='color:red'>"+empNum+"</span><br>- 부서명 : <span style='color:green'>"+loginEmp.getdNo().getDeptName()+"</span></html>");
 
