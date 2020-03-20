@@ -1,4 +1,4 @@
-package yi_java3st_1team.main.employee.ui;
+package yi_java3st_1team.main.client.ui;
 
 import java.awt.BorderLayout;
 import java.awt.CardLayout;

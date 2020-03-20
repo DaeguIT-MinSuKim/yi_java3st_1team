@@ -192,3 +192,7 @@ update employee set e_pw = '7m967598l4'where e_no = 84 and e_name='테스트2' a
 select c_no, c_name, c_id, c_mail from client where c_id = 'test0003';
 
 update client set c_pw = ? where c_no = ? and c_name = ? and c_id = ? and c_mail = ?
+
+select * from employee;
+
+select * from inventory_quantity iq ;

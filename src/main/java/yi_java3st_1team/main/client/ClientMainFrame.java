@@ -19,7 +19,7 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
-import yi_java3st_1team.main.employee.ui.ClientMainUIPanel;
+import yi_java3st_1team.main.client.ui.ClientMainUIPanel;
 
 @SuppressWarnings("serial")
 public class ClientMainFrame extends JFrame implements ActionListener{
