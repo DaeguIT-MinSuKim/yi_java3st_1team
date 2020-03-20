@@ -34,6 +34,7 @@ import yi_java3st_1team.exception.InvalidCheckException;
 @SuppressWarnings("serial")
 public class SupplyCompanyUIPanel extends JPanel implements ActionListener, ItemListener {
 
+	private SupplyCompanyUIPanel main;
 	private SupplierUIService service;
 	private JLabel lblSC;
 	private JButton btnAdd;
@@ -208,10 +209,13 @@ public class SupplyCompanyUIPanel extends JPanel implements ActionListener, Item
 				pSCRPanel.setItem(upsupp);
 			}
 			if (e.getActionCommand().equals("삭제")) {
-				Supplier delsupp = pSCTblPanel.getSelectedItem();
-				service.removeSupplier(delsupp);
-				pSCTblPanel.removeRow();
-				pSCTblPanel.loadDate(service.showSupplierList());
+				int choice = JOptionPane.showConfirmDialog(main,"정말 삭제하시겠습니까?", "삭제", JOptionPane.YES_NO_OPTION, JOptionPane.INFORMATION_MESSAGE);
+				if(choice == 0) {
+					Supplier delsupp = pSCTblPanel.getSelectedItem();
+					service.removeSupplier(delsupp);
+					pSCTblPanel.removeRow();
+					pSCTblPanel.loadDate(service.showSupplierList());
+				}
 			}
 		}
 	};
@@ -245,7 +249,7 @@ public class SupplyCompanyUIPanel extends JPanel implements ActionListener, Item
 	private void btnUpdateActionPerformed(ActionEvent e) {
 		if (pSCRPanel.getItem().getsName().equals("") || pSCRPanel.getItem().getsAddress().equals("")
 				|| pSCRPanel.getItem().getsBln().equals("") || pSCRPanel.getItem().getsTel().equals("")) {
-			JOptionPane.showMessageDialog(null, "수정할 회사를 오른쪽 리스트에서 선택해주세요.");
+			JOptionPane.showMessageDialog(null, "회사명, 사업자등록번호, 주소, 전화번호는 필수입력사항입니다.");
 			return;
 		} else {
 			Supplier upSupp = pSCRPanel.getItem();
@@ -254,6 +258,7 @@ public class SupplyCompanyUIPanel extends JPanel implements ActionListener, Item
 			pSCTblPanel.loadDate(service.showSupplierList());
 			pSCRPanel.clearTf();
 			pSCRPanel.setNum(service.lastSupplier());
+			JOptionPane.showMessageDialog(null, "공급회사가 수정되었습니다.");
 		}
 	}
 
@@ -270,6 +275,7 @@ public class SupplyCompanyUIPanel extends JPanel implements ActionListener, Item
 				pSCTblPanel.loadDate(service.showSupplierList());
 				pSCRPanel.clearTf();
 				pSCRPanel.setNum(newSupp);
+				JOptionPane.showMessageDialog(null, "공급회사가 등록되었습니다.");
 			}
 		} catch (InvalidCheckException e1) {
 			JOptionPane.showMessageDialog(null, e1.getMessage());

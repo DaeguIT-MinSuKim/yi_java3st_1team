@@ -77,7 +77,6 @@ public class PanelLineChart extends JFXPanel implements InitScene{
 			}
 			dept++;
 		}
-		System.out.println(total[0][4]);
 		ObservableList<XYChart.Series<String, Number>> list = FXCollections.observableArrayList();
 		Performance per01 = new Performance("S001", "영업 1팀", total[0][0], total[0][1], total[0][2], total[0][3], total[0][4]);
 		Performance per02 = new Performance("S002", "영업 2팀", total[1][0], total[1][1], total[1][2], total[1][3], total[1][4]);

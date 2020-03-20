@@ -31,6 +31,7 @@ import yi_java3st_1team.clientmanagement.ui.service.ClientUIService;
 
 @SuppressWarnings("serial")
 public class ClientUIPanel extends JPanel implements ActionListener, ItemListener {
+	private ClientUIPanel main;
 	private CRegisterPanel pCRPanel;
 	private JLabel lblSC;
 	private JButton btnUpdate;
@@ -195,10 +196,13 @@ public class ClientUIPanel extends JPanel implements ActionListener, ItemListene
 				pCRPanel.setItem(upclient);
 			}
 			if (e.getActionCommand().equals("삭제")) {
-				Client delclient = pCTblPanel.getSelectedItem();
-				service.removeClient(delclient);
-				pCTblPanel.removeRow();
-				pCTblPanel.loadDate(service.showClientList());
+				int choice = JOptionPane.showConfirmDialog(main,"정말 삭제하시겠습니까?", "삭제", JOptionPane.YES_NO_OPTION, JOptionPane.INFORMATION_MESSAGE);
+				if(choice == 0) {
+					Client delclient = pCTblPanel.getSelectedItem();
+					service.removeClient(delclient);
+					pCTblPanel.removeRow();
+					pCTblPanel.loadDate(service.showClientList());
+				}
 			}
 		}
 	};
@@ -282,8 +286,9 @@ public class ClientUIPanel extends JPanel implements ActionListener, ItemListene
 	}
 
 	protected void btnUpdateActionPerformed(ActionEvent e) {
-		if (pCRPanel.getName().equals("")) {
-			JOptionPane.showMessageDialog(null, "수정할 고객사를 선택해주세요.");
+		if (pCRPanel.getItem().getcName().equals("")||pCRPanel.getItem().getcCeo().equals("")
+				||pCRPanel.getItem().getcAddress().equals("")||pCRPanel.getItem().getcTel().equals("")) {
+			JOptionPane.showMessageDialog(null, "상호명, 대표명, 주소, 전화번호, 담당직원은 필수 입력사항입니다.");
 			return;
 		} else {
 			Client upClient = pCRPanel.getItem();
