@@ -123,7 +123,7 @@ public class SupplierOrderDaoImpl implements SupplierOrderDao {
 
 	@Override
 	public int selectSupplierOrderPno(Product soPname) {
-		String sql = "select so_pno from supplier_order so left join product p on so.so_pno = p.p_no where p.p_name =?";
+		String sql = "select p.p_no from supplier_order so right join product p on so.so_pno = p.p_no where p.p_name =?";
 		try(Connection con = MySqlDataSource.getConnection();
 				PreparedStatement pstmt = con.prepareStatement(sql);){
 			pstmt.setString(1, soPname.getpName());
@@ -140,7 +140,7 @@ public class SupplierOrderDaoImpl implements SupplierOrderDao {
 	}
 
 	private int getPno(ResultSet rs) throws SQLException {
-		int soPno = rs.getInt("so_pno");
+		int soPno = rs.getInt("p_no");
 		return soPno;
 	}
 

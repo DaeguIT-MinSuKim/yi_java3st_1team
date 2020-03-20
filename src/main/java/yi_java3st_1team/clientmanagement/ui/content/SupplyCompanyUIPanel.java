@@ -305,6 +305,7 @@ public class SupplyCompanyUIPanel extends JPanel implements ActionListener, Item
 				JOptionPane.showMessageDialog(null, "등록 가능한 회사입니다.");
 			} else {
 				JOptionPane.showMessageDialog(null, "이미 존재하는 회사입니다.");
+				pSCRPanel.clearTfScName();
 			}
 		}
 	}

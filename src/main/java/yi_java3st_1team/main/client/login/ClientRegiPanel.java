@@ -206,7 +206,7 @@ public class ClientRegiPanel  extends AbsRegiPanel<Client> implements ActionList
 		passFd1.getDocument().addDocumentListener(docListener);
 		pInput.add(passFd1);
 		
-		JLabel lblPassText = new JLabel("<html>6자리 이상 이어야 하며 영문과 숫자를 반드시 포함해야 합니다<br></html>");
+		JLabel lblPassText = new JLabel("<html>8~10자 이하, 영어 대소문자,숫자,특수문자 (_@!#$%&) 한개이상 포함</html>");
 		lblPassText.setHorizontalAlignment(SwingConstants.CENTER);
 		lblPassText.setForeground(Color.BLUE);
 		lblPassText.setFont(new Font("굴림", Font.PLAIN, 11));
@@ -228,6 +228,7 @@ public class ClientRegiPanel  extends AbsRegiPanel<Client> implements ActionList
 		tfMail.setUI(new JTextFieldHintUI("email@address.com", Color.gray));
 		
 		tfDate = new JDateChooser(new Date(), "yyyy-MM-dd");
+		tfDate.setEnabled(false);
 		pInput.add(tfDate);
 		
 		tfSalesman = new JTextField();
@@ -252,11 +253,11 @@ public class ClientRegiPanel  extends AbsRegiPanel<Client> implements ActionList
 		doubleChk1.setFont(new Font("맑은 고딕", Font.BOLD, 12));
 		doubleChk1.setFocusable(false);
 		doubleChk1.setBackground(new Color(255, 204, 51));
-		doubleChk1.setBounds(12, 28, 60, 39);
+		doubleChk1.setBounds(12, 58, 60, 39);
 		pDoubleCheck.add(doubleChk1);
 		zipCod.setForeground(Color.WHITE);
 		zipCod.setFont(new Font("맑은 고딕", Font.BOLD, 12));
-		zipCod.setBounds(12, 100, 60, 39);
+		zipCod.setBounds(12, 168, 60, 39);
 		pDoubleCheck.add(zipCod);
 		
 		doubleChk2 = new JButton("<html>중복<br>확인</html>");
@@ -265,7 +266,7 @@ public class ClientRegiPanel  extends AbsRegiPanel<Client> implements ActionList
 		doubleChk2.addActionListener(this);
 		doubleChk2.setForeground(Color.WHITE);
 		doubleChk2.setFont(new Font("맑은 고딕", Font.BOLD, 12));
-		doubleChk2.setBounds(12, 168, 60, 39);
+		doubleChk2.setBounds(12, 275, 60, 39);
 		pDoubleCheck.add(doubleChk2);
 		
 		JPanel pBtns = new JPanel();
@@ -413,7 +414,7 @@ public class ClientRegiPanel  extends AbsRegiPanel<Client> implements ActionList
 			btnZip.setBounds(325, 250, 150, 32);
 			zipPanel.add(btnZip);
 			
-			zipcodeFrame.setLocation(900, 195); //위치조정
+			zipcodeFrame.setLocation(975, 70); //위치조정
 			zipcodeFrame.setVisible(true);
 		} else {
 			if(zipcodeFrame.isVisible()) {
@@ -443,7 +444,7 @@ public class ClientRegiPanel  extends AbsRegiPanel<Client> implements ActionList
 		idCheck = new JFrame();
 		idCheck.setTitle("아이디 중복 확인");
 		idCheck.setSize(400,400);
-		idCheck.setLocation(950, 195);
+		idCheck.setLocation(975, 70);
 		idCheck.setResizable(false);
 		ClientIdChaeck cic = new ClientIdChaeck();
 		

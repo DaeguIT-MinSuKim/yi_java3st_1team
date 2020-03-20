@@ -234,6 +234,7 @@ public class OrderUIPanel extends JPanel implements ActionListener {
 					lblSCost.setText("0");
 					lblPPrice.setText("0");
 					pORPanel.tfOQty.setEditable(true);
+					JOptionPane.showMessageDialog(null, "제품주문이 등록되었습니다.");
 				}
 			}
 		} catch (InvalidCheckException e1) {

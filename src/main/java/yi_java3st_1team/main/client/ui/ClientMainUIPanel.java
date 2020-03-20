@@ -1,4 +1,4 @@
-package yi_java3st_1team.main.employee.ui;
+package yi_java3st_1team.main.client.ui;
 
 import java.awt.BorderLayout;
 import java.awt.CardLayout;
@@ -291,7 +291,7 @@ public class ClientMainUIPanel extends JPanel implements ActionListener {
 		pCLogin.loginImg.setIcon(new ImageIcon(
 				"D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\loginMain\\loginCustomer.png"));
 		pCLogin.loginSuc.setText(
-				"<html>반갑습니다!<br><span style='color:blue'>" + loginCl.getcName() + " 고객</span>님이<br>로그인 하셨습니다.</html>");
+				"<html>반갑습니다!<br><span style='color:blue'>" + loginCl.getcName() + "</span>  고객님이<br>로그인 하셨습니다.</html>");
 		String cNum = String.format("C%04d", loginCl.getcNo());
 		pCLogin.empInfo.setText("<html>- 고객번호 : <span style='color:red'>" + cNum
 				+ "</span><br>- 상호명 : <span style='color:green'>" + loginCl.getcName() + "</span></html>");
@@ -372,10 +372,10 @@ public class ClientMainUIPanel extends JPanel implements ActionListener {
 	protected void actionPerformedBtnRegi(ActionEvent e) {
 		regiFrame = new JFrame();
 		regiFrame.setTitle("[고객용] 회원가입");
-		regiFrame.setSize(500, 650);
+		regiFrame.setSize(550, 900);
 		regiFrame.setResizable(false);
 		//regiFrame.setLocationRelativeTo(null); // 화면중앙에 프레임 띄우기
-		regiFrame.setLocation(400, 195);
+		regiFrame.setLocation(400, 70);
 		ClientRegiPanel crp = new ClientRegiPanel();
 		regiFrame.getContentPane().add(crp);
 		regiFrame.setVisible(true);

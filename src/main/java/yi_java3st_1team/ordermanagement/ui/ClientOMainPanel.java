@@ -18,7 +18,7 @@ import javafx.application.Platform;
 import yi_java3st_1team.main.client.ClientMainFrame;
 import yi_java3st_1team.main.client.chart.PanelPieChart;
 import yi_java3st_1team.main.client.logout.ClientLoginOkPanel;
-import yi_java3st_1team.main.employee.ui.ClientMainUIPanel;
+import yi_java3st_1team.main.client.ui.ClientMainUIPanel;
 import yi_java3st_1team.ordermanagement.ui.content.ClientOrderUIPanel;
 import yi_java3st_1team.ordermanagement.ui.panel.ClientOCheckPanel;
 

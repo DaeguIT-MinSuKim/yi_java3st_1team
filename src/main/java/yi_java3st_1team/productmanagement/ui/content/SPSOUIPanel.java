@@ -36,7 +36,7 @@ import yi_java3st_1team.productmanagement.ui.service.SWUIService;
 
 @SuppressWarnings("serial")
 public class SPSOUIPanel extends JPanel implements ActionListener {
-
+	private SPSOUIPanel main;
 	private SPSORegisterPanel pSPSOPanel;
 	private JLabel lblSPSO;
 	private JButton btnSPAdd;
@@ -66,10 +66,10 @@ public class SPSOUIPanel extends JPanel implements ActionListener {
 		sOService = new SOUIService();
 		sWService = new SWUIService();
 		iqService = new IQUIService();
-		initialize();
+		initializeSO();
 	}
 
-	private void initialize() {
+	private void initializeSP() {
 		setPreferredSize(new Dimension(1270, 700));
 		setLayout(new GridLayout(0, 2, 0, 0));
 
@@ -84,7 +84,7 @@ public class SPSOUIPanel extends JPanel implements ActionListener {
 		pRegisterPanel.add(pSPSOPanel);
 		pSPSOPanel.setLayout(null);
 
-		lblSPSO = new JLabel("매입 & 발주 이력 관리");
+		lblSPSO = new JLabel("발주 & 매입 이력 관리");
 		lblSPSO.setForeground(Color.BLACK);
 		lblSPSO.setFont(new Font("휴먼둥근헤드라인", Font.PLAIN, 40));
 		lblSPSO.setHorizontalAlignment(SwingConstants.CENTER);
@@ -164,7 +164,7 @@ public class SPSOUIPanel extends JPanel implements ActionListener {
 		rdbtnSP.setForeground(Color.BLACK);
 		rdbtnSP.setBackground(SystemColor.inactiveCaptionBorder);
 		rdbtnSP.setFont(new Font("휴먼둥근헤드라인", Font.PLAIN, 15));
-		rdbtnSP.setBounds(320, 70, 110, 20);
+		rdbtnSP.setBounds(460, 70, 110, 20);
 		pListPanel.add(rdbtnSP);
 
 		rdbtnSO = new JRadioButton("  발주 이력");
@@ -172,7 +172,7 @@ public class SPSOUIPanel extends JPanel implements ActionListener {
 		rdbtnSO.setForeground(Color.BLACK);
 		rdbtnSO.setBackground(SystemColor.inactiveCaptionBorder);
 		rdbtnSO.setFont(new Font("휴먼둥근헤드라인", Font.PLAIN, 15));
-		rdbtnSO.setBounds(460, 70, 110, 20);
+		rdbtnSO.setBounds(320, 70, 110, 20);
 		pListPanel.add(rdbtnSO);
 
 		ButtonGroup bg = new ButtonGroup();
@@ -184,12 +184,12 @@ public class SPSOUIPanel extends JPanel implements ActionListener {
 		pSPTblPanel = new SPListTblPanel();
 		pSPTblPanel.setBounds(22, 125, 590, 510);
 		pSPTblPanel.loadDate(sPService.showSupplierPurchaseList());
-		pSPTblPanel.setPopupMenu(createPopupMenu1());
+		pSPTblPanel.setPopupMenu(createPopupMenuSP());
 		pListPanel.add(pSPTblPanel);
 
 	}
 
-	private JPopupMenu createPopupMenu1() {
+	private JPopupMenu createPopupMenuSP() {
 		JPopupMenu popMenu = new JPopupMenu();
 
 		JMenuItem updateItem = new JMenuItem("수정");
@@ -212,19 +212,22 @@ public class SPSOUIPanel extends JPanel implements ActionListener {
 				pSPSOPanel.setItem(upSupPur);
 			}
 			if (e.getActionCommand().equals("삭제")) {
-				SupplierPurchase delSupPur = pSPTblPanel.getSelectedItem();
-				int nowQty = iqService.showQty(delSupPur.getSpPno());
-				int totalQty = nowQty - delSupPur.getSpQty();
-				InventoryQuantity upIQ = new InventoryQuantity(delSupPur.getSpPno(), totalQty);
-				iqService.motifyIQ(upIQ);
-				sPService.removeSupplierPurchase(delSupPur);
-				pSPTblPanel.removeRow();
-				pSPTblPanel.loadDate(sPService.showSupplierPurchaseList());
+				int choice = JOptionPane.showConfirmDialog(main,"정말 삭제하시겠습니까?", "삭제", JOptionPane.YES_NO_OPTION, JOptionPane.INFORMATION_MESSAGE);
+				if(choice == 0) {
+					SupplierPurchase delSupPur = pSPTblPanel.getSelectedItem();
+					int nowQty = iqService.showQty(delSupPur.getSpPno());
+					int totalQty = nowQty - delSupPur.getSpQty();
+					InventoryQuantity upIQ = new InventoryQuantity(delSupPur.getSpPno(), totalQty);
+					iqService.motifyIQ(upIQ);
+					sPService.removeSupplierPurchase(delSupPur);
+					pSPTblPanel.removeRow();
+					pSPTblPanel.loadDate(sPService.showSupplierPurchaseList());
+				}	
 			}
 		}
 	};
 
-	private void initializeB() {
+	private void initializeSO() {
 		setPreferredSize(new Dimension(1270, 700));
 		setLayout(new GridLayout(0, 2, 0, 0));
 
@@ -239,7 +242,7 @@ public class SPSOUIPanel extends JPanel implements ActionListener {
 		pRegisterPanel.add(pSPSOPanel);
 		pSPSOPanel.setLayout(null);
 
-		lblSPSO = new JLabel("매입 & 발주 이력 관리");
+		lblSPSO = new JLabel("발주 & 매입 이력 관리");
 		lblSPSO.setForeground(Color.BLACK);
 		lblSPSO.setFont(new Font("휴먼둥근헤드라인", Font.PLAIN, 40));
 		lblSPSO.setHorizontalAlignment(SwingConstants.CENTER);
@@ -318,7 +321,7 @@ public class SPSOUIPanel extends JPanel implements ActionListener {
 		rdbtnSP.setForeground(Color.BLACK);
 		rdbtnSP.setBackground(SystemColor.inactiveCaptionBorder);
 		rdbtnSP.setFont(new Font("휴먼둥근헤드라인", Font.PLAIN, 15));
-		rdbtnSP.setBounds(320, 70, 110, 20);
+		rdbtnSP.setBounds(460, 70, 110, 20);
 		pListPanel.add(rdbtnSP);
 
 		rdbtnSO = new JRadioButton("  발주 이력");
@@ -326,7 +329,7 @@ public class SPSOUIPanel extends JPanel implements ActionListener {
 		rdbtnSO.setForeground(Color.BLACK);
 		rdbtnSO.setBackground(SystemColor.inactiveCaptionBorder);
 		rdbtnSO.setFont(new Font("휴먼둥근헤드라인", Font.PLAIN, 15));
-		rdbtnSO.setBounds(460, 70, 110, 20);
+		rdbtnSO.setBounds(320, 70, 110, 20);
 		pListPanel.add(rdbtnSO);
 
 		ButtonGroup bg = new ButtonGroup();
@@ -338,12 +341,12 @@ public class SPSOUIPanel extends JPanel implements ActionListener {
 		pSOTblPanel = new SOListTblPanel();
 		pSOTblPanel.setBounds(22, 125, 590, 510);
 		pSOTblPanel.loadDate(sOService.showSupplierOrderList());
-		pSOTblPanel.setPopupMenu(createPopupMenu2());
+		pSOTblPanel.setPopupMenu(createPopupMenuSO());
 		pListPanel.add(pSOTblPanel);
 
 	}
 
-	private JPopupMenu createPopupMenu2() {
+	private JPopupMenu createPopupMenuSO() {
 		JPopupMenu popMenu = new JPopupMenu();
 
 		JMenuItem updateItem = new JMenuItem("수정");
@@ -366,18 +369,19 @@ public class SPSOUIPanel extends JPanel implements ActionListener {
 				pSPSOPanel.setSOItem(upSupOr);
 			}
 			if (e.getActionCommand().equals("삭제")) {
-				SupplierOrder delSupOr = pSOTblPanel.getSelectedItem();
-				sOService.removeSupplierOrder(delSupOr);
-				pSOTblPanel.removeRow();
-				pSOTblPanel.loadDate(sOService.showSupplierOrderList());
+				int choice = JOptionPane.showConfirmDialog(main,"정말 삭제하시겠습니까?", "삭제", JOptionPane.YES_NO_OPTION, JOptionPane.INFORMATION_MESSAGE);
+				if(choice == 0) {
+					SupplierOrder delSupOr = pSOTblPanel.getSelectedItem();
+					sOService.removeSupplierOrder(delSupOr);
+					pSOTblPanel.removeRow();
+					pSOTblPanel.loadDate(sOService.showSupplierOrderList());
+				}	
 			}
 		}
 	};
 
 	public void actionPerformed(ActionEvent e) {
-//		if (e.getSource() == btnGoMain) {
-//			actionPerformedBtnGoMain(e);
-//		}
+
 		if (e.getSource() == btnSPUp) {
 			btnSPUpActionPerformed(e);
 		}
@@ -412,7 +416,7 @@ public class SPSOUIPanel extends JPanel implements ActionListener {
 		removeAll();
 		revalidate();
 		repaint();
-		initializeB();
+		initializeSO();
 		revalidate();
 		repaint();
 	}
@@ -421,7 +425,7 @@ public class SPSOUIPanel extends JPanel implements ActionListener {
 		removeAll();
 		revalidate();
 		repaint();
-		initialize();
+		initializeSP();
 		revalidate();
 		repaint();
 	}
@@ -449,13 +453,22 @@ public class SPSOUIPanel extends JPanel implements ActionListener {
 				SupplierPurchase newSupPur = pSPSOPanel.getItem();
 				sPService.addSupplierPurchase(newSupPur);
 				int nowQty = iqService.showQty(newSupPur.getSpPno());
-				int totalQty = nowQty + newSupPur.getSpQty();
-				InventoryQuantity upIQ = new InventoryQuantity(newSupPur.getSpPno(), totalQty);
-				iqService.motifyIQ(upIQ);
+				if(nowQty == 0) {
+					int iqNo = iqService.lastIQ().getIqNo()+1;
+					System.out.println(iqNo);
+					InventoryQuantity newIQ = new InventoryQuantity(iqNo, newSupPur.getSpPno(), newSupPur.getSpQty());
+					iqService.addIQ(newIQ);
+				}else {
+					int totalQty = nowQty + newSupPur.getSpQty();
+					InventoryQuantity upIQ = new InventoryQuantity(newSupPur.getSpPno(), totalQty);
+					iqService.motifyIQ(upIQ);
+				}
+				
 				pSPTblPanel.addItem(newSupPur);
 				pSPTblPanel.loadDate(sPService.showSupplierPurchaseList());
 				pSPSOPanel.clearTf();
 				pSPSOPanel.setNum1(newSupPur);
+				JOptionPane.showMessageDialog(null, "매입이력이 등록되었습니다.");
 			}
 		} catch (InvalidCheckException e1) {
 			JOptionPane.showMessageDialog(null, e1.getMessage());
@@ -482,6 +495,7 @@ public class SPSOUIPanel extends JPanel implements ActionListener {
 				pSOTblPanel.loadDate(sOService.showSupplierOrderList());
 				pSPSOPanel.clearSOTf();
 				pSPSOPanel.setNum2(newSupOr);
+				JOptionPane.showMessageDialog(null, "발주이력이 등록되었습니다.");
 			}
 		} catch (InvalidCheckException e1) {
 			JOptionPane.showMessageDialog(null, e1.getMessage());
@@ -508,8 +522,8 @@ public class SPSOUIPanel extends JPanel implements ActionListener {
 	}
 
 	protected void btnSPUpActionPerformed(ActionEvent e) {
-		if (pSPSOPanel.tfSPSOPName.getText().equals("")) {
-			JOptionPane.showMessageDialog(null, "수정할 품목을 오른쪽 리스트에서 선택해주세요.");
+		if (pSPSOPanel.tfSPSOPName.getText().equals("") || pSPSOPanel.tfSPSOCost.getText().equals("")) {
+			JOptionPane.showMessageDialog(null, "품목명, 공급회사명, 가격, 수량은 필수입력사항입니다.");
 			return;
 		} else {
 			SupplierPurchase upSupPur = pSPSOPanel.getItem();
@@ -518,28 +532,22 @@ public class SPSOUIPanel extends JPanel implements ActionListener {
 			pSPTblPanel.loadDate(sPService.showSupplierPurchaseList());
 			pSPSOPanel.clearTf();
 			pSPSOPanel.setNum1(sPService.lastSP());
+			JOptionPane.showMessageDialog(null, "매입이력이 수정되었습니다.");
 		}
 	}
 
 	protected void btnSOUpActionPerformed(ActionEvent e) {
-		if (pSPSOPanel.tfSPSOPName.getText().equals("")) {
-			JOptionPane.showMessageDialog(null, "수정할 품목을 오른쪽 리스트에서 선택해주세요.");
+		if (pSPSOPanel.tfSPSOPName.getText().equals("") || pSPSOPanel.tfSPSOCost.getText().equals("")) {
+			JOptionPane.showMessageDialog(null, "품목명, 공급회사명, 가격, 수량은 필수입력사항입니다.");
 			return;
-		} else {
+		}else {
 			SupplierOrder upSupOr = pSPSOPanel.getSOItem();
 			sOService.modifySupplierOrder(upSupOr);
 			pSOTblPanel.updateRow(upSupOr, pSOTblPanel.getSelectedRowIdx());
 			pSOTblPanel.loadDate(sOService.showSupplierOrderList());
 			pSPSOPanel.clearSOTf();
 			pSPSOPanel.setNum2(sOService.lastSO());
+			JOptionPane.showMessageDialog(null, "발주이력이 수정되었습니다.");
 		}
 	}
-//	protected void actionPerformedBtnGoMain(ActionEvent e) {
-//		   removeAll();
-//		   revalidate();
-//		   repaint();
-//		   
-//		   emp = new EmployeeMainUIPanel();
-//		   add(emp);
-//	}
 }

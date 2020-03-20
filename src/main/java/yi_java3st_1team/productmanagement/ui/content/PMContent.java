@@ -48,7 +48,7 @@ public class PMContent extends JPanel {
 		pSCSO = new JPanel();
 		pSCSO.setBounds(0, 0, 100, 50);
 		pSCSO.setBackground(SystemColor.inactiveCaptionBorder);
-		tpClientManagement.addTab("매입 / 발주", null, pSCSO, null);
+		tpClientManagement.addTab("발주 / 매입", null, pSCSO, null);
 		pSCSO.setLayout(new BorderLayout(0, 0));
 		
 		pSCSOUIPanel = new SPSOUIPanel();

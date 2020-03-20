@@ -2,6 +2,7 @@ package yi_java3st_1team.ordermanagement.dto;
 
 import yi_java3st_1team.clientmanagement.dto.Supplier;
 import yi_java3st_1team.productmanagement.dto.Product;
+import yi_java3st_1team.productmanagement.dto.SupplierPurchase;
 
 public class InventoryQuantity {
 	private Product iqPname;
@@ -11,6 +12,7 @@ public class InventoryQuantity {
 	private int iqNo;
 	private Product iqPno;
 	private int iqQty;
+	private SupplierPurchase spPno;
 
 	public InventoryQuantity() {
 		// TODO Auto-generated constructor stub
@@ -18,6 +20,12 @@ public class InventoryQuantity {
 
 	public InventoryQuantity(int iqNo) {
 		this.iqNo = iqNo;
+	}
+
+	public InventoryQuantity(int iqNo,  SupplierPurchase spPno, int iqQty) {
+		this.iqNo = iqNo;
+		this.iqQty = iqQty;
+		this.spPno = spPno;
 	}
 
 	public InventoryQuantity(int iqNo, Product iqPno, int iqQty) {
@@ -104,6 +112,14 @@ public class InventoryQuantity {
 
 	public void setIqQty(int iqQty) {
 		this.iqQty = iqQty;
+	}
+
+	public SupplierPurchase getSpPno() {
+		return spPno;
+	}
+
+	public void setSpPno(SupplierPurchase spPno) {
+		this.spPno = spPno;
 	}
 
 	@Override

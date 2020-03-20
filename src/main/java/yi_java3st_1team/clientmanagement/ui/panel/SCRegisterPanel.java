@@ -158,7 +158,6 @@ public class SCRegisterPanel extends AbsItemPanel<Supplier> {
 		tfSCAddress.setText("");
 		tfSCTel.setText("");
 		tfSCFax.setText("");
-
 	}
 
 	@Override
@@ -167,5 +166,9 @@ public class SCRegisterPanel extends AbsItemPanel<Supplier> {
 				|| tfSCAddress.getText().equals("") || tfSCTel.getText().equals("") || tfSCFax.getText().equals("")) {
 			throw new InvalidCheckException();
 		}
+	}
+	
+	public void clearTfScName() {
+		tfSCName.setText("");
 	}
 }

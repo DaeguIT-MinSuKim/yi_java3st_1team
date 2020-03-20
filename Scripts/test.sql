@@ -187,3 +187,11 @@ select cd_sno from client_delivery cd where cd_sno = 50;
 
 select s_no, s_name, s_bln, s_address, s_tel, s_fax from supplier where s_name like '마%';
 select s_no, s_name, s_bln, s_address, s_tel, s_fax from supplier where s_name like '마이크로%';
+
+select s_no, s_name, s_bln, s_address, s_tel, s_fax from supplier where s_name='소니';
+
+select * from supplier_order so right join product p on so.so_pno = p.p_no;
+
+select p.p_no from supplier_order so right join product p on so.so_pno = p.p_no where p.p_name ='테스트1';
+select * from supplier_purchase sp ;
+select * from inventory_quantity iq  ;

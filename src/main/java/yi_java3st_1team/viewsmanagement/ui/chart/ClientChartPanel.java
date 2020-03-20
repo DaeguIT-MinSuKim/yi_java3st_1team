@@ -31,7 +31,6 @@ public class ClientChartPanel extends JFXPanel implements InitScene {
 	private int month;
 	
 	public ClientChartPanel() {
-		service = new ClientChartUIService();
 	}
 	
 	public Scene createScene() {
@@ -68,7 +67,7 @@ public class ClientChartPanel extends JFXPanel implements InitScene {
 		return dataSeries;
 	}
 
-	private ObservableList<Series<String, Number>> getChartData() {
+	private ObservableList<XYChart.Series<String, Number>> getChartData() {
 		service = new ClientChartUIService();
 		
 		String sYear = year + "";
@@ -80,7 +79,7 @@ public class ClientChartPanel extends JFXPanel implements InitScene {
 			for(int j=0; j<dateList.size(); j++) {
 				String startDate = year + "-" + month + "-" + dateList.get(j).getStartDay();
 				String endDate = year + "-" + month + "-" + dateList.get(j).getEndDay();
-				total[i][j] = service.procedureClientChart(cChart);
+				total[i][j] = service.;
 			}
 			dept++;
 		}

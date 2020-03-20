@@ -15,8 +15,8 @@ import javafx.scene.Scene;
 import javafx.scene.chart.PieChart;
 import javafx.scene.chart.PieChart.Data;
 import yi_java3st_1team.clientmanagement.dto.Client;
+import yi_java3st_1team.main.client.ui.ClientMainUIPanel;
 import yi_java3st_1team.main.employee.chart.InitScene;
-import yi_java3st_1team.main.employee.ui.ClientMainUIPanel;
 import yi_java3st_1team.ordermanagement.ui.service.OrderUIService;
 
 @SuppressWarnings("serial")

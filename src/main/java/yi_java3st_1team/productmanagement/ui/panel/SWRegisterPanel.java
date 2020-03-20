@@ -26,6 +26,7 @@ import com.toedter.calendar.JDateChooser;
 
 import yi_java3st_1team.clientmanagement.dto.Supplier;
 import yi_java3st_1team.clientmanagement.ui.panel.AbsItemPanel;
+import yi_java3st_1team.clientmanagement.ui.service.SupplierUIService;
 import yi_java3st_1team.exception.InvalidCheckException;
 import yi_java3st_1team.productmanagement.dto.Category;
 import yi_java3st_1team.productmanagement.dto.Product;
@@ -53,9 +54,11 @@ public class SWRegisterPanel extends AbsItemPanel<Product> implements ItemListen
 	private SWUIService service;
 	private String pPicPath;
 	private byte[] pPics;
+	private SupplierUIService supService;
 	
 	public SWRegisterPanel() {
 		service = new SWUIService();
+		supService = new SupplierUIService();
 		initialize();
 	}
 	
@@ -230,7 +233,9 @@ public class SWRegisterPanel extends AbsItemPanel<Product> implements ItemListen
 		String pName = tfPName.getText().trim();
 		int pCost = Integer.parseInt(tfPCost.getText().trim());
 		int pPrice = Integer.parseInt(tfPPrice.getText().trim());
-		Supplier pSno = new Supplier(tfPSName.getText().trim(), null, null);
+		Supplier supplier = new Supplier(tfPSName.getText().trim(), null, null);
+		Supplier pSno = supService.overlapSupplier(supplier);
+		System.out.println(pSno.toString());
 		int pQty = Integer.parseInt(tfPQty.getText().trim());
 		Date pDate = tfPDate.getDate();
 		if(tfImgSearch.getText().trim().equals("")) {
@@ -290,7 +295,11 @@ public class SWRegisterPanel extends AbsItemPanel<Product> implements ItemListen
 				||tfPPrice.getText().equals("")||tfPSName.getText().equals("")||tfPQty.getText().equals("")) {
 			throw new InvalidCheckException();
 		}
-		
 	}
-	
+	public void clearTfPName() {
+		tfPName.setText("");
+	}
+	public void clearTfPSName() {
+		tfPSName.setText("");
+	}
 }

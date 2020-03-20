@@ -14,6 +14,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPopupMenu;
 import javax.swing.SwingConstants;
@@ -26,7 +27,7 @@ import yi_java3st_1team.productmanagement.ui.service.CDUIService;
 
 @SuppressWarnings("serial")
 public class OCheckPanel extends JPanel implements ActionListener {
-
+	private OCheckPanel main;
 	private JLabel lblO;
 	private JPanel pList;
 	public JButton btnGoMain;
@@ -132,18 +133,21 @@ public class OCheckPanel extends JPanel implements ActionListener {
 			}
 						
 			if(e.getActionCommand().equals("주문취소")) {
-				Order delOrder = pOCheckList.getSelectedItem();
-				ClientDelivery cd = new ClientDelivery(delOrder, new Date());
-            	cdService.removeClientDeliveryByOno(cd);
-				odService.removeOrder(delOrder);
-				pOCheckList.loadDateCheck(odService.showOrderList());
-				
+				int choice = JOptionPane.showConfirmDialog(main,"정말 취소하시겠습니까?", "주문취소", JOptionPane.YES_NO_OPTION, JOptionPane.INFORMATION_MESSAGE);
+				if(choice == 0) {
+					Order delOrder = pOCheckList.getSelectedItem();
+					ClientDelivery cd = new ClientDelivery(delOrder, new Date());
+	            	cdService.removeClientDeliveryByOno(cd);
+					odService.removeOrder(delOrder);
+					pOCheckList.loadDateCheck(odService.showOrderList());
+				}
 			}			
 		}
 		protected void btnModifyActionPerformed(ActionEvent e) {
 			odService.modifyOrder(om.getItem());
 			pOCheckList.loadDateCheck(odService.showOrderList());
 			modify.dispose();
+			JOptionPane.showMessageDialog(null, "제품주문이 수정되었습니다.");
 		}
 	};
 
@@ -174,5 +178,6 @@ public class OCheckPanel extends JPanel implements ActionListener {
             }
 		}
 		pOCheckList.loadDateCheck(odService.showOrderList());
+		JOptionPane.showMessageDialog(null, "입금확인 처리가 완료되었습니다.");
 	}
 }

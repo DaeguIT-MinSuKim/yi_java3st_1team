@@ -39,6 +39,7 @@ import yi_java3st_1team.productmanagement.ui.service.SWUIService;
 @SuppressWarnings("serial")
 public class SWUIPanel extends JPanel implements ActionListener, ItemListener {
 	
+	private SWUIPanel main;
 	private JTextField tfSerch;
 	private SWUIService service;
 	private SupplierUIService serviceSupplier;
@@ -223,12 +224,14 @@ public class SWUIPanel extends JPanel implements ActionListener, ItemListener {
 				pSWRPanel.setItem(upProduct);
 			}
 			if(e.getActionCommand().equals("삭제")) {
-				Product delProduct = pSWTblPanel.getSelectedItem();
-				service.removeProduct(delProduct);
-				pSWTblPanel.removeRow();
-				pSWTblPanel.loadDate(service.showProductList());
+				int choice = JOptionPane.showConfirmDialog(main,"정말 삭제하시겠습니까?", "삭제", JOptionPane.YES_NO_OPTION, JOptionPane.INFORMATION_MESSAGE);
+				if(choice == 0) {
+					Product delProduct = pSWTblPanel.getSelectedItem();
+					service.removeProduct(delProduct);
+					pSWTblPanel.removeRow();
+					pSWTblPanel.loadDate(service.showProductList());
+				}
 			}
-			
 		}
 	};
 
@@ -266,6 +269,7 @@ public class SWUIPanel extends JPanel implements ActionListener, ItemListener {
 				JOptionPane.showMessageDialog(null, "등록 가능한 상품명입니다.");
 			}else {
 				JOptionPane.showMessageDialog(null, "이미 존재하는 상품명입니다.");
+				pSWRPanel.clearTfPName();
 			}
 		}
 	}
@@ -283,6 +287,7 @@ public class SWUIPanel extends JPanel implements ActionListener, ItemListener {
 			Supplier checkSupp = serviceSupplier.overlapSupplier(supplier);
 			if(checkSupp == null) {
 				JOptionPane.showMessageDialog(null, "공급회사 등록이 필요합니다.");
+				pSWRPanel.clearTf();
 			}else {
 				JOptionPane.showMessageDialog(null, "등록된 공급회사입니다.");
 			}
@@ -311,16 +316,13 @@ public class SWUIPanel extends JPanel implements ActionListener, ItemListener {
 				JOptionPane.showMessageDialog(null, "품목명, 공급가격, 판매가격, 최초재고수량, 최초등록일자는 필수입력사항입니다.");
 				return;
 			}else {
-				//최초 재고수량이 제고테이블에 insert 되어야함.
 				Product newProduct = pSWRPanel.getItem();
 				service.addProduct(newProduct); 
-				int iqNo = iqService.lastIQ().getIqNo()+1;
-				InventoryQuantity newIQ = new InventoryQuantity(iqNo, newProduct, newProduct.getpQty());
-				iqService.addIQ(newIQ);
 				pSWTblPanel.addItem(newProduct);
 				pSWTblPanel.loadDate(service.showProductList());
 				pSWRPanel.clearTf();
 				pSWRPanel.setNum(newProduct);
+				JOptionPane.showMessageDialog(null, "제품이 등록되었습니다.");
 			}
 		} catch (InvalidCheckException e1) {
 			JOptionPane.showMessageDialog(null, e1.getMessage());
@@ -335,8 +337,12 @@ public class SWUIPanel extends JPanel implements ActionListener, ItemListener {
 		}
 	}
 	protected void btnUpdateActionPerformed(ActionEvent e) {
-		if(pSWRPanel.tfPName.getText().equals("")) {
-			JOptionPane.showMessageDialog(null, "수정할 품목을 오른쪽 리스트에서 선택해주세요.");
+		if(pSWRPanel.tfPName.getText().equals("") 
+				|| pSWRPanel.tfPCost.getText().equals("") 
+				|| pSWRPanel.tfPPrice.getText().equals("")
+				|| pSWRPanel.tfPQty.getText().equals("")
+				|| pSWRPanel.tfPDate.getDate()==null) {
+			JOptionPane.showMessageDialog(null, "품목명, 공급가격, 판매가격, 최초재고수량, 최초등록일자는 필수입력사항입니다.");
 			return;
 		}else {
 			Product upProduct = pSWRPanel.getItem();
@@ -345,6 +351,7 @@ public class SWUIPanel extends JPanel implements ActionListener, ItemListener {
 			pSWTblPanel.loadDate(service.showProductList());
 			pSWRPanel.clearTf();
 			pSWRPanel.setNum(service.lastProduct());
+			JOptionPane.showMessageDialog(null, "제품이 수정되었습니다.");
 		}
 	}
 	public void itemStateChanged(ItemEvent e) {

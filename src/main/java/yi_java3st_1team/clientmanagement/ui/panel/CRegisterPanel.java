@@ -173,6 +173,5 @@ public class CRegisterPanel extends AbsItemPanel<Client> {
 				|| tfCAddress.getText().equals("") || tfCTel.getText().equals("") || tfStaff.getText().equals("")) {
 			throw new InvalidCheckException();
 		}
-
 	}
 }

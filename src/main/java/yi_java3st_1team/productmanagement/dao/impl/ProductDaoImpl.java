@@ -129,7 +129,7 @@ public class ProductDaoImpl implements ProductDao {
 			pstmt.setString(3, product.getpName());
 			pstmt.setInt(4, product.getpCost());
 			pstmt.setInt(5, product.getpPrice());
-			pstmt.setInt(6, product.getpSno().getsNo()+1);
+			pstmt.setInt(6, product.getpSno().getsNo());
 			pstmt.setInt(7, product.getpQty());
 			pstmt.setTimestamp(8, new Timestamp(product.getpDate().getTime()));
 			LogUtil.prnLog(pstmt);
@@ -156,7 +156,7 @@ public class ProductDaoImpl implements ProductDao {
 			pstmt.setString(2, product.getpName());
 			pstmt.setInt(3, product.getpCost());
 			pstmt.setInt(4, product.getpPrice());
-			pstmt.setInt(5, product.getpSno().getsNo()+1);
+			pstmt.setInt(5, product.getpSno().getsNo());
 			pstmt.setInt(6, product.getpQty());
 			pstmt.setTimestamp(7, new Timestamp(product.getpDate().getTime()));
 			int argCnt = 8;
