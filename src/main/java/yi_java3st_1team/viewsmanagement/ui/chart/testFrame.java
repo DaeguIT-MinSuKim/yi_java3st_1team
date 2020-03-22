@@ -14,7 +14,7 @@ import javafx.scene.Scene;
 public class testFrame extends JFrame {
 
 	private JPanel contentPane;
-	private ClientChartPanel pBarChart;
+	private EmployeeChartPanel pBarChart;
 
 	/**
 	 * Launch the application.
@@ -47,7 +47,7 @@ public class testFrame extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(new BoxLayout(contentPane, BoxLayout.Y_AXIS));
 		
-		pBarChart = new ClientChartPanel();
+		pBarChart = new EmployeeChartPanel();
 		contentPane.add(pBarChart);
 		
 		Platform.runLater(() -> initFX(pBarChart));

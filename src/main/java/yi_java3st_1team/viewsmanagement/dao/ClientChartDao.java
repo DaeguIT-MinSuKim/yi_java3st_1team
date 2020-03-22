@@ -7,9 +7,9 @@ import yi_java3st_1team.viewsmanagement.dto.ClientChart;
 import yi_java3st_1team.viewsmanagement.dto.ClientSale;
 
 public interface ClientChartDao {
-//	List<ClientChart> procedureClientChart(ClientChart cChart) throws SQLException;
+	List<ClientChart> procedureClientChart(ClientChart cChart) throws SQLException;
 	
-//	List<ClientChart> selectClientChartTest();
+	List<ClientChart> selectClientChartTest();
 
-	int selectClientChartTest(String startDate, String endDate);
+//	int selectClientChartTest(String startDate, String endDate);
 }

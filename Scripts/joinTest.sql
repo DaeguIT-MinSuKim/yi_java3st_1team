@@ -1,4 +1,7 @@
 select user(), database();
+select * from employee e ;
+select o_eno, count(o_eno) from `order`
+group by o_eno ;
 
 -- 고객별 판매현황 조회
 select	c.c_name as 고객상호명,

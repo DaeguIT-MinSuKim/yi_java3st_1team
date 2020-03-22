@@ -56,7 +56,7 @@ public class PanelPieChart extends JFXPanel implements InitScene{
 		pieChart.setTitle(year+"년"+month+"월 주요 주문 상품");
 		pieChart.setLegendVisible(true);	// 범례 표시 유무
 		pieChart.setLegendSide(Side.BOTTOM);// 범례 위치
-		pieChart.setLabelLineLength(50);	// 원의 둘레 가장자리와 라벨간의 거리 지정
+		pieChart.setLabelLineLength(10);	// 원의 둘레 가장자리와 라벨간의 거리 지정
 		pieChart.setClockwise(true); 		// 시계방향 배치여부
 		pieChart.setLabelsVisible(true);	// 레이블 표시여부
 		

@@ -17,15 +17,21 @@ import javax.swing.SpinnerNumberModel;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
+import javafx.application.Platform;
+import javafx.embed.swing.JFXPanel;
+import javafx.scene.Scene;
 import yi_java3st_1team.viewsmanagement.ui.chart.EmployeeChartPanel;
+import yi_java3st_1team.viewsmanagement.ui.chart.InitScene;
 import yi_java3st_1team.viewsmanagement.ui.content.ClientPanel;
 import yi_java3st_1team.viewsmanagement.ui.content.EmployeePanel;
 import java.awt.BorderLayout;
 import java.awt.Color;
+import yi_java3st_1team.viewsmanagement.ui.chart.ClientChartPanel;
 
 @SuppressWarnings("serial")
 public class GraphUIPanel extends JPanel {
 
+	private ClientChartPanel pClientGraph;
 	/**
 	 * Create the panel.
 	 */
@@ -84,9 +90,11 @@ public class GraphUIPanel extends JPanel {
 		pLChart.add(pLLChart);
 		pLLChart.setLayout(new GridLayout(0, 1, 0, 0));
 		
-		JPanel pClientGraph = new JPanel();
+		pClientGraph = new ClientChartPanel();
 		pClientGraph.setBackground(SystemColor.inactiveCaptionBorder);
 		pLLChart.add(pClientGraph);
+		
+		Platform.runLater(() -> initFX(pClientGraph));
 		
 		JPanel pRight = new JPanel();
 		pRight.setBounds(750, 0, 750, 900);
@@ -138,6 +146,15 @@ public class GraphUIPanel extends JPanel {
 		EmployeeChartPanel pEmpGraph = new EmployeeChartPanel();
 		pEmpGraph.setBackground(SystemColor.inactiveCaptionBorder);
 		pRRChart.add(pEmpGraph);
+		
+		Platform.runLater(() -> initFX(pEmpGraph));
+	}
+	
+	public void initFX(InitScene fxPanel) {
+		Scene scene = fxPanel.createScene();
+		JFXPanel panel = (JFXPanel) fxPanel;
+		panel.setScene(scene);
 	}
 
+	
 }
