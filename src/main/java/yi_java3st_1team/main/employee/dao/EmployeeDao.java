@@ -27,5 +27,7 @@ public interface EmployeeDao {
 	Employee selectEmployeeByMail(Employee emp);
 	
 	int updateEmpPassword(Employee emp);
+	
+	String selectEmployeeName(String name);
 
 }

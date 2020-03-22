@@ -17,8 +17,8 @@ public class Employee {
 		this.empNo = empNo;
 	}
 
+ 
 	
-
 	public Employee(int empNo, String empName, String empId, String empPass, String empMail) {
 		this.empNo = empNo;
 		this.empName = empName;
@@ -79,6 +79,13 @@ public class Employee {
 		this.empMail = empMail;
 	}
 
+
+	
+	public Employee(int empNo, Department dNo, String empTitle) {
+		this.empNo = empNo;
+		this.dNo = dNo;
+		this.empTitle = empTitle;
+	}
 
 	public Employee(String empId) {
 		this.empId = empId;

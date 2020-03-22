@@ -191,6 +191,8 @@ update employee set e_pw = '7m967598l4'where e_no = 84 and e_name='테스트2' a
 
 select c_no, c_name, c_id, c_mail from client where c_id = 'test0003';
 
+select e_no, e_title, e_dept from employee where e_name = '양사기';
+
 update client set c_pw = ? where c_no = ? and c_name = ? and c_id = ? and c_mail = ?
 
 select * from employee;
@@ -198,3 +200,5 @@ select * from employee;
 select * from inventory_quantity iq ;
 
 select * from client;
+
+select e.e_no, e.e_title, e.e_dept, d.d_no, d.d_name, d.d_floor from employee e left join department d on e.e_dept = d.d_no where e.e_name = '양사기';

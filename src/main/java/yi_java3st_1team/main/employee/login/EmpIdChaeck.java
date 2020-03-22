@@ -43,7 +43,7 @@ public class EmpIdChaeck extends JPanel implements ActionListener {
 		setSize(new Dimension(400,400));
 		setLayout(new BorderLayout(0, 0));
 		
-		JLabel label = new JLabel(">> 사용할 아이디를 입력하세요");
+		JLabel label = new JLabel("<html>>> 사용할 <span style='color:red'>아이디</span>를 입력하세요</html>");
 		label.setPreferredSize(new Dimension(60, 90));
 		label.setOpaque(true);
 		label.setHorizontalAlignment(SwingConstants.CENTER);
@@ -84,7 +84,6 @@ public class EmpIdChaeck extends JPanel implements ActionListener {
 		lblIdEquals = new JLabel();
 		lblIdEquals.setFont(new Font("굴림", Font.BOLD, 17));
 		lblIdEquals.setHorizontalAlignment(SwingConstants.CENTER);
-		lblIdEquals.setForeground(Color.RED);
 		lblIdEquals.setBounds(12, 140, 376, 48);
 		pSearch.add(lblIdEquals);
 		
@@ -114,10 +113,12 @@ public class EmpIdChaeck extends JPanel implements ActionListener {
 		Employee searchId = empService.Idcheck(newId);
 		if(result==true && searchId==null) {
 			lblIdEquals.setText("아이디 사용 가능");
+			lblIdEquals.setForeground(new Color(0, 102, 0));
 			tfSearch.setText(idChk);
 			idOk = tfSearch.getText();
 		}else {
 			lblIdEquals.setText("아이디 사용 불가");
+			lblIdEquals.setForeground(Color.RED);
 			tfSearch.setText("");
 		}
 		
