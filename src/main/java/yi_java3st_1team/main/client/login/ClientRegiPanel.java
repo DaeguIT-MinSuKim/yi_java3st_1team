@@ -407,7 +407,7 @@ public class ClientRegiPanel  extends AbsRegiPanel<Client> implements ActionList
 
 	//등록
 	protected void actionPerformedBtnAdd(ActionEvent e) {
-		if(tfName.getText().equals("")||tfAdd.getText().equals("")||tfTell.getText().equals("")||tfId.getText().equals("")||tfSalesman.getText().equals("")||lblPassword.getText().equals("")||lblPassword.getText().equals("비밀번호 사용 불가")) {
+		if(tfName.getText().equals("")||tfAdd.getText().equals("")||tfTell.getText().equals("")||tfId.getText().equals("")||tfMail.getText().equals("")||lblPassword.getText().equals("")||lblPassword.getText().equals("비밀번호 사용 불가")) {
 			JOptionPane.showMessageDialog(null, "등록 양식에 맞춰 정확하게 입력하세요.");
 		}else {
 			Client newClient = getItem();
