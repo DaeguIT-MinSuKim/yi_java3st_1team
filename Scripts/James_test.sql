@@ -201,4 +201,6 @@ select * from inventory_quantity iq ;
 
 select * from client;
 
+desc client;
+
 select e.e_no, e.e_title, e.e_dept, d.d_no, d.d_name, d.d_floor from employee e left join department d on e.e_dept = d.d_no where e.e_name = '양사기';

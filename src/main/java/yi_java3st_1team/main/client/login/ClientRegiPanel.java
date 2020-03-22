@@ -407,16 +407,17 @@ public class ClientRegiPanel  extends AbsRegiPanel<Client> implements ActionList
 
 	//등록
 	protected void actionPerformedBtnAdd(ActionEvent e) {
-//		if(tfName.getText().equals("")||tfAdd.getText().equals("")||tfTell.getText().equals("")
-//				||tfId.getText().equals("")||passFd1.getPassword().equals("")||lblPassword.setText("비밀번호 사용 불가")||
-//				tfMail.getText().equals("")) {
-//			
-//		}
-		Client newClient = getItem();
-		cService.addClient(newClient);
-		clearTf();
-		setCNo(cService.lastClient());
-		JOptionPane.showMessageDialog(null, "등록되었습니다.");
+		if(tfName.getText().equals("")||tfAdd.getText().equals("")||tfTell.getText().equals("")||tfId.getText().equals("")||tfSalesman.getText().equals("")||lblPassword.getText().equals("")||lblPassword.getText().equals("비밀번호 사용 불가")) {
+			JOptionPane.showMessageDialog(null, "등록 양식에 맞춰 정확하게 입력하세요.");
+		}else {
+			Client newClient = getItem();
+			cService.addClient(newClient);
+			clearTf();
+			setCNo(cService.lastClient());
+			JOptionPane.showMessageDialog(null, "등록되었습니다.");
+		}
+			
+
 	}
 	
 	//취소(초기화)
@@ -444,7 +445,7 @@ public class ClientRegiPanel  extends AbsRegiPanel<Client> implements ActionList
 		zipcodeFrame.setVisible(true);
 	}
 	
-	//등록버튼
+	//주소-등록버튼
 	private void btnZipActionPerformed(ActionEvent e) {
 		String add1 = ZipCodePanel.juso;
 		String add2 = ZipCodePanel.tfDetail.getText();
