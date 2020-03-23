@@ -374,7 +374,6 @@ public class ClientMainUIPanel extends JPanel implements ActionListener {
 		regiFrame.setTitle("[고객용] 회원가입");
 		regiFrame.setSize(550, 900);
 		regiFrame.setResizable(false);
-		//regiFrame.setLocationRelativeTo(null); // 화면중앙에 프레임 띄우기
 		regiFrame.setLocation(400, 70);
 		ClientRegiPanel crp = new ClientRegiPanel();
 		regiFrame.getContentPane().add(crp);

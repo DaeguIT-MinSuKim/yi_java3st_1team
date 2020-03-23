@@ -85,10 +85,9 @@ public class ClientLoginOkPanel extends JPanel implements ActionListener{
 	protected void actionPerformedBtnMyProfile(ActionEvent e) {
 		profileFrame = new JFrame();
 		profileFrame.setTitle("[관리자용] 사용자 정보");
-		profileFrame.setSize(500, 650);
+		profileFrame.setSize(550, 900);
 		profileFrame.setResizable(false);
-		//profileFrame.setLocationRelativeTo(null); // 화면중앙에 프레임 띄우기
-		profileFrame.setLocation(400, 195);
+		profileFrame.setLocation(400, 70);
 		ClientMyProfile cmp = new ClientMyProfile();
 		profileFrame.getContentPane().add(cmp);
 		profileFrame.setVisible(true);

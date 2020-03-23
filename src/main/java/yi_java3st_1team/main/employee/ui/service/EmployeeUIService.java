@@ -76,4 +76,8 @@ public class EmployeeUIService {
 	public void resetEmpPass(Employee emp) {
 		empDao.updateEmpPassword(emp);
 	}
+	
+	public String empSearchName(String name) {
+		return empDao.selectEmployeeName(name);
+	}
 }

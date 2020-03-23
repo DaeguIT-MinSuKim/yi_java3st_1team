@@ -25,47 +25,72 @@ public class ClientChartDaoImpl implements ClientChartDao {
 		return Instance;
 	}
 
-//	@Override
-//	public List<ClientChart> procedureClientChart(ClientChart cChart) throws SQLException {
-//		List<ClientChart> list = new ArrayList<ClientChart>();
-//		String sql = "{call clientChart(?)}";
-//		Connection con = MySqlDataSource.getConnection();
-//		try(CallableStatement cstmt = con.prepareCall(sql);){
-//			cstmt.setDate(1, (Date) cChart.getO_date());
-//			LogUtil.prnLog(cstmt);
-//			try(ResultSet rs = cstmt.executeQuery()){
-//				while(rs.next()) {
-//					ClientChart chart = new ClientChart();
-//					chart.setC_name(rs.getString(1));
-//					chart.setP_price(rs.getInt(2));
-//					chart.setO_date(rs.getDate(3));
-//					
-//					list.add(chart);
-//				}
-//			}
-//		}
-//		return list;
-//	}
-
 	@Override
-	public int selectClientChartTest(String startDate, String endDate) {
+	public List<ClientChart> procedureClientChart(ClientChart cChart) throws SQLException {
+		List<ClientChart> list = new ArrayList<ClientChart>();
+		String sql = "{call clientChart(?)}";
+		Connection con = MySqlDataSource.getConnection();
+		try(CallableStatement cstmt = con.prepareCall(sql);){
+			cstmt.setDate(1, (Date) cChart.getO_date());
+			LogUtil.prnLog(cstmt);
+			try(ResultSet rs = cstmt.executeQuery()){
+				while(rs.next()) {
+					ClientChart chart = new ClientChart();
+					chart.setC_name(rs.getString(1));
+					chart.setP_price(rs.getInt(2));
+					chart.setO_date(rs.getDate(3));
+					
+					list.add(chart);
+				}
+			}
+		}
+		return list;
+	}
+
+//	@Override
+//	public int selectClientChartTest(String startDate, String endDate) {
+//		String sql = "select  c.c_name, o.o_qty*p.p_price as 판매금액, o.o_date " + 
+//				"  from `order` o natural join client c natural join product p " + 
+//				" where o.o_cno = c.c_no and p.p_no = o.o_pno and o.o_date between ? and ? and  " + 
+//				" order by o.o_qty*p.p_price desc limit 10";
+//		List<ClientChart> list = new ArrayList<ClientChart>();
+//		try(Connection con = MySqlDataSource.getConnection();
+//				PreparedStatement pstmt = con.prepareStatement(sql);){
+//			pstmt.setString(1, startDate);
+//			pstmt.setString(2, endDate);
+//			LogUtil.prnLog(pstmt);
+//			try (ResultSet rs = pstmt.executeQuery()){
+//				
+//			}
+//		} catch (SQLException e) {
+//			e.printStackTrace();
+//		}
+//		return 0;
+//	}
+	
+	@Override
+	public List<ClientChart> selectClientChartTest() {
 		String sql = "select  c.c_name, o.o_qty*p.p_price as 판매금액, o.o_date " + 
 				"  from `order` o natural join client c natural join product p " + 
-				" where o.o_cno = c.c_no and p.p_no = o.o_pno and o.o_date between ? and ? and  " + 
+				" where o.o_cno = c.c_no and p.p_no = o.o_pno and o.o_date >= '2019-11-01' " + 
 				" order by o.o_qty*p.p_price desc limit 10";
 		List<ClientChart> list = new ArrayList<ClientChart>();
 		try(Connection con = MySqlDataSource.getConnection();
-				PreparedStatement pstmt = con.prepareStatement(sql);){
-			pstmt.setString(1, startDate);
-			pstmt.setString(2, endDate);
-			LogUtil.prnLog(pstmt);
-			try (ResultSet rs = pstmt.executeQuery()){
-				
+				PreparedStatement pstmt = con.prepareStatement(sql);
+				ResultSet rs = pstmt.executeQuery();){
+			while(rs.next()) {
+				ClientChart cChart = new ClientChart();
+				cChart.setC_name(rs.getString(1));
+				cChart.setP_price(rs.getInt(2));
+				cChart.setO_date(rs.getDate(3));
+
+				list.add(cChart);
 			}
+			return list;
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return 0;
+		return null;
 	}
 
 }
