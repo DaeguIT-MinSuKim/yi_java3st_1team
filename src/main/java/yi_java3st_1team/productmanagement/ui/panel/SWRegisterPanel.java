@@ -28,6 +28,7 @@ import yi_java3st_1team.clientmanagement.dto.Supplier;
 import yi_java3st_1team.clientmanagement.ui.panel.AbsItemPanel;
 import yi_java3st_1team.clientmanagement.ui.service.SupplierUIService;
 import yi_java3st_1team.exception.InvalidCheckException;
+import yi_java3st_1team.main.ui.panel.JTextFieldHintUI;
 import yi_java3st_1team.productmanagement.dto.Category;
 import yi_java3st_1team.productmanagement.dto.Product;
 import yi_java3st_1team.productmanagement.ui.service.SWUIService;
@@ -55,6 +56,12 @@ public class SWRegisterPanel extends AbsItemPanel<Product> implements ItemListen
 	private String pPicPath;
 	private byte[] pPics;
 	private SupplierUIService supService;
+	private JLabel notNull1;
+	private JLabel notNull2;
+	private JLabel notNull3;
+	private JLabel notNull4;
+	private JLabel notNull5;
+	private JLabel notNull6;
 	
 	public SWRegisterPanel() {
 		service = new SWUIService();
@@ -134,32 +141,46 @@ public class SWRegisterPanel extends AbsItemPanel<Product> implements ItemListen
 		panel.add(lblPDate);
 		
 		tfPNo = new JTextField();
+		tfPNo.setForeground(new Color(0, 0, 128));
+		tfPNo.setFont(new Font("굴림", Font.BOLD, 12));
 		tfPNo.setEditable(false);
 		tfPNo.setBounds(176, 4, 200, 30);
 		panel.add(tfPNo);
 		tfPNo.setColumns(10);
 		
 		tfPName = new JTextField();
+		tfPName.setForeground(new Color(51, 102, 0));
+		tfPName.setFont(new Font("굴림", Font.BOLD, 12));
 		tfPName.setColumns(10);
 		tfPName.setBounds(176, 104, 200, 30);
 		panel.add(tfPName);
+		tfPName.setUI(new JTextFieldHintUI(">> 중복확인", Color.gray));
 		
 		tfPCost = new JTextField();
+		tfPCost.setForeground(Color.BLACK);
+		tfPCost.setFont(new Font("굴림", Font.PLAIN, 12));
 		tfPCost.setColumns(10);
 		tfPCost.setBounds(176, 154, 200, 30);
 		panel.add(tfPCost);
 		
 		tfPPrice = new JTextField();
+		tfPPrice.setForeground(Color.BLUE);
+		tfPPrice.setFont(new Font("굴림", Font.BOLD, 12));
 		tfPPrice.setColumns(10);
 		tfPPrice.setBounds(176, 204, 200, 30);
 		panel.add(tfPPrice);
 		
 		tfPSName = new JTextField();
+		tfPSName.setForeground(new Color(153, 0, 0));
+		tfPSName.setFont(new Font("굴림", Font.BOLD, 12));
 		tfPSName.setColumns(10);
 		tfPSName.setBounds(176, 254, 200, 30);
 		panel.add(tfPSName);
+		tfPSName.setUI(new JTextFieldHintUI(">> 회사명 조회", Color.gray));
 		
 		tfPQty = new JTextField();
+		tfPQty.setForeground(Color.BLACK);
+		tfPQty.setFont(new Font("굴림", Font.BOLD, 12));
 		tfPQty.setColumns(10);
 		tfPQty.setBounds(176, 304, 200, 30);
 		panel.add(tfPQty);
@@ -169,6 +190,8 @@ public class SWRegisterPanel extends AbsItemPanel<Product> implements ItemListen
 		panel.add(tfPDate);
 		
 		cmbCate = new JComboBox();
+		cmbCate.setForeground(Color.BLACK);
+		cmbCate.setFont(new Font("굴림", Font.BOLD, 12));
 		cmbCate.addItemListener(this);
 		cmbCate.setBounds(176, 54, 200, 30);
 		panel.add(cmbCate);
@@ -181,9 +204,48 @@ public class SWRegisterPanel extends AbsItemPanel<Product> implements ItemListen
 		panel.add(lblImgSearch);
 		
 		tfImgSearch = new JTextField();
+		tfImgSearch.setForeground(Color.BLACK);
+		tfImgSearch.setFont(new Font("굴림", Font.PLAIN, 12));
 		tfImgSearch.setColumns(10);
 		tfImgSearch.setBounds(176, 404, 200, 30);
 		panel.add(tfImgSearch);
+		tfImgSearch.setUI(new JTextFieldHintUI(">> 제품 이미지 등록", Color.gray));
+		
+		notNull1 = new JLabel("*");
+		notNull1.setForeground(Color.RED);
+		notNull1.setFont(new Font("굴림", Font.BOLD, 26));
+		notNull1.setBounds(118, 8, 14, 15);
+		panel.add(notNull1);
+		
+		notNull2 = new JLabel("*");
+		notNull2.setForeground(Color.RED);
+		notNull2.setFont(new Font("굴림", Font.BOLD, 26));
+		notNull2.setBounds(115, 108, 14, 15);
+		panel.add(notNull2);
+		
+		notNull3 = new JLabel("*");
+		notNull3.setForeground(Color.RED);
+		notNull3.setFont(new Font("굴림", Font.BOLD, 26));
+		notNull3.setBounds(118, 159, 14, 15);
+		panel.add(notNull3);
+		
+		notNull4 = new JLabel("*");
+		notNull4.setForeground(Color.RED);
+		notNull4.setFont(new Font("굴림", Font.BOLD, 26));
+		notNull4.setBounds(118, 208, 14, 15);
+		panel.add(notNull4);
+		
+		notNull5 = new JLabel("*");
+		notNull5.setForeground(Color.RED);
+		notNull5.setFont(new Font("굴림", Font.BOLD, 26));
+		notNull5.setBounds(121, 308, 14, 15);
+		panel.add(notNull5);
+		
+		notNull6 = new JLabel("*");
+		notNull6.setForeground(Color.RED);
+		notNull6.setFont(new Font("굴림", Font.BOLD, 26));
+		notNull6.setBounds(121, 359, 14, 15);
+		panel.add(notNull6);
 		
 		JLabel lblNewLabel = new JLabel("");
 		lblNewLabel.setOpaque(true);

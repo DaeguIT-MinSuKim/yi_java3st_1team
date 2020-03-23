@@ -49,6 +49,11 @@ public class CDRegisterPanel extends AbsItemPanel<ClientDelivery> implements Ite
 	private ClientUIService cService;
 	private OrderUIService oService;
 	private JTextField tfCDPName;
+	private JLabel notNull1;
+	private JLabel notNull2;
+	private JLabel notNull3;
+	private JLabel notNull4;
+	private JLabel notNull5;
 	
 	public CDRegisterPanel(){
 		cService = new ClientUIService();
@@ -108,6 +113,8 @@ public class CDRegisterPanel extends AbsItemPanel<ClientDelivery> implements Ite
 		panel.add(lblCDDate);
 		
 		tfPCDNo = new JTextField();
+		tfPCDNo.setFont(new Font("굴림", Font.BOLD, 12));
+		tfPCDNo.setForeground(new Color(0, 0, 128));
 		tfPCDNo.setBounds(176, 37, 200, 30);
 		panel.add(tfPCDNo);
 		tfPCDNo.setColumns(10);
@@ -115,12 +122,16 @@ public class CDRegisterPanel extends AbsItemPanel<ClientDelivery> implements Ite
 		
 				
 				tfSCName = new JTextField();
+				tfSCName.setForeground(new Color(153, 0, 0));
+				tfSCName.setFont(new Font("굴림", Font.BOLD, 12));
 				tfSCName.setColumns(10);
 				tfSCName.setBounds(176, 120, 200, 30);
 				panel.add(tfSCName);
 				tfSCName.setEditable(false);
 				
 				tfSCDQty = new JTextField();
+				tfSCDQty.setForeground(Color.BLACK);
+				tfSCDQty.setFont(new Font("굴림", Font.BOLD, 12));
 				tfSCDQty.setColumns(10);
 				tfSCDQty.setBounds(176, 286, 200, 30);
 				panel.add(tfSCDQty);
@@ -131,10 +142,42 @@ public class CDRegisterPanel extends AbsItemPanel<ClientDelivery> implements Ite
 				panel.add(tfCDDate);
 				
 				tfCDPName = new JTextField();
+				tfCDPName.setForeground(new Color(51, 102, 0));
+				tfCDPName.setFont(new Font("굴림", Font.BOLD, 12));
 				tfCDPName.setBounds(176, 203, 200, 30);
 				panel.add(tfCDPName);
 				tfCDPName.setColumns(10);
 				tfCDPName.setEditable(false);
+				
+				notNull1 = new JLabel("*");
+				notNull1.setForeground(Color.RED);
+				notNull1.setFont(new Font("굴림", Font.BOLD, 26));
+				notNull1.setBounds(118, 41, 14, 15);
+				panel.add(notNull1);
+				
+				notNull2 = new JLabel("*");
+				notNull2.setForeground(Color.RED);
+				notNull2.setFont(new Font("굴림", Font.BOLD, 26));
+				notNull2.setBounds(118, 125, 14, 15);
+				panel.add(notNull2);
+				
+				notNull3 = new JLabel("*");
+				notNull3.setForeground(Color.RED);
+				notNull3.setFont(new Font("굴림", Font.BOLD, 26));
+				notNull3.setBounds(114, 207, 14, 15);
+				panel.add(notNull3);
+				
+				notNull4 = new JLabel("*");
+				notNull4.setForeground(Color.RED);
+				notNull4.setFont(new Font("굴림", Font.BOLD, 26));
+				notNull4.setBounds(118, 290, 14, 15);
+				panel.add(notNull4);
+				
+				notNull5 = new JLabel("*");
+				notNull5.setForeground(Color.RED);
+				notNull5.setFont(new Font("굴림", Font.BOLD, 26));
+				notNull5.setBounds(118, 377, 14, 15);
+				panel.add(notNull5);
 				JLabel label = new JLabel("");
 				label.setOpaque(true);
 				label.setBackground(Color.WHITE);

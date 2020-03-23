@@ -105,6 +105,8 @@ public class ORegisterPanel extends AbsItemPanel<Order> implements ItemListener 
 		panel.add(lblOWant);
 		
 		tfONo = new JTextField();
+		tfONo.setForeground(new Color(0, 0, 128));
+		tfONo.setFont(new Font("굴림", Font.BOLD, 12));
 		tfONo.setEditable(false);
 		tfONo.setBounds(180, 20, 200, 30);
 		panel.add(tfONo);
@@ -115,21 +117,28 @@ public class ORegisterPanel extends AbsItemPanel<Order> implements ItemListener 
 		panel.add(tfODate);
 		
 		tfOCName = new JTextField();
+		tfOCName.setFont(new Font("굴림", Font.BOLD, 12));
+		tfOCName.setForeground(new Color(153, 0, 0));
 		tfOCName.setColumns(10);
 		tfOCName.setBounds(180, 120, 200, 30);
 		panel.add(tfOCName);
 		
 		cmbPList = new JComboBox<>();
+		cmbPList.setFont(new Font("굴림", Font.BOLD, 12));
+		cmbPList.setForeground(Color.BLACK);
 		cmbPList.addItemListener(this);
 		cmbPList.setBounds(180, 170, 200, 30);
 		panel.add(cmbPList);
 		
 		tfOQty = new JTextField();
+		tfOQty.setFont(new Font("굴림", Font.BOLD, 12));
+		tfOQty.setForeground(Color.BLACK);
 		tfOQty.setColumns(10);
 		tfOQty.setBounds(180, 220, 200, 30);
 		panel.add(tfOQty);
 		
 		taOWant = new JTextArea();
+		taOWant.setForeground(Color.BLACK);
 		taOWant.setBorder(new LineBorder(SystemColor.activeCaptionBorder));
 		taOWant.setBounds(20, 320, 364, 100);
 		panel.add(taOWant);

@@ -204,3 +204,15 @@ select * from client;
 desc client;
 
 select e.e_no, e.e_title, e.e_dept, d.d_no, d.d_name, d.d_floor from employee e left join department d on e.e_dept = d.d_no where e.e_name = '양사기';
+
+show tables;
+
+select * from supplier;
+desc supplier;
+desc client;
+
+desc product;
+
+desc supplier_order;
+desc supplier_purchase;
+desc client_delivery;
