@@ -4,6 +4,7 @@ import java.util.List;
 
 import yi_java3st_1team.clientmanagement.dto.Client;
 import yi_java3st_1team.main.client.chart.OrderRanking;
+import yi_java3st_1team.main.employee.chart.MajorClient;
 import yi_java3st_1team.ordermanagement.dao.OrderDao;
 import yi_java3st_1team.ordermanagement.dao.impl.OrderDaoImpl;
 import yi_java3st_1team.ordermanagement.dto.Order;
@@ -62,6 +63,10 @@ public class OrderUIService {
 
 	public int selectOrderTotalMoney(String firstDate, String lastDate, Client info) {
 		return orderDao.selectOrderTotalMoney(firstDate, lastDate, info);
+	}
+
+	public List<MajorClient> selectMajorClientList() {
+		return orderDao.selectMajorClientList();
 	}
 	
 }

@@ -47,6 +47,7 @@ public class PanelPieChart extends JFXPanel implements InitScene{
 		Calendar cal = Calendar.getInstance();
 		cal.set(year, month-1, firstDay); 
 		lastDay = cal.getActualMaximum(Calendar.DAY_OF_MONTH);
+		
 		service = new OrderUIService();
 		info = ClientMainUIPanel.loginCl;
 		
