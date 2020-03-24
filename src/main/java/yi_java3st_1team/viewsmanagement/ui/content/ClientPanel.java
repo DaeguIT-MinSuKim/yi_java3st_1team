@@ -86,14 +86,10 @@ public class ClientPanel extends JPanel implements ChangeListener, ActionListene
 		lblMonth.setFont(new Font("굴림", Font.BOLD, 16));
 		add(lblMonth);
 		
-<<<<<<< HEAD
-		JButton btnStart = new JButton("시작날짜선택");
-		btnStart.setBackground(new Color(70,130,180));
-=======
+
 		btnStart = new JButton("시작날짜선택");
 		btnStart.addActionListener(this);
 		btnStart.setBackground(new Color(65, 105, 225));
->>>>>>> branch 'master' of https://github.com/DaeguIT-MinSuKim/yi_java3st_1team.git
 		btnStart.setForeground(Color.WHITE);
 		btnStart.setPreferredSize(new Dimension(150, 30));
 		btnStart.setFont(new Font("맑은 고딕", Font.BOLD, 16));

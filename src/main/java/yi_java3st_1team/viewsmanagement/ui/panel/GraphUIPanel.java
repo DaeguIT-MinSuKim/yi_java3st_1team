@@ -74,15 +74,9 @@ public class GraphUIPanel extends JPanel {
 		pLeft.add(pLSearch);
 		pLSearch.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		
-<<<<<<< HEAD
-		ClientPanel pClient = new ClientPanel();
-		pClient.setFocusable(false);
-		pClient.setBounds(0, 30, 750, 47);
-		pLSearch.add(pClient);
-=======
+
 		ClientPanel pLDate = new ClientPanel();
 		pLSearch.add(pLDate);
->>>>>>> branch 'master' of https://github.com/DaeguIT-MinSuKim/yi_java3st_1team.git
 		
 		JPanel pLChart = new JPanel();
 		pLChart.setBounds(0, 189, 750, 710);
