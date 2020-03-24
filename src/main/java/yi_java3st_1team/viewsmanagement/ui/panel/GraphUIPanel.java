@@ -27,6 +27,8 @@ import yi_java3st_1team.viewsmanagement.ui.content.EmployeePanel;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import yi_java3st_1team.viewsmanagement.ui.chart.ClientChartPanel;
+import javax.swing.SpinnerModel;
+import java.awt.FlowLayout;
 
 @SuppressWarnings("serial")
 public class GraphUIPanel extends JPanel {
@@ -70,11 +72,10 @@ public class GraphUIPanel extends JPanel {
 		pLSearch.setBackground(SystemColor.inactiveCaption);
 		pLSearch.setPreferredSize(new Dimension(750, 15));
 		pLeft.add(pLSearch);
-		pLSearch.setLayout(null);
+		pLSearch.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		
-		ClientPanel pClient = new ClientPanel();
-		pClient.setBounds(0, 30, 750, 47);
-		pLSearch.add(pClient);
+		ClientPanel pLDate = new ClientPanel();
+		pLSearch.add(pLDate);
 		
 		JPanel pLChart = new JPanel();
 		pLChart.setBounds(0, 189, 750, 710);

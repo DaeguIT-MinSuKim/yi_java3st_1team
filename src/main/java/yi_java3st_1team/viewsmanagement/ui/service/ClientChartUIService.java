@@ -14,7 +14,7 @@ public class ClientChartUIService {
 		return clientChartDao.procedureClientChart(cChart);
 	}
 	
-	public List<ClientChart> showClientChartList(){
-		return clientChartDao.selectClientChartTest();
+	public List<ClientChart> showClientChartList(String startDate, String endDate){
+		return clientChartDao.selectClientChartTest(startDate, endDate);
 	}
 }
