@@ -153,12 +153,13 @@ public class CDUIPanel extends JPanel implements ActionListener {
 			JOptionPane.showMessageDialog(null, "수정할 품목을 오른쪽 리스트에서 선택해주세요.");
 			return;
 		} else {
-			ClientDelivery upCD = new ClientDelivery();
+			ClientDelivery upCD = pCDregiPanel.getItem();
 			cdService.modifyClientDelivery(upCD);
 			pCDTblPanel.updateRow(upCD, pCDTblPanel.getSelectedRowIdx());
 			pCDTblPanel.loadDate(cdService.showClientDeliveryList());
 			pCDregiPanel.clearTf();
 			pCDregiPanel.setCDNum(cdService.showlastNum());
+			JOptionPane.showMessageDialog(null, "출고이력이 수정되었습니다.");
 		}
 
 	}

@@ -223,7 +223,24 @@ desc `order` ;
 
 select * from client_delivery;
 
-update client_delivery set cd_date ='2020-03-25' where cd_no = 381;
+update client_delivery set cd_date ='2020-03-24' where cd_no = 381;
 
 select * from `order`;
 desc `order`;
+
+select * from product;
+
+select cd_no, c_name, p_name, o_qty, cd_date, c_no, o_no 
+		from client_delivery cd
+		left join `order` o on cd.cd_sno = o.o_no
+		left join product p on o.o_pno = p.p_no
+		left join client c on o.o_cno = c.c_no;
+	
+update (client_delivery cd
+		join `order` o on cd.cd_sno = o.o_no
+		join product p on o.o_pno = p.p_no
+		join client c on o.o_cno = c.c_no) set cd.cd_date '2020-03-24' where cd.cd_no = 381;
+		
+
+
+

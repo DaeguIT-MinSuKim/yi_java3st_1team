@@ -325,6 +325,7 @@ public class EmployeeMainUIPanel extends JPanel implements ActionListener {
 				pImg02.removeAll(); // 제거
 				JPanel bar = new JPanel();
 				bar.add(barChart);
+				bar.setBackground(SystemColor.inactiveCaptionBorder);
 				pImg02.add(bar, BorderLayout.NORTH);
 				
 				lblCall = new JLabel("");
