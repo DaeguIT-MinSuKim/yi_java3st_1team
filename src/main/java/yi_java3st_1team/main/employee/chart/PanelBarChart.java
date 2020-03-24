@@ -25,7 +25,6 @@ public class PanelBarChart extends JFXPanel implements InitScene{
 	private BarChart<String, Number> barChart;
 	private GregorianCalendar calendar;
 	private int year;
-	private int month;
 	private List<MajorClient> cList;
 	
 	public PanelBarChart() {
@@ -44,7 +43,6 @@ public class PanelBarChart extends JFXPanel implements InitScene{
 		
 		calendar = new GregorianCalendar(Locale.KOREA);
 		year = calendar.get(Calendar.YEAR);
-		month = calendar.get(Calendar.MONTH) + 1;
 		
 		barChart = new BarChart<>(xAxis, yAxis);
 		barChart.setData(getChartData());

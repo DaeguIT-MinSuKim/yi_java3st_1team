@@ -323,7 +323,6 @@ public class OrderDaoImpl implements OrderDao {
 				ResultSet rs = pstmt.executeQuery()) {
 			List<MajorClient> list = new ArrayList<MajorClient>();
 			while (rs.next()) {
-				System.out.println(getMajorClient(rs));
 				list.add(getMajorClient(rs));
 			}
 			return list;
