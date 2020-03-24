@@ -120,10 +120,6 @@ public class CDUIPanel extends JPanel implements ActionListener {
 		JMenuItem updateItem = new JMenuItem("수정");
 		updateItem.addActionListener(myPopupMenuListener);
 		popMenu.add(updateItem);
-		
-		JMenuItem deleteItem = new JMenuItem("삭제");
-		deleteItem.addActionListener(myPopupMenuListener);
-		popMenu.add(deleteItem);
 		return popMenu;
 	}
 	
@@ -135,17 +131,7 @@ public class CDUIPanel extends JPanel implements ActionListener {
 			if(e.getActionCommand().equals("수정")) {
 				ClientDelivery upCD = pCDTblPanel.getSelectedItem();
 				pCDregiPanel.setItem(upCD);
-			}
-			
-			
-			if(e.getActionCommand().equals("삭제")) {
-				ClientDelivery delCD = pCDTblPanel.getSelectedItem();
-				cdService.removeClientDelivery(delCD);
-				pCDTblPanel.removeRow();
-				pCDTblPanel.loadDate(cdService.showClientDeliveryList());
-			}			
-			
-			
+			}				
 		}
 	};
 	

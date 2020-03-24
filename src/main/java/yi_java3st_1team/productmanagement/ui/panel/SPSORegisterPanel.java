@@ -163,7 +163,7 @@ public class SPSORegisterPanel extends AbsItemPanel<SupplierPurchase> {
 		notNull3 = new JLabel("*");
 		notNull3.setForeground(Color.RED);
 		notNull3.setFont(new Font("굴림", Font.BOLD, 26));
-		notNull3.setBounds(115, 176, 14, 15);
+		notNull3.setBounds(118, 176, 14, 15);
 		panel.add(notNull3);
 		
 		notNull4 = new JLabel("*");

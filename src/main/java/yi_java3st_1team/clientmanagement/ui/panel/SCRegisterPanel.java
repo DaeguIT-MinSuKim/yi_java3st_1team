@@ -113,12 +113,11 @@ public class SCRegisterPanel extends AbsItemPanel<Supplier> {
 
 		tfSCAddress = new JTextField();
 		tfSCAddress.setForeground(Color.BLACK);
-		tfSCAddress.setFont(new Font("굴림", Font.BOLD, 12));
+		tfSCAddress.setFont(new Font("굴림", Font.PLAIN, 12));
 		tfSCAddress.setHorizontalAlignment(SwingConstants.LEFT);
 		tfSCAddress.setColumns(10);
 		tfSCAddress.setBounds(176, 235, 200, 30);
 		panel.add(tfSCAddress);
-		tfSCAddress.setEditable(false);
 		tfSCAddress.setUI(new JTextFieldHintUI(">> 주소검색", Color.gray));
 		
 

@@ -216,3 +216,8 @@ desc product;
 desc supplier_order;
 desc supplier_purchase;
 desc client_delivery;
+desc `order` ;
+
+select * from client_delivery;
+
+update client_delivery set cd_date ='2020-03-25' where cd_no = 381;
