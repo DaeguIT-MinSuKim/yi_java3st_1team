@@ -1,7 +1,5 @@
 package yi_java3st_1team.viewsmanagement.ui.chart;
 
-import java.awt.List;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.Locale;
@@ -17,10 +15,7 @@ import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
 import javafx.scene.chart.XYChart.Series;
 import javafx.scene.paint.Color;
-import yi_java3st_1team.main.employee.chart.DateOfMonth;
-import yi_java3st_1team.main.employee.chart.Performance;
 import yi_java3st_1team.viewsmanagement.dto.ClientChart;
-import yi_java3st_1team.viewsmanagement.ui.content.ClientPanel;
 import yi_java3st_1team.viewsmanagement.ui.service.ClientChartUIService;
 
 @SuppressWarnings("serial")
@@ -83,10 +78,6 @@ public class ClientChartPanel extends JFXPanel implements InitScene {
 		String startDate = year+"-"+month+"-"+firstDay;
 		String endDate = year+"-"+month+"-"+lastDay;
 		java.util.List<ClientChart> clientChart = service.showClientChartList(startDate, endDate);
-		for(int i=0;i<clientChart.size();i++) {
-			System.out.println(clientChart.get(i).getC_name());
-			System.out.println(clientChart.get(i).getP_price());
-		}
 		
 		ClientChart client = new ClientChart(clientChart.get(0).getC_name(), clientChart.get(0).getP_price());
 		ClientChart client2 = new ClientChart(clientChart.get(1).getC_name(), clientChart.get(1).getP_price());
@@ -150,38 +141,34 @@ public class ClientChartPanel extends JFXPanel implements InitScene {
 		String startDate = sYear+"-"+sMonth+"-"+firstDay;
 		String endDate = sYear+"-"+sMonth+"-"+newLastDay;
 		
-		System.out.println(startDate);
-		System.out.println(endDate);
-//		java.util.List<ClientChart> clientChart = service.showClientChartList(startDate, endDate);
-//		for(int i=0;i<clientChart.size();i++) {
-//			System.out.println(clientChart.get(i).getC_name());
-//			System.out.println(clientChart.get(i).getP_price());
-//		}
-//		
-//		ClientChart client = new ClientChart(clientChart.get(0).getC_name(), clientChart.get(0).getP_price());
-//		ClientChart client2 = new ClientChart(clientChart.get(1).getC_name(), clientChart.get(1).getP_price());
-//		ClientChart client3 = new ClientChart(clientChart.get(2).getC_name(), clientChart.get(2).getP_price());
-//		ClientChart client4 = new ClientChart(clientChart.get(3).getC_name(), clientChart.get(3).getP_price());
-//		ClientChart client5 = new ClientChart(clientChart.get(4).getC_name(), clientChart.get(4).getP_price());
-//		ClientChart client6 = new ClientChart(clientChart.get(5).getC_name(), clientChart.get(5).getP_price());
-//		ClientChart client7 = new ClientChart(clientChart.get(6).getC_name(), clientChart.get(6).getP_price());
-//		ClientChart client8 = new ClientChart(clientChart.get(7).getC_name(), clientChart.get(7).getP_price());
-//		ClientChart client9 = new ClientChart(clientChart.get(8).getC_name(), clientChart.get(8).getP_price());
-//		ClientChart client10 = new ClientChart(clientChart.get(9).getC_name(), clientChart.get(9).getP_price());
-//		
-//		list.add(getChartData(client));
-//		list.add(getChartData(client2));
-//		list.add(getChartData(client3));
-//		list.add(getChartData(client4));
-//		list.add(getChartData(client5));
-//		list.add(getChartData(client6));
-//		list.add(getChartData(client7));
-//		list.add(getChartData(client8));
-//		list.add(getChartData(client9));
-//		list.add(getChartData(client10));
-//		
-//		return list;
-		return null;
+		java.util.List<ClientChart> clientChart = service.showClientChartList(startDate, endDate);
+		for(int i=0;i<clientChart.size();i++) {
+			System.out.println(clientChart.get(i).getC_name());
+			System.out.println(clientChart.get(i).getP_price());
+		}
+		ClientChart client = new ClientChart(clientChart.get(0).getC_name(), clientChart.get(0).getP_price());
+		ClientChart client2 = new ClientChart(clientChart.get(1).getC_name(), clientChart.get(1).getP_price());
+		ClientChart client3 = new ClientChart(clientChart.get(2).getC_name(), clientChart.get(2).getP_price());
+		ClientChart client4 = new ClientChart(clientChart.get(3).getC_name(), clientChart.get(3).getP_price());
+		ClientChart client5 = new ClientChart(clientChart.get(4).getC_name(), clientChart.get(4).getP_price());
+		ClientChart client6 = new ClientChart(clientChart.get(5).getC_name(), clientChart.get(5).getP_price());
+		ClientChart client7 = new ClientChart(clientChart.get(6).getC_name(), clientChart.get(6).getP_price());
+		ClientChart client8 = new ClientChart(clientChart.get(7).getC_name(), clientChart.get(7).getP_price());
+		ClientChart client9 = new ClientChart(clientChart.get(8).getC_name(), clientChart.get(8).getP_price());
+		ClientChart client10 = new ClientChart(clientChart.get(9).getC_name(), clientChart.get(9).getP_price());
+		
+		list.add(getChartData(client));
+		list.add(getChartData(client2));
+		list.add(getChartData(client3));
+		list.add(getChartData(client4));
+		list.add(getChartData(client5));
+		list.add(getChartData(client6));
+		list.add(getChartData(client7));
+		list.add(getChartData(client8));
+		list.add(getChartData(client9));
+		list.add(getChartData(client10));
+		
+		return list;
 	}
 
 }

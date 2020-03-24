@@ -1,28 +1,28 @@
 package yi_java3st_1team.viewsmanagement.ui.content;
 
-import javax.swing.JPanel;
-import java.awt.Dimension;
-import javax.swing.JSpinner;
-import java.awt.Font;
-import javax.swing.JLabel;
-import javax.swing.SwingConstants;
-import javax.swing.JButton;
-import java.awt.SystemColor;
-import java.text.SimpleDateFormat;
-
-import javax.swing.SpinnerNumberModel;
-import javax.swing.SpinnerDateModel;
-import java.util.Date;
-import java.util.logging.SimpleFormatter;
-import java.util.Calendar;
 import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.SystemColor;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JSpinner;
+import javax.swing.SpinnerDateModel;
+import javax.swing.SwingConstants;
+import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
+import javafx.application.Platform;
 import yi_java3st_1team.viewsmanagement.ui.chart.ClientChartPanel;
-
-import javax.swing.event.ChangeEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
+import yi_java3st_1team.viewsmanagement.ui.chart.NewClientChartPanel;
+import yi_java3st_1team.viewsmanagement.ui.panel.GraphUIPanel;
 
 @SuppressWarnings("serial")
 public class ClientPanel extends JPanel implements ChangeListener, ActionListener {
@@ -30,8 +30,7 @@ public class ClientPanel extends JPanel implements ChangeListener, ActionListene
 	private JSpinner spMonth;
 	public static String str;
 	public static String str2;
-	private ClientChartPanel ccp;
-	private ClientChartPanel ccp2;
+	private NewClientChartPanel ccp;
 	private JButton btnStart;
 
 	/**
@@ -106,23 +105,13 @@ public class ClientPanel extends JPanel implements ChangeListener, ActionListene
 	}
 	protected void spYearStateChanged(ChangeEvent e) {
 		Object year = spYear.getValue();
-		Date month = new Date();
 		SimpleDateFormat sfm = new SimpleDateFormat("yyyy");
-		SimpleDateFormat sfm2 = new SimpleDateFormat("MM");
 		str = sfm.format(year);
-		str2 = sfm2.format(month);
-//		ccp = new ClientChartPanel();
-//		ccp.newCreateScene(str, str2);
 	}
 	protected void spMonthStateChanged(ChangeEvent e) {
 		Object month = spMonth.getValue();
-		Date year = new Date();
-		SimpleDateFormat sfm = new SimpleDateFormat("yyyy");
-		SimpleDateFormat sfm2 = new SimpleDateFormat("MM");
-		str = sfm.format(year);
-		str2 = sfm2.format(month);
-//		ccp2 = new ClientChartPanel();
-//		ccp2.newCreateScene(str, str2);
+		SimpleDateFormat sfm = new SimpleDateFormat("MM");
+		str2 = sfm.format(month);
 	}
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == btnStart) {
@@ -130,10 +119,31 @@ public class ClientPanel extends JPanel implements ChangeListener, ActionListene
 		}
 	}
 	protected void btnStartActionPerformed(ActionEvent e) {
-		ccp = new ClientChartPanel();
-		ccp.newCreateScene(str, str2);
+		if(str == null) {
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyy");
+			Date nowYear = new Date();
+			str = sdf.format(nowYear);
+		}
+		if(str2 == null) {
+			SimpleDateFormat sdf = new SimpleDateFormat("MM");
+			Date nowMonth = new Date();
+			str2 = sdf.format(nowMonth);
+		}
+		ccp = new NewClientChartPanel();
+		ccp.setNewYear(Integer.parseInt(str));
+		ccp.setNewMonth(Integer.parseInt(str2));
 		
-		ccp2 = new ClientChartPanel();
-		ccp2.newCreateScene(str, str2);
+		GraphUIPanel.pLLChart.removeAll();
+		GraphUIPanel.pLLChart.revalidate();
+		GraphUIPanel.pLLChart.repaint();
+		GraphUIPanel.pLLChart.add(ccp);
+		
+		Platform.runLater(() -> GraphUIPanel.initFX(ccp));
+		
+		GraphUIPanel.pLLChart.revalidate();
+		GraphUIPanel.pLLChart.repaint();
+		
+		
 	}
+	
 }
