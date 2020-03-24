@@ -161,12 +161,15 @@ public class ClientMyProfile  extends AbsRegiPanel<Client> implements ActionList
 		pInput.setLayout(new GridLayout(0, 1, 10, 10));
 		
 		tfNo = new JTextField();
+		tfNo.setForeground(new Color(0, 0, 128));
 		tfNo.setFont(new Font("굴림", Font.BOLD, 12));
 		tfNo.setColumns(10);
 		pInput.add(tfNo);
 		tfNo.setEditable(false);
 		
 		tfName = new JTextField();
+		tfName.setForeground(new Color(153, 0, 0));
+		tfName.setFont(new Font("굴림", Font.BOLD, 12));
 		tfName.setColumns(10);
 		pInput.add(tfName);
 		
@@ -184,6 +187,7 @@ public class ClientMyProfile  extends AbsRegiPanel<Client> implements ActionList
 		tfTell.setColumns(10);
 		
 		tfId = new JTextField();
+		tfId.setForeground(Color.BLUE);
 		tfId.setFont(new Font("굴림", Font.BOLD, 12));
 		tfId.setColumns(10);
 		tfId.setEditable(false);
@@ -219,6 +223,7 @@ public class ClientMyProfile  extends AbsRegiPanel<Client> implements ActionList
 		tfDate.setEditable(false);
 		
 		tfSalesman = new JTextField();
+		tfSalesman.setForeground(new Color(255, 0, 0));
 		pInput.add(tfSalesman);
 		tfSalesman.setColumns(10);
 		tfSalesman.setEditable(false);

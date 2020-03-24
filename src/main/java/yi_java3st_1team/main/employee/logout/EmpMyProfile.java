@@ -160,12 +160,14 @@ public class EmpMyProfile extends AbsRegiPanel<Employee> implements ActionListen
 		pInput.setLayout(new GridLayout(0, 1, 10, 10));
 
 		tfNo = new JTextField();
+		tfNo.setForeground(new Color(0, 0, 128));
 		tfNo.setFont(new Font("굴림", Font.BOLD, 12));
 		tfNo.setEditable(false);
 		tfNo.setColumns(10);
 		pInput.add(tfNo);
 
 		tfName = new JTextField();
+		tfName.setFont(new Font("굴림", Font.BOLD, 12));
 		tfName.setColumns(10);
 		pInput.add(tfName);
 
@@ -205,6 +207,7 @@ public class EmpMyProfile extends AbsRegiPanel<Employee> implements ActionListen
 		pManager.add(rBtnManager2);
 
 		tfId = new JTextField();
+		tfId.setForeground(Color.BLUE);
 		tfId.setFont(new Font("굴림", Font.BOLD, 12));
 		tfId.setColumns(10);
 		tfId.setEditable(false);

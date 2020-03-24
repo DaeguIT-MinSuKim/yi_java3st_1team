@@ -23,6 +23,7 @@ import yi_java3st_1team.clientmanagement.ui.panel.AbsItemPanel;
 import yi_java3st_1team.clientmanagement.ui.service.ClientUIService;
 import yi_java3st_1team.exception.InvalidCheckException;
 import yi_java3st_1team.main.employee.dto.Employee;
+import yi_java3st_1team.main.ui.panel.JTextFieldHintUI;
 import yi_java3st_1team.ordermanagement.dto.Order;
 import yi_java3st_1team.productmanagement.dto.Product;
 import yi_java3st_1team.productmanagement.ui.service.SWUIService;
@@ -136,6 +137,7 @@ public class ClientORegisterPanel extends AbsItemPanel<Order> implements ItemLis
 		tfOQty.setColumns(10);
 		tfOQty.setBounds(232, 222, 200, 30);
 		panel.add(tfOQty);
+		tfOQty.setUI(new JTextFieldHintUI(">> 품목명 조회 후 수량조회", Color.gray));
 		
 		taOWant = new JTextArea();
 		taOWant.setBorder(new LineBorder(SystemColor.activeCaptionBorder));
