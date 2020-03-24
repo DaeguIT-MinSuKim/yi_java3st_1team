@@ -303,7 +303,7 @@ public class EmployeeMainUIPanel extends JPanel implements ActionListener {
 		
 		//로그인 성공시 알림 & 로그인된 패널로 전환
 		ImageIcon icon = new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\loginMain\\connect.png");
-		JOptionPane.showMessageDialog(null, "<html><h2 align='center'><span style='color:blue'>"+loginEmp.getEmpName()+"</span>님<br><span style='color:red'>Smart</span>한 세계에<br> 오신걸 환영합니다</h2></html>","Software Management System",JOptionPane.INFORMATION_MESSAGE,icon);
+		JOptionPane.showMessageDialog(null, "<html><h2 align='center'><span style='color:blue'>"+loginEmp.getEmpName()+" "+loginEmp.getEmpTitle()+"</span> 님<br><span style='color:red'>Smart</span>한 세계에<br> 오신걸 환영합니다</h2></html>","Software Management System",JOptionPane.INFORMATION_MESSAGE,icon);
 		
 		pStop.remove(pLogin); //제거
 		pEmpLogin = new EmpLoginOkPanel();
@@ -343,7 +343,7 @@ public class EmployeeMainUIPanel extends JPanel implements ActionListener {
 				break;
 		}			
 				
-		pEmpLogin.loginSuc.setText("<html>반갑습니다!<br><span style='color:blue'>"+loginEmp.getEmpName()+" "+"</span>"+loginEmp.getEmpTitle()+"님이<br>로그인 하셨습니다.</html>");
+		pEmpLogin.loginSuc.setText("<html>반갑습니다!<br><span style='color:blue'>"+loginEmp.getEmpName()+" "+"</span><u>"+loginEmp.getEmpTitle()+"</u>님이<br>로그인 하셨습니다.</html>");
 		String empNum = String.format("EE%04d", loginEmp.getEmpNo());
 		pEmpLogin.empInfo.setText("<html>- 사원번호 : <span style='color:red'>"+empNum+"</span><br>- 부서명 : <span style='color:green'>"+loginEmp.getdNo().getDeptName()+"</span></html>");
 

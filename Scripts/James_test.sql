@@ -244,3 +244,4 @@ update (client_delivery cd
 
 
 
+	select * from employee;
