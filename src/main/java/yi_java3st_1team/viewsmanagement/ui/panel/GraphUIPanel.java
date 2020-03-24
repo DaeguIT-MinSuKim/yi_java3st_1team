@@ -73,6 +73,7 @@ public class GraphUIPanel extends JPanel {
 		pLSearch.setLayout(null);
 		
 		ClientPanel pClient = new ClientPanel();
+		pClient.setFocusable(false);
 		pClient.setBounds(0, 30, 750, 47);
 		pLSearch.add(pClient);
 		

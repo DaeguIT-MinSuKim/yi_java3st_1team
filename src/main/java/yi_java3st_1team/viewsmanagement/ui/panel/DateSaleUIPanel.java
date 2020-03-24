@@ -82,8 +82,9 @@ public class DateSaleUIPanel extends JPanel {
 		pSearch.add(lblStart);
 		
 		dcStart = new JDateChooser(new Date(), "yyyy-MM-dd");
+		dcStart.getCalendarButton().setBackground(new Color(240, 255, 255));
 		dcStart.getCalendarButton().setPreferredSize(new Dimension(70, 30));
-		dcStart.getCalendarButton().setFont(new Font("맑은 고딕", Font.PLAIN, 16));
+		dcStart.getCalendarButton().setFont(new Font("맑은 고딕", Font.BOLD, 14));
 		dcStart.getCalendarButton().setText("시작");
 		dcStart.setPreferredSize(new Dimension(165, 30));
 		dcStart.setForeground(new Color(0, 102, 204));
@@ -99,8 +100,9 @@ public class DateSaleUIPanel extends JPanel {
 		pSearch.add(lblNewLabel);
 		
 		dcEnd = new JDateChooser(new Date(), "yyyy-MM-dd");
+		dcEnd.getCalendarButton().setBackground(new Color(240, 255, 255));
 		dcEnd.getCalendarButton().setPreferredSize(new Dimension(70, 30));
-		dcEnd.getCalendarButton().setFont(new Font("맑은 고딕", Font.PLAIN, 16));
+		dcEnd.getCalendarButton().setFont(new Font("맑은 고딕", Font.BOLD, 14));
 		dcEnd.getCalendarButton().setText("종료");
 		dcEnd.setPreferredSize(new Dimension(165, 30));
 		dcEnd.setForeground(new Color(0, 102, 204));
@@ -141,7 +143,7 @@ public class DateSaleUIPanel extends JPanel {
 		btnTotal.setForeground(Color.WHITE);
 		btnTotal.setFont(new Font("맑은 고딕", Font.BOLD, 16));
 		btnTotal.setFocusable(false);
-		btnTotal.setBackground(new Color(70, 130, 180));
+		btnTotal.setBackground(Color.GRAY);
 		pSearch.add(btnTotal);
 		
 		pList = new JPanel();

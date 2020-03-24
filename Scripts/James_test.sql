@@ -21,6 +21,9 @@ delete from department where d_no = 10;
 select e_no, e_name, e_dept, e_title, e_manager, e_id, e_pw, e_mail from employee;
 select e_no, e_name, e_dept, e_title, e_manager, e_id, e_pw, e_mail from employee where e_no = 1;
 
+
+
+
 insert into employee (e_no, e_name, e_dept, e_title, e_manager, e_id, e_pw, e_mail) value (null, '정인턴', 4, '인턴',2, 'areumzzing', '1234qwer', 'hothihi5@gmail.com');
 update employee set e_name = '정인턴1', e_dept = 5, e_title = '인턴1', e_manager = 2, e_id = 'areum1234', e_pw = '1234', e_mail = '없음' where e_no = 81;
 delete from employee where e_no = 81;
@@ -221,3 +224,6 @@ desc `order` ;
 select * from client_delivery;
 
 update client_delivery set cd_date ='2020-03-25' where cd_no = 381;
+
+select * from `order`;
+desc `order`;

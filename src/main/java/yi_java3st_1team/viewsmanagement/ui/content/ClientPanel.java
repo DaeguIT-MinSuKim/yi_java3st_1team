@@ -59,7 +59,7 @@ public class ClientPanel extends JPanel {
 		add(lblMonth);
 		
 		JButton btnStart = new JButton("시작날짜선택");
-		btnStart.setBackground(new Color(65, 105, 225));
+		btnStart.setBackground(new Color(70,130,180));
 		btnStart.setForeground(Color.WHITE);
 		btnStart.setPreferredSize(new Dimension(150, 30));
 		btnStart.setFont(new Font("맑은 고딕", Font.BOLD, 16));
