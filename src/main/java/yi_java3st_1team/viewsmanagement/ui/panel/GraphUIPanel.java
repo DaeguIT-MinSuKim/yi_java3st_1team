@@ -1,39 +1,31 @@
 package yi_java3st_1team.viewsmanagement.ui.panel;
 
+import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.SystemColor;
 
-import javax.swing.BoxLayout;
-import javax.swing.DefaultComboBoxModel;
-import javax.swing.JButton;
-import javax.swing.JCheckBox;
-import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JSpinner;
-import javax.swing.SpinnerNumberModel;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
 import javafx.application.Platform;
 import javafx.embed.swing.JFXPanel;
 import javafx.scene.Scene;
+import yi_java3st_1team.viewsmanagement.ui.chart.ClientChartPanel;
 import yi_java3st_1team.viewsmanagement.ui.chart.EmployeeChartPanel;
 import yi_java3st_1team.viewsmanagement.ui.chart.InitScene;
 import yi_java3st_1team.viewsmanagement.ui.content.ClientPanel;
 import yi_java3st_1team.viewsmanagement.ui.content.EmployeePanel;
-import java.awt.BorderLayout;
-import java.awt.Color;
-import yi_java3st_1team.viewsmanagement.ui.chart.ClientChartPanel;
-import javax.swing.SpinnerModel;
-import java.awt.FlowLayout;
 
 @SuppressWarnings("serial")
 public class GraphUIPanel extends JPanel {
 
 	private ClientChartPanel pClientGraph;
+	public static JPanel pLLChart;
 	/**
 	 * Create the panel.
 	 */
@@ -86,7 +78,7 @@ public class GraphUIPanel extends JPanel {
 		pLeft.add(pLChart);
 		pLChart.setLayout(null);
 		
-		JPanel pLLChart = new JPanel();
+		pLLChart = new JPanel();
 		pLLChart.setBounds(45, 5, 670, 650);
 		pLLChart.setBackground(SystemColor.inactiveCaptionBorder);
 		pLChart.add(pLLChart);
@@ -152,7 +144,7 @@ public class GraphUIPanel extends JPanel {
 		Platform.runLater(() -> initFX(pEmpGraph));
 	}
 	
-	public void initFX(InitScene fxPanel) {
+	public static void initFX(InitScene fxPanel) {
 		Scene scene = fxPanel.createScene();
 		JFXPanel panel = (JFXPanel) fxPanel;
 		panel.setScene(scene);
