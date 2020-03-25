@@ -31,13 +31,13 @@ public class ZipCodePanel extends JPanel implements ItemListener, ActionListener
 	private JComboBox cmbSido;
 	private String selectItem;
 	private JButton btnSearch;
-	private ZipCodeUIService service;
+	private ZipCodeUIService zipService;
 	public ZipCode addr;
 	public SCRegisterPanel pSCRPanel;
 	public static String juso;
 
 	public ZipCodePanel() {
-		service = new ZipCodeUIService();
+		zipService = new ZipCodeUIService();
 		initialize();
 	}
 
@@ -163,13 +163,13 @@ public class ZipCodePanel extends JPanel implements ItemListener, ActionListener
 		
 		if (tfNo2.getText().equals("")) {
 			ZipCode zipNumOne = new ZipCode(zSido, zDoro, zNum1);
-			tfAll.setText(service.searchAddressNumOne(zipNumOne).toString());
+			tfAll.setText(zipService.searchAddressNumOne(zipNumOne).toString());
 			juso = tfAll.getText();
 			System.out.println(tfDetail.getText());
 		} else {
 			int zNum2 = Integer.parseInt(tfNo2.getText().trim());
 			ZipCode zipNumAll = new ZipCode(zSido, zDoro, zNum1, zNum2);
-			tfAll.setText(service.searchAddressNumAll(zipNumAll).toStringAll());
+			tfAll.setText(zipService.searchAddressNumAll(zipNumAll).toStringAll());
 			juso = tfAll.getText();
 		}
 		cmbSido.setSelectedIndex(0);

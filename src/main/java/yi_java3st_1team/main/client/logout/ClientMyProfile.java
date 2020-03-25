@@ -48,7 +48,6 @@ public class ClientMyProfile  extends AbsRegiPanel<Client> implements ActionList
 	private JLabel lblPassword;
 	private JTextField tfDate;
 	private JFrame zipcodeFrame;
-	private ZipCodePanel zipPanel;
 	private JButton btnZip;
 
 	private ClientUIService cService;

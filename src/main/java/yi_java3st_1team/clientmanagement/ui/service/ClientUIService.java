@@ -5,7 +5,6 @@ import java.util.List;
 import yi_java3st_1team.clientmanagement.dao.ClientDao;
 import yi_java3st_1team.clientmanagement.dao.impl.ClientDaoImpl;
 import yi_java3st_1team.clientmanagement.dto.Client;
-import yi_java3st_1team.main.employee.dto.Employee;
 
 public class ClientUIService {
 	private ClientDao clientDao = ClientDaoImpl.getInstance();
@@ -65,7 +64,10 @@ public class ClientUIService {
 	public int selectOrderCsalesman(Client client) {
 		return clientDao.selectCsalesman(client);
 	}
+
 	
+	
+	/************ (+) 추가 : 아름 ************/
 	public Client login(Client client) {
 		return clientDao.loginClient(client);
 	}
@@ -81,7 +83,7 @@ public class ClientUIService {
 	public Client clientMail(Client client) {
 		return clientDao.selectClientByMail(client);
 	}
-
+	
 	public void resetClientPass(Client client) {
 		clientDao.updateClientPassword(client);
 		

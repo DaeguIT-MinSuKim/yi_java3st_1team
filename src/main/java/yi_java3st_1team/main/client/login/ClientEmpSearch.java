@@ -7,7 +7,6 @@ import java.awt.Font;
 import java.awt.SystemColor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.regex.Pattern;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -15,26 +14,20 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
-import yi_java3st_1team.clientmanagement.dto.Client;
-import yi_java3st_1team.clientmanagement.ui.service.ClientUIService;
-import yi_java3st_1team.main.employee.dto.Employee;
 import yi_java3st_1team.main.employee.ui.service.EmployeeUIService;
 
 @SuppressWarnings("serial")
 public class ClientEmpSearch extends JPanel implements ActionListener {
 	public JTextField tfSearch;
 	private JButton btnSearch;
-//	public JButton btnAdd;
 	private JLabel lblEmpInfo;
 	
 	private EmployeeUIService empService;
 	
-	private ClientRegiPanel regiPanel;
 	public String idChk;
 	public static String idOk;
 	public static JPanel pBtn;
 	public static String empInfo;
-	
 	
 	
 	public ClientEmpSearch() {
@@ -45,7 +38,7 @@ public class ClientEmpSearch extends JPanel implements ActionListener {
 		setSize(new Dimension(400,400));
 		setLayout(new BorderLayout(0, 0));
 		
-		JLabel label = new JLabel("<html>>> 등록할 <span style='color:purple'>담당 직원</span>을 검색하세요</html>");
+		JLabel label = new JLabel("<html> >> 등록할 <span style='color:purple'>담당 직원</span>을 검색하세요</html>");
 		label.setPreferredSize(new Dimension(60, 90));
 		label.setOpaque(true);
 		label.setHorizontalAlignment(SwingConstants.CENTER);
@@ -58,14 +51,6 @@ public class ClientEmpSearch extends JPanel implements ActionListener {
 		pBtn.setBackground(SystemColor.inactiveCaptionBorder);
 		pBtn.setPreferredSize(new Dimension(10, 55));
 		add(pBtn, BorderLayout.SOUTH);
-		
-//		btnAdd = new JButton("등록");
-//		btnAdd.addActionListener(this);
-//		btnAdd.setForeground(Color.BLACK);
-//		btnAdd.setFont(new Font("맑은 고딕", Font.BOLD, 14));
-//		btnAdd.setFocusable(false);
-//		btnAdd.setBackground(SystemColor.controlHighlight);
-//		pBtn.add(btnAdd);
 		
 		JPanel pSearch = new JPanel();
 		pSearch.setBackground(SystemColor.inactiveCaptionBorder);
@@ -102,10 +87,10 @@ public class ClientEmpSearch extends JPanel implements ActionListener {
 			actionPerformedBtnSearch(e);
 		}
 	}
+	
 	protected void actionPerformedBtnSearch(ActionEvent e) {
 		
 		String empName = tfSearch.getText();
-		
 		String searchName = empService.empSearchName(empName);
 		
 		if(searchName == null) {

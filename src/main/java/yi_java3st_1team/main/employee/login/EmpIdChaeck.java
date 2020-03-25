@@ -11,7 +11,6 @@ import java.util.regex.Pattern;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
@@ -23,12 +22,10 @@ import yi_java3st_1team.main.employee.ui.service.EmployeeUIService;
 public class EmpIdChaeck extends JPanel implements ActionListener {
 	public JTextField tfSearch;
 	private JButton btnSearch;
-//	public JButton btnAdd;
 	private JLabel lblIdEquals;
 	
 	private EmployeeUIService empService;
 	
-	private EmpRegiPanel regiPanel;
 	public String idChk;
 	public static String idOk;
 	public static JPanel pBtn;
@@ -56,14 +53,6 @@ public class EmpIdChaeck extends JPanel implements ActionListener {
 		pBtn.setBackground(SystemColor.inactiveCaptionBorder);
 		pBtn.setPreferredSize(new Dimension(10, 55));
 		add(pBtn, BorderLayout.SOUTH);
-		
-//		btnAdd = new JButton("등록");
-//		btnAdd.addActionListener(this);
-//		btnAdd.setForeground(Color.BLACK);
-//		btnAdd.setFont(new Font("맑은 고딕", Font.BOLD, 14));
-//		btnAdd.setFocusable(false);
-//		btnAdd.setBackground(SystemColor.controlHighlight);
-//		pBtn.add(btnAdd);
 		
 		JPanel pSearch = new JPanel();
 		pSearch.setBackground(SystemColor.inactiveCaptionBorder);
@@ -96,9 +85,6 @@ public class EmpIdChaeck extends JPanel implements ActionListener {
 		pSearch.add(btnSearch);
 	}
 	public void actionPerformed(ActionEvent e) {
-//		if (e.getSource() == btnAdd) {
-//			actionPerformedBtnAdd(e);
-//		}
 		if (e.getSource() == btnSearch) {
 			actionPerformedBtnSearch(e);
 		}
@@ -123,7 +109,4 @@ public class EmpIdChaeck extends JPanel implements ActionListener {
 		}
 		
 	}
-//	protected void actionPerformedBtnAdd(ActionEvent e) {
-//		//regiPanel.tfId.setText(idOK);
-//	}
 }

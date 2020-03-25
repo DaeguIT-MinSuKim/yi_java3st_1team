@@ -27,8 +27,6 @@ import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 import javax.swing.event.DocumentListener;
 
-import com.sun.javafx.embed.swing.Disposer;
-
 import yi_java3st_1team.main.employee.dto.Department;
 import yi_java3st_1team.main.employee.dto.Employee;
 import yi_java3st_1team.main.employee.ui.service.EmployeeUIService;
@@ -58,15 +56,12 @@ public class EmpRegiPanel extends AbsRegiPanel<Employee> implements ActionListen
 
 	private EmployeeUIService empService;
 	private String selectItem;
-	
-	private EmpIdChaeck empidChk;
 
 
 	public EmpRegiPanel() {
 		empService = new EmployeeUIService();
 		initialize();
 		setEmpNo(empService.showlastEmpNum());
-		//setEmpId();
 	}
 
 	private void initialize() {

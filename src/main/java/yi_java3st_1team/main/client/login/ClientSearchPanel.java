@@ -34,17 +34,15 @@ public class ClientSearchPanel extends JPanel implements ActionListener, KeyList
 	private JTextField tfMail;
 	private JButton btnSearch;
 	private JButton btnPass;
-	private ClientUIService cService;
+	private ClientUIService clService;
 	private String cId;
 	private String cMail;
 	private int cNo;
 	private String cName;
 
-	/**
-	 * Create the panel.
-	 */
+
 	public ClientSearchPanel() {
-		cService = new ClientUIService();
+		clService = new ClientUIService();
 		initialize();
 	}
 	private void initialize() {
@@ -197,7 +195,7 @@ public class ClientSearchPanel extends JPanel implements ActionListener, KeyList
 		}
 		
 		cName = tfName.getText(); 
-		Client searchId = cService.lostID(new Client(cNo, cName));
+		Client searchId = clService.lostID(new Client(cNo, cName));
 		
 		/*** 아이디 ***/
 		if(searchId != null) {
@@ -220,7 +218,7 @@ public class ClientSearchPanel extends JPanel implements ActionListener, KeyList
 		
 		/*** 메일 ***/
 		cMail = tfMail.getText();
-		Client test = cService.clientMail(new Client(cNo, cName, cId, cMail));
+		Client test = clService.clientMail(new Client(cNo, cName, cId, cMail));
 		
 		String dbMail = test.getcMail();
 		
@@ -245,7 +243,7 @@ public class ClientSearchPanel extends JPanel implements ActionListener, KeyList
 			String content = String.format("임시비밀번호는 %s 입니다. 해당 비밀번호로 로그인 해주세요.", cPw); 
 			
 			Client client = new Client(cNo, cName, cId, cPw, cMail);
-			cService.resetClientPass(client);
+			clService.resetClientPass(client);
 			
 			switch (mail) {
 			case "@naver":

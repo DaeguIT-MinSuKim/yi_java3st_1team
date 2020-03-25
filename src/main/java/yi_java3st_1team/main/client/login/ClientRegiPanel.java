@@ -23,7 +23,6 @@ import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 import javax.swing.event.DocumentListener;
 
-import yi_java3st_1team.main.client.login.ZipCodePanel;
 import yi_java3st_1team.clientmanagement.dto.Client;
 import yi_java3st_1team.clientmanagement.ui.service.ClientUIService;
 import yi_java3st_1team.main.employee.login.AbsRegiPanel;
@@ -47,7 +46,7 @@ public class ClientRegiPanel  extends AbsRegiPanel<Client> implements ActionList
 	private JButton btnCancle;
 	private JButton doubleChk2;
 	private JLabel lblPassword;
-	private ClientUIService cService;
+	private ClientUIService clService;
 	
 	private JButton doubleChk1;
 	private JFrame zipcodeFrame;
@@ -55,17 +54,15 @@ public class ClientRegiPanel  extends AbsRegiPanel<Client> implements ActionList
 	
 	private JFrame idCheck;
 	private JButton chkAdd;
-	private ZipCodePanel zipPanel;
-	private String total;
 	
 	private JButton btnEmpSearch;
 	private JFrame empSearch;
 
 	
 	public ClientRegiPanel() {
-		cService = new ClientUIService();
+		clService = new ClientUIService();
 		initialize();
-		setCNo(cService.lastClient());
+		setCNo(clService.lastClient());
 	}
 	
 
@@ -401,19 +398,15 @@ public class ClientRegiPanel  extends AbsRegiPanel<Client> implements ActionList
 	}
 	
 
-
-
-
-
 	//등록
 	protected void actionPerformedBtnAdd(ActionEvent e) {
 		if(tfName.getText().equals("")||tfAdd.getText().equals("")||tfTell.getText().equals("")||tfId.getText().equals("")||tfMail.getText().equals("")||lblPassword.getText().equals("")||lblPassword.getText().equals("비밀번호 사용 불가")) {
 			JOptionPane.showMessageDialog(null, "등록 양식에 맞춰 정확하게 입력하세요.");
 		}else {
 			Client newClient = getItem();
-			cService.addClient(newClient);
+			clService.addClient(newClient);
 			clearTf();
-			setCNo(cService.lastClient());
+			setCNo(clService.lastClient());
 			JOptionPane.showMessageDialog(null, "등록되었습니다.");
 		}
 			
@@ -494,7 +487,7 @@ public class ClientRegiPanel  extends AbsRegiPanel<Client> implements ActionList
 			JOptionPane.showMessageDialog(null, "등록할 상호명을 입력해주세요.");
 		} else {
 			Client sName = new Client(tfName.getText());
-			Client cName = cService.overlapClient(sName);
+			Client cName = clService.overlapClient(sName);
 			
 			if(cName == null) {
 				JOptionPane.showMessageDialog(null, "등록 가능한 상호 입니다.");

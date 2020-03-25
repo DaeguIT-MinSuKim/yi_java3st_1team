@@ -1,14 +1,14 @@
 package yi_java3st_1team.main.employee.dto;
 
 public class Employee {
-	private int empNo; //1
-	private String empName; //현재승
-	private Department dNo; //1 -> 기획총무부
-	private String empTitle; //대표이사
+	private int empNo; // 1
+	private String empName; // 현재승
+	private Department dNo; // 1 -> 기획총무부
+	private String empTitle; // 대표이사
 	private int empManager; // 책임관리자(1) / 관리자(2)
 	private String empId; // hceo1004
 	private String empPass; // Jason1234!@
-	private String empMail; //airplant@naver.com
+	private String empMail; // airplant@naver.com
 
 	public Employee() {
 	}
@@ -16,26 +16,13 @@ public class Employee {
 	public Employee(int empNo) {
 		this.empNo = empNo;
 	}
-
- 
 	
-	public Employee(int empNo, String empName, String empId, String empPass, String empMail) {
-		this.empNo = empNo;
-		this.empName = empName;
-		this.empId = empId;
-		this.empPass = empPass;
-		this.empMail = empMail;
-	}
-
-	public Employee(int empNo, String empName, String empId, String empMail) {
-		this.empNo = empNo;
-		this.empName = empName;
-		this.empId = empId;
-		this.empMail = empMail;
-	}
-
 	public Employee(Department dNo) {
 		this.dNo = dNo;
+	}
+	
+	public Employee(String empId) {
+		this.empId = empId;
 	}
 	
 	public Employee(String empId, String empPass) {
@@ -47,6 +34,27 @@ public class Employee {
 		this.empNo = empNo;
 		this.empName = empName;
 	}
+	
+	public Employee(int empNo, Department dNo, String empTitle) {
+		this.empNo = empNo;
+		this.dNo = dNo;
+		this.empTitle = empTitle;
+	}
+	
+	public Employee(int empNo, String empName, String empId, String empMail) {
+		this.empNo = empNo;
+		this.empName = empName;
+		this.empId = empId;
+		this.empMail = empMail;
+	}
+
+	public Employee(int empNo, String empName, String empId, String empPass, String empMail) {
+		this.empNo = empNo;
+		this.empName = empName;
+		this.empId = empId;
+		this.empPass = empPass;
+		this.empMail = empMail;
+	}
 
 	public Employee(int empNo, String empName, String empTitle, int empManager, String empMail) {
 		this.empNo = empNo;
@@ -55,40 +63,26 @@ public class Employee {
 		this.empManager = empManager;
 		this.empMail = empMail;
 	}
-
-	public Employee(int empNo, String empName, Department dNo, String empTitle, int empManager, String empId, String empPass,
-			String empMail) {
-		this.empNo = empNo;
-		this.empName = empName;
-		this.dNo = dNo;
-		this.empTitle = empTitle;
-		this.empManager = empManager;
-		this.empId = empId;
-		this.empPass = empPass;
-		this.empMail = empMail;
-	}
-
-	public Employee(String empName, Department dNo, String empTitle, int empManager, String empId, String empPass,
-			String empMail) {
-		this.empName = empName;
-		this.dNo = dNo;
-		this.empTitle = empTitle;
-		this.empManager = empManager;
-		this.empId = empId;
-		this.empPass = empPass;
-		this.empMail = empMail;
-	}
-
-
 	
-	public Employee(int empNo, Department dNo, String empTitle) {
-		this.empNo = empNo;
+	public Employee(String empName, Department dNo, String empTitle, int empManager, String empId, String empPass, String empMail) {
+		this.empName = empName;
 		this.dNo = dNo;
 		this.empTitle = empTitle;
+		this.empManager = empManager;
+		this.empId = empId;
+		this.empPass = empPass;
+		this.empMail = empMail;
 	}
 
-	public Employee(String empId) {
+	public Employee(int empNo, String empName, Department dNo, String empTitle, int empManager, String empId, String empPass, String empMail) {
+		this.empNo = empNo;
+		this.empName = empName;
+		this.dNo = dNo;
+		this.empTitle = empTitle;
+		this.empManager = empManager;
 		this.empId = empId;
+		this.empPass = empPass;
+		this.empMail = empMail;
 	}
 
 	public int getEmpNo() {
@@ -160,11 +154,6 @@ public class Employee {
 		return "Employee [empNo=" + empNo + ", empName=" + empName + ", dNo=" + dNo + ", empTitle=" + empTitle
 				+ ", empManager=" + empManager + ", empId=" + empId + ", empPass=" + empPass + ", empMail=" + empMail
 				+ "]";
-//		return String.format("%s(%d) %s %s %s %s %s %s",
-//								empName, empNo, dNo.getDeptNo(), empTitle, empManager, empId, empPass, empMail);
-//		return String.format("%s(%d)", empName, empNo);
-		
-
 	}
 
 }

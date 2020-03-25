@@ -15,21 +15,16 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
-import yi_java3st_1team.clientmanagement.dto.Client;
 import yi_java3st_1team.clientmanagement.ui.service.ClientUIService;
-import yi_java3st_1team.main.employee.dto.Employee;
-import yi_java3st_1team.main.employee.ui.service.EmployeeUIService;
 
 @SuppressWarnings("serial")
 public class ClientIdChaeck extends JPanel implements ActionListener {
 	public JTextField tfSearch;
 	private JButton btnSearch;
-//	public JButton btnAdd;
 	private JLabel lblIdEquals;
 	
-	private ClientUIService cService;
+	private ClientUIService clService;
 	
-	private ClientRegiPanel regiPanel;
 	public String idChk;
 	public static String idOk;
 	public static JPanel pBtn;
@@ -37,7 +32,7 @@ public class ClientIdChaeck extends JPanel implements ActionListener {
 	
 	
 	public ClientIdChaeck() {
-		cService = new ClientUIService();
+		clService = new ClientUIService();
 		initialize();
 	}
 	private void initialize() {
@@ -57,14 +52,6 @@ public class ClientIdChaeck extends JPanel implements ActionListener {
 		pBtn.setBackground(SystemColor.inactiveCaptionBorder);
 		pBtn.setPreferredSize(new Dimension(10, 55));
 		add(pBtn, BorderLayout.SOUTH);
-		
-//		btnAdd = new JButton("등록");
-//		btnAdd.addActionListener(this);
-//		btnAdd.setForeground(Color.BLACK);
-//		btnAdd.setFont(new Font("맑은 고딕", Font.BOLD, 14));
-//		btnAdd.setFocusable(false);
-//		btnAdd.setBackground(SystemColor.controlHighlight);
-//		pBtn.add(btnAdd);
 		
 		JPanel pSearch = new JPanel();
 		pSearch.setBackground(SystemColor.inactiveCaptionBorder);
@@ -96,20 +83,20 @@ public class ClientIdChaeck extends JPanel implements ActionListener {
 		btnSearch.setBounds(290, 30, 63, 33);
 		pSearch.add(btnSearch);
 	}
+	
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == btnSearch) {
 			actionPerformedBtnSearch(e);
 		}
 	}
+	
 	protected void actionPerformedBtnSearch(ActionEvent e) {
 		/*** (ID)정규표현식 : 5자이상 12자이하, 대소문자,숫자,_ 가능 ***/
 		String idPattern = "^[a-zA-Z0-9_]{5,11}$";
 		idChk = tfSearch.getText();
 		/***  정규표현식 검사 ***/
 		boolean result = Pattern.matches(idPattern, idChk);
-		//Client newId = new Client(idChk);
-		//Client searchId = cService.Idcheck(newId);
-		String searchId = cService.Idcheck(idChk);
+		String searchId = clService.Idcheck(idChk);
 		if(result==true && searchId==null) {
 			lblIdEquals.setText("아이디 사용 가능");
 			lblIdEquals.setForeground(new Color(0, 102, 0));
@@ -119,10 +106,6 @@ public class ClientIdChaeck extends JPanel implements ActionListener {
 			lblIdEquals.setText("아이디 사용 불가");
 			lblIdEquals.setForeground(Color.RED);
 			tfSearch.setText("");
-		}
-		
+		}		
 	}
-//	protected void actionPerformedBtnAdd(ActionEvent e) {
-//		//regiPanel.tfId.setText(idOK);
-//	}
 }

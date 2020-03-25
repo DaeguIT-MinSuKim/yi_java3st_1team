@@ -22,14 +22,12 @@ public interface ClientDao {
 	int deleteClient(Client client);
 	int selectClientNo(Client client);
 	int selectCsalesman(Client client);
-	
+
+		
+	/************ (+) 추가 : 아름 ************/
 	Client loginClient(Client client);
-	
 	String selectClientById(String idChk);
-	
 	Client selectClientByID2(Client client);
-	
 	Client selectClientByMail(Client client);
-	
 	int updateClientPassword(Client client);
 }
