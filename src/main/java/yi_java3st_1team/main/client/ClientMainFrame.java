@@ -38,7 +38,7 @@ public class ClientMainFrame extends JFrame implements ActionListener{
 			public void run() {
 				try {
 					ClientMainFrame frame = new ClientMainFrame();
-					frame.setVisible(true); // 프레임이 출력되도록 지시
+					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -51,6 +51,7 @@ public class ClientMainFrame extends JFrame implements ActionListener{
 	}
 
 	private void initialize() {
+		// 전체 frame
 		setTitle("[고객용] S/W주문관리 프로그램"); // 타이틀
 		setSize(1550, 900); // 프레임크기(가로:1150 / 세로:760)
 		setResizable(false);
@@ -63,6 +64,7 @@ public class ClientMainFrame extends JFrame implements ActionListener{
 		setContentPane(contentPane);
 		contentPane.setLayout(new BorderLayout(5, 5));
 
+		// -- Header
 		pHeader = new JPanel();
 		pHeader.setBackground(SystemColor.inactiveCaption);
 		pHeader.setPreferredSize(new Dimension(1150, 120));
@@ -78,6 +80,8 @@ public class ClientMainFrame extends JFrame implements ActionListener{
 		lblLogo.setPreferredSize(new Dimension(300, 120));
 		pHeader.add(lblLogo);
 		
+		
+		/************************************************ 로그아웃버튼 ************************************************/
 		// 로그아웃버튼
 		btnlogout = new JButton("");
 		btnlogout.addActionListener(this);
@@ -88,8 +92,13 @@ public class ClientMainFrame extends JFrame implements ActionListener{
 		btnlogout.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\loginMain\\Logoutbtn.png"));
 		btnlogout.setBounds(1415, 30, 95, 85);
 		pHeader.add(btnlogout);
+		//출력X
 		btnlogout.setVisible(false);
 		
+		/**********************************************************************************************************************/		
+		
+
+		// -- Section			
 		pSection = new JPanel();
 		pSection.setBackground(SystemColor.inactiveCaption);
 		contentPane.add(pSection, BorderLayout.CENTER);
@@ -99,6 +108,7 @@ public class ClientMainFrame extends JFrame implements ActionListener{
 		pContents.setBackground(SystemColor.inactiveCaption);
 		pSection.add(pContents);
 
+		// -- Footer
 		pFooter = new JPanel();
 		pFooter.setBackground(SystemColor.inactiveCaption);
 		pFooter.setPreferredSize(new Dimension(1150, 30));
@@ -107,19 +117,19 @@ public class ClientMainFrame extends JFrame implements ActionListener{
 
 		lblCopy = new JLabel("");
 		lblCopy.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblCopy.setIcon(
-				new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\loginMain\\botLogo.png"));
+		lblCopy.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\loginMain\\botLogo.png"));
 		lblCopy.setPreferredSize(new Dimension(400, 30));
 		lblCopy.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 20));
 		pFooter.add(lblCopy, BorderLayout.EAST);
 	}
 
+	
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == btnlogout) {
 			actionPerformedBtnlogout(e);
-		}
-		
+		}		
 	}
+	
 	protected void actionPerformedBtnlogout(ActionEvent e) {
 		pSection.removeAll();
 		pSection.revalidate();
@@ -128,6 +138,8 @@ public class ClientMainFrame extends JFrame implements ActionListener{
 		pContents = new ClientMainUIPanel();
 		pSection.add(pContents, BorderLayout.CENTER);
 		pContents.loginCl = null;
+		
+		/** 로그아웃 버튼 **/
 		btnlogout.setVisible(false);
 		
 	}
