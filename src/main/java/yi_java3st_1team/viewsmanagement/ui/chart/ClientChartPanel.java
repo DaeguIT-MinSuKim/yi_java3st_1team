@@ -60,7 +60,7 @@ public class ClientChartPanel extends JFXPanel implements InitScene {
 		
 		root.getChildren().add(barChart);
 		
-		return scene;
+		return scene; 
 	}
 	
 	public XYChart.Series<String, Number> getChartData(ClientChart co) {

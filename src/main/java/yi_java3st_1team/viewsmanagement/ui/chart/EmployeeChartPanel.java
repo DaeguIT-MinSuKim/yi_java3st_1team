@@ -1,9 +1,6 @@
 package yi_java3st_1team.viewsmanagement.ui.chart;
 
-import javax.swing.JPanel;
-import java.awt.Dimension;
-import java.awt.BorderLayout;
-import javax.swing.JTable;
+import java.util.List;
 
 import javafx.beans.binding.Bindings;
 import javafx.collections.FXCollections;
@@ -14,10 +11,21 @@ import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.chart.PieChart;
 import javafx.scene.chart.PieChart.Data;
+import yi_java3st_1team.viewsmanagement.dto.EmployeeChart;
+import yi_java3st_1team.viewsmanagement.ui.service.EmployeeChartUIService;
 
 @SuppressWarnings("serial")
 public class EmployeeChartPanel extends JFXPanel implements InitScene {
 	private PieChart pieChart;
+	private EmployeeChartUIService service;
+	private String year;
+	private String month;
+	private String firstDay;
+	private String lastDay;
+	private List<EmployeeChart> rankingList;
+	private Object firstDate;
+	private Object lastDate;
+	private int totalSales;
 
 	public EmployeeChartPanel() {
 	}
@@ -50,16 +58,56 @@ public class EmployeeChartPanel extends JFXPanel implements InitScene {
 	
 	private ObservableList<Data> getChartData() {
 		ObservableList<Data> list = FXCollections.observableArrayList();
-		list.addAll(new PieChart.Data("권수진", 24.6),
-					new PieChart.Data("현무범", 9.1),
-					new PieChart.Data("양사기", 9.1),
-					new PieChart.Data("한지석", 9.1),
-					new PieChart.Data("양옥고", 9.1),
-					new PieChart.Data("문구심", 7.8),
-					new PieChart.Data("최정력", 7.8),
-					new PieChart.Data("양윤옥", 7.8),
-					new PieChart.Data("최우사", 7.8),
-					new PieChart.Data("한천심", 7.8));
+		
+		service = new EmployeeChartUIService();
+		
+		String startDate = year+"-"+month+"-"+firstDay;
+		String endDate = year+"-"+month+"-"+lastDay;
+		rankingList = service.showEmployeeChart("2020-01-01", "2020-03-31");
+		totalSales = service.selectEmployeeTotal(startDate, endDate);
+		
+		double[] sales = new double[10];
+		String[] name = new String[10];
+		for(int i=0; i<rankingList.size(); i++) {
+			sales[i] = rankingList.get(i).getSalesMoney();
+			name[i] = rankingList.get(i).getE_name();
+		}
+		
+		
+//		List<EmployeeChart> employeeChart = service.showEmployeeChart(startDate, endDate);
+		
+		list.addAll(new PieChart.Data(name[0], 24.6),
+				new PieChart.Data(name[1], 9.1),
+				new PieChart.Data(name[2], 9.1),
+				new PieChart.Data(name[3], 9.1),
+				new PieChart.Data(name[4], 9.1),
+				new PieChart.Data(name[5], 7.8),
+				new PieChart.Data(name[6], 7.8),
+				new PieChart.Data(name[7], 7.8),
+				new PieChart.Data(name[8], 7.8),
+				new PieChart.Data(name[9], 7.8));
+		
+//		list.addAll(new PieChart.Data(name[0], Math.floor((sales[0]/totalSales)*100)),
+//					new PieChart.Data(name[1], Math.floor((sales[1]/totalSales)*100)),
+//					new PieChart.Data(name[2], Math.floor((sales[2]/totalSales)*100)),
+//					new PieChart.Data(name[3], Math.floor((sales[3]/totalSales)*100)),
+//					new PieChart.Data(name[4], Math.floor((sales[4]/totalSales)*100)),
+//					new PieChart.Data(name[5], Math.floor((sales[5]/totalSales)*100)),
+//					new PieChart.Data(name[6], Math.floor((sales[6]/totalSales)*100)),
+//					new PieChart.Data(name[7], Math.floor((sales[7]/totalSales)*100)),
+//					new PieChart.Data(name[8], Math.floor((sales[8]/totalSales)*100)),
+//					new PieChart.Data(name[9], Math.floor((sales[9]/totalSales)*100)));
+		
+//		list.addAll(new PieChart.Data("권수진", 24.6),
+//					new PieChart.Data("현무범", 9.1),
+//					new PieChart.Data("양사기", 9.1),
+//					new PieChart.Data("한지석", 9.1),
+//					new PieChart.Data("양옥고", 9.1),
+//					new PieChart.Data("문구심", 7.8),
+//					new PieChart.Data("최정력", 7.8),
+//					new PieChart.Data("양윤옥", 7.8),
+//					new PieChart.Data("최우사", 7.8),
+//					new PieChart.Data("한천심", 7.8));
 		return list;
 	}
 
