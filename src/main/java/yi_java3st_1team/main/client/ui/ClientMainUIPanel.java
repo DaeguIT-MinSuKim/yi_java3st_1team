@@ -311,6 +311,7 @@ public class ClientMainUIPanel extends JPanel implements ActionListener {
 		pImg02.removeAll();
 		JPanel pPie = new JPanel();
 		pPie.add(pie);
+		pPie.setBackground(SystemColor.inactiveCaption); //패널 배경색 추가
 		pImg02.add(pPie, BorderLayout.NORTH);
 		pStop.add(pCLogin, BorderLayout.WEST);
 		pStop.revalidate();

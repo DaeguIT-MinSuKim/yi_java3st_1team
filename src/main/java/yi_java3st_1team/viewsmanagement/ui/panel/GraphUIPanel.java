@@ -74,6 +74,7 @@ public class GraphUIPanel extends JPanel {
 		pLeft.add(pLSearch);
 		pLSearch.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		
+
 		ClientPanel pLDate = new ClientPanel();
 		pLSearch.add(pLDate);
 		

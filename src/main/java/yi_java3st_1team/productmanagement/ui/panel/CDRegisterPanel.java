@@ -191,7 +191,9 @@ public class CDRegisterPanel extends AbsItemPanel<ClientDelivery> implements Ite
 
 	@Override
 	public ClientDelivery getItem() {
-		int cdNo = Integer.parseInt(tfPCDNo.getText().substring(1));
+		//int cdNo = Integer.parseInt(tfPCDNo.getText().substring(1));
+		String cdNum = tfPCDNo.getText().replaceAll("[^0-9]", "");
+		int cdNo = Integer.parseInt(cdNum);
 		
 		Order order = new Order();
 		order.setoQty(Integer.parseInt(tfSCDQty.getText().trim()));

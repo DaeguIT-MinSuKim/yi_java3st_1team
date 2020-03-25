@@ -128,7 +128,7 @@ public class ClientOrderUIPanel extends JPanel implements ActionListener, Change
 		btnPCheck = new JButton("품목확인");
 		btnPCheck.addActionListener(this);
 		btnPCheck.setFocusable(false);
-		btnPCheck.setBackground(new Color(255, 204, 102));
+		btnPCheck.setBackground(Color.LIGHT_GRAY);
 		btnPCheck.setForeground(Color.WHITE);
 		btnPCheck.setFont(new Font("맑은 고딕", Font.BOLD, 16));
 		btnPCheck.setBounds(534, 288, 120, 30);

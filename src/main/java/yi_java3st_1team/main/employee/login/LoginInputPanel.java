@@ -1,5 +1,6 @@
 package yi_java3st_1team.main.employee.login;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 
@@ -9,6 +10,8 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
+
+import yi_java3st_1team.main.ui.panel.JTextFieldHintUI;
 
 @SuppressWarnings("serial")
 public class LoginInputPanel extends JPanel {

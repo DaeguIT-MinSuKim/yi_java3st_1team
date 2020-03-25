@@ -110,7 +110,7 @@ public class CRegisterPanel extends AbsItemPanel<Client> {
 		tfCName.setUI(new JTextFieldHintUI(">> 중복확인", Color.gray));
 
 		tfCCEO = new JTextField();
-		tfCCEO.setFont(new Font("굴림", Font.BOLD, 12));
+		tfCCEO.setFont(new Font("굴림", Font.PLAIN, 12));
 		tfCCEO.setForeground(Color.BLACK);
 		tfCCEO.setColumns(10);
 		tfCCEO.setBounds(176, 165, 200, 30);

@@ -23,6 +23,7 @@ import yi_java3st_1team.clientmanagement.ui.panel.AbsItemPanel;
 import yi_java3st_1team.clientmanagement.ui.service.ClientUIService;
 import yi_java3st_1team.exception.InvalidCheckException;
 import yi_java3st_1team.main.employee.dto.Employee;
+import yi_java3st_1team.main.ui.panel.JTextFieldHintUI;
 import yi_java3st_1team.ordermanagement.dto.Order;
 import yi_java3st_1team.productmanagement.dto.Product;
 import yi_java3st_1team.productmanagement.ui.service.SWUIService;
@@ -49,6 +50,8 @@ public class ClientORegisterPanel extends AbsItemPanel<Order> implements ItemLis
 	private ClientUIService cService;
 	private SWUIService pService;
 	public JComboBox<Product> cmbPList;
+	private JLabel label_1;
+	private JLabel label_2;
 	
 	public ClientORegisterPanel() {
 		cService = new ClientUIService();
@@ -80,7 +83,7 @@ public class ClientORegisterPanel extends AbsItemPanel<Order> implements ItemLis
 		lblODate.setBounds(70, 72, 120, 30);
 		panel.add(lblODate);
 		
-		lblOCName = new JLabel("고객상호명");
+		lblOCName = new JLabel("고객 상호명");
 		lblOCName.setForeground(Color.BLACK);
 		lblOCName.setHorizontalAlignment(SwingConstants.CENTER);
 		lblOCName.setFont(new Font("휴먼둥근헤드라인", Font.PLAIN, 16));
@@ -109,6 +112,8 @@ public class ClientORegisterPanel extends AbsItemPanel<Order> implements ItemLis
 		panel.add(lblOWant);
 		
 		tfONo = new JTextField();
+		tfONo.setFont(new Font("굴림", Font.BOLD, 12));
+		tfONo.setForeground(new Color(0, 0, 128));
 		tfONo.setEditable(false);
 		tfONo.setBounds(232, 22, 200, 30);
 		panel.add(tfONo);
@@ -119,15 +124,20 @@ public class ClientORegisterPanel extends AbsItemPanel<Order> implements ItemLis
 		panel.add(tfODate);
 		
 		tfOCName = new JTextField();
+		tfOCName.setFont(new Font("굴림", Font.BOLD, 12));
+		tfOCName.setForeground(new Color(153, 0, 0));
 		tfOCName.setEditable(false);
 		tfOCName.setColumns(10);
 		tfOCName.setBounds(232, 122, 200, 30);
 		panel.add(tfOCName);
 		
 		tfOQty = new JTextField();
+		tfOQty.setFont(new Font("굴림", Font.BOLD, 12));
+		tfOQty.setForeground(Color.BLACK);
 		tfOQty.setColumns(10);
 		tfOQty.setBounds(232, 222, 200, 30);
 		panel.add(tfOQty);
+		tfOQty.setUI(new JTextFieldHintUI(">> 품목명 조회 후 수량조회", Color.gray));
 		
 		taOWant = new JTextArea();
 		taOWant.setBorder(new LineBorder(SystemColor.activeCaptionBorder));
@@ -138,6 +148,36 @@ public class ClientORegisterPanel extends AbsItemPanel<Order> implements ItemLis
 		cmbPList.addItemListener(this);
 		cmbPList.setBounds(232, 172, 200, 30);
 		panel.add(cmbPList);
+		
+		label_1 = new JLabel("*");
+		label_1.setForeground(Color.RED);
+		label_1.setFont(new Font("굴림", Font.BOLD, 26));
+		label_1.setBounds(176, 26, 14, 15);
+		panel.add(label_1);
+		
+		label_2 = new JLabel("*");
+		label_2.setForeground(Color.RED);
+		label_2.setFont(new Font("굴림", Font.BOLD, 26));
+		label_2.setBounds(176, 76, 14, 15);
+		panel.add(label_2);
+		
+		JLabel label_3 = new JLabel("*");
+		label_3.setForeground(Color.RED);
+		label_3.setFont(new Font("굴림", Font.BOLD, 26));
+		label_3.setBounds(176, 126, 14, 15);
+		panel.add(label_3);
+		
+		JLabel label_4 = new JLabel("*");
+		label_4.setForeground(Color.RED);
+		label_4.setFont(new Font("굴림", Font.BOLD, 26));
+		label_4.setBounds(178, 176, 14, 15);
+		panel.add(label_4);
+		
+		JLabel label_5 = new JLabel("*");
+		label_5.setForeground(Color.RED);
+		label_5.setFont(new Font("굴림", Font.BOLD, 26));
+		label_5.setBounds(176, 226, 14, 15);
+		panel.add(label_5);
 		
 		label = new JLabel("");
 		label.setOpaque(true);
@@ -218,5 +258,4 @@ public class ClientORegisterPanel extends AbsItemPanel<Order> implements ItemLis
 		}
 		
 	}
-	
 }
