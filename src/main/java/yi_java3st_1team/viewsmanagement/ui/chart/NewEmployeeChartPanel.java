@@ -1,9 +1,7 @@
 package yi_java3st_1team.viewsmanagement.ui.chart;
 
 import java.util.Calendar;
-import java.util.GregorianCalendar;
 import java.util.List;
-import java.util.Locale;
 
 import javafx.beans.binding.Bindings;
 import javafx.collections.FXCollections;
@@ -19,30 +17,37 @@ import yi_java3st_1team.viewsmanagement.dto.EmployeeChart;
 import yi_java3st_1team.viewsmanagement.ui.service.EmployeeChartUIService;
 
 @SuppressWarnings("serial")
-public class EmployeeChartPanel extends JFXPanel implements InitScene {
+public class NewEmployeeChartPanel extends JFXPanel implements InitScene {
 	private PieChart pieChart;
 	private EmployeeChartUIService service;
-	private Calendar calendar;
-	private int year;
-	private int month;
 	private int firstDay = 1;
 	private int lastDay;
 	private List<EmployeeChart> rankingList;
 	private double totalMoney;
+	private int newMonth;
+	private int newYear;
 
-	public EmployeeChartPanel() {
+	public NewEmployeeChartPanel() {
+	}
+
+	public void setNewMonth(int newMonth) {
+		this.newMonth = newMonth;
+	}
+
+	public void setNewYear(int newYear) {
+		this.newYear = newYear;
 	}
 
 	public Scene createScene() {
 		Group root = new Group();
 		Scene scene = new Scene(root, Color.ALICEBLUE);
 		root.setAutoSizeChildren(true);
+
+		int Year = newYear;
+		int Month = newMonth;
 		
-		calendar = new GregorianCalendar(Locale.KOREA);
-		year = calendar.get(Calendar.YEAR);
-		month = calendar.get(Calendar.MONTH) + 1;
 		Calendar cal = Calendar.getInstance();
-		cal.set(year, month-1, firstDay); 
+		cal.set(Year, Month, firstDay); 
 		lastDay = cal.getActualMaximum(Calendar.DAY_OF_MONTH);
 		
 		pieChart = new PieChart();
@@ -71,8 +76,8 @@ public class EmployeeChartPanel extends JFXPanel implements InitScene {
 		
 		service = new EmployeeChartUIService();
 		
-		String startDate = year+"-"+month+"-"+firstDay;
-		String endDate = year+"-"+month+"-"+lastDay;
+		String startDate = newYear+"-"+newMonth+"-"+firstDay;
+		String endDate = newYear+"-"+newMonth+"-"+lastDay;
 		rankingList = service.showEmployeeChart(startDate, endDate);
 		double[] sales = new double[10];
 		String[] name = new String[10];

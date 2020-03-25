@@ -1,8 +1,6 @@
 package yi_java3st_1team.viewsmanagement.ui.chart;
 
 import java.util.Calendar;
-import java.util.GregorianCalendar;
-import java.util.Locale;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -22,11 +20,7 @@ import yi_java3st_1team.viewsmanagement.ui.service.ClientChartUIService;
 public class NewClientChartPanel extends JFXPanel implements InitScene {
 	private ClientChartUIService service;
 	private BarChart<String, Number> barChart;
-	private int year;
-	private int month;
 	private int firstDay = 1;
-	private int lastDay;
-	private GregorianCalendar Calendar;
 	private int LastDay;
 	private int newYear;
 	private int newMonth;
@@ -56,12 +50,10 @@ public class NewClientChartPanel extends JFXPanel implements InitScene {
 		int Year = newYear;
 		int Month = newMonth;
 		
-		Calendar = new GregorianCalendar(Locale.KOREA);
-		year = Calendar.get(Calendar.YEAR);
-		month = Calendar.get(Calendar.MONTH) + 1;
-		Calendar Cal = Calendar.getInstance();
-		Cal.set(Year, Month, firstDay); 
-		LastDay = Cal.getActualMaximum(Calendar.DAY_OF_MONTH);
+
+		Calendar cal = Calendar.getInstance();
+		cal.set(Year, Month, firstDay); 
+		LastDay = cal.getActualMaximum(Calendar.DAY_OF_MONTH);
 		
 		barChart = new BarChart<>(xAxis, yAxis);
 		barChart.setData(getChartData());
@@ -88,10 +80,7 @@ public class NewClientChartPanel extends JFXPanel implements InitScene {
 		String endDate = newYear+"-"+newMonth+"-"+LastDay;
 		
 		java.util.List<ClientChart> clientChart = service.showClientChartList(startDate, endDate);
-		for(int i=0;i<clientChart.size();i++) {
-			System.out.println(clientChart.get(i).getC_name());
-			System.out.println(clientChart.get(i).getP_price());
-		}
+		
 		ClientChart client = new ClientChart(clientChart.get(0).getC_name(), clientChart.get(0).getP_price());
 		ClientChart client2 = new ClientChart(clientChart.get(1).getC_name(), clientChart.get(1).getP_price());
 		ClientChart client3 = new ClientChart(clientChart.get(2).getC_name(), clientChart.get(2).getP_price());

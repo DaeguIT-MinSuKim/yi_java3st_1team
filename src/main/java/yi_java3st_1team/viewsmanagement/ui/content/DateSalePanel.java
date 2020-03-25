@@ -1,5 +1,6 @@
 package yi_java3st_1team.viewsmanagement.ui.content;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
@@ -13,12 +14,9 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JSpinner;
 import javax.swing.SpinnerDateModel;
-import javax.swing.SpinnerNumberModel;
 import javax.swing.SwingConstants;
 
 import com.toedter.calendar.JDateChooser;
-
-import java.awt.Color;
 
 @SuppressWarnings("serial")
 public class DateSalePanel extends JPanel {

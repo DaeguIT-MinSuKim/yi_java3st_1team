@@ -30,7 +30,7 @@ public class SWTotalSaleDaoImpl implements SWTotalSaleDao {
 				"		o.o_qty*p.p_price as 판매금액 " + 
 				"  from `order` o natural join product p natural join category cate " + 
 				" where p.p_no  = o.o_pno and cate.cate_no = p.p_cate " + 
-				"group by 날짜, 분류;";
+				"group by 날짜, 분류, 품목명, 주문번호";
 		List<SWTotalSale> list = new ArrayList<SWTotalSale>();
 		try(Connection con = MySqlDataSource.getConnection();
 				PreparedStatement pstmt = con.prepareStatement(sql);
