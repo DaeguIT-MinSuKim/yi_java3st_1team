@@ -30,17 +30,17 @@ public class ClientOCheckTblPanel extends AbstractTblPanel<Order> {
 	@Override
 	protected Object[] getColNames() {
 		return new String[] {
-				 "<html><span style='color:#000042'><b>주문번호</b></html>",
-				 "<html><span style='color:#000042'><b>품목명</b></html>",
-				 "<html><span style='color:#000042'><b>주문수량</b></html>",
-				 "<html><span style='color:#000042'><b>주문가격</b></html>",
-				 "<html><span style='color:#000042'><b>주문일자</b></html>",
-				 "<html><span style='color:#000042'><b>주문확인</b></html>"				
+				 "<html><span style='color:#000042'><b>주문번호</b></span></html>",
+				 "<html><span style='color:#000042'><b>품목명</b></span></html>",
+				 "<html><span style='color:#000042'><b>주문수량</b></span></html>",
+				 "<html><span style='color:#000042'><b>주문가격</b></span></html>",
+				 "<html><span style='color:#000042'><b>주문일자</b></span></html>",
+				 "<html><span style='color:#000042'><b>주문확인</b></span></html>"				
 		};
 	}
 
 	@Override
-	protected Object[] toArray(Order item) {
+	protected Object[] toArray(Order item) {	
 		double fifty = 0.1;
 		double hund = 0.15;
 		if(item.getoQty()<50) {
@@ -55,19 +55,31 @@ public class ClientOCheckTblPanel extends AbstractTblPanel<Order> {
 			total = price-sub;
 		}
 		
+		String oNo = String.format("O%04d", item.getoNo());
+		String pName = String.format("%s", item.getoPname().getpName());
+		String oQty = String.format("%d", item.getoQty());
+		String won = String.format("%,d원 ", total);
+		String date = String.format("%tF", item.getoDate());
+		
 		if(item.getoOk()==0) {
-			check = "N";
+			check = "<html><span style='color:red'><b>N</b></span></html>";
+			oNo = String.format("<html><span style='color:red'>O%04d</span></html>", item.getoNo());
+			pName = String.format("<html><span style='color:red'>%s</span></html>", item.getoPname().getpName());
+			oQty = String.format("<html><span style='color:red'>%d</span></html>", item.getoQty());
+			won = String.format("<html><span style='color:red'>%,d원 </span></html>", total);
+			date = String.format("<html><span style='color:red'>%tF</span></html>", item.getoDate());
 		}else {
-			check = "Y";
+			check = "<html><span style='color:blue'><b>Y</b></span></html>";
 		}
 		
 		return new Object[] {
-				String.format("O%04d", item.getoNo()),
-				item.getoPname().getpName(),
-				item.getoQty(),
-				String.format("%,d원 ", total),
-				String.format("%tF", item.getoDate()),
-				check
+//				String.format("O%04d", item.getoNo()), //주문번호
+//				item.getoPname().getpName(), //품목명
+//				item.getoQty(), // 주문수량
+//				String.format("%,d원 ", total), // 주문가격
+//				String.format("%tF", item.getoDate()), //주문일자
+//				check // 주문확인
+				oNo, pName, oQty, won, date, check
 		};
 	}
 

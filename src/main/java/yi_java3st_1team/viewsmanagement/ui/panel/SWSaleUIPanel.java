@@ -96,6 +96,7 @@ public class SWSaleUIPanel extends JPanel {
 		pSearch.add(textField);
 		
 		btnSearch = new JButton("조회");
+		btnSearch.setFocusable(false);
 		btnSearch.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String PName = textField.getText();

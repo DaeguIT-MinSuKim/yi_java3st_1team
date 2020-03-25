@@ -66,7 +66,7 @@ public class ClientOCheckPanel extends JPanel implements ActionListener {
 		
 		pSearch = new JPanel();
 		pSearch.setBackground(Color.WHITE);
-		pSearch.setBounds(80, 128, 638, 48);
+		pSearch.setBounds(80, 128, 674, 48);
 		pCOCheck.add(pSearch);
 		pSearch.setLayout(null);
 		
@@ -79,21 +79,25 @@ public class ClientOCheckPanel extends JPanel implements ActionListener {
 		pSearch.add(label);
 		
 		dcStart = new JDateChooser(new Date(), "yyyy-MM-dd");
+		dcStart.getCalendarButton().setBackground(new Color(240, 255, 255));
+		dcStart.getCalendarButton().setFont(new Font("맑은 고딕", Font.BOLD, 14));
 		dcStart.getCalendarButton().setText("시 작");
 		dcStart.setPreferredSize(new Dimension(80, 30));
 		dcStart.setForeground(new Color(0, 102, 204));
 		dcStart.setFont(new Font("맑은 고딕", Font.BOLD, 15));
 		dcStart.setBackground(new Color(135, 206, 250));
-		dcStart.setBounds(124, 10, 145, 30);
+		dcStart.setBounds(124, 10, 150, 30);
 		pSearch.add(dcStart);
 		
 		dcEnd = new JDateChooser(new Date(), "yyyy-MM-dd");
+		dcEnd.getCalendarButton().setBackground(new Color(240, 255, 255));
+		dcEnd.getCalendarButton().setFont(new Font("맑은 고딕", Font.BOLD, 14));
 		dcEnd.getCalendarButton().setText("종 료");
 		dcEnd.setPreferredSize(new Dimension(80, 30));
 		dcEnd.setForeground(new Color(0, 102, 204));
 		dcEnd.setFont(new Font("맑은 고딕", Font.BOLD, 15));
 		dcEnd.setBackground(new Color(135, 206, 250));
-		dcEnd.setBounds(301, 10, 145, 30);
+		dcEnd.setBounds(310, 10, 150, 30);
 		pSearch.add(dcEnd);
 		
 		btnSearch = new JButton("검색");
@@ -102,25 +106,25 @@ public class ClientOCheckPanel extends JPanel implements ActionListener {
 		btnSearch.setPreferredSize(new Dimension(100, 30));
 		btnSearch.setForeground(Color.WHITE);
 		btnSearch.setFont(new Font("맑은 고딕", Font.BOLD, 16));
-		btnSearch.setBackground(new Color(255, 204, 153));
-		btnSearch.setBounds(458, 9, 80, 30);
+		btnSearch.setBackground(new Color(70,130,180));
+		btnSearch.setBounds(480, 9, 80, 30);
 		pSearch.add(btnSearch);
 		
 		JLabel lblNewLabel = new JLabel("~");
-		lblNewLabel.setFont(new Font("굴림", Font.BOLD, 15));
+		lblNewLabel.setFont(new Font("맑은 고딕", Font.BOLD, 16));
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setBounds(270, 11, 30, 30);
+		lblNewLabel.setBounds(275, 11, 37, 27);
 		pSearch.add(lblNewLabel);
 		
 		btnAll = new JButton("전체");
 		btnAll.addActionListener(this);
 		btnAll.setFocusable(false);
-		btnAll.setBounds(550, 9, 80, 30);
+		btnAll.setBounds(580, 9, 80, 30);
 		pSearch.add(btnAll);
 		btnAll.setPreferredSize(new Dimension(100, 30));
 		btnAll.setForeground(Color.WHITE);
 		btnAll.setFont(new Font("맑은 고딕", Font.BOLD, 16));
-		btnAll.setBackground(new Color(255, 204, 153));
+		btnAll.setBackground(Color.GRAY);
 		
 		btnGoMain = new JButton("메인화면");
 		btnGoMain.setFocusable(false);

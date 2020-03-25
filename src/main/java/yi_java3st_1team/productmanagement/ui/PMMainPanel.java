@@ -167,6 +167,8 @@ public class PMMainPanel extends JPanel implements ActionListener{
 			   
 			   pEmpLogin.btnLogout.addActionListener(this);
 			   EmployeeMainFrame.btnlogout.setVisible(false);
+				EmployeeMainFrame.lblLoginTitle.setVisible(false); //메인으로 갈때는 출력X
+				EmployeeMainFrame.lblLoginInfo.setVisible(false);
 
 			
 		}

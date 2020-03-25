@@ -122,7 +122,7 @@ public class OrderUIPanel extends JPanel implements ActionListener {
 		btnQtyCheck = new JButton("수량조회");
 		btnQtyCheck.addActionListener(this);
 		btnQtyCheck.setFocusable(false);
-		btnQtyCheck.setBackground(SystemColor.activeCaptionBorder);
+		btnQtyCheck.setBackground(new Color(255, 204, 51));
 		btnQtyCheck.setForeground(Color.WHITE);
 		btnQtyCheck.setFont(new Font("맑은 고딕", Font.BOLD, 16));
 		btnQtyCheck.setBounds(465, 335, 100, 30);
