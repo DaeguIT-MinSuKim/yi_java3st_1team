@@ -140,8 +140,10 @@ update `order` set o_date='2019-05-01', o_cno=25, o_pno=17, o_qty=50, o_memo='�
 update `order` set o_date='2020-03-14 00:00:00', o_cno=57, o_pno=2, o_qty=5, o_memo='빨리 보내 주세요.' where o_no=58;
 
 select * from client_delivery cd ;
+ALTER TABLE client_delivery AUTO_INCREMENT=1;
 
 select * from `order` o;
+ALTER TABLE `order` AUTO_INCREMENT=1;
 
 select * from client c ;
 
