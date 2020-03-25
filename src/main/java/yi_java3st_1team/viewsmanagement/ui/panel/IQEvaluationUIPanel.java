@@ -1,28 +1,26 @@
 package yi_java3st_1team.viewsmanagement.ui.panel;
 
+import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.SystemColor;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.sql.SQLException;
 
+import javax.swing.ButtonGroup;
+import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JRadioButton;
+import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
-import yi_java3st_1team.ordermanagement.dto.InventoryQuantity;
 import yi_java3st_1team.viewsmanagement.dto.IQEvaluation;
-import yi_java3st_1team.viewsmanagement.ui.content.IQPanel;
 import yi_java3st_1team.viewsmanagement.ui.list.IQEvaluationTblPanel;
 import yi_java3st_1team.viewsmanagement.ui.service.IQEvaluationUIService;
-import java.awt.Color;
-import javax.swing.JTextField;
-import javax.swing.ButtonGroup;
-import javax.swing.JButton;
-import javax.swing.JRadioButton;
-import java.awt.FlowLayout;
-import java.awt.event.ActionListener;
-import java.sql.SQLException;
-import java.awt.event.ActionEvent;
 
 @SuppressWarnings("serial")
 public class IQEvaluationUIPanel extends JPanel {

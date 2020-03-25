@@ -183,7 +183,7 @@ public class MainPanel extends JPanel implements ActionListener {
 	}
 	protected void btn05ActionPerformed(ActionEvent e) {
 		JFrame frame = new JFrame();
-		frame.setTitle("전체 판매 현황 / 거래명세서");
+		frame.setTitle("전체 판매 현황 / 거래명세");
 		frame.setBounds(100, 100, 1500, 900);
 		SW_TSUIPanel cs = new SW_TSUIPanel();
 		frame.getContentPane().add(cs);

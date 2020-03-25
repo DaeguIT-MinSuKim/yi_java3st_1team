@@ -18,14 +18,15 @@ import javafx.scene.Scene;
 import yi_java3st_1team.viewsmanagement.ui.chart.ClientChartPanel;
 import yi_java3st_1team.viewsmanagement.ui.chart.EmployeeChartPanel;
 import yi_java3st_1team.viewsmanagement.ui.chart.InitScene;
-import yi_java3st_1team.viewsmanagement.ui.content.ClientPanel;
-import yi_java3st_1team.viewsmanagement.ui.content.EmployeePanel;
+import yi_java3st_1team.viewsmanagement.ui.content.BarClientPanel;
+import yi_java3st_1team.viewsmanagement.ui.content.PieEmployeePanel;
 
 @SuppressWarnings("serial")
 public class GraphUIPanel extends JPanel {
 
 	private ClientChartPanel pClientGraph;
 	public static JPanel pLLChart;
+	public static JPanel pRRChart;
 	/**
 	 * Create the panel.
 	 */
@@ -67,7 +68,7 @@ public class GraphUIPanel extends JPanel {
 		pLSearch.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		
 
-		ClientPanel pLDate = new ClientPanel();
+		BarClientPanel pLDate = new BarClientPanel();
 		pLSearch.add(pLDate);
 		
 		JPanel pLChart = new JPanel();
@@ -117,10 +118,9 @@ public class GraphUIPanel extends JPanel {
 		pRSearch.setBackground(SystemColor.inactiveCaption);
 		pRSearch.setPreferredSize(new Dimension(750, 15));
 		pRight.add(pRSearch);
-		pRSearch.setLayout(null);
+		pRSearch.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		
-		EmployeePanel pEmp = new EmployeePanel();
-		pEmp.setBounds(0, 30, 750, 47);
+		PieEmployeePanel pEmp = new PieEmployeePanel();
 		pRSearch.add(pEmp);
 		
 		JPanel pRChart = new JPanel();
@@ -131,7 +131,7 @@ public class GraphUIPanel extends JPanel {
 		pRight.add(pRChart);
 		pRChart.setLayout(null);
 		
-		JPanel pRRChart = new JPanel();
+		pRRChart = new JPanel();
 		pRRChart.setBounds(45, 5, 670, 650);
 		pRRChart.setBackground(SystemColor.inactiveCaptionBorder);
 		pRChart.add(pRRChart);
