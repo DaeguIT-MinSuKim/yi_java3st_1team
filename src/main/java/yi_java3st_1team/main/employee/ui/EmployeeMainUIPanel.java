@@ -103,6 +103,8 @@ public class EmployeeMainUIPanel extends JPanel implements ActionListener {
 	public PanelBarChart barChart;
 
 	private Thread thread;
+
+	private String empNum;
 	
 	public EmployeeMainUIPanel() {
 		empService = new EmployeeUIService();
@@ -344,7 +346,7 @@ public class EmployeeMainUIPanel extends JPanel implements ActionListener {
 		}			
 				
 		pEmpLogin.loginSuc.setText("<html>반갑습니다!<br><span style='color:blue'>"+loginEmp.getEmpName()+" "+"</span><u>"+loginEmp.getEmpTitle()+"</u>님이<br>로그인 하셨습니다.</html>");
-		String empNum = String.format("EE%04d", loginEmp.getEmpNo());
+		empNum = String.format("EE%04d", loginEmp.getEmpNo());
 		pEmpLogin.empInfo.setText("<html>- 사원번호 : <span style='color:red'>"+empNum+"</span><br>- 부서명 : <span style='color:green'>"+loginEmp.getdNo().getDeptName()+"</span></html>");
 
 		pStop.add(pEmpLogin, BorderLayout.WEST);
@@ -391,7 +393,15 @@ public class EmployeeMainUIPanel extends JPanel implements ActionListener {
 			pStop.add(pCMpanel, BorderLayout.WEST);
 			pStop.revalidate();
 			pStop.repaint();
+			
+			/** 로그아웃 버튼 **/
 			EmployeeMainFrame.btnlogout.setVisible(true);
+			
+			/** 로그인 정보 **/
+			EmployeeMainFrame.lblLoginTitle.setText("("+loginEmp.getEmpId()+")"+"로그인");
+			EmployeeMainFrame.lblLoginInfo.setText("<html><p align='center'><span style='color:blue'>"+loginEmp.getEmpName()+"</spna><span style='color:red'>["+empNum+"]</span><br><span style='color:black'>"+loginEmp.getdNo().getDeptName()+"-"+loginEmp.getEmpTitle()+"</span></p></html>");
+			EmployeeMainFrame.lblLoginTitle.setVisible(true);
+			EmployeeMainFrame.lblLoginInfo.setVisible(true);
 			
 			
 		}
@@ -412,7 +422,15 @@ public class EmployeeMainUIPanel extends JPanel implements ActionListener {
 			pStop.add(pPMpanel, BorderLayout.WEST);
 			pStop.revalidate();
 			pStop.repaint();
+			
+			/** 로그아웃 버튼 **/
 			EmployeeMainFrame.btnlogout.setVisible(true);
+			
+			/** 로그인 정보 **/
+			EmployeeMainFrame.lblLoginTitle.setText("("+loginEmp.getEmpId()+")"+"로그인");
+			EmployeeMainFrame.lblLoginInfo.setText("<html><p align='center'><span style='color:blue'>"+loginEmp.getEmpName()+"</spna><span style='color:red'>["+empNum+"]</span><br><span style='color:black'>"+loginEmp.getdNo().getDeptName()+"-"+loginEmp.getEmpTitle()+"</span></p></html>");
+			EmployeeMainFrame.lblLoginTitle.setVisible(true);
+			EmployeeMainFrame.lblLoginInfo.setVisible(true);
 		}
 	}
 	
@@ -431,7 +449,14 @@ public class EmployeeMainUIPanel extends JPanel implements ActionListener {
 			pStop.add(pOMpanel, BorderLayout.WEST);
 			pStop.revalidate();
 			pStop.repaint();
+			/** 로그아웃 버튼 **/
 			EmployeeMainFrame.btnlogout.setVisible(true);
+			
+			/** 로그인 정보 **/
+			EmployeeMainFrame.lblLoginTitle.setText("("+loginEmp.getEmpId()+")"+"로그인");
+			EmployeeMainFrame.lblLoginInfo.setText("<html><p align='center'><span style='color:blue'>"+loginEmp.getEmpName()+"</spna><span style='color:red'>["+empNum+"]</span><br><span style='color:black'>"+loginEmp.getdNo().getDeptName()+"-"+loginEmp.getEmpTitle()+"</span></p></html>");
+			EmployeeMainFrame.lblLoginTitle.setVisible(true);
+			EmployeeMainFrame.lblLoginInfo.setVisible(true);
 		}
 	}
 	
@@ -456,7 +481,14 @@ public class EmployeeMainUIPanel extends JPanel implements ActionListener {
 						pStop.add(pViewpanel, BorderLayout.WEST);
 						pStop.revalidate();
 						pStop.repaint();
+						/** 로그아웃 버튼 **/
 						EmployeeMainFrame.btnlogout.setVisible(true);
+						
+						/** 로그인 정보 **/
+						EmployeeMainFrame.lblLoginTitle.setText("("+loginEmp.getEmpId()+")"+"로그인");
+						EmployeeMainFrame.lblLoginInfo.setText("<html><p align='center'><span style='color:blue'>"+loginEmp.getEmpName()+"</spna><span style='color:red'>["+empNum+"]</span><br><span style='color:black'>"+loginEmp.getdNo().getDeptName()+"-"+loginEmp.getEmpTitle()+"</span></p></html>");
+						EmployeeMainFrame.lblLoginTitle.setVisible(true);
+						EmployeeMainFrame.lblLoginInfo.setVisible(true);
 					}
 					break;
 				case 2: //관리자(비활성화)
