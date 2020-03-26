@@ -264,9 +264,9 @@ public class SupplyCompanyUIPanel extends JPanel implements ActionListener, Item
 
 	private void btnAddActionPerformed(ActionEvent e) {
 		try {
-			if (pSCRPanel.getItem().getsName().equals("") || pSCRPanel.getItem().getsAddress().equals("")
-					|| pSCRPanel.getItem().getsBln().equals("") || pSCRPanel.getItem().getsTel().equals("")) {
-				JOptionPane.showMessageDialog(null, "회사명, 사업자등록번호, 회사주소, 전화번호는 필수입력사항입니다.");
+			if (pSCRPanel.getItem().getsName().equals("") || pSCRPanel.getItem().getsBln().equals("") 
+					|| pSCRPanel.getItem().getsTel().equals("")) {
+				JOptionPane.showMessageDialog(null, "회사명, 사업자등록번호, 전화번호는 필수입력사항입니다.");
 				return;
 			} else {
 				Supplier newSupp = pSCRPanel.getItem();

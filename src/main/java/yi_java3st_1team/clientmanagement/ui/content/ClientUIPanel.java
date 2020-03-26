@@ -286,9 +286,9 @@ public class ClientUIPanel extends JPanel implements ActionListener, ItemListene
 	}
 
 	protected void btnUpdateActionPerformed(ActionEvent e) {
-		if (pCRPanel.getItem().getcName().equals("")||pCRPanel.getItem().getcCeo().equals("")
-				||pCRPanel.getItem().getcAddress().equals("")||pCRPanel.getItem().getcTel().equals("")) {
-			JOptionPane.showMessageDialog(null, "상호명, 대표명, 주소, 전화번호, 담당직원은 필수 입력사항입니다.");
+		if (pCRPanel.getItem().getcName().equals("")||pCRPanel.getItem().getcAddress().equals("")
+				||pCRPanel.getItem().getcTel().equals("")) {
+			JOptionPane.showMessageDialog(null, "상호명, 주소, 전화번호, 담당직원은 필수 입력사항입니다.");
 			return;
 		} else {
 			Client upClient = pCRPanel.getItem();
