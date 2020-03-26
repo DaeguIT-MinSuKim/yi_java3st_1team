@@ -438,9 +438,14 @@ public class SPSOUIPanel extends JPanel implements ActionListener {
 			Product product = new Product();
 			product.setpName(pName);
 			String supName = sWService.showSupplierName(product);
-			int supCost = sWService.showProductCost(product);
-			pSPSOPanel.tfSPSOSName.setText(supName);
-			pSPSOPanel.tfSPSOCost.setText(supCost + "");
+			if(supName == null) {
+				JOptionPane.showMessageDialog(null, "제품을 등록해주세요.");
+				pSPSOPanel.tfSPSOPName.setText("");
+			}else {
+				int supCost = sWService.showProductCost(product);
+				pSPSOPanel.tfSPSOSName.setText(supName);
+				pSPSOPanel.tfSPSOCost.setText(supCost + "");
+			}
 		}
 	}
 
