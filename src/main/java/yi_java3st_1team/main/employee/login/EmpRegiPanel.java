@@ -63,7 +63,7 @@ public class EmpRegiPanel extends AbsRegiPanel<Employee> implements ActionListen
 	public EmpRegiPanel() {
 		empService = new EmployeeUIService();
 		initialize();
-		setEmpNo(empService.showlastEmpNum());
+		setNumber(empService.showlastEmpNum());
 	}
 
 	private void initialize() {
@@ -351,10 +351,6 @@ public class EmpRegiPanel extends AbsRegiPanel<Employee> implements ActionListen
 		return new Employee(empNo, empName, dNo , empTitle, empManager, empId, empPass, empMail);
 	}
 	
-	public void setEmpNo(Employee item) {
-		tfNo.setText(String.format("EE%04d", item.getEmpNo()+1));
-	}
-	
 	//취소
 	@Override
 	public void clearTf() {
@@ -371,13 +367,24 @@ public class EmpRegiPanel extends AbsRegiPanel<Employee> implements ActionListen
 
 	}
 	
-	//버튼 이벤트
+	//마지막 번호 다음 번호
+	@Override
+	public void setNumber(Employee item) {
+		tfNo.setText(String.format("EE%04d", item.getEmpNo()+1));
+	}
+	
+
+	
+	/****************************************** 버튼 이베튼 ******************************************/
 	public void actionPerformed(ActionEvent e) {
+		//아이디 중복체크
 		if (e.getSource() == doubleCheck) {
-			actionPerformedDoubleCheck2(e);
+			actionPerformedDoubleCheck(e);
 		}
-		if (e.getSource() == btnCancle) {
-			actionPerformedBtnCancle(e);
+		
+		//아이디 중복체크(등록)
+		if(e.getSource() == chkAdd) {
+			actionPerformedChkAdd(e);
 		}
 		
 		try {
@@ -388,41 +395,13 @@ public class EmpRegiPanel extends AbsRegiPanel<Employee> implements ActionListen
 			JOptionPane.showMessageDialog(null, "다시 확인 해주세요!","",JOptionPane.WARNING_MESSAGE);
 		}
 		
-		if(e.getSource() == chkAdd) {
-			actionPerformedChkAdd(e);
-		}
-		
-
-	}
-
-	// 등록버튼
-	protected void actionPerformedBtnAdd(ActionEvent e) {
-		//대표이사~과장 : 책임관리자  / 대리~인턴 : 일반관리자  // 비밀번호 사용 불가일 경우 등록막기
-		if(cmbTitle.getSelectedIndex()<=4 && rBtnManager2.isSelected()) {
-			JOptionPane.showMessageDialog(null, "'책임관리자'를 선택해야 합니다","관리자 선택 오류",JOptionPane.ERROR_MESSAGE);
-		}else if ((cmbTitle.getSelectedIndex()>=5)&&(cmbTitle.getSelectedIndex()<=7) && rBtnManager1.isSelected()) {
-			JOptionPane.showMessageDialog(null, "'일반관리자'를 선택해야 합니다","관리자 선택 오류",JOptionPane.ERROR_MESSAGE);
-		}else if(lblPassword.getText().equals("비밀번호 사용 불가")){
-			JOptionPane.showMessageDialog(null, "'비밀번호 다시 확인해주세요!'","비밀번호 입력 오류",JOptionPane.ERROR_MESSAGE);
-		}
-		else {
-			Employee newEmp = getItem();
-			empService.addEmployee(newEmp);
-			clearTf();
-			setEmpNo(empService.showlastEmpNum());
-			JOptionPane.showMessageDialog(null, "등록되었습니다.");		
-		}
-				
-	}
-
-	// 취소버튼(초기화)
-	protected void actionPerformedBtnCancle(ActionEvent e) {
-		clearTf();
+		if (e.getSource() == btnCancle) {
+			actionPerformedBtnCancle(e);
+		}		
 	}
 	
-
 	// 중복확인 : 아이디
-	protected void actionPerformedDoubleCheck2(ActionEvent e) {
+	protected void actionPerformedDoubleCheck(ActionEvent e) {
 		idCheck = new JFrame();
 		idCheck.setTitle("아이디 중복 확인");
 		idCheck.setSize(400,400);
@@ -448,6 +427,34 @@ public class EmpRegiPanel extends AbsRegiPanel<Employee> implements ActionListen
 		idCheck.dispose();
 		
 	}
+
+	// 등록버튼
+	protected void actionPerformedBtnAdd(ActionEvent e) {
+		//대표이사~과장 : 책임관리자  / 대리~인턴 : 일반관리자  // 비밀번호 사용 불가일 경우 등록막기
+		if(cmbTitle.getSelectedIndex()<=4 && rBtnManager2.isSelected()) {
+			JOptionPane.showMessageDialog(null, "'책임관리자'를 선택해야 합니다","관리자 선택 오류",JOptionPane.ERROR_MESSAGE);
+		}else if ((cmbTitle.getSelectedIndex()>=5)&&(cmbTitle.getSelectedIndex()<=7) && rBtnManager1.isSelected()) {
+			JOptionPane.showMessageDialog(null, "'일반관리자'를 선택해야 합니다","관리자 선택 오류",JOptionPane.ERROR_MESSAGE);
+		}else if(lblPassword.getText().equals("비밀번호 사용 불가")){
+			JOptionPane.showMessageDialog(null, "'비밀번호 다시 확인해주세요!'","비밀번호 입력 오류",JOptionPane.ERROR_MESSAGE);
+		}
+		else {
+			Employee newEmp = getItem();
+			empService.addEmployee(newEmp);
+			clearTf();
+			setNumber(empService.showlastEmpNum());
+			JOptionPane.showMessageDialog(null, "등록되었습니다.");		
+		}
+				
+	}
+
+	// 취소버튼(초기화)
+	protected void actionPerformedBtnCancle(ActionEvent e) {
+		clearTf();
+	}
+
+
+
 
 
 }

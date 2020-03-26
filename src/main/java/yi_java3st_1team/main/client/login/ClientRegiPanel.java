@@ -58,11 +58,13 @@ public class ClientRegiPanel  extends AbsRegiPanel<Client> implements ActionList
 	private JButton btnEmpSearch;
 	private JFrame empSearch;
 
+	private JButton empAdd;
+	private JTextField tfDate;
 	
 	public ClientRegiPanel() {
 		clService = new ClientUIService();
 		initialize();
-		setCNo(clService.lastClient());
+		setNumber(clService.lastClient());
 	}
 	
 
@@ -304,10 +306,6 @@ public class ClientRegiPanel  extends AbsRegiPanel<Client> implements ActionList
 		pBtns.add(btnCancle);
 	}
 	
-	public void setCNo(Client item) {
-		tfNo.setText(String.format("C%04d", item.getcNo()+1));	
-	}
-	
 	DocumentListener docListener = new MyDocumentListener() {
 		@Override
 		public void msg() {
@@ -326,8 +324,7 @@ public class ClientRegiPanel  extends AbsRegiPanel<Client> implements ActionList
 			}
 		}
 	};
-	private JButton empAdd;
-	private JTextField tfDate;
+
 
 
 
@@ -364,58 +361,64 @@ public class ClientRegiPanel  extends AbsRegiPanel<Client> implements ActionList
 		tfSalesman.setText("");
 		
 	}
+
+	@Override
+	public void setNumber(Client item) {
+		tfNo.setText(String.format("C%04d", item.getcNo()+1));		
+	}
+	
+	/****************************************** 버튼 이베튼 ******************************************/
 	public void actionPerformed(ActionEvent e) {
-		if (e.getSource() == btnEmpSearch) {
-			actionPerformedEmpSearch(e);
-		}
+		//상호명 중복확인
 		if (e.getSource() == doubleChk1) {
 			actionPerformedDoubleChk1(e);
 		}
-		if (e.getSource() == doubleChk2) {
-			actionPerformedDoubleCheck(e);
-		}
+		//주소검색
 		if (e.getSource() == zipCod) {
 			actionPerformedZipCod(e);
 		}
-		if (e.getSource() == btnCancle) {
-			actionPerformedBtnCancle(e);
-		}
-		if (e.getSource() == btnAdd) {
-			actionPerformedBtnAdd(e);
-		}
-		
-		if(e.getSource() == chkAdd) {
-			actionPerformedChkAdd(e);
-		}
-		
 		if (e.getSource() == btnZip) {
 			btnZipActionPerformed(e);
 		}
-		
+		//아이디 중복확인
+		if (e.getSource() == doubleChk2) {
+			actionPerformedDoubleCheck(e);
+		}
+		if(e.getSource() == chkAdd) {
+			actionPerformedChkAdd(e);
+		}
+		//담당직원 검색
+		if (e.getSource() == btnEmpSearch) {
+			actionPerformedEmpSearch(e);
+		}
 		if(e.getSource() == empAdd) {
 			actionPerformedempAdd(e);
 		}
-	}
-	
-
-	//등록
-	protected void actionPerformedBtnAdd(ActionEvent e) {
-		if(tfName.getText().equals("")||tfAdd.getText().equals("")||tfTell.getText().equals("")||tfId.getText().equals("")||tfMail.getText().equals("")||lblPassword.getText().equals("")||lblPassword.getText().equals("비밀번호 사용 불가")) {
-			JOptionPane.showMessageDialog(null, "등록 양식에 맞춰 정확하게 입력하세요.");
-		}else {
-			Client newClient = getItem();
-			clService.addClient(newClient);
-			clearTf();
-			setCNo(clService.lastClient());
-			JOptionPane.showMessageDialog(null, "등록되었습니다.");
+		//등록
+		if (e.getSource() == btnAdd) {
+			actionPerformedBtnAdd(e);
 		}
-			
-
+		//취소
+		if (e.getSource() == btnCancle) {
+			actionPerformedBtnCancle(e);
+		}
 	}
 	
-	//취소(초기화)
-	protected void actionPerformedBtnCancle(ActionEvent e) {
-		clearTf();
+	
+	//상호명 중복검색
+	protected void actionPerformedDoubleChk1(ActionEvent e) {
+		if(tfName.getText().equals("")) {
+			JOptionPane.showMessageDialog(null, "등록할 상호명을 입력해주세요.");
+		} else {
+			Client sName = new Client(tfName.getText());
+			Client cName = clService.overlapClient(sName);
+			
+			if(cName == null) {
+				JOptionPane.showMessageDialog(null, "등록 가능한 상호 입니다.");
+			}else {
+				JOptionPane.showMessageDialog(null, "이미 존재하는 상호 입니다.");
+			}
+		}
 	}
 	
 	//우편번호
@@ -446,7 +449,7 @@ public class ClientRegiPanel  extends AbsRegiPanel<Client> implements ActionList
 		zipcodeFrame.dispose();
 		
 	}
-
+	
 	
 	//중복확인
 	protected void actionPerformedDoubleCheck(ActionEvent e) {
@@ -475,27 +478,7 @@ public class ClientRegiPanel  extends AbsRegiPanel<Client> implements ActionList
 		
 	}
 	
-	private void actionPerformedempAdd(ActionEvent e) {
-		tfSalesman.setText(ClientEmpSearch.empInfo);
-		empSearch.dispose();
-		
-	}
-
-	//상호명 중복검색
-	protected void actionPerformedDoubleChk1(ActionEvent e) {
-		if(tfName.getText().equals("")) {
-			JOptionPane.showMessageDialog(null, "등록할 상호명을 입력해주세요.");
-		} else {
-			Client sName = new Client(tfName.getText());
-			Client cName = clService.overlapClient(sName);
-			
-			if(cName == null) {
-				JOptionPane.showMessageDialog(null, "등록 가능한 상호 입니다.");
-			}else {
-				JOptionPane.showMessageDialog(null, "이미 존재하는 상호 입니다.");
-			}
-		}
-	}
+	//사원검색
 	protected void actionPerformedEmpSearch(ActionEvent e) {
 		empSearch = new JFrame();
 		empSearch.setTitle("담당직원 등록");
@@ -515,7 +498,32 @@ public class ClientRegiPanel  extends AbsRegiPanel<Client> implements ActionList
 		
 		empSearch.getContentPane().add(ces);
 		empSearch.setVisible(true);
-		
+	}
+	
+	private void actionPerformedempAdd(ActionEvent e) {
+		tfSalesman.setText(ClientEmpSearch.empInfo);
+		empSearch.dispose();
 		
 	}
+	
+	//등록
+	protected void actionPerformedBtnAdd(ActionEvent e) {
+		if(tfName.getText().equals("")||tfAdd.getText().equals("")||tfTell.getText().equals("")||tfId.getText().equals("")||tfMail.getText().equals("")||lblPassword.getText().equals("")||lblPassword.getText().equals("비밀번호 사용 불가")) {
+			JOptionPane.showMessageDialog(null, "등록 양식에 맞춰 정확하게 입력하세요.");
+		}else {
+			Client newClient = getItem();
+			clService.addClient(newClient);
+			clearTf();
+			setNumber(clService.lastClient());
+			JOptionPane.showMessageDialog(null, "등록되었습니다.");
+		}
+	}
+	
+	//취소(초기화)
+	protected void actionPerformedBtnCancle(ActionEvent e) {
+		clearTf();
+	}
+
+
+
 }

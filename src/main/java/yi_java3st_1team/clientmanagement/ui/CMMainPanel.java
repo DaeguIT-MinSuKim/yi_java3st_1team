@@ -1,7 +1,6 @@
 package yi_java3st_1team.clientmanagement.ui;
 
 import java.awt.BorderLayout;
-import java.awt.CardLayout;
 import java.awt.Rectangle;
 import java.awt.SystemColor;
 import java.awt.event.ActionEvent;
@@ -11,11 +10,8 @@ import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
-import javafx.embed.swing.JFXPanel;
-import javafx.scene.Scene;
 import yi_java3st_1team.clientmanagement.ui.content.CMContent;
 import yi_java3st_1team.main.employee.EmployeeMainFrame;
-import yi_java3st_1team.main.employee.chart.InitScene;
 import yi_java3st_1team.main.employee.dto.Employee;
 import yi_java3st_1team.main.employee.logout.EmpLoginOkPanel;
 import yi_java3st_1team.main.employee.ui.EmployeeMainUIPanel;
@@ -67,7 +63,9 @@ public class CMMainPanel extends JPanel implements ActionListener {
 		pContent.pSCUIPanel.btnGoMain.addActionListener(this);
 		pContent.pCUIPanel.btnGoMain.addActionListener(this);
 	}
-
+	
+	
+	/******************** 버튼 기능  ******************************/
 	public void actionPerformed(ActionEvent e) {
 
 		// 버튼들
@@ -100,6 +98,54 @@ public class CMMainPanel extends JPanel implements ActionListener {
 			}
 		} catch (NullPointerException a) {
 
+		}
+
+	}
+	
+	//거래처관리
+	private void btnCMActionPerformed(ActionEvent e) {
+		removePanel();
+		CMMainPanel cmp = new CMMainPanel();
+		add(cmp);
+		revalidate();
+		repaint();
+	}
+
+	//제품관리
+	private void btnPMActionPerformed(ActionEvent e) {
+		removePanel();
+		PMMainPanel pmp = new PMMainPanel();
+		add(pmp);
+		revalidate();
+		repaint();
+	}
+
+	//주문관리
+	private void btnOMActionPerformed(ActionEvent e) {
+		removePanel();
+		setLayout(null);
+		OMMainPanel omp = new OMMainPanel();
+		add(omp);
+		revalidate();
+		repaint();
+	}
+
+	//현황조회보고
+	private void actionPerformedBtnViews(ActionEvent e) {
+		switch (manager) {
+		case 1:
+			removePanel();
+			ReportMainPanel rmp = new ReportMainPanel();
+			add(rmp);
+			revalidate();
+			repaint();
+			break;
+		case 2:
+			ImageIcon icon = new ImageIcon(
+					"D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\loginMain\\manager1.png");
+			JOptionPane.showMessageDialog(null, "<html><h3 align='center'>권한이 없습니다.</h3></html>",
+					"Don't have Premission", JOptionPane.INFORMATION_MESSAGE, icon);
+			break;
 		}
 
 	}
@@ -138,20 +184,17 @@ public class CMMainPanel extends JPanel implements ActionListener {
 			break;
 		case 2:
 			pEmpLogin.manager.setText("[관리자 로그인]");
-			pEmpLogin.loginImg.setIcon(new ImageIcon(
-					"D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\loginMain\\manager2.png"));
+			pEmpLogin.loginImg.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\loginMain\\manager2.png"));
 			LogoImg02Panel logo01 = new LogoImg02Panel();
 			emp.pStop.add(logo01, BorderLayout.CENTER);
 			break;
 
 		}
 		pEmpLogin.loginSuc.setText("<html>반갑습니다!<br><span style='color:blue'>" + emp.loginEmp.getEmpName() + " "
-				+ emp.loginEmp.getEmpTitle() + "</span>님이<br>로그인 하셨습니다.</html>");
+				                   + emp.loginEmp.getEmpTitle() + "</span>님이<br>로그인 하셨습니다.</html>");
 		String empNum = String.format("EE%04d", emp.loginEmp.getEmpNo());
-		pEmpLogin.empInfo.setText(
-				"<html>- 사원번호 : <span style='color:red'>" + empNum + "</span><br>- 부서명 : <span style='color:green'>"
-						+ emp.loginEmp.getdNo().getDeptName() + "</span></html>");
-
+		pEmpLogin.empInfo.setText("<html>- 사원번호 : <span style='color:red'>" + empNum + "</span><br>- 부서명 : <span style='color:green'>"
+						           + emp.loginEmp.getdNo().getDeptName() + "</span></html>");
 		emp.pStop.revalidate();
 		emp.pStop.repaint();
 
@@ -163,12 +206,7 @@ public class CMMainPanel extends JPanel implements ActionListener {
 
 	}
 
-	public void initFX(InitScene fxPanel) {
-		Scene scene = fxPanel.createScene();
-		JFXPanel panel = (JFXPanel) fxPanel;
-		panel.setScene(scene);
-	}
-
+	//로그아웃
 	private void actionPerformedBtnLogout(ActionEvent e) {
 		removeAll();
 		revalidate();
@@ -180,64 +218,20 @@ public class CMMainPanel extends JPanel implements ActionListener {
 		repaint();
 	}
 
-	private void btnCMActionPerformed(ActionEvent e) {
+
+	// (+) 패널삭제
+	private void removePanel() {
 		removeAll();
 		revalidate();
 		repaint();
 		setBackground(SystemColor.inactiveCaption);
 		setBounds(new Rectangle(0, 0, 1544, 700));
-		CMMainPanel cmp = new CMMainPanel();
-		add(cmp);
-		revalidate();
-		repaint();
 	}
 
-	private void btnPMActionPerformed(ActionEvent e) {
-		removeAll();
-		revalidate();
-		repaint();
-		setBackground(SystemColor.inactiveCaption);
-		setBounds(new Rectangle(0, 0, 1544, 700));
-		PMMainPanel pmp = new PMMainPanel();
-		add(pmp);
-		revalidate();
-		repaint();
-	}
-
-	private void btnOMActionPerformed(ActionEvent e) {
-		removeAll();
-		revalidate();
-		repaint();
-		setBackground(SystemColor.inactiveCaption);
-		setBounds(new Rectangle(0, 0, 1544, 700));
-		setLayout(null);
-		OMMainPanel omp = new OMMainPanel();
-		add(omp);
-		revalidate();
-		repaint();
-	}
-
-	private void actionPerformedBtnViews(ActionEvent e) {
-		switch (manager) {
-		case 1:
-			removeAll();
-			revalidate();
-			repaint();
-			setBackground(SystemColor.inactiveCaption);
-			setBounds(new Rectangle(0, 0, 1544, 700));
-			ReportMainPanel rmp = new ReportMainPanel();
-			add(rmp);
-			revalidate();
-			repaint();
-			break;
-		case 2:
-			ImageIcon icon = new ImageIcon(
-					"D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\loginMain\\manager1.png");
-			JOptionPane.showMessageDialog(null, "<html><h3 align='center'>권한이 없습니다.</h3></html>",
-					"Don't have Premission", JOptionPane.INFORMATION_MESSAGE, icon);
-			break;
-		}
-
-	}
-
+	// (+) 차트
+//	public void initFX(InitScene fxPanel) {
+//		Scene scene = fxPanel.createScene();
+//		JFXPanel panel = (JFXPanel) fxPanel;
+//		panel.setScene(scene);
+//	}
 }

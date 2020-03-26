@@ -265,15 +265,6 @@ public class ClientSearchPanel extends JPanel implements ActionListener, KeyList
 		}
 	}
 	
-	//초기화
-	private void clearTf() {
-		tfNo.setText("C");
-		tfName.setText("");
-		tfId.setText("");
-		tfMail.setText("");
-	}
-	
-
 	/*** 고객번호 자리수 제한 ***/
 	@Override
 	public void keyTyped(KeyEvent e) {
@@ -285,12 +276,12 @@ public class ClientSearchPanel extends JPanel implements ActionListener, KeyList
 
 	@Override
 	public void keyPressed(KeyEvent e) {
-		// TODO Auto-generated method stub
+		// 기능X
 		
 	}
 	@Override
 	public void keyReleased(KeyEvent e) {
-		// TODO Auto-generated method stub
+		// 기능X
 		
 	}
 	
@@ -299,5 +290,13 @@ public class ClientSearchPanel extends JPanel implements ActionListener, KeyList
 		if(tfNo.getText().length()>=5) {
 			e.consume();
 		}
+	}
+	
+	//초기화
+	private void clearTf() {
+		tfNo.setText("C");
+		tfName.setText("");
+		tfId.setText("");
+		tfMail.setText("");
 	}
 }

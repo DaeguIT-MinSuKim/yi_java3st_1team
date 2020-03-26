@@ -101,7 +101,7 @@ public class EmployeeMainFrame extends JFrame implements ActionListener{
 		lblLoginTitle.setForeground(Color.BLACK);
 		lblLoginTitle.setHorizontalAlignment(SwingConstants.CENTER);
 		lblLoginTitle.setFont(new Font("맑은 고딕", Font.BOLD, 14));
-		lblLoginTitle.setBounds(1270, 40, 133, 28);
+		lblLoginTitle.setBounds(1270, 40, 140, 28);
 		pHeader.add(lblLoginTitle);
 		
 		//로그인정보-2

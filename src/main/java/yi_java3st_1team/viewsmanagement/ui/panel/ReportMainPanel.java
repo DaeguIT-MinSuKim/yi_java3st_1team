@@ -41,70 +41,65 @@ public class ReportMainPanel extends JPanel implements ActionListener{
 		add(pContent);
 	}
 	
+	
+	/******************** 버튼 기능  ******************************/	
 	   public void actionPerformed(ActionEvent e) {
-		      
-		      //버튼들
-				if (e.getSource() == mainMenu.btnCM) {
-					btnCMActionPerformed(e);
-				}
-				if (e.getSource() == mainMenu.btnPM) {
-					btnPMActionPerformed(e);
-				}
-				if (e.getSource() == mainMenu.btnOM) {
-					btnOMActionPerformed(e);
-				}
-				if (e.getSource() == mainMenu.btnViews) {
-					actionPerformedBtnViews(e);
-				}
 
-		   }
-	   private void btnCMActionPerformed(ActionEvent e) {
-	      removeAll();
-	      revalidate();
-	      repaint();
-	      setBackground(SystemColor.inactiveCaption);
-	      setBounds(new Rectangle(0, 0, 1544, 700));
-	      CMMainPanel cmp = new CMMainPanel();
-	      add(cmp);
-	      revalidate();
-	      repaint();
-	   }
-	   private void btnPMActionPerformed(ActionEvent e) {
-		      removeAll();
-		      revalidate();
-		      repaint();
-		      setBackground(SystemColor.inactiveCaption);
-		      setBounds(new Rectangle(0, 0, 1544, 700));
-		      PMMainPanel pmp = new PMMainPanel();
-		      add(pmp);
-		      revalidate();
-		      repaint(); 
-	   }
-	   private void btnOMActionPerformed(ActionEvent e) {
-		      removeAll();
-		      revalidate();
-		      repaint();
-		      setBackground(SystemColor.inactiveCaption);
-		      setBounds(new Rectangle(0, 0, 1544, 700));
-		      setLayout(null);
-		      OMMainPanel omp = new OMMainPanel();
-		      add(omp);
-		      revalidate();
-		      repaint();
-	   }
-	   private void actionPerformedBtnViews(ActionEvent e) {
-			  removeAll();
-		      revalidate();
-		      repaint();
-		      setBackground(SystemColor.inactiveCaption);
-		      setBounds(new Rectangle(0, 0, 1544, 700));
-		      ReportMainPanel rmp = new ReportMainPanel();
-		      add(rmp);
-		      revalidate();
-		      repaint();
-	   }
+		// 버튼들
+		if (e.getSource() == mainMenu.btnCM) {
+			btnCMActionPerformed(e);
+		}
+		if (e.getSource() == mainMenu.btnPM) {
+			btnPMActionPerformed(e);
+		}
+		if (e.getSource() == mainMenu.btnOM) {
+			btnOMActionPerformed(e);
+		}
+		if (e.getSource() == mainMenu.btnViews) {
+			actionPerformedBtnViews(e);
+		}
 
+   }
 
+	private void btnCMActionPerformed(ActionEvent e) {
+		removePanel();
+		CMMainPanel cmp = new CMMainPanel();
+		add(cmp);
+		revalidate();
+		repaint();
+	}
 
+	private void btnPMActionPerformed(ActionEvent e) {
+		removePanel();
+		PMMainPanel pmp = new PMMainPanel();
+		add(pmp);
+		revalidate();
+		repaint();
+	}
 
+	private void btnOMActionPerformed(ActionEvent e) {
+		removePanel();
+		setLayout(null);
+		OMMainPanel omp = new OMMainPanel();
+		add(omp);
+		revalidate();
+		repaint();
+	}
+
+	private void actionPerformedBtnViews(ActionEvent e) {
+		removePanel();
+		ReportMainPanel rmp = new ReportMainPanel();
+		add(rmp);
+		revalidate();
+		repaint();
+	}
+
+	// (+) 패널삭제
+	private void removePanel() {
+		removeAll();
+		revalidate();
+		repaint();
+		setBackground(SystemColor.inactiveCaption);
+		setBounds(new Rectangle(0, 0, 1544, 700));
+	}
 }

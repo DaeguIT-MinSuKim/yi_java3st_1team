@@ -309,7 +309,7 @@ public class SPSOUIPanel extends JPanel implements ActionListener {
 		lblImg.setBounds(22, 60, 40, 40);
 		pListPanel.add(lblImg);
 
-		lblSWList = new JLabel("매입&발주 LIST");
+		lblSWList = new JLabel("발주&매입 LIST");
 		lblSWList.setForeground(Color.BLACK);
 		lblSWList.setFont(new Font("휴먼둥근헤드라인", Font.PLAIN, 20));
 		lblSWList.setHorizontalAlignment(SwingConstants.CENTER);

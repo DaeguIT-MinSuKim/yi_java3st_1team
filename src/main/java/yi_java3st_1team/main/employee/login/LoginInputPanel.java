@@ -18,9 +18,7 @@ public class LoginInputPanel extends JPanel {
 	public JTextField tfId;
 	public JPasswordField pfPasswd;
 
-	/**
-	 * Create the panel.
-	 */
+
 	public LoginInputPanel() {
 
 		initialize();
