@@ -1,13 +1,10 @@
 package yi_java3st_1team.clientmanagement.dao.impl;
 
-import java.security.interfaces.RSAKey;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import yi_java3st_1team.clientmanagement.dao.ClientDao;
@@ -349,6 +346,9 @@ public class ClientDaoImpl implements ClientDao {
 		return cSman;
 	}
 
+	
+	/***************************************************************************************** (+) 추가 QUERY : 아름 *****************************************************************************************/
+	
 	@Override
 	public Client loginClient(Client client) {
 		String sql = "select c_no, c_name, c_ceo, c_address, c_tel, c_id, c_pw, c_mail, c_date, c_salesman  from client where c_id = ? and c_pw = ?";
@@ -384,15 +384,7 @@ public class ClientDaoImpl implements ClientDao {
 		}
 		return null;
 	}
-
-	private String getClientID(ResultSet rs) throws SQLException {
-		if(rs.getString("c_id") == null) {
-			return null;
-		}else {
-			return rs.getString("c_id");
-		}
-	}
-
+	
 	@Override
 	public Client selectClientByID2(Client client) {
 		String sql = "select c_id from client where c_no=? and c_name=?";
@@ -411,13 +403,7 @@ public class ClientDaoImpl implements ClientDao {
 		}
 		return null;
 	}
-
-	private Client getClientID2(ResultSet rs) throws SQLException {
-		String cId = rs.getString("c_id");
-		String cPw = null;
-		return new Client(cId, cPw);
-	}
-
+	
 	@Override
 	public Client selectClientByMail(Client client) {
 		String sql = "select c_no, c_name, c_id, c_mail from client where c_id = ?";
@@ -435,15 +421,7 @@ public class ClientDaoImpl implements ClientDao {
 		}
 		return null;
 	}
-
-	private Client getClientMail(ResultSet rs) throws SQLException {
-		int cNo = rs.getInt("c_no");
-		String cName = rs.getString("c_name");
-		String cId = rs.getString("c_id");
-		String cMail = rs.getString("c_mail");
-		return new Client(cNo, cName, cId, cMail);
-	}
-
+	
 	@Override
 	public int updateClientPassword(Client client) {
 		String sql = "update client set c_pw = ? where c_no = ? and c_name = ? and c_id = ? and c_mail = ?";
@@ -461,6 +439,30 @@ public class ClientDaoImpl implements ClientDao {
 		}
 		return 0;
 	}
+	
 
+	
+	/***************************************************************************************** (+) 추가 GET : 아름 *****************************************************************************************/
+		
+	private String getClientID(ResultSet rs) throws SQLException {
+		if(rs.getString("c_id") == null) {
+			return null;
+		}else {
+			return rs.getString("c_id");
+		}
+	}
 
+	private Client getClientID2(ResultSet rs) throws SQLException {
+		String cId = rs.getString("c_id");
+		String cPw = null;
+		return new Client(cId, cPw);
+	}
+
+	private Client getClientMail(ResultSet rs) throws SQLException {
+		int cNo = rs.getInt("c_no");
+		String cName = rs.getString("c_name");
+		String cId = rs.getString("c_id");
+		String cMail = rs.getString("c_mail");
+		return new Client(cNo, cName, cId, cMail);
+	}
 }

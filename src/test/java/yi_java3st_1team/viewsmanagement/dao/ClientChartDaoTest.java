@@ -55,15 +55,15 @@ public class ClientChartDaoTest {
 		}
 	}
 	
-	@Test
-	public void test02selectClientChartTest() {
-		LogUtil.prnLog(Thread.currentThread().getStackTrace()[1].getMethodName()+"()");
-		List<ClientChart> list = dao.selectClientChartTest();
-		Assert.assertNotNull(list);
-		
-		for(ClientChart cc : list) {
-			LogUtil.prnLog(cc);
-		}
-	}
+	//@Test
+//	public void test02selectClientChartTest() {
+//		LogUtil.prnLog(Thread.currentThread().getStackTrace()[1].getMethodName()+"()");
+//		//List<ClientChart> list = dao.selectClientChartTest();
+//		Assert.assertNotNull(list);
+//		
+//		for(ClientChart cc : list) {
+//			LogUtil.prnLog(cc);
+//		}
+//	}
 
 }

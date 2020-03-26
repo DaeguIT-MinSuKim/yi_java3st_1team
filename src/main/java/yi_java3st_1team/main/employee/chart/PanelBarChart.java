@@ -1,6 +1,9 @@
 package yi_java3st_1team.main.employee.chart;
 
-import java.util.Iterator;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+import java.util.List;
+import java.util.Locale;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -13,31 +16,38 @@ import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
 import javafx.scene.chart.XYChart.Series;
 import javafx.scene.paint.Color;
+import yi_java3st_1team.ordermanagement.ui.service.OrderUIService;
+import yi_java3st_1team.viewsmanagement.dto.ClientChart;
 
 @SuppressWarnings("serial")
 public class PanelBarChart extends JFXPanel implements InitScene{
+	private OrderUIService service;
+	private BarChart<String, Number> barChart;
+	private GregorianCalendar calendar;
+	private int year;
+	private List<MajorClient> cList;
+	
 	public PanelBarChart() {
 	}
 
-	private BarChart<String, Number> barChart;
-	
 	@Override
 	public Scene createScene() {
 		Group root = new Group();
 		Scene scene = new Scene(root, Color.ALICEBLUE);
-		root.setAutoSizeChildren(true);
-		
-		//막 대형 차트의 X 축과 Y 축을 정의하고 레이블을 설정
+		root.setAutoSizeChildren(true);		
 		CategoryAxis xAxis = new CategoryAxis();
-		xAxis.setLabel("과목");
-
-		NumberAxis yAxis = new NumberAxis();
-		yAxis.setLabel("구매액");
-
-		barChart = new BarChart<>(xAxis, yAxis);
-		barChart.setTitle("2020년 10대 주거래 고객사");
+//		xAxis.setLabel("고객사");
 		
-		barChart.setPrefSize(350, 250);
+		NumberAxis yAxis = new NumberAxis();
+//		yAxis.setLabel("판매금액");
+		
+		calendar = new GregorianCalendar(Locale.KOREA);
+		year = calendar.get(Calendar.YEAR);
+		
+		barChart = new BarChart<>(xAxis, yAxis);
+		barChart.setData(getChartData());
+		barChart.setTitle(year+"년 10대 주요 고객사 그래프");
+		barChart.setPrefSize(350, 330);
 		barChart.setData(getChartData());
 		
 		root.getChildren().add(barChart);
@@ -45,81 +55,39 @@ public class PanelBarChart extends JFXPanel implements InitScene{
 		return scene;
 	}
 	
-	/**
-	 * 전체 데이터 삭제
-	 */
-	public void deleteAllData() {
-		barChart.getData().clear();
-	}
-	
-	/** 해당 학생의 삭제
-	 * @param std
-	 */
-	public void delChartData(Student std) {
-		ObservableList<Series<String, Number>> list = barChart.getData();
-		Iterator<Series<String, Number>>  it = list.iterator();
-		while(it.hasNext()) {
-			Series<String, Number> s = it.next();
-			if (s.getName().equals(std.getStdName())) {
-				barChart.getData().remove(s);
-				break;
-			}
-		}
-	}
-	
-
-	/**
-	 * 해당 학생 정보 갱신
-	 * @param std
-	 */
-	public void updateChartData(Student std) {
-		ObservableList<Series<String, Number>> list = barChart.getData();
-		
-		for(int i = 0; i<list.size(); i++) {
-			Series<String, Number> s = list.get(i);
-			if (s.getName().equals(std.getStdName())) {
-				s.getData().set(0, new XYChart.Data<>("국어", std.getKorScore()));
-				s.getData().set(1, new XYChart.Data<>("영어", std.getEngScore()));
-				s.getData().set(2, new XYChart.Data<>("수학", std.getMathScore()));	
-				break;
-			}
-		}
-	}
-	
-	/** getChartData() 를 이용하여 학생정보추가
-	 * @param std
-	 */
-	public void addChartData(Student std) {
-		barChart.getData().add(getChartData(std));
-	}
-	
-	/**
-	 * getChartData()에 의해 모든 데이터 추가
-	 */
-	public void addAllChartData() {
-		barChart.setData(getChartData());
-	}
-	
-	/**
-	 * @param std
-	 * @return
-	 */
-	public XYChart.Series<String, Number> getChartData(Student std) {
+	public XYChart.Series<String, Number> getChartData(ClientChart co) {
 		XYChart.Series<String, Number> dataSeries = new Series<String, Number>();
-		dataSeries.setName(std.getStdName());
-		dataSeries.getData().add(new XYChart.Data<>("국어", std.getKorScore()));
-		dataSeries.getData().add(new XYChart.Data<>("영어", std.getEngScore()));
-		dataSeries.getData().add(new XYChart.Data<>("수학", std.getMathScore()));
+		dataSeries.setName(co.getC_name());
+		dataSeries.getData().add(new XYChart.Data<>("고객사", co.getP_price()));
 		return dataSeries;
 	}
 	
 	private ObservableList<XYChart.Series<String, Number>> getChartData() {
-		ObservableList<XYChart.Series<String, Number>> list = FXCollections.observableArrayList();		
-		Student std = new Student("S001", "현빈", 90, 60,70);
-		Student std2 = new Student("S002", "박신혜", 60, 55,88);
+		service = new OrderUIService();
+		cList = service.selectMajorClientList();
 		
-		list.add(getChartData(std));
-		list.add(getChartData(std2));
+		ObservableList<XYChart.Series<String, Number>> list = FXCollections.observableArrayList();
+		ClientChart client = new ClientChart(cList.get(0).getcName().getcName(), cList.get(0).getTotalMoney());
+		ClientChart client2 = new ClientChart(cList.get(1).getcName().getcName(), cList.get(1).getTotalMoney());
+		ClientChart client3 = new ClientChart(cList.get(2).getcName().getcName(), cList.get(2).getTotalMoney());
+		ClientChart client4 = new ClientChart(cList.get(3).getcName().getcName(), cList.get(3).getTotalMoney());
+		ClientChart client5 = new ClientChart(cList.get(4).getcName().getcName(), cList.get(4).getTotalMoney());
+		ClientChart client6 = new ClientChart(cList.get(5).getcName().getcName(), cList.get(5).getTotalMoney());
+		ClientChart client7 = new ClientChart(cList.get(6).getcName().getcName(), cList.get(6).getTotalMoney());
+		ClientChart client8 = new ClientChart(cList.get(7).getcName().getcName(), cList.get(7).getTotalMoney());
+		ClientChart client9 = new ClientChart(cList.get(8).getcName().getcName(), cList.get(8).getTotalMoney());
+		ClientChart client10 = new ClientChart(cList.get(9).getcName().getcName(), cList.get(9).getTotalMoney());
+		
+		list.add(getChartData(client));
+		list.add(getChartData(client2));
+		list.add(getChartData(client3));
+		list.add(getChartData(client4));
+		list.add(getChartData(client5));
+		list.add(getChartData(client6));
+		list.add(getChartData(client7));
+		list.add(getChartData(client8));
+		list.add(getChartData(client9));
+		list.add(getChartData(client10));
 		
 		return list;
 	}

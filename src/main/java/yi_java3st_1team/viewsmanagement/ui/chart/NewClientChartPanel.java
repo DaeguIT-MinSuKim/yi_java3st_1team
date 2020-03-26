@@ -1,8 +1,6 @@
 package yi_java3st_1team.viewsmanagement.ui.chart;
 
 import java.util.Calendar;
-import java.util.GregorianCalendar;
-import java.util.Locale;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -19,19 +17,26 @@ import yi_java3st_1team.viewsmanagement.dto.ClientChart;
 import yi_java3st_1team.viewsmanagement.ui.service.ClientChartUIService;
 
 @SuppressWarnings("serial")
-public class ClientChartPanel extends JFXPanel implements InitScene {
+public class NewClientChartPanel extends JFXPanel implements InitScene {
 	private ClientChartUIService service;
 	private BarChart<String, Number> barChart;
-	private Calendar calendar;
-	private int year;
-	private int month;
 	private int firstDay = 1;
-	private int lastDay;
-
+	private int LastDay;
+	private int newYear;
+	private int newMonth;
 	
-	public ClientChartPanel() {
+	public NewClientChartPanel() {
 	}
 	
+	public void setNewYear(int newYear) {
+		this.newYear = newYear;
+	}
+
+	public void setNewMonth(int newMonth) {
+		this.newMonth = newMonth;
+	}
+
+	@Override
 	public Scene createScene() {
 		Group root = new Group();
 		Scene scene = new Scene(root, Color.ALICEBLUE);
@@ -42,38 +47,38 @@ public class ClientChartPanel extends JFXPanel implements InitScene {
 		
 		NumberAxis yAxis = new NumberAxis();
 //		yAxis.setLabel("판매금액");
+		int Year = newYear;
+		int Month = newMonth;
 		
-		calendar = new GregorianCalendar(Locale.KOREA);
-		year = calendar.get(Calendar.YEAR);
-		month = calendar.get(Calendar.MONTH) + 1;
+
 		Calendar cal = Calendar.getInstance();
-		cal.set(year, month-1, firstDay); 
-		lastDay = cal.getActualMaximum(Calendar.DAY_OF_MONTH);
+		cal.set(Year, Month, firstDay); 
+		LastDay = cal.getActualMaximum(Calendar.DAY_OF_MONTH);
 		
 		barChart = new BarChart<>(xAxis, yAxis);
-		barChart.setTitle(year+"년 "+month+"월 고객사 그래프");
-		barChart.setPrefSize(640, 640);
 		barChart.setData(getChartData());
+		barChart.setTitle(newYear+"년 "+newMonth+"월 고객사 그래프");
+		barChart.setPrefSize(640, 640);
 		
 		root.getChildren().add(barChart);
 		
-		return scene; 
+		return scene;
 	}
-	
+
 	public XYChart.Series<String, Number> getChartData(ClientChart co) {
 		XYChart.Series<String, Number> dataSeries = new Series<String, Number>();
 		dataSeries.setName(co.getC_name());
 		dataSeries.getData().add(new XYChart.Data<>("고객사", co.getP_price()));
 		return dataSeries;
 	}
-
-	private ObservableList<XYChart.Series<String, Number>> getChartData() {
+	
+	private ObservableList<Series<String, Number>> getChartData() {
 		ObservableList<XYChart.Series<String, Number>> list = FXCollections.observableArrayList();
 		
 		service = new ClientChartUIService();
-
-		String startDate = year+"-"+month+"-"+firstDay;
-		String endDate = year+"-"+month+"-"+lastDay;
+		String startDate = newYear+"-"+newMonth+"-"+firstDay;
+		String endDate = newYear+"-"+newMonth+"-"+LastDay;
+		
 		java.util.List<ClientChart> clientChart = service.showClientChartList(startDate, endDate);
 		
 		ClientChart client = new ClientChart(clientChart.get(0).getC_name(), clientChart.get(0).getP_price());

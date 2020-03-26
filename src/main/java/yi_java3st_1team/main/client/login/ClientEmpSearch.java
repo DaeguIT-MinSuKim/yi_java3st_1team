@@ -7,7 +7,6 @@ import java.awt.Font;
 import java.awt.SystemColor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.regex.Pattern;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -15,31 +14,31 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
-import yi_java3st_1team.clientmanagement.ui.service.ClientUIService;
+import yi_java3st_1team.main.employee.ui.service.EmployeeUIService;
 
 @SuppressWarnings("serial")
-public class ClientIdChaeck extends JPanel implements ActionListener {
+public class ClientEmpSearch extends JPanel implements ActionListener {
 	public JTextField tfSearch;
 	private JButton btnSearch;
-	private JLabel lblIdEquals;
+	private JLabel lblEmpInfo;
 	
-	private ClientUIService clService;
+	private EmployeeUIService empService;
 	
 	public String idChk;
 	public static String idOk;
 	public static JPanel pBtn;
+	public static String empInfo;
 	
 	
-	
-	public ClientIdChaeck() {
-		clService = new ClientUIService();
+	public ClientEmpSearch() {
+		empService = new EmployeeUIService();
 		initialize();
 	}
 	private void initialize() {
 		setSize(new Dimension(400,400));
 		setLayout(new BorderLayout(0, 0));
 		
-		JLabel label = new JLabel("<html>>> 사용할 <span style='color:red'>아이디</span>를 입력하세요</html>");
+		JLabel label = new JLabel("<html> >> 등록할 <span style='color:purple'>담당 직원</span>을 검색하세요</html>");
 		label.setPreferredSize(new Dimension(60, 90));
 		label.setOpaque(true);
 		label.setHorizontalAlignment(SwingConstants.CENTER);
@@ -63,17 +62,17 @@ public class ClientIdChaeck extends JPanel implements ActionListener {
 		pSearch.add(tfSearch);
 		tfSearch.setColumns(10);
 		
-		JLabel lblIdText = new JLabel("<html><p align='center'>'_'를 제외한 특수문자는 안되며<br>\r\n영문, 숫자, '_'으로만 이루어진 5~12자 이하</p></html>");
+		JLabel lblIdText = new JLabel("<html><p align='center'>계약 당시 담당 직원의 이름을 입력하세요.</p></html>");
 		lblIdText.setForeground(Color.BLUE);
 		lblIdText.setHorizontalAlignment(SwingConstants.CENTER);
 		lblIdText.setBounds(12, 85, 376, 54);
 		pSearch.add(lblIdText);
 		
-		lblIdEquals = new JLabel();
-		lblIdEquals.setFont(new Font("굴림", Font.BOLD, 17));
-		lblIdEquals.setHorizontalAlignment(SwingConstants.CENTER);
-		lblIdEquals.setBounds(12, 140, 376, 48);
-		pSearch.add(lblIdEquals);
+		lblEmpInfo = new JLabel();
+		lblEmpInfo.setFont(new Font("굴림", Font.BOLD, 17));
+		lblEmpInfo.setHorizontalAlignment(SwingConstants.CENTER);
+		lblEmpInfo.setBounds(12, 140, 376, 48);
+		pSearch.add(lblEmpInfo);
 		
 		btnSearch = new JButton("검 색");
 		btnSearch.addActionListener(this);
@@ -83,7 +82,6 @@ public class ClientIdChaeck extends JPanel implements ActionListener {
 		btnSearch.setBounds(290, 30, 63, 33);
 		pSearch.add(btnSearch);
 	}
-	
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == btnSearch) {
 			actionPerformedBtnSearch(e);
@@ -91,21 +89,20 @@ public class ClientIdChaeck extends JPanel implements ActionListener {
 	}
 	
 	protected void actionPerformedBtnSearch(ActionEvent e) {
-		/*** (ID)정규표현식 : 5자이상 12자이하, 대소문자,숫자,_ 가능 ***/
-		String idPattern = "^[a-zA-Z0-9_]{5,11}$";
-		idChk = tfSearch.getText();
-		/***  정규표현식 검사 ***/
-		boolean result = Pattern.matches(idPattern, idChk);
-		String searchId = clService.Idcheck(idChk);
-		if(result==true && searchId==null) {
-			lblIdEquals.setText("아이디 사용 가능");
-			lblIdEquals.setForeground(new Color(0, 102, 0));
-			tfSearch.setText(idChk);
-			idOk = tfSearch.getText();
-		}else {
-			lblIdEquals.setText("아이디 사용 불가");
-			lblIdEquals.setForeground(Color.RED);
+		
+		String empName = tfSearch.getText();
+		String searchName = empService.empSearchName(empName);
+		
+		if(searchName == null) {
+			lblEmpInfo.setText("해당 사원이 존재하지 않습니다.");
+			lblEmpInfo.setForeground(Color.RED);
 			tfSearch.setText("");
-		}		
+		}else {
+			lblEmpInfo.setText(empName+searchName);
+			lblEmpInfo.setForeground(new Color(0, 102, 0));
+			empInfo = lblEmpInfo.getText();;
+			
+		}
+		
 	}
 }

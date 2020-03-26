@@ -7,10 +7,8 @@ import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.SystemColor;
 
-import javax.swing.ButtonGroup;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
@@ -32,18 +30,18 @@ public class SW_TSUIPanel extends JPanel {
 	private JPanel pLeft;
 	private JPanel pSW;
 	private JPanel pLeftTop;
-	private JRadioButton rdbtnSW;
 	private JPanel pLeftList;
 	private SWTotalSaleTblPanel pSWList;
 	private JPanel pLeftResult;
 	private JLabel lblLTotal;
 	private JPanel pRight;
 	private JPanel pTS;
-	private JRadioButton rdbtnTS;
 	private JPanel pRightList;
 	private TSTblPanel pTSList;
 	private JPanel pRightResult;
 	private JLabel lblRTotal;
+	private JLabel lblTS;
+	private JLabel lblSW;
 
 	
 	public SW_TSUIPanel() {
@@ -62,7 +60,7 @@ public class SW_TSUIPanel extends JPanel {
 		add(pTitle);
 		pTitle.setLayout(null);
 		
-		lblTitle = new JLabel("전체 판매 현황 / 거래명세서");
+		lblTitle = new JLabel("전체 판매 현황 / 거래명세");
 		lblTitle.setForeground(Color.BLACK);
 		lblTitle.setBounds(0, 30, 1500, 42);
 		lblTitle.setHorizontalAlignment(SwingConstants.CENTER);
@@ -86,12 +84,12 @@ public class SW_TSUIPanel extends JPanel {
 		pSW.add(pLeftTop);
 		pLeftTop.setLayout(new FlowLayout(FlowLayout.LEFT, 5, 5));
 		
-		rdbtnSW = new JRadioButton(" S/W 전체 판매현황");
-		rdbtnSW.setPreferredSize(new Dimension(230, 30));
-		rdbtnSW.setBackground(SystemColor.inactiveCaption);
-		rdbtnSW.setFont(new Font("휴먼둥근헤드라인", Font.PLAIN, 20));
-		rdbtnSW.setHorizontalAlignment(SwingConstants.CENTER);
-		pLeftTop.add(rdbtnSW);
+		lblSW = new JLabel(" SW 전체 판매 현황");
+		lblSW.setPreferredSize(new Dimension(230, 30));
+		lblSW.setBackground(SystemColor.inactiveCaption);
+		lblSW.setFont(new Font("휴먼둥근헤드라인", Font.PLAIN, 20));
+		lblSW.setHorizontalAlignment(SwingConstants.LEFT);
+		pLeftTop.add(lblSW);
 		
 		pLeftList = new JPanel();
 		pLeftList.setBounds(0, 75, 750, 658);
@@ -145,17 +143,12 @@ public class SW_TSUIPanel extends JPanel {
 		fl_pSpec.setAlignment(FlowLayout.LEFT);
 		pRight.add(pTS);
 		
-		rdbtnTS = new JRadioButton(" 거래명세서");
-		rdbtnTS.setForeground(Color.BLACK);
-		rdbtnTS.setPreferredSize(new Dimension(150, 30));
-		rdbtnTS.setBackground(SystemColor.inactiveCaption);
-		rdbtnTS.setHorizontalAlignment(SwingConstants.CENTER);
-		rdbtnTS.setFont(new Font("휴먼둥근헤드라인", Font.PLAIN, 20));
-		pTS.add(rdbtnTS);
-		
-		ButtonGroup group = new ButtonGroup();
-		group.add(rdbtnSW);
-		group.add(rdbtnTS);
+		lblTS = new JLabel(" 거래명세");
+		lblTS.setPreferredSize(new Dimension(230, 30));
+		lblTS.setBackground(SystemColor.inactiveCaption);
+		lblTS.setFont(new Font("휴먼둥근헤드라인", Font.PLAIN, 20));
+		lblTS.setHorizontalAlignment(SwingConstants.LEFT);
+		pTS.add(lblTS);
 		
 		pRightList = new JPanel();
 		pRightList.setBounds(0, 75, 750, 658);

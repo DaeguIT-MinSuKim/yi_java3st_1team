@@ -1,16 +1,16 @@
 package yi_java3st_1team.main.ui.panel;
 
-import javax.swing.JPanel;
 import java.awt.Dimension;
 import java.awt.SystemColor;
-import javax.swing.JLabel;
-import javax.swing.ImageIcon;
 
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+
+@SuppressWarnings("serial")
 public class LogoImg03Panel extends JPanel {
 
-	/**
-	 * Create the panel.
-	 */
+
 	public LogoImg03Panel() {
 
 		initialize();

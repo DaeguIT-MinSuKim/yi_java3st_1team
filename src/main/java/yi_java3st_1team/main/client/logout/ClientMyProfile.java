@@ -8,7 +8,6 @@ import java.awt.GridLayout;
 import java.awt.SystemColor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Date;
 import java.util.regex.Pattern;
 
 import javax.swing.JButton;
@@ -22,18 +21,14 @@ import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 import javax.swing.event.DocumentListener;
 
-import com.toedter.calendar.JDateChooser;
-
 import yi_java3st_1team.clientmanagement.dto.Client;
-import yi_java3st_1team.clientmanagement.ui.ZipCodePanel;
 import yi_java3st_1team.clientmanagement.ui.service.ClientUIService;
+import yi_java3st_1team.main.client.login.ZipCodePanel;
 import yi_java3st_1team.main.client.ui.ClientMainUIPanel;
-import yi_java3st_1team.main.employee.dto.Department;
 import yi_java3st_1team.main.employee.dto.Employee;
 import yi_java3st_1team.main.employee.login.AbsRegiPanel;
 import yi_java3st_1team.main.employee.ui.service.EmployeeUIService;
 import yi_java3st_1team.main.ui.listner.MyDocumentListener;
-import yi_java3st_1team.main.ui.panel.JTextFieldHintUI;
 
 @SuppressWarnings("serial")
 public class ClientMyProfile  extends AbsRegiPanel<Client> implements ActionListener {
@@ -53,7 +48,6 @@ public class ClientMyProfile  extends AbsRegiPanel<Client> implements ActionList
 	private JLabel lblPassword;
 	private JTextField tfDate;
 	private JFrame zipcodeFrame;
-	private ZipCodePanel zipPanel;
 	private JButton btnZip;
 
 	private ClientUIService cService;
@@ -166,12 +160,15 @@ public class ClientMyProfile  extends AbsRegiPanel<Client> implements ActionList
 		pInput.setLayout(new GridLayout(0, 1, 10, 10));
 		
 		tfNo = new JTextField();
+		tfNo.setForeground(new Color(0, 0, 128));
 		tfNo.setFont(new Font("굴림", Font.BOLD, 12));
 		tfNo.setColumns(10);
 		pInput.add(tfNo);
 		tfNo.setEditable(false);
 		
 		tfName = new JTextField();
+		tfName.setForeground(new Color(153, 0, 0));
+		tfName.setFont(new Font("굴림", Font.BOLD, 12));
 		tfName.setColumns(10);
 		pInput.add(tfName);
 		
@@ -182,12 +179,14 @@ public class ClientMyProfile  extends AbsRegiPanel<Client> implements ActionList
 		tfAdd = new JTextField();
 		pInput.add(tfAdd);
 		tfAdd.setColumns(10);
+		tfAdd.setEditable(false);
 		
 		tfTell = new JTextField();
 		pInput.add(tfTell);
 		tfTell.setColumns(10);
 		
 		tfId = new JTextField();
+		tfId.setForeground(Color.BLUE);
 		tfId.setFont(new Font("굴림", Font.BOLD, 12));
 		tfId.setColumns(10);
 		tfId.setEditable(false);
@@ -223,8 +222,10 @@ public class ClientMyProfile  extends AbsRegiPanel<Client> implements ActionList
 		tfDate.setEditable(false);
 		
 		tfSalesman = new JTextField();
+		tfSalesman.setForeground(new Color(255, 0, 0));
 		pInput.add(tfSalesman);
 		tfSalesman.setColumns(10);
+		tfSalesman.setEditable(false);
 		
 		JPanel pDoubleCheck = new JPanel();
 		pDoubleCheck.setBackground(SystemColor.inactiveCaptionBorder);
@@ -237,16 +238,17 @@ public class ClientMyProfile  extends AbsRegiPanel<Client> implements ActionList
 		zipCod.setBackground(new Color(70, 130, 180));
 		zipCod.addActionListener(this);
 		
-		JButton button = new JButton("<html>중복<br>확인</html>");
+		button = new JButton("<html>중복<br>확인</html>");
+		button.addActionListener(this);
 		button.setForeground(Color.WHITE);
 		button.setFont(new Font("맑은 고딕", Font.BOLD, 13));
 		button.setFocusable(false);
-		button.setBackground(new Color(240, 128, 128));
-		button.setBounds(12, 26, 60, 39);
+		button.setBackground(new Color(255, 204, 51));
+		button.setBounds(12, 58, 60, 39);
 		pDoubleCheck.add(button);
 		zipCod.setForeground(Color.WHITE);
 		zipCod.setFont(new Font("맑은 고딕", Font.BOLD, 13));
-		zipCod.setBounds(12, 100, 60, 39);
+		zipCod.setBounds(12, 168, 60, 39);
 		pDoubleCheck.add(zipCod);
 		
 		JPanel pBtns = new JPanel();
@@ -289,6 +291,7 @@ public class ClientMyProfile  extends AbsRegiPanel<Client> implements ActionList
 			}
 		}
 	};
+	private JButton button;
 	
 	@Override
 	public Client getItem() {
@@ -349,6 +352,9 @@ public class ClientMyProfile  extends AbsRegiPanel<Client> implements ActionList
 		tfSalesman.setText(salesman+"("+empNum+")"+"-"+dept);
 	}
 	public void actionPerformed(ActionEvent e) {
+		if (e.getSource() == button) {
+			actionPerformedButton(e);
+		}
 		if (e.getSource() == zipCod) {
 			actionPerformedZipCod(e);
 		}
@@ -358,13 +364,22 @@ public class ClientMyProfile  extends AbsRegiPanel<Client> implements ActionList
 		if (e.getSource() == btnAdd) {
 			actionPerformedBtnAdd(e);
 		}
+		
+		if (e.getSource() == btnZip) {
+			btnZipActionPerformed(e);
+		}
 	}
 	
 	//수정
 	protected void actionPerformedBtnAdd(ActionEvent e) {
+		if(tfName.getText().equals("")||tfAdd.getText().equals("")||tfTell.getText().equals("")||tfId.getText().equals("")||tfMail.getText().equals("")||lblPassword.getText().equals("")||lblPassword.getText().equals("비밀번호 사용 불가")) {
+			JOptionPane.showMessageDialog(null, "수정 양식에 맞춰 정확하게 입력하세요.");
+		}else {
 			Client upcl = getItem();
 			cService.modifyClient(upcl);
 			JOptionPane.showMessageDialog(null, "수정되었습니다.");
+		}
+
 	}
 	
 	//취소(초기화)
@@ -374,28 +389,44 @@ public class ClientMyProfile  extends AbsRegiPanel<Client> implements ActionList
 	
 	//우편번호
 	protected void actionPerformedZipCod(ActionEvent e) {
-		if(zipcodeFrame == null) {
-			zipcodeFrame = new JFrame();
-			zipcodeFrame.setBounds(100, 100, 810, 350);
-			zipcodeFrame.setTitle("주소검색");
-			zipPanel = new ZipCodePanel();
-			zipcodeFrame.getContentPane().add(zipPanel);
-			
-			btnZip = new JButton("등 록");
-			btnZip.addActionListener(this);
-			btnZip.setForeground(new Color(0, 102, 204));
-			btnZip.setFont(new Font("맑은 고딕", Font.BOLD, 16));
-			btnZip.setBackground(new Color(135, 206, 250));
-			btnZip.setBounds(325, 250, 150, 32);
-			zipPanel.add(btnZip);
-			
-			zipcodeFrame.setLocation(900, 195); //위치조정
-			zipcodeFrame.setVisible(true);
+		zipcodeFrame = new JFrame();
+		zipcodeFrame.setTitle("주소검색");
+		zipcodeFrame.setSize(810, 350);
+		ZipCodePanel zipPanel = new ZipCodePanel();
+		zipcodeFrame.getContentPane().add(zipPanel);
+		
+		btnZip = new JButton("등 록");
+		btnZip.addActionListener(this);
+		btnZip.setForeground(new Color(0, 102, 204));
+		btnZip.setFont(new Font("맑은 고딕", Font.BOLD, 16));
+		btnZip.setBackground(new Color(135, 206, 250));
+		btnZip.setBounds(325, 250, 150, 32);
+		zipPanel.add(btnZip);
+		
+		zipcodeFrame.setLocation(975, 70);
+		zipcodeFrame.setVisible(true);
+	}
+	
+	//주소-등록버튼
+	private void btnZipActionPerformed(ActionEvent e) {
+		String add1 = ZipCodePanel.juso;
+		String add2 = ZipCodePanel.tfDetail.getText();
+		tfAdd.setText(add1+" "+add2);
+		zipcodeFrame.dispose();
+		
+	}
+	protected void actionPerformedButton(ActionEvent e) {
+		if(tfName.getText().equals("")) {
+			JOptionPane.showMessageDialog(null, "등록할 상호명을 입력해주세요.");
 		} else {
-			if(zipcodeFrame.isVisible()) {
-				return;
+			Client sName = new Client(tfName.getText());
+			Client cName = cService.overlapClient(sName);
+			
+			if(cName == null) {
+				JOptionPane.showMessageDialog(null, "등록 가능한 상호 입니다.");
+			}else {
+				JOptionPane.showMessageDialog(null, "이미 존재하는 상호 입니다.");
 			}
-			zipcodeFrame.setVisible(true);
 		}
 	}
 }

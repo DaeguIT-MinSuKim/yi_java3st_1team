@@ -12,7 +12,7 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
 @SuppressWarnings("serial")
-public class LeftMainMenu extends JPanel /* implements ActionListener */ {
+public class LeftMainMenu extends JPanel{
 	private JLabel lblMenu;
 	public JButton btnCM;
 	public JButton btnPM;
@@ -42,37 +42,29 @@ public class LeftMainMenu extends JPanel /* implements ActionListener */ {
 		add(lblMenu);
 
 		btnCM = new JButton("");
-//		btnCM.addActionListener(this);
 		btnCM.setFocusable(false);
 		btnCM.setBackground(SystemColor.inactiveCaptionBorder);
-		btnCM.setIcon(
-				new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\leftMainMenu\\menu1.png"));
+		btnCM.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\leftMainMenu\\menu1.png"));
 		btnCM.setBounds(40, 90, 130, 100);
 		add(btnCM);
 
 		btnPM = new JButton("");
-//		btnPM.addActionListener(this);
-		btnPM.setIcon(
-				new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\leftMainMenu\\menu2.png"));
+		btnPM.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\leftMainMenu\\menu2.png"));
 		btnPM.setFocusable(false);
 		btnPM.setBackground(SystemColor.inactiveCaptionBorder);
 		btnPM.setBounds(40, 240, 130, 100);
 		add(btnPM);
 
 		btnOM = new JButton("");
-//		btnOM.addActionListener(this);
 		btnOM.setFocusable(false);
-		btnOM.setIcon(
-				new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\leftMainMenu\\menu3.png"));
+		btnOM.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\leftMainMenu\\menu3.png"));
 		btnOM.setBackground(SystemColor.inactiveCaptionBorder);
 		btnOM.setBounds(40, 390, 130, 100);
 		add(btnOM);
 
 		btnViews = new JButton("");
-//		btnViews.addActionListener(this);
 		btnViews.setFocusable(false);
-		btnViews.setIcon(
-				new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\leftMainMenu\\menu4.png"));
+		btnViews.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\leftMainMenu\\menu4.png"));
 		btnViews.setBackground(SystemColor.inactiveCaptionBorder);
 		btnViews.setBounds(40, 530, 130, 100);
 		add(btnViews);
@@ -111,35 +103,5 @@ public class LeftMainMenu extends JPanel /* implements ActionListener */ {
 		lblWhite.setBounds(26, 25, 159, 651);
 		add(lblWhite);
 	}
-	/*
-	 * public void actionPerformed(ActionEvent e) {
-	 * 
-	 * if (e.getSource() == btnCM) { btnCMActionPerformed(e); } if (e.getSource() ==
-	 * btnPM) { btnPMActionPerformed(e); } if (e.getSource() == btnOM) {
-	 * btnOMActionPerformed(e); } if (e.getSource() == btnViews) {
-	 * actionPerformedBtnViews(e); }
-	 * 
-	 * 
-	 * } //거래처관리 private void btnCMActionPerformed(ActionEvent e) { removeAll();
-	 * revalidate(); repaint(); setBackground(SystemColor.inactiveCaption);
-	 * setBounds(new Rectangle(0, 0, 1544, 700)); CMMainPanel cmp = new
-	 * CMMainPanel(); add(cmp); revalidate(); repaint(); }
-	 * 
-	 * //제품관리 protected void btnPMActionPerformed(ActionEvent e) { removeAll();
-	 * revalidate(); repaint(); setBackground(SystemColor.inactiveCaption);
-	 * setBounds(new Rectangle(0, 0, 1544, 700)); PMMainPanel pmp = new
-	 * PMMainPanel(); add(pmp); revalidate(); repaint(); }
-	 * 
-	 * //주문관리 protected void btnOMActionPerformed(ActionEvent e) { removeAll();
-	 * revalidate(); repaint(); setBackground(SystemColor.inactiveCaption);
-	 * setBounds(new Rectangle(0, 0, 1544, 700)); setLayout(null); OMMainPanel omp =
-	 * new OMMainPanel(); add(omp); revalidate(); repaint(); }
-	 * 
-	 * //현황조회/보고 protected void actionPerformedBtnViews(ActionEvent e) {
-	 * removeAll(); revalidate(); repaint();
-	 * setBackground(SystemColor.inactiveCaption); setBounds(new Rectangle(0, 0,
-	 * 1544, 700)); ReportMainPanel rmp = new ReportMainPanel(); add(rmp);
-	 * revalidate(); repaint(); }
-	 */
 
 }

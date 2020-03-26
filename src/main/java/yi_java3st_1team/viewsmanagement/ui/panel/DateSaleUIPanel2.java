@@ -1,33 +1,27 @@
 package yi_java3st_1team.viewsmanagement.ui.panel;
 
-import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
-import java.awt.GridLayout;
 import java.awt.SystemColor;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.Calendar;
+import java.util.Date;
 
 import javax.swing.JButton;
-import javax.swing.JCheckBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
+import javax.swing.JSpinner;
 import javax.swing.SpinnerDateModel;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
-import javax.swing.JSpinner;
-import javax.swing.SpinnerNumberModel;
-import yi_java3st_1team.viewsmanagement.ui.content.DateSalePanel;
-import yi_java3st_1team.viewsmanagement.ui.content.TotalAmountPanel;
-import yi_java3st_1team.viewsmanagement.ui.list.DateSaleTblPanel;
-import java.awt.Color;
-import javax.swing.SpinnerModel;
+
 import com.toedter.calendar.JDateChooser;
 
-import java.util.Calendar;
-import java.util.Date;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
+import yi_java3st_1team.viewsmanagement.ui.content.TotalAmountPanel;
+import yi_java3st_1team.viewsmanagement.ui.list.DateSaleTblPanel;
 
 @SuppressWarnings("serial")
 public class DateSaleUIPanel2 extends JPanel implements ActionListener {

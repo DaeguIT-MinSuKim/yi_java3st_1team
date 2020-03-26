@@ -16,6 +16,7 @@ import com.toedter.calendar.JDateChooser;
 import yi_java3st_1team.clientmanagement.dto.Supplier;
 import yi_java3st_1team.clientmanagement.ui.panel.AbsItemPanel;
 import yi_java3st_1team.exception.InvalidCheckException;
+import yi_java3st_1team.main.ui.panel.JTextFieldHintUI;
 import yi_java3st_1team.productmanagement.dto.Product;
 import yi_java3st_1team.productmanagement.dto.SupplierOrder;
 import yi_java3st_1team.productmanagement.dto.SupplierPurchase;
@@ -39,6 +40,12 @@ public class SPSORegisterPanel extends AbsItemPanel<SupplierPurchase> {
 	private JLabel label;
 	private SPUIService service1;
 	private SOUIService service2;
+	private JLabel notNull1;
+	private JLabel notNull2;
+	private JLabel notNull3;
+	private JLabel notNull4;
+	private JLabel notNull5;
+	private JLabel notNull6;
 
 	public SPSORegisterPanel() {
 		service1 = new SPUIService();
@@ -99,29 +106,40 @@ public class SPSORegisterPanel extends AbsItemPanel<SupplierPurchase> {
 		panel.add(lblSPSODate);
 		
 		tfSPSONo = new JTextField();
+		tfSPSONo.setForeground(new Color(0, 0, 128));
+		tfSPSONo.setFont(new Font("굴림", Font.BOLD, 12));
 		tfSPSONo.setEditable(false);
 		tfSPSONo.setBounds(176, 37, 200, 30);
 		panel.add(tfSPSONo);
 		tfSPSONo.setColumns(10);
 		
 		tfSPSOPName = new JTextField();
+		tfSPSOPName.setForeground(new Color(51, 102, 0));
+		tfSPSOPName.setFont(new Font("굴림", Font.BOLD, 12));
 		tfSPSOPName.setColumns(10);
 		tfSPSOPName.setBounds(176, 104, 200, 30);
 		panel.add(tfSPSOPName);
+		tfSPSOPName.setUI(new JTextFieldHintUI(">> 품목명 조회", Color.gray));
 		
 		tfSPSOCost = new JTextField();
+		tfSPSOCost.setForeground(Color.BLACK);
+		tfSPSOCost.setFont(new Font("굴림", Font.BOLD, 12));
 		tfSPSOCost.setEditable(false);
 		tfSPSOCost.setColumns(10);
 		tfSPSOCost.setBounds(176, 238, 200, 30);
 		panel.add(tfSPSOCost);
 		
 		tfSPSOSName = new JTextField();
+		tfSPSOSName.setForeground(Color.BLACK);
+		tfSPSOSName.setFont(new Font("굴림", Font.BOLD, 12));
 		tfSPSOSName.setEditable(false);
 		tfSPSOSName.setColumns(10);
 		tfSPSOSName.setBounds(176, 171, 200, 30);
 		panel.add(tfSPSOSName);
 		
 		tfSPSOPQty = new JTextField();
+		tfSPSOPQty.setForeground(Color.BLACK);
+		tfSPSOPQty.setFont(new Font("굴림", Font.BOLD, 12));
 		tfSPSOPQty.setColumns(10);
 		tfSPSOPQty.setBounds(176, 305, 200, 30);
 		panel.add(tfSPSOPQty);
@@ -129,6 +147,42 @@ public class SPSORegisterPanel extends AbsItemPanel<SupplierPurchase> {
 		tfSPSODate = new JDateChooser(new Date(), "yyyy-MM-dd");
 		tfSPSODate.setBounds(176, 372, 200, 30);
 		panel.add(tfSPSODate);
+		
+		notNull1 = new JLabel("*");
+		notNull1.setForeground(Color.RED);
+		notNull1.setFont(new Font("굴림", Font.BOLD, 26));
+		notNull1.setBounds(121, 42, 14, 15);
+		panel.add(notNull1);
+		
+		notNull2 = new JLabel("*");
+		notNull2.setForeground(Color.RED);
+		notNull2.setFont(new Font("굴림", Font.BOLD, 26));
+		notNull2.setBounds(121, 108, 14, 15);
+		panel.add(notNull2);
+		
+		notNull3 = new JLabel("*");
+		notNull3.setForeground(Color.RED);
+		notNull3.setFont(new Font("굴림", Font.BOLD, 26));
+		notNull3.setBounds(118, 176, 14, 15);
+		panel.add(notNull3);
+		
+		notNull4 = new JLabel("*");
+		notNull4.setForeground(Color.RED);
+		notNull4.setFont(new Font("굴림", Font.BOLD, 26));
+		notNull4.setBounds(121, 242, 14, 15);
+		panel.add(notNull4);
+		
+		notNull5 = new JLabel("*");
+		notNull5.setForeground(Color.RED);
+		notNull5.setFont(new Font("굴림", Font.BOLD, 26));
+		notNull5.setBounds(121, 310, 14, 15);
+		panel.add(notNull5);
+		
+		notNull6 = new JLabel("*");
+		notNull6.setForeground(Color.RED);
+		notNull6.setFont(new Font("굴림", Font.BOLD, 26));
+		notNull6.setBounds(118, 376, 14, 15);
+		panel.add(notNull6);
 		
 		label = new JLabel("");
 		label.setOpaque(true);

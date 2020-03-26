@@ -143,6 +143,7 @@ public class MainPanel extends JPanel implements ActionListener {
 	}
 	protected void btn01ActionPerformed(ActionEvent e) {
 		JFrame frame = new JFrame();
+		frame.setTitle("고객별 판매현황");
 		frame.setBounds(100, 100, 1500, 900);
 		ClientSaleUIPanel cs = new ClientSaleUIPanel();
 		frame.getContentPane().add(cs);
@@ -152,6 +153,7 @@ public class MainPanel extends JPanel implements ActionListener {
 	}
 	protected void btn02ActionPerformed(ActionEvent e) {
 		JFrame frame = new JFrame();
+		frame.setTitle("S/W별 판매현황");
 		frame.setBounds(100, 100, 1500, 900);
 		SWSaleUIPanel cs = new SWSaleUIPanel();
 		frame.getContentPane().add(cs);
@@ -161,6 +163,7 @@ public class MainPanel extends JPanel implements ActionListener {
 	}
 	protected void btn03ActionPerformed(ActionEvent e) {
 		JFrame frame = new JFrame();
+		frame.setTitle("날짜별 판매현황");
 		frame.setBounds(100, 100, 1500, 900);
 		DateSaleUIPanel cs = new DateSaleUIPanel();
 		frame.getContentPane().add(cs);
@@ -170,6 +173,7 @@ public class MainPanel extends JPanel implements ActionListener {
 	}
 	protected void btn04ActionPerformed(ActionEvent e) {
 		JFrame frame = new JFrame();
+		frame.setTitle("고객사 주문현황 그래프 / 영업사원 실적 그래프");
 		frame.setBounds(100, 100, 1500, 900);
 		GraphUIPanel cs = new GraphUIPanel();
 		frame.getContentPane().add(cs);
@@ -179,6 +183,7 @@ public class MainPanel extends JPanel implements ActionListener {
 	}
 	protected void btn05ActionPerformed(ActionEvent e) {
 		JFrame frame = new JFrame();
+		frame.setTitle("전체 판매 현황 / 거래명세");
 		frame.setBounds(100, 100, 1500, 900);
 		SW_TSUIPanel cs = new SW_TSUIPanel();
 		frame.getContentPane().add(cs);
@@ -188,6 +193,7 @@ public class MainPanel extends JPanel implements ActionListener {
 	}
 	protected void btn06ActionPerformed(ActionEvent e) {
 		JFrame frame = new JFrame();
+		frame.setTitle("재고현황");
 		frame.setBounds(100, 100, 1500, 900);
 		IQEvaluationUIPanel cs = new IQEvaluationUIPanel();
 		frame.getContentPane().add(cs);

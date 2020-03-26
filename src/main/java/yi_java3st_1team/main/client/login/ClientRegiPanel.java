@@ -23,10 +23,7 @@ import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 import javax.swing.event.DocumentListener;
 
-import com.toedter.calendar.JDateChooser;
-
 import yi_java3st_1team.clientmanagement.dto.Client;
-import yi_java3st_1team.clientmanagement.ui.ZipCodePanel;
 import yi_java3st_1team.clientmanagement.ui.service.ClientUIService;
 import yi_java3st_1team.main.employee.login.AbsRegiPanel;
 import yi_java3st_1team.main.ui.listner.MyDocumentListener;
@@ -49,8 +46,7 @@ public class ClientRegiPanel  extends AbsRegiPanel<Client> implements ActionList
 	private JButton btnCancle;
 	private JButton doubleChk2;
 	private JLabel lblPassword;
-	private JDateChooser tfDate;
-	private ClientUIService cService;
+	private ClientUIService clService;
 	
 	private JButton doubleChk1;
 	private JFrame zipcodeFrame;
@@ -58,14 +54,15 @@ public class ClientRegiPanel  extends AbsRegiPanel<Client> implements ActionList
 	
 	private JFrame idCheck;
 	private JButton chkAdd;
-	private ZipCodePanel zipPanel;
-	private String total;
+	
+	private JButton btnEmpSearch;
+	private JFrame empSearch;
 
 	
 	public ClientRegiPanel() {
-		cService = new ClientUIService();
+		clService = new ClientUIService();
 		initialize();
-		setCNo(cService.lastClient());
+		setCNo(clService.lastClient());
 	}
 	
 
@@ -227,14 +224,21 @@ public class ClientRegiPanel  extends AbsRegiPanel<Client> implements ActionList
 		tfMail.setColumns(10);
 		tfMail.setUI(new JTextFieldHintUI("email@address.com", Color.gray));
 		
-		tfDate = new JDateChooser(new Date(), "yyyy-MM-dd");
-		tfDate.setEnabled(false);
+		
+		/*** 오늘날짜 세팅 ***/
+		Date dNow = new Date();
+		SimpleDateFormat ft = new SimpleDateFormat("yyyy-MM-dd");
+		String date = ft.format(dNow);
+		tfDate = new JTextField(date);
 		pInput.add(tfDate);
+		tfDate.setColumns(10);
+		tfDate.setEditable(false);
 		
 		tfSalesman = new JTextField();
 		pInput.add(tfSalesman);
 		tfSalesman.setColumns(10);
-		tfSalesman.setUI(new JTextFieldHintUI("이름(사원번호)-부서명", Color.gray));
+		tfSalesman.setEditable(false);
+		tfSalesman.setUI(new JTextFieldHintUI(">> 사원검색", Color.gray));
 		
 		JPanel pDoubleCheck = new JPanel();
 		pDoubleCheck.setBackground(SystemColor.inactiveCaptionBorder);
@@ -268,6 +272,15 @@ public class ClientRegiPanel  extends AbsRegiPanel<Client> implements ActionList
 		doubleChk2.setFont(new Font("맑은 고딕", Font.BOLD, 12));
 		doubleChk2.setBounds(12, 275, 60, 39);
 		pDoubleCheck.add(doubleChk2);
+		
+		btnEmpSearch = new JButton("<html>사원<br>검색</html>");
+		btnEmpSearch.addActionListener(this);
+		btnEmpSearch.setForeground(Color.WHITE);
+		btnEmpSearch.setFont(new Font("맑은 고딕", Font.BOLD, 12));
+		btnEmpSearch.setFocusable(false);
+		btnEmpSearch.setBackground(Color.LIGHT_GRAY);
+		btnEmpSearch.setBounds(12, 653, 60, 39);
+		pDoubleCheck.add(btnEmpSearch);
 		
 		JPanel pBtns = new JPanel();
 		pBtns.setBackground(SystemColor.inactiveCaptionBorder);
@@ -313,9 +326,12 @@ public class ClientRegiPanel  extends AbsRegiPanel<Client> implements ActionList
 			}
 		}
 	};
+	private JButton empAdd;
+	private JTextField tfDate;
 
 
-	
+
+	//데이터 넣기
 	@Override
 	public Client getItem() {
 		int cNo = Integer.parseInt(tfNo.getText().substring(3)); // c0056 -> 56
@@ -326,11 +342,10 @@ public class ClientRegiPanel  extends AbsRegiPanel<Client> implements ActionList
 		String cId = tfId.getText().trim();
 		String cPw = new String(passFd1.getPassword());
 		String cMail = tfMail.getText().trim();
-		Date date1 = tfDate.getDate();
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-		String cDate = sdf.format(date1);
-		System.out.println(cDate);
-		int cSalesman = Integer.parseInt(tfSalesman.getText().substring(8,10));
+		String cDate = tfDate.getText().trim();
+		String empInfo1 = tfSalesman.getText().trim();
+		String empInfo2 = empInfo1.replaceAll("[^0-9]", "");
+		int cSalesman = Integer.parseInt(empInfo2);
 		return new Client(cNo, cName, cCeo, cAddress, cTel, cId, cPw, cMail, cDate, cSalesman);
 	}
 	
@@ -350,6 +365,9 @@ public class ClientRegiPanel  extends AbsRegiPanel<Client> implements ActionList
 		
 	}
 	public void actionPerformed(ActionEvent e) {
+		if (e.getSource() == btnEmpSearch) {
+			actionPerformedEmpSearch(e);
+		}
 		if (e.getSource() == doubleChk1) {
 			actionPerformedDoubleChk1(e);
 		}
@@ -374,22 +392,25 @@ public class ClientRegiPanel  extends AbsRegiPanel<Client> implements ActionList
 			btnZipActionPerformed(e);
 		}
 		
+		if(e.getSource() == empAdd) {
+			actionPerformedempAdd(e);
+		}
 	}
 	
 
-
 	//등록
 	protected void actionPerformedBtnAdd(ActionEvent e) {
-//		if(tfName.getText().equals("")||tfAdd.getText().equals("")||tfTell.getText().equals("")
-//				||tfId.getText().equals("")||passFd1.getPassword().equals("")||lblPassword.setText("비밀번호 사용 불가")||
-//				tfMail.getText().equals("")) {
-//			
-//		}
-		Client newClient = getItem();
-		cService.addClient(newClient);
-		clearTf();
-		setCNo(cService.lastClient());
-		JOptionPane.showMessageDialog(null, "등록되었습니다.");
+		if(tfName.getText().equals("")||tfAdd.getText().equals("")||tfTell.getText().equals("")||tfId.getText().equals("")||tfMail.getText().equals("")||lblPassword.getText().equals("")||lblPassword.getText().equals("비밀번호 사용 불가")) {
+			JOptionPane.showMessageDialog(null, "등록 양식에 맞춰 정확하게 입력하세요.");
+		}else {
+			Client newClient = getItem();
+			clService.addClient(newClient);
+			clearTf();
+			setCNo(clService.lastClient());
+			JOptionPane.showMessageDialog(null, "등록되었습니다.");
+		}
+			
+
 	}
 	
 	//취소(초기화)
@@ -398,42 +419,30 @@ public class ClientRegiPanel  extends AbsRegiPanel<Client> implements ActionList
 	}
 	
 	//우편번호
-	protected void actionPerformedZipCod(ActionEvent e) {
-		if(zipcodeFrame == null) {
-			zipcodeFrame = new JFrame();
-			zipcodeFrame.setBounds(100, 100, 810, 350);
-			zipcodeFrame.setTitle("주소검색");
-			ZipCodePanel zipPanel = new ZipCodePanel();
-			zipcodeFrame.getContentPane().add(zipPanel);
-			
-			btnZip = new JButton("등 록");
-			btnZip.addActionListener(this);
-			btnZip.setForeground(new Color(0, 102, 204));
-			btnZip.setFont(new Font("맑은 고딕", Font.BOLD, 16));
-			btnZip.setBackground(new Color(135, 206, 250));
-			btnZip.setBounds(325, 250, 150, 32);
-			zipPanel.add(btnZip);
-			
-			zipcodeFrame.setLocation(975, 70); //위치조정
-			zipcodeFrame.setVisible(true);
-		} else {
-			if(zipcodeFrame.isVisible()) {
-				return;
-			}
-			zipcodeFrame.setVisible(true);
-		}
+	protected void actionPerformedZipCod(ActionEvent e) {		
+		zipcodeFrame = new JFrame();
+		zipcodeFrame.setTitle("주소검색");
+		zipcodeFrame.setSize(810, 350);
+		ZipCodePanel zipPanel = new ZipCodePanel();
+		zipcodeFrame.getContentPane().add(zipPanel);
+		
+		btnZip = new JButton("등 록");
+		btnZip.addActionListener(this);
+		btnZip.setForeground(new Color(0, 102, 204));
+		btnZip.setFont(new Font("맑은 고딕", Font.BOLD, 16));
+		btnZip.setBackground(new Color(135, 206, 250));
+		btnZip.setBounds(325, 250, 150, 32);
+		zipPanel.add(btnZip);
+		
+		zipcodeFrame.setLocation(975, 70);
+		zipcodeFrame.setVisible(true);
 	}
 	
+	//주소-등록버튼
 	private void btnZipActionPerformed(ActionEvent e) {
-		//String add1 = zipPanel.getTfAll().getText().trim();
-		System.out.println(zipPanel.getTfAll().getText());
-//		String add2 = zipPanel.getTfDetail().getText().trim();
-//		if (add2.equals("")) {
-//			total = add1;
-//		} else {
-//			total = add1 + " " + add2;
-//		}
-//		tfAdd.setText(total);
+		String add1 = ZipCodePanel.juso;
+		String add2 = ZipCodePanel.tfDetail.getText();
+		tfAdd.setText(add1+" "+add2);
 		zipcodeFrame.dispose();
 		
 	}
@@ -465,6 +474,12 @@ public class ClientRegiPanel  extends AbsRegiPanel<Client> implements ActionList
 		idCheck.dispose();
 		
 	}
+	
+	private void actionPerformedempAdd(ActionEvent e) {
+		tfSalesman.setText(ClientEmpSearch.empInfo);
+		empSearch.dispose();
+		
+	}
 
 	//상호명 중복검색
 	protected void actionPerformedDoubleChk1(ActionEvent e) {
@@ -472,7 +487,7 @@ public class ClientRegiPanel  extends AbsRegiPanel<Client> implements ActionList
 			JOptionPane.showMessageDialog(null, "등록할 상호명을 입력해주세요.");
 		} else {
 			Client sName = new Client(tfName.getText());
-			Client cName = cService.overlapClient(sName);
+			Client cName = clService.overlapClient(sName);
 			
 			if(cName == null) {
 				JOptionPane.showMessageDialog(null, "등록 가능한 상호 입니다.");
@@ -480,5 +495,27 @@ public class ClientRegiPanel  extends AbsRegiPanel<Client> implements ActionList
 				JOptionPane.showMessageDialog(null, "이미 존재하는 상호 입니다.");
 			}
 		}
+	}
+	protected void actionPerformedEmpSearch(ActionEvent e) {
+		empSearch = new JFrame();
+		empSearch.setTitle("담당직원 등록");
+		empSearch.setSize(400,400);
+		empSearch.setLocation(975, 570);
+		empSearch.setResizable(false);
+		ClientEmpSearch ces = new ClientEmpSearch();
+		
+		empAdd = new JButton("등록");
+		empAdd.addActionListener(this);
+		empAdd.setForeground(Color.BLACK);
+		empAdd.setFont(new Font("맑은 고딕", Font.BOLD, 14));
+		empAdd.setFocusable(false);
+		empAdd.setBackground(SystemColor.controlHighlight);
+		
+		ClientEmpSearch.pBtn.add(empAdd);
+		
+		empSearch.getContentPane().add(ces);
+		empSearch.setVisible(true);
+		
+		
 	}
 }

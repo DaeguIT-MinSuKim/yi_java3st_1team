@@ -12,7 +12,7 @@ import yi_java3st_1team.main.employee.dto.Employee;
 public class EmployeeUIService {
 	private EmployeeDao empDao;
 	private DepartmentDao deptDao;
-	
+
 	public EmployeeUIService() {
 		empDao = EmployeeDaoImpl.getInstance();
 		deptDao = DepartmentDaoImpl.getInstance();
@@ -21,59 +21,60 @@ public class EmployeeUIService {
 	public Employee Idcheck(Employee emp) {
 		return empDao.selectEmployeeByID(emp);
 	}
-	public List<Department> showDeptList(){
+
+	public List<Department> showDeptList() {
 		return deptDao.selectDepartmentByAll();
 	}
-	
+
 	public Employee showlastEmpNum() {
 		return empDao.selectEmployeebyLastNo();
 	}
-	
+
 	public Employee showEmpcol(Employee emp) {
 		return empDao.selectEmployeeByNo(emp);
 	}
-	
+
 	public Employee showEmpDeptcol(Employee emp) {
 		return empDao.selectEmployeeByDept(emp);
 	}
-	
-	public List<Employee> showEmployeeList(){
+
+	public List<Employee> showEmployeeList() {
 		return empDao.selectEmployeeByAll();
 	}
-	
-	
+
 	public void addEmployee(Employee emp) {
 		empDao.insertEmployee(emp);
 	}
-	
-	
+
 	public void modifyEmployee(Employee emp) {
 		empDao.updateEmployee(emp);
 	}
-	
-	
+
 	public void removeEmployee(Employee emp) {
 		empDao.deleteEmployee(emp);
 	}
-	
-	
+
 	public Employee login(Employee emp) {
 		return empDao.loginEmployee(emp);
 	}
-	
-	public List<Employee> showEmployeeListByDeptName(Department dept){
+
+	public List<Employee> showEmployeeListByDeptName(Department dept) {
 		return empDao.selectEmployeeListByDeptName(dept);
 	}
-	
+
 	public Employee lostID(Employee emp) {
 		return empDao.selectEmployeeByID2(emp);
 	}
-	
+
 	public Employee empMail(Employee emp) {
 		return empDao.selectEmployeeByMail(emp);
 	}
-	
+
 	public void resetEmpPass(Employee emp) {
 		empDao.updateEmpPassword(emp);
+	}
+
+	public String empSearchName(String name) {
+		return empDao.selectEmployeeName(name);
 	}
 }

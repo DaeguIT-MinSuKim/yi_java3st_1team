@@ -1,37 +1,32 @@
 package yi_java3st_1team.viewsmanagement.ui.panel;
 
+import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.SystemColor;
 
-import javax.swing.BoxLayout;
-import javax.swing.DefaultComboBoxModel;
-import javax.swing.JButton;
-import javax.swing.JCheckBox;
-import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JSpinner;
-import javax.swing.SpinnerNumberModel;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
 import javafx.application.Platform;
 import javafx.embed.swing.JFXPanel;
 import javafx.scene.Scene;
+import yi_java3st_1team.viewsmanagement.ui.chart.ClientChartPanel;
 import yi_java3st_1team.viewsmanagement.ui.chart.EmployeeChartPanel;
 import yi_java3st_1team.viewsmanagement.ui.chart.InitScene;
-import yi_java3st_1team.viewsmanagement.ui.content.ClientPanel;
-import yi_java3st_1team.viewsmanagement.ui.content.EmployeePanel;
-import java.awt.BorderLayout;
-import java.awt.Color;
-import yi_java3st_1team.viewsmanagement.ui.chart.ClientChartPanel;
+import yi_java3st_1team.viewsmanagement.ui.content.BarClientPanel;
+import yi_java3st_1team.viewsmanagement.ui.content.PieEmployeePanel;
 
 @SuppressWarnings("serial")
 public class GraphUIPanel extends JPanel {
 
 	private ClientChartPanel pClientGraph;
+	public static JPanel pLLChart;
+	public static JPanel pRRChart;
 	/**
 	 * Create the panel.
 	 */
@@ -70,11 +65,11 @@ public class GraphUIPanel extends JPanel {
 		pLSearch.setBackground(SystemColor.inactiveCaption);
 		pLSearch.setPreferredSize(new Dimension(750, 15));
 		pLeft.add(pLSearch);
-		pLSearch.setLayout(null);
+		pLSearch.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		
-		ClientPanel pClient = new ClientPanel();
-		pClient.setBounds(0, 30, 750, 47);
-		pLSearch.add(pClient);
+
+		BarClientPanel pLDate = new BarClientPanel();
+		pLSearch.add(pLDate);
 		
 		JPanel pLChart = new JPanel();
 		pLChart.setBounds(0, 189, 750, 710);
@@ -84,7 +79,7 @@ public class GraphUIPanel extends JPanel {
 		pLeft.add(pLChart);
 		pLChart.setLayout(null);
 		
-		JPanel pLLChart = new JPanel();
+		pLLChart = new JPanel();
 		pLLChart.setBounds(45, 5, 670, 650);
 		pLLChart.setBackground(SystemColor.inactiveCaptionBorder);
 		pLChart.add(pLLChart);
@@ -123,10 +118,9 @@ public class GraphUIPanel extends JPanel {
 		pRSearch.setBackground(SystemColor.inactiveCaption);
 		pRSearch.setPreferredSize(new Dimension(750, 15));
 		pRight.add(pRSearch);
-		pRSearch.setLayout(null);
+		pRSearch.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		
-		EmployeePanel pEmp = new EmployeePanel();
-		pEmp.setBounds(0, 30, 750, 47);
+		PieEmployeePanel pEmp = new PieEmployeePanel();
 		pRSearch.add(pEmp);
 		
 		JPanel pRChart = new JPanel();
@@ -137,7 +131,7 @@ public class GraphUIPanel extends JPanel {
 		pRight.add(pRChart);
 		pRChart.setLayout(null);
 		
-		JPanel pRRChart = new JPanel();
+		pRRChart = new JPanel();
 		pRRChart.setBounds(45, 5, 670, 650);
 		pRRChart.setBackground(SystemColor.inactiveCaptionBorder);
 		pRChart.add(pRRChart);
@@ -150,7 +144,7 @@ public class GraphUIPanel extends JPanel {
 		Platform.runLater(() -> initFX(pEmpGraph));
 	}
 	
-	public void initFX(InitScene fxPanel) {
+	public static void initFX(InitScene fxPanel) {
 		Scene scene = fxPanel.createScene();
 		JFXPanel panel = (JFXPanel) fxPanel;
 		panel.setScene(scene);

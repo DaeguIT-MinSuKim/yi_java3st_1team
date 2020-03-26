@@ -336,6 +336,34 @@ public class EmployeeDaoImpl implements EmployeeDao {
 		return 0;
 	}
 
+	@Override
+	public String selectEmployeeName(String name) {
+		String sql = "select e.e_no, e.e_title, e.e_dept, d.d_no, d.d_name from employee e left join department d on e.e_dept = d.d_no where e.e_name = ?";
+		try(Connection con = MySqlDataSource.getConnection();
+				PreparedStatement pstmt = con.prepareStatement(sql);){
+			pstmt.setString(1, name);
+			LogUtil.prnLog(pstmt);
+			try(ResultSet rs = pstmt.executeQuery()){
+				if(rs.next()) {
+					return getEmpInfo(rs);
+				}
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	private String getEmpInfo(ResultSet rs) throws SQLException {
+		int no = rs.getInt("e_no");
+		String empNo = String.format("EE%04d", no);
+		Department dNo = new Department(rs.getInt("d_no"), rs.getString("d_name"));
+		String dept = String.format("%s", dNo.getDeptName());
+		String empTitle = rs.getString("e_title");
+		String total = "("+empNo+")-"+dept+"("+empTitle+")";
+		return total;
+	}
+
 
 
 

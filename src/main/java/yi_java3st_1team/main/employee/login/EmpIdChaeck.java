@@ -11,7 +11,6 @@ import java.util.regex.Pattern;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
@@ -23,12 +22,10 @@ import yi_java3st_1team.main.employee.ui.service.EmployeeUIService;
 public class EmpIdChaeck extends JPanel implements ActionListener {
 	public JTextField tfSearch;
 	private JButton btnSearch;
-//	public JButton btnAdd;
 	private JLabel lblIdEquals;
 	
 	private EmployeeUIService empService;
 	
-	private EmpRegiPanel regiPanel;
 	public String idChk;
 	public static String idOk;
 	public static JPanel pBtn;
@@ -43,7 +40,7 @@ public class EmpIdChaeck extends JPanel implements ActionListener {
 		setSize(new Dimension(400,400));
 		setLayout(new BorderLayout(0, 0));
 		
-		JLabel label = new JLabel(">> 사용할 아이디를 입력하세요");
+		JLabel label = new JLabel("<html>>> 사용할 <span style='color:red'>아이디</span>를 입력하세요</html>");
 		label.setPreferredSize(new Dimension(60, 90));
 		label.setOpaque(true);
 		label.setHorizontalAlignment(SwingConstants.CENTER);
@@ -56,14 +53,6 @@ public class EmpIdChaeck extends JPanel implements ActionListener {
 		pBtn.setBackground(SystemColor.inactiveCaptionBorder);
 		pBtn.setPreferredSize(new Dimension(10, 55));
 		add(pBtn, BorderLayout.SOUTH);
-		
-//		btnAdd = new JButton("등록");
-//		btnAdd.addActionListener(this);
-//		btnAdd.setForeground(Color.BLACK);
-//		btnAdd.setFont(new Font("맑은 고딕", Font.BOLD, 14));
-//		btnAdd.setFocusable(false);
-//		btnAdd.setBackground(SystemColor.controlHighlight);
-//		pBtn.add(btnAdd);
 		
 		JPanel pSearch = new JPanel();
 		pSearch.setBackground(SystemColor.inactiveCaptionBorder);
@@ -84,7 +73,6 @@ public class EmpIdChaeck extends JPanel implements ActionListener {
 		lblIdEquals = new JLabel();
 		lblIdEquals.setFont(new Font("굴림", Font.BOLD, 17));
 		lblIdEquals.setHorizontalAlignment(SwingConstants.CENTER);
-		lblIdEquals.setForeground(Color.RED);
 		lblIdEquals.setBounds(12, 140, 376, 48);
 		pSearch.add(lblIdEquals);
 		
@@ -97,9 +85,6 @@ public class EmpIdChaeck extends JPanel implements ActionListener {
 		pSearch.add(btnSearch);
 	}
 	public void actionPerformed(ActionEvent e) {
-//		if (e.getSource() == btnAdd) {
-//			actionPerformedBtnAdd(e);
-//		}
 		if (e.getSource() == btnSearch) {
 			actionPerformedBtnSearch(e);
 		}
@@ -114,15 +99,14 @@ public class EmpIdChaeck extends JPanel implements ActionListener {
 		Employee searchId = empService.Idcheck(newId);
 		if(result==true && searchId==null) {
 			lblIdEquals.setText("아이디 사용 가능");
+			lblIdEquals.setForeground(new Color(0, 102, 0));
 			tfSearch.setText(idChk);
 			idOk = tfSearch.getText();
 		}else {
 			lblIdEquals.setText("아이디 사용 불가");
+			lblIdEquals.setForeground(Color.RED);
 			tfSearch.setText("");
 		}
 		
 	}
-//	protected void actionPerformedBtnAdd(ActionEvent e) {
-//		//regiPanel.tfId.setText(idOK);
-//	}
 }

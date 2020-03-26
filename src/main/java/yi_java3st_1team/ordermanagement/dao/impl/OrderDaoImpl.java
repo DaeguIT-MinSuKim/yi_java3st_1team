@@ -12,6 +12,7 @@ import java.util.List;
 import yi_java3st_1team.clientmanagement.dto.Client;
 import yi_java3st_1team.ds.MySqlDataSource;
 import yi_java3st_1team.main.client.chart.OrderRanking;
+import yi_java3st_1team.main.employee.chart.MajorClient;
 import yi_java3st_1team.main.employee.dto.Employee;
 import yi_java3st_1team.ordermanagement.dao.OrderDao;
 import yi_java3st_1team.ordermanagement.dto.Order;
@@ -310,5 +311,30 @@ public class OrderDaoImpl implements OrderDao {
 		String orName = rs.getString("p_name");
 		int orMoney = rs.getInt("(p.p_price * o_qty)");
 		return new OrderRanking(orNo, orName, orMoney);
+	}
+
+	@Override
+	public List<MajorClient> selectMajorClientList() {
+		String sql = "select c.c_name, p.p_price * o.o_qty from `order` o "
+				   + "join product p on o.o_pno = p.p_no join employee e on o.o_eno = e.e_no "
+				   + "join client c on o.o_cno = c.c_no order by p.p_price * o.o_qty desc";
+		try (Connection con = MySqlDataSource.getConnection();
+				PreparedStatement pstmt = con.prepareStatement(sql);
+				ResultSet rs = pstmt.executeQuery()) {
+			List<MajorClient> list = new ArrayList<MajorClient>();
+			while (rs.next()) {
+				list.add(getMajorClient(rs));
+			}
+			return list;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	private MajorClient getMajorClient(ResultSet rs) throws SQLException {
+		Client oCname = new Client(rs.getString("c_name"));
+		int totalMoney = rs.getInt("p.p_price * o.o_qty");
+		return new MajorClient(oCname, totalMoney);
 	}
 }
