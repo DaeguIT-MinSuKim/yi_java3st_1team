@@ -309,11 +309,13 @@ public class SWUIPanel extends JPanel implements ActionListener, ItemListener {
 	protected void btnAddActionPerformed(ActionEvent e) {
 		try {
 			if(pSWRPanel.tfPName.getText().equals("") 
+					|| pSWRPanel.cmbCate.getSelectedIndex() == -1
 					|| pSWRPanel.tfPCost.getText().equals("") 
 					|| pSWRPanel.tfPPrice.getText().equals("")
 					|| pSWRPanel.tfPQty.getText().equals("")
+					|| pSWRPanel.tfPSName.getText().equals("")
 					|| pSWRPanel.tfPDate.getDate()==null) {
-				JOptionPane.showMessageDialog(null, "품목명, 공급가격, 판매가격, 최초재고수량, 최초등록일자는 필수입력사항입니다.");
+				JOptionPane.showMessageDialog(null, "분류명, 품목명, 공급가격, 판매가격, 공급회사명, 최초재고수량, 최초등록일자는 필수입력사항입니다.");
 				return;
 			}else {
 				Product newProduct = pSWRPanel.getItem();
@@ -338,11 +340,13 @@ public class SWUIPanel extends JPanel implements ActionListener, ItemListener {
 	}
 	protected void btnUpdateActionPerformed(ActionEvent e) {
 		if(pSWRPanel.tfPName.getText().equals("") 
+				|| pSWRPanel.cmbCate.getSelectedIndex() == -1
 				|| pSWRPanel.tfPCost.getText().equals("") 
 				|| pSWRPanel.tfPPrice.getText().equals("")
 				|| pSWRPanel.tfPQty.getText().equals("")
+				|| pSWRPanel.tfPSName.getText().equals("")
 				|| pSWRPanel.tfPDate.getDate()==null) {
-			JOptionPane.showMessageDialog(null, "품목명, 공급가격, 판매가격, 최초재고수량, 최초등록일자는 필수입력사항입니다.");
+			JOptionPane.showMessageDialog(null, "분류명, 품목명, 공급가격, 판매가격, 공급회사명, 최초재고수량, 최초등록일자는 필수입력사항입니다.");
 			return;
 		}else {
 			Product upProduct = pSWRPanel.getItem();

@@ -50,7 +50,7 @@ public class SWRegisterPanel extends AbsItemPanel<Product> implements ItemListen
 	public JTextField tfPSName;
 	public JTextField tfPQty;
 	public JDateChooser tfPDate;
-	private JComboBox<Category> cmbCate;
+	public JComboBox<Category> cmbCate;
 	public JTextField tfImgSearch;
 	private SWUIService service;
 	private String pPicPath;
@@ -62,6 +62,8 @@ public class SWRegisterPanel extends AbsItemPanel<Product> implements ItemListen
 	private JLabel notNull4;
 	private JLabel notNull5;
 	private JLabel notNull6;
+	private JLabel notNull7;
+	private JLabel notNull8;
 	
 	public SWRegisterPanel() {
 		service = new SWUIService();
@@ -246,6 +248,18 @@ public class SWRegisterPanel extends AbsItemPanel<Product> implements ItemListen
 		notNull6.setFont(new Font("굴림", Font.BOLD, 26));
 		notNull6.setBounds(121, 359, 14, 15);
 		panel.add(notNull6);
+		
+		notNull7 = new JLabel("*");
+		notNull7.setForeground(Color.RED);
+		notNull7.setFont(new Font("굴림", Font.BOLD, 26));
+		notNull7.setBounds(115, 59, 14, 15);
+		panel.add(notNull7);
+		
+		notNull8 = new JLabel("*");
+		notNull8.setForeground(Color.RED);
+		notNull8.setFont(new Font("굴림", Font.BOLD, 26));
+		notNull8.setBounds(117, 259, 14, 15);
+		panel.add(notNull8);
 		
 		JLabel lblNewLabel = new JLabel("");
 		lblNewLabel.setOpaque(true);
