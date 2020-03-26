@@ -108,7 +108,7 @@ public class ClientMainFrame extends JFrame implements ActionListener{
 		lblLoginInfo = new JLabel();
 		lblLoginInfo.setFont(new Font("맑은 고딕", Font.PLAIN, 13));
 		lblLoginInfo.setHorizontalAlignment(SwingConstants.CENTER);
-		lblLoginInfo.setBounds(1270, 63, 133, 47);
+		lblLoginInfo.setBounds(1270, 63, 133, 57);
 		pHeader.add(lblLoginInfo);
 		
 		//출력X

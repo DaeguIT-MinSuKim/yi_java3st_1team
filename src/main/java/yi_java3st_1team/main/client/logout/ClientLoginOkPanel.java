@@ -51,8 +51,8 @@ public class ClientLoginOkPanel extends JPanel implements ActionListener{
 		add(loginSuc);
 		
 		empInfo = new JLabel();
-		empInfo.setFont(new Font("굴림", Font.BOLD, 15));
-		empInfo.setBounds(152, 217, 180, 73);
+		empInfo.setFont(new Font("굴림", Font.BOLD, 13));
+		empInfo.setBounds(152, 214, 190, 76);
 		add(empInfo);
 		
 		loginImg = new JLabel();

@@ -47,13 +47,13 @@ public class EmpLoginOkPanel extends JPanel implements ActionListener{
 		add(manager);
 		
 		loginSuc = new JLabel();
-		loginSuc.setFont(new Font("굴림", Font.BOLD, 17));
+		loginSuc.setFont(new Font("굴림", Font.BOLD, 15));
 		loginSuc.setBounds(152, 113, 164, 91);
 		add(loginSuc);
 		
 		empInfo = new JLabel();
-		empInfo.setFont(new Font("굴림", Font.BOLD, 17));
-		empInfo.setBounds(152, 245, 180, 45);
+		empInfo.setFont(new Font("굴림", Font.BOLD, 15));
+		empInfo.setBounds(152, 214, 180, 76);
 		add(empInfo);
 		
 		loginImg = new JLabel();

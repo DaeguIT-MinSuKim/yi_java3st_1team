@@ -248,6 +248,7 @@ update (client_delivery cd
 	select * from employee;
 
 select * from client;
+select * from department;
 
 update client set c_id = 'minsuluv88', c_pw = 'Minsu88!', c_mail = 'hothihi5@gmail.com' where c_no = 2;
 
