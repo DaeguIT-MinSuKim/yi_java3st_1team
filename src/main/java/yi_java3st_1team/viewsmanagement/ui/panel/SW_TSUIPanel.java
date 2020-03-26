@@ -7,10 +7,8 @@ import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.SystemColor;
 
-import javax.swing.ButtonGroup;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;

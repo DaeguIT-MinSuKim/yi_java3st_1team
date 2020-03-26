@@ -12,8 +12,4 @@ public class EmployeeChartUIService {
 	public List<EmployeeChart> showEmployeeChart(String startDate, String endDate){
 		return employeeChartDao.selectEmployeeChart(startDate, endDate);
 	}
-	
-	public int selectEmployeeTotal(String startDate, String endDate) {
-		return employeeChartDao.selectEmployeeTotal(startDate, endDate);
-	}
 }

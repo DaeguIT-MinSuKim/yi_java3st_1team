@@ -22,11 +22,11 @@ public class EmployeeChartDaoImpl implements EmployeeChartDao {
 
 	@Override
 	public List<EmployeeChart> selectEmployeeChart(String startDate, String endDate) {
-		String sql = "select  e.e_name, sum(o.o_qty*p.p_price) as 판매금액, o.o_eno " + 
-				"  from `order` o natural join employee e natural join product p " + 
-				" where o.o_eno = e.e_no and ? <= o.o_date and o.o_date >= ? " + 
-				" group by e.e_name " + 
-				" order by sum(o.o_qty*p.p_price) desc limit 10";
+		String sql = "select e.e_name ,sum(p.p_price* o.o_qty) from `order` o " 
+	               + "left join product p on o.o_pno =p.p_no left join employee e " 
+				   + "on o.o_eno =e.e_no where DATE(o_date) between ? and ? " 
+	               + "and e.e_dept between 4 and 6 group by e.e_name order by sum(p.p_price* o.o_qty) " 
+				   + "desc limit 10;";
 		List<EmployeeChart> list = new ArrayList<EmployeeChart>();
 		try(Connection con = MySqlDataSource.getConnection();
 				PreparedStatement pstmt = con.prepareStatement(sql);) {
@@ -37,7 +37,7 @@ public class EmployeeChartDaoImpl implements EmployeeChartDao {
 				while(rs.next()) {
 					EmployeeChart eChart = new EmployeeChart();
 					eChart.setE_name(rs.getString(1));
-					
+					eChart.setSalesMoney(rs.getInt(2));
 					list.add(eChart);
 				}
 			}
@@ -48,35 +48,4 @@ public class EmployeeChartDaoImpl implements EmployeeChartDao {
 		
 		return null;
 	}
-
-	@Override
-	public int selectEmployeeTotal(String startDate, String endDate) {
-		String sql = "select  e.e_name, sum(o.o_qty*p.p_price) as 판매금액, o.o_eno " + 
-				"  from `order` o natural join employee e natural join product p " + 
-				" where o.o_eno = e.e_no and ? <= o.o_date and o.o_date >= ? " + 
-				" group by e.e_name " + 
-				" order by sum(o.o_qty*p.p_price) desc limit 10";
-		List<EmployeeChart> list = new ArrayList<EmployeeChart>();
-		try(Connection con = MySqlDataSource.getConnection();
-				PreparedStatement pstmt = con.prepareStatement(sql);) {
-			pstmt.setString(1, startDate);
-			pstmt.setString(2, endDate);
-			LogUtil.prnLog(pstmt);
-			try(ResultSet rs = pstmt.executeQuery()){
-				while(rs.next()) {
-					EmployeeChart eChart = new EmployeeChart();
-					eChart.setSalesMoney(rs.getInt(1));
-					
-					list.add(eChart);
-				}
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		
-		return 0;
-	}
-
-	
-
 }

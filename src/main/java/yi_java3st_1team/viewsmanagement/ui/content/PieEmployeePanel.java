@@ -20,23 +20,22 @@ import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
 import javafx.application.Platform;
-import yi_java3st_1team.viewsmanagement.ui.chart.ClientChartPanel;
-import yi_java3st_1team.viewsmanagement.ui.chart.NewClientChartPanel;
+import yi_java3st_1team.viewsmanagement.ui.chart.NewEmployeeChartPanel;
 import yi_java3st_1team.viewsmanagement.ui.panel.GraphUIPanel;
 
 @SuppressWarnings("serial")
-public class ClientPanel extends JPanel implements ChangeListener, ActionListener {
+public class PieEmployeePanel extends JPanel implements ChangeListener, ActionListener {
 	private JSpinner spYear;
 	private JSpinner spMonth;
 	public static String str;
 	public static String str2;
-	private NewClientChartPanel ccp;
 	private JButton btnStart;
+	private NewEmployeeChartPanel necp;
 
 	/**
 	 * Create the panel.
 	 */
-	public ClientPanel() {
+	public PieEmployeePanel() {
 
 		initialize();
 	}
@@ -129,19 +128,19 @@ public class ClientPanel extends JPanel implements ChangeListener, ActionListene
 			Date nowMonth = new Date();
 			str2 = sdf.format(nowMonth);
 		}
-		ccp = new NewClientChartPanel();
-		ccp.setNewYear(Integer.parseInt(str));
-		ccp.setNewMonth(Integer.parseInt(str2));
+		necp = new NewEmployeeChartPanel();
+		necp.setNewYear(Integer.parseInt(str));
+		necp.setNewMonth(Integer.parseInt(str2));
 		
-		GraphUIPanel.pLLChart.removeAll();
-		GraphUIPanel.pLLChart.revalidate();
-		GraphUIPanel.pLLChart.repaint();
-		GraphUIPanel.pLLChart.add(ccp);
+		GraphUIPanel.pRRChart.removeAll();
+		GraphUIPanel.pRRChart.revalidate();
+		GraphUIPanel.pRRChart.repaint();
+		GraphUIPanel.pRRChart.add(necp);
 		
-		Platform.runLater(() -> GraphUIPanel.initFX(ccp));
+		Platform.runLater(() -> GraphUIPanel.initFX(necp));
 		
-		GraphUIPanel.pLLChart.revalidate();
-		GraphUIPanel.pLLChart.repaint();
+		GraphUIPanel.pRRChart.revalidate();
+		GraphUIPanel.pRRChart.repaint();
 		
 		
 	}

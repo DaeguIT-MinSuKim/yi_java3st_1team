@@ -20,7 +20,6 @@ import javax.swing.border.EmptyBorder;
 
 import yi_java3st_1team.viewsmanagement.dto.SWSale;
 import yi_java3st_1team.viewsmanagement.dto.Total;
-import yi_java3st_1team.viewsmanagement.ui.content.SWSaleAmountPanel;
 import yi_java3st_1team.viewsmanagement.ui.list.SWSaleTblPanel;
 import yi_java3st_1team.viewsmanagement.ui.service.SWSaleUIService;
 import yi_java3st_1team.viewsmanagement.ui.service.TotalUIService;
