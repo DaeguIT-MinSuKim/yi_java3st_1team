@@ -287,7 +287,7 @@ public class SWUIPanel extends JPanel implements ActionListener, ItemListener {
 			Supplier checkSupp = serviceSupplier.overlapSupplier(supplier);
 			if(checkSupp == null) {
 				JOptionPane.showMessageDialog(null, "공급회사 등록이 필요합니다.");
-				pSWRPanel.clearTf();
+				pSWRPanel.tfPSName.setText("");
 			}else {
 				JOptionPane.showMessageDialog(null, "등록된 공급회사입니다.");
 			}
