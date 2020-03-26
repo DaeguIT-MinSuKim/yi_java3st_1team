@@ -6,28 +6,26 @@ import yi_java3st_1team.main.employee.dto.Department;
 import yi_java3st_1team.main.employee.dto.Employee;
 
 public interface EmployeeDao {
-	Employee selectEmployeeByNo(Employee emp);
-	
-	Employee selectEmployeeByDept(Employee emp);
+	//select
 	List<Employee> selectEmployeeByAll();
-	Employee selectEmployeebyLastNo();
-	
-	Employee selectEmployeeByID(Employee emp);
-	
-	int insertEmployee(Employee emp);
-	int updateEmployee(Employee emp);
-	int deleteEmployee(Employee emp);
-	
-	Employee loginEmployee(Employee emp);
-
 	List<Employee> selectEmployeeListByDeptName(Department dept);
 	
+	Employee selectEmployeeByNo(Employee emp);
+	Employee selectEmployeeByDept(Employee emp);
+	Employee selectEmployeebyLastNo();
+	Employee loginEmployee(Employee emp);
+	Employee selectEmployeeByID(Employee emp);
 	Employee selectEmployeeByID2(Employee emp);
-	
 	Employee selectEmployeeByMail(Employee emp);
-	
-	int updateEmpPassword(Employee emp);
-	
 	String selectEmployeeName(String name);
+
+	
+	
+	//insert, update, delete
+	int insertEmployee(Employee emp);
+	int updateEmployee(Employee emp);
+	int updateEmpPassword(Employee emp);
+	int deleteEmployee(Employee emp);
+	
 
 }

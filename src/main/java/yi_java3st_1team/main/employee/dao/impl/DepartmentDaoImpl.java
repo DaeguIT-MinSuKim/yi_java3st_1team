@@ -13,6 +13,7 @@ import yi_java3st_1team.main.employee.dto.Department;
 import yi_java3st_1team.util.LogUtil;
 
 public class DepartmentDaoImpl implements DepartmentDao {
+	/*** SINGLETON PATTERN *****************************************************************************************/
 	private static final DepartmentDaoImpl instance = new DepartmentDaoImpl();
 	
 	private DepartmentDaoImpl() {}
@@ -21,6 +22,7 @@ public class DepartmentDaoImpl implements DepartmentDao {
 		return instance;
 	}
 	
+	/*** GET *****************************************************************************************/
 	//getDepartment
 	private Department getDepartment(ResultSet rs) throws SQLException {
 		int deptNo = rs.getInt("d_no");
@@ -29,27 +31,10 @@ public class DepartmentDaoImpl implements DepartmentDao {
 		return new Department(deptNo, deptName, floor);
 	}
 
-	@Override
-	public Department selectDepartmentByNo(Department dept) {
-		String sql = "select d_no, d_name, d_floor from department where d_no = ?";
-		try(Connection con = MySqlDataSource.getConnection();
-				PreparedStatement pstmt = con.prepareStatement(sql);){
-				pstmt.setInt(1, dept.getDeptNo());
-				LogUtil.prnLog(pstmt);
-				try(ResultSet rs = pstmt.executeQuery()){
-					if(rs.next()) {
-						return getDepartment(rs);
-					}
-				}
-			
-		}catch (Exception e) {
-			e.printStackTrace();
-		}
-		return null;
-	}
-
-
-
+	
+	/***QUERY [select] ****************************************************************************************/
+	
+		
 	@Override
 	public List<Department> selectDepartmentByAll() {
 		String sql = "select d_no, d_name, d_floor from department";
@@ -68,6 +53,28 @@ public class DepartmentDaoImpl implements DepartmentDao {
 		return null;
 	}
 
+	
+	@Override
+	public Department selectDepartmentByNo(Department dept) {
+		String sql = "select d_no, d_name, d_floor from department where d_no = ?";
+		try(Connection con = MySqlDataSource.getConnection();
+				PreparedStatement pstmt = con.prepareStatement(sql);){
+				pstmt.setInt(1, dept.getDeptNo());
+				LogUtil.prnLog(pstmt);
+				try(ResultSet rs = pstmt.executeQuery()){
+					if(rs.next()) {
+						return getDepartment(rs);
+					}
+				}
+			
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	/***QUERY [insert/update/delete] ****************************************************************************************/
+	
 	@Override
 	public int insertDepartment(Department dept) {
 		String sql = "insert into department (d_no, d_name, d_floor) value (null, ?,?)";

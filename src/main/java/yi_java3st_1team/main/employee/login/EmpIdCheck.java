@@ -19,7 +19,7 @@ import yi_java3st_1team.main.employee.dto.Employee;
 import yi_java3st_1team.main.employee.ui.service.EmployeeUIService;
 
 @SuppressWarnings("serial")
-public class EmpIdChaeck extends JPanel implements ActionListener {
+public class EmpIdCheck extends JPanel implements ActionListener {
 	public JTextField tfSearch;
 	private JButton btnSearch;
 	private JLabel lblIdEquals;
@@ -32,7 +32,7 @@ public class EmpIdChaeck extends JPanel implements ActionListener {
 	
 	
 	
-	public EmpIdChaeck() {
+	public EmpIdCheck() {
 		empService = new EmployeeUIService();
 		initialize();
 	}
@@ -84,11 +84,13 @@ public class EmpIdChaeck extends JPanel implements ActionListener {
 		btnSearch.setBounds(290, 30, 63, 33);
 		pSearch.add(btnSearch);
 	}
+	
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == btnSearch) {
 			actionPerformedBtnSearch(e);
 		}
 	}
+	
 	protected void actionPerformedBtnSearch(ActionEvent e) {
 		/*** (ID)정규표현식 : 5자이상 12자이하, 대소문자,숫자,_ 가능 ***/
 		String idPattern = "^[a-zA-Z0-9_]{5,11}$";

@@ -235,6 +235,7 @@ public class EmployeeMainUIPanel extends JPanel implements ActionListener {
 		btn04.setPreferredSize(new Dimension(240, 23));
 		btn04.setFocusable(false);
 		pBtns02.add(btn04, BorderLayout.EAST);
+		
 		thread = new Thread(new Runnable() {
 			@Override
 			public void run() {

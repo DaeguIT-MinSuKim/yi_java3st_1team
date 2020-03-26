@@ -41,16 +41,16 @@ public class IQEvaluationTblPanel extends AbstractTblPanel<IQEvaluation> {
 				pName = String.format("<html><span style='color:red'>%s</span></html>", item.getP_name());
 				sName = String.format("<html><span style='color:red'>%s</span></html>", item.getS_name());
 				iqQty = String.format("<html><span style='color:red'>%d</span></html>", item.getIq_qty());
-				pPrice = String.format("<html><span style='color:red'>%,d    </span></html>", item.getP_price());
-				pCost = String.format("<html><span style='color:red'>%,d    </span></html>", item.getP_cost());
+				pPrice = String.format("<html><span style='color:red'>%,d　</span></html>", item.getP_price());
+				pCost = String.format("<html><span style='color:red'>%,d　</span></html>", item.getP_cost());
 				evalustion = String.format("<html><b><span style='color:red'>%s</span></b></html>", item.getEvaluation());
 				break;
 			case "재고과다":
 				pName = String.format("<html><span style='color:blue'>%s</span></html>", item.getP_name());
 				sName = String.format("<html><span style='color:blue'>%s</span></html>", item.getS_name());
 				iqQty = String.format("<html><span style='color:blue'>%d</span></html>", item.getIq_qty());
-				pPrice = String.format("<html><span style='color:blue'>%,d    </span></html>", item.getP_price());
-				pCost = String.format("<html><span style='color:blue'>%,d    </span></html>", item.getP_cost());
+				pPrice = String.format("<html><span style='color:blue'>%,d　</span></html>", item.getP_price());
+				pCost = String.format("<html><span style='color:blue'>%,d　</span></html>", item.getP_cost());
 				evalustion = String.format("<html><b><span style='color:blue'>%s</span></b></html>", item.getEvaluation());
 				break;
 		}

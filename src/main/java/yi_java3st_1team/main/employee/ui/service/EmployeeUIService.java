@@ -18,48 +18,38 @@ public class EmployeeUIService {
 		deptDao = DepartmentDaoImpl.getInstance();
 	}
 
-	public Employee Idcheck(Employee emp) {
-		return empDao.selectEmployeeByID(emp);
-	}
-
-	public List<Department> showDeptList() {
-		return deptDao.selectDepartmentByAll();
-	}
-
-	public Employee showlastEmpNum() {
-		return empDao.selectEmployeebyLastNo();
-	}
-
-	public Employee showEmpcol(Employee emp) {
-		return empDao.selectEmployeeByNo(emp);
-	}
-
-	public Employee showEmpDeptcol(Employee emp) {
-		return empDao.selectEmployeeByDept(emp);
-	}
-
 	public List<Employee> showEmployeeList() {
 		return empDao.selectEmployeeByAll();
 	}
-
-	public void addEmployee(Employee emp) {
-		empDao.insertEmployee(emp);
+	
+	public List<Employee> showEmployeeListByDeptName(Department dept) {
+		return empDao.selectEmployeeListByDeptName(dept);
 	}
-
-	public void modifyEmployee(Employee emp) {
-		empDao.updateEmployee(emp);
+	
+	public List<Department> showDeptList() {
+		return deptDao.selectDepartmentByAll();
 	}
-
-	public void removeEmployee(Employee emp) {
-		empDao.deleteEmployee(emp);
+	
+	
+	
+	public Employee showEmpcol(Employee emp) {
+		return empDao.selectEmployeeByNo(emp);
 	}
-
+	
+	public Employee showEmpDeptcol(Employee emp) {
+		return empDao.selectEmployeeByDept(emp);
+	}
+	
+	public Employee showlastEmpNum() {
+		return empDao.selectEmployeebyLastNo();
+	}	
+	
 	public Employee login(Employee emp) {
 		return empDao.loginEmployee(emp);
 	}
-
-	public List<Employee> showEmployeeListByDeptName(Department dept) {
-		return empDao.selectEmployeeListByDeptName(dept);
+	
+	public Employee Idcheck(Employee emp) {
+		return empDao.selectEmployeeByID(emp);
 	}
 
 	public Employee lostID(Employee emp) {
@@ -70,11 +60,31 @@ public class EmployeeUIService {
 		return empDao.selectEmployeeByMail(emp);
 	}
 
-	public void resetEmpPass(Employee emp) {
-		empDao.updateEmpPassword(emp);
-	}
 
 	public String empSearchName(String name) {
 		return empDao.selectEmployeeName(name);
 	}
+
+
+	public void addEmployee(Employee emp) {
+		empDao.insertEmployee(emp);
+	}
+
+	public void modifyEmployee(Employee emp) {
+		empDao.updateEmployee(emp);
+	}
+	
+	public void resetEmpPass(Employee emp) {
+		empDao.updateEmpPassword(emp);
+	}
+
+	public void removeEmployee(Employee emp) {
+		empDao.deleteEmployee(emp);
+	}
+
+
+
+
+
+
 }

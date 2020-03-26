@@ -57,6 +57,8 @@ public class EmpRegiPanel extends AbsRegiPanel<Employee> implements ActionListen
 	private EmployeeUIService empService;
 	private String selectItem;
 
+	private JButton chkAdd;
+	private JFrame idCheck;
 
 	public EmpRegiPanel() {
 		empService = new EmployeeUIService();
@@ -284,8 +286,6 @@ public class EmpRegiPanel extends AbsRegiPanel<Employee> implements ActionListen
 			}
 		}
 	};
-	private JButton chkAdd;
-	private JFrame idCheck;
 
 
 	public void itemStateChanged(ItemEvent e) {
@@ -371,8 +371,6 @@ public class EmpRegiPanel extends AbsRegiPanel<Employee> implements ActionListen
 
 	}
 	
-
-
 	//버튼 이벤트
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == doubleCheck) {
@@ -397,8 +395,6 @@ public class EmpRegiPanel extends AbsRegiPanel<Employee> implements ActionListen
 
 	}
 
-
-
 	// 등록버튼
 	protected void actionPerformedBtnAdd(ActionEvent e) {
 		//대표이사~과장 : 책임관리자  / 대리~인턴 : 일반관리자  // 비밀번호 사용 불가일 경우 등록막기
@@ -414,8 +410,7 @@ public class EmpRegiPanel extends AbsRegiPanel<Employee> implements ActionListen
 			empService.addEmployee(newEmp);
 			clearTf();
 			setEmpNo(empService.showlastEmpNum());
-			JOptionPane.showMessageDialog(null, "등록되었습니다.");
-			
+			JOptionPane.showMessageDialog(null, "등록되었습니다.");		
 		}
 				
 	}
@@ -433,7 +428,7 @@ public class EmpRegiPanel extends AbsRegiPanel<Employee> implements ActionListen
 		idCheck.setSize(400,400);
 		idCheck.setLocation(1250, 195);
 		idCheck.setResizable(false);
-		EmpIdChaeck eic = new EmpIdChaeck();
+		EmpIdCheck eic = new EmpIdCheck();
 		
 		chkAdd = new JButton("등록");
 		chkAdd.addActionListener(this);
@@ -441,7 +436,7 @@ public class EmpRegiPanel extends AbsRegiPanel<Employee> implements ActionListen
 		chkAdd.setFont(new Font("맑은 고딕", Font.BOLD, 14));
 		chkAdd.setFocusable(false);
 		chkAdd.setBackground(SystemColor.controlHighlight);
-		EmpIdChaeck.pBtn.add(chkAdd);
+		EmpIdCheck.pBtn.add(chkAdd);
 		
 		idCheck.getContentPane().add(eic);
 		idCheck.setVisible(true);
@@ -449,7 +444,7 @@ public class EmpRegiPanel extends AbsRegiPanel<Employee> implements ActionListen
 	}
 
 	private void actionPerformedChkAdd(ActionEvent e) {
-		tfId.setText(EmpIdChaeck.idOk);
+		tfId.setText(EmpIdCheck.idOk);
 		idCheck.dispose();
 		
 	}
