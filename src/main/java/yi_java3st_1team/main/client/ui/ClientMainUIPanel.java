@@ -32,12 +32,13 @@ import yi_java3st_1team.main.client.login.ClientSearchPanel;
 import yi_java3st_1team.main.client.logout.ClientLoginOkPanel;
 import yi_java3st_1team.main.employee.chart.InitScene;
 import yi_java3st_1team.main.employee.login.LoginInputPanel;
+import yi_java3st_1team.main.employee.ui.AbsMainUIPanel;
 import yi_java3st_1team.main.ui.panel.LogoImg01Panel;
 import yi_java3st_1team.main.ui.panel.LogoImg03Panel;
 import yi_java3st_1team.ordermanagement.ui.ClientOMainPanel;
 
 @SuppressWarnings("serial")
-public class ClientMainUIPanel extends JPanel implements ActionListener {
+public class ClientMainUIPanel extends AbsMainUIPanel implements ActionListener {
 	/**** pStop ****/
 	public JPanel pStop;
 
@@ -57,6 +58,7 @@ public class ClientMainUIPanel extends JPanel implements ActionListener {
 	// 로그인(3)
 	public String cId; // 로그인 아이디
 	public String cPass; // 로그인 비밀번호
+	private String cNum; // 로그인 고객번호
 
 	// 이미지패널(1)
 	public LogoImg03Panel pImg01;
@@ -86,6 +88,7 @@ public class ClientMainUIPanel extends JPanel implements ActionListener {
 	/** 메인 차트 **/
 	private Thread thread;
 	private PanelPieChart pie;
+
 
 	public ClientMainUIPanel() {
 		clService = new ClientUIService();
@@ -308,7 +311,7 @@ public class ClientMainUIPanel extends JPanel implements ActionListener {
 		pCLogin.manager.setText("[고객 로그인]");
 		pCLogin.loginImg.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\loginMain\\loginCustomer.png"));
 		pCLogin.loginSuc.setText("<html>반갑습니다!<br><span style='color:blue'>" + loginCl.getcName() + "</span>  고객님이<br>로그인 하셨습니다.</html>");
-		String cNum = String.format("C%04d", loginCl.getcNo());
+		cNum = String.format("C%04d", loginCl.getcNo());
 		pCLogin.empInfo.setText("<html>- 고객번호 : <span style='color:red'>" + cNum+ "</span><br>- 상호명 : <span style='color:green'>" + loginCl.getcName() + "</span></html>");
 
 		// 파이차트
@@ -323,6 +326,7 @@ public class ClientMainUIPanel extends JPanel implements ActionListener {
 			}
 		});
 		thread.run();
+		
 		pImg02.removeAll();
 		JPanel pPie = new JPanel();
 		pPie.add(pie);
@@ -336,8 +340,9 @@ public class ClientMainUIPanel extends JPanel implements ActionListener {
 		pCLogin.btnLogout.addActionListener(this);
 	}
 	
-
+	
 	// (+) 차트
+	@Override
 	public void initFX(InitScene fxPanel) {
 		Scene scene = fxPanel.createScene();
 		JFXPanel panel = (JFXPanel) fxPanel;
@@ -372,8 +377,7 @@ public class ClientMainUIPanel extends JPanel implements ActionListener {
 			pStop.add(pCOrder, BorderLayout.WEST);
 			pStop.revalidate();
 			pStop.repaint();
-			/** 로그아웃 버튼 **/
-			ClientMainFrame.btnlogout.setVisible(true);
+			btnLogoutandLoginInfo();
 		}
 	}
 
@@ -390,13 +394,13 @@ public class ClientMainUIPanel extends JPanel implements ActionListener {
 			pStop.revalidate();
 			pStop.repaint();
 			pCOrder.tpClientManagement.setSelectedIndex(1); // 1번 탭 먼저 보이게 적용
-			/** 로그아웃 버튼 **/
-			ClientMainFrame.btnlogout.setVisible(true);
+			btnLogoutandLoginInfo();
 		}
 	}
 
 
 	// (+) 로그인 선행 적용
+	@Override
 	public void LoginFirst() {
 		if (loginCl == null) {
 			ImageIcon icon = new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\loginMain\\preLogin.png");
@@ -404,14 +408,31 @@ public class ClientMainUIPanel extends JPanel implements ActionListener {
 			return;
 		}
 	}
-	
-	// (+) 각 버튼 누를시 패널삭제 & 전환	
-	private void removePanel() {
+
+	// (+) 각 버튼 누를시 패널삭제 & 전환
+	@Override
+	public void removePanel() {
 		pStop.removeAll();
 		pSbot.removeAll();
 		revalidate();
 		repaint();
 		setLayout(new CardLayout(-18, 0));
 	}
+	
+	// (+) 프레임 HEADER부분 - 로그아웃 버튼 & 로그인 정보
+	@Override
+	public void btnLogoutandLoginInfo() {
+		/** 로그아웃 버튼 **/
+		ClientMainFrame.btnlogout.setVisible(true);
 
+		/** 로그인 정보 **/
+		ClientMainFrame.lblLoginTitle.setText("(" + loginCl.getcId() + ")" + " 로그인");
+		cNum = String.format("C%04d", loginCl.getcNo());
+		ClientMainFrame.lblLoginInfo.setText("<html><p align='center'><span style='color:blue'>" + loginCl.getcName()
+						                        + "</spna><span style='color:red'>[" + cNum + "]</span><br><span style='color:black'> 대표명 :"
+				                                + loginCl.getcCeo() + "</span></p></html>");
+		ClientMainFrame.lblLoginTitle.setVisible(true);
+		ClientMainFrame.lblLoginInfo.setVisible(true);
+
+	}
 }

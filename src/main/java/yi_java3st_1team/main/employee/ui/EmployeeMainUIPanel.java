@@ -42,7 +42,7 @@ import yi_java3st_1team.productmanagement.ui.PMMainPanel;
 import yi_java3st_1team.viewsmanagement.ui.panel.ReportMainPanel;
 
 @SuppressWarnings("serial")
-public class EmployeeMainUIPanel extends JPanel implements ActionListener {
+public class EmployeeMainUIPanel extends AbsMainUIPanel implements ActionListener {
 	/**** pStop ****/
 	public JPanel pStop;
 
@@ -393,6 +393,7 @@ public class EmployeeMainUIPanel extends JPanel implements ActionListener {
 	}
 
 	// (+) 차트
+	@Override
 	public void initFX(InitScene fxPanel) {
 		Scene scene = fxPanel.createScene();
 		JFXPanel panel = (JFXPanel) fxPanel;
@@ -494,11 +495,10 @@ public class EmployeeMainUIPanel extends JPanel implements ActionListener {
 			}
 		}
 	}
-	
-	
-	
-	
+
+
 	// (+) 로그인 선행 적용
+	@Override
 	public void LoginFirst() {
 		if (loginEmp == null) {
 			ImageIcon icon = new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\loginMain\\preLogin.png");
@@ -506,23 +506,25 @@ public class EmployeeMainUIPanel extends JPanel implements ActionListener {
 			return;
 		}
 	}
-		
+
 	// (+) 각 버튼 누를시 패널삭제 & 전환
-	private void removePanel() {
+	@Override
+	public void removePanel() {
 		pStop.removeAll();
 		pSbot.removeAll();
 		revalidate();
 		repaint();
 		setLayout(new CardLayout(-18, 0));
 	}
-	
+
 	// (+) 프레임 HEADER부분 - 로그아웃 버튼 & 로그인 정보
-	private void btnLogoutandLoginInfo() {
+	@Override
+	public void btnLogoutandLoginInfo() {
 		/** 로그아웃 버튼 **/
 		EmployeeMainFrame.btnlogout.setVisible(true);
 
 		/** 로그인 정보 **/
-		EmployeeMainFrame.lblLoginTitle.setText("(" + loginEmp.getEmpId() + ")" + "로그인");
+		EmployeeMainFrame.lblLoginTitle.setText("(" + loginEmp.getEmpId() + ")" + " 로그인");
 		empNum = String.format("EE%04d", loginEmp.getEmpNo());
 		EmployeeMainFrame.lblLoginInfo.setText("<html><p align='center'><span style='color:blue'>" + loginEmp.getEmpName()
 						                        + "</spna><span style='color:red'>[" + empNum + "]</span><br><span style='color:black'>"
@@ -530,4 +532,5 @@ public class EmployeeMainUIPanel extends JPanel implements ActionListener {
 		EmployeeMainFrame.lblLoginTitle.setVisible(true);
 		EmployeeMainFrame.lblLoginInfo.setVisible(true);
 	}
+
 }

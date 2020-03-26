@@ -3,6 +3,7 @@ select user(), database();
 select * from employee;
 select * from product;
 desc employee;
+desc supplier;
 select * from department;
 
 select * from client;

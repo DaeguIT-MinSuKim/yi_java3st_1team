@@ -31,9 +31,9 @@ public class EmployeeTblPanel extends AbstractTblPanel<Employee> {
 		int manager = item.getEmpManager();
 		String mgr;
 		if(manager == 1) {
-			mgr = "책임관리자";
+			mgr = "<html><span style='color:red'>책임관리자</span></html>";
 		}else {
-			mgr = "일반관리자";
+			mgr = "<html><span style='color:blue'>일반관리자</span></html>";
 		}
 		return new Object[] {
 				String.format("EE%04d", item.getEmpNo()),
@@ -46,7 +46,7 @@ public class EmployeeTblPanel extends AbstractTblPanel<Employee> {
 
 	@Override
 	public void updateRow(Employee item, int updateIdx) {
-		// ??
+		//기능X, * 업데이트되면 바로 뿌려주는 기능
 		
 	}
 

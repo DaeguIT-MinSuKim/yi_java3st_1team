@@ -5,6 +5,7 @@ import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.EventQueue;
+import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.SystemColor;
 import java.awt.event.ActionEvent;
@@ -32,6 +33,8 @@ public class ClientMainFrame extends JFrame implements ActionListener{
 	private JLabel lblCopy;
 	private ClientMainUIPanel pContents;
 	public static JButton btnlogout;
+	public static JLabel lblLoginInfo;
+	public static JLabel lblLoginTitle;
 
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -92,7 +95,25 @@ public class ClientMainFrame extends JFrame implements ActionListener{
 		btnlogout.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\loginMain\\Logoutbtn.png"));
 		btnlogout.setBounds(1415, 30, 95, 85);
 		pHeader.add(btnlogout);
+		
+		//로그인정보-1
+		lblLoginTitle = new JLabel();
+		lblLoginTitle.setForeground(Color.BLACK);
+		lblLoginTitle.setHorizontalAlignment(SwingConstants.CENTER);
+		lblLoginTitle.setFont(new Font("맑은 고딕", Font.BOLD, 14));
+		lblLoginTitle.setBounds(1270, 40, 140, 28);
+		pHeader.add(lblLoginTitle);
+		
+		//로그인정보-2
+		lblLoginInfo = new JLabel();
+		lblLoginInfo.setFont(new Font("맑은 고딕", Font.PLAIN, 13));
+		lblLoginInfo.setHorizontalAlignment(SwingConstants.CENTER);
+		lblLoginInfo.setBounds(1270, 63, 133, 47);
+		pHeader.add(lblLoginInfo);
+		
 		//출력X
+		lblLoginTitle.setVisible(false);
+		lblLoginInfo.setVisible(false);
 		btnlogout.setVisible(false);
 		
 		/**********************************************************************************************************************/		
@@ -142,6 +163,9 @@ public class ClientMainFrame extends JFrame implements ActionListener{
 		/** 로그아웃 버튼 **/
 		btnlogout.setVisible(false);
 		
-	}
-	
-	}
+		/** 로그인 정보 **/	
+		lblLoginTitle.setVisible(false);
+		lblLoginInfo.setVisible(false);
+		
+	}	
+}

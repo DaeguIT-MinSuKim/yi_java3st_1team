@@ -33,7 +33,6 @@ public class EmpLoginOkPanel extends JPanel implements ActionListener{
 		setLayout(null);
 		
 		btnLogout = new JButton("LOGOUT");
-//		btnLogout.addActionListener(this);
 		btnLogout.setBackground(SystemColor.controlHighlight);
 
 		btnLogout.setFont(new Font("Arial", Font.BOLD, 17));
@@ -42,26 +41,22 @@ public class EmpLoginOkPanel extends JPanel implements ActionListener{
 		add(btnLogout);
 		
 		manager = new JLabel();
-		//manager.setText("[관리자 로그인]");
 		manager.setHorizontalAlignment(SwingConstants.CENTER);
 		manager.setFont(new Font("휴먼둥근헤드라인", Font.PLAIN, 18));
 		manager.setBounds(152, 71, 174, 45);
 		add(manager);
 		
 		loginSuc = new JLabel();
-		//loginSuc.setText("<html>반갑습니다!<br><span style='color:blue'>권수진 인턴</span>님이<br>로그인 하셨습니다.</html>");
 		loginSuc.setFont(new Font("굴림", Font.BOLD, 17));
 		loginSuc.setBounds(152, 113, 164, 91);
 		add(loginSuc);
 		
 		empInfo = new JLabel();
-		//empInfo.setText("<html>- 사원번호 : <span style='color:red'>ET123</span><br>- <span style='color:green'>상품관리부</span></html>");
 		empInfo.setFont(new Font("굴림", Font.BOLD, 17));
 		empInfo.setBounds(152, 245, 180, 45);
 		add(empInfo);
 		
 		loginImg = new JLabel();
-		//loginImg.setIcon(new ImageIcon("D:\\workspace\\workspace_gradle\\yi_java3st_1team\\images\\loginMain\\manager2.png"));
 		loginImg.setHorizontalAlignment(SwingConstants.CENTER);
 		loginImg.setBounds(20, 71, 120, 120);
 		add(loginImg);
@@ -74,11 +69,13 @@ public class EmpLoginOkPanel extends JPanel implements ActionListener{
 	      btnMyProfile.setBounds(20, 205, 120, 29);
 	      add(btnMyProfile);
 	}
+	
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == btnMyProfile) {
 			actionPerformedBtnMyProfile(e);
 		}
 	}
+	
 	// 프로필
 	protected void actionPerformedBtnMyProfile(ActionEvent e) {
 		profileFrame = new JFrame();

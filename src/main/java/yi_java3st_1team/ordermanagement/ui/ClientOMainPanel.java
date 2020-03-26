@@ -71,9 +71,11 @@ public class ClientOMainPanel extends JPanel implements ActionListener{
 	}
 
 	public void actionPerformed(ActionEvent e) {
+		//메인화면
 		if(e.getSource() == pCOrderUIPanel.btnGoMain) {
 			actionPerformedMainBtn(e);
 		}
+		
 		if(e.getSource() == pOCheckPanel.btnGoMain) {
 			actionPerformedMainBtn(e);
 		}
@@ -94,10 +96,11 @@ public class ClientOMainPanel extends JPanel implements ActionListener{
 		client = new ClientMainUIPanel();
 		add(client);
 		client.loginCl = null;
-		ClientMainFrame.btnlogout.setVisible(false);
 		
-		
+		setVisibleFalse();
+				
 	}
+
 	private void actionPerformedMainBtn(ActionEvent e) {
 		removeAll();
 		revalidate();
@@ -105,7 +108,8 @@ public class ClientOMainPanel extends JPanel implements ActionListener{
 		
 		client = new ClientMainUIPanel();
 		add(client);
-		ClientMainFrame.btnlogout.setVisible(false);
+		
+		setVisibleFalse();
 		
 		client.pStop.removeAll();
 		pCLogin = new ClientLoginOkPanel();
@@ -135,7 +139,13 @@ public class ClientOMainPanel extends JPanel implements ActionListener{
 		
 		//로그아웃버튼
 		pCLogin.btnLogout.addActionListener(this);
-		
-		
+			
+	}
+	
+	//메인으로 갈때는 출력X
+	private void setVisibleFalse() {
+		ClientMainFrame.btnlogout.setVisible(false);
+		ClientMainFrame.lblLoginTitle.setVisible(false);
+		ClientMainFrame.lblLoginInfo.setVisible(false);
 	}
 }

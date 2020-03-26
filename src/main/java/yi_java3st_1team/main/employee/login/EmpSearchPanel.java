@@ -42,9 +42,7 @@ public class EmpSearchPanel extends JPanel implements ActionListener, KeyListene
 	private String empId; // 사원아이디
 	private String empMail; //사원메일
 
-	/**
-	 * Create the panel.
-	 */
+
 	public EmpSearchPanel() {
 		empService = new EmployeeUIService();
 		initialize();
@@ -271,15 +269,6 @@ public class EmpSearchPanel extends JPanel implements ActionListener, KeyListene
 				
 	}
 	
-	//초기화
-	private void clearTf() {
-		tfNo.setText("EE");
-		tfName.setText("");
-		tfId.setText("");
-		tfMail.setText("");
-	}
-	
-
 	/*** 사원번호 자리수 제한 ***/
 	@Override
 	public void keyTyped(KeyEvent e) {
@@ -291,12 +280,12 @@ public class EmpSearchPanel extends JPanel implements ActionListener, KeyListene
 
 	@Override
 	public void keyPressed(KeyEvent e) {
-		// TODO Auto-generated method stub
+		// 기능X
 		
 	}
 	@Override
 	public void keyReleased(KeyEvent e) {
-		// TODO Auto-generated method stub
+		// 기능X
 		
 	}
 	
@@ -305,6 +294,14 @@ public class EmpSearchPanel extends JPanel implements ActionListener, KeyListene
 		if(tfNo.getText().length()>=6) {
 			e.consume();
 		}		
+	}
+	
+	//초기화
+	private void clearTf() {
+		tfNo.setText("EE");
+		tfName.setText("");
+		tfId.setText("");
+		tfMail.setText("");
 	}
 
 }

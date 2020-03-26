@@ -355,6 +355,8 @@ public class EmpMyProfile extends AbsRegiPanel<Employee> implements ActionListen
 		String empMail = tfMail.getText().trim();
 		return new Employee(empNo, empName, dNo, empTitle, empManager, empId, empPass, empMail);
 	}
+	
+	
 	//로그인 정보 세팅
 	public void setItem() {
 		/*** 로그인(사원번호) 세팅 ***/
@@ -395,8 +397,14 @@ public class EmpMyProfile extends AbsRegiPanel<Employee> implements ActionListen
 		lblPassword.setText("");
 
 	}
-
-	//버튼 이벤트
+	
+	@Override
+	public void setNumber(Employee item) {
+		//기능X
+		
+	}
+	
+	/****************************************** 버튼 이베튼 ******************************************/
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == empSearch) {
 			actionPerformedEmpSearch(e);
@@ -409,9 +417,8 @@ public class EmpMyProfile extends AbsRegiPanel<Employee> implements ActionListen
 		if (e.getSource() == btnCancle) {
 			actionPerformedBtnCancle(e);
 		}
-		
-
 	}
+	
 	//직원조회
 	private void actionPerformedEmpSearch(ActionEvent e) {
 		JFrame empSearch = new JFrame();
@@ -436,16 +443,4 @@ public class EmpMyProfile extends AbsRegiPanel<Employee> implements ActionListen
 	private void actionPerformedBtnCancle(ActionEvent e) {
 		clearTf();
 	}
-
-
-
-
-
-
-
-
-
-
-
-
 }
