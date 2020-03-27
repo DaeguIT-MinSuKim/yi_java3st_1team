@@ -46,9 +46,9 @@ public class ClientSaleTblPanel extends AbstractTblPanel<ClientSale> {
 			cName = String.format("<html><span style='color:red'>%s</span></html>", item.getC_name());
 			pName = String.format("<html><span style='color:red'>%s</span></html>", item.getP_name());
 			oQty = String.format("<html><span style='color:red'>%d</span></html>", item.getO_qty());
-			pPrice = String.format("<html><span style='color:red'>%,d    </span></html>", item.getP_price());
-			saleMoney = String.format("<html><span style='color:red'>%,d    </span></html>", item.getSalesMoney());
-			unCollected = String.format("<html><span style='color:red'>%,d    </span></html>", item.getUncollected());
+			pPrice = String.format("<html><span style='color:red'>%,d　</span></html>", item.getP_price());
+			saleMoney = String.format("<html><span style='color:red'>%,d　</span></html>", item.getSalesMoney());
+			unCollected = String.format("<html><span style='color:red'>%,d　</span></html>", item.getUncollected());
 			
 		}else {
 			YN = "<html><b><span style='color:blue'>Y</span></b></html>";
