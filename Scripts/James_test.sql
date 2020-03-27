@@ -254,3 +254,4 @@ update client set c_id = 'minsuluv88', c_pw = 'Minsu88!', c_mail = 'hothihi5@gma
 
 
 
+delete from client where c_no = 60;
